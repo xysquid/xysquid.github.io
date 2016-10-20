@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>BOOMOLOGY</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+		}
+	</style>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	
+</head>
+<body>
+
+	
+
+	<script src="pixi.min.js"></script>
+	<script type="text/javascript" src="asset_manager.js" ></script>
+	<script type="text/javascript" src="core.js" ></script>
+	<script>
+
+	var g_PIXI = true;	// we are using PIXI.js
+	var g_using_pixi = true;	// same
+
+	var assets_loaded = false;
+
+	
+
+	var scriptList = [
+		//"gametypes.js",
+		"entity_class.js",
+		//"input_manager.js",
+		"spritesheet.js",
+		"game_engine.js",
+	
+		"game_state.js",
+		"sound_manager.js",
+		//"gameclient.js",
+		//"socketiowrapper.js",
+	];
+
+	var map_x = 0;
+	var map_y = 0;
+
+	// Look Good on Retina Screens:
+	// https://dzone.com/articles/developing-cross-platform-0
+	var devicePixelRatio = window.devicePixelRatio || 1; // > 1 for retina displays
+
+	var screen_width = 800;//800;//window.innerWidth * devicePixelRatio; //800
+	var screen_height = 600;//600;//window.innerHeight * devicePixelRatio; //600
+
+	// Dict of PIXI.js textures
+	var g_textures = {};
+
+	// create an new instance of a pixi stage
+	var stage = new PIXI.Stage(0xFFFFFF);
+
+	PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.LINEAR;
+
+	var menu_container = new PIXI.Container(0x000000);
+
+	var game_container = new PIXI.Container(0x000000);
+
+	var tile_container =   new PIXI.ParticleContainer(400, {uvs:true, scale:true}, 400);//new PIXI.SpriteBatch();//new PIXI.Container(0x000000); // new PIXI.ParticleContainer();//
+
+	var background_container = new PIXI.Container(0x000000);
+
+	stage.addChild(background_container);
+
+	stage.addChild(tile_container);
+
+	stage.addChild(game_container);
+
+	stage.addChild(menu_container);
+
+	// create a renderer instance.
+	var renderer = PIXI.autoDetectRenderer(screen_width, screen_height);
+ 
+	// add the renderer view element to the DOM
+	document.body.appendChild(renderer.view);
+
+	window.onresize = function() {
+		// https://dzone.com/articles/developing-cross-platform-0
+		// http://www.html5gamedevs.com/topic/14895-dynamically-resizing-pixi-stage-on-window-resize/
+		screen_width = (window.innerWidth);// * devicePixelRatio;
+		screen_height = (window.innerHeight);// * devicePixelRatio;
+
+		//this part resizes the canvas but keeps ratio the same
+    		renderer.view.style.width = screen_width + "px";
+    		renderer.view.style.height = screen_height + "px";
+
+		// Determine which screen dimension is most constrained
+  		ratio = Math.min(screen_width/(11*64), screen_height/(11*64));
+
+		// Scale the view appropriately to fill that dimension
+ 		stage.scale.x = stage.scale.y = ratio;
+
+    		//this part adjusts the ratio:
+    		renderer.resize(screen_width,screen_height);
+
+		//map_x = Math.min(0, -Math.round(screen_width/2) + 25*10 );
+		gGameEngine.on_screen_resize();
+	}
+
+	//map_x = -100;
+
+	window.onload = function() {
+    		window.onresize(); // Call onload to set the width & height initially
+	}
+
+	window.onorientationchange = function() {
+    		window.onresize();
+	}
+
+	
+
+
+	// create interaction manager - mouse, touch, keyboard events
+//var interact_man = new PIXI.interaction.InteractionManager(renderer);
+//interact_man.onMouseDown = function(e) {
+//	
+//};
+//interact_man.onMouseMove= function() {
+//};
+//interact_man.onMouseUp();
+//interact_man.onTouchStart();
+//interact_man.onTouchMove(); 
+//interact_man.onTouchEnd();
+
+	//renderer.render(stage);
+	//requestAnimationFrame( animate );
+
+	loadimages = function() {
+		// Load spritesheet
+		PIXI.loader
+    	  	  //.add('mysheet','sudoku.json')
+	  	  .add('mysheet_png','sudoku.png')
+	   	  // listen for progress - called once per loaded file
+    	  	  //.on('progress', onProgressCallback)
+    	  	  .load(onAssetsLoaded);
+	};
+
+	//load_script_assets(scriptList, loadimages);
+	
+	load_script_assets(["gametypes.js"], function() {load_script_assets(scriptList, loadimages)});
+
+	function onProgressCallback() {
+
+	}
+
+last_timestamp = 0;
+last_update = 0;
+timestep = 1000/50;
+time_delta = 0;
+
+mouse_down_x = -1;
+mouse_down_y = -1;
+
+	function onAssetsLoaded(loader,resources) {
+
+	  // Fill out sprite data array from the JSON
+	  parseAtlasDefinition(gCachedAssets['sudoku.json']);
+
+	  // loop through sprites data and make many PIXI textures
+	  for(var i = 0; i < sprites.length; i++) {
+		var id = sprites[i].id;
+		var x = sprites[i].x;
+		var y = sprites[i].y;
+		var w = sprites[i].w;
+		var h = sprites[i].h;
+		var recta = new PIXI.Rectangle(x,y,w,h); // x,y,width,height
+		var new_texture = new PIXI.Texture(resources.mysheet_png.texture, recta);
+		g_textures[id] = new_texture;
+	  }
+ 
+	  //mob_sprite = new PIXI.Sprite(g_textures['2.png']);
+	  //stage.addChild(mob_sprite);
+	  //mob_sprite.anchor.x = 0.5;
+	  //mob_sprite.anchor.y = 0.5;
+	  //mob_sprite.position.x = 100;
+	  //mob_sprite.position.y = 150;
+	  //stage.addChild(tower_sprite);
+
+	  setup();	// Now that everything is loaded
+	}
+ 
+
+
+
+	setup = function() {
+
+		console.log("begin setup");
+
+		setup_input();
+
+		/*
+		var mob_ = new AnimationEntityClass();
+		mob_.setup_anim(g_mob_right);
+		mob_.update_pos(150,150);
+
+		setInterval(function(){
+			mob_.update();
+		}, 1000/30); 
+		*/
+
+		menu_state = new MainMenuStateClass();
+
+		gGameEngine.push_state(menu_state);
+
+		//stage.position.x = 50;
+		//stage.position.y = 50;
+
+		//setInterval(function(){
+			
+			game_update = true;
+		
+			//gGameEngine.update();
+
+			
+			
+			//gGameEngine.draw();
+		//}, 1000/50);  // 30 -> 90
+
+
+		animate();
+
+		console.log("end of setup");
+
+	};
+
+var game_update = false;
+
+
+	function animate(timestamp) {
+	
+	// Track the accumulated time that hasn't been simulated yet
+    	time_delta = Math.round(timestamp - last_update);// + time_delta; // note += here
+	//console.log('time_delta ' + time_delta);
+	last_timestamp = timestamp;
+
+	   if(timestamp > last_update + 16) {
+	//while(time_delta > 16) {
+
+		gGameEngine.update();
+
+		if(timestamp > last_update + 32) gGameEngine.update();
+		
+		time_delta = time_delta - timestep;
+
+		last_update = timestamp;
+
+		game_update = false;
+		
+		
+		 //pool_all_sprites();
+		pool_all_sprite_layers();
+	    gGameEngine.draw();
+
+	    //stage.children.sort(depthCompare);
+ 
+	  
+	
+
+	    // render the stage   
+	    renderer.render(stage);
+		
+	   }
+ 
+
+
+		
+
+	    		if(mousedown) {
+				gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.MOUSE_CLICK);
+				if (mouse_down_x == -1) {
+					mouse_down_x = mouse['x'];
+					mouse_down_y = mouse['y'];
+				}
+			}
+			if(mouseclick) {
+				mouseclick = false;
+				gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.MOUSE_UP);
+				mouse_down_x = -1;
+			}
+			if(mouseclickright) {
+				mouseclickright = false;
+				gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.MOUSE_CLICK_RIGHT);
+			}
+			if(mousemove) {
+				mousemove = false;
+				gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.MOUSE_MOVE);
+			}
+
+			// LEFT 37 W 65 // RIGHT 39 D 68	// UP 38 W 87// DOWN 40 S 83
+	   // if(key_down) {
+				if(keyState[37] || keyState[65] ) gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_LEFT);
+				if(keyState[39]|| keyState[68]) gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_RIGHT);
+				if(keyState[38] || keyState[87]) gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_UP);
+				if(keyState[40] || keyState[83]) gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_DOWN);   if(keyState[32]) gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_SPACE);
+
+			
+			
+	    //} 
+
+	   if(key_up) {
+			key_up = false;
+			 gGameEngine.handle_events(mouse['x'],mouse['y'],Types.Events.KEY_RELEASE);
+
+			//key_down = false;
+
+			//keyState[83] = false;
+			//keyState[65] = false;
+			//keyState[68] = false;
+			//keyState[87] = false;
+			
+			//keyState[37] = false;
+			//keyState[39] = false;
+			//keyState[38] = false;
+			//keyState[40] = false;
+
+			//keyState[32] = false;
+		}
+
+	      requestAnimationFrame( animate );
+	}
+	
+	render = function() {
+		gGameEngine.draw();
+		requestAnimationFrame(render);
+	};
+
+	var mouseclick = false;
+	var mouseclickright = false;
+	var mousedown = false;
+	var mousemove = false;
+	var mouse = {
+		x: 0,
+		y: 0
+	};
+
+	get_relative_MousePos = function(canvas, evt) {
+        	var rect = canvas.getBoundingClientRect();
+        	return {
+          		x: evt.clientX - rect.left,
+          		y: evt.clientY - rect.top
+        	};
+	};
+
+	setup_input = function () {
+
+	console.log("Input Manager Init");
+
+		// Listener, NOT Handler
+		
+		renderer.view.addEventListener('mousemove',onMouseMove, false);
+		renderer.view.addEventListener('mousedown', onMouseClick, false);
+		renderer.view.addEventListener('mouseup', onMouseUp, false);	
+		renderer.view.addEventListener('touchstart', onTouchDown, false);
+		renderer.view.addEventListener('touchmove', onTouchMove, false);
+		renderer.view.addEventListener('touchend', onTouchUp, false);	
+
+		//canvas.addEventListener('keydown',onKeyDown, false);
+		//canvas.addEventListener('keyup', onKeyUp, false);
+
+		// this makes the keyboard work on gamejolt:
+		window.focus();
+
+		window.addEventListener('keydown',onKeyDown, false);
+		window.addEventListener('keyup',onKeyUp, false);
+
+		//renderer.view.addEventListener('keydown',onKeyDown, false);
+		//renderer.view.addEventListener('keyup',onKeyUp, false);
+
+		for(var i = 0; i < keyState.length; i++) {keyState[i] = false;}
+	};
+
+onMouseClick = function (event) {
+	// this makes the keyboard work on gamejolt:
+	window.focus();
+
+	if(event.which == 3) {	// RMB
+		mouseclickright = true;
+	}
+	mousedown = true;
+};
+
+onTouchDown = function (event) {
+	if(event.which == 3) {	// RMB
+		mouseclickright = true;
+	}
+	mousedown = true;
+
+	var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
+    	mouse['x'] = parseInt(pos.clientX)/ratio;;
+	mouse['y'] = parseInt(pos.clientY)/ratio;;
+	mousemove = true;
+};
+
+onMouseMove = function (event) {
+
+	// this makes the keyboard work on gamejolt:
+	window.focus();
+	
+	// Grab the clientX and clientY properties of the event object parameter.
+	// Make sure you use the clientX and clientY values, as they are canvas translated.
+	// After that, return the posx value.
+	
+	var rel_pos = get_relative_MousePos(renderer.view,event);
+
+    	mouse['x'] = rel_pos.x/ratio;;	// this.   doesnt work!
+	mouse['y'] = rel_pos.y/ratio;;
+	mousemove = true;
+};
+
+onTouchMove = function (event) {
+	
+	// Grab the clientX and clientY properties of the event object parameter.
+	// Make sure you use the clientX and clientY values, as they are canvas translated.
+	// After that, return the posx value.
+	
+	var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
+
+    	mouse['x'] = parseInt(pos.clientX)/ratio;;
+	mouse['y'] = parseInt(pos.clientY)/ratio;;
+	mousemove = true;
+};
+	
+
+onMouseUp = function(event) {
+
+	// this makes the keyboard work on gamejolt:
+	window.focus();
+
+	mouseclick = true;
+	mousedown = false;
+};
+
+onTouchUp= function(event) {
+	mouseclick = true;
+	mousedown = false;
+
+	var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
+    	mouse['x'] = parseInt(pos.clientX)/ratio;;
+	mouse['y'] = parseInt(pos.clientY)/ratio;;
+	mousemove = true;
+};
+
+
+keyState = [256];
+key_down = false;
+key_up = false;
+
+onKeyDown = function(event) {
+
+
+ event.preventDefault();
+ key_down = true;
+ keyState[event.which] = true;
+	console.log(event.which);
+	// up
+	// left
+	// right
+	// down
+	// w
+	// a
+	// s
+	// d
+};
+
+
+
+onKeyUp = function(event) {
+  key_up = true;
+ //key_down = false;
+ keyState[event.which] = false;
+};
+
+	
+ 
+	</script>
+ 
+	</body>
+</html>
