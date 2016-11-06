@@ -304,7 +304,7 @@
 	var x_shift_screen = 0;
 
 	window.onresize = function() {
-		window.devicePixelRatio = 1;
+		window.devicePixelRatio = 1;	// works on iphone!
 		
 
 		// https://dzone.com/articles/developing-cross-platform-0
@@ -362,7 +362,7 @@
 		options_menu_container.scale.x = options_menu_container.scale.y =  1;// devicePixelRatio;
 		game_menu_container.scale.x = game_menu_container.scale.y =  1;
 
-		if((navigator.platform == 'iPhone' || navigator.platform == 'iPod') &&
+		if(false && (navigator.platform == 'iPhone' || navigator.platform == 'iPod') &&
 		   screen_width < screen_height) {
 			options_menu_container.scale.x = options_menu_container.scale.y = window.devicePixelRatio || 1;
 			game_menu_container.scale.x = game_menu_container.scale.y = window.devicePixelRatio || 1;
