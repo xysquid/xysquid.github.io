@@ -26,7 +26,7 @@ MenuItems = [
 
 	[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
 
-	[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
+	//[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
 
 	// 
 	[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"],"sound_on_icon.png","sound_off_icon.png"],
