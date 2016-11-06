@@ -389,6 +389,10 @@
 		gBlipFrogMenu.on_screen_resize();
 
 		//options_menu_container.scale.x = options_menu_container.scale.y = 1;
+
+		// not sure about this:
+		screen_width = screen_width/(window.devicePixelRatio || 1);
+		screen_height = screen_height/(window.devicePixelRatio || 1);
 	}
 
 
