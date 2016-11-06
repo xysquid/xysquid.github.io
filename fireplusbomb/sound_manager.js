@@ -38,6 +38,20 @@
 
 	},
 
+	stream: function (trackName, volume) {
+		var a = document.createElement('audio');
+		a.loop = true;
+		a.src = trackName;
+		a.play();
+		var audioSource = gSM._context.createMediaElementSource( a );
+		audioSource.connect( gSM._musicNode);//gSM._context.destination );
+
+		this.music_volume = volume;
+
+		gSM._musicNode.gain.value = this.music_volume;//0.075;
+		
+	},
+
 	loadAsync: function (path, callbackFcn) {
 
 		
@@ -94,6 +108,7 @@
 	},
 
 	music_on: true,
+	music_volume: 0.01,
 
 	toggle_music: function() {
 
@@ -109,7 +124,7 @@
 			this.music_on = false;
 		}
 		else {
-			gSM._musicNode.gain.value = 0.075;
+			gSM._musicNode.gain.value = this.music_volume;//0.075;
 			this.music_on = true;
 		}
 	},
@@ -221,6 +236,9 @@ function playSoundInstanceLoop(soundpath,volume) {
 
    if (gSM.working == false) return;
 
+ 	gSM.stream(soundpath, volume);
+	return;
+
 	// Task #1
 	// Load a new Sound object using loadAsync. In the callback we
 	// pass in to loadAsync, call the passed-in Sound object's play
@@ -247,7 +265,9 @@ function playSoundInstance(soundpath,volume) {
     });
 }
 
+
+
 var gSM = new SoundManager();
 gSM.create();
 
-playSoundInstanceLoop('bombay.mp3', 0.075);	// This should not block anything
+playSoundInstanceLoop('bombay.mp3', 0.035);	// This should not block anything
