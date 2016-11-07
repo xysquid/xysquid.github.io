@@ -763,28 +763,7 @@ PlayStateClass = GameStateClass.extend({
 			}
 		}
 
-		if (this.smoke_bits_timer > 0) {
-			this.smoke_bits_timer--;
-
-			if (this.smoke_bits_timer < 40) {
-
-			for (var i = 0; i < this.smoke_bits_x.length; i++) {
-				this.smoke_bits_y[i]--;
-
-				this.smoke_bits_sprites[i].update_pos(this.smoke_bits_x[i], this.smoke_bits_y[i]);
-				this.smoke_bits_sprites[i].set_alpha(Math.min(1,this.smoke_bits_timer/20));
-				//if (this.smoke_bits_timer > 30) this.smoke_bits_sprites[i].set_alpha(-this.smoke_bits_timer );
-			}
-
-			if (this.smoke_bits_timer == 0) {
-				for (var i = 0; i < this.smoke_bits_x.length; i++) {
-					this.smoke_bits_sprites[i].update_pos(-999, -999);
-					this.smoke_bits_y[i] = -999;
-				}
-			}	
-
-			} // if (this.smoke_bits_timer < 30)
-		}
+		
 	},
 
 	set_fire_bit_effect: function(x,y) {
@@ -1330,7 +1309,7 @@ GameOverStateClass = GameStateClass.extend({
 
 		}
 
-		if (this.play_state.score > 40 &&
+		if (this.play_state.score > 60 &&
 		    location.hostname != "www.facebook.com") this.prompt_button = 1;		// tweet score
 	
 		//this.screen_resized();	// this would make the new piece instantly snap to position
@@ -2027,9 +2006,14 @@ TutStateClass = GameStateClass.extend({
 		var h = screen_height/ratio;
 
 		if (screen_width > screen_height) {
+
 			this.text_x = 8.5*this.play_state.tile_size;
-			this.text_y = h/2 + 120;
-			this.text_w = 96*7.5;
+			this.text_y = this.play_state.tile_size;
+			this.text_w = 4*this.play_state.tile_size;
+			return;
+			this.text_x = this.play_state.tile_size*2;//;8.5*this.play_state.tile_size;
+			this.text_y = this.play_state.tile_size*9;//h/2 + 120;
+			this.text_w = this.play_state.tile_size*12;//96*7.5;
 		} else {
 			this.text_x = 32;
 			this.text_y = h/2 + 120;
@@ -2148,7 +2132,7 @@ MenuStateClass = GameStateClass.extend({
 
 	screen_resized: function () {
 
-		this.tut_x = 0.25*game_screen_width;
+		this.tut_x = 0.25*screen_width;
 		this.play_x = 0.75*screen_width;
 
 		//g_game_name_text.update_pos(screen_width*0.5, 42, screen_width, 999);
