@@ -1,667 +1,76 @@
-<!DOCTYPE HTML>
-
-<!--
-
-/*
-
-	We have used the following open source projects / code:
-
-	pixi.js - v2.2.3
-	Copyright (c) 2012-2014, Mat Groves
-	http://goodboydigital.com/
-	pixi.js is licensed under the MIT License.
-	http://www.opensource.org/licenses/mit-license.php
-	Mat Groves http://matgroves.com/ @Doormat23
-
-	Class object based on John Resig's code; inspired by base2 and Prototype
-	http://ejohn.org/blog/simple-javascript-inheritance/
-
-	Add to Home screen, MIT License
-	http://cubiq.org/add-to-home-screen
-
-	Fonts in use: Montserrat
-
-	Music By:
-	'Song Title (s)'' : Bombay Streets
-	Jay Man - OurMusicBox
-	ourmusicbox.com
-	http://www.youtube.com/c/ourmusicbox
-
-	This game is copyrighted. You are not allowed to copy it and host/redistrubute it without permission. 
-
-*/
-
--->
-
-<html itemscope itemtype="http://schema.org/VideoGame">
-
+<html>
 <head>
-
-	<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="addtohomescreen.css">
-
-	<title>Fire Plus Bomb</title>
-	<meta name="description" content="Addictive block puzzle game, playable for free online in the browser, desktop and mobile web">
+<title>ZBlip - Neat little games for Web and Mobile</title>
 	
+
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<link rel="canonical" href="http://www.zblip.com/fireplusbomb"/>
-
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name = "viewport" content = "user-scalable=no">
-	<meta name = "apple-mobile-web-app-title" content = "Fire + Bomb">
-
-
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:site" content="@ZBlipGames" />
-	<meta name="twitter:title" content="Fire plus Bomb" />
-	<meta name="twitter:description" content="Addictive block puzzle game, playable for free online in the browser, desktop and mobile web - Play Now" />
-	<meta name="twitter:image" content="http://www.zblip.com/fireplusbomb/boom2.png" />
-	<meta name="twitter:url" content="http://www.zblip.com/fireplusbomb/" />
-
-
-	<meta property="og:url" content="http://www.zblip.com/fireplusbomb">
-	
-	<meta property="og:image" content="www.zblip.com/fireplusbomb/boom.png">
-	<meta property="og:description" content="Addictive block puzzle game, playable for free online in the browser, desktop and mobile web">
-	<meta property="og:title" content="Fire Plus Bomb">
-	<meta property="og:site_name" content="ZBlip">
-	
-	<meta property="og:type"          content="game" />
-	<meta property="og:see_also" content="http://www.zblip.com">
-
-	<meta itemprop="name" content="Fire Plus Bomb">
-	<meta itemprop="description" content="Addictive block puzzle game">
-	<meta itemprop="image" content="www.zblip.com/fireplusbomb/boom.png">
-
-	<style>
-
-	body {
-		background: #635577;	
-	}
-
-
-	progress {
-  		border: none;
-		-webkit-appearance: none;
-		width: 300px;
-		height: 8px;
-		margin: 100px auto;
-		display: block;
-
-	}
-
-	progress::-webkit-progress-bar {
- 		background-color: #000000;
-  		border: 0;
-  		height: 8px;
-  		border-radius: 0px;
-		padding: 0px;
-
-		box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
-	}
-
-	progress::-webkit-progress-value {
-		border-radius: 50px;
-	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
-		background:
+<meta property="og:title" content="ZBlip - Neat little games for Web and Mobile">
 		
+<meta property="og:description" content="A variety of puzzle and strategy games">
 		
-		-webkit-linear-gradient(left, #FF9400, #FF9400);
-	
-	/* Looks great, now animating it */
-	background-size: 25px 14px, 100% 100%, 100% 100%;
-	-webkit-animation: move 5s linear 0 infinite;
-	}
-
-	progress::-moz-progress-bar {
-  		background-color: #FF9400;
-  		border: 0;
-  		height: 8px;
-  		border-radius: 0px;
+<meta property="og:site_name" content="ZBlip">
 		
-	}
+<meta property="og:url" content="http://www.zblip.com">
+		
+<meta property="og:type" content="website">
+		
+<meta property="og:locale" content="en_US">
 
 
-	</style>
-
-	<link rel="icon" 
-         type="image/png" 
-         src="favicon.png">
+<style>
+body	{font-family: 'Montserrat', sans-serif;}
+</style>	
+		
 	
+
 </head>
+	
+
 <body>
+          
+          
+<h1>ZBlip</h1>	    
 
-	<div id = 'pbar' >
-	<progress id='prog_bar' value = '0' max='100'></progress>
-	</div>
-
-	
-	<script src="pixi.min.js"></script>
-	<script type="text/javascript" src="asset_manager.js" ></script>
-	<script type="text/javascript" src="core.js" ></script>
-
-
-	<script>
-
-	Types = {
-
-
-		Events: {
-			MOUSE_MOVE: 0,
-			MOUSE_CLICK: 1,
-			MOUSE_CLICK_RIGHT: 2,
-			MOUSE_UP:7,
-			KEY_LEFT:3,
-			KEY_RIGHT:4,
-			KEY_UP:5,
-			KEY_DOWN:6,
-
-			WEB_LINK: 7,
-			NEW_GAME: 8,
-			SOUND_ONOFF: 9,
-			TWEET_SCORE: 10,
-			MUSIC_ONOFF: 11,
-			BOOKMARK: 12,
-			GAME_OVER: 12,
-
-			NO_EVENT: 0,
-		},
-
-		Fonts: {
-			SMALL: 0,
-			MEDIUM: 1,
-			SMALL_WHITE: 2,
-			XSMALL: 3,
-		},
-
-		Layer: {
-			BACKGROUND: 0,
-			TILE: 1,
-			GAME: 2,
-			HUD: 3,
-			POP_MENU: 4,
-			GAME_MENU: 5,
-		},
-	
-	
-	};
-
-	// http://stackoverflow.com/questions/6700017/how-to-hide-the-google-1-button
-
-	var g_PIXI = true;	// we are using PIXI.js
-	var g_using_pixi = true;	// same
-
-	var assets_loaded = false;
-
-	var language = window.navigator.userLanguage || window.navigator.language;
-	language = language[0]+language[1];	// first 2 letters 
-	//language = 'zh';
-	//alert(language); //works IE/SAFARI/CHROME/FF https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx
-	if (language != 'en' && language != 'zh') language = 'en';
-	
-
-	var ratio = 1;	
-
-	var scriptList = [
-
-		
-		"spritesheet.js",
-		"game_engine.js",
-		"game_state.js",
-		"entity_class.js",	
-		
-		"sound_manager.js",
-	];
-
-	var pBar = document.getElementById('prog_bar');
-	pBar.value += 20; 
-
-	var map_x = 0;
-	var map_y = 0;
-
-	// Look Good on Retina Screens:
-	// https://dzone.com/articles/developing-cross-platform-0
-	var devicePixelRatio = window.devicePixelRatio || 1; // > 1 for retina displays
-
-	var screen_width = 800;//800;//window.innerWidth * devicePixelRatio; //800
-	var screen_height = 600;//600;//window.innerHeight * devicePixelRatio; //600
-
-	var game_screen_width = screen_width;	// due to devicePixelRatio apparently being different in landscape vs portrait mode
-
-	// Dict of PIXI.js textures
-	var g_textures = {};
-
-	loadimages = function() {
-
-		pBar.value += 30; 
-
-		// Load spritesheet
-		PIXI.loader
-    	  	  .add('mysheet','blocks.json')
-	  	  .add('mysheet_png','blocks.png')
-	   	  // listen for progress - called once per loaded file
-    	  	  .on('progress', onProgressCallback)
-    	  	  .load(onAssetsLoaded);
-	};
-
-	
-	// put gametypes in index.html
-	
-	//load_script_assets(["gametypes.js"], function() {load_script_assets(scriptList, loadimages)});
-	 
-	load_script_assets(scriptList, loadimages);
-
-	// this shouldn't block anything:
-	addtohomescreen_js_loaded = false;
-	load_script_assets(["addtohomescreen.min.js"], function() {
-		addtohomescreen_js_loaded = true;
-		console.log('asdd to homescreen');
-		addToHomescreen({
-   			autostart: false
-		});
-	});
-
-	
-
-	// create an new instance of a pixi stage
-	var stage = new PIXI.Stage(0x322c35);
-
-	var menu_container= new PIXI.Container(0x322c35);	// like a HUD, text, score, etc
-								// scales with game objects
-
-	var game_container = new PIXI.Container(0x322c35);	// active objects
-
-	var tile_container = new PIXI.Container(0x322c35);	// grid 'objects'
-
-	var background_container = new PIXI.Container(0x322c35); // background
-
-	var play_container = new PIXI.Container(0x322c35);	// all of the above 4 organized into here
-								// will move as one when the menu pops up
-
-	var options_menu_container = new PIXI.Container(0x322c35);	// pop up menu
-
-	var game_menu_container = new PIXI.Container(0x322c35);		// doesnt scale with game objects
-
-	play_container.addChild(background_container);
-
-	play_container.addChild(tile_container);
-
-	play_container.addChild(game_container);
-
-	play_container.addChild(menu_container);
-
-	stage.addChild(play_container);
-
-	stage.addChild(game_menu_container);
-
-	stage.addChild(options_menu_container);
-
-	// create a renderer instance.
-	var renderer;// = PIXI.autoDetectRenderer(screen_width, screen_height);
- 
-	// add the renderer view element to the DOM
-	//document.body.appendChild(renderer.view);
-
-	var ratio;
-	var pop_menu_ratio;
-
-	var x_shift_screen = 0;
-
-	window.onresize = function() {
-		//window.devicePixelRatio = 1;	// works on iphone!
+<games><inner>
 		
 
-		// https://dzone.com/articles/developing-cross-platform-0
-		// http://www.html5gamedevs.com/topic/14895-dynamically-resizing-pixi-stage-on-window-resize/
-		screen_width = ((window.innerWidth) - 20);// * devicePixelRatio;
-		screen_height = ((window.innerHeight) - 20);// * devicePixelRatio;
-		game_screen_width = screen_width;
-
-		// Safari navigation bars...
-		if ((navigator.platform == 'iPhone' || navigator.platform == 'iPod') && 
-		    window.innerHeight != document.documentElement.clientHeight) {
-			//screen_height =  document.documentElement.clientHeight - 60;
-		}
-
-		if((navigator.platform == 'iPhone' || navigator.platform == 'iPod') &&
-		   screen_width > screen_height) {
-			window.scrollTo(0, 0);
-			//screen_height -= 60;
-
-			screen_width = ((window.innerWidth) - 20);// * devicePixelRatio;
-			screen_height = ((window.innerHeight) - 20);// * devicePixelRatio;
-		}
-
-		// First check to see if the platform is an iPhone or iPod
-    		if(navigator.platform == 'iPhone' || navigator.platform == 'iPod') {
-			if(navigator.userAgent.indexOf('Safari') != -1) {
-		//		screen_height -= 60;
-			}
-		}
-
-		//this part resizes the canvas but keeps ratio the same
-    		renderer.view.style.width = (screen_width) + "px";
-    		renderer.view.style.height = (screen_height) + "px";
-
-		// Determine which screen dimension is most constrained
-		// 8x8 play grid
-		
-		var w = 14*64;
-		var w_portrait = 8*64;
-
-  		if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*64));
-		else ratio = Math.min(screen_width/w, screen_height/(9.5*64));
-		//ratio = Math.min(screen_width/(4*96), screen_height/(4*126));
-
-		// Scale the view appropriately to fill that dimension
- 		 play_container.scale.x = play_container.scale.y = ratio;
-		//stage.scale.x = stage.scale.y = ratio;
-
-		//pop_menu_ratio = Math.min(screen_width)
-
-		var over_x = 0;//screen_width - (8*96);
-		if (screen_width > screen_height) over_x = screen_width - w*ratio;
-		else over_x = screen_width - w_portrait*ratio;
-
-		options_menu_container.scale.x = options_menu_container.scale.y =  1;// devicePixelRatio;
-		game_menu_container.scale.x = game_menu_container.scale.y =  1;
-
-		if((navigator.platform == 'iPhone' || navigator.platform == 'iPod') &&
-		   screen_width < screen_height) {
-			options_menu_container.scale.x = options_menu_container.scale.y = window.devicePixelRatio || 1;
-			game_menu_container.scale.x = game_menu_container.scale.y = window.devicePixelRatio || 1;
-			game_screen_width = game_screen_width/game_menu_container.scale.x;
-
-			over_x = screen_width - w*ratio*(window.devicePixelRatio || 1);//(9*96)*(window.devicePixelRatio || 1);
-		}
-
-    		//this part adjusts the ratio:
-    		//
-		renderer.resize(screen_width,screen_height);
-
-		// horiz. shift to center the game
-		
-		 
-		//if (screen_width > screen_height && over_x > 0) x_shift_screen = 0.5*over_x;
-		//else x_shift_screen = 0;
-
-		if (over_x > 0) x_shift_screen = 0.5*over_x;
-		else x_shift_screen = 0;
-
-		play_container.position.x = x_shift_screen;
-
-		gBlipFrogMenu.on_screen_resize();
-
-		//options_menu_container.scale.x = options_menu_container.scale.y = 1;
-
-		// not sure about this:
-		//screen_width = screen_width/(window.devicePixelRatio || 1);
-		//screen_height = screen_height/(window.devicePixelRatio || 1);
-	}
-
-
-	window.onload = function() {
-    		//window.onresize(); // Call onload to set the width & height initially
-	}
-
-	window.onorientationchange = function() {
-    		window.onresize();
-	}
-
-	function onProgressCallback() {
-		pBar.value += 20; 
-	}
 	
-	function setup_pixi() {
-		
+<h2>GAMES:</h2>		
 
-		// create a renderer instance.
-		renderer = PIXI.autoDetectRenderer(screen_width, screen_height);
- 
-		// add the renderer view element to the DOM
-		document.body.appendChild(renderer.view);
-
-	}
-
-	function onAssetsLoaded(loader,resources) {
+<game>
+<a href="http://www.zblip.com/fireplusbomb/?s=website" id="fireplusbomb" target="_blank" title="Play Fire Plus Bomb - Addictive block puzzle game, playable for free online in the browser, desktop and mobile web"><img src="./fireplusbomb/boom.png"></a></game>
 
 
-	  //parseFontAtlasDefinition(resources.font16xml,16, 1);
-	  //parseFontAtlasDefinition(resources.font24xml,24, 1);
-	  //parseFontAtlasDefinition(resources.font72xml,72, 0.5);
-
-	  // Fill out sprite data array from the JSON
-	 
-	  gCachedAssets['blocks.json'] = resources.mysheet.data;
-	  parseAtlasDefinition(gCachedAssets['blocks.json']);
-
-	  
-
-	  // loop through sprites data and make many PIXI textures
-	  for(var i = 0; i < sprites.length; i++) {
-		var id = sprites[i].id;
-		var x = sprites[i].x;
-		var y = sprites[i].y;
-		var w = sprites[i].w;
-		var h = sprites[i].h;
-		var recta = new PIXI.Rectangle(x,y,w,h); // x,y,width,height
-		var new_texture = new PIXI.Texture(resources.mysheet_png.texture, recta);
-		g_textures[id] = new_texture;
-	  }
-
-		
-	  // loop through FONT sprites data and make many PIXI textures
-	  // empty in this case!
-	  for(var i = 0; i < font_sprites.length; i++) {
-		var id = font_sprites[i].id;
-		var x = font_sprites[i].x;
-		var y = font_sprites[i].y;
-		var w = font_sprites[i].w;
-		var h = font_sprites[i].h;
-		var fnt_size = font_sprites[i].fnt_size;
-		var recta = new PIXI.Rectangle(x,y,w,h); // x,y,width,height
-		if (fnt_size == 16) var new_texture = new PIXI.Texture(resources.font16png.texture, recta);
-		else if (fnt_size == 24) var new_texture = new PIXI.Texture(resources.font24png.texture, recta);
-		else if (fnt_size == 32) var new_texture = new PIXI.Texture(resources.font32png.texture, recta);
-		else if (fnt_size == 72) var new_texture = new PIXI.Texture(resources.font72png.texture, recta);
-		g_textures[id] = new_texture;
-		
-	  }
-
-
-	  pBar.parentNode.removeChild(pBar);	// remove the progress bar
-
-	  document.body.style.backgroundColor =  "#322c35";	// the dark colour around the edges, I just think it looks good
-
-	  setup_pixi();
-
-	  window.onresize(); // Call to set the width & height initially
-
-
-	  setup();	// Now that everything is loaded
-	}
-
-	
- 
-	var mouseclick = false;
-	var mouseclickright = false;
-	var mousedown = false;
-	var mousemove = false;
-	var mouse = {
-		x: 0,
-		y: 0
-	};
-
-	var mouse_abs = {
-		x: 0,
-		y: 0
-	};
-
-	setup_input = function () {
-
-		// Listener, NOT Handler
-		
-		renderer.view.addEventListener('mousemove',onMouseMove, false);
-		renderer.view.addEventListener('mousedown', onMouseClick, false);
-		renderer.view.addEventListener('mouseup', onMouseUp, false);	
-		renderer.view.addEventListener('touchstart', onTouchDown, false);
-		renderer.view.addEventListener('touchmove', onTouchMove, false);
-		renderer.view.addEventListener('touchend', onTouchUp, false);	
-
-		// this makes the keyboard work on gamejolt:
-		window.focus();
-
-		//window.addEventListener('keydown',onKeyDown, false);
-		//window.addEventListener('keyup',onKeyUp, false);
-	};
-
-	get_relative_MousePos = function(canvas, evt) {
-        	var rect = canvas.getBoundingClientRect();
-        	return {
-          		x: evt.clientX - rect.left,
-          		y: evt.clientY - rect.top
-        	};
-	};
-
-	onMouseClick = function (event) {
-		if(event.which == 3) {	// RMB
-			mouseclickright = true;
-		}
-		mousedown = true;
-
-		if (gBlipFrogMenu.menu_up == true) {
-			gBlipFrogMenu.handle_menu_event(mouse['x'],mouse['y'],Types.Events.MOUSE_CLICK);
-			mousedown = false;
-		}
-	};
-
-	onTouchDown = function (event) {
-		if(event.which == 3) {	// RMB
-			mouseclickright = true;
-		}
-		mousedown = true;
-
-		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX);;
-		mouse['y'] = parseInt(pos.clientY);;
-		mousemove = true;
-	};
-
-	onMouseMove = function (event) {
-	
-		// Grab the clientX and clientY properties of the event object parameter.
-		// Make sure you use the clientX and clientY values, as they are canvas translated.
-		// After that, return the posx value.
-	
-		var rel_pos = get_relative_MousePos(renderer.view,event);
-
-    		mouse['x'] = rel_pos.x;	// this.   doesnt work!
-		mouse['y'] = rel_pos.y;;
-		mousemove = true;
-	};
-
-	onTouchMove = function (event) {
-	
-		// Grab the clientX and clientY properties of the event object parameter.
-		// Make sure you use the clientX and clientY values, as they are canvas translated.
-		// After that, return the posx value.
-	
-		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-
-    		mouse['x'] = (parseInt(pos.clientX));//*devicePixelRatio;;
-		mouse['y'] = (parseInt(pos.clientY));//*devicePixelRatio;
-		mousemove = true;
-	};
-	
-
-	onMouseUp = function(event) {
-		mouseclick = true;
-		mousedown = false;
-	};
-
-	onTouchUp= function(event) {
-		mouseclick = true;
-		mousedown = false;
-
-		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX);;
-		mouse['y'] = parseInt(pos.clientY);;
-		mousemove = true;
-	};
-
-
-	setup = function() {
-
-		setup_input();
-
-
-		//boot_state = new BootStateClass();
-	
-		gBlipFrogMenu.setup();
-
-		//gBlipFrogMenu.game_engine.push_state(boot_state);
-
-		window.onresize(); // Call onload to set the width & height initially
-
-		gBlipFrogMenu.on_screen_resize();
-
-		animate();
-
-	};
-
-	last_update = 0;
-
-	function animate(timestamp) {
-		if(timestamp > last_update + 16) {
-			gBlipFrogMenu.update();
-			if(timestamp > last_update + 32) gBlipFrogMenu.update();
-
-			last_update = timestamp;
-
-			//pool_all_sprite_layers();
-	    		gBlipFrogMenu.draw();
-
-			// render the stage   
-	   		renderer.render(stage);
-		}
-
-		if(mousemove) {
-			mousemove = false;
-			gBlipFrogMenu.handle_events((mouse['x']- x_shift_screen)/ratio ,mouse['y']/ratio,Types.Events.MOUSE_MOVE);
-		}
-
-		if(mousedown) {
 			
-			gBlipFrogMenu.handle_events((mouse['x']- x_shift_screen)/ratio ,mouse['y']/ratio,Types.Events.MOUSE_CLICK);
-			//if (mouse_down_x == -1) {
-			//	mouse_down_x = mouse['x'];
-			//	mouse_down_y = mouse['y'];
-			//}
-		}
 
-		if(mouseclick) {
-			mouseclick = false;
-			
-			gBlipFrogMenu.handle_events((mouse['x']- x_shift_screen)/ratio ,mouse['y']/ratio,Types.Events.MOUSE_UP);
-			//mouse_down_x = -1;
-		}
+<div style="clear:both">
 
-		if(mouseclickright) {
-			mouseclickright = false;
-			gBlipFrogMenu.handle_events(mouse['x']/ratio - x_shift_screen,mouse['y']/ratio,Types.Events.MOUSE_CLICK_RIGHT);
-		}
+</div>
 
-		
 
-		requestAnimationFrame( animate );
-	};
+</games>
 	
- 
-	</script>
 
-	
- 
-	</body>
-</html>
+<a name="games"><h2>CONTACT:</h2></a>
+
+
+
+  <footer class="footer">
+  <small>
+    
+  </small>
+  <nav>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="https://twitter.com/ZBlipGames">Twitter</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+</body></html>
