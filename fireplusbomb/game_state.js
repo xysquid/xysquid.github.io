@@ -2132,8 +2132,8 @@ MenuStateClass = GameStateClass.extend({
 
 	screen_resized: function () {
 
-		this.tut_x = 0.25*game_screen_width;
-		this.play_x = 0.75*game_screen_width;
+		this.tut_x = 0.25*game_screen_width*0.5;
+		this.play_x = 0.75*game_screen_width*0.5;
 
 		//g_game_name_text.update_pos(screen_width*0.5, 42, screen_width, 999);
 		//g_game_name_text.center_x(screen_width*0.5);
