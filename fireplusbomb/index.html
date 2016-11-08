@@ -409,7 +409,6 @@
 		//screen_width = screen_width/(window.devicePixelRatio || 1);
 		//screen_height = screen_height/(window.devicePixelRatio || 1);
 
-		ratio = ratio/window.devicePixelRatio ;
 	}
 
 
@@ -555,8 +554,8 @@
 		mousedown = true;
 
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX);;
-		mouse['y'] = parseInt(pos.clientY);;
+    		mouse['x'] = parseInt(pos.clientX)/window.devicePixelRatio ;;
+		mouse['y'] = parseInt(pos.clientY)/window.devicePixelRatio ;;
 		mousemove = true;
 	};
 
@@ -581,8 +580,8 @@
 	
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
 
-    		mouse['x'] = (parseInt(pos.clientX));//*devicePixelRatio;;
-		mouse['y'] = (parseInt(pos.clientY));//*devicePixelRatio;
+    		mouse['x'] = (parseInt(pos.clientX))/window.devicePixelRatio;//*devicePixelRatio;;
+		mouse['y'] = (parseInt(pos.clientY))/window.devicePixelRatio;//*devicePixelRatio;
 		mousemove = true;
 	};
 	
@@ -597,8 +596,8 @@
 		mousedown = false;
 
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX);;
-		mouse['y'] = parseInt(pos.clientY);;
+    		mouse['x'] = parseInt(pos.clientX)/window.devicePixelRatio;;
+		mouse['y'] = parseInt(pos.clientY)/window.devicePixelRatio;;
 		mousemove = true;
 	};
 
