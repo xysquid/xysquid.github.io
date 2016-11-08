@@ -315,8 +315,8 @@
 
 		// https://dzone.com/articles/developing-cross-platform-0
 		// http://www.html5gamedevs.com/topic/14895-dynamically-resizing-pixi-stage-on-window-resize/
-		screen_width = ((window.innerWidth) - 20) / devicePixelRatio;
-		screen_height = ((window.innerHeight) - 20) / devicePixelRatio;
+		screen_width = ((window.innerWidth) - 20); // devicePixelRatio;
+		screen_height = ((window.innerHeight) - 20); // devicePixelRatio;
 		game_screen_width = screen_width;
 
 		// Safari navigation bars...
@@ -355,7 +355,7 @@
 		else ratio = Math.min(screen_width/w, screen_height/(9.5*64));
 		//ratio = Math.min(screen_width/(4*96), screen_height/(4*126));
 
-		ratio = ratio*devicePixelRatio;
+		
 
 		// Scale the view appropriately to fill that dimension
  		 play_container.scale.x = play_container.scale.y = ratio;
