@@ -343,12 +343,14 @@
 			}
 		}
 
-		screen_width = screen_width / window.devicePixelRatio;
-		screen_height = screen_height / window.devicePixelRatio;
+		
 
 		//this part resizes the canvas but keeps ratio the same
     		renderer.view.style.width = (screen_width) + "px";
     		renderer.view.style.height = (screen_height) + "px";
+
+		screen_width = screen_width / window.devicePixelRatio;
+		screen_height = screen_height / window.devicePixelRatio;
 
 		// Determine which screen dimension is most constrained
 		// 8x8 play grid
