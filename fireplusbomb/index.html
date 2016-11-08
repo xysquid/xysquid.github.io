@@ -355,6 +355,8 @@
 		else ratio = Math.min(screen_width/w, screen_height/(9.5*64));
 		//ratio = Math.min(screen_width/(4*96), screen_height/(4*126));
 
+		ratio = ratio*devicePixelRatio;
+
 		// Scale the view appropriately to fill that dimension
  		 play_container.scale.x = play_container.scale.y = ratio;
 		//stage.scale.x = stage.scale.y = ratio;
