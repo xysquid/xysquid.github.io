@@ -2079,48 +2079,48 @@ MenuStateClass = GameStateClass.extend({
 
 		if (g_play_button_sprite == null) {
 			g_play_button_sprite = new ButtonClass();
-			g_play_button_sprite.setup_sprite("play_icon.png",Types.Layer.GAME);
+			g_play_button_sprite.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
 			g_play_button_sprite.update_pos(screen_width + 200, screen_height*0.5);
 
 			g_tut_button_sprite = new ButtonClass();
-			g_tut_button_sprite.setup_sprite("tut_icon.png",Types.Layer.GAME);
+			g_tut_button_sprite.setup_sprite("tut_icon.png",Types.Layer.GAME_MENU);
 			g_tut_button_sprite.update_pos(- 200, screen_height*0.5);
 
-			g_play_button_text = new TextClass(Types.Layer.GAME);
+			g_play_button_text = new TextClass(Types.Layer.GAME_MENU);
 			g_play_button_text.set_font(Types.Fonts.MEDIUM);
 			g_play_button_text.set_text("PLAY");
 			g_play_button_text.update_pos(screen_width + 200, screen_height*0.5);
 
-			g_tut_button_text = new TextClass(Types.Layer.GAME);
+			g_tut_button_text = new TextClass(Types.Layer.GAME_MENU);
 			g_tut_button_text.set_font(Types.Fonts.MEDIUM);
 			g_tut_button_text.set_text(g_texts[language]["Tutorial"]);
 			g_tut_button_text.update_pos(screen_width - 200, screen_height*0.5);
 
-			g_game_name_text = new TextClass(Types.Layer.GAME);
+			g_game_name_text = new TextClass(Types.Layer.GAME_MENU);
 			g_game_name_text.set_font(Types.Fonts.LARGE);
 			g_game_name_text.set_text("FIRE PLUS BOMB");
 			g_game_name_text.update_pos(screen_width*0.5, -999, screen_width, 999);
 			g_game_name_text.center_x(screen_width*0.5);
 		
 			g_menu_title_box = new SquareClass();
-			g_menu_title_box.setup(Types.Layer.GAME);
+			g_menu_title_box.setup(Types.Layer.GAME_MENU);
 			g_menu_title_box.colour = 0xffffff;
 			g_menu_title_box.update_pos(screen_width*0.5 - 200, 120, 400, 64);
 			
 			g_menu_bomb_sprite_shadow = new SpriteClass();
-			g_menu_bomb_sprite_shadow.setup_sprite("bomb_shadow.png",Types.Layer.GAME);
+			g_menu_bomb_sprite_shadow.setup_sprite("bomb_shadow.png",Types.Layer.GAME_MENU);
 
 			g_menu_bomb_sprite = new SpriteClass();
-			g_menu_bomb_sprite.setup_sprite("bomb.png",Types.Layer.GAME);
+			g_menu_bomb_sprite.setup_sprite("bomb.png",Types.Layer.GAME_MENU);
 
 			g_menu_fire_sprite_shadow = new SpriteClass();
-			g_menu_fire_sprite_shadow.setup_sprite("fire_shadow.png",Types.Layer.GAME);
+			g_menu_fire_sprite_shadow.setup_sprite("fire_shadow.png",Types.Layer.GAME_MENU);
 
 			g_menu_fire_sprite = new SpriteClass();
-			g_menu_fire_sprite.setup_sprite("fire.png",Types.Layer.GAME);
+			g_menu_fire_sprite.setup_sprite("fire.png",Types.Layer.GAME_MENU);
 
 			g_menu_plus_sprite = new SpriteClass();
-			g_menu_plus_sprite.setup_sprite("plus.png",Types.Layer.GAME);
+			g_menu_plus_sprite.setup_sprite("plus.png",Types.Layer.GAME_MENU);
 		}
 
 		this.tut_actual_x = -200;
@@ -2159,15 +2159,15 @@ MenuStateClass = GameStateClass.extend({
 		x = mouse.x;
 		y = mouse.y;
 
-		if (y < screen_height*0.66 - 32 ||
-		    y > screen_height*0.66 + 32) return;
+		if (y < screen_height*0.66 -64 ||
+		    y > screen_height*0.66 + 64) return;
 
-		if (x > this.tut_x - 32 &&
-		    x < this.tut_x + 32) {
+		if (x > this.tut_x - 64 &&
+		    x < this.tut_x + 64) {
 			this.change_state(this.engine, new TutStateClass(this.engine, this.play_state));
 			
-		} else if (x > this.play_x - 32 &&
-		    	   x < this.play_x + 32) {
+		} else if (x > this.play_x - 64 &&
+		    	   x < this.play_x + 64) {
 			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
 			//this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state));
 				
