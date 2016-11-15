@@ -311,6 +311,45 @@
 
 	var x_shift_screen = 0;
 
+	/*
+	// Newgrounds API:
+	var ng_app_id = "";
+	var ng_aes_encryption_key = "";
+	
+	var ngio = new Newgrounds.io.core(ng_app_id, ng_aes_encryption_key);
+
+	function log_game_over() {
+		ngio.callComponent('Event.logEvent', {event_name:"game over", host:"newgrounds.com"});
+	},
+
+	function log_play_again() {
+		ngio.callComponent('Event.logEvent', {event_name:"play again", host:"newgrounds.com"});
+	},
+
+	function postScore(board_name, score_value) {
+
+    		// If there is no user attached to our ngio object, it means the user isn't logged in and we can't post anything 
+    		if (!ngio.user) return;
+
+    		var score;
+		ngio.callComponent('ScoreBoard.postScore', {id:board_name, value:score_value});
+
+		return;
+
+    		for (var i = 0; i < scoreboards.length; i++) {
+
+        		scoreboard = scoreboards[i];
+
+        		ngio.callComponent('ScoreBoard.postScore', {id:scoreboard.id, value:score_value});
+    		}
+	}
+
+	//postScore('test scores', 1234);
+
+	//   Newgrounds API
+
+	*/
+
 	window.onresize = function() {
 		//window.devicePixelRatio = 1;	// works on iphone!
 		
@@ -528,12 +567,63 @@
 	};
 
 	get_relative_MousePos = function(canvas, evt) {
+		
+		var mouseX, mouseY;
+
+		if (browser == "f" || browser == "m")
+		{
+			mouseX = evt.clientX - renderer.view.offsetLeft + document.documentElement.scrollLeft;
+			mouseY = evt.clientY - renderer.view.offsetTop + document.documentElement.scrollTop;
+		}
+		else //"s" or "c"
+		{
+			mouseX = evt.clientX - renderer.view.offsetLeft + document.body.scrollLeft;
+			mouseY = evt.clientY - renderer.view.offsetTop + document.body.scrollTop;
+		}
+	
+		return {
+          		x: mouseX,
+          		y: mouseY
+        	};
+
         	var rect = canvas.getBoundingClientRect();
+
+		if (rect == null) {
+			return {
+          			x: evt.clientX,
+          			y: evt.clientY
+        		};
+		}
+
         	return {
           		x: evt.clientX - rect.left,
           		y: evt.clientY - rect.top
         	};
 	};
+
+	//-----------------
+	//Browser Detection
+	//-----------------
+	navigator.sayswho= (function(){
+    		var N= navigator.appName, ua= navigator.userAgent, tem;
+    		var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    		if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    		M= M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+
+    		return M;
+	})();
+
+		var browser;
+	if (navigator.sayswho[0] == "Firefox")
+		browser="f";
+	else if (navigator.sayswho[0] == "Chrome")
+		browser="c";
+	else if (navigator.sayswho[0] == "Safari")
+		browser="s";
+	else  if (navigator.sayswho[0] == "Microsoft")
+		browser="m";
+	else
+		browser="f";
 
 	onMouseClick = function (event) {
 		if(event.which == 3) {	// RMB
@@ -554,8 +644,8 @@
 		mousedown = true;
 
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX)/window.devicePixelRatio ;;
-		mouse['y'] = parseInt(pos.clientY)/window.devicePixelRatio ;;
+    		mouse['x'] = parseInt(pos.clientX)/(window.devicePixelRatio || 1) ;;
+		mouse['y'] = parseInt(pos.clientY)/(window.devicePixelRatio || 1) ;;
 		mousemove = true;
 	};
 
@@ -580,8 +670,8 @@
 	
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
 
-    		mouse['x'] = (parseInt(pos.clientX))/window.devicePixelRatio;//*devicePixelRatio;;
-		mouse['y'] = (parseInt(pos.clientY))/window.devicePixelRatio;//*devicePixelRatio;
+    		mouse['x'] = (parseInt(pos.clientX))/(window.devicePixelRatio || 1);//*devicePixelRatio;;
+		mouse['y'] = (parseInt(pos.clientY))/(window.devicePixelRatio || 1);//*devicePixelRatio;
 		mousemove = true;
 	};
 	
@@ -596,8 +686,8 @@
 		mousedown = false;
 
 		var pos = event.changedTouches[0];//get_relative_MousePos(canvas,event);
-    		mouse['x'] = parseInt(pos.clientX)/window.devicePixelRatio;;
-		mouse['y'] = parseInt(pos.clientY)/window.devicePixelRatio;;
+    		mouse['x'] = parseInt(pos.clientX)/(window.devicePixelRatio || 1);;
+		mouse['y'] = parseInt(pos.clientY)/(window.devicePixelRatio || 1);;
 		mousemove = true;
 	};
 

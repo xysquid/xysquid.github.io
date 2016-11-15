@@ -1,1 +1,750 @@
-﻿var _0x4db0=["\x4E\x65\x77\x20\x47\x61\x6D\x65","\x54\x55\x54\x4F\x52\x49\x41\x4C","\x53\x6F\x75\x6E\x64","\x4D\x75\x73\x69\x63","\u65B0\u6E38\u620F","\u6559\u7A0B","\u58F0\u97F3","\u97F3\u4E50","\x4E\x45\x57\x5F\x47\x41\x4D\x45","\x45\x76\x65\x6E\x74\x73","\x6E\x65\x77\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x54\x75\x74\x6F\x72\x69\x61\x6C","\x74\x75\x74\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x47\x41\x4D\x45\x5F\x4F\x56\x45\x52","\x47\x41\x4D\x45\x20\x4F\x56\x45\x52","\x67\x61\x6D\x65\x73\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x53\x4F\x55\x4E\x44\x5F\x4F\x4E\x4F\x46\x46","\x73\x6F\x75\x6E\x64\x5F\x6F\x6E\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x73\x6F\x75\x6E\x64\x5F\x6F\x66\x66\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x4D\x55\x53\x49\x43\x5F\x4F\x4E\x4F\x46\x46","\x6D\x75\x73\x69\x63\x5F\x6F\x6E\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x68\x6F\x73\x74\x6E\x61\x6D\x65","\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D","\x57\x45\x42\x5F\x4C\x49\x4E\x4B","\x4F\x75\x72\x20\x47\x61\x6D\x65\x73","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D","\x70\x75\x73\x68","\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D","\x4C\x65\x67\x61\x6C","\x69\x63\x5F\x6C\x69\x73\x74\x5F\x77\x68\x69\x74\x65\x5F\x32\x34\x64\x70\x5F\x32\x78\x2E\x70\x6E\x67","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x6C\x65\x67\x61\x6C","\x43\x72\x65\x64\x69\x74\x73","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x70\x6C\x75\x73\x62\x6F\x6D\x62\x2F\x63\x72\x65\x64\x69\x74\x73","\x42\x4F\x4F\x4B\x4D\x41\x52\x4B","\x48\x6F\x6D\x65\x73\x63\x72\x65\x65\x6E","\x46\x61\x63\x65\x62\x6F\x6F\x6B","\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2D\x32\x34\x78\x32\x34\x2E\x70\x6E\x67","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x70\x6C\x75\x73\x62\x6F\x6D\x62","\x40\x5A\x42\x6C\x69\x70\x47\x61\x6D\x65\x73","\x74\x77\x69\x74\x74\x65\x72\x2D\x32\x34\x78\x32\x34\x2E\x70\x6E\x67","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x74\x77\x69\x74\x74\x65\x72\x2E\x63\x6F\x6D\x2F\x5A\x42\x6C\x69\x70\x47\x61\x6D\x65\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x70\x62\x73\x2E\x74\x77\x69\x6D\x67\x2E\x63\x6F\x6D\x2F\x6D\x65\x64\x69\x61\x2F\x43\x76\x75\x4B\x34\x31\x38\x56\x59\x41\x45\x6D\x35\x67\x5F\x2E\x6A\x70\x67","\x68\x74\x74\x70\x3A\x2F\x2F\x74\x77\x69\x74\x74\x65\x72\x2E\x63\x6F\x6D\x2F\x68\x6F\x6D\x65\x3F\x73\x74\x61\x74\x75\x73\x3D","\x49\x20\x67\x6F\x74\x20","\x20\x69\x6E\x20\x74\x68\x69\x73\x20\x67\x61\x6D\x65\x3A\x20\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x70\x6C\x75\x73\x62\x6F\x6D\x62","\x5F\x62\x6C\x61\x6E\x6B","\x6F\x70\x65\x6E","\x70\x6C\x75\x73\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x73\x68\x61\x72\x65\x3F\x75\x72\x6C\x3D\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x70\x6C\x75\x73\x62\x6F\x6D\x62","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x70\x6F\x73\x5F\x78","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x70\x6F\x73\x5F\x79","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x6E\x75\x6D","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x74\x79\x70\x65","\x72\x65\x63\x61\x6C\x63","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x68\x65\x69\x67\x68\x74","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x77\x69\x64\x74\x68","\x6D\x65\x6E\x75\x5F\x77\x69\x64\x74\x68","\x78","\x73\x63\x61\x6C\x65","\x72\x6F\x75\x6E\x64","\x6D\x61\x78","\x6D\x65\x6E\x75\x5F\x68\x65\x69\x67\x68\x74","\x6C\x65\x6E\x67\x74\x68","\x63\x65\x69\x6C","\x79","\x6D\x65\x6E\x75\x5F\x69\x74\x65\x6D\x5F\x73\x63\x61\x6C\x65","\x73\x6F\x63\x69\x61\x6C\x5F\x79","\x65\x78\x74\x65\x6E\x64","\x70\x6F\x73\x69\x74\x69\x6F\x6E","\x6D\x65\x6E\x75\x5F\x70\x6F\x73\x69\x74\x69\x6F\x6E\x73","\x67\x61\x6D\x65\x5F\x65\x6E\x67\x69\x6E\x65","\x70\x75\x73\x68\x5F\x73\x74\x61\x74\x65","\x67\x72\x61\x70\x68\x69\x63\x73\x5F\x6D\x65\x6E\x75\x5F\x62\x6F\x64\x79","\x4C\x61\x79\x65\x72","\x73\x70\x72\x5F\x6D\x65\x6E\x75\x5F\x62\x75\x74\x74\x6F\x6E","\x6D\x65\x6E\x75\x5F\x62\x75\x74\x74\x6F\x6E\x2E\x70\x6E\x67","\x73\x65\x74\x75\x70\x5F\x73\x70\x72\x69\x74\x65","\x6C\x69\x6E\x65\x5F\x61\x62\x6F\x76\x65\x5F\x73\x6F\x63\x69\x61\x6C","\x61\x64\x64\x43\x68\x69\x6C\x64","\x61\x64\x64\x5F\x69\x74\x65\x6D","\x73\x70\x72\x69\x74\x65\x73\x5F\x62\x75\x74\x74\x6F\x6E\x73","\x6D\x65\x6E\x75\x5F\x74\x65\x78\x74\x73","\x46\x6F\x6E\x74\x73","\x73\x65\x74\x5F\x66\x6F\x6E\x74","\x73\x65\x74\x5F\x74\x65\x78\x74","","\x73\x65\x74\x75\x70","\x6F\x6E\x5F\x73\x63\x72\x65\x65\x6E\x5F\x72\x65\x73\x69\x7A\x65","\x70\x6F\x70\x5F\x64\x6F\x77\x6E","\x67\x61\x6D\x65\x5F\x79","\x67\x61\x6D\x65\x5F\x79\x5F\x74\x61\x72\x67\x65\x74","\x6D\x65\x6E\x75\x5F\x79","\x6D\x65\x6E\x75\x5F\x79\x5F\x74\x61\x72\x67\x65\x74","\x6D\x65\x6E\x75\x5F\x75\x70","\x6D\x6F\x76\x69\x6E\x67","\x6D\x65\x6E\x75\x5F\x69\x63\x6F\x6E\x5F\x79","\x6D\x65\x6E\x75\x5F\x69\x63\x6F\x6E\x5F\x73\x69\x7A\x65","\x75\x70\x64\x61\x74\x65\x5F\x70\x6F\x73","\x63\x65\x6E\x74\x65\x72\x5F\x78","\x77\x69\x64\x74\x68","\x68\x65\x69\x67\x68\x74","\x70\x6F\x70\x5F\x75\x70","\x63\x6C\x65\x61\x72","\x6C\x69\x6E\x65\x53\x74\x79\x6C\x65","\x6D\x6F\x76\x65\x54\x6F","\x6C\x69\x6E\x65\x54\x6F","\x65\x6E\x64\x46\x69\x6C\x6C","\x4D\x4F\x55\x53\x45\x5F\x55\x50","\x70\x6F\x70\x5F\x64\x6F\x77\x6E\x5F\x63\x6C\x69\x63\x6B","\x68\x61\x6E\x64\x6C\x65\x5F\x65\x76\x65\x6E\x74\x73","\x68\x61\x6E\x64\x6C\x65\x5F\x6D\x65\x6E\x75\x5F\x65\x76\x65\x6E\x74","\x4D\x4F\x55\x53\x45\x5F\x43\x4C\x49\x43\x4B","\x63\x68\x65\x63\x6B\x5F\x66\x6F\x72\x5F\x63\x6C\x69\x63\x6B","\x54\x57\x45\x45\x54\x5F\x53\x43\x4F\x52\x45","\x74\x6F\x67\x67\x6C\x65\x6D\x75\x74\x65","\x74\x6F\x67\x67\x6C\x65\x5F\x6D\x75\x73\x69\x63","\x73\x68\x6F\x77","\x41\x44\x44\x20\x54\x4F\x20\x48\x4F\x4D\x45\x53\x43\x52\x45\x45\x4E","\x6C\x6F\x67","\x75\x70\x64\x61\x74\x65","\x64\x72\x61\x77","\x73\x74\x61\x74\x65\x5F\x73\x74\x61\x63\x6B","\x70\x6F\x70\x5F\x73\x74\x61\x74\x65","\x70\x6F\x70","\x63\x6C\x65\x61\x6E\x75\x70","\x73\x63\x72\x65\x65\x6E\x5F\x72\x65\x73\x69\x7A\x65\x64"];g_texts= {"\x65\x6E":{"\x4E\x65\x77\x20\x47\x61\x6D\x65":_0x4db0[0],"\x54\x75\x74\x6F\x72\x69\x61\x6C":_0x4db0[1],"\x53\x6F\x75\x6E\x64":_0x4db0[2],"\x4D\x75\x73\x69\x63":_0x4db0[3]},zh:{"\x4E\x65\x77\x20\x47\x61\x6D\x65":_0x4db0[4],"\x54\x75\x74\x6F\x72\x69\x61\x6C":_0x4db0[5],"\x53\x6F\x75\x6E\x64":_0x4db0[6],"\x4D\x75\x73\x69\x63":_0x4db0[7]}};MenuItems= [[1,Types[_0x4db0[9]][_0x4db0[8]],g_texts[language][_0x4db0[0]],_0x4db0[10]],[1,Types[_0x4db0[9]][_0x4db0[1]],g_texts[language][_0x4db0[11]],_0x4db0[12]],[1,Types[_0x4db0[9]][_0x4db0[13]],_0x4db0[14],_0x4db0[15]],[1,Types[_0x4db0[9]][_0x4db0[16]],g_texts[language][_0x4db0[2]],_0x4db0[17],_0x4db0[18]],[1,Types[_0x4db0[9]][_0x4db0[19]],g_texts[language][_0x4db0[3]],_0x4db0[20],_0x4db0[18]]];if(location[_0x4db0[21]]!= _0x4db0[22]){MenuItems[_0x4db0[26]]([1,Types[_0x4db0[9]][_0x4db0[23]],_0x4db0[24],_0x4db0[15],_0x4db0[25]])};if(true|| location[_0x4db0[21]]== _0x4db0[27]){MenuItems[_0x4db0[26]]([1,Types[_0x4db0[9]][_0x4db0[23]],_0x4db0[28],_0x4db0[29],_0x4db0[30]])};MenuItems[_0x4db0[26]]([1,Types[_0x4db0[9]][_0x4db0[23]],_0x4db0[31],_0x4db0[29],_0x4db0[32]]);if(location[_0x4db0[21]]== _0x4db0[27]){MenuItems[_0x4db0[26]]([1,Types[_0x4db0[9]][_0x4db0[33]],_0x4db0[34],_0x4db0[15]])};MenuItems[_0x4db0[26]]([2,Types[_0x4db0[9]][_0x4db0[23]],_0x4db0[35],_0x4db0[36],_0x4db0[37]]);MenuItems[_0x4db0[26]]([2,Types[_0x4db0[9]][_0x4db0[23]],_0x4db0[38],_0x4db0[39],_0x4db0[40]]);var pic_url=_0x4db0[41];function tweetscore(_0xe552x3){var _0xe552x4=_0x4db0[42];var _0xe552x5=_0x4db0[43]+ _0xe552x3+ _0x4db0[44];var _0xe552x6=_0xe552x4+ encodeURIComponent(_0xe552x5);window[_0x4db0[46]](_0xe552x6,_0x4db0[45])}function sharegoog(){window[_0x4db0[46]](_0x4db0[47])}MenuPositions= Class[_0x4db0[66]]({menu_item_pos_x:[],menu_item_pos_y:[],menu_item_num:[],menu_item_type:[],menu_item_width:148,menu_item_height:96,menu_width:0,menu_height:0,menu_item_scale:1,social_y:0,init:function(){},add_item:function(_0xe552x8,_0xe552x9){this[_0x4db0[48]][_0x4db0[26]](0);this[_0x4db0[49]][_0x4db0[26]](0);this[_0x4db0[50]][_0x4db0[26]](_0xe552x8);this[_0x4db0[51]][_0x4db0[26]](_0xe552x9);this[_0x4db0[52]]()},recalc:function(){this[_0x4db0[53]]= 124;this[_0x4db0[54]]= 96;this[_0x4db0[55]]= screen_width/ options_menu_container[_0x4db0[57]][_0x4db0[56]];var _0xe552xa=Math[_0x4db0[58]](this[_0x4db0[55]]/ this[_0x4db0[54]])- 1;_0xe552xa= Math[_0x4db0[59]](1,_0xe552xa);this[_0x4db0[60]]= this[_0x4db0[53]]* Math[_0x4db0[62]](this[_0x4db0[50]][_0x4db0[61]]/ _0xe552xa)* options_menu_container[_0x4db0[57]][_0x4db0[56]];this[_0x4db0[60]]+= 84;if(this[_0x4db0[60]]> screen_height* 1.1){options_menu_container[_0x4db0[57]][_0x4db0[56]]= options_menu_container[_0x4db0[57]][_0x4db0[63]]= 0.5* options_menu_container[_0x4db0[57]][_0x4db0[56]];this[_0x4db0[55]]= 2* this[_0x4db0[55]];_0xe552xa= 2* _0xe552xa;this[_0x4db0[60]]= this[_0x4db0[53]]* Math[_0x4db0[62]](this[_0x4db0[50]][_0x4db0[61]]/ _0xe552xa)* options_menu_container[_0x4db0[57]][_0x4db0[56]];this[_0x4db0[60]]+= 84* options_menu_container[_0x4db0[57]][_0x4db0[56]];var _0xe552xb=this[_0x4db0[60]]* this[_0x4db0[55]];var _0xe552xc=_0xe552xb/ (this[_0x4db0[48]][_0x4db0[61]]+ 1)}else {this[_0x4db0[64]]= 1};var _0xe552xd=0;var _0xe552xe=0;for(var _0xe552xf=0;_0xe552xf< this[_0x4db0[48]][_0x4db0[61]];_0xe552xf++){if(this[_0x4db0[51]][_0xe552xf]!= 1){continue};_0xe552xd++;if(_0xe552xd> _0xe552xa){_0xe552xd= 1;_0xe552xe++};this[_0x4db0[48]][_0xe552xf]= _0xe552xd* this[_0x4db0[54]]- 8;this[_0x4db0[49]][_0xe552xf]= _0xe552xe* this[_0x4db0[53]]+ 0.5* this[_0x4db0[53]]};_0xe552xd= 1;_0xe552xe++;this[_0x4db0[65]]= _0xe552xe* this[_0x4db0[53]]+ 18;for(var _0xe552xf=0;_0xe552xf< this[_0x4db0[48]][_0x4db0[61]];_0xe552xf++){if(this[_0x4db0[51]][_0xe552xf]!= 2){continue};this[_0x4db0[48]][_0xe552xf]= _0xe552xd* this[_0x4db0[54]]- 8;this[_0x4db0[49]][_0xe552xf]= (_0xe552xe)* this[_0x4db0[53]]+ 42;_0xe552xd++};if(this[_0x4db0[60]]> this[_0x4db0[49]][this[_0x4db0[49]][_0x4db0[61]]- 1]+ 42){this[_0x4db0[60]]= this[_0x4db0[49]][this[_0x4db0[49]][_0x4db0[61]]- 1]+ 42}},check_for_click:function(_0xe552xd,_0xe552xe){var _0xe552x10=this[_0x4db0[54]];var _0xe552x11=this[_0x4db0[53]];for(var _0xe552xf=0;_0xe552xf< this[_0x4db0[48]][_0x4db0[61]];_0xe552xf++){if(this[_0x4db0[51]][_0xe552xf]== 2){_0xe552x10= 24;_0xe552x11= 24}else {if(this[_0x4db0[51]][_0xe552xf]== 1){_0xe552x10= this[_0x4db0[54]];_0xe552x11= this[_0x4db0[53]]}};if(_0xe552xd> this[_0x4db0[48]][_0xe552xf]- 0.5* _0xe552x10&& _0xe552xd< this[_0x4db0[48]][_0xe552xf]+ 0.5* _0xe552x10&& _0xe552xe> this[_0x4db0[49]][_0xe552xf]- 0.5* _0xe552x11&& _0xe552xe< this[_0x4db0[49]][_0xe552xf]+ 0.5* _0xe552x11){return this[_0x4db0[50]][_0xe552xf]}};return -1}});g_menu_font_height= 24;function g_set_game_screen_y(_0xe552x13){play_container[_0x4db0[67]][_0x4db0[63]]= _0xe552x13;game_menu_container[_0x4db0[67]][_0x4db0[63]]= _0xe552x13}function g_set_menu_screen_y(_0xe552x13){options_menu_container[_0x4db0[67]][_0x4db0[63]]= _0xe552x13}BlipFrogMenuClass= Class[_0x4db0[66]]({game_engine:null,menu_up:false,menu_icon_x:0,menu_icon_y:0,menu_icon_size:29,graphics_menu_body:null,spr_menu_button:null,sprites_buttons:[],menu_texts:[],line_above_social:null,menu_positions:null,menu_y:0,game_y:0,menu_y_target:0,game_y_target:0,moving:0,setup:false,init:function(){this[_0x4db0[68]]=  new MenuPositions()},setup:function(){update_webfonts();this[_0x4db0[69]]=  new GameEngineClass();this[_0x4db0[69]][_0x4db0[70]]( new BootStateClass());this[_0x4db0[71]]= draw_rect_perm(0,0,1,1,0x333333,Types[_0x4db0[72]].POP_MENU);this[_0x4db0[73]]=  new SpriteClass();this[_0x4db0[73]][_0x4db0[75]](_0x4db0[74],Types[_0x4db0[72]].POP_MENU);this[_0x4db0[76]]=  new PIXI.Graphics();options_menu_container[_0x4db0[77]](this[_0x4db0[76]]);for(var _0xe552xf=0;_0xe552xf< MenuItems[_0x4db0[61]];_0xe552xf++){if(MenuItems[_0xe552xf][0]!= 1){continue};this[_0x4db0[68]][_0x4db0[78]](_0xe552xf,1);this[_0x4db0[79]][_0x4db0[26]]( new ButtonClass());this[_0x4db0[79]][_0xe552xf][_0x4db0[75]](MenuItems[_0xe552xf][3],Types[_0x4db0[72]].POP_MENU);this[_0x4db0[80]][_0x4db0[26]]( new TextClass(Types[_0x4db0[72]].POP_MENU));this[_0x4db0[80]][_0xe552xf][_0x4db0[82]](Types[_0x4db0[81]].XSMALL);this[_0x4db0[80]][_0xe552xf][_0x4db0[83]](MenuItems[_0xe552xf][2])};for(var _0xe552xf=0;_0xe552xf< MenuItems[_0x4db0[61]];_0xe552xf++){if(MenuItems[_0xe552xf][0]!= 2){continue};this[_0x4db0[68]][_0x4db0[78]](_0xe552xf,2);this[_0x4db0[79]][_0x4db0[26]]( new SpriteClass());this[_0x4db0[79]][_0xe552xf][_0x4db0[75]](MenuItems[_0xe552xf][3],Types[_0x4db0[72]].POP_MENU);this[_0x4db0[80]][_0x4db0[26]]( new TextClass(Types[_0x4db0[72]].POP_MENU));this[_0x4db0[80]][_0xe552xf][_0x4db0[82]](Types[_0x4db0[81]].XSMALL);this[_0x4db0[80]][_0xe552xf][_0x4db0[83]](_0x4db0[84])};this[_0x4db0[85]]= true;this[_0x4db0[86]]();this[_0x4db0[87]]();this[_0x4db0[88]]= this[_0x4db0[89]];this[_0x4db0[90]]= this[_0x4db0[91]];g_set_game_screen_y(this[_0x4db0[89]]);g_set_menu_screen_y(this[_0x4db0[91]])},pop_up:function(){this[_0x4db0[92]]= true;this[_0x4db0[90]]= screen_height;this[_0x4db0[88]]= 0;this[_0x4db0[91]]= screen_height- this[_0x4db0[68]][_0x4db0[60]];this[_0x4db0[89]]= -this[_0x4db0[68]][_0x4db0[60]]* 1;this[_0x4db0[93]]= 12;update_webfonts()},pop_down:function(){this[_0x4db0[92]]= false;this[_0x4db0[90]]= screen_height- this[_0x4db0[68]][_0x4db0[60]];this[_0x4db0[88]]= -this[_0x4db0[68]][_0x4db0[60]]* 1;this[_0x4db0[89]]= 0;this[_0x4db0[91]]= screen_height;this[_0x4db0[93]]= 12},on_screen_resize:function(){this[_0x4db0[87]]();this[_0x4db0[88]]= this[_0x4db0[89]];this[_0x4db0[90]]= this[_0x4db0[91]];g_set_game_screen_y(this[_0x4db0[89]]);g_set_menu_screen_y(this[_0x4db0[91]]);if(this[_0x4db0[85]]== false|| this[_0x4db0[71]]== null){return};this[_0x4db0[94]]= -this[_0x4db0[95]];this[_0x4db0[68]][_0x4db0[52]]();for(var _0xe552xf=0;_0xe552xf< this[_0x4db0[79]][_0x4db0[61]];_0xe552xf++){var _0xe552xd=this[_0x4db0[68]][_0x4db0[48]][_0xe552xf];var _0xe552xe=this[_0x4db0[68]][_0x4db0[49]][_0xe552xf];this[_0x4db0[79]][_0xe552xf][_0x4db0[96]](_0xe552xd,_0xe552xe);var _0xe552x15=MenuItems[_0xe552xf][2][_0x4db0[61]]* 14* 0.5- 7;this[_0x4db0[80]][_0xe552xf][_0x4db0[96]](_0xe552xd- _0xe552x15,_0xe552xe+ 42,999,999);this[_0x4db0[80]][_0xe552xf][_0x4db0[97]](_0xe552xd)};this[_0x4db0[71]][_0x4db0[98]]= 9* this[_0x4db0[68]][_0x4db0[55]];this[_0x4db0[71]][_0x4db0[99]]= 9* this[_0x4db0[68]][_0x4db0[60]];if(this[_0x4db0[92]]== true){this[_0x4db0[100]]();this[_0x4db0[88]]= this[_0x4db0[89]];this[_0x4db0[90]]= this[_0x4db0[91]];g_set_game_screen_y(this[_0x4db0[89]]);g_set_menu_screen_y(this[_0x4db0[91]])};this[_0x4db0[73]][_0x4db0[96]](this[_0x4db0[95]],this[_0x4db0[94]]);this[_0x4db0[69]][_0x4db0[86]]();if(this[_0x4db0[92]]== true){g_set_menu_screen_y(screen_height- g_menu_font_height* MenuItems[_0x4db0[61]])}else {g_set_menu_screen_y(screen_height)};this[_0x4db0[76]][_0x4db0[101]]();this[_0x4db0[76]][_0x4db0[102]](2,0xaaaaaa);this[_0x4db0[76]][_0x4db0[103]](24,this[_0x4db0[68]][_0x4db0[65]]);this[_0x4db0[76]][_0x4db0[104]](screen_width- 24,this[_0x4db0[68]][_0x4db0[65]]);this[_0x4db0[76]][_0x4db0[105]]()},pop_down_click:false,handle_events:function(_0xe552xd,_0xe552xe,_0xe552x16){if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[106]]&& this[_0x4db0[107]]== true){this[_0x4db0[107]]= false;return};if(this[_0x4db0[92]]== false){if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[106]]&& mouse[_0x4db0[56]]/ options_menu_container[_0x4db0[57]][_0x4db0[56]]< 2* this[_0x4db0[95]]&& mouse[_0x4db0[63]]> screen_height+ this[_0x4db0[94]]- this[_0x4db0[95]]* options_menu_container[_0x4db0[57]][_0x4db0[56]]){this[_0x4db0[100]]()}else {this[_0x4db0[69]][_0x4db0[108]](_0xe552xd,_0xe552xe,_0xe552x16)}}else {this[_0x4db0[109]](_0xe552xd,_0xe552xe,_0xe552x16)}},handle_menu_event:function(_0xe552xd,_0xe552xe,_0xe552x16){_0xe552xe= mouse[_0x4db0[63]];_0xe552xd= mouse[_0x4db0[56]];if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[110]]&& _0xe552xe< screen_height- this[_0x4db0[68]][_0x4db0[60]]){this[_0x4db0[87]]();this[_0x4db0[107]]= true;return};if(_0xe552x16!= Types[_0x4db0[9]][_0x4db0[106]]){return};_0xe552xe= _0xe552xe- (screen_height- this[_0x4db0[68]][_0x4db0[60]]);_0xe552xe= _0xe552xe/ options_menu_container[_0x4db0[57]][_0x4db0[56]];_0xe552xd= _0xe552xd/ options_menu_container[_0x4db0[57]][_0x4db0[56]];var _0xe552x17=this[_0x4db0[68]][_0x4db0[111]](_0xe552xd,_0xe552xe);if(_0xe552x17< 0|| _0xe552x17>= MenuItems[_0x4db0[61]]|| _0xe552x17== undefined){return};if(MenuItems[_0xe552x17][0]== 0){return};if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[8]]){this[_0x4db0[69]][_0x4db0[108]](0,0,Types[_0x4db0[9]].NEW_GAME);this[_0x4db0[87]]()}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[1]]){this[_0x4db0[69]][_0x4db0[108]](0,0,Types[_0x4db0[9]].TUTORIAL);this[_0x4db0[87]]()}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[13]]){this[_0x4db0[69]][_0x4db0[108]](0,0,Types[_0x4db0[9]].GAME_OVER);this[_0x4db0[87]]()}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[23]]){window[_0x4db0[46]](MenuItems[_0xe552x17][4])}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[112]]){tweetscore(99)}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[16]]){gSM[_0x4db0[113]]()}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[19]]){gSM[_0x4db0[114]]()}else {if(MenuItems[_0xe552x17][1]== Types[_0x4db0[9]][_0x4db0[33]]){if(addtohomescreen_js_loaded== false){return};addtohome= addToHomescreen({autostart:false});addtohome[_0x4db0[115]](true);console[_0x4db0[117]](_0x4db0[116])}}}}}}}}},update:function(){if(this[_0x4db0[92]]== false){this[_0x4db0[69]][_0x4db0[118]]()}},draw:function(){this[_0x4db0[69]][_0x4db0[119]]();if(this[_0x4db0[93]]> 0){this[_0x4db0[93]]--;var _0xe552x18=this[_0x4db0[91]]- this[_0x4db0[90]];var _0xe552x19=this[_0x4db0[89]]- this[_0x4db0[88]];this[_0x4db0[90]]+= 0.33* _0xe552x18;this[_0x4db0[88]]+= 0.33* _0xe552x19;g_set_game_screen_y(this[_0x4db0[88]]);g_set_menu_screen_y(this[_0x4db0[90]]);if(this[_0x4db0[93]]== 0){g_set_game_screen_y(this[_0x4db0[89]]);g_set_menu_screen_y(this[_0x4db0[91]])}}}});GameEngineClass= Class[_0x4db0[66]]({state_stack:null,init:function(){this[_0x4db0[120]]=  new Array();update_webfonts()},setup:function(){gInputEngine[_0x4db0[85]]()},change_state:function(_0xe552x1a){this[_0x4db0[121]]();this[_0x4db0[70]](_0xe552x1a)},push_state:function(_0xe552x1a){this[_0x4db0[120]][_0x4db0[26]](_0xe552x1a)},pop_state:function(){var _0xe552x1b=this[_0x4db0[120]][_0x4db0[122]]();_0xe552x1b[_0x4db0[123]]()},get_state:function(){return this[_0x4db0[120]][this[_0x4db0[120]][_0x4db0[61]]- 1]},on_screen_resize:function(){if(this[_0x4db0[120]][_0x4db0[61]]== 0){return};this[_0x4db0[120]][this[_0x4db0[120]][_0x4db0[61]]- 1][_0x4db0[124]]()},handle_events:function(_0xe552xd,_0xe552xe,_0xe552x16){if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[8]]){while(this[_0x4db0[120]][_0x4db0[61]]> 2){var _0xe552x1c=this[_0x4db0[120]][_0x4db0[122]]();_0xe552x1c[_0x4db0[123]]()};this[_0x4db0[70]]( new RestartGameStateClass(this,this[_0x4db0[120]][1]))}else {if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[1]]){while(this[_0x4db0[120]][_0x4db0[61]]> 2){var _0xe552x1c=this[_0x4db0[120]][_0x4db0[122]]();_0xe552x1c[_0x4db0[123]]()};this[_0x4db0[70]]( new TutStateClass(this,this[_0x4db0[120]][1]))}else {if(_0xe552x16== Types[_0x4db0[9]][_0x4db0[13]]){while(this[_0x4db0[120]][_0x4db0[61]]> 2){var _0xe552x1c=this[_0x4db0[120]][_0x4db0[122]]();_0xe552x1c[_0x4db0[123]]()};this[_0x4db0[70]]( new GameOverStateClass(this,this[_0x4db0[120]][1]))}}};this[_0x4db0[120]][this[_0x4db0[120]][_0x4db0[61]]- 1][_0x4db0[108]](this,_0xe552xd,_0xe552xe,_0xe552x16)},update:function(){this[_0x4db0[120]][this[_0x4db0[120]][_0x4db0[61]]- 1][_0x4db0[118]](this)},reset:function(){this[_0x4db0[120]]=  new Array();menu_state=  new MainMenuStateClass();gGameEngine[_0x4db0[70]](menu_state)},draw:function(){this[_0x4db0[120]][this[_0x4db0[120]][_0x4db0[61]]- 1][_0x4db0[119]](this)}});gBlipFrogMenu=  new BlipFrogMenuClass();gGameEngine=  new GameEngineClass()
+﻿g_texts = {
+
+	"en" : {
+		"Title"	   : "FIRE PLUS BOMB",
+		"New Game" : "New Game",
+		"Tutorial" : "TUTORIAL",
+		"Sound"	   : "Sound",
+		"Music"	   : "Music",
+
+		"tut1"	   : "Drop new peices onto the grid",
+		"tut2"	   : "Match fires next to bombs",
+		"tut3"	   : "Or on top",
+		"tut4"	   : "Some blocks have extra armor",
+		"tut5"	   : "Blocks extinguish fires",
+		"tut6"	   : "Blocks also squish bombs",
+		"tut7"     : "Fires can be stacked",
+		"tut8"	   : "Let's make a combo",
+		"tut9"	   : "And clear the screen!",
+	},
+
+	zh : {
+		"Title"	   : "火加弹",
+		"New Game" : "新游戏",
+		"Tutorial" : "教程",
+		"Sound"	   : "声音",
+		"Music"	   : "音乐",
+	}
+
+};
+
+
+MenuItems = [
+
+	// 0 - subheading,	1 - menu item		2 - 2nd menu item (small, social, icon only)
+	
+	//[0, "Game"],
+	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"new_icon.png",],
+
+	[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
+
+	//[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
+
+	// 
+	[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"],"sound_on_icon.png","sound_off_icon.png"],
+	[1, Types.Events.MUSIC_ONOFF, g_texts[language]["Music"],"music_on_icon.png","sound_off_icon.png"],
+
+	// Only include the bookmark if we are on zblip.com
+	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
+
+	//[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],
+	
+
+	
+	
+	//[1, Types.Events.WEB_LINK, "Our Games","games_icon.png","http://www.zblip.com"],
+
+	
+
+	//[1, Types.Events.TWEET_SCORE, "Tweet", "button_empty.png"],
+
+	//[1, Types.Events.WEB_LINK, "Legal","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"],
+
+	//[1, Types.Events.WEB_LINK, "Credits","ic_list_white_24dp_2x.png","http://www.zblip.com/fireplusbomb/credits"],
+
+	//[1, Types.Events.WEB_LINK, "THEMES","button_empty.png","http://www.twitter.com"],
+
+	//[1, Types.Events.WEB_LINK, "SETTINGS","button_empty.png","http://www.twitter.com"],
+
+	//[1, Types.Events.WEB_LINK, "IOS","button_empty.png","http://www.twitter.com"],
+
+	//[1, Types.Events.WEB_LINK, "ANDROID","button_empty.png","http://www.twitter.com"],
+
+	//[1, Types.Events.WEB_LINK, "APP","button_empty.png","http://www.twitter.com"],
+	// either outgoing web links or trigger something inside
+
+	// new game
+	// restart
+	// tutorial
+
+	// get apps (ios, android, chrome)
+	// share on fb
+
+	// settings, sound, music
+	
+	// more games
+	// feedback
+	// TOS, privacy, legal
+	// credits
+	
+	// social - fb, twitter, tumbler, g+
+
+	
+	
+
+];
+
+if(location.hostname != "www.facebook.com"){
+	// gotta check for mobile as well
+	MenuItems.push([1, Types.Events.WEB_LINK, "Our Games","games_icon.png","http://www.zblip.com"]);
+}
+
+if(true || location.hostname == "www.zblip.com") {
+	MenuItems.push([1, Types.Events.WEB_LINK, "Legal","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
+}
+MenuItems.push([1, Types.Events.WEB_LINK, "Credits","ic_list_white_24dp_2x.png","http://www.zblip.com/fireplusbomb/credits"]);
+
+if(location.hostname == "www.zblip.com"){
+	// gotta check for mobile as well
+	MenuItems.push([1, Types.Events.BOOKMARK, "Homescreen","games_icon.png"]);
+}
+
+//social buttons:
+MenuItems.push([2, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","http://www.facebook.com/fireplusbomb"]);
+MenuItems.push([2, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+
+var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
+
+function tweetscore(score) {        
+
+	//share score on twitter        
+	// including the url will automatically use Twitter Cards, because I put meta tags in index.html
+	// Need to make an image for the Twitter Card & put in the meta tag
+
+	// Just want to settle on a name for this game before I validate the page url
+
+	// Maybe tweet @ZBlipGames 
+	// pop up after game over: tweet us your score!
+	// Maybe only IF you get a good score - means more engaged player
+
+	var tweetbegin = 'http://twitter.com/home?status=';        
+	
+	var tweettxt = 'I got '+ score +' in this game: www.zblip.com/fireplusbomb';    
+	//var tweettxt = 'www.zblip.com/fireplusbomb';
+	var finaltweet = tweetbegin +encodeURIComponent(tweettxt);        
+	window.open(finaltweet,'_blank');    
+}
+
+function sharegoog() {
+	window.open('plus.google.com/share?url=www.zblip.com/fireplusbomb');
+}
+
+MenuPositions = Class.extend({
+
+	menu_item_pos_x: [],
+	menu_item_pos_y: [],
+	menu_item_num: [],
+	menu_item_type: [],
+
+	menu_item_width: 148,
+	menu_item_height: 96,
+
+	menu_width: 0,
+	menu_height: 0,
+
+	menu_item_scale: 1,
+
+	social_y: 0,	// where the social buttons start
+
+	init: function() {},
+
+	add_item: function (item_num, menu_type) {
+		this.menu_item_pos_x.push(0);
+		this.menu_item_pos_y.push(0);
+		this.menu_item_num.push(item_num);
+		this.menu_item_type.push(menu_type);
+		
+		this.recalc();
+	},
+
+	recalc: function () {
+
+		this.menu_item_height = 124;
+		this.menu_item_width = 96;	// we will try for this size
+
+		this.menu_width = screen_width/options_menu_container.scale.x;
+
+		var icons_per_row = Math.round(this.menu_width/this.menu_item_width) - 1;
+		icons_per_row = Math.max(1,icons_per_row);
+
+		
+
+		this.menu_height = this.menu_item_height*Math.ceil(this.menu_item_num.length/icons_per_row)*options_menu_container.scale.x;
+
+		this.menu_height += 84;	// for row of social icons
+
+		if (this.menu_height > screen_height*1.1) {	// this.menu_item_height*2
+			// out of space!
+
+			options_menu_container.scale.x = options_menu_container.scale.y = 0.5*options_menu_container.scale.x;
+			this.menu_width = 2*this.menu_width;
+			icons_per_row = 2*icons_per_row;
+			
+
+			//this.menu_height = screen_height*0.8;
+
+			this.menu_height = this.menu_item_height*Math.ceil(this.menu_item_num.length/icons_per_row)*options_menu_container.scale.x;
+
+			this.menu_height += 84*options_menu_container.scale.x;	// for row of social icons
+			
+			var area = this.menu_height*this.menu_width;
+
+			var icon_area = area / (this.menu_item_pos_x.length + 1);	// +1 just to prevent div by zero
+
+			
+
+			
+
+
+		} else {
+			this.menu_item_scale = 1;
+		}
+
+		
+
+		var x = 0;
+		var y = 0;
+
+		for(var i = 0; i < this.menu_item_pos_x.length; i++) {
+
+			if (this.menu_item_type[i] != 1) continue;
+
+			x++;
+			if (x > icons_per_row) {
+				x = 1;
+				y++;
+			}
+
+			this.menu_item_pos_x[i] = x*this.menu_item_width - 8;
+			this.menu_item_pos_y[i] = y*this.menu_item_height + 0.5*this.menu_item_height;
+
+			
+		}
+
+		x = 1;
+		y++;
+
+		this.social_y = y*this.menu_item_height + 18;
+
+		for(var i = 0; i < this.menu_item_pos_x.length; i++) {
+			// social buttons
+			if (this.menu_item_type[i] != 2) continue;
+			
+			this.menu_item_pos_x[i] = x*this.menu_item_width - 8;//x*42;
+			this.menu_item_pos_y[i] = (y)*this.menu_item_height + 42;
+
+			x++;
+		}
+
+		if (this.menu_height > this.menu_item_pos_y[this.menu_item_pos_y.length - 1] + 42) {
+			this.menu_height = this.menu_item_pos_y[this.menu_item_pos_y.length - 1] + 42;
+		}
+
+	},
+
+
+	check_for_click: function(x,y) {
+
+		var w_ = this.menu_item_width;
+		var h_ = this.menu_item_height;	
+
+		for(var i = 0; i < this.menu_item_pos_x.length; i++) {
+
+			if (this.menu_item_type[i] == 2) {
+				w_ = 24;
+				h_ = 24;
+			} else if (this.menu_item_type[i] == 1) {
+				w_ = this.menu_item_width;
+				h_ = this.menu_item_height;
+			}
+
+			if (x > this.menu_item_pos_x[i] - 0.5*w_  &&
+			    x < this.menu_item_pos_x[i] + 0.5*w_  &&
+			    y > this.menu_item_pos_y[i] - 0.5*h_ &&
+			    y < this.menu_item_pos_y[i] + 0.5*h_) {
+				return this.menu_item_num[i];
+			}
+		}
+
+		return -1;
+	}
+});
+
+g_menu_font_height = 24;
+
+
+function g_set_game_screen_y(newy) {
+	play_container.position.y = newy;
+	game_menu_container.position.y = newy;
+};
+
+function g_set_menu_screen_y(newy) {
+	options_menu_container.position.y = newy;
+};
+
+BlipFrogMenuClass = Class.extend({
+
+	game_engine: null,
+
+	menu_up: false,	// show menu or game (or ad?)
+	menu_icon_x: 0,
+	menu_icon_y: 0,
+	menu_icon_size: 29,
+
+	graphics_menu_body: null,
+	spr_menu_button: null,
+
+	sprites_buttons: [],
+
+	menu_texts: [],
+
+	line_above_social: null,
+
+	menu_positions: null,
+
+	menu_y: 0,
+	game_y:	0,
+	menu_y_target: 0,
+	game_y_target: 0,
+	moving: 0,
+
+	setup: false,
+	
+	init: function() {
+		
+
+		this.menu_positions = new MenuPositions();
+	},
+
+	setup: function() {
+
+		update_webfonts();
+
+		this.game_engine = new GameEngineClass();
+
+		this.game_engine.push_state(new BootStateClass());
+
+		// Draw the menu. Once. Here.
+		// options_menu_container is the PIXI.js container
+
+		this.graphics_menu_body = draw_rect_perm(0,0,1,1,0x333333,Types.Layer.POP_MENU);
+
+		this.spr_menu_button = new SpriteClass();
+		this.spr_menu_button.setup_sprite('menu_button.png',Types.Layer.POP_MENU);
+
+		this.line_above_social = new PIXI.Graphics();
+		options_menu_container.addChild(this.line_above_social);
+
+		
+
+
+		for (var i = 0; i < MenuItems.length; i++) {
+
+			if (MenuItems[i][0] != 1) continue;	// Only the first type of menu items
+
+			// add button
+			this.menu_positions.add_item(i, 1);	// type 1, big icons in a row
+
+			this.sprites_buttons.push(new ButtonClass());
+			this.sprites_buttons[i].setup_sprite(MenuItems[i][3],Types.Layer.POP_MENU);
+			//this.sprites_buttons[i].set_scale(1);
+
+			this.menu_texts.push(new TextClass(Types.Layer.POP_MENU));
+			this.menu_texts[i].set_font(Types.Fonts.XSMALL);
+			this.menu_texts[i].set_text(MenuItems[i][2]);
+		}
+
+		for (var i = 0; i < MenuItems.length; i++) {
+
+			if (MenuItems[i][0] != 2) continue;	// Only the SECOND type of menu items
+
+			this.menu_positions.add_item(i, 2);
+
+			this.sprites_buttons.push(new SpriteClass());
+			this.sprites_buttons[i].setup_sprite(MenuItems[i][3],Types.Layer.POP_MENU);
+			//this.sprites_buttons[i].set_scale(1);
+
+			// Text wont actually be used - dummy
+			this.menu_texts.push(new TextClass(Types.Layer.POP_MENU));
+			this.menu_texts[i].set_font(Types.Fonts.XSMALL);
+			this.menu_texts[i].set_text("");	//MenuItems[i][2]
+		}
+
+		this.setup = true;
+
+		this.on_screen_resize();
+
+		this.pop_down();
+
+		// instantly set the containers in place
+		this.game_y = this.game_y_target;
+		this.menu_y = this.menu_y_target;
+		g_set_game_screen_y(this.game_y_target);
+		g_set_menu_screen_y(this.menu_y_target);
+	},
+
+	pop_up: function() {
+		this.menu_up = true;
+
+		this.menu_y = screen_height;
+		this.game_y = 0;
+
+		this.menu_y_target = screen_height - this.menu_positions.menu_height;
+		//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
+		this.game_y_target = -this.menu_positions.menu_height*1;
+		this.moving = 12;
+
+		update_webfonts();
+	},
+
+	pop_down: function() {
+		this.menu_up = false;
+
+		this.menu_y = screen_height - this.menu_positions.menu_height;//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
+		this.game_y = -this.menu_positions.menu_height*1;
+
+		this.game_y_target = 0;
+		this.menu_y_target = screen_height;
+		this.moving = 12;
+	},
+
+	on_screen_resize: function() {
+
+		this.pop_down();
+		// instantly set the containers in place
+		this.game_y = this.game_y_target;
+		this.menu_y = this.menu_y_target;
+		g_set_game_screen_y(this.game_y_target);
+		g_set_menu_screen_y(this.menu_y_target);
+
+		if (this.setup == false ||
+		    this.graphics_menu_body == null) return;
+
+		this.menu_icon_y = -this.menu_icon_size;
+
+		this.menu_positions.recalc();
+
+		for (var i = 0; i < this.sprites_buttons.length; i++) {
+			var x = this.menu_positions.menu_item_pos_x[i];
+			var y = this.menu_positions.menu_item_pos_y[i];
+			this.sprites_buttons[i].update_pos(x,y);
+			//this.sprites_buttons[i].set_scale(this.menu_positions.scale);
+
+			var spr_x = MenuItems[i][2].length*14*0.5 - 7;
+			this.menu_texts[i].update_pos(x - spr_x,y + 42,999,999);
+			this.menu_texts[i].center_x(x);
+
+		}
+
+		this.graphics_menu_body.width = 9*this.menu_positions.menu_width;
+		this.graphics_menu_body.height = 9*this.menu_positions.menu_height;
+
+		if (this.menu_up == true) {
+			this.pop_up();
+			// instantly set the containers in place
+			this.game_y = this.game_y_target;
+			this.menu_y = this.menu_y_target;
+			g_set_game_screen_y(this.game_y_target);
+			g_set_menu_screen_y(this.menu_y_target);
+		}
+
+		this.spr_menu_button.update_pos(this.menu_icon_size,this.menu_icon_y);
+		//this.spr_menu_button.set_scale(1/ratio);
+		
+		this.game_engine.on_screen_resize();
+
+		if (this.menu_up == true) g_set_menu_screen_y(screen_height - g_menu_font_height*MenuItems.length);
+		else g_set_menu_screen_y(screen_height);
+
+		
+
+		// 
+		this.line_above_social.clear();
+		this.line_above_social.lineStyle(2, 0xaaaaaa);
+		this.line_above_social.moveTo(24, this.menu_positions.social_y);
+		this.line_above_social.lineTo(screen_width - 24, this.menu_positions.social_y);
+		this.line_above_social.endFill();
+	},
+
+	pop_down_click: false,
+
+	handle_events: function(x, y, event_type) {
+
+		// x and y were divided by the 'ratio' on the mouse/touch event
+		// here we are restoring the true on-screen x and y values
+
+		if (event_type == Types.Events.MOUSE_UP && 
+		    this.pop_down_click == true) {
+			this.pop_down_click = false;
+			return;
+		} 
+		
+
+		if (this.menu_up == false) {
+			
+			//x = mouse.x;//(x*ratio);//options_menu_container.scale.y;
+			//y = mouse.y;//(y*ratio);//options_menu_container.scale.y;
+
+			if (event_type == Types.Events.MOUSE_UP &&
+			    mouse.x/options_menu_container.scale.x < 2*this.menu_icon_size &&
+			    mouse.y > screen_height + this.menu_icon_y - this.menu_icon_size*options_menu_container.scale.x) {
+				this.pop_up();
+			} else {
+				this.game_engine.handle_events(x, y, event_type);
+
+			}
+
+		} else this.handle_menu_event(x, y, event_type);
+	},
+
+	handle_menu_event: function(x,y,event_type) {
+
+		
+		
+		
+		y = mouse.y;//y*ratio;
+		x = mouse.x;//x*ratio;
+
+		if (event_type == Types.Events.MOUSE_CLICK && 
+		    y < screen_height - this.menu_positions.menu_height){//*devicePixelRatio) {
+			this.pop_down();
+			this.pop_down_click = true;
+			return;
+		} 
+		
+		if (event_type != Types.Events.MOUSE_UP) return;
+
+
+		//y = y/ratio;
+		//y = y - screen_height + this.menu_positions.menu_height;
+		y = y - (screen_height - this.menu_positions.menu_height);//*devicePixelRatio);
+			
+		y = y / options_menu_container.scale.x;
+		x = x / options_menu_container.scale.x;
+
+		//y = y/devicePixelRatio;
+		//x = x/devicePixelRatio;
+
+		var menu_i = this.menu_positions.check_for_click(x,y);
+
+		if (menu_i < 0 || menu_i >= MenuItems.length || menu_i == undefined) {
+			return;
+
+		}
+
+		if (MenuItems[menu_i][0] == 0) return;	// subheading
+		
+		if (MenuItems[menu_i][1] == Types.Events.NEW_GAME) {
+			// lower_state?
+			//this.menu_selected = Types.Events.NEW_GAME;
+			this.game_engine.handle_events(0, 0, Types.Events.NEW_GAME);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.TUTORIAL) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.TUTORIAL);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.GAME_OVER) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GAME_OVER);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.WEB_LINK) {
+			// MenuItems[menu_i][4]	// url
+			//window.open("http://www.w3schools.com");
+			window.open(MenuItems[menu_i][4]);
+			//var newWin = window.open();
+			//newWin.location = MenuItems[menu_i][4];
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.TWEET_SCORE) {
+			tweetscore(99);
+		} else if (MenuItems[menu_i][1] == Types.Events.SOUND_ONOFF) {
+			gSM.togglemute();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.MUSIC_ONOFF) {
+			gSM.toggle_music();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.BOOKMARK) {
+			if (addtohomescreen_js_loaded == false) return;
+			addtohome = addToHomescreen({
+  				 autostart: false
+			});
+			addtohome.show(true);
+			//addToHomescreen();
+			console.log('ADD TO HOMESCREEN');
+		}
+
+
+	},
+
+	update: function () {
+		if (this.menu_up == false) {
+			this.game_engine.update();
+		}
+
+		
+	},
+
+	draw: function() {
+		this.game_engine.draw();
+
+		if(this.moving > 0) {
+
+			this.moving--;
+
+			var menu_dist = this.menu_y_target - this.menu_y;
+			var game_dist = this.game_y_target - this.game_y;
+
+			
+			this.menu_y += 0.33*menu_dist;
+			this.game_y += 0.33*game_dist;
+			
+
+			g_set_game_screen_y(this.game_y);
+			g_set_menu_screen_y(this.menu_y);
+
+			if (this.moving == 0) {
+				
+				g_set_game_screen_y(this.game_y_target);
+				g_set_menu_screen_y(this.menu_y_target);
+			}
+		}
+	}
+
+});
+
+
+
+
+GameEngineClass = Class.extend({
+
+	state_stack: null,
+
+	//factory: {},
+	//entities: [],	// moved to play state
+
+	//-----------------------------
+
+	init: function() {
+		this.state_stack = new Array();
+
+		update_webfonts();
+	},
+
+	setup: function () {
+
+		
+
+		// Call our input setup method to bind
+		// our keys to actions and set the
+		// event listeners.
+		gInputEngine.setup();
+
+		// Notice that we don't setup the factory
+		// here! We set it up in each individual
+		// Entity's defining file.
+		// e.g: At the bottom of LandmineClass.js
+		// gGameEngine.factory['Landmine'] = LandmineClass;
+	},
+
+	change_state: function(new_state) {
+		this.pop_state();
+		this.push_state(new_state);
+	},
+
+	push_state: function(new_state) {
+		//console.log("Pushed new state");
+		this.state_stack.push(new_state);
+	},
+
+	pop_state: function() {
+		
+		var s = this.state_stack.pop();
+		s.cleanup();
+		// Garbage collector will handle this state?
+	},
+
+	get_state:function() {
+		return this.state_stack[this.state_stack.length - 1];
+	},
+
+	on_screen_resize: function() {
+		if(this.state_stack.length == 0) return;
+		this.state_stack[this.state_stack.length - 1].screen_resized();
+	},
+
+	handle_events: function(x, y, event_type) {
+
+		if (event_type == Types.Events.NEW_GAME) {
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			//this.change_state(new RestartGameStateClass(this, this.state_stack[1]));
+			this.push_state(new RestartGameStateClass(this, this.state_stack[1]));
+		} else if (event_type == Types.Events.TUTORIAL) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new TutStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GAME_OVER) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new GameOverStateClass(this, this.state_stack[1]));
+
+		}	
+
+		// Call handle_eventson the topmost element of the state stack
+		//console.log("Event received by game engine");
+		this.state_stack[this.state_stack.length - 1].handle_events(this, x, y, event_type);
+
+		
+		
+	},
+
+	update: function () {
+		// Call update on the topmost element of the state stack
+		this.state_stack[this.state_stack.length - 1].update(this);	
+	},
+
+	reset:function() {
+
+		this.state_stack = new Array();
+
+		menu_state = new MainMenuStateClass();
+
+		gGameEngine.push_state(menu_state);
+	},
+
+	draw: function() {
+		// Call draw on the topmost element of the state stack
+		this.state_stack[this.state_stack.length - 1].draw(this);	
+
+		
+	}	
+
+});
+
+
+gBlipFrogMenu = new BlipFrogMenuClass();
+gGameEngine = new GameEngineClass();
