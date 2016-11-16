@@ -6,40 +6,6 @@ block_patterns = [
 	0,0,0,0,0,
 	0,0,0,0,0,],
 
-	[1,1,0,0,0,
-	1,1,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,],
-
-
-	[1,1,0,0,0,
-	1,1,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,],
-
-
-	[1,1,0,0,0,
-	1,1,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,],
-
-	[1,1,1,0,0,
-	1,1,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,],
-
-	[1,1,1,0,0,
-	1,1,1,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,
-	0,0,0,0,0,],
-
-	
-
 	
 
 
@@ -574,6 +540,8 @@ NewPieceClass = Class.extend({
 
 	wait_timer: 0,		// for tutorial
 
+	turns: 0,
+
 	init: function(game_state) {
 		this.game_state = game_state;
 
@@ -899,7 +867,7 @@ NewPieceClass = Class.extend({
 				// 3.33*total_bombs + 3, ONLY 5 member peices, up to 3200 views, still lukewarm feedback
 				// 3.33*total_bombs + 4, ~ 4000 views	no trying to give only peices that fit
 
-				} else if (this.tiles[x][y] == 1 && Math.random() < 1 && total_hp <= 3.5*total_bombs + 7) {
+				} else if (this.tiles[x][y] == 1 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) {
 					   this.tiles[x][y] = 2;
 
 						total_hp++;
@@ -946,7 +914,7 @@ NewPieceClass = Class.extend({
 
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
-				 if (this.tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 3.5*total_bombs + 7) { // 2*total_bombs
+				 if (this.tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) { // 2*total_bombs
 					this.tiles[x][y] = 3;
 
 					total_hp++;
@@ -979,6 +947,19 @@ NewPieceClass = Class.extend({
 		for(var i = 0; i < 12; i++) {
 			if (fire_ == 0) fire_ = this.add_rand_fire();
 			else break;
+		}
+
+		// early in game,
+		
+		for(var x = 0; x < 5; x++) {
+			for(var y = 0; y < 5; y++) {
+
+				if (this.turns < 6 && this.tiles[x][y] == 3) this.tiles[x][y] = 2;
+				
+				if (this.turns < 2 && this.tiles[x][y] == 2) this.tiles[x][y] = 1;
+
+				
+			}
 		}
 
 		

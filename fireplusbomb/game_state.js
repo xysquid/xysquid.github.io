@@ -256,6 +256,8 @@ PlayStateClass = GameStateClass.extend({
 		this.score = 0;
 		this.score_obj.set_num(this.score);
 
+		this.new_piece_obj.turns = 0;
+
 		for(var y = 0; y < this.grid_h; y++) {
             		for(var x = 0; x < this.grid_w; x++) {
 				this.change_tile(x,y,0);
@@ -622,6 +624,8 @@ PlayStateClass = GameStateClass.extend({
 		this.lit_bomb_grid[x][y].start_anim(horiz,vert);
 	},
 
+	num_explosion_waves: 0,
+
 	start_explosion: function(x,y, horiz, vert) {
 
 		this.increase_score(1);
@@ -633,6 +637,8 @@ PlayStateClass = GameStateClass.extend({
 		if (vert == 1) this.explode_up[x][y] = 1;
 		if (vert == 1) this.explode_down[x][y] = 1;
 
+		//if (vert == 1) this.num_explosion_waves += 2;
+		//if (horiz == 1) this.num_explosion_waves += 2;
 	},
 
 	game_over: false,
@@ -681,6 +687,7 @@ PlayStateClass = GameStateClass.extend({
 		}
 
 		if (this.new_piece_obj.should_remake == true) {
+			this.new_piece_obj.turns++;
 			this.new_piece_obj.should_remake = false;
 
 			for (var i = 0; i < 12; i++) {
@@ -1175,7 +1182,7 @@ DuringGameStateClass = GameStateClass.extend({
 		if (mouse.y > screen_height - 100 &&
 		    mouse.x < 100) return;	// menu button
 
-		
+		///if (this.play_state.explosion_timer > 0) return;
 		//.new_piece_obj
 		this.grabbing_new_piece = this.play_state.new_piece_obj.player_grab(x,y);
 		this.grabbing_new_piece_two = this.play_state.new_piece_obj_two.player_grab(x,y);
