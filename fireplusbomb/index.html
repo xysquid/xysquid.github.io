@@ -197,8 +197,8 @@
 
 	var assets_loaded = false;
 
-	var language = window.navigator.userLanguage || window.navigator.language;
-	language = language[0]+language[1];	// first 2 letters 
+	var language = window.navigator.userLanguage || window.navigator.language || 'en';
+	if (language.length > 2) language = language[0]+language[1];	// first 2 letters 
 	//language = 'zh';
 	//alert(language); //works IE/SAFARI/CHROME/FF https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx
 	if (language != 'en' && language != 'zh') language = 'en';
@@ -310,45 +310,6 @@
 	var pop_menu_ratio;
 
 	var x_shift_screen = 0;
-
-	/*
-	// Newgrounds API:
-	var ng_app_id = "";
-	var ng_aes_encryption_key = "";
-	
-	var ngio = new Newgrounds.io.core(ng_app_id, ng_aes_encryption_key);
-
-	function log_game_over() {
-		ngio.callComponent('Event.logEvent', {event_name:"game over", host:"newgrounds.com"});
-	},
-
-	function log_play_again() {
-		ngio.callComponent('Event.logEvent', {event_name:"play again", host:"newgrounds.com"});
-	},
-
-	function postScore(board_name, score_value) {
-
-    		// If there is no user attached to our ngio object, it means the user isn't logged in and we can't post anything 
-    		if (!ngio.user) return;
-
-    		var score;
-		ngio.callComponent('ScoreBoard.postScore', {id:board_name, value:score_value});
-
-		return;
-
-    		for (var i = 0; i < scoreboards.length; i++) {
-
-        		scoreboard = scoreboards[i];
-
-        		ngio.callComponent('ScoreBoard.postScore', {id:scoreboard.id, value:score_value});
-    		}
-	}
-
-	//postScore('test scores', 1234);
-
-	//   Newgrounds API
-
-	*/
 
 	window.onresize = function() {
 		//window.devicePixelRatio = 1;	// works on iphone!
@@ -548,13 +509,40 @@
 		y: 0
 	};
 
+	// http://stackoverflow.com/questions/20160216/addeventlistener-doesnt-work-in-ie-tested-in-ie8
+	function addListener(element, event, fn) {
+
+    // Use addEventListener if available
+    if (element.addEventListener) {
+      element.addEventListener(event, fn, false);
+    // Otherwise use attachEvent, set this and event
+    } else if (element.attachEvent) {
+	
+      element.attachEvent('on' + event, (function (el) {
+        return function() {
+          fn.call(el, window.event);
+        };
+      }(element)));
+
+      // Break closure and primary circular reference to element
+      element = null;
+    }  
+    }
+
 	setup_input = function () {
 
 		// Listener, NOT Handler
-		
+
+		addListener(renderer.view,'mousedown',onMouseClick);
+		addListener(renderer.view,'mouseup',onMouseUp);
+		addListener(renderer.view,'pointerdown',onMouseClick);
+		addListener(renderer.view,'pointerup',onMouseUp);		
+
+		// 'pointer' events are needed for IE
+		renderer.view.addEventListener('pointermove',onMouseMove, false);
 		renderer.view.addEventListener('mousemove',onMouseMove, false);
-		renderer.view.addEventListener('mousedown', onMouseClick, false);
-		renderer.view.addEventListener('mouseup', onMouseUp, false);	
+		//renderer.view.addEventListener('mousedown', onMouseClick, false);
+		//renderer.view.addEventListener('mouseup', onMouseUp, false);	
 		renderer.view.addEventListener('touchstart', onTouchDown, false);
 		renderer.view.addEventListener('touchmove', onTouchMove, false);
 		renderer.view.addEventListener('touchend', onTouchUp, false);	
@@ -570,16 +558,23 @@
 		
 		var mouseX, mouseY;
 
-		if (browser == "f" || browser == "m")
+		if (browser == "f" )
 		{
 			mouseX = evt.clientX - renderer.view.offsetLeft + document.documentElement.scrollLeft;
 			mouseY = evt.clientY - renderer.view.offsetTop + document.documentElement.scrollTop;
+		} 
+		else if (browser == "m")
+		{
+			   mouseX = evt.clientX + document.body.scrollLeft;
+    				mouseY = evt.clientY + document.body.scrollTop;
 		}
 		else //"s" or "c"
 		{
 			mouseX = evt.clientX - renderer.view.offsetLeft + document.body.scrollLeft;
 			mouseY = evt.clientY - renderer.view.offsetTop + document.body.scrollTop;
 		}
+
+		//console.log('mouseX ' + mouseX.toString());
 	
 		return {
           		x: mouseX,
@@ -601,6 +596,8 @@
         	};
 	};
 
+	// http://www.gaminglogy.com/tutorial/controls-mouse/index.php
+
 	//-----------------
 	//Browser Detection
 	//-----------------
@@ -616,14 +613,17 @@
 		var browser;
 	if (navigator.sayswho[0] == "Firefox")
 		browser="f";
-	else if (navigator.sayswho[0] == "Chrome")
+	else if (navigator.sayswho[0] == "Chrome" )
 		browser="c";
 	else if (navigator.sayswho[0] == "Safari")
 		browser="s";
-	else  if (navigator.sayswho[0] == "Microsoft")
+	else  if (navigator.sayswho[0] == "Microsoft" || navigator.sayswho[0] == "Netscape")
 		browser="m";
 	else
 		browser="f";
+
+	console.log('navigator.sayswho = ' +navigator.sayswho);
+	console.log('browser = ' +browser);
 
 	onMouseClick = function (event) {
 		if(event.which == 3) {	// RMB
@@ -679,6 +679,8 @@
 	onMouseUp = function(event) {
 		mouseclick = true;
 		mousedown = false;
+
+		
 	};
 
 	onTouchUp= function(event) {
@@ -694,7 +696,12 @@
 
 	setup = function() {
 
-		setup_input();
+		//document.addEventListener('DOMContentLoaded', function() {
+   		 /* Add your event listeners here */
+			setup_input();
+		//});
+
+		
 
 
 		//boot_state = new BootStateClass();
