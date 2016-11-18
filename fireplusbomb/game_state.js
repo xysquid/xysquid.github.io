@@ -256,7 +256,7 @@ PlayStateClass = GameStateClass.extend({
 		this.score = 0;
 		this.score_obj.set_num(this.score);
 
-		this.new_piece_obj.turns = 0;
+		this.new_piece_obj.turns = 1;
 
 		for(var y = 0; y < this.grid_h; y++) {
             		for(var x = 0; x < this.grid_w; x++) {
@@ -279,6 +279,8 @@ PlayStateClass = GameStateClass.extend({
 
 
 		for(var i = 0; i < this.bg_squares.length; i++) this.bg_squares[i].alpha = 1;
+
+		
 	},
 
 	
@@ -293,6 +295,7 @@ PlayStateClass = GameStateClass.extend({
 	},
 
 	do_explosion_step: function() {
+		
 		for(var y = 0; y < this.grid_h; y++) {
             		for(var x = 0; x < this.grid_w; x++) {
 
@@ -387,121 +390,7 @@ PlayStateClass = GameStateClass.extend({
 
 	},
 
-	load_new_piece: function () {
-
-
-		
-
-
-		var rand = Math.floor(Math.random()*block_patterns.length);
-
-		for (var i = 0; i < 25; i++) {
-			var x = i % 5;
-			var y = Math.floor (i / 5);
-			this.new_piece[x][y] = block_patterns[rand][i];
-		}
-
-		// add bombs and fire
-		var bombx = -4; 
-		var bomby = -4; 
-		var bomb = 0;
-		var fire = 0;
-
-		// re evaluate map
-		this.total_bombs = 0;
-		this.total_hp = 0;
-		for(var y = 0; y < this.grid_h; y++) {
-            		for(var x = 0; x < this.grid_w; x++) {
-				if (this.tiles[x][y] == 3) this.total_bombs++;
-
-				if (this.tiles[x][y] == 8) this.total_hp++;
-
-				if (this.tiles[x][y] == 9) this.total_hp+=2;
-				
-				if (this.tiles[x][y] == 10) this.total_hp+=3;
-			}
-		}
-
-		for(var x = 0; x < 5; x++) {
-			for(var y = 0; y < 5; y++) {
-				if(this.new_piece[x][y] == 1 && Math.random() < 0.5) {
-
-					if (Math.random() < 0.5 && this.total_bombs <= 1.33*this.total_hp) {
-						this.new_piece[x][y] = 3;
-						this.total_bombs++;
-						//bomb++;
-					} else {
-						this.new_piece[x][y] = 2;
-						//fire++;
-					}
-					
-				}
-			}
-		}
-
-		if (Math.random() < 0.5) {
-			for(var x = 0; x < 5; x++) {
-				for(var y = 0; y < 5; y++) {
-
-					if (this.new_piece[x][y] == 3) {
-						this.new_piece[x][y] = 2;
-						this.total_bombs--;
-					} else if (this.new_piece[x][y] == 2 && this.total_bombs <= 1*this.total_hp) {
-						this.new_piece[x][y] = 3;
-						this.total_bombs++;
-					}
-
-				}
-			}
-		}
-
-		// 1 is 0 HP block
-		// 2 is fire
-		// 3 is bomb
-		// 4 is 1 HP block
-		// 5 is 2 HP block
-		// 6 is 3 HP block
-		for(var x = 0; x < 5; x++) {
-			for(var y = 0; y < 5; y++) {
-				if (this.new_piece[x][y] == 2 && 
-				    ((x > 0 && this.new_piece[x-1][y] == 3) || 
-					(x < 4 &&this.new_piece[x+1][y] == 3) || 
-					(y > 0 &&this.new_piece[x][y-1] == 3) || 
-					(y < 4 &&this.new_piece[x][y+1] == 3))) {
-						this.new_piece[x][y] = 4;
-
-						this.total_hp++;
-
-				
-
-				} else if (this.new_piece[x][y] == 1 && Math.random() < 0.75) {
-					this.new_piece[x][y] = 4;
-
-						this.total_hp++;
-				}
-			}
-		}
-
-		for(var x = 0; x < 5; x++) {
-			for(var y = 0; y < 5; y++) {
-				 if (this.new_piece[x][y] == 4 && Math.random() < 0.33 && this.total_hp <= 2*this.total_bombs) {
-					this.new_piece[x][y] = 5;
-
-					this.total_hp++;
-
-					if (this.new_piece[x][y] == 4 && Math.random() < 0.33) {
-						this.new_piece[x][y] = 6;
-
-						this.total_hp++;
-			
-					}
-			
-				}
-			}
-		}
-
-		
-	},
+	
 
 	clear_new_piece: function () {
 		this.new_piece_obj.clear();
@@ -511,11 +400,16 @@ PlayStateClass = GameStateClass.extend({
 
 		// move new peice off screen so that it moves in
 		//this.new_piece_obj.draw_x =
+		this.new_piece_obj.generate_new();
+		this.new_piece_obj.next_to_current();
+		this.new_piece_obj.generate_new();
 
-		
+		this.new_piece_obj_two.generate_new();
+		this.new_piece_obj_two.next_to_current();
 		this.new_piece_obj_two.generate_new();
 
 
+		return;
 		for (var i = 0; i < 16; i++) {
 			this.new_piece_obj.generate_new();
 
@@ -607,7 +501,7 @@ PlayStateClass = GameStateClass.extend({
 	explosion_timer: 0,
 
 	start_lit_bomb: function(x,y,horiz,vert) {
-
+		
 		if (this.lit_timer == 0) {
 			var volume_ = 0.06 + 0.03*Math.random();
 			playSoundInstance('grow4.wav',volume_);
@@ -622,6 +516,8 @@ PlayStateClass = GameStateClass.extend({
 
 		this.lit_timer = 14*3;
 		this.lit_bomb_grid[x][y].start_anim(horiz,vert);
+
+		
 	},
 
 	num_explosion_waves: 0,
@@ -651,6 +547,8 @@ PlayStateClass = GameStateClass.extend({
 
 	which_piece_was_dropped: 0,
 
+	should_check_fit: false,
+
 	update: function() { 
 
 
@@ -674,33 +572,59 @@ PlayStateClass = GameStateClass.extend({
 					}
 				}
 
+				//this.new_piece_obj.no_moves = false;
+				//this.new_piece_obj.check_for_any_move();
+				if (this.new_piece_obj.no_moves == true) {
+				
+					//this.do_game_over();
+				}
+
 				//this.new_piece_obj.check_for_any_move();	// triggers game over
 				if (this.which_piece_was_dropped == 1 && this.new_piece_obj.dont_remake_after_explosion == false) {
-					this.new_piece_obj.should_remake = true;
+					//this.new_piece_obj.should_remake = true;
 				}
 				if (this.which_piece_was_dropped == 2 && this.new_piece_obj_two.dont_remake_after_explosion == false) {
-					this.new_piece_obj_two.should_remake = true;
+					//this.new_piece_obj_two.should_remake = true;
 				}
 				//this.remake_new_peice();
 			} 
 
 		}
 
+		if (this.should_check_fit == true && this.explosion_timer == 0 && this.lit_timer == 0) {
+			
+			this.should_check_fit = false;
+
+			this.new_piece_obj.no_moves = false;
+			if (this.explosion_timer == 0 && this.lit_timer == 0) this.new_piece_obj.check_for_any_move();	// checks current peice
+
+			if (this.explosion_timer == 0 && this.new_piece_obj.no_moves == true) {
+				
+				this.do_game_over();
+			}
+
+		}
+
 		if (this.new_piece_obj.should_remake == true) {
-			this.new_piece_obj.turns++;
+			
 			this.new_piece_obj.should_remake = false;
 
-			for (var i = 0; i < 12; i++) {
+			this.should_check_fit = true;
+
+			this.new_piece_obj.next_to_current();
+			
+
+			this.new_piece_obj.generate_new();	// next peice
+
+			/*for (var i = 0; i < 12; i++) {
 				this.new_piece_obj.generate_new();
 				this.new_piece_obj.no_moves = false;
 				this.new_piece_obj.check_for_any_move();
 				if (this.new_piece_obj.no_moves == false) break;
-			}
+			}*/
 
 
-			if (this.new_piece_obj.no_moves == true) {
-				this.do_game_over();
-			}
+			
 
 			
 		}
@@ -1034,6 +958,10 @@ StartGameStateClass = GameStateClass.extend({
 		this.engine = engine;
 
 		this.play_state.new_game(0);
+
+		
+		this.play_state.new_piece_obj.hide = false;
+		this.play_state.new_piece_obj.calc_position();
 
 	},
 

@@ -187,6 +187,68 @@ g_block_blink_sprites = {
 	13: "S10.png"
 };
 
+TableAreaClass = Class.extend({
+
+	text: null,	// text object
+	box: null,	// pixi graphics object
+
+	line: null,
+
+	left_x: 0,
+	right_x: 0,
+	top_y: 0,
+	bottom_y: 0,
+
+	hidden: 0,
+
+	game_state: null,
+
+	init: function(game_state, text_str) {
+
+		this.game_state = game_state;
+	
+		this.box = draw_rect_perm(0,0,1,1,0xeeeeee,Types.Layer.BACKGROUND);	// dunno if BACKGROUND works yet
+		this.text = new TextClass(Types.Layer.TILE);			// dunno if BACKGROUND works yet
+
+		
+		this.text.set_font(Types.Fonts.SMALL);
+		this.text.set_text(text_str);
+
+		//this.turn_off();
+
+		this.line = new PIXI.Graphics();
+		
+		tile_container.addChild(this.line);
+
+	},
+
+
+	resize: function(x,y,xx,yy) {
+
+		
+
+		this.left_x = x;
+		this.right_x = xx;
+		this.top_y = y;
+		this.bottom_y = yy;
+
+		this.text.update_pos(this.left_x + 12, this.bottom_y - 0.5*this.text.pixitext.height);
+
+		// line
+		this.line.clear();
+		this.line.lineStyle(6, 0xeeeeee);
+		this.line.moveTo(this.left_x + 8, this.bottom_y);
+		this.line.lineTo(this.left_x, this.bottom_y);
+		this.line.lineTo(this.left_x, this.top_y);
+		this.line.lineTo(this.right_x, this.top_y);
+		this.line.lineTo(this.right_x, this.bottom_y);
+		this.line.lineTo(this.left_x + 8 + this.text.pixitext.width + 8, this.bottom_y);
+		this.line.endFill();
+        	this.line.alpha = 1;
+	},
+	
+});
+
 BombClass = Class.extend({
 
 	game_state: null,
@@ -539,6 +601,15 @@ NewPieceClass = Class.extend({
 
 	draw_x: 0,
 	draw_y: 0,
+	x_anchor: 0,
+	y_anchor: 0,
+
+	next_draw_x: 0,
+	next_draw_y: 0,
+	next_x_anchor: 0,
+	next_y_anchor: 0,
+
+	anchor_offset: 0,
 
 	game_state: null,
 
@@ -546,8 +617,17 @@ NewPieceClass = Class.extend({
 
 	turns: 0,
 
+	next_tiles: new Array(5),
+	next_block_objs: new Array(5),
+
+	box_next: null,
+
+	hide: true,
+
 	init: function(game_state) {
 		this.game_state = game_state;
+
+		this.box_next = new TableAreaClass(game_state, "NEXT");
 
 		for(var i = 0; i < 5; i++) {
 			this.block_objs[i] = new Array(5);
@@ -556,6 +636,9 @@ NewPieceClass = Class.extend({
 			this.highlight_squares[i] = new Array(5);
 			this.ok_squares[i] = new Array(5);
 
+			this.next_block_objs[i] = new Array(5);
+			this.next_tiles[i] = new Array(5);
+
 		}
 
 		for(var x = 0; x < 5; x++) {
@@ -563,6 +646,10 @@ NewPieceClass = Class.extend({
 				this.block_objs[x][y] = new BlockClass(this.game_state);
 				this.block_objs[x][y].set_type(0);
 				this.tiles[x][y] = 0;
+
+				this.next_block_objs[x][y] = new BlockClass(this.game_state);
+				this.next_block_objs[x][y].set_type(0);
+				this.next_tiles[x][y] = 0;
 
 				this.temp_rotation_grid[x][y] = 0;
 
@@ -582,9 +669,14 @@ NewPieceClass = Class.extend({
 				this.block_objs[x][y].set_type(0);
 				this.tiles[x][y] = 0;
 
+				this.next_block_objs[x][y].set_type(0);
+				this.next_tiles[x][y] = 0;
+
 			}
 		}
 	},
+
+	
 
 	rotate_with_effect: function() {
 		this.rotate();
@@ -603,7 +695,8 @@ NewPieceClass = Class.extend({
 			}
 		}
 
-		this.shift();
+		this.shift(this.tiles);
+		//this.shift(this.next_tiles);
 	},
 
 	scan_for_matches: function() {
@@ -611,7 +704,7 @@ NewPieceClass = Class.extend({
 	},	
 
 	flip: function() {
-		var p_piece = this.tiles;
+		var p_piece = this.next_tiles;
 		for (var x = 0; x < 5; x++) {
 			for (var y = 0; y < 5; y++) {
 				this.temp_rotation_grid[x][y] = p_piece[x][y];
@@ -627,11 +720,27 @@ NewPieceClass = Class.extend({
 			p_piece[4][y] = this.temp_rotation_grid[0][y];
 		}
 
-		this.shift();
+		//this.shift(this.tiles);
+		this.shift(this.next_tiles);
 	},
 
-	shift: function() {
-		var p_piece = this.tiles;
+	next_to_current: function () {
+		for (var x = 0; x < 5; x++) {
+			for (var y = 0; y < 5; y++) {
+				this.tiles[x][y] = this.next_tiles[x][y];
+				this.block_objs[x][y].set_type(this.tiles[x][y]);
+			}
+
+		}
+
+		this.draw_x = this.next_x_anchor;
+		this.draw_y = this.next_y_anchor;
+
+		console.log('next to current');
+	},
+
+	shift: function(p_piece) {
+		//var p_piece = this.tiles;
 
 		while (p_piece[0][0] == 0 && p_piece[1][0] == 0 && p_piece[2][0] == 0 && p_piece[3][0] == 0 && p_piece[4][0] == 0) {
 			// top row empty, move up one
@@ -742,24 +851,25 @@ NewPieceClass = Class.extend({
 	},
 
 	generate_new: function() {
-
+		console.log('generate_new');
 
 		if (screen_width < screen_height) {
-			this.draw_x = 3.5*this.game_state.tile_size;
-			this.draw_y = 20*this.game_state.tile_size;
+			this.next_draw_x = 3.5*this.game_state.tile_size;
+			this.next_draw_y = 20*this.game_state.tile_size;
 
 		} else {
-			this.draw_x = 40*this.game_state.tile_size;
-			this.draw_y = 3.5*this.game_state.tile_size;
+			this.next_draw_x = 40*this.game_state.tile_size;
+			this.next_draw_y = 3.5*this.game_state.tile_size;
 		}
 
 
-		var rand = Math.floor(Math.random()*block_patterns.length);
+		var rand = 0;// Math.floor(Math.random()*block_patterns.length);
+		//if (this.turns % 2 == 0) rand = 1;;
 
 		for (var i = 0; i < 25; i++) {
 			var x = i % 5;
 			var y = Math.floor (i / 5);
-			this.tiles[x][y] = block_patterns[rand][i];
+			this.next_tiles[x][y] = block_patterns[rand][i];
 
 			
 		}
@@ -804,27 +914,29 @@ NewPieceClass = Class.extend({
 
 		// add bombs and fire - random for now...............................
 
+		console.log('add bombs and fire');
+
 		// 5 is bomb
 		// 6 is fire
 		for(var y = 0; y < 5; y++) {
             		for(var x = 0; x < 5; x++) {
-				if(this.tiles[x][y] == 0 || this.tiles[x][y] == 6) continue;
+				if(this.next_tiles[x][y] == 0 || this.next_tiles[x][y] == 6) continue;
 
 				
 
 				if (Math.random() < 0.66) {
 					if (Math.random() < 0.5 && total_bombs <= 0.66*total_hp) {  // 1.33
 
-						if ((x > 0 && this.tiles[x-1][y] == 6) || 
-				    		(x < 4 && this.tiles[x+1][y] == 6) || 
-				   		 (y > 0 && this.tiles[x][y-1] == 6) || 
-				    		(y < 4 && this.tiles[x][y+1] == 6)) continue;
+						if ((x > 0 && this.next_tiles[x-1][y] == 6) || 
+				    		(x < 4 && this.next_tiles[x+1][y] == 6) || 
+				   		 (y > 0 && this.next_tiles[x][y-1] == 6) || 
+				    		(y < 4 && this.next_tiles[x][y+1] == 6)) continue;
 
-						this.tiles[x][y] = 5;
+						this.next_tiles[x][y] = 5;
 						total_bombs++;
 						//bomb++;
 					} else {
-						this.tiles[x][y] = 6;
+						this.next_tiles[x][y] = 6;
 						//fire++;
 					}
 				}
@@ -836,11 +948,11 @@ NewPieceClass = Class.extend({
 			for(var x = 0; x < 5; x++) {
 				for(var y = 0; y < 5; y++) {
 
-					if (this.tiles[x][y] == 5) {
-						this.tiles[x][y] = 6;
+					if (this.next_tiles[x][y] == 5) {
+						this.next_tiles[x][y] = 6;
 						total_bombs--;
-					} else if (this.tiles[x][y] == 6 && total_bombs <= 1*total_hp) {
-						this.tiles[x][y] = 5;
+					} else if (this.next_tiles[x][y] == 6 && total_bombs <= 1*total_hp) {
+						this.next_tiles[x][y] = 5;
 						total_bombs++;
 					}
 
@@ -848,14 +960,16 @@ NewPieceClass = Class.extend({
 			}
 		}
 
+		console.log('best algorithm ever');
+
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
-				if (this.tiles[x][y] == 6 && 
-				    ((x > 0 && this.tiles[x-1][y] == 5) || 
-					(x < 4 && this.tiles[x+1][y] == 5) || 
-					(y > 0 && this.tiles[x][y-1] == 5) || 
-					(y < 4 && this.tiles[x][y+1] == 5))) {
-						this.tiles[x][y] = 2;
+				if (this.next_tiles[x][y] == 6 && 
+				    ((x > 0 && this.next_tiles[x-1][y] == 5) || 
+					(x < 4 && this.next_tiles[x+1][y] == 5) || 
+					(y > 0 && this.next_tiles[x][y-1] == 5) || 
+					(y < 4 && this.next_tiles[x][y+1] == 5))) {
+						this.next_tiles[x][y] = 2;
 
 						total_hp++;
 
@@ -871,60 +985,25 @@ NewPieceClass = Class.extend({
 				// 3.33*total_bombs + 3, ONLY 5 member peices, up to 3200 views, still lukewarm feedback
 				// 3.33*total_bombs + 4, ~ 4000 views	no trying to give only peices that fit
 
-				} else if (this.tiles[x][y] == 1 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) {
-					   this.tiles[x][y] = 2;
-
-						total_hp++;
-
-					// go up to 3 HP blocks - new code
-					if (false && this.tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 4*total_bombs + 12) {
-						this.tiles[x][y] = 3;
+				} else if (this.next_tiles[x][y] == 1 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) {
+					   this.next_tiles[x][y] = 2;
 
 						total_hp++;
 
 					
-					}
-
-					// go up to 4 HP blocks - new code
-					if (false && this.tiles[x][y] == 3 && Math.random() < 1 && total_hp <= 4*total_bombs + 12) {
-						this.tiles[x][y] = 4;
-
-						total_hp++;
-					}
-
-					// go up to 5 HP blocks - new code
-					if (this.tiles[x][y] == 4 && Math.random() < 1 && total_hp <= 4*total_bombs + 12) {
-						this.tiles[x][y] = 7;
-
-						total_hp++;
-					}
-
-					// go up to 5 HP blocks - new code
-					if (this.tiles[x][y] == 7 && Math.random() < 1 && total_hp <= 4*total_bombs + 12) {
-						this.tiles[x][y] = 8;
-
-						total_hp++;
-					}
-
-					// go up to 5 HP blocks - new code
-					if (this.tiles[x][y] == 8 && Math.random() < 1 && total_hp <= 4*total_bombs + 12) {
-						this.tiles[x][y] = 9;
-
-						total_hp++;
-					}
 				}
 			}
 		}
 
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
-				 if (this.tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) { // 2*total_bombs
-					this.tiles[x][y] = 3;
+				 if (this.next_tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) { // 2*total_bombs
+					this.next_tiles[x][y] = 3;
 
 					total_hp++;
 
-					if (this.tiles[x][y] == 8 && Math.random() < 0.33) {
-						this.tiles[x][y] = 10;
+					if (this.next_tiles[x][y] == 8 && Math.random() < 0.33) {
+						this.next_tiles[x][y] = 10;
 
 						total_hp++;
 			
@@ -939,8 +1018,8 @@ NewPieceClass = Class.extend({
 		if (total_hp > 40) {
 			for(var x = 0; x < 5; x++) {
 				for(var y = 0; y < 5; y++) {
-					if (this.tiles[x][y] == 0) continue;
-					if (this.tiles[x][y] == 2 || this.tiles[x][y] == 3) this.tiles[x][y] = 1;
+					if (this.next_tiles[x][y] == 0) continue;
+					if (this.next_tiles[x][y] == 2 || this.next_tiles[x][y] == 3) this.next_tiles[x][y] = 1;
 				
 				}
 			}
@@ -958,9 +1037,9 @@ NewPieceClass = Class.extend({
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
 
-				if (this.turns < 6 && this.tiles[x][y] == 3) this.tiles[x][y] = 2;
+				if (this.turns < 7 && this.next_tiles[x][y] == 3) this.next_tiles[x][y] = 2;
 				
-				if (this.turns < 2 && this.tiles[x][y] == 2) this.tiles[x][y] = 1;
+				if (this.turns < 3 && this.next_tiles[x][y] == 2) this.next_tiles[x][y] = 1;
 
 				
 			}
@@ -971,9 +1050,11 @@ NewPieceClass = Class.extend({
 		// set sprites:
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
-				this.block_objs[x][y].set_type(this.tiles[x][y]);
+				this.next_block_objs[x][y].set_type(this.next_tiles[x][y]);
 			}
 		}
+
+		console.log('sprites set');
 
 		
 	},
@@ -984,16 +1065,16 @@ NewPieceClass = Class.extend({
 		var randx = Math.floor(5*Math.random());
 		var randy = Math.floor(5*Math.random());
 
-		if (randx > 0 && this.tiles[randx - 1][randy] == 5) return 0;
+		if (randx > 0 && this.next_tiles[randx - 1][randy] == 5) return 0;
 
-		if (randy > 0 && this.tiles[randx][randy - 1] == 5) return 0;
+		if (randy > 0 && this.next_tiles[randx][randy - 1] == 5) return 0;
 
-		if (randx < 4 && this.tiles[randx + 1][randy] == 5) return 0;
+		if (randx < 4 && this.next_tiles[randx + 1][randy] == 5) return 0;
 	
-		if (randy < 4 && this.tiles[randx][randy + 1] == 5) return 0;
+		if (randy < 4 && this.next_tiles[randx][randy + 1] == 5) return 0;
 
-		if (this.tiles[randx][randy] != 0 && this.tiles[randx][randy] != 5 && this.tiles[randx][randy] != 6) {
-			this.tiles[randx][randy] = 6;
+		if (this.next_tiles[randx][randy] != 0 && this.next_tiles[randx][randy] != 5 && this.next_tiles[randx][randy] != 6) {
+			this.next_tiles[randx][randy] = 6;
 			return 1;
 		}
 
@@ -1010,10 +1091,7 @@ NewPieceClass = Class.extend({
 	//	- player cursor
 	//	- on player drop -> move into position
 
-	x_anchor: 0,
-	y_anchor: 0,
-
-	anchor_offset: 0,
+	
 
 	calc_position: function () {
 
@@ -1023,14 +1101,29 @@ NewPieceClass = Class.extend({
 			this.x_anchor = 3.5*this.game_state.tile_size + 2*this.anchor_offset*2*this.game_state.tile_size;
 			this.y_anchor = 9.0*this.game_state.tile_size;
 
+			this.next_x_anchor = this.x_anchor + 4*this.game_state.tile_size;
+			this.next_y_anchor = this.y_anchor;
+
+					
+
 		} else {
 
 			this.x_anchor = 9.0*this.game_state.tile_size;
 			this.y_anchor = 3.5*this.game_state.tile_size + 2*this.anchor_offset*2*this.game_state.tile_size ;
+
+			this.next_x_anchor = this.x_anchor + 4*this.game_state.tile_size;
+			this.next_y_anchor = this.y_anchor;
+
 		}
+
+		if (this.hide == false) this.box_next.resize(this.next_x_anchor - 0.5*this.game_state.tile_size + 6, this.next_y_anchor - 0.5*this.game_state.tile_size + 6, this.next_x_anchor + 2.5*this.game_state.tile_size + 6, this.next_y_anchor + 2.5*this.game_state.tile_size + 6);	
+		else this.box_next.resize(-999, -999, -999, -999);	
 
 		this.draw_x = this.x_anchor;
 		this.draw_y = this.y_anchor;
+
+		this.next_draw_x = this.next_x_anchor;
+		this.next_draw_y = this.next_y_anchor;
 	},
 
 	grab_offset_x: 0,
@@ -1099,24 +1192,30 @@ NewPieceClass = Class.extend({
 		
 
 		if (this.check_match(xtile - this.grab_tile_x, ytile - this.grab_tile_y) == 1) {
+			
 			this.drop_into_game(xtile - this.grab_tile_x,ytile - this.grab_tile_y);
+			
+			
 
 			if (this.tut_mode == 1) {
 				this.dont_remake_after_explosion = true;
 				return;
 			}
-			this.dont_remake_after_explosion = false;			
+			//this.dont_remake_after_explosion = false;	
+
+			this.should_remake = true;
+			return;		
 
 			// next peice
 			if (this.game_state.explosion_timer == 0 && 
 		   	    this.game_state.lit_timer == 0) this.should_remake = true; //this.check_for_any_move();
 			else {
-				for (var i = 0; i < 12; i++) {
+				//for (var i = 0; i < 12; i++) {
 					this.generate_new();
-					this.no_moves = false;
-					this.check_for_any_move();
-					if (this.no_moves == false) break;
-				}
+				//	this.no_moves = false;
+				//	this.check_for_any_move();
+				//	if (this.no_moves == false) break;
+				//}
 
 				if (this.no_moves == true) {
 					// found nothing to fit!
@@ -1153,7 +1252,7 @@ NewPieceClass = Class.extend({
 
 	check_for_any_move: function () {
 
-		this.shift();
+		this.shift(this.tiles);
 
 		for(var x = 0; x < this.game_state.grid_w; x++) {
 			for(var y = 0; y < this.game_state.grid_h; y++) {
@@ -1162,14 +1261,14 @@ NewPieceClass = Class.extend({
 					this.rotate();
 					this.rotate();
 					this.rotate();
-					this.shift();
+					this.shift(this.tiles);
 					return 1;
 				}
 			}
 		}
 
 		this.rotate();
-		this.shift();
+		this.shift(this.tiles);
 
 		for(var x = 0; x < this.game_state.grid_w; x++) {
 			for(var y = 0; y < this.game_state.grid_h; y++) {
@@ -1177,41 +1276,41 @@ NewPieceClass = Class.extend({
 					this.rotate();
 					this.rotate();
 					this.rotate();
-					this.shift();
+					this.shift(this.tiles);
 					return 1;
 				}
 			}
 		}
 
 		this.rotate();
-		this.shift();
+		this.shift(this.tiles);
 
 		for(var x = 0; x < this.game_state.grid_w; x++) {
 			for(var y = 0; y < this.game_state.grid_h; y++) {
 				if (this.check_match(x, y) == 1) {
 					this.rotate();
 					this.rotate();
-					this.shift();
+					this.shift(this.tiles);
 					return 1;
 				}
 			}
 		}
 
 		this.rotate();
-		this.shift();
+		this.shift(this.tiles);
 
 		for(var x = 0; x < this.game_state.grid_w; x++) {
 			for(var y = 0; y < this.game_state.grid_h; y++) {
 				if (this.check_match(x, y) == 1) {
 					this.rotate();
-					this.shift();
+					this.shift(this.tiles);
 					return 1;
 				}
 			}
 		}
 
 		this.rotate();
-		this.shift();			
+		this.shift(this.tiles);			
 
 		this.no_moves = true;
 		
@@ -1232,8 +1331,23 @@ NewPieceClass = Class.extend({
 				if(this.tiles[x][y] == 5 || this.tiles[x][y] == 6) continue;  // only care about dropping bricks
 				var game_tile = this.game_state.get_block_type(xdrop + x,ydrop + y);
 
+				//
+				//this.game_state.hit_tile(xdrop + x,ydrop + y);
+
+				// 'hit' tile if we squish a bomb
+				if(false && game_tile == 5) {
+					if (this.tiles[x][y] == 1) this.tiles[x][y] = 0;
+					else if (this.tiles[x][y] == 2) this.tiles[x][y] = 1;
+					else if (this.tiles[x][y] == 3) this.tiles[x][y] = 2;
+
+					this.game_state.explosion_sprites[xdrop + x][ydrop + y].start_anim();
+					
+				}
+
 				// squish / extibguish
 				if(game_tile == 5 || game_tile == 6) this.game_state.change_tile(xdrop + x,ydrop + y, 0);
+
+				
 
 			}
 		}
@@ -1340,6 +1454,9 @@ NewPieceClass = Class.extend({
 				this.block_objs[x][y].set_type(this.tiles[x][y]);
 			}
 		}
+
+		this.turns++;
+		console.log('this.turns ' + this.turns);
 		
 	},
 
@@ -1463,12 +1580,16 @@ NewPieceClass = Class.extend({
 
 		}
 
-		
+		this.next_draw_x = this.next_draw_x + (this.next_x_anchor - this.next_draw_x)*0.1;
+		this.next_draw_y = this.next_draw_y + (this.next_y_anchor - this.next_draw_y)*0.1;
 
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
 				this.block_objs[x][y].set_position_screen(this.draw_x + x*this.game_state.tile_size ,
 								   	  this.draw_y + y*this.game_state.tile_size);
+
+				this.next_block_objs[x][y].set_position_screen(this.next_draw_x + x*this.game_state.tile_size ,
+								   	       this.next_draw_y + y*this.game_state.tile_size);
 	
 				
 				//if (this.effect_timer <= 0) this.block_objs[x][y].draw();
