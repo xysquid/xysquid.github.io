@@ -642,12 +642,12 @@ GameEngineClass = Class.extend({
 	init: function() {
 		this.state_stack = new Array();
 
-		update_webfonts();
+		
 	},
 
 	setup: function () {
 
-		
+		update_webfonts();
 
 		// Call our input setup method to bind
 		// our keys to actions and set the

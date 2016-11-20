@@ -1,6 +1,6 @@
 ﻿
 block_patterns = [
-	[1,1,1,0,0,
+	[1,1,0,0,0,
 	1,1,0,0,0,
 	0,0,0,0,0,
 	0,0,0,0,0,
@@ -207,7 +207,7 @@ TableAreaClass = Class.extend({
 
 		this.game_state = game_state;
 	
-		this.box = draw_rect_perm(0,0,1,1,0xeeeeee,Types.Layer.BACKGROUND);	// dunno if BACKGROUND works yet
+		this.box = draw_rect_perm(0,0,1,1,0x534567,Types.Layer.BACKGROUND);	// dunno if BACKGROUND works yet
 		this.text = new TextClass(Types.Layer.TILE);			// dunno if BACKGROUND works yet
 
 		
@@ -231,6 +231,11 @@ TableAreaClass = Class.extend({
 		this.right_x = xx;
 		this.top_y = y;
 		this.bottom_y = yy;
+
+		this.box.width = xx - x;
+		this.box.height = yy - y;
+		this.box.x = x;
+		this.box.y = y;
 
 		this.text.update_pos(this.left_x + 12, this.bottom_y - 0.5*this.text.pixitext.height);
 
@@ -619,15 +624,23 @@ NewPieceClass = Class.extend({
 
 	next_tiles: new Array(5),
 	next_block_objs: new Array(5),
+	locked_tiles: new Array(5),
 
 	box_next: null,
 
-	hide: true,
+	hide_next: true,
+	hide_help: true,
+
+	rotate_help_text: null,
+	player_rotated: false,
 
 	init: function(game_state) {
 		this.game_state = game_state;
 
 		this.box_next = new TableAreaClass(game_state, "NEXT");
+		this.rotate_help_text = new TextClass(Types.Layer.TILE);			// dunno if BACKGROUND works yet
+		this.rotate_help_text.set_font(Types.Fonts.SMALL);
+		this.rotate_help_text.set_text("CLICK TO ROTATE");
 
 		for(var i = 0; i < 5; i++) {
 			this.block_objs[i] = new Array(5);
@@ -638,7 +651,7 @@ NewPieceClass = Class.extend({
 
 			this.next_block_objs[i] = new Array(5);
 			this.next_tiles[i] = new Array(5);
-
+			this.locked_tiles[i] = new Array(5);
 		}
 
 		for(var x = 0; x < 5; x++) {
@@ -679,6 +692,10 @@ NewPieceClass = Class.extend({
 	
 
 	rotate_with_effect: function() {
+		if (this.player_rotated == false) { 
+			this.player_rotated = true;
+			this.calc_position();
+		}
 		this.rotate();
 	},
 
@@ -703,8 +720,8 @@ NewPieceClass = Class.extend({
 		return 1;
 	},	
 
-	flip: function() {
-		var p_piece = this.next_tiles;
+	flip: function(p_piece) {
+		//var p_piece = this.next_tiles;
 		for (var x = 0; x < 5; x++) {
 			for (var y = 0; y < 5; y++) {
 				this.temp_rotation_grid[x][y] = p_piece[x][y];
@@ -721,7 +738,7 @@ NewPieceClass = Class.extend({
 		}
 
 		//this.shift(this.tiles);
-		this.shift(this.next_tiles);
+		this.shift(p_piece);
 	},
 
 	next_to_current: function () {
@@ -741,9 +758,14 @@ NewPieceClass = Class.extend({
 
 	shift: function(p_piece) {
 		//var p_piece = this.tiles;
+		var loops = 0;
 
 		while (p_piece[0][0] == 0 && p_piece[1][0] == 0 && p_piece[2][0] == 0 && p_piece[3][0] == 0 && p_piece[4][0] == 0) {
 			// top row empty, move up one
+			loops++;
+			if (loops > 100) return;
+
+
 			p_piece[0][0] = p_piece[0][1];
 			p_piece[1][0] = p_piece[1][1];
 			p_piece[2][0] = p_piece[2][1];
@@ -780,6 +802,11 @@ NewPieceClass = Class.extend({
 
 		while (p_piece[0][0] == 0 && p_piece[0][1] == 0 && p_piece[0][2] == 0 && p_piece[0][3] == 0 && p_piece[0][4] == 0) {
 			// left column empty, move left one
+
+			loops++;
+			if (loops > 100) return;
+
+
 			p_piece[0][0] = p_piece[1][0];
 			p_piece[0][1] = p_piece[1][1];
 			p_piece[0][2] = p_piece[1][2];
@@ -817,6 +844,12 @@ NewPieceClass = Class.extend({
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
 				this.block_objs[x][y].set_type(this.tiles[x][y]);
+			}
+		}
+
+		for(var x = 0; x < 5; x++) {
+			for(var y = 0; y < 5; y++) {
+				this.next_block_objs[x][y].set_type(this.next_tiles[x][y]);
 			}
 		}
 	},
@@ -864,7 +897,10 @@ NewPieceClass = Class.extend({
 
 
 		var rand = 0;// Math.floor(Math.random()*block_patterns.length);
-		//if (this.turns % 2 == 0) rand = 1;;
+		if (this.turns > 27 && this.turns % 3 == 0) rand = 1;;
+		if (this.turns > 52 && (this.turns % 3 == 0 || this.turns % 3 == 1)) rand = 1;;
+
+		
 
 		for (var i = 0; i < 25; i++) {
 			var x = i % 5;
@@ -874,9 +910,32 @@ NewPieceClass = Class.extend({
 			
 		}
 
-		if (Math.random() < 0.5) this.flip();
+		if (rand == 1 && Math.random() < 0.5) {
+			this.flip(this.next_tiles);
+			
+		}	
 
-		
+		for (var x = 0; x < 5; x++) {
+			for (var y = 0; y < 5; y++) {
+				this.locked_tiles[x][y] = 0;
+			}
+		}
+
+		// this.locked_tiles;
+		var rand_x = Math.floor(Math.random()*3);
+		var rand_y = Math.floor(Math.random()*2);
+		if (this.next_tiles[rand_x][rand_y] == 0) {
+			rand_x = Math.floor(Math.random()*2);
+			rand_y = Math.floor(Math.random()*2);
+		}
+		if (rand_x > 1) rand_x = 1;
+		if (rand_y > 1) rand_y = 1;
+		this.locked_tiles[rand_x][rand_y] = 1;
+		if (this.turns % 2 == 0) {
+			this.next_tiles[rand_x][rand_y] = 5;
+		} else {
+			this.next_tiles[rand_x][rand_y] = 6;
+		}	
 
 
 		// evaluate game grid
@@ -904,7 +963,7 @@ NewPieceClass = Class.extend({
 		}
 
 		// try to put in 1 initial fire
-		if (total_fire <= 1) {
+		if (false && total_fire <= 1) {
 			var init_fire_ = 0;
 			for(var i = 0; i < 52; i++) {
 				if (init_fire_ == 0) init_fire_ = this.add_rand_fire();
@@ -920,7 +979,8 @@ NewPieceClass = Class.extend({
 		// 6 is fire
 		for(var y = 0; y < 5; y++) {
             		for(var x = 0; x < 5; x++) {
-				if(this.next_tiles[x][y] == 0 || this.next_tiles[x][y] == 6) continue;
+				if (this.locked_tiles[x][y] == 1) continue;
+				if (this.next_tiles[x][y] == 0) continue;
 
 				
 
@@ -928,9 +988,9 @@ NewPieceClass = Class.extend({
 					if (Math.random() < 0.5 && total_bombs <= 0.66*total_hp) {  // 1.33
 
 						if ((x > 0 && this.next_tiles[x-1][y] == 6) || 
-				    		(x < 4 && this.next_tiles[x+1][y] == 6) || 
-				   		 (y > 0 && this.next_tiles[x][y-1] == 6) || 
-				    		(y < 4 && this.next_tiles[x][y+1] == 6)) continue;
+				    		    (x < 4 && this.next_tiles[x+1][y] == 6) || 
+				   		    (y > 0 && this.next_tiles[x][y-1] == 6) || 
+				    		    (y < 4 && this.next_tiles[x][y+1] == 6)) continue;
 
 						this.next_tiles[x][y] = 5;
 						total_bombs++;
@@ -944,9 +1004,11 @@ NewPieceClass = Class.extend({
 		}
 
 		
-		if (Math.random() < 0.5) {
+		if (false && Math.random() < 0.5) {
 			for(var x = 0; x < 5; x++) {
 				for(var y = 0; y < 5; y++) {
+					if (this.locked_tiles[x][y] == 1) continue;
+					if (this.next_tiles[x][y] == 0) continue;
 
 					if (this.next_tiles[x][y] == 5) {
 						this.next_tiles[x][y] = 6;
@@ -960,10 +1022,13 @@ NewPieceClass = Class.extend({
 			}
 		}
 
-		console.log('best algorithm ever');
 
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
+				if (this.locked_tiles[x][y] == 1) continue;
+				if (this.next_tiles[x][y] == 0) continue;
+				
+
 				if (this.next_tiles[x][y] == 6 && 
 				    ((x > 0 && this.next_tiles[x-1][y] == 5) || 
 					(x < 4 && this.next_tiles[x+1][y] == 5) || 
@@ -997,6 +1062,10 @@ NewPieceClass = Class.extend({
 
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
+				if (this.locked_tiles[x][y] == 1) continue;
+				if (this.next_tiles[x][y] == 0) continue;
+
+
 				 if (this.next_tiles[x][y] == 2 && Math.random() < 1 && total_hp <= 3.66*total_bombs + 10) { // 2*total_bombs
 					this.next_tiles[x][y] = 3;
 
@@ -1028,8 +1097,8 @@ NewPieceClass = Class.extend({
 		// try to put in 1 more fire
 		var fire_ = 0;
 		for(var i = 0; i < 12; i++) {
-			if (fire_ == 0) fire_ = this.add_rand_fire();
-			else break;
+			//if (fire_ == 0) fire_ = this.add_rand_fire();
+			//else break;
 		}
 
 		// early in game,
@@ -1037,9 +1106,12 @@ NewPieceClass = Class.extend({
 		for(var x = 0; x < 5; x++) {
 			for(var y = 0; y < 5; y++) {
 
-				if (this.turns < 7 && this.next_tiles[x][y] == 3) this.next_tiles[x][y] = 2;
+				if (this.next_tiles[x][y] == 0) continue;
+
+
+				if (this.turns < 36 && this.next_tiles[x][y] == 3) this.next_tiles[x][y] = 2;
 				
-				if (this.turns < 3 && this.next_tiles[x][y] == 2) this.next_tiles[x][y] = 1;
+				if (this.turns < 12 && this.next_tiles[x][y] == 2) this.next_tiles[x][y] = 1;
 
 				
 			}
@@ -1064,6 +1136,9 @@ NewPieceClass = Class.extend({
 	add_rand_fire: function () {
 		var randx = Math.floor(5*Math.random());
 		var randy = Math.floor(5*Math.random());
+
+		if (this.locked_tiles[randx][randy] == 1 && this.next_tiles[randx][randy] == 5) return 0;
+		if (this.locked_tiles[randx][randy] == 1 && this.next_tiles[randx][randy] == 6) return 1;
 
 		if (randx > 0 && this.next_tiles[randx - 1][randy] == 5) return 0;
 
@@ -1116,8 +1191,20 @@ NewPieceClass = Class.extend({
 
 		}
 
-		if (this.hide == false) this.box_next.resize(this.next_x_anchor - 0.5*this.game_state.tile_size + 6, this.next_y_anchor - 0.5*this.game_state.tile_size + 6, this.next_x_anchor + 2.5*this.game_state.tile_size + 6, this.next_y_anchor + 2.5*this.game_state.tile_size + 6);	
-		else this.box_next.resize(-999, -999, -999, -999);	
+		if (this.hide_next == false) {
+			this.box_next.resize(this.next_x_anchor - 0.5*this.game_state.tile_size + 6, this.next_y_anchor - 0.5*this.game_state.tile_size + 6, this.next_x_anchor + 2.5*this.game_state.tile_size + 6, this.next_y_anchor + 2.5*this.game_state.tile_size + 6);
+
+			
+		} else {
+			this.box_next.resize(-999, -999, -999, -999);	
+
+		}
+
+		if (this.hide_help == false && this.player_rotated == false) {
+			this.rotate_help_text.update_pos(this.x_anchor, this.y_anchor + 2.5*this.game_state.tile_size, 999,999);
+			//this.rotate_help_text.center_x(this.x_anchor + 1.5*this.game_state.tile_size);
+		} else this.rotate_help_text.update_pos(-999, -999);
+
 
 		this.draw_x = this.x_anchor;
 		this.draw_y = this.y_anchor;
@@ -1169,7 +1256,7 @@ NewPieceClass = Class.extend({
 
 	player_drop_tut: function(xtile, ytile) {
 
-		this.wait_timer = 60;
+		this.wait_timer = 4;
 
 		this.tut_mode = 1;
 		this.player_drop(xtile,ytile);

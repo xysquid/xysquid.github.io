@@ -19,6 +19,8 @@
 	Add to Home screen, MIT License
 	http://cubiq.org/add-to-home-screen
 
+
+
 	Fonts in use: Montserrat
 
 	Music By:
@@ -542,13 +544,23 @@
 
 		// Listener, NOT Handler
 
-		addListener(renderer.view,'mousedown',onMouseClick);
-		addListener(renderer.view,'mouseup',onMouseUp);
-		addListener(renderer.view,'pointerdown',onMouseClick);
-		addListener(renderer.view,'pointerup',onMouseUp);		
+		//addListener(renderer.view,'mousedown',onMouseClick);	// onclick?
+		//addListener(renderer.view,'mouseup',onMouseUp);
+		//addListener(renderer.view,'pointerdown',onMouseClick);
+		//addListener(renderer.view,'pointerup',onMouseUp);
+
+		// http://www.quirksmode.org/js/introevents.html	
+		//renderer.view.onclick = onMouseClick;	
+		 renderer.view.onmousedown = onMouseClick;
+		 renderer.view.onmouseup = onMouseUp;
+
+		 renderer.view.onpointerdown = onMouseClick;
+		 renderer.view.onpointerup = onMouseUp;
+
+		renderer.view.onmousemove = onMouseMove;
 
 		// 'pointer' events are needed for IE
-		renderer.view.addEventListener('pointermove',onMouseMove, false);
+		//renderer.view.addEventListener('pointermove',onMouseMove, false);
 		renderer.view.addEventListener('mousemove',onMouseMove, false);
 		//renderer.view.addEventListener('mousedown', onMouseClick, false);
 		//renderer.view.addEventListener('mouseup', onMouseUp, false);	

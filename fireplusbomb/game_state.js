@@ -402,6 +402,7 @@ PlayStateClass = GameStateClass.extend({
 		//this.new_piece_obj.draw_x =
 		this.new_piece_obj.generate_new();
 		this.new_piece_obj.next_to_current();
+		this.new_piece_obj.turns++;
 		this.new_piece_obj.generate_new();
 
 		this.new_piece_obj_two.generate_new();
@@ -501,6 +502,8 @@ PlayStateClass = GameStateClass.extend({
 	explosion_timer: 0,
 
 	start_lit_bomb: function(x,y,horiz,vert) {
+
+		//horiz = vert = 1;
 		
 		if (this.lit_timer == 0) {
 			var volume_ = 0.06 + 0.03*Math.random();
@@ -515,7 +518,9 @@ PlayStateClass = GameStateClass.extend({
 		}
 
 		this.lit_timer = 14*3;
+		
 		this.lit_bomb_grid[x][y].start_anim(horiz,vert);
+		//if (horiz == 0 || vert == 0) 
 
 		
 	},
@@ -960,7 +965,8 @@ StartGameStateClass = GameStateClass.extend({
 		this.play_state.new_game(0);
 
 		
-		this.play_state.new_piece_obj.hide = false;
+		this.play_state.new_piece_obj.hide_next = false;
+		this.play_state.new_piece_obj.hide_help = false;
 		this.play_state.new_piece_obj.calc_position();
 
 	},
@@ -1370,7 +1376,7 @@ GameOverStateClass = GameStateClass.extend({
 			this.newgame_y = screen_height - 64;
 
 			this.score_x = screen_width - 64;
-			this.score_y = screen_height - 128 - 64;
+			this.score_y = screen_height - 128;
 
 			if (this.prompt_button == 1) {
 				this.twitter_x = screen_width - 64;
@@ -1651,7 +1657,8 @@ TutStateClass = GameStateClass.extend({
 		this.stage = 1;
 		this.do_tut_stage(1);
 
-		
+		this.play_state.new_piece_obj.hide_help = false;
+		this.play_state.new_piece_obj.calc_position();
 
 		this.screen_resized();
 	},
