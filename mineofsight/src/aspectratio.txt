@@ -1,0 +1,28 @@
+var resize = function(e) {  
+
+var aspectRatio = 1.5;  
+
+if ((window.innerWidth / window.innerHeight) > aspectRatio) 
+
+{    
+
+	game.scale.width = window.innerHeight * aspectRatio;    game.scale.height = window.innerHeight;  } 
+
+else if ((window.innerWidth / window.innerHeight) < aspectRatio) {    
+	game.scale.width = window.innerWidth;    game.scale.height = window.innerWidth / aspectRatio;  } 
+
+else {    game.scale.width = window.innerWidth;    game.scale.height = window.innerHeight;  
+
+}  
+
+game.scale.refresh();
+}
+
+window.onresize = resize;
+var preload = function() {}
+var create = function() {  
+	game.scale.pageAlignHorizontally = true;  
+	game.scale.pageAlignVertically = true;  
+	resize();}
+
+var update = function() {}
