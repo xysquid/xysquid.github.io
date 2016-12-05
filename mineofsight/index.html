@@ -1,0 +1,199 @@
+<!doctype html>
+
+
+<!--
+
+/*
+
+	We have used the following open source projects / code:
+
+	phaser.js
+
+	pixi.js - v2.2.3
+	Copyright (c) 2012-2014, Mat Groves
+	http://goodboydigital.com/
+	pixi.js is licensed under the MIT License.
+	http://www.opensource.org/licenses/mit-license.php
+	Mat Groves http://matgroves.com/ @Doormat23
+
+	Class object based on John Resig's code; inspired by base2 and Prototype
+	http://ejohn.org/blog/simple-javascript-inheritance/
+
+	Add to Home screen, MIT License
+	http://cubiq.org/add-to-home-screen
+
+
+
+	Fonts in use: Montserrat
+
+	Music By:
+
+
+*/
+
+-->
+
+
+<html>
+    
+
+<head>
+        
+
+<meta charset="UTF-8" />
+        
+
+<title>Mine of Sight</title>
+      
+
+  
+ 
+</head>
+    
+
+<body>
+
+    
+
+<script src="phaser.min.js"></script>
+<script src="src/core.js"></script>
+<script src="src/asset_manager.js"></script>
+			
+		
+
+<style>
+    			body{margin:0;
+			     font-family: 'Montserrat', sans-serif;
+			     background: #2A2640;	}
+    		</style>
+
+<script type="text/javascript">
+
+    
+
+
+
+
+var game;
+var assets_loaded = false;
+var scriptList = [
+		"src/boot.js",
+		"src/preload.js",
+		"src/gametitle.js",		
+		"src/thegame.js",
+		
+
+		"src/spritewrapper.js",
+		"src/game_engine.js",
+		"src/game_state.js",
+		"src/entity_class.js",	
+		
+		//"sound_manager.js",
+	];
+
+
+window.onload = function () {
+	load_script_assets(scriptList, start_phaser);
+};
+
+start_phaser = function() {
+	game = new Phaser.Game(200, 200, Phaser.AUTO, "game");
+				game.state.add("Boot",boot);
+				game.state.add("Preload",preload);
+				game.state.add("GameTitle",gameTitle);
+				game.state.add("TheGame",theGame);
+				
+				game.state.start("Boot");
+};
+
+
+
+var playSoundInstance = function(sndfile, vol) {};
+
+var screen_width = 600;
+var screen_height = 600;
+var ratio = 1;
+var x_shift_screen = 0;
+
+var do_resize = function(e) {  
+console.log('IN do_rsize');
+if (game == null) return;
+if (play_screen_group == null) return;
+
+console.log('GOGO do_rsize');
+
+
+
+screen_width = (window.innerWidth);
+screen_height = (window.innerHeight);
+
+
+var w = 12*64 - 1.5*60;
+var w_portrait = 8*60;
+
+// tile size of 60
+
+if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
+else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
+
+
+
+//game.scale.width = game.scale.height = 1/ratio;
+
+//game_group.scale.x = 1/ratio;
+//game_group.scale.y = 1/ratio;
+play_group.scale.set(ratio, ratio);
+
+
+var over_x = 0;//screen_width - (8*96);
+if (screen_width > screen_height) over_x = screen_width - w*ratio;
+else over_x = screen_width - w_portrait*ratio;
+
+
+
+if (over_x > 0) x_shift_screen = 0.5*over_x;
+else x_shift_screen = 0;
+
+play_group.position.set(x_shift_screen, 0);
+
+//console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
+
+game.width = window.innerWidth;
+game.height = window.innerHeight;  
+
+gBlipFrogMenu.on_screen_resize();
+
+//game.scale.refresh();
+
+return;
+
+var aspectRatio = 1.5;  
+aspectRatio = window.innerWidth / window.innerHeight;
+if ((window.innerWidth / window.innerHeight) > aspectRatio) 
+
+{    
+
+	game.scale.width = window.innerWidth * aspectRatio;    
+	game.scale.height = window.innerHeight;  
+ 
+} 
+
+else if ((window.innerWidth / window.innerHeight) < aspectRatio) {    
+	game.scale.width = window.innerWidth;    
+	game.scale.height = window.innerWidth / aspectRatio;  } 
+
+else {    
+	game.scale.width = window.innerWidth;    
+	game.scale.height = window.innerHeight;  
+
+}  
+
+//
+}
+
+window.onresize = do_resize; 
+
+    </script>
+
+    </body>
+</html>
