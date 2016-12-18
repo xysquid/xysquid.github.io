@@ -41,8 +41,8 @@
         
 
 <meta charset="UTF-8" />
-        
-
+     
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
 <title>Mine of Sight</title>
       
 
@@ -64,8 +64,19 @@
 <style>
     			body{margin:0;
 			     font-family: 'Montserrat', sans-serif;
-			     background: #2A2640;	}
-    		</style>
+			     background: #1F1129;	}
+			.fontPreload {
+		  		font-family: 'Montserrat';
+		  		position:absolute;
+		  		left:-100px;
+			}
+
+			@font-face {
+				font-family: 'Montserrat';
+				local('Montserrat');
+				url(https://fonts.googleapis.com/css?family=Montserrat);
+			}
+   </style>
 
 <script type="text/javascript">
 
@@ -98,12 +109,17 @@ window.onload = function () {
 
 start_phaser = function() {
 	game = new Phaser.Game(200, 200, Phaser.AUTO, "game");
+	
 				game.state.add("Boot",boot);
 				game.state.add("Preload",preload);
 				game.state.add("GameTitle",gameTitle);
 				game.state.add("TheGame",theGame);
+
+				
 				
 				game.state.start("Boot");
+			
+				if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
 };
 
 
@@ -128,8 +144,8 @@ screen_width = (window.innerWidth);
 screen_height = (window.innerHeight);
 
 
-var w = 12*64 - 1.5*60;
-var w_portrait = 8*60;
+var w = 12.5*60;
+var w_portrait = 10*60;
 
 // tile size of 60
 

@@ -16,22 +16,6 @@ function update_webfonts() {
 	}
 } 
 
-// https://hacks.mozilla.org/2016/06/webfont-preloading-for-html5-games/
-
-//  The Google WebFont Loader will look for this object, so create it before loading the script.
-WebFontConfig = {
-
-    //  'active' means all requested fonts have finished loading
-    //  We set a 1 second delay before calling 'createText'.
-    //  For some reason if we don't the browser cannot render the text the first time it's created.
-    active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
-
-    //  The Google Fonts we want to load (specify as many as you like in the array)
-    google: {
-      families: ['Montserrat']
-    }
-
-};
 
 createText = function () {};
 
@@ -63,7 +47,7 @@ TextClass = Class.extend({
 		update_webfonts();
 
 		this.font = "";
-		this.font_size = 6;
+		this.font_size = 32;
 		this.layer = layer;
 
 		
@@ -86,11 +70,11 @@ TextClass = Class.extend({
 	set_font: function (font) {
 		this.font_type = font;
 		if (font == Types.Fonts.SMALL) {
-			this.font = "18";
-			this.font_size = 18;
+			this.font = "22";
+			this.font_size = 22;
 		} else if (font == Types.Fonts.MEDIUM) {
-			this.font = "24";
-			this.font_size = 24;
+			this.font = "32";
+			this.font_size = 32;
 			//this.set_scale(1.5);
 		} else if (font == Types.Fonts.LARGE) {
 			this.font = "36";
@@ -102,6 +86,9 @@ TextClass = Class.extend({
 			this.font = "14";
 			this.font_size = 14;
 			//this.set_scale(1.5);
+		} else {
+			this.font = "32";
+			this.font_size = 32;
 		}
 	},
 
@@ -112,6 +99,12 @@ TextClass = Class.extend({
 	change_text: function (str) {
 		if (this.pixitext == null) return;
 		this.pixitext.text = str;
+	},
+
+	change_size: function(font) {
+		this.set_font(font);
+		if (this.pixitext == null) return;
+		this.pixitext.fontSize = this.font_size;
 	},
 
 	set_text : function(str) {
@@ -140,12 +133,18 @@ TextClass = Class.extend({
 
 
 
-
+			var st_ = {
+				fontSize : this.font_size.toString + 'px',
+				
+			};
 			
-			this.pixitext = game.add.text(-999,-999, str);//, {fontSize : this.font_size.toString + 'px'});
+			this.pixitext = game.add.text(-999,-999, str);//, st_);
 			this.pixitext.font = 'Montserrat';
 			this.pixitext.fill = '#ffffff';
 			this.pixitext.fontSize = this.font_size;
+
+			// set padding may help with the garbled text problem
+			this.pixitext.padding.set(2, 2);	// http://www.html5gamedevs.com/topic/11469-text-cut-out-with-webfont/
 
 			//this.pixitext = new PIXI.Text(str, this.style);
 
@@ -209,14 +208,17 @@ TextClass = Class.extend({
 		this.pixitext.x = x_start;		
 		this.pixitext.y = y_start;
 
+		//this.pixitext.height = 999;
+
 		if (x_start < 0) {
 			this.pixitext.visible = false;
 		} else this.pixitext.visible = true;
 
 		//this.pixitext.wordWrapWidth = w;
 
-		if (h != null) {
-			//this.pixitext.setTextBounds(x_start,y_start,x_start+w,y_start+h);
+		if (w != null) {
+			this.pixitext.wordWrap = true;
+			this.pixitext.wordWrapWidth = w;
 		}
 			
 		//this.style.wordWrapWidth = w;

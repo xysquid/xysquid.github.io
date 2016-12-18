@@ -21,6 +21,8 @@
 
 			WHEEL: 20,
 
+			CLICK_TO_DIG: 30,
+
 			NO_EVENT: 0,
 		},
 
@@ -81,6 +83,8 @@ g_texts = {
 
 };
 
+g_click_to_dig = true;
+
 
 MenuItems = [
 
@@ -91,13 +95,15 @@ MenuItems = [
 	//[0, "Game"],
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 
+	[1, Types.Events.CLICK_TO_DIG, "Click to dig","diggy.png",],
+
 	//[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
 
 	//[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
 
 	// 
-	[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"],"sound_on_icon.png","sound_off_icon.png"],
-	[1, Types.Events.MUSIC_ONOFF, g_texts[language]["Music"],"music_on_icon.png","sound_off_icon.png"],
+	//[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"],"sound_on_icon.png","sound_off_icon.png"],
+	//[1, Types.Events.MUSIC_ONOFF, g_texts[language]["Music"],"music_on_icon.png","sound_off_icon.png"],
 
 	// Only include the bookmark if we are on zblip.com
 	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
@@ -165,8 +171,11 @@ if(location.hostname == "www.zblip.com"){
 }
 
 //social buttons:
-//MenuItems.push([2, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","http://www.facebook.com/fireplusbomb"]);
+//MenuItems.push([2, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
 MenuItems.push([2, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+
+
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
 
@@ -426,7 +435,7 @@ BlipFrogMenuClass = Class.extend({
 
 		console.log('make a pop up rect');
 		this.graphics_menu_body = new SpriteClass();
-		this.graphics_menu_body.setup_sprite('menubody.png',Types.Layer.POP_MENU, 0, 0);
+		this.graphics_menu_body.setup_sprite('menubody.png',Types.Layer.POP_MENU, -100, 0);
 		//draw_rect_perm(0,0,1,1,0x333333,Types.Layer.POP_MENU, 0, 0);
 		this.graphics_menu_body.phasersprite.anchor.setTo(0,0);
 		console.log('   done');
@@ -595,6 +604,8 @@ BlipFrogMenuClass = Class.extend({
 
 	handle_events: function(x, y, event_type) {
 
+		
+
 		// x and y were divided by the 'ratio' on the mouse/touch event
 		// here we are restoring the true on-screen x and y values
 
@@ -603,6 +614,9 @@ BlipFrogMenuClass = Class.extend({
 			this.pop_down_click = false;
 			return;
 		} 
+
+		
+
 		
 
 		if (this.menu_up == false) {
@@ -615,6 +629,8 @@ BlipFrogMenuClass = Class.extend({
 			    mouse.y > screen_height + this.menu_icon_y - this.menu_icon_size*options_menu_group.scale.x) {
 				this.pop_up();
 			} else {
+
+				
 				this.game_engine.handle_events(x, y, event_type);
 
 			}
@@ -701,7 +717,16 @@ BlipFrogMenuClass = Class.extend({
 			addtohome.show(true);
 			//addToHomescreen();
 			console.log('ADD TO HOMESCREEN');
+		} else if (MenuItems[menu_i][1] == Types.Events.CLICK_TO_DIG) {
+			if (g_click_to_dig == true) g_click_to_dig = false;
+			else g_click_to_dig = true;
+
+			this.game_engine.on_screen_resize();
+
+			this.pop_down();
 		}
+
+		
 
 
 	},
@@ -831,7 +856,8 @@ GameEngineClass = Class.extend({
 			this.push_state(new GameOverStateClass(this, this.state_stack[1]));
 
 		}	
-
+		
+		
 		// Call handle_eventson the topmost element of the state stack
 		//console.log("Event received by game engine");
 		this.state_stack[this.state_stack.length - 1].handle_events(this, x, y, event_type);

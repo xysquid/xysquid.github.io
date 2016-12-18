@@ -32,6 +32,26 @@ var theGame = function(game) {
 	state_stack = [];
 
 	map = null;
+
+	
+	// https://hacks.mozilla.org/2016/06/webfont-preloading-for-html5-games/
+
+	//  The Google WebFont Loader will look for this object, so create it before loading the script.
+	WebFontConfig = {
+
+    		//  'active' means all requested fonts have finished loading
+    		//  We set a 1 second delay before calling 'createText'.
+    		//  For some reason if we don't the browser cannot render the text the first time it's created.
+    		active: function() { game.time.events.add(Phaser.Timer.SECOND, createText, this); },
+
+    		//  The Google Fonts we want to load (specify as many as you like in the array)
+    		google: {
+      			families: ['Montserrat']
+    		}
+
+	};
+
+	
 }
  
 
@@ -46,9 +66,40 @@ theGame.prototype = {
 		 //  Load the Google WebFont Loader script
     		game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
+		game.load.audio('curve', 'assets/curve.wav');
+		game.load.audio('thud', 'assets/thud.wav');
+		game.load.audio('jump', 'assets/Jump.wav');
+		game.load.audio('blip', 'assets/Blip_Select2.wav');
+		game.load.audio('crunch', 'assets/thud.wav');
+
+		// 8 mg - stream or preload???????
+		//game.load.audio('music', 'assets/8bit Dungeon Level.mp3');
+
 	},
 
+	
+
   	create: function(){
+
+		// prevent right mouse click pop up
+		game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
+
+		//game.input.mousePointer.rightButton.onDown.add(this.onRightDown, this);
+
+		game.stage.backgroundColor = "0x1F1129";	// 1F1129
+
+		game.curveSound = game.add.audio('curve',0.15);		// this.curveSound.play();
+		game.thudSound = game.add.audio('thud',0.15);
+		game.jumpSound = game.add.audio('jump',0.15);
+		game.blipSound = game.add.audio('blip',0.15);
+		game.crunchSound = game.add.audio('blip',0.15);
+
+		// https://phaser.io/examples/v2/audio/play-music
+		//music = game.add.audio('music');
+
+    
+		//music.play();
+		//music.volume = 0.08;	// music.mute = false;
 
 		background_group = game.add.group();
 		tile_group = game.add.group();
@@ -112,8 +163,32 @@ theGame.prototype = {
 
 		mouse.x = game.input.x;
 		mouse.y = game.input.y;
-	
-		if (this.game.input.activePointer.isDown) {
+			
+		// game.input.mousePointer.rightButton
+		// if (this.game.input.activePointer.isDown) {
+
+		if (this.game.input.mousePointer.rightButton.isDown ||
+		    this.game.input.activePointer.rightButton.isDown) {
+			
+
+			console.log('this.game.input.mousePointer.rightButton.isDown');
+			
+			
+			if (gBlipFrogMenu.menu_up == true) {
+				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_CLICK_RIGHT);
+				mousedown = false;
+			} else if (input_down == false) {
+				
+				gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, 															game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
+
+			}
+
+			input_down = true;
+
+		} else if (game.input.isDown || 
+			   this.game.input.mousePointer.leftButton.isDown ||
+		    	   this.game.input.activePointer.leftButton.isDown ||
+			   game.input.pointer1.isDown) {
 			input_down = true;
 			console.log('this.game.input.activePointer.isDown');
 			console.log('game.input.x ' + game.input.x);
@@ -126,9 +201,10 @@ theGame.prototype = {
 				gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_CLICK);
 
 			}
-		} else if (input_down == true) {
+		} else if (input_down == true && !this.game.input.isDown ) {
 			input_down = false;
 			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
+			
 		}
 		
 		gBlipFrogMenu.update();
