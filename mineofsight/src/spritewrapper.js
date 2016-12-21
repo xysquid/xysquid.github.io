@@ -76,13 +76,17 @@ TextClass = Class.extend({
 			this.font = "32";
 			this.font_size = 32;
 			//this.set_scale(1.5);
+		} else if (font == Types.Fonts.MED_SMALL) {
+			this.font = "18";
+			this.font_size = 18;
+			//this.set_scale(1.5);
 		} else if (font == Types.Fonts.LARGE) {
 			this.font = "36";
 			this.font_size = 36;
 		} else if (font == Types.Fonts.SMALL_WHITE) {
 			this.font = "smw";
 			this.font_size = 14;
-		}  else if (font == Types.Fonts.XSMALL) {
+		} else if (font == Types.Fonts.XSMALL) {
 			this.font = "14";
 			this.font_size = 14;
 			//this.set_scale(1.5);

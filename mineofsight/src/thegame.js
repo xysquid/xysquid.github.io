@@ -21,6 +21,7 @@ var play_container;
 
 var input_down = false;
 var mouse = {x: 0, y: 0};
+var g_keypressed = -1;
 
 
 var theGame = function(game) {
@@ -136,6 +137,10 @@ theGame.prototype = {
 		console.log('trigger do_rsize');
 		do_resize();
 		
+		game.input.onDown.add(this.on_down);
+		game.input.onUp.add(this.on_up);
+	
+		game.input.keyboard.onDownCallback = this.on_key;
 
 
 		//var gameTitle = this.game.add.sprite(160,160,'atlas_blocks', 'block0.png');
@@ -156,19 +161,29 @@ theGame.prototype = {
 
 	// http://www.gamefromscratch.com/post/2014/08/11/Adventures-in-Phaser-with-TypeScript-Handling-MouseTouch-Input.aspx
 
-	
+	on_key: function(event) {
 
-	update: function() {
+		console.log(event.keyCode.toString());
 
+		g_key_pressed = event.keyCode || event.which;
 
-		mouse.x = game.input.x;
-		mouse.y = game.input.y;
+		gBlipFrogMenu.handle_events(0,0, Types.Events.KEY_DOWN);
+	},
+
+	on_up: function() {
+		if (input_down == true) { // && !this.game.input.isDown ) {
+			input_down = false;
+			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
 			
-		// game.input.mousePointer.rightButton
-		// if (this.game.input.activePointer.isDown) {
+		}
+	},
 
-		if (this.game.input.mousePointer.rightButton.isDown ||
-		    this.game.input.activePointer.rightButton.isDown) {
+	on_down: function() {
+
+
+
+		if (game.input.mousePointer.rightButton.isDown ||
+		    game.input.activePointer.rightButton.isDown) {
 			
 
 			console.log('this.game.input.mousePointer.rightButton.isDown');
@@ -186,8 +201,8 @@ theGame.prototype = {
 			input_down = true;
 
 		} else if (game.input.isDown || 
-			   this.game.input.mousePointer.leftButton.isDown ||
-		    	   this.game.input.activePointer.leftButton.isDown ||
+			   game.input.mousePointer.leftButton.isDown ||
+		    	   game.input.activePointer.leftButton.isDown ||
 			   game.input.pointer1.isDown) {
 			input_down = true;
 			console.log('this.game.input.activePointer.isDown');
@@ -195,17 +210,34 @@ theGame.prototype = {
 
 			
 			if (gBlipFrogMenu.menu_up == true) {
-				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_CLICK);
+				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_DOWN);
 				mousedown = false;
 			} else {
-				gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_CLICK);
+				gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio, Types.Events.MOUSE_DOWN);
 
 			}
-		} else if (input_down == true && !this.game.input.isDown ) {
-			input_down = false;
-			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
+		} 
+	},
+
+	
+
+	update: function() {
+
+
+
+
+		mouse.x = game.input.x;
+		mouse.y = game.input.y;
+			
+		// game.input.mousePointer.rightButton
+		// if (this.game.input.activePointer.isDown) {
+
+		if (input_down == true){// && !this.game.input.isDown ) {
+			//input_down = false;
+			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_DOWN);
 			
 		}
+		
 		
 		gBlipFrogMenu.update();
 	},

@@ -479,7 +479,7 @@ InfoClass = Class.extend({
 		this.block_obj.hide();
 
 		this.text = new TextClass(Types.Layer.HUD);			// dunno if BACKGROUND works yet
-		this.text.set_font(Types.Fonts.SMALL);
+		this.text.set_font(Types.Fonts.MED_SMALL);
 		this.text.set_text("");
 		
 
@@ -497,11 +497,14 @@ InfoClass = Class.extend({
 				this.block_obj.set_texture('eye.png');
 				this.text.change_text("      Number of mines in line of sight, this row and column. Blocked by walls.");
 			} else if (hint_ == 3) {
-				this.block_obj.set_texture('plus.png');
-				this.text.change_text("      Addition of these two hints.");
+				this.block_obj.set_texture('eyeplustouch.png');
+				this.text.change_text("      The number of mines seen PLUS the number of mines touched. Touched mines will be counted 2X");
 			} else if (hint_ == 4) {
 				this.block_obj.set_texture('8hand.png');
 				this.text.change_text("      Number of mines in the 8 surrounding tiles.");
+			} else if (hint_ == 5) {
+				this.block_obj.set_texture('heart.png');
+				this.text.change_text("      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 8 tiles around them.");
 			} else {
 				// uncovered, no hint, empty
 				
@@ -722,8 +725,8 @@ BlockClass = Class.extend({
 			else if (x == this.x + 1 && y == this.y) return 1;
 			else if (x == this.x - 1 && y == this.y) return 1;
 
-		} else if (this.preset_hint_type == 2) {
-			// eye
+		} else if (this.preset_hint_type == 2 || this.preset_hint_type == 5) {
+			// eye or heart
 			if (x != this.x && y != this.y) return 0;
 
 			if (x == this.x) {
@@ -1120,6 +1123,15 @@ BlockClass = Class.extend({
 
 		if (this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x,this.y + 1) == 2) return false;
 
+		// diag
+		if (this.x > 0 && this.y > 0 && this.game_state.get_block_type(this.x - 1,this.y - 1) == 2) return false;
+
+		if (this.x < this.game_state.grid_w - 1 && this.y > 0 && this.game_state.get_block_type(this.x + 1,this.y - 1) == 2) return false;
+
+		if (this.x < this.game_state.grid_w - 1 && this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x + 1,this.y + 1) == 2) return false;
+
+		if (this.y > 0 && this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x - 1,this.y + 1) == 2) return false;
+
 		return true; // so lonely
 
 	},
@@ -1253,6 +1265,8 @@ BlockClass = Class.extend({
 
 		this.block_sprite.set_texture(g_block_sprites[gemtype]);
 		this.block_shadow_sprite.set_texture(g_block_shadow_sprites[gemtype]);
+
+		if (gemtype == 2) this.block_shadow_sprite.hide();	// bomb
 		//this.block_blink_sprite.set_texture(g_block_blink_sprites[gemtype]);
 
 		

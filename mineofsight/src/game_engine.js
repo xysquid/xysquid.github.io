@@ -17,13 +17,15 @@
 			TWEET_SCORE: 10,
 			MUSIC_ONOFF: 11,
 			BOOKMARK: 12,
-			GAME_OVER: 12,
+			GAME_OVER: 13,
 
 			WHEEL: 20,
 
 			CLICK_TO_DIG: 30,
 
 			NO_EVENT: 0,
+
+			MOUSE_DOWN:  14,
 		},
 
 		Fonts: {
@@ -31,6 +33,7 @@
 			MEDIUM: 1,
 			SMALL_WHITE: 2,
 			XSMALL: 3,
+			MED_SMALL: 4,
 		},
 
 		Layer: {
@@ -855,7 +858,7 @@ GameEngineClass = Class.extend({
 			}
 			this.push_state(new GameOverStateClass(this, this.state_stack[1]));
 
-		}	
+		} 
 		
 		
 		// Call handle_eventson the topmost element of the state stack
