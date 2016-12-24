@@ -55,19 +55,9 @@
 
     
 
-
-<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDHBCtEkJISw_-axOIsJsFJFUdwnDksGVk",
-    authDomain: "mine-of-sight.firebaseapp.com",
-    databaseURL: "https://mine-of-sight.firebaseio.com",
-    storageBucket: "",
-    messagingSenderId: "452052921769"
-  };
-  firebase.initializeApp(config);
-</script>
+<div id = 'pbar' >
+	<progress id='prog_bar' value = '0' max='100'></progress>
+</div>
 
 
 <script src="phaser.min.js"></script>
@@ -77,20 +67,62 @@
 		
 
 <style>
-    			body{margin:0;
+    	body{margin:0;
 			     font-family: 'Montserrat', sans-serif;
 			     background: #1F1129;	}
 			.fontPreload {
 		  		font-family: 'Montserrat';
 		  		position:absolute;
 		  		left:-100px;
-			}
+	}
 
-			@font-face {
+	@font-face {
 				font-family: 'Montserrat';
 				local('Montserrat');
 				url(https://fonts.googleapis.com/css?family=Montserrat);
-			}
+	}
+
+	progress {
+  		border: none;
+		-webkit-appearance: none;
+		width: 300px;
+		height: 8px;
+		margin: 100px auto;
+		display: block;
+
+	}
+
+	progress::-webkit-progress-bar {
+ 		background-color: #FFFFFF;
+  		border: 0;
+  		height: 8px;
+  		border-radius: 0px;
+		padding: 0px;
+
+		box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
+	}
+
+	progress::-webkit-progress-value {
+		border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+		background:
+		//91AF28
+		
+		-webkit-linear-gradient(left, #C9FA1F, #C9FA1F);
+	
+	/* Looks great, now animating it */
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	-webkit-animation: move 5s linear 0 infinite;
+	}
+
+	progress::-moz-progress-bar {
+  		background-color: #C9FA1F;
+  		border: 0;
+  		height: 8px;
+  		border-radius: 0px;
+		
+	}
+
    </style>
 
 <script type="text/javascript">
@@ -105,7 +137,7 @@ var assets_loaded = false;
 var scriptList = [
 		"src/boot.js",
 		"src/preload.js",
-		"src/gametitle.js",		
+		//"src/gametitle.js",		
 		"src/thegame.js",
 		
 
@@ -117,24 +149,37 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+var pBar = document.getElementById('prog_bar');
+pBar.value += 20; 
+
 
 window.onload = function () {
 	load_script_assets(scriptList, start_phaser);
 };
 
 start_phaser = function() {
-	game = new Phaser.Game(200, 200, Phaser.AUTO, "game");
+
+	pBar.value += 20; 
+	
+
+	game = new Phaser.Game(200, 200, Phaser.AUTO, "game", {
+    		create : function() {
+        		this.game.stage.backgroundColor = "0x1F1129";
+		}
+    	});
+
+				
 	
 				game.state.add("Boot",boot);
 				game.state.add("Preload",preload);
-				game.state.add("GameTitle",gameTitle);
+				//game.state.add("GameTitle",gameTitle);
 				game.state.add("TheGame",theGame);
 
-				
+				//
 				
 				game.state.start("Boot");
 			
-				if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
+	if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
 };
 
 
