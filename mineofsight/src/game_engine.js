@@ -253,7 +253,8 @@ MenuPositions = Class.extend({
 		if (this.menu_height > screen_height*1.1) {	// this.menu_item_height*2
 			// out of space!
 
-			options_menu_group.scale.x = options_menu_group.scale.y = 0.5*options_menu_group.scale.x;
+			options_menu_group.scale.x = options_menu_group.scale.y = 0.8*options_menu_group.scale.x;	// 0.5
+
 			this.menu_width = 2*this.menu_width;
 			icons_per_row = 2*icons_per_row;
 			
@@ -649,7 +650,7 @@ BlipFrogMenuClass = Class.extend({
 		y = mouse.y;//y*ratio;
 		x = mouse.x;//x*ratio;
 
-		if (event_type == Types.Events.MOUSE_CLICK && 
+		if (event_type == Types.Events.MOUSE_DOWN && 
 		    y < screen_height - this.menu_positions.menu_height){//*devicePixelRatio) {
 			this.pop_down();
 			this.pop_down_click = true;
@@ -895,3 +896,5 @@ GameEngineClass = Class.extend({
 
 gBlipFrogMenu = new BlipFrogMenuClass();
 gGameEngine = new GameEngineClass();
+
+pBar.value += 10;

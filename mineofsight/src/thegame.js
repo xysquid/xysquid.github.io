@@ -249,3 +249,5 @@ theGame.prototype = {
 	
 	
 }
+
+pBar.value += 10;

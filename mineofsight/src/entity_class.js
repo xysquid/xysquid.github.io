@@ -189,6 +189,79 @@ ExplosionClass = Class.extend({
 
 });
 
+LevelEditorTileSelectClass = Class.extend({
+
+
+	build_x: [],
+	build_y: [],
+	build_codes: [],
+	build_sprites: [],
+
+	selected: -1,
+
+	size_: 64,
+
+	init: function(game_state) {
+		
+	},
+
+	add_new: function(spritename, code) {
+		var sprite_ = new SpriteClass;
+		sprite_.setup_sprite(spritename,Types.Layer.GAME_MENU);
+
+		this.build_codes.push(code);
+		this.build_sprites.push(sprite_);
+		this.build_x.push(0);
+		this.build_y.push(0);
+		
+	},
+
+	click : function (x, y) {
+		//this.selected = -1;
+		for (var i = 0; i < this.build_x.length; i++) {
+
+			//this.highlight_off();
+			
+		
+			if (x > this.build_x[i] - this.size_*0.5 &&
+			    x < this.build_x[i] + this.size_*0.5 &&
+			    y > this.build_y[i] - this.size_*0.5 &&
+			    y < this.build_y[i] + this.size_*0.5) {
+			
+				this.selected = i;
+				//alert('selected ' + i);
+
+				return;
+			}
+
+		}
+
+		
+	},
+
+	hide: function() {
+		for (var i = 0; i < this.build_x.length; i++) {
+			this.build_sprites[i].hide();
+		}
+	},
+
+  	make_vis: function() {
+		for (var i = 0; i < this.build_x.length; i++) {
+			this.build_sprites[i].make_vis();
+			this.build_x[i] = i*this.size_ + 2*this.size_;
+			this.build_y[i] = screen_height - 0.5*this.size_;
+			this.build_sprites[i].update_pos(this.build_x[i], this.build_y[i]);
+			
+			
+		}
+	},
+
+	screen_resized: function() {
+		
+	}
+
+});
+
 // levels 1-20, 31-60
 // challenge modes
 // 1992 rand gen mode
@@ -436,7 +509,7 @@ OverworldSpritesClassReuseable = Class.extend({
 				this.level_text[i].update_pos(x + 20, y - 20,96,999);
 				this.level_text[i].center_x(x + 20);
 			} else {
-				this.level_text[i].update_pos(2.25*this.level_tile_size, y - 0.125*this.level_tile_size);
+				this.level_text[i].update_pos(3.5*this.level_tile_size, y - 0.125*this.level_tile_size,999,999);
 				///this.level_text[i].center_x(x + 20);
 				i += 4;
 
@@ -609,6 +682,8 @@ BlockClass = Class.extend({
 	join_h_sprite: null,
 	join_v_sprite: null,
 
+	editor_mode: 0,		// draw half covered
+
 	init: function(game_state) {
 
 		this.game_state = game_state;
@@ -711,7 +786,7 @@ BlockClass = Class.extend({
 
 	is_in_range: function(x,y) {
 
-		
+		if (x == this.x && y == this.y) return 0;
 
 
 		if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 1) return 0;
@@ -745,7 +820,7 @@ BlockClass = Class.extend({
 					else if (yy == y) return 1;
 				}
 
-			} else {
+			} else if (y == this.y) {
 				// look right
 				
 				for (var xx = this.x; xx < this.game_state.grid_w; xx++) {
@@ -755,7 +830,7 @@ BlockClass = Class.extend({
 				}
 
 				// look left
-				for (var xx = this.x; xx > 0; xx--) {
+				for (var xx = this.x; xx >= 0; xx--) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
@@ -764,9 +839,6 @@ BlockClass = Class.extend({
 			}
 			
 
-			
-
-			
 			
 
 			
@@ -799,6 +871,8 @@ BlockClass = Class.extend({
 		//this.hint_touch_sprite.hide();
 		//this.hint_add_sprite.hide();
 		//this.hint_eye_num_text.update_pos(-999,-999);
+
+		this.editor_mode = 0;
 	},
 
 	join_h: false,
@@ -832,22 +906,30 @@ BlockClass = Class.extend({
 		this.covered_up = true;
 		this.flag_on = false;
 
+		
+
 		this.block_sprite.hide();
 		this.block_shadow_sprite.hide();
 
-		this.hint_eye_sprite.hide();
-		this.hint_touch_sprite.hide();
-		this.hint_add_sprite.hide();
-		this.hint_eight_touch_sprite.hide();
-		this.hint_heart_sprite.hide();
+		if (this.editor_mode == 0) {
+			this.hint_eye_sprite.hide();
+			this.hint_touch_sprite.hide();
+			this.hint_add_sprite.hide();
+			this.hint_eight_touch_sprite.hide();
+			this.hint_heart_sprite.hide();
 		
 
-		this.hint_touch_num_text.update_pos(-999,-999);
-		this.hint_eye_num_text.update_pos(-999,-999);
-		this.hint_add_num_text.update_pos(-999,-999);
-		this.hint_heart_num_text.update_pos(-999,-999);
+			this.hint_touch_num_text.update_pos(-999,-999);
+			this.hint_eye_num_text.update_pos(-999,-999);
+			this.hint_add_num_text.update_pos(-999,-999);
+			this.hint_heart_num_text.update_pos(-999,-999);
+		}
+
+		
 
 		this.set_type(this.block_type);
+
+		if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 
 	},
 
@@ -1235,8 +1317,14 @@ BlockClass = Class.extend({
 			this.block_sprite.make_vis();
 			this.block_shadow_sprite.make_vis();
 
-			this.block_sprite.set_texture('g_block2.png');
 			this.block_shadow_sprite.set_texture('block2_shadow.png');
+
+			if (this.editor_mode == 1) {
+				this.block_sprite.set_texture('qn_half.png');
+				this.block_shadow_sprite.hide();
+			} else this.block_sprite.set_texture('g_block2.png');
+
+			
 			//this.block_blink_sprite.set_texture(g_block_blink_sprites[gemtype]);
 
 			
@@ -1356,4 +1444,4 @@ g_entity_factory['Landmine'] = LandmineClass;
 
 
 
-
+pBar.value += 10;
