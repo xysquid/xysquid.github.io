@@ -196,9 +196,6 @@ console.log('IN do_rsize');
 if (game == null) return;
 if (play_screen_group == null) return;
 
-console.log('GOGO do_rsize');
-
-
 
 screen_width = (window.innerWidth);
 screen_height = (window.innerHeight);
@@ -236,6 +233,10 @@ play_group.position.set(x_shift_screen, 0);
 
 game.width = window.innerWidth;
 game.height = window.innerHeight;  
+
+if (window.devicePixelRatio != 1) {
+	options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+}
 
 gBlipFrogMenu.on_screen_resize();
 
