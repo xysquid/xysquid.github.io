@@ -255,6 +255,8 @@ MenuPositions = Class.extend({
 
 			options_menu_group.scale.x = options_menu_group.scale.y = 0.8*options_menu_group.scale.x;	// 0.5
 
+			
+
 			this.menu_width = 2*this.menu_width;
 			icons_per_row = 2*icons_per_row;
 			
@@ -515,7 +517,7 @@ BlipFrogMenuClass = Class.extend({
 
 		this.menu_y_target = screen_height - this.menu_positions.menu_height;
 		//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
-		this.game_y_target = -this.menu_positions.menu_height*1;
+		this.game_y_target = -this.menu_positions.menu_height*options_menu_group.scale.x;
 		this.moving = 12;
 
 		update_webfonts();
