@@ -236,6 +236,7 @@ game.height = window.innerHeight;
 
 if (window.devicePixelRatio != 1) {
 	options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+	gBlipFrogMenu.menu_item_scale = window.devicePixelRatio;
 }
 
 gBlipFrogMenu.on_screen_resize();
