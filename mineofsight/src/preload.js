@@ -18,7 +18,7 @@ preload.prototype = {
 
 		if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
 
-		 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+		
 
 		//whiteblock = this.game.add.sprite(x,y, , 'atlas_blocks', 'block0.png')
 

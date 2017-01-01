@@ -7,9 +7,11 @@ var game_group;
 boot.prototype = {
 	preload: function(){
           //this.game.load.image("loading","assets/loading.png"); 
+
+		game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
 	},
   	create: function(){
-		game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+		
 
 		
 		

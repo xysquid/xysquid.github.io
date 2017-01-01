@@ -715,7 +715,7 @@ BlockClass = Class.extend({
 		this.flag_sprite.setup_sprite("flagblock.png",Types.Layer.GAME);
 		this.flag_sprite.hide();
 
-		this.hint_eye_num_text = new TextClass(Types.Layer.TILE);
+		this.hint_eye_num_text = new CounterClass(Types.Layer.TILE);
 		this.hint_eye_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_eye_num_text.set_text("");
 		this.hint_eye_num_text.update_pos(-999,-999);
@@ -726,7 +726,7 @@ BlockClass = Class.extend({
 		this.hint_eye_sprite.hide();
 
 		
-		this.hint_heart_num_text = new TextClass(Types.Layer.TILE);
+		this.hint_heart_num_text = new CounterClass(Types.Layer.TILE);
 		this.hint_heart_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_heart_num_text.set_text("");
 		this.hint_heart_num_text.update_pos(-999,-999);
@@ -737,7 +737,7 @@ BlockClass = Class.extend({
 		this.hint_heart_sprite.hide();
 
 
-		this.hint_touch_num_text = new TextClass(Types.Layer.TILE);
+		this.hint_touch_num_text = new CounterClass(Types.Layer.TILE);
 		this.hint_touch_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_touch_num_text.set_text("");
 		this.hint_touch_num_text.update_pos(-999,-999);
@@ -750,7 +750,7 @@ BlockClass = Class.extend({
 		this.hint_eight_touch_sprite.setup_sprite("8hand.png",Types.Layer.GAME);
 		this.hint_eight_touch_sprite.hide();
 
-		this.hint_add_num_text = new TextClass(Types.Layer.TILE);
+		this.hint_add_num_text = new CounterClass(Types.Layer.TILE);
 		this.hint_add_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_add_num_text.set_text("");
 		this.hint_add_num_text.update_pos(-999,-999);

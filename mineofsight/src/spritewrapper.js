@@ -16,6 +16,131 @@ function update_webfonts() {
 	}
 } 
 
+NumberClass = Class.extend({
+
+});
+
+
+CounterClass = Class.extend({
+
+	number: 0,
+	num_to_str: "",
+
+	pos : {x: 0, y: 0},
+
+	numerals: [2],
+
+	char_sprites: [2],
+
+	char_widths: [2],
+
+	font_type: 0,
+	font: "",
+	font_size: 14,
+
+	layer: 0,
+
+	init: function(layer) {
+		this.font = "";
+		this.font_size = 6;
+		this.layer = layer;
+
+		this.char_sprites[0] = new SpriteClass();
+		this.char_sprites[1] = new SpriteClass();
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+			this.numerals[i] = 0;
+			this.char_sprites[i].setup_sprite('0.png', this.layer);
+		}
+	},
+
+	set_font: function(f_) {},
+
+	set_text: function(t_) {
+		this.change_text(t_);
+	},
+
+	change_text: function(text_) {
+		this.num_to_str = text_;
+
+		this.str_len = text_.length;
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+
+			this.char_sprites[i].make_vis();
+			if (this.num_to_str.length <= i) {
+				this.char_sprites[i].hide();
+				continue;
+			}
+			this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
+		}
+
+		
+	},
+
+	str_len: 1,
+
+	set_num: function(num) {
+
+		
+
+		this.number = num;
+		this.num_to_str = num.toString();
+		
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+
+			this.char_sprites[i].make_vis();
+			if (this.num_to_str.length <= i) {
+				this.char_sprites[i].hide();
+				continue;
+			}
+			this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
+		}
+			
+		
+	},
+
+	center_x : function(x_) {
+		
+	},
+
+	update_pos : function (x_start,y_start,w,h) {
+
+		this.pos.x = x_start;
+		this.pos.y = y_start;
+
+		var x = x_start;
+		var y = y_start;
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+
+			if (this.str_len == 1 && i == 1) break; 
+
+			this.char_sprites[i].update_pos(x,y + 16);
+
+			if (x < 0) this.char_sprites[i].hide();
+			else this.char_sprites[i].make_vis();
+
+			
+
+			//spr_name = spr_name + this.font + ".png";
+			
+			if (i < this.char_sprites.length - 1) x = x - 17 - 5;//this.font_size;
+			
+			
+
+			if (x > x_start + w) {
+				//x = x_start;
+				//y = y + this.font_size;
+			}
+		}
+
+		this.total_x = x - x_start;// + 0.5*this.char_widths[0] + 0.5*this.char_widths[this.char_sprites.length - 1];
+	},
+
+});
+
 
 createText = function () {};
 
@@ -53,6 +178,8 @@ TextClass = Class.extend({
 		
 
 		g_text_objs.push(this);
+
+		
 
 		
 	},
@@ -309,7 +436,8 @@ SpriteClass = Class.extend({
 	
 		
 
-		this.phasersprite = game.add.sprite(x,y,'atlas_blocks',name);
+		//this.phasersprite = game.add.sprite(x,y,'atlas_blocks',name);
+		this.phasersprite = game.add.image(x,y,'atlas_blocks',name);
 		this.phasersprite.anchor.setTo(0.5,0.5);
 		
 
@@ -372,3 +500,5 @@ SpriteClass = Class.extend({
 
 	
 });
+
+pBar.value += 10;
