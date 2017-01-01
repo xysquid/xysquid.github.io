@@ -60,7 +60,7 @@ g_texts = {
 
 	"en" : {
 		"Title"	   : "MINE OF SIGHT",
-		"New Game" : "Change level",
+		"New Game" : "MENU",
 		"Tutorial" : "TUTORIAL",
 		"Sound"	   : "Sound",
 		"Music"	   : "Music",
@@ -844,7 +844,7 @@ GameEngineClass = Class.extend({
 			}
 			//this.change_state(new RestartGameStateClass(this, this.state_stack[1]));
 			//this.push_state(new RestartGameStateClass(this, this.state_stack[1]));
-			this.push_state(new OverworldStateClass(this, this.state_stack[1]));
+			this.push_state(new MenuStateClass(this, this.state_stack[1]));
 		} else if (event_type == Types.Events.TUTORIAL) {
 
 			while(this.state_stack.length > 2) {

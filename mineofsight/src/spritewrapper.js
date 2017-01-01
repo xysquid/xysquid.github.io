@@ -107,11 +107,15 @@ CounterClass = Class.extend({
 
 	update_pos : function (x_start,y_start,w,h) {
 
+		if (this.str_len == 2) x_start = x_start - 10;
+
 		this.pos.x = x_start;
 		this.pos.y = y_start;
 
 		var x = x_start;
 		var y = y_start;
+
+		
 
 		for(var i = 0; i < this.char_sprites.length; i++) {
 
@@ -126,7 +130,7 @@ CounterClass = Class.extend({
 
 			//spr_name = spr_name + this.font + ".png";
 			
-			if (i < this.char_sprites.length - 1) x = x - 17 - 5;//this.font_size;
+			if (i < this.char_sprites.length - 1) x = x + 17 + 5;//this.font_size;
 			
 			
 
@@ -407,6 +411,64 @@ ButtonClass = Class.extend({
 		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
 		this.button_sprite.update_pos(x,y);
 		this.sprite_obj.update_pos(x,y);
+	}
+
+});
+
+
+ToggleClass = Class.extend({
+
+	
+	sprite_obj: null,
+
+	button_sprite: null,
+
+	layer: 0,
+
+	init: function() {
+		//this.button_shadow_sprite = new SpriteClass();
+		this.button_sprite = new SpriteClass();
+		this.sprite_obj = new SpriteClass();
+	},
+
+	set_scale: function(scale) {
+		this.sprite_obj.set_scale(scale);
+	},
+
+	make_vis: function() {
+		this.button_sprite.make_vis();
+		//this.button_shadow_sprite.make_vis();
+		this.sprite_obj.make_vis();
+	},
+
+	hide: function() {
+		this.button_sprite.hide();
+		//this.button_shadow_sprite.hide();
+		this.sprite_obj.hide();
+	},
+
+	setup_sprite: function(name,layer) {
+		this.layer = layer;
+		//this.button_shadow_sprite.setup_sprite("button_shadow.png",layer);
+		this.button_sprite.setup_sprite("button_small.png",layer);
+		this.sprite_obj.setup_sprite(name,layer);
+
+		this.toggle();
+	},
+
+	update_pos: function(x,y) {
+		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
+		this.button_sprite.update_pos(x,y);
+		this.sprite_obj.update_pos(x + 52,y);
+	},
+
+	toggled: -1,
+
+	toggle: function() {
+		this.toggled = -this.toggled;
+
+		if (this.toggled == 1) this.button_sprite.set_texture("button_small_on.png",this.layer);
+		else this.button_sprite.set_texture("button_small.png",this.layer);
 	}
 
 });

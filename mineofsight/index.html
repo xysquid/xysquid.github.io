@@ -46,8 +46,36 @@
 <title>Mine of Sight</title>
       
 
-  
+<meta name="description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
+	
+<link rel="canonical" href="http://www.zblip.com/mineofsight"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="user-scalable=no" />
+<meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ZBlipGames" />
+<meta name="twitter:title" content="Mine of Sight" />
+<meta name="twitter:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web - Play Now" />
+<meta name="twitter:image" content="http://www.zblip.com/mineofsight/thumb440.png" />
+<meta name="twitter:url" content="http://www.zblip.com/mineofsight/" />
+
+<meta property="og:url" content="http://www.zblip.com/mineofsight">
+	
+	<meta property="og:image" content="www.zblip.com/mineofsight/thumb440.jpg">
+	<meta property="og:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
+	<meta property="og:title" content="Mine of Sight">
+	<meta property="og:site_name" content="ZBlip">
+	
+	<meta property="og:type"          content="game" />
+	<meta property="og:see_also" content="http://www.zblip.com">
+
+	<meta itemprop="name" content="Mine of Sight">
+	<meta itemprop="description" content="Challenging logic puzzle">
+	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
+
+
 </head>
     
 
@@ -60,7 +88,7 @@
 </div>
 
 
-<script src="phaser.min.js"></script>
+<!--<script src="phaser-slim.min.js"></script>-->
 <script src="src/core.js"></script>
 <script src="src/asset_manager.js"></script>
 			
@@ -135,11 +163,16 @@
 var game;
 var assets_loaded = false;
 var scriptList = [
-		"src/boot.js",
-		"src/preload.js",
+
+		"phaser-slim.min.js",
+
+		//"src/boot.js",
+		//"src/preload.js",
 		//"src/gametitle.js",		
 		"src/thegame.js",
-		
+
+		//"assets/blocks.png",
+		//"assets/blocks.json",
 
 		"src/spritewrapper.js",
 		"src/game_engine.js",
@@ -167,7 +200,8 @@ start_phaser = function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
     	});
-
+	
+				 pBar.parentNode.removeChild(pBar);	// remove the progress bar
 				
 	
 				game.state.add("Boot",boot);

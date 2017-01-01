@@ -577,7 +577,7 @@ InfoClass = Class.extend({
 				this.text.change_text("      Number of mines in the 8 surrounding tiles.");
 			} else if (hint_ == 5) {
 				this.block_obj.set_texture('heart.png');
-				this.text.change_text("      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 8 tiles around them.");
+				this.text.change_text("      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.");
 			} else {
 				// uncovered, no hint, empty
 				
@@ -809,6 +809,7 @@ BlockClass = Class.extend({
 				// look up
 				for (var yy = this.y; yy >= 0; yy--) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
+					//console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -816,6 +817,7 @@ BlockClass = Class.extend({
 				// look down
 				for (var yy = this.y; yy < this.game_state.grid_h; yy++) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
+					//console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -825,6 +827,7 @@ BlockClass = Class.extend({
 				
 				for (var xx = this.x; xx < this.game_state.grid_w; xx++) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
+					//console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -832,6 +835,7 @@ BlockClass = Class.extend({
 				// look left
 				for (var xx = this.x; xx >= 0; xx--) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
+					//console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -1044,6 +1048,10 @@ BlockClass = Class.extend({
 			num = this.calc_hint_eye_num(only_count_lonely_mines);
 			
 			
+		} else if (hinttype == 6) {
+			
+			
+			
 		}
 
 		return num;
@@ -1204,6 +1212,8 @@ BlockClass = Class.extend({
 		if (this.y > 0 && this.game_state.get_block_type(this.x,this.y - 1) == 2) return false;
 
 		if (this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x,this.y + 1) == 2) return false;
+
+		return true; // so lonely
 
 		// diag
 		if (this.x > 0 && this.y > 0 && this.game_state.get_block_type(this.x - 1,this.y - 1) == 2) return false;
