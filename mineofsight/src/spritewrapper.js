@@ -60,6 +60,14 @@ CounterClass = Class.extend({
 		this.change_text(t_);
 	},
 
+	set_alpha: function(alpha_) {
+		//this.phasersprite.alpha = alpha_;
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+			this.char_sprites[i].set_alpha(alpha_);
+		}
+	},
+
 	change_text: function(text_) {
 		this.num_to_str = text_;
 
@@ -559,6 +567,10 @@ SpriteClass = Class.extend({
 
 		this.setup_sprite(name, this.layer, this.x, this.y);
 	},
+
+	set_alpha: function(alpha_) {
+		this.phasersprite.alpha = alpha_;
+	}
 
 	
 });

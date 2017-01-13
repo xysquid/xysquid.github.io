@@ -22,6 +22,8 @@
 			WHEEL: 20,
 
 			CLICK_TO_DIG: 30,
+			HOLD_TO_FLAG: 31,
+			RIGHT_TO_FLAG: 32,
 
 			NO_EVENT: 0,
 
@@ -87,7 +89,7 @@ g_texts = {
 };
 
 g_click_to_dig = true;
-
+g_hold_to_flag = true;
 
 MenuItems = [
 
@@ -98,7 +100,11 @@ MenuItems = [
 	//[0, "Game"],
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 
-	[1, Types.Events.CLICK_TO_DIG, "Click to dig","diggy.png",],
+	[1, Types.Events.CLICK_TO_DIG, "MARK FIRST","redflag.png",],
+
+	[1, Types.Events.HOLD_TO_FLAG, "HOLD TO\nFLAG","redflag.png",],
+
+	[1, Types.Events.RIGHT_TO_FLAG, "RIGHT TO\nFLAG","redflag.png",],
 
 	//[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
 
@@ -724,8 +730,22 @@ BlipFrogMenuClass = Class.extend({
 			//addToHomescreen();
 			console.log('ADD TO HOMESCREEN');
 		} else if (MenuItems[menu_i][1] == Types.Events.CLICK_TO_DIG) {
-			if (g_click_to_dig == true) g_click_to_dig = false;
-			else g_click_to_dig = true;
+			g_click_to_dig = false;
+			// mark first
+
+			this.game_engine.on_screen_resize();
+
+			this.pop_down();
+		} else if (MenuItems[menu_i][1] == Types.Events.HOLD_TO_FLAG) {
+			g_hold_to_flag = true;
+			g_click_to_dig = true;			
+
+			this.game_engine.on_screen_resize();
+
+			this.pop_down();
+		} else if (MenuItems[menu_i][1] == Types.Events.RIGHT_TO_FLAG) {
+			g_hold_to_flag = false;
+			g_click_to_dig = true;
 
 			this.game_engine.on_screen_resize();
 

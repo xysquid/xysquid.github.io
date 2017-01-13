@@ -67,8 +67,6 @@ theGame.prototype = {
 		 //  Load the Google WebFont Loader script
     		game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
-		
-
 		game.load.audio('curve', 'assets/curve.wav');
 		game.load.audio('thud', 'assets/thud.wav');
 		game.load.audio('jump', 'assets/Jump.wav');
@@ -78,16 +76,12 @@ theGame.prototype = {
 		// 8 mg - stream or preload???????
 		//game.load.audio('music', 'assets/8bit Dungeon Level.mp3');
 
-
-		
-
 	},
 
 	
 
   	create: function(){
 
-	
 		// prevent right mouse click pop up
 		game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
 
@@ -180,18 +174,9 @@ theGame.prototype = {
 
 		if (input_down == true) { // && !this.game.input.isDown ) {
 			input_down = false;
-			if (this.right_down == true) gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
-			else if (this.left_down == true) {gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
-				
-			}
-
-			
+			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
 			
 		}
-
-		this.right_down = false;
-			
-		this.left_down = false;
 	},
 
 	right_down: false,
@@ -201,20 +186,19 @@ theGame.prototype = {
 
 
 
-		if (game.input.mousePointer.rightButton.isDown ) {
-
-			// || game.input.activePointer.rightButton.isDown
+		if (game.input.mousePointer.rightButton.isDown ||
+		    game.input.activePointer.rightButton.isDown) {
 			
 
-			//console.log('this.game.input.mousePointer.rightButton.isDown');
+			console.log('this.game.input.mousePointer.rightButton.isDown');
 			
 			
 			if (gBlipFrogMenu.menu_up == true) {
-				//gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_CLICK_RIGHT);
+				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_CLICK_RIGHT);
 				mousedown = false;
 			} else if (input_down == false) {
 				
-				//gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, 									//						game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
+				gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, 															game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
 
 			}
 
@@ -224,7 +208,7 @@ theGame.prototype = {
 
 		} else if (game.input.isDown || 
 			   game.input.mousePointer.leftButton.isDown ||
-		    	   //game.input.activePointer.leftButton.isDown ||
+		    	   game.input.activePointer.leftButton.isDown ||
 			   game.input.pointer1.isDown) {
 
 			this.left_down = true;
