@@ -176,7 +176,7 @@ MenuItems.push([1, Types.Events.WEB_LINK, "Credits","ic_list_white_24dp_2x.png",
 
 if(location.hostname == "www.zblip.com"){
 	// gotta check for mobile as well
-	MenuItems.push([1, Types.Events.BOOKMARK, "Homescreen","games_icon.png"]);
+	//MenuItems.push([1, Types.Events.BOOKMARK, "Homescreen","games_icon.png"]);
 }
 
 //social buttons:
@@ -256,9 +256,9 @@ MenuPositions = Class.extend({
 
 		this.menu_height += 84;	// for row of social icons
 
-		if (this.menu_height > screen_height*1.1) {	// this.menu_item_height*2
+		if (false && this.menu_height > screen_height*1.1) {	// this.menu_item_height*2
 			// out of space!
-
+			
 			options_menu_group.scale.x = options_menu_group.scale.y = 0.8*options_menu_group.scale.x;	// 0.5
 
 			
