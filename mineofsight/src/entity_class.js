@@ -1593,7 +1593,12 @@ BlockClass = Class.extend({
 
 	},
 
+	grey_status: 0,
+
 	ungrey: function () {
+
+		this.grey_status = 0;
+
 		this.hint_eye_num_text.set_alpha(1);
 		this.hint_eye_sprite.set_alpha(1);
 
@@ -1601,9 +1606,19 @@ BlockClass = Class.extend({
 		this.hint_touch_sprite.set_alpha(1);
 
 		this.hint_eight_touch_sprite.set_alpha(1);
+
+		this.hint_add_sprite.set_alpha(1);
+		this.hint_add_num_text.set_alpha(1);
+
+		
+		this.hint_heart_num_text.set_alpha(1);
+
+		this.hint_heart_sprite.set_alpha(1);
 	},
 
 	grey_out: function () {
+
+		this.grey_status = 1;
 		
 		this.hint_eye_num_text.set_alpha(0.5);
 		this.hint_eye_sprite.set_alpha(0.5);
@@ -1611,7 +1626,14 @@ BlockClass = Class.extend({
 		this.hint_touch_num_text.set_alpha(0.5);
 		this.hint_touch_sprite.set_alpha(0.5);
 
+		this.hint_add_sprite.set_alpha(0.5);
+		this.hint_add_num_text.set_alpha(0.5);
+
 		this.hint_eight_touch_sprite.set_alpha(0.5);
+
+		this.hint_heart_num_text.set_alpha(0.5);
+
+		this.hint_heart_sprite.set_alpha(0.5);
 	},
 
 	x_in_range: [],
