@@ -257,8 +257,7 @@ var do_resize = function(e) {
 	game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 	options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 
-	screen_width = screen_width*menu_ratio;
-	screen_height = screen_height*menu_ratio;
+	
 
 	
 
@@ -274,6 +273,7 @@ var do_resize = function(e) {
 	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
+	
 
 
 //game.scale.width = game.scale.height = 1/ratio;
@@ -298,6 +298,11 @@ var do_resize = function(e) {
 
 	game.width = window.innerWidth;
 	game.height = window.innerHeight;  
+
+	// after adjusting tile and game containers
+	screen_width = screen_width*menu_ratio;
+	screen_height = screen_height*menu_ratio;
+
 
 	if (window.devicePixelRatio != 1) {
 		//options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
