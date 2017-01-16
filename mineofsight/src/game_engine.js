@@ -521,9 +521,9 @@ BlipFrogMenuClass = Class.extend({
 		this.menu_y = screen_height;
 		this.game_y = 0;
 
-		this.menu_y_target = screen_height - this.menu_positions.menu_height;
+		this.menu_y_target = screen_height - this.menu_positions.menu_height*menu_ratio;
 		//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
-		this.game_y_target = -this.menu_positions.menu_height*options_menu_group.scale.y;
+		this.game_y_target = -this.menu_positions.menu_height*menu_ratio;//*options_menu_group.scale.y;
 		this.moving = 12;
 
 		update_webfonts();
@@ -672,11 +672,8 @@ BlipFrogMenuClass = Class.extend({
 		//y = y - screen_height + this.menu_positions.menu_height;
 		y = y - (screen_height - this.menu_positions.menu_height)*menu_ratio;//*devicePixelRatio);
 			
-		y = y / options_menu_group.scale.x;
-		x = x / options_menu_group.scale.x;
-
-		//y = y/devicePixelRatio;
-		//x = x/devicePixelRatio;
+		//y = y / options_menu_group.scale.x;
+		//x = x / options_menu_group.scale.x;
 
 		var menu_i = this.menu_positions.check_for_click(x,y);
 
