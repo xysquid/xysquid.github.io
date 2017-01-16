@@ -237,11 +237,13 @@ var screen_height = 600;
 var ratio = 1;		// tiles in game
 var menu_ratio = 1;	// menu, pop up menu
 var x_shift_screen = 0;
+var scale_man;
 
 var do_resize = function(e) {  
 
 	if (game == null) return;
 	if (play_screen_group == null) return;
+	//if (scale_man == null) return;
 
 
 	screen_width = (window.innerWidth);
@@ -250,12 +252,17 @@ var do_resize = function(e) {
 	// ------------------------ only mention of device pixel ratio
 	if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
 
-	whole_app_group.scale.set(menu_ratio,menu_ratio);
+	//whole_app_group.scale.set(menu_ratio,menu_ratio);
+
 	game_menu_group.scale.set(menu_ratio,menu_ratio);
-	//options_menu_group.scale.set(menu_ratio,menu_ratio);
+	options_menu_group.scale.set(menu_ratio,menu_ratio);
 
 	screen_width = screen_width*menu_ratio;
-	screen_height = screen_width*menu_ratio;
+	screen_height = screen_height*menu_ratio;
+
+	
+
+	//scale_man.setUserScale(menu_ratio, menu_ratio, 1, 1);
 	// ------------------------
 
 
