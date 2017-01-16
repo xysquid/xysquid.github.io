@@ -245,14 +245,14 @@ MenuPositions = Class.extend({
 		this.menu_item_height = 124;
 		this.menu_item_width = 96;	// we will try for this size
 
-		this.menu_width = screen_width/options_menu_group.scale.x;
+		this.menu_width = screen_width;///options_menu_group.scale.x;
 
 		var icons_per_row = Math.round(this.menu_width/this.menu_item_width) - 1;
 		icons_per_row = Math.max(1,icons_per_row);
 
 		
 
-		this.menu_height = this.menu_item_height*Math.ceil(this.menu_item_num.length/icons_per_row)*options_menu_group.scale.x;
+		this.menu_height = this.menu_item_height*Math.ceil(this.menu_item_num.length/icons_per_row);//*options_menu_group.scale.x;
 
 		this.menu_height += 84;	// for row of social icons
 
