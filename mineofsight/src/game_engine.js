@@ -521,9 +521,9 @@ BlipFrogMenuClass = Class.extend({
 		this.menu_y = screen_height;
 		this.game_y = 0;
 
-		this.menu_y_target = screen_height - this.menu_positions.menu_height*options_menu_group.scale.y;
+		this.menu_y_target = screen_height - this.menu_positions.menu_height/options_menu_group.scale.y;
 		//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
-		this.game_y_target = -this.menu_positions.menu_height*options_menu_group.scale.y;
+		this.game_y_target = -this.menu_positions.menu_height/options_menu_group.scale.y;
 		this.moving = 12;
 
 		update_webfonts();
