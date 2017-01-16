@@ -241,7 +241,7 @@ theGame.prototype = {
 
 			
 			if (gBlipFrogMenu.menu_up == true) {
-				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_DOWN);
+				gBlipFrogMenu.handle_menu_event(game.input.x*menu_ratio,game.input.y*menu_ratio,Types.Events.MOUSE_DOWN);
 				mousedown = false;
 			} else {
 				gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio, Types.Events.MOUSE_DOWN);
