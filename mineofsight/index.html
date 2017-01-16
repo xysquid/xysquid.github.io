@@ -234,7 +234,8 @@ var playSoundInstance = function(sndfile, vol) {};
 
 var screen_width = 600;
 var screen_height = 600;
-var ratio = 1;
+var ratio = 1;		// tiles in game
+var menu_ratio = 1;	// menu, pop up menu
 var x_shift_screen = 0;
 
 var do_resize = function(e) {  
@@ -245,6 +246,17 @@ var do_resize = function(e) {
 
 	screen_width = (window.innerWidth);
 	screen_height = (window.innerHeight);
+
+	// ------------------------ only mention of device pixel ratio
+	if (devicePixelRatio > 1) menu_ratio = 1/devicePixelRatio;
+
+	//whole_app_group.scale.set(2,2);
+	game_menu_group.scale.set(menu_ratio,menu_ratio);
+	options_menu_group.scale.set(menu_ratio,menu_ratio);
+
+	screen_width = screen_width*menu_ratio;
+	screen_height = screen_width*menu_ratio;
+	// ------------------------
 
 
 	var w = 12.5*60;
