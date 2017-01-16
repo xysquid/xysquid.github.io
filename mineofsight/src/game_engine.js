@@ -670,7 +670,7 @@ BlipFrogMenuClass = Class.extend({
 
 		//y = y/ratio;
 		//y = y - screen_height + this.menu_positions.menu_height;
-		y = y - (screen_height - this.menu_positions.menu_height);//*devicePixelRatio);
+		y = y - (screen_height - this.menu_positions.menu_height)*menu_ratio;//*devicePixelRatio);
 			
 		y = y / options_menu_group.scale.x;
 		x = x / options_menu_group.scale.x;
