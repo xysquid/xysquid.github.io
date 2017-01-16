@@ -5,6 +5,7 @@ var game_group;
 var menu_group;
 var game_menu_group;
 var options_menu_group;
+var whole_app_group;
 
 var background_container;
 var tile_container;
@@ -133,6 +134,11 @@ theGame.prototype = {
 		game_group_container =game_menu_group;
 		options_menu_container =options_menu_group;
 
+		whole_app_group = game.add.group();
+		//whole_app_group.add(play_group);
+		//whole_app_group.add(game_menu_group);
+		///whole_app_group.add(options_menu_group);
+
 		play_screen_container = play_screen_group;
 
 		play_container = play_group;
@@ -251,8 +257,8 @@ theGame.prototype = {
 
 
 
-		mouse.x = game.input.x;
-		mouse.y = game.input.y;
+		mouse.x = game.input.x/menu_ratio;
+		mouse.y = game.input.y/menu_ratio;
 			
 		// game.input.mousePointer.rightButton
 		// if (this.game.input.activePointer.isDown) {
