@@ -614,6 +614,7 @@ BlipFrogMenuClass = Class.extend({
 		    //y < screen_height - this.menu_positions.menu_height){//*devicePixelRatio) {
 			this.pop_down();
 			this.pop_down_click = true;
+			this.mouse_down = 0;
 			return;
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 0) {
 			
@@ -624,9 +625,13 @@ BlipFrogMenuClass = Class.extend({
 
 			if (Math.abs(y - this.mouse_down_y) > 6) {}
 			
-			if (y - this.mouse_down_y != 0) { // && Math.abs(y - this.mouse_down_y) < 6) {
+			if (y - this.mouse_down_y != 0){// && 
+			   // Math.abs(y - this.mouse_down_y) > 3 && 
+			   // Math.abs(y - this.mouse_down_y) < 12) {
 				
 				this.menu_y += y - this.mouse_down_y;
+
+				
 				
 				this.mouse_down_y = y;
 				this.menu_scroll = 1;
@@ -643,6 +648,8 @@ BlipFrogMenuClass = Class.extend({
 		} 
 		
 		if (event_type != Types.Events.MOUSE_UP) return;
+
+		this.pop_down();
 
 		this.mouse_down = 0;
 
