@@ -301,7 +301,7 @@ function g_set_menu_screen_x(newx) {
 
 
 function g_set_menu_screen_y(newy) {
-	options_menu_group.y = newy;
+	options_menu_group.y = newy/menu_ratio;
 };
 
 
