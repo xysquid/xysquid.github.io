@@ -4,6 +4,7 @@ var tile_group;
 var game_group;
 var menu_group;
 var game_menu_group;
+var game_screen_group;
 var options_menu_group;
 var whole_app_group;
 
@@ -114,11 +115,13 @@ theGame.prototype = {
 		game_group = game.add.group();
 		menu_group = game.add.group();
 		game_menu_group = game.add.group();
-		options_menu_group = game.add.group();
+		
 
 		play_screen_group =  game.add.group();
 
 		play_group =  game.add.group();
+
+		
 		
 		play_screen_group.add(tile_group);
 		play_screen_group.add(game_group);
@@ -126,6 +129,14 @@ theGame.prototype = {
 		play_group.add(background_group);
 		play_group.add(play_screen_group);
 		play_group.add(menu_group);
+
+		game_screen_group = game.add.group(); // used for menu pop up (pop right)
+		game_screen_group.add(play_group);
+		
+
+		options_menu_group = game.add.group();
+		//options_menu_group.bringToTop();
+		//game.bringToTop(options_menu_group);
 
 		background_container = background_group;
 		tile_container =tile_group;
@@ -189,7 +200,7 @@ theGame.prototype = {
 			if (this.right_down == true) gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
 			else if (this.left_down == true) {gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
 				
-			}
+			} else gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
 
 			
 			
