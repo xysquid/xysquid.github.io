@@ -301,7 +301,7 @@ function g_set_menu_screen_x(newx) {
 
 
 function g_set_menu_screen_y(newy) {
-	options_menu_group.y = newy/menu_ratio;
+	options_menu_group.y = newy;
 };
 
 
@@ -621,8 +621,10 @@ BlipFrogMenuClass = Class.extend({
 			this.mouse_down_y = y;
 
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 1) {
+
+			if (Math.abs(y - this.mouse_down_y) > 6) {}
 			
-			if (y - this.mouse_down_y != 0) {
+			if (y - this.mouse_down_y != 0 && Math.abs(y - this.mouse_down_y) > 6) {
 				
 				this.menu_y += y - this.mouse_down_y;
 				
