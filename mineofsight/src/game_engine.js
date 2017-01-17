@@ -619,7 +619,7 @@ BlipFrogMenuClass = Class.extend({
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 0) {
 			
 			this.mouse_down = 1;
-			this.mouse_down_y = y*menu_ratio;
+			this.mouse_down_y = y;
 
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 1) {
 
@@ -629,7 +629,7 @@ BlipFrogMenuClass = Class.extend({
 			   // Math.abs(y - this.mouse_down_y) > 3 && 
 			   // Math.abs(y - this.mouse_down_y) < 12) {
 				
-				this.menu_y += y*menu_ratio - this.mouse_down_y;
+				this.menu_y += y- this.mouse_down_y;
 
 				
 				
