@@ -296,7 +296,7 @@ function g_set_game_screen_x(newx) {
 };
 
 function g_set_menu_screen_x(newx) {
-	options_menu_group.x = newx;
+	options_menu_group.x = newx*menu_ratio;
 };
 
 
