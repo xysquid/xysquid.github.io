@@ -280,6 +280,7 @@ var do_resize = function(e) {
 
 //game_group.scale.x = 1/ratio;
 //game_group.scale.y = 1/ratio;
+
 	play_group.scale.set(ratio, ratio);
 
 
@@ -293,6 +294,11 @@ var do_resize = function(e) {
 	else x_shift_screen = 0;
 
 	play_group.position.set(x_shift_screen, 0);
+
+	//play_screen_group.position.set(x_shift_screen, 0);
+	//background_group.position.set(x_shift_screen, 0);
+	//menu_group.position.set(x_shift_screen, 0);
+
 
 //console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
 
