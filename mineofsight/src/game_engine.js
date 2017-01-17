@@ -627,11 +627,11 @@ BlipFrogMenuClass = Class.extend({
 
 			if (Math.abs(y - this.mouse_down_y) > 6) {}
 			
-			if (y/menu_ratio - this.mouse_down_y != 0){// && 
+			if (y - this.mouse_down_y != 0){// && 
 			   // Math.abs(y - this.mouse_down_y) > 3 && 
 			   // Math.abs(y - this.mouse_down_y) < 12) {
 				
-				this.menu_y += y- this.mouse_down_y;
+				this.menu_y += y - this.mouse_down_y;
 
 				
 				
