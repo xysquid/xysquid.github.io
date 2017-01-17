@@ -621,6 +621,8 @@ BlipFrogMenuClass = Class.extend({
 			this.mouse_down = 1;
 			this.mouse_down_y = y;
 
+			return;
+
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 1) {
 
 			if (Math.abs(y - this.mouse_down_y) > 6) {}
