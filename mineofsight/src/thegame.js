@@ -161,7 +161,12 @@ theGame.prototype = {
 		do_resize();
 		
 		game.input.onDown.add(this.on_down);
+		game.input.onHold.add(this.on_down);
+
+		//game.input.activePointer.isDown
+		
 		game.input.onUp.add(this.on_up);
+		//game.input.activePointer.add(this.on_up);
 	
 		game.input.keyboard.onDownCallback = this.on_key;
 
@@ -279,7 +284,21 @@ theGame.prototype = {
 			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_DOWN);
 			
 		}
-		
+
+		if (game.input.pointer1.isUp && this.left_down == true) {
+			//left_down == false;
+			//this.on_up();
+		}
+
+		if (game.input.pointer1.isDown) {
+			
+			this.on_down();
+		} else if (this.left_down == true) {
+			this.on_up();
+		}
+
+		//if (game.input.pointer1.isDown == true) //alert('game.input.isDown');
+		//if (game.input.activePointer.isDown) alert('game.input.isDown');
 		
 		gBlipFrogMenu.update();
 	},

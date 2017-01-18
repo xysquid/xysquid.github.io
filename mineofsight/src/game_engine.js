@@ -517,7 +517,7 @@ BlipFrogMenuClass = Class.extend({
 			//this.sprites_buttons[i].set_scale(this.menu_positions.scale);
 
 			var spr_x = MenuItems[i][2].length*14*0.5 - 7;
-			this.menu_texts[i].update_pos(6,y,999,999);
+			this.menu_texts[i].update_pos(32,y,999,999);
 			//this.menu_texts[i].center_x(x);
 
 		}
@@ -609,6 +609,8 @@ BlipFrogMenuClass = Class.extend({
 		y = mouse.y;//y*ratio;
 		x = mouse.x;//x*ratio;
 
+		
+
 		if (event_type == Types.Events.MOUSE_DOWN && 
 			x > this.menu_width) {
 		    //y < screen_height - this.menu_positions.menu_height){//*devicePixelRatio) {
@@ -618,8 +620,32 @@ BlipFrogMenuClass = Class.extend({
 			return;
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 0) {
 			
-			this.mouse_down = 1;
+				
+	
+			//this.mouse_down = 1;
 			this.mouse_down_y = y;
+
+			//return;
+
+			//alert(' DOWN    y = ' + y);
+
+			this.menu_scroll = 1;
+
+			if (y < 32) this.menu_y += 4;
+			else if (y > screen_height - 32) this.menu_y -= 4;
+			else this.menu_scroll = 0;
+
+			this.menu_y = Math.min(0, this.menu_y);
+			//this.menu_y = Math.max(this.menu_y, this.menu_positions.menu_height);
+
+			
+
+				
+			g_set_menu_screen_y(this.menu_y);
+
+			//var need = screen_height - 32;
+
+			//alert('y is ' + y + ' ' + ' but needs to be > ' + need);
 
 			return;
 
@@ -627,22 +653,34 @@ BlipFrogMenuClass = Class.extend({
 
 			if (Math.abs(y - this.mouse_down_y) > 6) {}
 			
-			if (Math.abs(y - this.mouse_down_y) > 3){// && 
+			if (false && Math.abs(y - this.mouse_down_y) > 3) { //&& 
 			   // Math.abs(y - this.mouse_down_y) > 3 && 
-			   // Math.abs(y - this.mouse_down_y) < 12) {
+			   // Math.abs(y - this.mouse_down_y) < 32) {
 				
-				this.menu_y += y - this.mouse_down_y;
+				//alert(' SCROLL    y = ' + y);
+				
+				//this.menu_y += y - this.mouse_down_y;
+
+				if (y > this.mouse_down_y + 4) {
+					this.menu_y -= 4;
+					this.menu_scroll = 1;
+					this.menu_y = Math.min(0, this.menu_y);
+					g_set_menu_screen_y(this.menu_y);
+					//this.mouse_down_y = y;
+				} else if (y < this.mouse_down_y - 4) {
+					this.menu_y += 4;
+					this.menu_scroll = 1;
+					this.menu_y = Math.min(0, this.menu_y);
+					g_set_menu_screen_y(this.menu_y);
+				}
+				//this.mouse_down_y = y;
+				
 
 				
-				
-				this.mouse_down_y = y;
-				this.menu_scroll = 1;
-
-				this.menu_y = Math.min(0, this.menu_y);
 				//this.menu_y = Math.max(this.menu_y, this.menu_positions.menu_height);
 
 				
-				g_set_menu_screen_y(this.menu_y);
+				//g_set_menu_screen_y(this.menu_y);
 
 			}
 			
@@ -650,7 +688,7 @@ BlipFrogMenuClass = Class.extend({
 		} 
 		
 		if (event_type != Types.Events.MOUSE_UP) return;
-
+		//alert('MOUSEUP')
 		
 
 		this.mouse_down = 0;
@@ -670,6 +708,8 @@ BlipFrogMenuClass = Class.extend({
 		//x = x / options_menu_group.scale.x;
 
 		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y);
+
+		//alert('menu_i ' + menu_i);
 
 		if (menu_i < 0 || menu_i >= MenuItems.length || menu_i == undefined) {
 			return;
