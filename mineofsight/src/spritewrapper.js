@@ -6,6 +6,7 @@ function update_webfonts() {
 	console.log('update webfonts');
 	for (var i = 0; i < g_text_objs.length; i++) {
 		if (g_text_objs[i].pixitext == null) continue;
+		g_text_objs[i].pixitext.font = 'Arial';
 		g_text_objs[i].pixitext.font = 'Montserrat';
 		
 		//if (g_text_objs[i].pixitext.font != 'Montserrat') {
@@ -179,6 +180,8 @@ TextClass = Class.extend({
 
 	width: 999,
 
+	
+
 	init: function(layer) {
 
 		update_webfonts();
@@ -250,6 +253,10 @@ TextClass = Class.extend({
 		this.pixitext.fontSize = this.font_size;
 	},
 
+	set_colour : function (col_) {
+		this.pixitext.fill = col_;//'#ffffff';
+	},
+
 	set_text : function(str) {
 
 		
@@ -282,6 +289,7 @@ TextClass = Class.extend({
 			};
 			
 			this.pixitext = game.add.text(-999,-999, str);//, st_);
+			this.pixitext.font = 'Arial';
 			this.pixitext.font = 'Montserrat';
 			this.pixitext.fill = '#ffffff';
 			this.pixitext.fontSize = this.font_size;
@@ -340,6 +348,14 @@ TextClass = Class.extend({
 			//this.pixitext.x = x - this.pixitext.width*0.5;
 		
 
+	},
+
+	hide: function () {
+		this.pixitext.visible = false;
+	},
+
+	make_vis: function () {
+		this.pixitext.visible = true;
 	},
 
 
@@ -497,6 +513,10 @@ SpriteClass = Class.extend({
 
 		this.name = name;
 		this.layer = layer;
+
+		// performance - render to INTEGER POSITIONS
+		x = Math.round(x);
+		y = Math.round(y);
 
 		if (x == null) x = -999;
 		if (y == null) y = - 999;

@@ -114,7 +114,7 @@ theGame.prototype = {
 		tile_group = game.add.group();
 		game_group = game.add.group();
 		menu_group = game.add.group();
-		game_menu_group = game.add.group();
+		
 		
 
 		play_screen_group =  game.add.group();
@@ -132,6 +132,8 @@ theGame.prototype = {
 
 		game_screen_group = game.add.group(); // used for menu pop up (pop right)
 		game_screen_group.add(play_group);
+
+		game_menu_group = game.add.group();
 		
 
 		options_menu_group = game.add.group();

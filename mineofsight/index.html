@@ -86,9 +86,6 @@
 
     
 
-<div id = 'pbar' >
-	<progress id='prog_bar' value = '0' max='100'></progress>
-</div>
 
 
 <!--<script src="phaser-slim.min.js"></script>-->
@@ -98,7 +95,9 @@
 		
 
 <style>
-    	body{margin:0;
+    	body{
+				overflow:hidden;
+				margin:0;
 			     font-family: 'Montserrat', sans-serif;
 			     background: #1F1129;	}
 			.fontPreload {
@@ -124,7 +123,7 @@
 	}
 
 	progress::-webkit-progress-bar {
- 		background-color: #FFFFFF;
+ 		background-color: #22757B;
   		border: 0;
   		height: 8px;
   		border-radius: 0px;
@@ -137,9 +136,9 @@
 		border-radius: 50px;
 	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
 		background:
-		//91AF28
 		
-		-webkit-linear-gradient(left, #C9FA1F, #C9FA1F);
+		
+		-webkit-linear-gradient(left, #27CFDA, #27CFDA);
 	
 	/* Looks great, now animating it */
 	background-size: 25px 14px, 100% 100%, 100% 100%;
@@ -147,14 +146,26 @@
 	}
 
 	progress::-moz-progress-bar {
-  		background-color: #C9FA1F;
+  		background-color: #27CFDA;
   		border: 0;
   		height: 8px;
   		border-radius: 0px;
 		
 	}
 
+	
+
    </style>
+
+
+<div id = 'pbar' >
+	
+	<!-- -->
+	<div id = 'splashdiv' align = "center">
+		<img id = 'splash' src = 'assets/title2.png'>
+	</div>
+	<progress id='prog_bar' value = '0' max='100'></progress>
+</div>
 
 <script type="text/javascript">
 
@@ -208,8 +219,7 @@ start_phaser = function() {
     	});
 
 	
-	
-				 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+				// remove_splash();
 				
 	
 				game.state.add("Boot",boot);
@@ -224,10 +234,31 @@ start_phaser = function() {
 				game.state.start("Boot");
 
 				
+
+				
 			
 	if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
 };
 
+g_splash_parent = null;
+g_splash_image = null;
+
+remove_splash = function() {
+	 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+			var splash = document.getElementById('splash');
+				if (splash != null) {
+					
+					//g_splash_parent = splash.parentNode;
+					splash.parentNode.removeChild(splash);
+
+					//g_splash_image = splash;
+				}
+};
+
+show_splash = function () {
+		//var splash_parent = document.getElementById('prog_bar');
+		//g_splash_parent.appendChild(g_splash_image);
+};
 
 
 var playSoundInstance = function(sndfile, vol) {};
