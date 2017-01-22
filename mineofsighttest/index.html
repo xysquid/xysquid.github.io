@@ -55,6 +55,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="user-scalable=no" />
+<meta name="viewport" content="width=device-width">
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
 <meta name="twitter:card" content="summary" />
@@ -79,6 +80,9 @@
 	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
 
 
+	<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
+
+
 </head>
     
 
@@ -90,17 +94,16 @@
 
 <!--<script src="phaser-slim.min.js"></script>-->
 <script src="src/core.js"></script>
-<script src="src/asset_manager.js"></script>
-			
+<script src="src/asset_manager.js"></script>	
 		
 
 <style>
     	body{
 				overflow:hidden;
 				margin:0;
-			     font-family: 'Montserrat', sans-serif;
-			     background: #1F1129;	}
-			.fontPreload {
+			     	font-family: 'Montserrat', sans-serif;
+			     	background: #1F1129;	}
+				.fontPreload {
 		  		font-family: 'Montserrat';
 		  		position:absolute;
 		  		left:-100px;
@@ -160,12 +163,13 @@
 
 <div id = 'pbar' >
 	
-	<!-- -->
 	<div id = 'splashdiv' align = "center">
 		<img id = 'splash' src = 'assets/title2.png'>
 	</div>
 	<progress id='prog_bar' value = '0' max='100'></progress>
 </div>
+
+<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 <script type="text/javascript">
 
@@ -179,6 +183,8 @@ var assets_loaded = false;
 var scriptList = [
 
 		"phaser-slim.min.js",
+
+		//"playtomic.js",
 
 		//"src/boot.js",
 		//"src/preload.js",
@@ -196,6 +202,35 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+//if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
+
+var on_kong = 0;
+
+if (location.hostname == "www.kongregate.com") on_kong = 1;
+
+var kongregate;
+if (false && on_kong == 1) {
+	// Load the API
+	
+	kongregateAPI.loadAPI(function(){
+		
+		// Callback function
+		// Set the global kongregate API object
+  		kongregate = kongregateAPI.getAPI();
+
+
+		// Register the shared content load listener before connecting
+		//kongregate.sharedContent.addLoadListener('Level', onLoadLevel);
+   
+		// Connect
+		//kongregate.services.connect();
+
+	});
+
+}
+
+
+
 var pBar = document.getElementById('prog_bar');
 pBar.value += 20; 
 
@@ -208,7 +243,6 @@ start_phaser = function() {
 
 	pBar.value += 20; 
 
-	
 			
 	
 
@@ -218,9 +252,16 @@ start_phaser = function() {
 		}
     	});
 
+
+				
+
 	
 				// remove_splash();
-				
+
+				// 8176
+
+				//Playtomic.initialize("aaa", "aaa", "https://salty-ravine-95905.herokuapp.com");
+				//Playtomic.initialize("aaa", "aaa", "localhost");
 	
 				game.state.add("Boot",boot);
 				game.state.add("Preload",preload);
@@ -232,6 +273,10 @@ start_phaser = function() {
 	
 				
 				game.state.start("Boot");
+
+
+				
+
 
 				
 
@@ -274,26 +319,24 @@ var do_resize = function(e) {
 
 	if (game == null) return;
 	if (play_screen_group == null) return;
-	//if (scale_man == null) return;
 
 
-	screen_width = (window.innerWidth);
-	screen_height = (window.innerHeight);
+	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
+	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
 
 	// ------------------------ only mention of device pixel ratio
+	menu_ratio = 1;
 	if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
 
-	//whole_app_group.scale.set(menu_ratio,menu_ratio);
+	//if (menu_ratio < 0.5) menu_ratio = 0.5;
 
 	game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 	options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 
 	
 
-	
+	alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
-	//scale_man.setUserScale(menu_ratio, menu_ratio, 1, 1);
-	// ------------------------
 
 
 	var w = 12.5*60;
@@ -306,11 +349,6 @@ var do_resize = function(e) {
 
 	
 
-
-//game.scale.width = game.scale.height = 1/ratio;
-
-//game_group.scale.x = 1/ratio;
-//game_group.scale.y = 1/ratio;
 
 	play_group.scale.set(ratio, ratio);
 
@@ -326,12 +364,7 @@ var do_resize = function(e) {
 
 	play_group.position.set(x_shift_screen, 0);
 
-	//play_screen_group.position.set(x_shift_screen, 0);
-	//background_group.position.set(x_shift_screen, 0);
-	//menu_group.position.set(x_shift_screen, 0);
 
-
-//console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
 
 	game.width = window.innerWidth;
 	game.height = window.innerHeight;  
@@ -341,14 +374,9 @@ var do_resize = function(e) {
 	screen_height = screen_height*menu_ratio;
 
 
-	if (window.devicePixelRatio != 1) {
-		//options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
-		//gBlipFrogMenu.menu_item_scale = window.devicePixelRatio;
-	}
 
 	gBlipFrogMenu.on_screen_resize();
 
-//game.scale.refresh();
 
 return;
 
