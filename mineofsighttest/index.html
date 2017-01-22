@@ -56,6 +56,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="user-scalable=no" />
 <meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-height">
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
 <meta name="twitter:card" content="summary" />
@@ -330,8 +331,8 @@ var do_resize = function(e) {
 
 	//if (menu_ratio < 0.5) menu_ratio = 0.5;
 
-	//game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
-	//options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 
 	
 
