@@ -1,0 +1,384 @@
+<!doctype html>
+
+
+<!--
+
+/*
+
+	We have used the following open source projects / code:
+
+	phaser.js
+	Copyright © 2017 Richard Davey, Photon Storm Ltd.
+	Phaser is distributed under the MIT License.
+	https://phaser.io/download/license
+
+	pixi.js - v2.2.3
+	Copyright (c) 2012-2014, Mat Groves
+	http://goodboydigital.com/
+	pixi.js is licensed under the MIT License.
+	http://www.opensource.org/licenses/mit-license.php
+	Mat Groves http://matgroves.com/ @Doormat23
+
+	Class object based on John Resig's code; inspired by base2 and Prototype
+	http://ejohn.org/blog/simple-javascript-inheritance/
+
+	Add to Home screen, MIT License
+	http://cubiq.org/add-to-home-screen
+
+
+
+	Fonts in use: Montserrat
+
+	Music By:
+
+
+*/
+
+-->
+
+
+<html>
+    
+
+<head>
+        
+
+<meta charset="UTF-8" />
+     
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+<title>Mine of Sight</title>
+      
+
+<meta name="description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
+	
+<link rel="canonical" href="http://www.zblip.com/mineofsight"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="user-scalable=no" />
+<meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
+ 
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ZBlipGames" />
+<meta name="twitter:title" content="Mine of Sight" />
+<meta name="twitter:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web - Play Now" />
+<meta name="twitter:image" content="http://www.zblip.com/mineofsight/thumb440.png" />
+<meta name="twitter:url" content="http://www.zblip.com/mineofsight/" />
+
+<meta property="og:url" content="http://www.zblip.com/mineofsight">
+	
+	<meta property="og:image" content="www.zblip.com/mineofsight/thumb440.jpg">
+	<meta property="og:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
+	<meta property="og:title" content="Mine of Sight">
+	<meta property="og:site_name" content="ZBlip">
+	
+	<meta property="og:type"          content="game" />
+	<meta property="og:see_also" content="http://www.zblip.com">
+
+	<meta itemprop="name" content="Mine of Sight">
+	<meta itemprop="description" content="Challenging logic puzzle">
+	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
+
+
+</head>
+    
+
+<body>
+
+    
+
+
+
+<!--<script src="phaser-slim.min.js"></script>-->
+<script src="src/core.js"></script>
+<script src="src/asset_manager.js"></script>
+			
+		
+
+<style>
+    	body{
+				overflow:hidden;
+				margin:0;
+			     font-family: 'Montserrat', sans-serif;
+			     background: #1F1129;	}
+			.fontPreload {
+		  		font-family: 'Montserrat';
+		  		position:absolute;
+		  		left:-100px;
+	}
+
+	@font-face {
+				font-family: 'Montserrat';
+				local('Montserrat');
+				url(https://fonts.googleapis.com/css?family=Montserrat);
+	}
+
+	progress {
+  		border: none;
+		-webkit-appearance: none;
+		width: 300px;
+		height: 8px;
+		margin: 100px auto;
+		display: block;
+
+	}
+
+	progress::-webkit-progress-bar {
+ 		background-color: #22757B;
+  		border: 0;
+  		height: 8px;
+  		border-radius: 0px;
+		padding: 0px;
+
+		box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.2);
+	}
+
+	progress::-webkit-progress-value {
+		border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+		background:
+		
+		
+		-webkit-linear-gradient(left, #27CFDA, #27CFDA);
+	
+	/* Looks great, now animating it */
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	-webkit-animation: move 5s linear 0 infinite;
+	}
+
+	progress::-moz-progress-bar {
+  		background-color: #27CFDA;
+  		border: 0;
+  		height: 8px;
+  		border-radius: 0px;
+		
+	}
+
+	
+
+   </style>
+
+
+<div id = 'pbar' >
+	
+	<!-- -->
+	<div id = 'splashdiv' align = "center">
+		<img id = 'splash' src = 'assets/title2.png'>
+	</div>
+	<progress id='prog_bar' value = '0' max='100'></progress>
+</div>
+
+<script type="text/javascript">
+
+    
+
+
+
+
+var game;
+var assets_loaded = false;
+var scriptList = [
+
+		"phaser-slim.min.js",
+
+		//"src/boot.js",
+		//"src/preload.js",
+		//"src/gametitle.js",		
+		"src/thegame.js",
+
+		//"assets/blocks.png",
+		//"assets/blocks.json",
+
+		"src/spritewrapper.js",
+		"src/game_engine.js",
+		"src/game_state.js",
+		"src/entity_class.js",	
+		
+		//"sound_manager.js",
+	];
+
+var pBar = document.getElementById('prog_bar');
+pBar.value += 20; 
+
+
+window.onload = function () {
+	load_script_assets(scriptList, start_phaser);
+};
+
+start_phaser = function() {
+
+	pBar.value += 20; 
+
+	
+			
+	
+
+	game = new Phaser.Game(200, 200, Phaser.AUTO, "game", {
+    		create : function() {
+        		this.game.stage.backgroundColor = "0x1F1129";
+		}
+    	});
+
+	
+				// remove_splash();
+				
+	
+				game.state.add("Boot",boot);
+				game.state.add("Preload",preload);
+				//game.state.add("GameTitle",gameTitle);
+				game.state.add("TheGame",theGame);
+
+				//
+
+	
+				
+				game.state.start("Boot");
+
+				
+
+				
+			
+	if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
+};
+
+g_splash_parent = null;
+g_splash_image = null;
+
+remove_splash = function() {
+	 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+			var splash = document.getElementById('splash');
+				if (splash != null) {
+					
+					//g_splash_parent = splash.parentNode;
+					splash.parentNode.removeChild(splash);
+
+					//g_splash_image = splash;
+				}
+};
+
+show_splash = function () {
+		//var splash_parent = document.getElementById('prog_bar');
+		//g_splash_parent.appendChild(g_splash_image);
+};
+
+
+var playSoundInstance = function(sndfile, vol) {};
+
+var screen_width = 600;
+var screen_height = 600;
+var ratio = 1;		// tiles in game
+var menu_ratio = 1;	// menu, pop up menu
+var x_shift_screen = 0;
+var scale_man;
+
+var do_resize = function(e) {  
+
+	if (game == null) return;
+	if (play_screen_group == null) return;
+	//if (scale_man == null) return;
+
+
+	screen_width = (window.innerWidth);
+	screen_height = (window.innerHeight);
+
+	// ------------------------ only mention of device pixel ratio
+	if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
+
+	//whole_app_group.scale.set(menu_ratio,menu_ratio);
+
+	game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+
+	
+
+	
+
+	//scale_man.setUserScale(menu_ratio, menu_ratio, 1, 1);
+	// ------------------------
+
+
+	var w = 12.5*60;
+	var w_portrait = 10*60;
+
+	// tile size of 60
+
+	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
+	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
+
+	
+
+
+//game.scale.width = game.scale.height = 1/ratio;
+
+//game_group.scale.x = 1/ratio;
+//game_group.scale.y = 1/ratio;
+
+	play_group.scale.set(ratio, ratio);
+
+
+	var over_x = 0;//screen_width - (8*96);
+	if (screen_width > screen_height) over_x = screen_width - w*ratio;
+	else over_x = screen_width - w_portrait*ratio;
+
+
+
+	if (over_x > 0) x_shift_screen = 0.5*over_x;
+	else x_shift_screen = 0;
+
+	play_group.position.set(x_shift_screen, 0);
+
+	//play_screen_group.position.set(x_shift_screen, 0);
+	//background_group.position.set(x_shift_screen, 0);
+	//menu_group.position.set(x_shift_screen, 0);
+
+
+//console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
+
+	game.width = window.innerWidth;
+	game.height = window.innerHeight;  
+
+	// after adjusting tile and game containers
+	screen_width = screen_width*menu_ratio;
+	screen_height = screen_height*menu_ratio;
+
+
+	if (window.devicePixelRatio != 1) {
+		//options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+		//gBlipFrogMenu.menu_item_scale = window.devicePixelRatio;
+	}
+
+	gBlipFrogMenu.on_screen_resize();
+
+//game.scale.refresh();
+
+return;
+
+var aspectRatio = 1.5;  
+aspectRatio = window.innerWidth / window.innerHeight;
+if ((window.innerWidth / window.innerHeight) > aspectRatio) 
+
+{    
+
+	game.scale.width = window.innerWidth * aspectRatio;    
+	game.scale.height = window.innerHeight;  
+ 
+} 
+
+else if ((window.innerWidth / window.innerHeight) < aspectRatio) {    
+	game.scale.width = window.innerWidth;    
+	game.scale.height = window.innerWidth / aspectRatio;  } 
+
+else {    
+	game.scale.width = window.innerWidth;    
+	game.scale.height = window.innerHeight;  
+
+}  
+
+//
+}
+
+window.onresize = do_resize; 
+
+    </script>
+
+    </body>
+</html>
