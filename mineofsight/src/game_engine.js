@@ -309,6 +309,7 @@ g_menu_font_height = 24;
 
 
 function g_set_game_screen_x(newx) {
+	return;
 	//game_screen_group.x = newx;
 	play_group.x = (newx + x_shift_screen)/menu_ratio; // horrid coupling i know
 	game_menu_group.x = (newx)/menu_ratio;
