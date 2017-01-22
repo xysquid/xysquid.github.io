@@ -299,6 +299,8 @@ remove_splash = function() {
 
 					//g_splash_image = splash;
 				}
+
+	do_resize();
 };
 
 show_splash = function () {
@@ -325,6 +327,13 @@ var do_resize = function(e) {
 	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
 	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
 
+	if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
+	if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
+
+	// http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+	// screen.width on ios : width in dips
+	// screen.width on android : width in physical pixels
+
 	// ------------------------ only mention of device pixel ratio
 	menu_ratio = 1;
 	//if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
@@ -340,7 +349,7 @@ var do_resize = function(e) {
 
 	
 
-	alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
+	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	//window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
 
 
@@ -370,7 +379,7 @@ var do_resize = function(e) {
 	play_group.position.set(x_shift_screen, 0);
 
 
-
+	
 	game.width = screen_width;//window.innerWidth;
 	game.height = screen_height;//window.innerHeight;  
 
