@@ -321,13 +321,17 @@ var do_resize = function(e) {
 	if (game == null) return;
 	if (play_screen_group == null) return;
 
-
+	// dips
 	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
 	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
 
 	// ------------------------ only mention of device pixel ratio
 	menu_ratio = 1;
-	if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
+	//if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
+
+	// physical pixels
+	screen_width = screen_width*window.devicePixelRatio;
+	screen_height = screen_height*window.devicePixelRatio;
 
 	//if (menu_ratio < 0.5) menu_ratio = 0.5;
 
