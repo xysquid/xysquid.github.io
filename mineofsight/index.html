@@ -247,7 +247,7 @@ start_phaser = function() {
 			
 	
 
-	game = new Phaser.Game(200, 200, Phaser.AUTO, "game", {
+	game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
@@ -261,7 +261,7 @@ start_phaser = function() {
 
 				// 8176
 
-				//Playtomic.initialize("aaa", "aaa", "https://salty-ravine-95905.herokuapp.com");
+				//Playtomic.initialize("aaa", "aaa", "http://salty-ravine-95905.herokuapp.com");
 				//Playtomic.initialize("aaa", "aaa", "localhost");
 	
 				game.state.add("Boot",boot);
@@ -324,8 +324,15 @@ var do_resize = function(e) {
 	if (play_screen_group == null) return;
 
 	// dips
-	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
-	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
+	screen_width =  document.documentElement.clientWidth - 1;//
+	screen_height = document.documentElement.clientHeight - 1;
+
+	// document.body.offsetWidth ?
+
+	window.scrollTo(0, 0);
+
+	//if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
+	//if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
 
 	// http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
 	// screen.width on ios : width in dips
@@ -344,10 +351,13 @@ var do_resize = function(e) {
 	//game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 	//options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 
+	if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+
 	
 
-	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	//window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
+	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
+	//alert('document.documentElement.clientHeight ' + document.documentElement.clientHeight + ' window.innerHeight ' + 	window.innerHeight + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
 
 	var w = 12.5*60;
@@ -359,7 +369,6 @@ var do_resize = function(e) {
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
 	
-
 
 	play_group.scale.set(ratio, ratio);
 
@@ -376,13 +385,21 @@ var do_resize = function(e) {
 	play_group.position.set(x_shift_screen, 0);
 
 
+	game.width = screen_width;
+  	game.height = screen_height;
+  	//game.stage.bounds.width = screen_width;
+  	//game.stage.bounds.height = screen_height;
+ 
+  	if (game.renderType === 1) {
+    		game.renderer.resize(screen_width, screen_height);
+    		Phaser.Canvas.setSmoothingEnabled(game.context, false);
+  	}
 
-	game.width = screen_width;//window.innerWidth;
-	game.height = screen_height;//window.innerHeight;  
+	game.camera.setSize(screen_width, screen_height);
 
 	// after adjusting tile and game containers
-	screen_width = screen_width;
-	screen_height = screen_height;
+	//screen_width = screen_width*menu_ratio;
+	//screen_height = screen_height*menu_ratio;;
 
 
 
