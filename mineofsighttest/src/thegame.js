@@ -4,9 +4,7 @@ var tile_group;
 var game_group;
 var menu_group;
 var game_menu_group;
-var game_screen_group;
 var options_menu_group;
-var whole_app_group;
 
 var background_container;
 var tile_container;
@@ -69,8 +67,6 @@ theGame.prototype = {
 		 //  Load the Google WebFont Loader script
     		game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
-		
-
 		game.load.audio('curve', 'assets/curve.wav');
 		game.load.audio('thud', 'assets/thud.wav');
 		game.load.audio('jump', 'assets/Jump.wav');
@@ -80,16 +76,12 @@ theGame.prototype = {
 		// 8 mg - stream or preload???????
 		//game.load.audio('music', 'assets/8bit Dungeon Level.mp3');
 
-
-		
-
 	},
 
 	
 
   	create: function(){
 
-	
 		// prevent right mouse click pop up
 		game.canvas.oncontextmenu = function (e) { e.preventDefault(); }
 
@@ -114,14 +106,12 @@ theGame.prototype = {
 		tile_group = game.add.group();
 		game_group = game.add.group();
 		menu_group = game.add.group();
-		
-		
+		game_menu_group = game.add.group();
+		options_menu_group = game.add.group();
 
 		play_screen_group =  game.add.group();
 
 		play_group =  game.add.group();
-
-		
 		
 		play_screen_group.add(tile_group);
 		play_screen_group.add(game_group);
@@ -130,27 +120,12 @@ theGame.prototype = {
 		play_group.add(play_screen_group);
 		play_group.add(menu_group);
 
-		game_screen_group = game.add.group(); // used for menu pop up (pop right)
-		game_screen_group.add(play_group);
-
-		game_menu_group = game.add.group();
-		
-
-		options_menu_group = game.add.group();
-		//options_menu_group.bringToTop();
-		//game.bringToTop(options_menu_group);
-
 		background_container = background_group;
 		tile_container =tile_group;
 		game_container =game_group;
 		menu_container =menu_group;
 		game_group_container =game_menu_group;
 		options_menu_container =options_menu_group;
-
-		whole_app_group = game.add.group();
-		//whole_app_group.add(play_group);
-		//whole_app_group.add(game_menu_group);
-		///whole_app_group.add(options_menu_group);
 
 		play_screen_container = play_screen_group;
 
@@ -159,16 +134,11 @@ theGame.prototype = {
 		gBlipFrogMenu.setup();
 		
 		// trigger resize http://stackoverflow.com/questions/1818474/how-to-trigger-the-window-resize-event-in-javascript
-		
+		console.log('trigger do_rsize');
 		do_resize();
 		
 		game.input.onDown.add(this.on_down);
-		game.input.onHold.add(this.on_down);
-
-		//game.input.activePointer.isDown
-		
 		game.input.onUp.add(this.on_up);
-		//game.input.activePointer.add(this.on_up);
 	
 		game.input.keyboard.onDownCallback = this.on_key;
 
@@ -193,6 +163,7 @@ theGame.prototype = {
 
 	on_key: function(event) {
 
+		console.log(event.keyCode.toString());
 
 		g_key_pressed = event.keyCode || event.which;
 
@@ -206,7 +177,7 @@ theGame.prototype = {
 			if (this.right_down == true) gBlipFrogMenu.handle_events((game.input.x - x_shift_screen)/ratio, game.input.y/ratio, Types.Events.MOUSE_CLICK_RIGHT);
 			else if (this.left_down == true) {gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
 				
-			} else gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_UP);
+			}
 
 			
 			
@@ -224,10 +195,11 @@ theGame.prototype = {
 
 
 
-		if (game.input.mousePointer.rightButton.isDown ) {
-
-			// || game.input.activePointer.rightButton.isDown
+		if (game.input.mousePointer.rightButton.isDown ||
+		    game.input.activePointer.rightButton.isDown) {
 			
+
+			console.log('this.game.input.mousePointer.rightButton.isDown');
 			
 			
 			if (gBlipFrogMenu.menu_up == true) {
@@ -245,16 +217,18 @@ theGame.prototype = {
 
 		} else if (game.input.isDown || 
 			   game.input.mousePointer.leftButton.isDown ||
-		    	   //game.input.activePointer.leftButton.isDown ||
+		    	   game.input.activePointer.leftButton.isDown ||
 			   game.input.pointer1.isDown) {
 
 			this.left_down = true;
 
 			input_down = true;
+			console.log('this.game.input.activePointer.isDown');
+			console.log('game.input.x ' + game.input.x);
 
 			
 			if (gBlipFrogMenu.menu_up == true) {
-				gBlipFrogMenu.handle_menu_event(game.input.x*menu_ratio,game.input.y*menu_ratio,Types.Events.MOUSE_DOWN);
+				gBlipFrogMenu.handle_menu_event(game.input.x,game.input.y,Types.Events.MOUSE_DOWN);
 				mousedown = false;
 			} else {
 				gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio, Types.Events.MOUSE_DOWN);
@@ -270,8 +244,8 @@ theGame.prototype = {
 
 
 
-		mouse.x = game.input.x*menu_ratio;
-		mouse.y = game.input.y*menu_ratio;
+		mouse.x = game.input.x;
+		mouse.y = game.input.y;
 			
 		// game.input.mousePointer.rightButton
 		// if (this.game.input.activePointer.isDown) {
@@ -281,21 +255,7 @@ theGame.prototype = {
 			gBlipFrogMenu.handle_events((game.input.x- x_shift_screen)/ratio ,game.input.y/ratio,Types.Events.MOUSE_DOWN);
 			
 		}
-
-		if (game.input.pointer1.isUp && this.left_down == true) {
-			//left_down == false;
-			//this.on_up();
-		}
-
-		if (game.input.pointer1.isDown) {
-			
-			this.on_down();
-		} else if (this.left_down == true) {
-			this.on_up();
-		}
-
-		//if (game.input.pointer1.isDown == true) //alert('game.input.isDown');
-		//if (game.input.activePointer.isDown) alert('game.input.isDown');
+		
 		
 		gBlipFrogMenu.update();
 	},

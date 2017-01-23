@@ -12,8 +12,6 @@ preload.prototype = {
 		this.game.load.atlas('atlas_blocks', 'assets/blocks.png', 'assets/blocks.json', Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 
 		
-
-		
 	},
 
   	create: function(){
