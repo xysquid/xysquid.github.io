@@ -185,7 +185,7 @@ var scriptList = [
 
 		"phaser-slim.min.js",
 
-		"playtomic.js",
+		//"playtomic.js",
 
 		//"src/boot.js",
 		//"src/preload.js",
@@ -261,7 +261,7 @@ start_phaser = function() {
 
 				// 8176
 
-				Playtomic.initialize("aaa", "aaa", "http://salty-ravine-95905.herokuapp.com");
+				//Playtomic.initialize("aaa", "aaa", "http://salty-ravine-95905.herokuapp.com");
 				//Playtomic.initialize("aaa", "aaa", "localhost");
 	
 				game.state.add("Boot",boot);
@@ -327,8 +327,8 @@ var do_resize = function(e) {
 	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
 	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
 
-	if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
-	if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
+	//if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
+	//if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
 
 	// http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
 	// screen.width on ios : width in dips
