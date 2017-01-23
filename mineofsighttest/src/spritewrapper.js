@@ -595,4 +595,6 @@ SpriteClass = Class.extend({
 	
 });
 
+alert('new spritewrapper.js');
+
 pBar.value += 10;
