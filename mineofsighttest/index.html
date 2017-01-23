@@ -266,9 +266,10 @@ else x_shift_screen = 0;
 play_group.position.set(x_shift_screen, 0);
 
 //console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
+game.width = screen_width;
+  	game.height = screen_height;
 
-game.width = window.innerWidth;
-game.height = window.innerHeight;  
+alert('ok so game.width = screen_width');
 
 if (window.devicePixelRatio != 1) {
 	alert('iphoneee');
