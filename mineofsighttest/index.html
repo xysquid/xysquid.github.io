@@ -324,8 +324,10 @@ var do_resize = function(e) {
 	if (play_screen_group == null) return;
 
 	// dips
-	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
-	screen_height = (window.innerHeight);
+	screen_width = document.documentElement.clientWidth - 1;//(window.innerWidth);
+	screen_height = (window.innerHeight) - 1;
+
+	window.scrollTo(0, 0);
 
 	//if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
 	//if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
