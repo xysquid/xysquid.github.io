@@ -30,6 +30,7 @@ Types = {
 
 			GOTO_LEVELS: 40,
 			GOTO_AUTOGEN: 41,
+			GOTO_EDITOR: 42,
 
 			NO_EVENT: 0,
 
@@ -111,6 +112,7 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
+	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
 	
 
 	[0, "CONTROLS"],
@@ -498,9 +500,8 @@ BlipFrogMenuClass = Class.extend({
 		this.menu_x = -this.menu_width;//screen_height;
 		this.game_x = 0;
 
-		this.menu_x_target = 0;//screen_height*options_menu_group.scale.y - this.menu_positions.menu_height*options_menu_group.scale.y;
-		//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
-		this.game_x_target = this.menu_width;//-this.menu_positions.menu_height/options_menu_group.scale.y;
+		this.menu_x_target = 0;
+		this.game_x_target = this.menu_width;
 		this.moving = 12;
 
 		update_webfonts();
@@ -517,8 +518,7 @@ BlipFrogMenuClass = Class.extend({
 		for (var i = 0; i < this.sprites_buttons.length; i++) {
 			var x = this.menu_positions.menu_item_pos_x[i];
 			var y = this.menu_positions.menu_item_pos_y[i];
-			this.sprites_buttons[i].hide();//update_pos(x,y);
-			//this.sprites_buttons[i].set_scale(this.menu_positions.scale);
+			this.sprites_buttons[i].hide();
 
 			if( MenuItems[i][0] != 0) var spr_x = MenuItems[i][2].length*14*0.5 - 7;
 
@@ -540,11 +540,11 @@ BlipFrogMenuClass = Class.extend({
 		console.log('POP down');
 		this.menu_up = false;
 
-		this.menu_x = 0;//screen_height - this.menu_positions.menu_height;//*devicePixelRatio;//g_menu_font_height*MenuItems.length;
+		this.menu_x = 0;//screen_height - this.menu_positions.menu_height;
 		this.game_x = this.menu_width;//-this.menu_positions.menu_height*1;
 
 		this.game_x_target = 0;
-		this.menu_x_target = -this.menu_width;//screen_height*options_menu_group.scale.y;
+		this.menu_x_target = -this.menu_width;
 		this.moving = 12;
 
 		this.menu_y = 0;
@@ -593,7 +593,6 @@ BlipFrogMenuClass = Class.extend({
 
 		this.spr_menu_button.update_pos(this.menu_icon_x,this.menu_icon_y);
 		
-		//this.spr_menu_button.set_scale(1/ratio);
 		
 		this.game_engine.on_screen_resize();
 
@@ -633,8 +632,6 @@ BlipFrogMenuClass = Class.extend({
 
 		if (this.menu_up == false) {
 			
-			//x = mouse.x;//(x*ratio);//options_menu_container.scale.y;
-			//y = mouse.y;//(y*ratio);//options_menu_container.scale.y;
 
 			if (event_type == Types.Events.MOUSE_UP &&
 			    mouse.x/options_menu_group.scale.x < 2*this.menu_icon_size &&
@@ -666,7 +663,7 @@ BlipFrogMenuClass = Class.extend({
 
 		if (event_type == Types.Events.MOUSE_DOWN && 
 			x > this.menu_width) {
-		    //y < screen_height - this.menu_positions.menu_height){//*devicePixelRatio) {
+		   
 			this.pop_down();
 			this.pop_down_click = true;
 			this.mouse_down = 0;
@@ -753,12 +750,7 @@ BlipFrogMenuClass = Class.extend({
 
 		this.menu_scroll = 0;
 
-		//y = y/ratio;
-		//y = y - screen_height + this.menu_positions.menu_height;
-		//y = y - (screen_height - this.menu_positions.menu_height)*options_menu_group.scale.y;//*devicePixelRatio);
-			
-		//y = y / options_menu_group.scale.x;
-		//x = x / options_menu_group.scale.x;
+		
 
 		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y);
 
@@ -793,6 +785,12 @@ BlipFrogMenuClass = Class.extend({
 		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_AUTOGEN) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GOTO_AUTOGEN);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_EDITOR) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_EDITOR);
 
 			this.pop_down();
 			
@@ -1005,6 +1003,14 @@ GameEngineClass = Class.extend({
 				state_.cleanup();
 			}
 			this.push_state(new SetupRandStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GOTO_EDITOR) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new LevelEditorStateClass(this, this.state_stack[1]));
 
 		} else if (event_type == Types.Events.GAME_OVER) {
 
