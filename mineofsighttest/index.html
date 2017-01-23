@@ -324,8 +324,8 @@ var do_resize = function(e) {
 	if (play_screen_group == null) return;
 
 	// dips
-	screen_width = document.documentElement.clientWidth - 1;//(window.innerWidth);
-	screen_height = (window.innerHeight) - 1;
+	screen_width = (window.innerWidth) - 2; //  document.documentElement.clientWidth - 1;//
+	screen_height = (window.innerHeight) - 2;
 
 	window.scrollTo(0, 0);
 
@@ -338,7 +338,7 @@ var do_resize = function(e) {
 
 	// ------------------------ only mention of device pixel ratio
 	menu_ratio = 1;
-	//if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
+	if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
 
 	// physical pixels
 	//screen_width = screen_width*window.devicePixelRatio;
@@ -346,8 +346,8 @@ var do_resize = function(e) {
 
 	//if (menu_ratio < 0.5) menu_ratio = 0.5;
 
-	//game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
-	//options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
 
 	
 
@@ -383,8 +383,8 @@ var do_resize = function(e) {
 
 
 	// seems to have no effect
-	game.width = 0.25*screen_width;//window.innerWidth;
-	game.height = 0.5*screen_height;//window.innerHeight;  
+	game.width = screen_width;//window.innerWidth;
+	game.height = screen_height;//window.innerHeight;  
 
 	// after adjusting tile and game containers
 	screen_width = screen_width;
