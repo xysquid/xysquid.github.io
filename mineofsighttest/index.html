@@ -325,7 +325,7 @@ var do_resize = function(e) {
 
 	// dips
 	screen_width = document.documentElement.clientWidth;//(window.innerWidth);
-	screen_height = document.documentElement.clientHeight;//(window.innerHeight);
+	screen_height = (window.innerHeight);
 
 	//if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
 	//if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
@@ -362,7 +362,7 @@ var do_resize = function(e) {
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
 	
-
+	var w_menu = 250;	// the pop menu needs 250 pixels
 
 	play_group.scale.set(ratio, ratio);
 
@@ -379,9 +379,9 @@ var do_resize = function(e) {
 	play_group.position.set(x_shift_screen, 0);
 
 
-	
-	game.width = screen_width;//window.innerWidth;
-	game.height = screen_height;//window.innerHeight;  
+	// seems to have no effect
+	game.width = 0.25*screen_width;//window.innerWidth;
+	game.height = 0.5*screen_height;//window.innerHeight;  
 
 	// after adjusting tile and game containers
 	screen_width = screen_width;
