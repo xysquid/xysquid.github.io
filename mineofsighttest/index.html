@@ -245,9 +245,11 @@ start_phaser = function() {
 	pBar.value += 20; 
 
 			
-	
+	// dips
+	screen_width =  document.documentElement.clientWidth - 1;//
+	screen_height = document.body.offsetWidth - 2;
 
-	game = new Phaser.Game(2200, 2200, Phaser.AUTO, "game", {
+	game = new Phaser.Game(screen_width , screen_height, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
@@ -323,9 +325,9 @@ var do_resize = function(e) {
 	if (game == null) return;
 	if (play_screen_group == null) return;
 
-	// dips
-	screen_width = (window.innerWidth) - 2; //  document.documentElement.clientWidth - 1;//
-	screen_height = (window.innerHeight) - 2;
+	
+
+	// document.body.offsetWidth ?
 
 	window.scrollTo(0, 0);
 
