@@ -225,61 +225,96 @@ var screen_height = 600;
 var ratio = 1;
 var x_shift_screen = 0;
 
+
 var do_resize = function(e) {  
-console.log('IN do_rsize');
-if (game == null) return;
-if (play_screen_group == null) return;
 
+	if (game == null) return;
+	if (play_screen_group == null) return;
 
-// dips
+	// dips
 	screen_width =  document.documentElement.clientWidth - 1;//
 	screen_height = document.documentElement.clientHeight - 1;
-alert ('dips');
+
+	// document.body.offsetWidth ?
+
+	window.scrollTo(0, 0);
+
+	//if (screen.width/window.devicePixelRatio > screen_width) screen_width = screen.width/window.devicePixelRatio;
+	//if (screen.height/window.devicePixelRatio > screen_height) screen_width = screen.height/window.devicePixelRatio;
+
+	// http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+	// screen.width on ios : width in dips
+	// screen.width on android : width in physical pixels
+
+	// ------------------------ only mention of device pixel ratio
+	menu_ratio = 1;
+	//if (window.devicePixelRatio > 1) menu_ratio = 1/window.devicePixelRatio;
+
+	Math.max(screen_width,screen_height);
+
+	// physical pixels
+	//screen_width = screen_width*window.devicePixelRatio;
+	//screen_height = screen_height*window.devicePixelRatio;
+
+	//if (menu_ratio < 0.5) menu_ratio = 0.5;
+
+	//game_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+	//options_menu_group.scale.set(1/menu_ratio,1/menu_ratio);
+
+	//if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+
+	
+
+	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
+
+	//alert('document.documentElement.clientHeight ' + document.documentElement.clientHeight + ' window.innerHeight ' + 	window.innerHeight + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
 
-var w = 12.5*60;
-var w_portrait = 10*60;
+	var w = 12.5*60;
+	var w_portrait = 10*60;
 
-// tile size of 60
+	// tile size of 60
 
-if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
-else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
+	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
+	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
+	
 
-
-//game.scale.width = game.scale.height = 1/ratio;
-
-//game_group.scale.x = 1/ratio;
-//game_group.scale.y = 1/ratio;
-play_group.scale.set(ratio, ratio);
+	play_group.scale.set(ratio, ratio);
 
 
-var over_x = 0;//screen_width - (8*96);
-if (screen_width > screen_height) over_x = screen_width - w*ratio;
-else over_x = screen_width - w_portrait*ratio;
+	var over_x = 0;//screen_width - (8*96);
+	if (screen_width > screen_height) over_x = screen_width - w*ratio;
+	else over_x = screen_width - w_portrait*ratio;
 
 
 
-if (over_x > 0) x_shift_screen = 0.5*over_x;
-else x_shift_screen = 0;
+	if (over_x > 0) x_shift_screen = 0.5*over_x;
+	else x_shift_screen = 0;
 
-play_group.position.set(x_shift_screen, 0);
+	play_group.position.set(x_shift_screen, 0);
 
-//console.log('game.scale.width ' + game.scale.width + ' game.scale.height ' + game.scale.height);
-game.width = screen_width;
+
+	game.width = screen_width;
   	game.height = screen_height;
+  	//game.stage.bounds.width = screen_width;
+  	//game.stage.bounds.height = screen_height;
+ 
+  	if (game.renderType === 1) {
+    		game.renderer.resize(screen_width, screen_height);
+    		Phaser.Canvas.setSmoothingEnabled(game.context, false);
+  	}
 
-alert('ok so game.width = screen_width');
+	game.camera.setSize(screen_width, screen_height);
 
-if (window.devicePixelRatio != 1) {
-	alert('iphoneee');
-	//options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
-	//gBlipFrogMenu.menu_item_scale = window.devicePixelRatio;
-}
+	// after adjusting tile and game containers
+	//screen_width = screen_width*menu_ratio;
+	//screen_height = screen_height*menu_ratio;;
 
-gBlipFrogMenu.on_screen_resize();
+	alert('ok just copy pasted');
 
-//game.scale.refresh();
+
+	gBlipFrogMenu.on_screen_resize();
 
 return;
 
