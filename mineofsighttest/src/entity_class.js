@@ -156,7 +156,7 @@ ExplosionClass = Class.extend({
 	},
 
 	start_anim: function () {
-		console.log('ecplode start anim');
+		//console.log('ecplode start anim');
 		this.curr_frame = 0;
 	},
 
@@ -169,7 +169,7 @@ ExplosionClass = Class.extend({
 
 	draw: function() {
 
-		console.log('ecplode draw');
+		//console.log('ecplode draw');
 		if (this.curr_frame < this.frames.length &&
 		    this.curr_frame >= 0) {
 			for (var i = 0; i < this.frames.length; i++) {
@@ -997,7 +997,7 @@ BlockClass = Class.extend({
 				// look up
 				for (var yy = this.y; yy >= 0; yy--) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
-					//console.log('eye raange ' + x + ' ' + yy);
+					////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -1005,7 +1005,7 @@ BlockClass = Class.extend({
 				// look down
 				for (var yy = this.y; yy < this.game_state.grid_h; yy++) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
-					//console.log('eye raange ' + x + ' ' + yy);
+					////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -1015,7 +1015,7 @@ BlockClass = Class.extend({
 				
 				for (var xx = this.x; xx < this.game_state.grid_w; xx++) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
-					//console.log('eye raange ' + xx + ' ' + y);
+					////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -1023,7 +1023,7 @@ BlockClass = Class.extend({
 				// look left
 				for (var xx = this.x; xx >= 0; xx--) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
-					//console.log('eye raange ' + xx + ' ' + y);
+					////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -1931,7 +1931,7 @@ BlockClass = Class.extend({
 			}
 		}
 
-		console.log('still_undug ' + still_undug + ' this.preset_hint_type ' + this.preset_hint_type + ' hintnum ' + hint_ + ' this.x_in_range ' + this.x_in_range.length );
+		//console.log('still_undug ' + still_undug + ' this.preset_hint_type ' + this.preset_hint_type + ' hintnum ' + hint_ + ' this.x_in_range ' + this.x_in_range.length );
 
 		if (hint_ == actual) this.happy = true;
 		else this.happy = false;

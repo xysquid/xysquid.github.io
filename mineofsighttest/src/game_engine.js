@@ -30,6 +30,7 @@ Types = {
 
 			GOTO_LEVELS: 40,
 			GOTO_AUTOGEN: 41,
+			GOTO_EDITOR: 42,
 
 			NO_EVENT: 0,
 
@@ -111,6 +112,7 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
+	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
 	
 
 	[0, "CONTROLS"],
@@ -796,6 +798,12 @@ BlipFrogMenuClass = Class.extend({
 
 			this.pop_down();
 			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_EDITOR) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_EDITOR);
+
+			this.pop_down();
+			
 		} else if (MenuItems[menu_i][1] == Types.Events.GAME_OVER) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GAME_OVER);
@@ -1005,6 +1013,14 @@ GameEngineClass = Class.extend({
 				state_.cleanup();
 			}
 			this.push_state(new SetupRandStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GOTO_EDITOR) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new LevelEditorStateClass(this, this.state_stack[1]));
 
 		} else if (event_type == Types.Events.GAME_OVER) {
 

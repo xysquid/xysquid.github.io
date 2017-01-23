@@ -159,7 +159,7 @@ theGame.prototype = {
 		gBlipFrogMenu.setup();
 		
 		// trigger resize http://stackoverflow.com/questions/1818474/how-to-trigger-the-window-resize-event-in-javascript
-		console.log('trigger do_rsize');
+		
 		do_resize();
 		
 		game.input.onDown.add(this.on_down);
@@ -193,7 +193,6 @@ theGame.prototype = {
 
 	on_key: function(event) {
 
-		console.log(event.keyCode.toString());
 
 		g_key_pressed = event.keyCode || event.which;
 
@@ -229,8 +228,6 @@ theGame.prototype = {
 
 			// || game.input.activePointer.rightButton.isDown
 			
-
-			//console.log('this.game.input.mousePointer.rightButton.isDown');
 			
 			
 			if (gBlipFrogMenu.menu_up == true) {
@@ -254,8 +251,6 @@ theGame.prototype = {
 			this.left_down = true;
 
 			input_down = true;
-			console.log('this.game.input.activePointer.isDown');
-			console.log('game.input.x ' + game.input.x);
 
 			
 			if (gBlipFrogMenu.menu_up == true) {
