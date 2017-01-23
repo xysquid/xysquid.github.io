@@ -231,8 +231,10 @@ if (game == null) return;
 if (play_screen_group == null) return;
 
 
-screen_width = (window.innerWidth);
-screen_height = (window.innerHeight);
+// dips
+	screen_width =  document.documentElement.clientWidth - 1;//
+	screen_height = document.documentElement.clientHeight - 1;
+alert ('dips');
 
 
 var w = 12.5*60;
