@@ -3,13 +3,14 @@
 g_text_objs = [];
 // web fonts take unpredictable time to load properly, so I just call this a few times
 function update_webfonts() {
-	console.log('update webfonts');
+	
 	for (var i = 0; i < g_text_objs.length; i++) {
 		if (g_text_objs[i].pixitext == null) continue;
+		g_text_objs[i].pixitext.font = 'Arial';
 		g_text_objs[i].pixitext.font = 'Montserrat';
 		
 		//if (g_text_objs[i].pixitext.font != 'Montserrat') {
-			//console.log('g_text_objs[i].pixitext.font' + g_text_objs[i].pixitext.font);
+			
 		//}
 
 
@@ -58,6 +59,14 @@ CounterClass = Class.extend({
 
 	set_text: function(t_) {
 		this.change_text(t_);
+	},
+
+	set_alpha: function(alpha_) {
+		//this.phasersprite.alpha = alpha_;
+
+		for(var i = 0; i < this.char_sprites.length; i++) {
+			this.char_sprites[i].set_alpha(alpha_);
+		}
 	},
 
 	change_text: function(text_) {
@@ -171,6 +180,8 @@ TextClass = Class.extend({
 
 	width: 999,
 
+	
+
 	init: function(layer) {
 
 		update_webfonts();
@@ -242,6 +253,10 @@ TextClass = Class.extend({
 		this.pixitext.fontSize = this.font_size;
 	},
 
+	set_colour : function (col_) {
+		this.pixitext.fill = col_;//'#ffffff';
+	},
+
 	set_text : function(str) {
 
 		
@@ -274,6 +289,7 @@ TextClass = Class.extend({
 			};
 			
 			this.pixitext = game.add.text(-999,-999, str);//, st_);
+			this.pixitext.font = 'Arial';
 			this.pixitext.font = 'Montserrat';
 			this.pixitext.fill = '#ffffff';
 			this.pixitext.fontSize = this.font_size;
@@ -332,6 +348,14 @@ TextClass = Class.extend({
 			//this.pixitext.x = x - this.pixitext.width*0.5;
 		
 
+	},
+
+	hide: function () {
+		this.pixitext.visible = false;
+	},
+
+	make_vis: function () {
+		this.pixitext.visible = true;
 	},
 
 
@@ -490,11 +514,15 @@ SpriteClass = Class.extend({
 		this.name = name;
 		this.layer = layer;
 
+		// performance - render to INTEGER POSITIONS
+		x = Math.round(x);
+		y = Math.round(y);
+
 		if (x == null) x = -999;
 		if (y == null) y = - 999;
 
 		//var test = game.add.sprite(20,40,'atlas_blocks',name);
-		//console.log(game_group);
+		//
 	
 		
 
@@ -559,6 +587,10 @@ SpriteClass = Class.extend({
 
 		this.setup_sprite(name, this.layer, this.x, this.y);
 	},
+
+	set_alpha: function(alpha_) {
+		this.phasersprite.alpha = alpha_;
+	}
 
 	
 });
