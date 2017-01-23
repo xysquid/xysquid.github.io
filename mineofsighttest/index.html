@@ -245,11 +245,9 @@ start_phaser = function() {
 	pBar.value += 20; 
 
 			
-	// dips
-	screen_width =  document.documentElement.clientWidth - 1;//
-	screen_height = document.body.offsetWidth - 2;
+	
 
-	game = new Phaser.Game(screen_width , screen_height, Phaser.AUTO, "game", {
+	game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
@@ -325,7 +323,9 @@ var do_resize = function(e) {
 	if (game == null) return;
 	if (play_screen_group == null) return;
 
-	
+	// dips
+	screen_width =  document.documentElement.clientWidth - 1;//
+	screen_height = document.body.offsetHeight - 2;
 
 	// document.body.offsetWidth ?
 
@@ -369,7 +369,6 @@ var do_resize = function(e) {
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
 	
-	var w_menu = 250;	// the pop menu needs 250 pixels
 
 	play_group.scale.set(ratio, ratio);
 
@@ -387,8 +386,8 @@ var do_resize = function(e) {
 
 
 	// seems to have no effect
-	game.width = screen_width;//window.innerWidth;
-	game.height = screen_height;//window.innerHeight;  
+	//game.width = screen_width;//window.innerWidth;
+	//game.height = screen_height;//window.innerHeight;  
 
 	// after adjusting tile and game containers
 	//screen_width = screen_width*menu_ratio;
