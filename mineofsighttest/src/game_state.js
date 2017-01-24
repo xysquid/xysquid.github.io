@@ -1,6 +1,5 @@
 ﻿// http://gamedevgeek.com/tutorials/managing-game-states-in-c/
 
-alert('game_state.js is new');
 GameStateClass = Class.extend({
 
 	
