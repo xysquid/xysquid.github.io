@@ -110,7 +110,7 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
+	//[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
 	
 
 	[0, "CONTROLS"],
