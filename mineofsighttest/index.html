@@ -8,9 +8,6 @@
 	We have used the following open source projects / code:
 
 	phaser.js
-	Copyright © 2017 Richard Davey, Photon Storm Ltd.
-	Phaser is distributed under the MIT License.
-	https://phaser.io/download/license
 
 	pixi.js - v2.2.3
 	Copyright (c) 2012-2014, Mat Groves
@@ -55,8 +52,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="user-scalable=no" />
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="width=device-height">
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
 <meta name="twitter:card" content="summary" />
@@ -81,9 +76,6 @@
 	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
 
 
-	<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
-
-
 </head>
     
 
@@ -91,20 +83,22 @@
 
     
 
+<div id = 'pbar' >
+	<progress id='prog_bar' value = '0' max='100'></progress>
+</div>
 
 
 <!--<script src="phaser-slim.min.js"></script>-->
 <script src="src/core.js"></script>
-<script src="src/asset_manager.js"></script>	
+<script src="src/asset_manager.js"></script>
+			
 		
 
 <style>
-    	body{
-				overflow:hidden;
-				margin:0;
-			     	font-family: 'Montserrat', sans-serif;
-			     	background: #1F1129;	}
-				.fontPreload {
+    	body{margin:0;
+			     font-family: 'Montserrat', sans-serif;
+			     background: #1F1129;	}
+			.fontPreload {
 		  		font-family: 'Montserrat';
 		  		position:absolute;
 		  		left:-100px;
@@ -127,7 +121,7 @@
 	}
 
 	progress::-webkit-progress-bar {
- 		background-color: #22757B;
+ 		background-color: #FFFFFF;
   		border: 0;
   		height: 8px;
   		border-radius: 0px;
@@ -140,9 +134,9 @@
 		border-radius: 50px;
 	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
 		background:
+		//91AF28
 		
-		
-		-webkit-linear-gradient(left, #27CFDA, #27CFDA);
+		-webkit-linear-gradient(left, #C9FA1F, #C9FA1F);
 	
 	/* Looks great, now animating it */
 	background-size: 25px 14px, 100% 100%, 100% 100%;
@@ -150,42 +144,27 @@
 	}
 
 	progress::-moz-progress-bar {
-  		background-color: #27CFDA;
+  		background-color: #C9FA1F;
   		border: 0;
   		height: 8px;
   		border-radius: 0px;
 		
 	}
 
-	
-
    </style>
-
-
-<div id = 'pbar' >
-	
-	<div id = 'splashdiv' align = "center">
-		<img id = 'splash' src = 'assets/title2.png'>
-	</div>
-	<progress id='prog_bar' value = '0' max='100'></progress>
-</div>
-
-<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 <script type="text/javascript">
 
     
 
 
-alert('whole index.html is new');
+
 
 var game;
 var assets_loaded = false;
 var scriptList = [
 
 		"phaser-slim.min.js",
-
-		//"playtomic.js",
 
 		//"src/boot.js",
 		//"src/preload.js",
@@ -203,35 +182,6 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
-//if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
-
-var on_kong = 0;
-
-if (location.hostname == "www.kongregate.com") on_kong = 1;
-
-var kongregate;
-if (false && on_kong == 1) {
-	// Load the API
-	
-	kongregateAPI.loadAPI(function(){
-		
-		// Callback function
-		// Set the global kongregate API object
-  		kongregate = kongregateAPI.getAPI();
-
-
-		// Register the shared content load listener before connecting
-		//kongregate.sharedContent.addLoadListener('Level', onLoadLevel);
-   
-		// Connect
-		//kongregate.services.connect();
-
-	});
-
-}
-
-
-
 var pBar = document.getElementById('prog_bar');
 pBar.value += 20; 
 
@@ -243,26 +193,16 @@ window.onload = function () {
 start_phaser = function() {
 
 	pBar.value += 20; 
-
-			
 	
 
-	game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, "game", {
+	game = new Phaser.Game(200, 200, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
     	});
-
-
-				
-
 	
-				// remove_splash();
-
-				// 8176
-
-				//Playtomic.initialize("aaa", "aaa", "http://salty-ravine-95905.herokuapp.com");
-				//Playtomic.initialize("aaa", "aaa", "localhost");
+				 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+				
 	
 				game.state.add("Boot",boot);
 				game.state.add("Preload",preload);
@@ -270,53 +210,22 @@ start_phaser = function() {
 				game.state.add("TheGame",theGame);
 
 				//
-
-	
 				
 				game.state.start("Boot");
-
-
-				
-
-
-				
-
-				
 			
 	if (game.stage != null) game.stage.backgroundColor = "0x1F1129";
 };
 
-g_splash_parent = null;
-g_splash_image = null;
-
-remove_splash = function() {
-	 pBar.parentNode.removeChild(pBar);	// remove the progress bar
-			var splash = document.getElementById('splash');
-				if (splash != null) {
-					
-					//g_splash_parent = splash.parentNode;
-					splash.parentNode.removeChild(splash);
-
-					//g_splash_image = splash;
-				}
-
-	do_resize();
-};
-
-show_splash = function () {
-		//var splash_parent = document.getElementById('prog_bar');
-		//g_splash_parent.appendChild(g_splash_image);
-};
 
 
 var playSoundInstance = function(sndfile, vol) {};
 
 var screen_width = 600;
 var screen_height = 600;
-var ratio = 1;		// tiles in game
-var menu_ratio = 1;	// menu, pop up menu
+var ratio = 1;
 var x_shift_screen = 0;
-var scale_man;
+
+
 
 var do_resize = function(e) {  
 
@@ -403,10 +312,10 @@ var do_resize = function(e) {
 	//screen_width = screen_width*menu_ratio;
 	//screen_height = screen_height*menu_ratio;;
 
+	alert('ok just copy pasted');
 
 
 	gBlipFrogMenu.on_screen_resize();
-
 
 return;
 
