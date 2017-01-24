@@ -110,7 +110,7 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
+	//[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
 	
 
 	[0, "CONTROLS"],
@@ -308,7 +308,7 @@ MenuPositions = Class.extend({
 g_menu_font_height = 24;
 
 
-//alert('new game_engine.js - will shift options_menu_group.x, ignore menu_ratio ');
+//alert('new game_engine.js but wont shift containers');
 
 function g_set_game_screen_x(newx) {
 	return;
@@ -319,12 +319,12 @@ function g_set_game_screen_x(newx) {
 
 function g_set_menu_screen_x(newx) {
 	//return;
-	options_menu_group.x = newx*menu_ratio;
+	options_menu_group.x = newx/menu_ratio;
 };
 
 
 function g_set_menu_screen_y(newy) {
-	return;
+	//return;
 	options_menu_group.y = newy;
 };
 
@@ -658,8 +658,8 @@ BlipFrogMenuClass = Class.extend({
 		
 		//if (event_type == Types.Events.WHEEL) 
 		
-		y = mouse.y/menu_ratio;//y*ratio;
-		x = mouse.x/menu_ratio;//x*ratio;
+		y = mouse.y;//y*ratio;
+		x = mouse.x;//x*ratio;
 
 		
 
