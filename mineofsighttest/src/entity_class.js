@@ -1,4 +1,4 @@
-﻿alert('entity_class.js is new');
+﻿
 
 g_block_sprites = {
 	1: "block0.png",
