@@ -658,8 +658,8 @@ BlipFrogMenuClass = Class.extend({
 		
 		//if (event_type == Types.Events.WHEEL) 
 		
-		y = y/menu_ratio;//y*ratio;
-		x = x/menu_ratio;//x*ratio;
+		y = mouse.y/menu_ratio;//y*ratio;
+		x = mouse.x/menu_ratio;//x*ratio;
 
 		
 
