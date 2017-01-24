@@ -1,4 +1,4 @@
-﻿
+﻿alert('entity_class.js is new');
 
 g_block_sprites = {
 	1: "block0.png",
@@ -156,7 +156,7 @@ ExplosionClass = Class.extend({
 	},
 
 	start_anim: function () {
-		console.log('ecplode start anim');
+		//console.log('ecplode start anim');
 		this.curr_frame = 0;
 	},
 
@@ -169,7 +169,7 @@ ExplosionClass = Class.extend({
 
 	draw: function() {
 
-		console.log('ecplode draw');
+		//console.log('ecplode draw');
 		if (this.curr_frame < this.frames.length &&
 		    this.curr_frame >= 0) {
 			for (var i = 0; i < this.frames.length; i++) {
@@ -497,7 +497,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 			if (this.do_level_sprite[i] == true) {
 				this.level_sprite[i].make_vis();
-				this.level_sprite[i].update_pos(x - 20, y);
+				this.level_sprite[i].update_pos(x + 20, y);
 
 			}
 
@@ -506,8 +506,8 @@ OverworldSpritesClassReuseable = Class.extend({
 			} else this.status_sprite[i].hide();
 
 			if (this.special_code[i] == 0) {
-				this.level_text[i].update_pos(x + 20, y - 20,96,999);
-				this.level_text[i].center_x(x + 20);
+				this.level_text[i].update_pos(x - 35, y - 20,96,999);
+				//this.level_text[i].center_x(x + 20);
 			} else {
 				this.level_text[i].update_pos(3.5*this.level_tile_size, y - 0.125*this.level_tile_size,999,999);
 				///this.level_text[i].center_x(x + 20);
@@ -571,14 +571,20 @@ InfoClass = Class.extend({
 				this.text.change_text("      Number of mines in line of sight, this row and column. Blocked by walls.");
 			} else if (hint_ == 3) {
 				this.block_obj.set_texture('eyeplustouch.png');
-				this.text.change_text("      The number of mines seen PLUS the number of mines touched. Touched mines will be counted 2X");
+				this.text.change_text("      The number of mines seen PLUS the number of mines touched, by this tile. So any adjacent mines will be counted 2X");
 			} else if (hint_ == 4) {
 				this.block_obj.set_texture('8hand.png');
 				this.text.change_text("      Number of mines in the 8 surrounding tiles.");
 			} else if (hint_ == 5) {
 				this.block_obj.set_texture('heart.png');
 				this.text.change_text("      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.");
-			} else {
+			} else if (hint_ == 11) {
+				this.block_obj.set_texture('compass.png');
+				this.text.change_text("      Number of DIRECTIONS in which mines are seen. Same range as the eye.");
+			}else if (hint_ == 12) {
+				this.block_obj.set_texture('crown.png');
+				this.text.change_text("      Higest unbroken SEQUENCE of mines seen. Same range as the eye.");
+			}else {
 				// uncovered, no hint, empty
 				
 			}
@@ -632,6 +638,66 @@ InfoClass = Class.extend({
 
 });
 
+GameTypes = {
+	Clues: {
+		NO_CLUE: 0,
+		FOUR_TOUCH: 1,
+		EYE: 2,
+		EIGHT_TOUCH: 3,
+		HEART: 4,
+		COMPASS: 5,
+		CROWN: 6
+
+	}
+
+};
+
+newBlockClass = Class.extend({
+	index: -1,	
+	block_type: -1,
+
+	block_blink_sprite: null,	// select highlight
+	block_sprite: null,		// wall, tile, flag .. or clue
+	hint_num_obj: null,
+
+	hint_num: 0,
+
+	x: -1,
+	y: -1,
+
+	covered_up: true,
+	flag_on :false,
+
+	joined_with: -1,
+	join_group: 0,
+	join_sprite_any: null,
+
+	init: function(game_state) {
+
+		this.game_state = game_state;
+
+		this.block_type = 1;
+
+		this.block_sprite = new SpriteClass();
+		this.block_sprite.setup_sprite("block0.png",Types.Layer.GAME);
+		this.block_sprite.hide();
+
+		this.hint_num_obj = new CounterClass(Types.Layer.TILE);
+		this.hint_num_obj.set_font(Types.Fonts.MEDIUM);
+		this.hint_num_obj.set_text("");
+		this.hint_num_obj.update_pos(-999,-999);
+
+		
+		this.join_sprite_any = new SpriteClass();
+		this.join_sprite_any.setup_sprite('joiner_up.png',Types.Layer.TILE);
+		this.join_sprite_any.hide();
+
+
+	}
+
+});
+
+
 BlockClass = Class.extend({
 
 	index: -1,	
@@ -639,7 +705,7 @@ BlockClass = Class.extend({
 
 	block_blink_sprite: null,
 	block_sprite: null,
-	block_shadow_sprite: null,
+	//block_shadow_sprite: null,
 	
 	
 
@@ -674,6 +740,14 @@ BlockClass = Class.extend({
 	hint_add_num: -1,
 	hint_add_num_text: null,
 
+	hint_compass_sprite: null,
+	hint_compass_num: -1,
+	hint_compass_num_text: null,
+
+	hint_crown_sprite: null,
+	hint_crown_num: -1,
+	hint_crown_num_text: null,
+
 	flag_sprite: null,
 
 	joined_with: -1,
@@ -681,6 +755,8 @@ BlockClass = Class.extend({
 
 	join_h_sprite: null,
 	join_v_sprite: null,
+
+	join_sprite_any: null,
 
 	editor_mode: 0,		// draw half covered
 
@@ -696,9 +772,9 @@ BlockClass = Class.extend({
 		this.block_blink_sprite.setup_sprite("select.png",Types.Layer.HUD);
 		this.block_blink_sprite.hide();
 		
-		this.block_shadow_sprite = new SpriteClass();
-		this.block_shadow_sprite.setup_sprite("block1_shadow.png",Types.Layer.TILE);
-		this.block_shadow_sprite.hide();
+		//this.block_shadow_sprite = new SpriteClass();
+		//this.block_shadow_sprite.setup_sprite("block1_shadow.png",Types.Layer.TILE);
+		//this.block_shadow_sprite.hide();
 
 		this.block_sprite = new SpriteClass();
 		this.block_sprite.setup_sprite("block0.png",Types.Layer.GAME);
@@ -712,6 +788,9 @@ BlockClass = Class.extend({
 		this.join_h_sprite.setup_sprite('joiner_h.png',Types.Layer.TILE);
 		this.join_h_sprite.hide();
 
+		this.join_sprite_any = new SpriteClass();
+		this.join_sprite_any.setup_sprite('joiner_up.png',Types.Layer.TILE);
+		this.join_sprite_any.hide();
 
 		this.flag_sprite = new SpriteClass();
 		this.flag_sprite.setup_sprite("flagblock.png",Types.Layer.GAME);
@@ -760,8 +839,86 @@ BlockClass = Class.extend({
 		this.hint_add_sprite = new SpriteClass();
 		this.hint_add_sprite.setup_sprite("eyeplustouch.png",Types.Layer.GAME);
 		this.hint_add_sprite.hide();
-
 		
+		this.hint_compass_sprite = new SpriteClass();
+		this.hint_compass_sprite.setup_sprite("compass.png",Types.Layer.GAME);
+		this.hint_compass_sprite.hide();
+
+		this.hint_compass_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_compass_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_compass_num_text.set_text("");
+		this.hint_compass_num_text.update_pos(-999,-999);
+
+		this.hint_crown_sprite = new SpriteClass();
+		this.hint_crown_sprite.setup_sprite("crown.png",Types.Layer.GAME);
+		this.hint_crown_sprite.hide();
+
+		this.hint_crown_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_crown_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_crown_num_text.set_text("");
+		this.hint_crown_num_text.update_pos(-999,-999);
+		
+	},
+
+	calc_joiner_sprite: function () {
+		if (this.join_group == 0) return;
+
+		var left = 0;
+		var right = 0;
+		var up = 0;
+		var down = 0;
+
+		if (this.x > 0 && 
+		    this.game_state.blocks[this.game_state.tiles[this.x - 1][this.y]].join_group == this.join_group) {	
+			left = 1;
+		}
+
+		if (this.y > 0 && 
+		    this.game_state.blocks[this.game_state.tiles[this.x][this.y - 1]].join_group == this.join_group) {	
+			up = 1;
+		}
+
+		if (this.x < this.game_state.grid_w - 1 && 
+		    this.game_state.blocks[this.game_state.tiles[this.x + 1][this.y]].join_group == this.join_group) {	
+			right = 1;
+		}
+
+		if (this.y < this.game_state.grid_h - 1 && 
+		    this.game_state.blocks[this.game_state.tiles[this.x][this.y + 1]].join_group == this.join_group) {	
+			down = 1;
+		}
+
+		this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 									this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 3);
+
+		if (left == 0 && right == 0 && up == 0 && down == 0) {}	// all alone?
+		else if (left == 1 && right == 0 && up == 0 && down == 0) this.join_sprite_any.set_texture("joiner_right.png");
+		else if (left == 0 && right == 1 && up == 0 && down == 0) this.join_sprite_any.set_texture("joiner_left.png");
+		else if (left == 0 && right == 0 && up == 1 && down == 0) this.join_sprite_any.set_texture("joiner_down.png");
+		else if (left == 0 && right == 0 && up == 0 && down == 1) this.join_sprite_any.set_texture("joiner_up.png");
+		else if (left == 1 && right == 1 && up == 0 && down == 0) this.join_sprite_any.set_texture("joiner_tube_h.png");
+		else if (left == 1 && right == 0 && up == 1 && down == 0) this.join_sprite_any.set_texture("joiner_corner_DR.png");
+		else if (left == 1 && right == 0 && up == 0 && down == 1) this.join_sprite_any.set_texture("joiner_corner_UR.png");
+		else if (left == 0 && right == 1 && up == 1 && down == 0) this.join_sprite_any.set_texture("joiner_corner_DL.png");
+		else if (left == 0 && right == 1 && up == 0 && down == 1) this.join_sprite_any.set_texture("joiner_corner_UL.png");
+		else if (left == 0 && right == 0 && up == 1 && down == 1) this.join_sprite_any.set_texture("joiner_tube_v.png");
+		else if (left == 1 && right == 1 && up == 1 && down == 0) {
+			this.join_sprite_any.set_texture("joiner_side_h.png");
+			this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size  + 25.5);
+		}
+		else if (left == 1 && right == 1 && up == 0 && down == 1) {
+			this.join_sprite_any.set_texture("joiner_side_h.png");
+			this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size  - 25.5);
+		}
+		else if (left == 1 && right == 0 && up == 1 && down == 1) {
+			this.join_sprite_any.set_texture("joiner_side_v.png");
+			this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size   + 25.5, this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+		}
+		else if (left == 0 && right == 1 && up == 1 && down == 1) {
+			this.join_sprite_any.set_texture("joiner_side_v.png");
+			this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size   - 25.5, this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+		}
+		else if (left == 1 && right == 1 && up == 1 && down == 1) this.join_sprite_any.hide();
+		else {}	// none left!
 	},
 
 	select: function() {
@@ -784,6 +941,35 @@ BlockClass = Class.extend({
 		this.flag_on = false;
 		this.set_type(this.block_type);
 		this.deselect();
+	},
+
+	include_range_of_joined_tile: function (otherx, othery) {
+		// check that other tile is in the same join group as me..
+		if (this.join_group == 0) return;
+		if (this.join_group != this.game_state.blocks[this.game_state.tiles[otherx][othery]].join_group) return;
+
+		// for each entry in the other guys range, IF its not already in mine, ADD it
+		for (var r = 0; r < this.game_state.blocks[this.game_state.tiles[otherx][othery]].x_in_range.length; r++) {
+			var x = this.game_state.blocks[this.game_state.tiles[otherx][othery]].x_in_range[r];
+			var y = this.game_state.blocks[this.game_state.tiles[otherx][othery]].y_in_range[r];
+
+			var already_got = 0;
+
+			for (var j = 0; j < this.x_in_range.length; j++) {
+				if (x == this.x_in_range[j] &&
+				    y == this.y_in_range[j]) {
+					already_got = 1;
+
+				}
+
+			}
+
+			if (already_got == 0) {
+				this.x_in_range.push(x);
+				this.y_in_range.push(y);
+			}
+		}
+		
 	},
 
 	is_in_range: function(x,y) {
@@ -811,7 +997,7 @@ BlockClass = Class.extend({
 				// look up
 				for (var yy = this.y; yy >= 0; yy--) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
-					//console.log('eye raange ' + x + ' ' + yy);
+					////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -819,7 +1005,7 @@ BlockClass = Class.extend({
 				// look down
 				for (var yy = this.y; yy < this.game_state.grid_h; yy++) {
 					var tile_ = this.game_state.get_block_type(this.x,yy);
-					//console.log('eye raange ' + x + ' ' + yy);
+					////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -829,7 +1015,7 @@ BlockClass = Class.extend({
 				
 				for (var xx = this.x; xx < this.game_state.grid_w; xx++) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
-					//console.log('eye raange ' + xx + ' ' + y);
+					////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -837,7 +1023,7 @@ BlockClass = Class.extend({
 				// look left
 				for (var xx = this.x; xx >= 0; xx--) {
 					var tile_ = this.game_state.get_block_type(xx, this.y);
-					//console.log('eye raange ' + xx + ' ' + y);
+					////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -870,6 +1056,9 @@ BlockClass = Class.extend({
 		this.join_h_sprite.hide();
 		this.join_v_sprite.hide();
 
+		this.join_leader = false;	// show the hint - store the range
+		this.join_second_leader = false;	// show the number
+
 
 		this.join_h = false;
 		this.join_v = false;
@@ -887,7 +1076,7 @@ BlockClass = Class.extend({
 	set_join_h_sprite: function() {
 		this.join_h_sprite.make_vis();
 		this.join_h_sprite.update_pos(this.x*this.game_state.tile_size + 1*this.game_state.tile_size, 
-					     this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 3);
+					      this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 3);
 
 	
 		//this.join_screen_sprite.make_vis();
@@ -915,7 +1104,7 @@ BlockClass = Class.extend({
 		
 
 		this.block_sprite.hide();
-		this.block_shadow_sprite.hide();
+		//this.block_shadow_sprite.hide();
 
 		if (this.editor_mode == 0) {
 			this.hint_eye_sprite.hide();
@@ -923,12 +1112,17 @@ BlockClass = Class.extend({
 			this.hint_add_sprite.hide();
 			this.hint_eight_touch_sprite.hide();
 			this.hint_heart_sprite.hide();
+			this.hint_compass_sprite.hide();
+			this.hint_crown_sprite.hide();
+			this.join_sprite_any.hide();
 		
 
 			this.hint_touch_num_text.update_pos(-999,-999);
 			this.hint_eye_num_text.update_pos(-999,-999);
 			this.hint_add_num_text.update_pos(-999,-999);
 			this.hint_heart_num_text.update_pos(-999,-999);
+			this.hint_compass_num_text.update_pos(-999,-999);
+			this.hint_crown_num_text.update_pos(-999,-999);
 		}
 
 		
@@ -1020,6 +1214,32 @@ BlockClass = Class.extend({
 			this.hint_heart_sprite.update_pos(icon_x, 
 							  icon_y);
 			
+		} else if (hinttype == 11) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_compass_num_text.change_text(hint_.toString());
+			this.hint_compass_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_compass_num_text.center_x(text_x);
+
+			this.hint_compass_sprite.make_vis();
+			this.hint_compass_sprite.update_pos(icon_x, 
+							  icon_y);
+			
+		} else if (hinttype == 12) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_crown_num_text.change_text(hint_.toString());
+			this.hint_crown_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_crown_num_text.center_x(text_x);
+
+			this.hint_crown_sprite.make_vis();
+			this.hint_crown_sprite.update_pos(icon_x, 
+							  icon_y);
+			
 		}
 	},
 
@@ -1028,6 +1248,9 @@ BlockClass = Class.extend({
 	calc_hint: function(hinttype) {
 
 		var num = 0;
+
+		this.x_in_range = [];
+		this.y_in_range = [];
 
 		if (hinttype == 2) {
 			num = this.calc_hint_eye_num();
@@ -1054,18 +1277,156 @@ BlockClass = Class.extend({
 			
 			
 			
+		} else if (hinttype == 11) {
+			var only_count_lonely_mines = false;
+			var count_directions_with_mines = true;
+			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines ); // get range
+			
+			
+		}  else if (hinttype == 12) {
+			var only_count_lonely_mines = false;
+			var count_directions_with_mines = false;
+			var count_highest_sequence = true;
+			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence ); // get range
+			
+			
 		}
 
 		return num;
 	},
 
+	join_leader: false,	// show the hint - 
+	join_second_leader: false,	// show the number
+
 	uncover_joined: function() {
+
+		this.join_sprite_any.make_vis();
+	
+		this.take_flag_off();
+		if (this.block_type == 1) return;	// wall
+		this.deselect();
+		this.covered_up = false;
+		this.flag_on = false;
+		this.set_type(this.block_type);
+	},
+
+	uncover: function (show_hint) {
+
+
+		this.take_flag_off();
+
+		if (this.block_type == 1) return;	// wall
+
+		this.deselect();
+
+		this.covered_up = false;
+		this.flag_on = false;
+		this.set_type(this.block_type);
+
+		var join_add = 0;
+
+		
+		if (this.join_group != 0) {
+
+			this.join_sprite_any.make_vis();
+
+			var leader_x = -1;
+			var leader_y = -1;
+			var leader_b = -1;
+
+			var sec_leader_x = -1;
+			var sec_leader_y = -1;
+			var sec_leader_b = -1;
+
+			var hint_type = -1;
+
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+				
+				if (this.game_state.blocks[b].join_group == this.join_group) {
+					if (this.game_state.blocks[b].covered_up == true) this.game_state.blocks[b].uncover_joined();
+
+					//if (this.preset_hint_type != 0) join_add = this.game_state.blocks[b].calc_hint(this.preset_hint_type);
+
+					
+
+					if (this.game_state.blocks[b].preset_hint_type > 0) {
+						hint_type = this.game_state.blocks[b].preset_hint_type;
+
+						
+					}
+
+					if (this.game_state.blocks[b].join_leader == true) {
+						leader_x = this.game_state.blocks[b].x;
+						leader_y = this.game_state.blocks[b].y;
+						leader_b = b;
+						//hint_type = this.game_state.blocks[b].preset_hint_type;
+					} else if (this.game_state.blocks[b].join_second_leader == true) {
+						sec_leader_x = this.game_state.blocks[b].x;
+						sec_leader_y = this.game_state.blocks[b].y;
+						sec_leader_b = b;
+					}
+
+				} 
+			} // blocks
+
+
+			if (leader_b == -1) return;
+
+			// now combine the ranges of all in this group
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+				if (this.game_state.blocks[b].join_group == this.join_group) {
+
+					var otherx = this.game_state.blocks[b].x;
+					var othery = this.game_state.blocks[b].y;	
+					this.game_state.blocks[b].calc_hint(hint_type);	// stores range	
+
+					this.game_state.blocks[leader_b].include_range_of_joined_tile(otherx, othery);
+
+
+				}
+
+			} // blocks
+
+			if (this.game_state.blocks[leader_b].x < this.game_state.blocks[sec_leader_b].x) {
+				this.game_state.blocks[leader_b].join_h = true;
+			} else {
+				this.game_state.blocks[leader_b].join_v = true;
+			}
+			
+			
+			var hint_ = this.game_state.blocks[leader_b].calc_hint_from_range();	// use range
+			this.game_state.blocks[leader_b].show_hint(hint_type, hint_);
+
+			this.stored_hint_num = hint_;
+
+			return;
+
+		}
+
+		if (this.block_type == 2 || show_hint == false) {
+			return;		// dont show the hint
+		}
+
+		var hint_ = this.calc_hint(this.preset_hint_type);
+		
+		this.show_hint(this.preset_hint_type, hint_);
+
+		this.stored_hint_num = hint_;
+
+		
+	},
+
+	calc_hint_from_range: function () {
+		var num = 0;
+		for (var i = 0; i < this.x_in_range.length; i++) {
+			if (this.game_state.get_block_type(this.x_in_range[i], this.y_in_range[i]) == 2) num++;
+
+		}
+		return num;
 
 	},
 
-	
-
-	uncover: function (show_hint) {
+	olduncover: function (show_hint) {
 
 		this.take_flag_off();
 
@@ -1166,6 +1527,8 @@ BlockClass = Class.extend({
 		// 5 heart - like eye but sees only lonely mines
 
 		this.preset_hint_type = hinttype;
+
+		this.happy = false;
 	},
 
 	
@@ -1181,6 +1544,26 @@ BlockClass = Class.extend({
 		if (this.game_state.get_block_type(this.x + 1, this.y - 1) == 2) mines_touching++;
 		if (this.game_state.get_block_type(this.x + 1, this.y + 1) == 2) mines_touching++;
 		if (this.game_state.get_block_type(this.x - 1, this.y + 1) == 2) mines_touching++;
+
+		if (this.x - 1 >= 0 && this.y - 1 >= 0) {
+			this.x_in_range.push(this.x - 1);
+			this.y_in_range.push(this.y - 1);
+		}
+
+		if (this.x < this.game_state.grid_w - 1 && this.y - 1 >= 0) {
+			this.x_in_range.push(this.x + 1);
+			this.y_in_range.push(this.y - 1);
+		}		
+
+		if (this.x < this.game_state.grid_w - 1 && this.y < this.game_state.grid_h - 1) {
+			this.x_in_range.push(this.x + 1);
+			this.y_in_range.push(this.y + 1);
+		}
+
+		if (this.x - 1 >= 0 && this.y < this.game_state.grid_h - 1) {
+			this.x_in_range.push(this.x - 1);
+			this.y_in_range.push(this.y + 1);
+		}
 
 		// PLUS equals
 		this.hint_touch_num += mines_touching;
@@ -1201,9 +1584,43 @@ BlockClass = Class.extend({
 		//if (this.game_state.get_block_type(this.x + 1, this.y + 1) == 2) mines_touching++;
 		//if (this.game_state.get_block_type(this.x - 1, this.y + 1) == 2) mines_touching++;
 
+		if (this.x > 0) {
+			this.x_in_range.push(this.x - 1);
+			this.y_in_range.push(this.y);
+		}
+
+		if (this.x < this.game_state.grid_w - 1) {
+			this.x_in_range.push(this.x + 1);
+			this.y_in_range.push(this.y);
+		}
+
+		if (this.y < this.game_state.grid_h - 1) {
+			this.x_in_range.push(this.x);
+			this.y_in_range.push(this.y + 1);
+		}
+
+		if (this.y > 0) {
+			this.x_in_range.push(this.x);
+			this.y_in_range.push(this.y - 1);
+		}
+
 		this.hint_touch_num = mines_touching;
 
 		return mines_touching;
+	},
+
+	is_flag_lonely: function() {
+		if (this.x > 0 && (this.game_state.blocks[this.game_state.tiles[this.x-1][this.y]].flag_on ||
+				   this.game_state.blocks[this.game_state.tiles[this.x-1][this.y]].covered_up)) return false;
+
+		if (this.x < this.game_state.grid_w - 1 && (this.game_state.blocks[this.game_state.tiles[this.x+1][this.y]].flag_on ||
+				   this.game_state.blocks[this.game_state.tiles[this.x+1][this.y]].covered_up)) return false;
+
+		if (this.y > 0 && (this.game_state.blocks[this.game_state.tiles[this.x][this.y-1]].flag_on ||
+				   this.game_state.blocks[this.game_state.tiles[this.x][this.y-1]].covered_up)) return false;
+
+		if (this.y < this.game_state.grid_h - 1 && (this.game_state.blocks[this.game_state.tiles[this.x][this.y+1]].flag_on ||
+				   this.game_state.blocks[this.game_state.tiles[this.x][this.y+1]].covered_up)) return false;
 	},
 
 	is_lonely: function() {
@@ -1230,8 +1647,12 @@ BlockClass = Class.extend({
 
 	},
 
-	calc_hint_eye_num: function (only_count_lonely_mines, only_horiz, only_vert) {
+	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence) {
 
+		var only_vert = false;
+		var only_horiz = false;
+	
+		if (only_count_directions == null) only_count_directions = false;
 		if (only_count_lonely_mines == null) only_count_lonely_mines = false;
 		if (only_horiz == null) only_horiz = false;
 		if (only_vert == null) only_vert = false;
@@ -1239,13 +1660,35 @@ BlockClass = Class.extend({
 		var mines_seen = 0;
 		// look up
 
+		var left_= 0;
+		var right_= 0;
+		var up_= 0;
+		var down_ = 0;
+
+		var best_sequence = 0;
+		var current_sequence = 0;
+
 		for (var y = this.y; y >= 0; y--) {
 			if (only_horiz == true) break;
 			var tile_ = this.game_state.get_block_type(this.x,y);
 			if (only_count_lonely_mines == true && tile_ == 2 &&
 			    this.game_state.blocks[this.game_state.tiles[this.x][y]].is_lonely() == false) continue;
-			if (tile_ == 2) mines_seen++;
-			else if (tile_ == 1) break;
+
+
+			if (tile_ != 2) {
+				best_sequence = Math.max(best_sequence, current_sequence);
+				current_sequence = 0;
+			}
+
+			if (tile_ == 2) {
+				current_sequence++;
+				best_sequence = Math.max(best_sequence, current_sequence);
+				mines_seen++;
+				up_ = 1;
+			} else if (tile_ == 1) break;
+
+			this.x_in_range.push(this.x);
+			this.y_in_range.push(y);
 		}
 
 		// look left
@@ -1254,8 +1697,22 @@ BlockClass = Class.extend({
 			var tile_ = this.game_state.get_block_type(x,this.y);
 			if (only_count_lonely_mines == true && tile_ == 2 &&
 			    this.game_state.blocks[this.game_state.tiles[x][this.y]].is_lonely() == false) continue;
-			if (tile_ == 2) mines_seen++;
-			else if (tile_ == 1) break;
+
+			if (tile_ != 2) {
+				best_sequence = Math.max(best_sequence, current_sequence);
+				current_sequence = 0;
+			}
+
+			if (tile_ == 2) {
+				current_sequence++;
+				best_sequence = Math.max(best_sequence, current_sequence);
+				mines_seen++;
+				left_ = 1;
+			} else if (tile_ == 1) break;
+
+	
+			this.x_in_range.push(x);
+			this.y_in_range.push(this.y);
 		}
 
 		// look right
@@ -1264,8 +1721,22 @@ BlockClass = Class.extend({
 			var tile_ = this.game_state.get_block_type(x, this.y);
 			if (only_count_lonely_mines == true && tile_ == 2 &&
 			    this.game_state.blocks[this.game_state.tiles[x][this.y]].is_lonely() == false) continue;
-			if (tile_ == 2) mines_seen++;
-			else if (tile_ == 1) break;
+
+			if (tile_ != 2) {
+				best_sequence = Math.max(best_sequence, current_sequence);
+				current_sequence = 0;
+			}
+
+			if (tile_ == 2) {
+				current_sequence++;
+				best_sequence = Math.max(best_sequence, current_sequence);
+				mines_seen++;
+				right_ = 1;
+			} else if (tile_ == 1) break;
+
+
+			this.x_in_range.push(x);
+			this.y_in_range.push(this.y);
 		}
 
 		// look down
@@ -1274,11 +1745,33 @@ BlockClass = Class.extend({
 			var tile_ = this.game_state.get_block_type(this.x,y);
 			if (only_count_lonely_mines == true && tile_ == 2 &&
 			    this.game_state.blocks[this.game_state.tiles[this.x][y]].is_lonely() == false) continue;
-			if (tile_ == 2) mines_seen++;
-			else if (tile_ == 1) break;
+
+			if (tile_ != 2) {
+				best_sequence = Math.max(best_sequence, current_sequence);
+				current_sequence = 0;
+			}
+
+			if (tile_ == 2) {
+				current_sequence++;
+				best_sequence = Math.max(best_sequence, current_sequence);
+				mines_seen++;
+				down_ = 1;
+			} else if (tile_ == 1) break;
+
+
+			this.x_in_range.push(this.x);
+			this.y_in_range.push(y);
 		}
 
 		this.hint_eye_num = mines_seen;
+
+		if (count_highest_sequence == true) return best_sequence;
+
+		if (only_count_directions == true) {
+			var dirs_ = up_ + down_ + left_ + right_;
+			//alert('only directions ' + dirs_);
+			return dirs_;
+		}
 
 		return mines_seen;
 	},
@@ -1290,11 +1783,12 @@ BlockClass = Class.extend({
 
 		if (x == -1) {
 			this.block_sprite.hide();
-			this.block_shadow_sprite.hide();
+			//this.block_shadow_sprite.hide();
 			this.flag_sprite.hide();
+			this.join_sprite_any.hide();
 		} else {
 			this.block_sprite.make_vis();
-			this.block_shadow_sprite.make_vis();
+			//this.block_shadow_sprite.make_vis();
 			//this.flag_sprite.make_vis();
 
 			
@@ -1304,13 +1798,168 @@ BlockClass = Class.extend({
 			
 
 			this.block_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
-			this.block_shadow_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 6 + 0.5*this.game_state.tile_size);
+			
 
 			this.flag_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
 		}
 
 		
 
+	},
+
+	grey_status: 0,
+
+	ungrey: function () {
+
+		this.grey_status = 0;
+
+		this.hint_eye_num_text.set_alpha(1);
+		this.hint_eye_sprite.set_alpha(1);
+
+		this.hint_touch_num_text.set_alpha(1);
+		this.hint_touch_sprite.set_alpha(1);
+
+		this.hint_eight_touch_sprite.set_alpha(1);
+
+		this.hint_add_sprite.set_alpha(1);
+		this.hint_add_num_text.set_alpha(1);
+
+		
+		this.hint_heart_num_text.set_alpha(1);
+
+		this.hint_heart_sprite.set_alpha(1);
+
+		this.hint_crown_sprite.set_alpha(1);
+		this.hint_compass_sprite.set_alpha(1);
+
+		this.hint_crown_num_text.set_alpha(1);
+		this.hint_compass_num_text.set_alpha(1);
+	},
+
+	grey_out: function () {
+
+		this.grey_status = 1;
+		
+		this.hint_eye_num_text.set_alpha(0.5);
+		this.hint_eye_sprite.set_alpha(0.5);
+
+		this.hint_touch_num_text.set_alpha(0.5);
+		this.hint_touch_sprite.set_alpha(0.5);
+
+		this.hint_add_sprite.set_alpha(0.5);
+		this.hint_add_num_text.set_alpha(0.5);
+
+		this.hint_eight_touch_sprite.set_alpha(0.5);
+
+		this.hint_heart_num_text.set_alpha(0.5);
+
+		this.hint_heart_sprite.set_alpha(0.5);
+
+		this.hint_crown_sprite.set_alpha(0.5);
+		this.hint_compass_sprite.set_alpha(0.5);
+
+		this.hint_crown_num_text.set_alpha(0.5);
+		this.hint_compass_num_text.set_alpha(0.5);
+	},
+
+	x_in_range: [],
+	y_in_range: [],
+
+	happy: false,
+
+	calc_happiness: function () {
+
+		if (this.preset_hint_type == 3) {
+			var undugs_ = 0;
+			//if (this.x > 0 && this.game_state.get_block_type(this.x - 1,this.y))
+
+		}
+
+		if (this.preset_hint_type == 0 || this.covered_up == true || this.block_type == 1)  return;
+
+		if (this.preset_hint_type == 5) return;
+
+		//if (this.preset_hint_type != 2 && this.preset_hint_type != 1 && this.preset_hint_type != 4) return;
+		if (this.join_group != 0 && this.join_leader == false) {
+				
+				return;
+			
+		} 
+
+		
+
+		var hint_ = this.stored_hint_num;//this.calc_hint(this.preset_hint_type);
+
+		var actual = 0;
+
+		var still_undug = 0;
+
+		var lonely_ = 0;
+
+		for (var i = 0; i < this.x_in_range.length; i++) {
+
+			var x = this.x_in_range[i];
+			var y = this.y_in_range[i];
+
+			
+
+			if (x < 0 || y < 0 || x >= this.game_state.grid_w || y >= this.game_state.grid_h ) return;
+
+			if (x == null || x == undefined || y == null || y == undefined) return
+
+
+			if (this.game_state.get_block_type(x,y) == 1) continue; // wall
+
+			var flagged_ = this.game_state.blocks[this.game_state.tiles[x][y]].flag_on;
+
+			if (flagged_ == true) actual++;
+
+			var covered_ = this.game_state.blocks[this.game_state.tiles[x][y]].covered_up;
+
+			if (covered_ == true && flagged_ == false) {
+				still_undug++;	
+				
+			}			
+
+			if (this.preset_hint_type == 5 && flagged_ == true) {
+
+				
+				var lone = this.game_state.blocks[this.game_state.tiles[x][y]].is_flag_lonely();
+
+				if (lone == true) lonely_++;
+
+			}
+		}
+
+		//console.log('still_undug ' + still_undug + ' this.preset_hint_type ' + this.preset_hint_type + ' hintnum ' + hint_ + ' this.x_in_range ' + this.x_in_range.length );
+
+		if (hint_ == actual) this.happy = true;
+		else this.happy = false;
+
+		if (this.preset_hint_type == 5) this.happy = false;
+		if (this.preset_hint_type == 5 && still_undug == 0) this.happy = true;
+		if (this.preset_hint_type == 5 && hint_ != lonely_) this.happy = false;
+
+		//if (this.preset_hint_type == 12 && still_undug == 0) this.happy = true;
+
+		if (still_undug > 0) this.happy = false;
+
+		
+
+		if (this.happy) {
+
+
+			this.grey_out();
+			//if (this.preset_hint_type == 2) this.hint_eye_sprite.set_texture('button_eye_happy.png');
+			//if (this.preset_hint_type == 4) this.hint_eight_touch_sprite.set_texture('button_dotted_happy.png');
+		} else {
+			
+			this.ungrey();
+			//if (this.preset_hint_type == 2) this.hint_eye_sprite.set_texture('button_eye.png');
+			//if (this.preset_hint_type == 4) this.hint_eight_touch_sprite.set_texture('button_dotted.png');
+		}
+
+		
 	},
 
 	get_type: function() {
@@ -1327,13 +1976,13 @@ BlockClass = Class.extend({
 		if (this.covered_up == true) {
 
 			this.block_sprite.make_vis();
-			this.block_shadow_sprite.make_vis();
+			//this.block_shadow_sprite.make_vis();
 
-			this.block_shadow_sprite.set_texture('block2_shadow.png');
+			//this.block_shadow_sprite.set_texture('block2_shadow.png');
 
 			if (this.editor_mode == 1) {
 				this.block_sprite.set_texture('qn_half.png');
-				this.block_shadow_sprite.hide();
+				//this.block_shadow_sprite.hide();
 			} else this.block_sprite.set_texture('g_block2.png');
 
 			
@@ -1354,19 +2003,17 @@ BlockClass = Class.extend({
 		
 		if (gemtype == 0) {
 			this.block_sprite.hide();
-			this.block_shadow_sprite.hide();
+			
 			return;
 		}
 
 
 		
 		this.block_sprite.make_vis();
-		this.block_shadow_sprite.make_vis();
+		
 
 		this.block_sprite.set_texture(g_block_sprites[gemtype]);
-		this.block_shadow_sprite.set_texture(g_block_shadow_sprites[gemtype]);
 
-		if (gemtype == 2) this.block_shadow_sprite.hide();	// bomb
 		//this.block_blink_sprite.set_texture(g_block_blink_sprites[gemtype]);
 
 		
