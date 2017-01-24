@@ -308,7 +308,7 @@ MenuPositions = Class.extend({
 g_menu_font_height = 24;
 
 
-alert('new game_engine.js but wont shift containers');
+alert('new game_engine.js - will shift options_menu_group.x, ignore menu_ratio ');
 
 function g_set_game_screen_x(newx) {
 	return;
@@ -318,8 +318,8 @@ function g_set_game_screen_x(newx) {
 };
 
 function g_set_menu_screen_x(newx) {
-	return;
-	options_menu_group.x = newx/menu_ratio;
+	//return;
+	options_menu_group.x = newx;///menu_ratio;
 };
 
 
