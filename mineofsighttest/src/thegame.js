@@ -270,8 +270,8 @@ theGame.prototype = {
 
 
 
-		mouse.x = game.input.x*menu_ratio;
-		mouse.y = game.input.y*menu_ratio;
+		mouse.x = game.input.x;//menu_ratio;
+		mouse.y = game.input.y;//*menu_ratio;
 			
 		// game.input.mousePointer.rightButton
 		// if (this.game.input.activePointer.isDown) {
