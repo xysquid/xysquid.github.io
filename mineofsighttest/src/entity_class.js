@@ -216,6 +216,8 @@ LevelEditorTileSelectClass = Class.extend({
 		
 	},
 
+	
+
 	click : function (x, y) {
 		//this.selected = -1;
 		for (var i = 0; i < this.build_x.length; i++) {
@@ -229,7 +231,8 @@ LevelEditorTileSelectClass = Class.extend({
 			    y < this.build_y[i] + this.size_*0.5) {
 			
 				this.selected = i;
-				//alert('selected ' + i);
+
+				
 
 				return;
 			}
@@ -262,6 +265,340 @@ LevelEditorTileSelectClass = Class.extend({
 
 });
 
+
+// community level mode > show ~5 in a page
+//	name, author, rating, attempts, wins
+CommunityLevelBrowser = Class.extend({
+
+	levels_added: 0,	// up to 6, resets to 0
+
+	game_state: null,
+
+	// toggles - hint types, newest, popular, random
+	toggle_hand: null,
+	toggle_eighthand: null,
+	toggle_eye: null,
+	toggle_heart: null,
+	toggle_join: null,
+	toggle_compass: null,
+	toggle_crown: null,
+
+	hint_toggles: [],
+
+	toggle_rating: null,	// get the best rated of all time
+	toggle_random: null,	// get 6 randoms that fit the clue-toggles
+	
+
+	level_name: [6],
+	level_author: [6],
+	level_rating: [6],
+	level_attempts: [6],
+	level_wins: [6],
+	level_play_sprite: [6],
+	level_id: [6],
+
+	levels_added: 0,
+
+	search_button: null,
+
+	rating_text: null,
+	wins_text: null,
+	downloads_text: null,
+
+
+	init: function(game_state) {
+		this.game_state = game_state;
+
+		
+		this.search_button = new ButtonClass();
+		this.search_button.setup_sprite('new_icon.png',Types.Layer.GAME_MENU);
+
+		var toggle_hand = new ToggleClass();
+		toggle_hand.setup_sprite("hand.png",Types.Layer.GAME_MENU);
+		toggle_hand.code = 3;
+		toggle_hand.three_toggle = true;
+
+		var toggle_eighthand = new ToggleClass();
+		toggle_eighthand.setup_sprite("8hand.png",Types.Layer.GAME_MENU);
+		toggle_eighthand.code = 5;
+		toggle_eighthand.three_toggle = true;
+
+		var toggle_heart = new ToggleClass();
+		toggle_heart.setup_sprite("heart.png",Types.Layer.GAME_MENU);	
+		toggle_heart.code = 10;	
+		toggle_heart.three_toggle = true;
+
+		var toggle_crown = new ToggleClass();
+		toggle_crown.setup_sprite("crown.png",Types.Layer.GAME_MENU);		
+		toggle_crown.code = 12;
+		toggle_crown.three_toggle = true;
+
+
+		var toggle_compass = new ToggleClass();
+		toggle_compass.setup_sprite("compass.png",Types.Layer.GAME_MENU);
+		toggle_compass.code = 11;	
+		toggle_compass.three_toggle = true;
+
+		//var toggle_join = new ToggleClass();
+		//toggle_join.setup_sprite("join_tut.png",Types.Layer.GAME_MENU);
+		//toggle_join.code = 		
+
+		var toggle_eye = new ToggleClass();
+		toggle_eye.setup_sprite("eye.png",Types.Layer.GAME_MENU);
+		toggle_eye.code = 4;
+		toggle_eye.three_toggle = true;
+
+		var toggle_eyebracket = new ToggleClass();
+		toggle_eyebracket.setup_sprite("eyebracket.png",Types.Layer.GAME_MENU);
+		toggle_eyebracket.code = 13;
+		toggle_eyebracket.three_toggle = true;
+
+		/*
+		this.toggle_hand.horiz = false;
+		this.toggle_eighthand.horiz = false;
+		this.toggle_eye.horiz = false;
+		this.toggle_heart.horiz = false;
+		this.toggle_join.horiz = false;
+		this.toggle_compass.horiz = false;
+		this.toggle_crown.horiz = false;
+		*/
+
+		this.hint_toggles.push(toggle_hand);
+		this.hint_toggles.push(toggle_eighthand);
+		this.hint_toggles.push(toggle_heart);
+		this.hint_toggles.push(toggle_crown);
+		this.hint_toggles.push(toggle_compass);
+		//this.hint_toggles.push(toggle_join);
+		this.hint_toggles.push(toggle_eye);
+		this.hint_toggles.push(toggle_eyebracket);
+		
+
+		for (var i = 0; i < this.hint_toggles.length; i++) {
+			this.hint_toggles[i].horiz = false;
+		}
+
+		for (var i = 0; i < 6; i++) {
+			this.level_id[i] = -1;
+
+			this.level_name[i] = new TextClass(Types.Layer.GAME_MENU);
+			this.level_author[i] = new TextClass(Types.Layer.GAME_MENU);
+			this.level_rating[i] = new TextClass(Types.Layer.GAME_MENU);
+			this.level_attempts[i] = new TextClass(Types.Layer.GAME_MENU);
+			this.level_wins[i] = new TextClass(Types.Layer.GAME_MENU);
+
+			this.level_name[i].set_font(Types.Fonts.SMALL);
+			this.level_author[i].set_font(Types.Fonts.XSMALL);
+			this.level_rating[i].set_font(Types.Fonts.SMALL);
+			this.level_attempts[i].set_font(Types.Fonts.SMALL);
+			this.level_wins[i].set_font(Types.Fonts.SMALL);
+
+			this.level_name[i].set_text('');
+			this.level_author[i].set_text('');
+			this.level_rating[i].set_text('');
+			this.level_attempts[i].set_text('');
+			this.level_wins[i].set_text('');
+
+			this.level_play_sprite[i] = new ButtonClass();
+			this.level_play_sprite[i].setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+		}
+
+		this.rating_text = new TextClass(Types.Layer.GAME_MENU);
+		this.wins_text = new TextClass(Types.Layer.GAME_MENU);
+		this.downloads_text = new TextClass(Types.Layer.GAME_MENU);
+
+		this.rating_text.set_font(Types.Fonts.XSMALL);
+		this.wins_text.set_font(Types.Fonts.XSMALL);
+		this.downloads_text.set_font(Types.Fonts.XSMALL);
+
+		this.rating_text.set_text('RATING');
+		this.wins_text.set_text('WINS');
+		this.downloads_text.set_text('ATTEMPTS');
+
+
+	},
+
+	get_hint_status: function (hintcode) {
+		for (var i = 0; i < this.hint_toggles.length; i++) {
+			if (hintcode == this.hint_toggles[i].code) {
+				if (this.hint_toggles[i].toggled == 0) return 1;
+				else if (this.hint_toggles[i].toggled == 1) return -1;
+				else if (this.hint_toggles[i].toggled == 2) return 0;
+			}
+		}
+	},
+
+	make_vis: function() {
+
+		this.rating_text.update_pos(200+ 64,140);
+		//this.wins_text.update_pos(400+ 64,140);
+		//this.downloads_text.update_pos(300+ 64,140);
+
+		for (var i = 0; i < this.level_name.length; i++) {
+
+
+			if (i >= this.levels_added) break;
+
+
+			var y = 150 + i*52;
+
+			this.level_name[i].make_vis();
+			this.level_author[i].make_vis();
+			this.level_rating[i].make_vis();
+			//this.level_attempts[i].make_vis();
+			//this.level_wins[i].make_vis();
+			this.level_play_sprite[i].make_vis();
+
+			this.level_name[i].update_pos(6 + 64,y);
+			this.level_author[i].update_pos(6+ 64,y + 20);
+			this.level_rating[i].update_pos(200+ 64,y);
+			this.level_attempts[i].update_pos(300+ 64,y);
+			this.level_wins[i].update_pos(400+ 64,y);
+			this.level_play_sprite[i].update_pos(500+ 64,y + 16);
+		}
+
+		for (var i = 0; i < this.hint_toggles.length; i++) {
+			this.hint_toggles[i].make_vis();
+			this.hint_toggles[i].update_pos(1*32 + i*32, 96);
+		}
+
+		/*
+		this.toggle_hand.make_vis();
+		this.toggle_eighthand.make_vis();
+		this.toggle_eye.make_vis();
+		this.toggle_heart.make_vis();
+		this.toggle_join.make_vis();
+		this.toggle_compass.make_vis();
+		this.toggle_crown.make_vis();
+
+		this.toggle_hand.update_pos(1*32, 96);
+		this.toggle_eighthand.update_pos(2*32, 96);
+		this.toggle_eye.update_pos(3*32, 96);
+		this.toggle_heart.update_pos(4*32, 96);
+		this.toggle_join.update_pos( 5*32, 96);
+		this.toggle_compass.update_pos( 6*32, 96);
+		this.toggle_crown.update_pos( 7*32, 96);
+		*/
+
+		this.search_button.make_vis();
+		this.search_button.update_pos( this.search_x, this.search_y);
+
+		//this.toggle_rating.make_vis();
+		//this.toggle_random.make_vis();
+
+	},
+
+	search_x: 11*32,
+	search_y: 96,
+
+	hide: function() {
+
+		this.rating_text.hide();
+		this.wins_text.hide();
+		this.downloads_text.hide();
+
+
+		for (var i = 0; i < this.level_name.length; i++) {
+
+			
+			this.level_name[i].hide();
+			this.level_author[i].hide();
+			this.level_rating[i].hide();
+			this.level_attempts[i].hide();
+			this.level_wins[i].hide();
+			this.level_play_sprite[i].hide();
+		}
+
+		for (var i = 0; i < this.hint_toggles.length; i++) {
+			this.hint_toggles[i].hide();
+		}
+		//this.toggle_hand.hide();
+		//this.toggle_eighthand.hide();
+		//this.toggle_eye.hide();
+		//this.toggle_heart.hide();
+		//this.toggle_join.hide();
+		//this.toggle_compass.hide();
+		//this.toggle_crown.hide();
+
+		//this.toggle_rating.hide();
+		//this.toggle_random.hide();
+
+		this.search_button.hide();
+	},
+
+	reset: function() {
+		this.hide();
+		this.levels_added = 0;
+	},
+
+	add_level: function (name, author, rating, attempts, wins, id) {
+
+		
+
+		if (this.levels_added >= this.level_name.length) return -1;
+
+		
+
+		this.level_name[this.levels_added].change_text(name);
+		this.level_author[this.levels_added].change_text('BY ' +author);
+		this.level_rating[this.levels_added].change_text(rating.toString());
+		this.level_attempts[this.levels_added].change_text(attempts.toString());
+		this.level_wins[this.levels_added].change_text(wins.toString());
+		this.level_play_sprite[this.levels_added].make_vis();
+		this.level_id[this.levels_added] = id;
+
+		this.levels_added++;
+	},
+
+	selected_level_id: -1,
+	clicked_fetch: false,
+
+	click : function (x, y) {
+
+		this.clicked_fetch = false;
+		this.selected_level_id = -1;;
+
+		//this.selected = -1;
+		for (var i = 0; i < this.levels_added; i++) {
+
+			//this.highlight_off();
+			var y_level = 150 + i*52;
+		
+			if (x > 500+64 - 28 &&
+			    x < 500+64 + 28 &&
+			    y > y_level - 25 &&
+			    y < y_level + 25) {
+			
+				this.selected_level_id = this.level_id[i];
+				
+				
+
+				return;
+			}
+
+		}
+
+		if (x < this.search_x + 32 && x > this.search_x - 32 && 
+		    y < this.search_y + 32 && y > this.search_y - 32) {
+			this.clicked_fetch = true;
+			return;
+		}
+
+		for (var i = 0; i < this.hint_toggles.length; i++) {
+			if (x > this.hint_toggles[i].x - 20 &&
+			    x < this.hint_toggles[i].x + 20 &&
+			    y > this.hint_toggles[i].y - 20 &&
+			    y < this.hint_toggles[i].y + 20) {
+				this.hint_toggles[i].toggle();
+				return;
+			}
+
+		}		
+
+		
+	},
+
+});
+
 // levels 1-20, 31-60
 // challenge modes
 // 1992 rand gen mode
@@ -269,6 +606,7 @@ LevelEditorTileSelectClass = Class.extend({
 //
 // daily challenge > new overworld: 30 days in a month, each month is an overworld
 // community levels > new overworld of community levels (seeds?)
+
 
 OverworldSpritesClassReuseable = Class.extend({
 
@@ -583,7 +921,10 @@ InfoClass = Class.extend({
 				this.text.change_text("      Number of DIRECTIONS in which mines are seen. Same range as the eye.");
 			}else if (hint_ == 12) {
 				this.block_obj.set_texture('crown.png');
-				this.text.change_text("      Higest unbroken SEQUENCE of mines seen. Same range as the eye.");
+				this.text.change_text("      BIGGEST unbroken sequence of mines seen. Same range as the eye.");
+			}else if (hint_ == 13) {
+				this.block_obj.set_texture('eyebracket.png');
+				this.text.change_text("      How many unbroken GROUPS of mines seen. Same range as the eye.");
 			}else {
 				// uncovered, no hint, empty
 				
@@ -744,6 +1085,10 @@ BlockClass = Class.extend({
 	hint_compass_num: -1,
 	hint_compass_num_text: null,
 
+	hint_eyebracket_sprite: null,
+	hint_eyebracket_num: -1,
+	hint_eyebracket_num_text: null,
+
 	hint_crown_sprite: null,
 	hint_crown_num: -1,
 	hint_crown_num_text: null,
@@ -857,6 +1202,15 @@ BlockClass = Class.extend({
 		this.hint_crown_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_crown_num_text.set_text("");
 		this.hint_crown_num_text.update_pos(-999,-999);
+
+		this.hint_eyebracket_sprite = new SpriteClass();
+		this.hint_eyebracket_sprite.setup_sprite("eyebracket.png",Types.Layer.GAME);
+		this.hint_eyebracket_sprite.hide();
+
+		this.hint_eyebracket_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_eyebracket_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_eyebracket_num_text.set_text("");
+		this.hint_eyebracket_num_text.update_pos(-999,-999);
 		
 	},
 
@@ -1114,6 +1468,7 @@ BlockClass = Class.extend({
 			this.hint_heart_sprite.hide();
 			this.hint_compass_sprite.hide();
 			this.hint_crown_sprite.hide();
+			this.hint_eyebracket_sprite.hide();
 			this.join_sprite_any.hide();
 		
 
@@ -1123,7 +1478,9 @@ BlockClass = Class.extend({
 			this.hint_heart_num_text.update_pos(-999,-999);
 			this.hint_compass_num_text.update_pos(-999,-999);
 			this.hint_crown_num_text.update_pos(-999,-999);
+			this.hint_eyebracket_num_text.update_pos(-999,-999);
 		}
+
 
 		
 
@@ -1216,7 +1573,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 11) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
 			
 			this.hint_compass_num_text.change_text(hint_.toString());
 			this.hint_compass_num_text.update_pos(text_x, 
@@ -1238,6 +1595,19 @@ BlockClass = Class.extend({
 
 			this.hint_crown_sprite.make_vis();
 			this.hint_crown_sprite.update_pos(icon_x, 
+							  icon_y);
+			
+		} else if (hinttype == 13) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_eyebracket_num_text.change_text(hint_.toString());
+			this.hint_eyebracket_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_eyebracket_num_text.center_x(text_x);
+
+			this.hint_eyebracket_sprite.make_vis();
+			this.hint_eyebracket_sprite.update_pos(icon_x, 
 							  icon_y);
 			
 		}
@@ -1288,6 +1658,17 @@ BlockClass = Class.extend({
 			var count_directions_with_mines = false;
 			var count_highest_sequence = true;
 			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence ); // get range
+			
+			
+		}  else if (hinttype == 13) {
+
+			// counts groups - eyebracket
+
+			var only_count_lonely_mines = false;
+			var count_directions_with_mines = false;
+			var count_highest_sequence = false;
+			var only_count_groups = true;
+			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence , only_count_groups); // get range
 			
 			
 		}
@@ -1647,7 +2028,7 @@ BlockClass = Class.extend({
 
 	},
 
-	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence) {
+	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence, only_count_groups) {
 
 		var only_vert = false;
 		var only_horiz = false;
@@ -1656,6 +2037,7 @@ BlockClass = Class.extend({
 		if (only_count_lonely_mines == null) only_count_lonely_mines = false;
 		if (only_horiz == null) only_horiz = false;
 		if (only_vert == null) only_vert = false;
+		if (only_count_groups == null) only_count_groups = false;
 
 		var mines_seen = 0;
 		// look up
@@ -1668,6 +2050,8 @@ BlockClass = Class.extend({
 		var best_sequence = 0;
 		var current_sequence = 0;
 
+		var num_groups = 0;
+
 		for (var y = this.y; y >= 0; y--) {
 			if (only_horiz == true) break;
 			var tile_ = this.game_state.get_block_type(this.x,y);
@@ -1676,11 +2060,18 @@ BlockClass = Class.extend({
 
 
 			if (tile_ != 2) {
+
+				
+
+
 				best_sequence = Math.max(best_sequence, current_sequence);
 				current_sequence = 0;
 			}
 
 			if (tile_ == 2) {
+
+				if (current_sequence == 0) num_groups++;
+
 				current_sequence++;
 				best_sequence = Math.max(best_sequence, current_sequence);
 				mines_seen++;
@@ -1704,6 +2095,9 @@ BlockClass = Class.extend({
 			}
 
 			if (tile_ == 2) {
+
+				if (current_sequence == 0) num_groups++;
+
 				current_sequence++;
 				best_sequence = Math.max(best_sequence, current_sequence);
 				mines_seen++;
@@ -1728,6 +2122,9 @@ BlockClass = Class.extend({
 			}
 
 			if (tile_ == 2) {
+
+				if (current_sequence == 0) num_groups++;
+
 				current_sequence++;
 				best_sequence = Math.max(best_sequence, current_sequence);
 				mines_seen++;
@@ -1752,6 +2149,9 @@ BlockClass = Class.extend({
 			}
 
 			if (tile_ == 2) {
+
+				if (current_sequence == 0) num_groups++;
+
 				current_sequence++;
 				best_sequence = Math.max(best_sequence, current_sequence);
 				mines_seen++;
@@ -1766,6 +2166,8 @@ BlockClass = Class.extend({
 		this.hint_eye_num = mines_seen;
 
 		if (count_highest_sequence == true) return best_sequence;
+
+		if (only_count_groups == true) return num_groups;
 
 		if (only_count_directions == true) {
 			var dirs_ = up_ + down_ + left_ + right_;
@@ -1831,9 +2233,11 @@ BlockClass = Class.extend({
 
 		this.hint_crown_sprite.set_alpha(1);
 		this.hint_compass_sprite.set_alpha(1);
+		this.hint_eyebracket_sprite.set_alpha(1);
 
 		this.hint_crown_num_text.set_alpha(1);
 		this.hint_compass_num_text.set_alpha(1);
+		this.hint_eyebracket_num_text.set_alpha(1);
 	},
 
 	grey_out: function () {
@@ -1857,9 +2261,11 @@ BlockClass = Class.extend({
 
 		this.hint_crown_sprite.set_alpha(0.5);
 		this.hint_compass_sprite.set_alpha(0.5);
+		this.hint_eyebracket_sprite.set_alpha(0.5);
 
 		this.hint_crown_num_text.set_alpha(0.5);
 		this.hint_compass_num_text.set_alpha(0.5);
+		this.hint_eyebracket_num_text.set_alpha(0.5);
 	},
 
 	x_in_range: [],
@@ -1966,6 +2372,8 @@ BlockClass = Class.extend({
 		return this.block_type;
 	},
 
+	show_grid: false,
+
 	set_type: function(gemtype) {
 
 		this.block_type = gemtype;
@@ -1989,21 +2397,21 @@ BlockClass = Class.extend({
 			//this.block_blink_sprite.set_texture(g_block_blink_sprites[gemtype]);
 
 			
-		if (this.flag_on == true) {
-			this.flag_sprite.make_vis();
-			this.block_sprite.hide();
-		} else {
-			this.flag_sprite.hide();
-			this.block_sprite.make_vis();
-		}
+			if (this.flag_on == true) {
+				this.flag_sprite.make_vis();
+				this.block_sprite.hide();
+			} else {
+				this.flag_sprite.hide();
+				this.block_sprite.make_vis();
+			}
 
 			return;
 		}
 
 		
 		if (gemtype == 0) {
-			this.block_sprite.hide();
-			
+			if (this.show_grid == false) this.block_sprite.hide();
+			else this.block_sprite.set_texture('griddot.png');
 			return;
 		}
 

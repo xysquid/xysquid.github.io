@@ -29,6 +29,7 @@ Types = {
 			GOTO_LEVELS: 40,
 			GOTO_AUTOGEN: 41,
 			GOTO_EDITOR: 42,
+			GOTO_COMMUNITY_LEVELS: 43,
 
 			NO_EVENT: 0,
 
@@ -110,7 +111,8 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	//[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
+	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
+	[1, Types.Events.GOTO_COMMUNITY_LEVELS, "COMMUNITY LEVELS","home_icon.png",],
 	
 
 	[0, "CONTROLS"],
@@ -409,14 +411,14 @@ BlipFrogMenuClass = Class.extend({
 		// Draw the menu. Once. Here.
 		// options_menu_container is the PIXI.js container
 
-		console.log('make a pop up rect');
 		this.graphics_menu_body = new SpriteClass();
 		this.graphics_menu_body.setup_sprite('menubody.png',Types.Layer.POP_MENU, 0, 0);
 		//draw_rect_perm(0,0,1,1,0x333333,Types.Layer.POP_MENU, 0, 0);
 		this.graphics_menu_body.phasersprite.anchor.setTo(0,0);
 		this.graphics_menu_body.update_pos(0,0);
 		
-		console.log('   done');
+		
+
 		this.spr_menu_button = new SpriteClass();
 		
 		this.spr_menu_button.setup_sprite('menu_button.png', Types.Layer.GAME_MENU);//Types.Layer.POP_MENU); //
@@ -445,7 +447,7 @@ BlipFrogMenuClass = Class.extend({
 			//this.sprites_buttons[i].set_scale(1);
 
 			this.menu_texts.push(new TextClass(Types.Layer.POP_MENU));
-			this.menu_texts[i].set_font(Types.Fonts.SMALL);
+			this.menu_texts[i].set_font(Types.Fonts.MED_SMALL);
 
 			if (MenuItems[i][0] == 0) {
 				this.menu_texts[i].set_text(MenuItems[i][1]);		// heading
@@ -475,11 +477,9 @@ BlipFrogMenuClass = Class.extend({
 
 		this.setup = true;
 
-		console.log('lets resize');
 
 		this.on_screen_resize();
 
-		console.log('		done');
 
 		this.pop_down();
 
@@ -489,14 +489,12 @@ BlipFrogMenuClass = Class.extend({
 		g_set_game_screen_x(this.game_x_target);
 		g_set_menu_screen_x(this.menu_x_target);
 
-		console.log('gBlipFrogEngine setup done');
 	},
 
 	pop_up: function() {
 
 		this.show_all_menu_text();
 
-		console.log('POP UP');
 		this.menu_up = true;
 
 		this.menu_x = -this.menu_width;//screen_height;
@@ -539,7 +537,6 @@ BlipFrogMenuClass = Class.extend({
 
 		//this.hide_all_menu_text();
 
-		console.log('POP down');
 		this.menu_up = false;
 
 		this.menu_x = 0;//screen_height - this.menu_positions.menu_height;
@@ -796,6 +793,12 @@ BlipFrogMenuClass = Class.extend({
 
 			this.pop_down();
 			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_COMMUNITY_LEVELS) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_COMMUNITY_LEVELS);
+
+			this.pop_down();
+			
 		} else if (MenuItems[menu_i][1] == Types.Events.GAME_OVER) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GAME_OVER);
@@ -824,7 +827,6 @@ BlipFrogMenuClass = Class.extend({
 			});
 			addtohome.show(true);
 			//addToHomescreen();
-			console.log('ADD TO HOMESCREEN');
 		} else if (MenuItems[menu_i][1] == Types.Events.CLICK_TO_DIG) {
 			g_click_to_dig = false;
 			
@@ -966,10 +968,9 @@ GameEngineClass = Class.extend({
 	},
 
 	on_screen_resize: function() {
-		console.log('game engine screen resize');
 		if(this.state_stack.length == 0) return;
 		this.state_stack[this.state_stack.length - 1].screen_resized();
-		console.log('game engine screen resize  -- done');
+		
 	},
 
 	handle_events: function(x, y, event_type) {
@@ -1013,6 +1014,19 @@ GameEngineClass = Class.extend({
 				state_.cleanup();
 			}
 			this.push_state(new LevelEditorStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GOTO_COMMUNITY_LEVELS) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+
+			// For now, just load and jump in to the levels:			
+
+			//this.push_state(new CommunityOverworldStateClass(this, this.state_stack[1]));
+			
+			this.push_state(new CommunityFetchStateClass(this, this.state_stack[1]));
 
 		} else if (event_type == Types.Events.GAME_OVER) {
 
