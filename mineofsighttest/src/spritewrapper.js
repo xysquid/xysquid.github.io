@@ -504,6 +504,8 @@ StarRatingClass = Class.extend({
 		this.star_sprites[2].make_vis();
 		this.star_sprites[3].make_vis();
 		this.star_sprites[4].make_vis();
+
+		this.voted = 0;
 	},
 
 	set_rating: function(rating) {
@@ -513,19 +515,21 @@ StarRatingClass = Class.extend({
 		if (rating == 4) this.rating = 4;
 		if (rating == 3) this.rating = 3;
 		if (rating == 2) this.rating = 1;
-		if (rating <= 1) this.rating = -1;
+		if (rating == 1) this.rating = -1;
+		if (rating <= 0) this.rating = -2;
 
 		//this.rating = rating;
 
 		for (var i = 0; i < 5; i++) {
 			if (i < rating) {
-				this.star_sprites[0].set_texture('fullstar.png',Types.Layer.GAME_MENU);
+				this.star_sprites[i].set_texture('fullstar.png',Types.Layer.GAME_MENU);
 			} else {
-				this.star_sprites[0].set_texture('emptystar.png',Types.Layer.GAME_MENU);
+				this.star_sprites[i].set_texture('emptystar.png',Types.Layer.GAME_MENU);
 			}
 		}
 	},
 
+	voted: 0,
 
 	click: function(x,y) {
 
@@ -536,19 +540,19 @@ StarRatingClass = Class.extend({
 		    y < this.y - 12 ||
 		    y > this.y + 12) return;
 
-		alert('clicked on stars!');
+		this.voted = 1;
+
 
 		var stars = 0;
 		
-		for (var i = 0; i < 5; i++) {
+		for (var i = -1; i < 5; i++) {
 			//this.star_sprites[i].update_pos(x + 24*i, y);
 			if (x > this.x + 24*i - 12 &&
 		    	    x < this.x + 24*i + 12 &&
 		    	    y > this.y - 12 &&
-		    	    y < this.y + 12) this.set_rating(i);
+		    	    y < this.y + 12) this.set_rating(i+1);
 		}
 
-		alert('rated ' + this.rating + ' stars!');
 	},
 
 	
@@ -615,7 +619,7 @@ ToggleClass = Class.extend({
 
 	toggled: -1,
 
-	three_togggle: false,
+	three_toggle: false,
 
 	toggle: function() {
 		

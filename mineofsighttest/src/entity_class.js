@@ -199,7 +199,7 @@ LevelEditorTileSelectClass = Class.extend({
 
 	selected: -1,
 
-	size_: 64,
+	size_: 52,
 
 	init: function(game_state) {
 		
