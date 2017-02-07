@@ -81,7 +81,7 @@
 	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
 
 
-	<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
+	<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 
 </head>
@@ -170,7 +170,7 @@
 	<progress id='prog_bar' value = '0' max='100'></progress>
 </div>
 
-<!-- <script src='http://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
+<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 <script type="text/javascript">
 
@@ -205,28 +205,25 @@ var scriptList = [
 
 var on_kong = 0;
 
-if (location.hostname == "www.kongregate.com") on_kong = 1;
+if (location.hostname == "game274082.konggames.com") on_kong = 1;	// not www.kongregate.com 
+
+if (on_kong == 1) scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
+
+var on_facebook = 0;
+
+if (location.hostname == "www.facebook.com") on_facebook = 1;
+
+var g_autoload_level = document.location.search;
+if (g_autoload_level.length > 1) g_autoload_level = g_autoload_level.substring(1);
+
+g_autoload_level = g_autoload_level.split("=")[1];
+
+if (on_kong == 1) g_autoload_level = "";
+
 
 var kongregate;
-if (false && on_kong == 1) {
-	// Load the API
-	
-	kongregateAPI.loadAPI(function(){
-		
-		// Callback function
-		// Set the global kongregate API object
-  		kongregate = kongregateAPI.getAPI();
+var kong_token;
 
-
-		// Register the shared content load listener before connecting
-		//kongregate.sharedContent.addLoadListener('Level', onLoadLevel);
-   
-		// Connect
-		//kongregate.services.connect();
-
-	});
-
-}
 
 //alert('<!--<meta name="viewport" content="width=device-width">-->');
 
@@ -243,7 +240,28 @@ start_phaser = function() {
 	pBar.value += 20; 
 
 			
+	if (on_kong == 1) {
+	// Load the API
 	
+	kongregateAPI.loadAPI(function(){
+		
+			// Callback function
+			// Set the global kongregate API object
+  			kongregate = kongregateAPI.getAPI();
+
+
+			// Register the shared content load listener before connecting
+			//kongregate.sharedContent.addLoadListener('Level', onLoadLevel);
+   
+			// Connect
+			kongregate.services.connect();	// I'm guessing I need this for auth
+
+
+		
+
+		});
+
+	}
 
 	game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, "game", {
     		create : function() {

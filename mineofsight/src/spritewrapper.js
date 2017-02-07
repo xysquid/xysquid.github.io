@@ -209,6 +209,11 @@ TextClass = Class.extend({
 		this.width = width;
 	},
 
+	set_font_size : function(size) {
+		this.font = size.toString();
+		this.font_size = size;
+	},
+
 	set_font: function (font) {
 		this.font_type = font;
 		if (font == Types.Fonts.SMALL) {
@@ -352,10 +357,12 @@ TextClass = Class.extend({
 
 	hide: function () {
 		this.pixitext.visible = false;
+		this.pixitext.kill();
 	},
 
 	make_vis: function () {
 		this.pixitext.visible = true;
+		this.pixitext.revive();
 	},
 
 
@@ -439,9 +446,128 @@ ButtonClass = Class.extend({
 
 });
 
+StarRatingClass = Class.extend({
+// this seems similar to a toggle
+
+	x: 0,	// pos of first star, rest are horiz
+	y: 0,
+
+	rating: 0,
+
+	star_sprites: [5],
+	text: null,
+
+	init: function() {
+
+		//this.text = new TextClass(Types.Layer.GAME_MENU);
+		
+
+		this.star_sprites[0] = new SpriteClass();
+		this.star_sprites[0].setup_sprite("emptystar.png", Types.Layer.GAME_MENU);
+
+		this.star_sprites[1] = new SpriteClass();
+		this.star_sprites[1].setup_sprite("emptystar.png", Types.Layer.GAME_MENU);
+
+		this.star_sprites[2] = new SpriteClass();
+		this.star_sprites[2].setup_sprite("emptystar.png", Types.Layer.GAME_MENU);
+
+		this.star_sprites[3] = new SpriteClass();
+		this.star_sprites[3].setup_sprite("emptystar.png", Types.Layer.GAME_MENU);
+
+		this.star_sprites[4] = new SpriteClass();
+		this.star_sprites[4].setup_sprite("emptystar.png", Types.Layer.GAME_MENU);
+
+	},
+
+	update_pos: function (x,y) {
+		this.x = x;
+		this.y = y;
+		for (var i = 0; i < 5; i++) {
+			this.star_sprites[i].update_pos(x + 24*i, y);
+
+		}
+
+	
+	},
+
+	hide: function() {
+		this.star_sprites[0].hide();
+		this.star_sprites[1].hide();
+		this.star_sprites[2].hide();
+		this.star_sprites[3].hide();
+		this.star_sprites[4].hide();
+	},
+
+	make_vis: function() {
+		this.star_sprites[0].make_vis();
+		this.star_sprites[1].make_vis();
+		this.star_sprites[2].make_vis();
+		this.star_sprites[3].make_vis();
+		this.star_sprites[4].make_vis();
+
+		this.voted = 0;
+	},
+
+	set_rating: function(rating) {
+
+		// input 1-5
+		if (rating >= 5) this.rating = 5;
+		if (rating == 4) this.rating = 4;
+		if (rating == 3) this.rating = 3;
+		if (rating == 2) this.rating = 1;
+		if (rating == 1) this.rating = -1;
+		if (rating <= 0) this.rating = -2;
+
+		//this.rating = rating;
+
+		for (var i = 0; i < 5; i++) {
+			if (i < rating) {
+				this.star_sprites[i].set_texture('fullstar.png',Types.Layer.GAME_MENU);
+			} else {
+				this.star_sprites[i].set_texture('emptystar.png',Types.Layer.GAME_MENU);
+			}
+		}
+	},
+
+	voted: 0,
+
+	click: function(x,y) {
+
+		
+
+		if (x < this.x - 12 ||
+		    x > this.x + 24*4 + 12 ||
+		    y < this.y - 12 ||
+		    y > this.y + 12) return;
+
+		this.voted = 1;
+
+
+		var stars = 0;
+		
+		for (var i = -1; i < 5; i++) {
+			//this.star_sprites[i].update_pos(x + 24*i, y);
+			if (x > this.x + 24*i - 12 &&
+		    	    x < this.x + 24*i + 12 &&
+		    	    y > this.y - 12 &&
+		    	    y < this.y + 12) this.set_rating(i+1);
+		}
+
+	},
+
+	
+
+
+});
+
+
 
 ToggleClass = Class.extend({
 
+	x: 0,
+	y: 0,
+
+	code: 0,
 	
 	sprite_obj: null,
 
@@ -480,19 +606,37 @@ ToggleClass = Class.extend({
 		this.toggle();
 	},
 
+	horiz: true,
+
 	update_pos: function(x,y) {
+		this.x = x;
+		this.y = y;
 		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
 		this.button_sprite.update_pos(x,y);
-		this.sprite_obj.update_pos(x + 52,y);
+		if (this.horiz == true) this.sprite_obj.update_pos(x + 52,y);
+		else this.sprite_obj.update_pos(x,y + 38);
 	},
 
 	toggled: -1,
 
-	toggle: function() {
-		this.toggled = -this.toggled;
+	three_toggle: false,
 
-		if (this.toggled == 1) this.button_sprite.set_texture("button_small_on.png",this.layer);
-		else this.button_sprite.set_texture("button_small.png",this.layer);
+	toggle: function() {
+		
+
+		if (this.three_toggle == false) {
+			this.toggled = -this.toggled;
+			if (this.toggled == 1) this.button_sprite.set_texture("button_small_on.png",this.layer);
+			else this.button_sprite.set_texture("button_small.png",this.layer);
+		} else {
+			this.toggled++;
+			if (this.toggled > 2) this.toggled = 0;
+
+			if (this.toggled == 0) this.button_sprite.set_texture("button_small_on.png",this.layer);
+			if (this.toggled == 1) this.button_sprite.set_texture("button_small_off.png",this.layer);
+			if (this.toggled == 2) this.button_sprite.set_texture("button_small.png",this.layer);
+
+		}
 	}
 
 });
@@ -547,12 +691,18 @@ SpriteClass = Class.extend({
 		 //this.phasersprite.destroy();
 		//this.setup_sprite(this.name, this.layer, this.x, this.y);
 
+		this.phasersprite.revive();
+
 		this.phasersprite.visible = true;
+
+		
 	},
 
 	hide: function() { 
 		
 		this.phasersprite.visible = false;
+
+		this.phasersprite.kill();
 
 		// just destroy the object?
 		// this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
@@ -594,5 +744,7 @@ SpriteClass = Class.extend({
 
 	
 });
+
+
 
 pBar.value += 10;
