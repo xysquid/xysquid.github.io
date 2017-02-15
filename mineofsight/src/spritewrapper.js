@@ -505,10 +505,22 @@ StarRatingClass = Class.extend({
 		this.star_sprites[3].make_vis();
 		this.star_sprites[4].make_vis();
 
+		this.star_sprites[0].set_alpha(0.5);
+		this.star_sprites[1].set_alpha(0.5);
+		this.star_sprites[2].set_alpha(0.5);
+		this.star_sprites[3].set_alpha(0.5);
+		this.star_sprites[4].set_alpha(0.5);
+
 		this.voted = 0;
 	},
 
 	set_rating: function(rating) {
+
+		this.star_sprites[0].set_alpha(1);
+		this.star_sprites[1].set_alpha(1);
+		this.star_sprites[2].set_alpha(1);
+		this.star_sprites[3].set_alpha(1);
+		this.star_sprites[4].set_alpha(1);
 
 		// input 1-5
 		if (rating >= 5) this.rating = 5;
@@ -725,6 +737,11 @@ SpriteClass = Class.extend({
 		//this.phasersprite.x = x;
 		//this.phasersprite.y = y;
 		
+	},
+
+	rotate_ninety: function () {
+		
+		this.phasersprite.angle += 90;
 	},
 
 	set_z_to_top: function() {

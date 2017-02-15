@@ -70,8 +70,11 @@ g_texts = {
 		"Title"	   : "MINE OF SIGHT",
 		"New Game" : "MENU",
 		"Tutorial" : "TUTORIAL",
-		"Sound"	   : "Sound",
+		"Sound"	   : "SOUND",
 		"Music"	   : "Music",
+
+		"ON"	   : " ON",
+		"OFF"	   : " OFF",
 
 		"tut1"	   : "Drop new peices onto the grid",
 		"tut2"	   : "Match fires next to bombs",
@@ -93,6 +96,8 @@ g_texts = {
 	}
 
 };
+
+g_sound_on = true;
 
 g_click_to_dig = true;
 g_hold_to_flag = true;
@@ -129,7 +134,7 @@ MenuItems = [
 	//[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
 
 	// 
-	//[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"],"sound_on_icon.png","sound_off_icon.png"],
+	[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"],
 	//[1, Types.Events.MUSIC_ONOFF, g_texts[language]["Music"],"music_on_icon.png","sound_off_icon.png"],
 
 	// Only include the bookmark if we are on zblip.com
@@ -243,7 +248,7 @@ MenuPositions = Class.extend({
 	menu_item_type: [],
 
 	menu_item_width: 148,
-	menu_item_height: 32,
+	menu_item_height: 28,
 
 	menu_width: 0,
 	menu_height: 0,
@@ -815,8 +820,17 @@ BlipFrogMenuClass = Class.extend({
 		} else if (MenuItems[menu_i][1] == Types.Events.TWEET_SCORE) {
 			tweetscore(99);
 		} else if (MenuItems[menu_i][1] == Types.Events.SOUND_ONOFF) {
-			gSM.togglemute();
+			//gSM.togglemute();
+			if (g_sound_on) {
+				g_sound_on = false;
+				this.menu_texts[menu_i].change_text(g_texts[language]["Sound"] + g_texts[language]["OFF"]);
+			} else {
+				g_sound_on = true;
+				this.menu_texts[menu_i].change_text(g_texts[language]["Sound"] + g_texts[language]["ON"]);
+			}
+
 			
+
 		} else if (MenuItems[menu_i][1] == Types.Events.MUSIC_ONOFF) {
 			gSM.toggle_music();
 			
