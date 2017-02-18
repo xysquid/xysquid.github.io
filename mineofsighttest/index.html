@@ -55,8 +55,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="user-scalable=no" />
+
+
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
+
+<!-- https://developers.google.com/web/fundamentals/design-and-ui/responsive/?hl=en#set-the-viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
 <meta name="twitter:card" content="summary" />
@@ -201,13 +208,15 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+// 
+
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
 
 var on_kong = 0;
 
 if (location.hostname == "game274082.konggames.com") on_kong = 1;	// not www.kongregate.com 
 
-if (on_kong == 1) scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
+if (on_kong == 1) scriptList.push("https://www.kongregate.com/javascripts/kongregate_api.js");
 
 var on_facebook = 0;
 
@@ -218,7 +227,7 @@ if (g_autoload_level.length > 1) g_autoload_level = g_autoload_level.substring(1
 
 g_autoload_level = g_autoload_level.split("=")[1];
 
-if (on_kong == 1) g_autoload_level = "";
+if (on_kong == 1 || location.hostname != "www.zblip.com") g_autoload_level = "";
 
 
 var kongregate;
@@ -334,14 +343,28 @@ var menu_ratio = 1;	// menu, pop up menu
 var x_shift_screen = 0;
 var scale_man;
 
+var menu_scale_ratio = 1;
+
 var do_resize = function(e) {  
 
 	if (game == null) return;
 	if (play_screen_group == null) return;
 
 	// dips
-	screen_width =  document.documentElement.clientWidth - 1;//
-	screen_height = document.documentElement.clientHeight - 1;
+	//screen_width =  document.documentElement.clientWidth - 1;//
+
+//	screen_width =	window.innerWidth && document.documentElement.clientWidth ? 
+//			Math.min(window.innerWidth, document.documentElement.clientWidth) : 
+//			window.innerWidth || 
+//			document.documentElement.clientWidth || 
+//			document.getElementsByTagName('body')[0].clientWidth;
+
+	screen_width = window.innerWidth;	
+
+	screen_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  	screen_height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+	//screen_height = document.documentElement.clientHeight - 1;
 
 	// document.body.offsetWidth ?
 
@@ -356,7 +379,10 @@ var do_resize = function(e) {
 
 	// ------------------------ only mention of device pixel ratio
 	menu_ratio = 1;
-	//if (window.devicePixelRatio > 1) menu_ratio = window.devicePixelRatio;
+	menu_scale_ratio = 1;
+	//if (window.devicePixelRatio > 1) menu_scale_ratio = window.devicePixelRatio;
+
+	//if (true || window.devicePixelRatio != 1) console.log('window.devicePixelRatio ' + window.devicePixelRatio)
 
 	Math.max(screen_width,screen_height);
 
@@ -365,7 +391,7 @@ var do_resize = function(e) {
 	//screen_height = screen_height*window.devicePixelRatio;
 
 	//game_menu_group.scale.set(menu_ratio,menu_ratio);
-	options_menu_group.scale.set(menu_ratio,menu_ratio);
+	//options_menu_group.scale.set(menu_ratio,menu_ratio);
 
 	//if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
 
@@ -417,7 +443,7 @@ var do_resize = function(e) {
 	//screen_width = screen_width*menu_ratio;
 	//screen_height = screen_height*menu_ratio;;
 
-
+	console.log(screen_width + ' by ' + screen_height);
 
 	gBlipFrogMenu.on_screen_resize();
 
