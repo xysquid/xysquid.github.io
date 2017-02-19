@@ -65,6 +65,7 @@ if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
 function g_get_text (tx) {
 	if (g_texts[language] == null) return g_texts['en'][tx];
+	if (g_texts[language][tx] == null) return g_texts['en'][tx];
 	return g_texts[language][tx];
 }
 
@@ -76,9 +77,31 @@ g_texts = {
 		"Tutorial" : "TUTORIAL",
 		"Sound"	   : "SOUND",
 		"Music"	   : "Music",
+		"LEVELS"   : "LEVELS",
+		"COMMUNITY LEVELS"   : "COMMUNITY LEVELS",
+		"LEVEL EDITOR"   : "LEVEL EDITOR",
 
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "RIGHT TO FLAG",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "RIGHT CLICK TO FLAG, LEFT TO DIG",
+
+
+		"hand"	   : "      Number of mines in the 4 surrounding tiles.",
+		"eye"	   : "      Number of mines in line of sight, this row and column. Blocked by walls.",
+		"eighthand": "      Number of mines in the 8 surrounding tiles.",
+		"heart"	   : "      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.",
+		"compass"	   : "      Number of DIRECTIONS in which mines are seen. Same range as the eye.",
+		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
+		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
+
 
 		"tut0"	   : "WHERE ARE THE MINES HIDDEN?",
 		"tut0a"	   : "If a white tile is safe then remove it \nIf a white tile is unsafe then flag it",
@@ -97,10 +120,37 @@ g_texts = {
 
 		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
 		"tut6a"	   : "",
+
+		"tut7"	   : "YOU MUST DIG OR FLAG EVERY TILE TO WIN",
+
+		"tut8"	   : "You can click on a hint tile if you forget how it works",
+
+		"tut13"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut13a"   : "",
+
+		"tut18"	   : "WELCOME TO 1992 ;)",
+
+		"tut28"	   : "TWO TILES BECOME ONE BIG TILE",
+		"tut28a"   : "HOW MANY MINES CAN THIS ONE BIG TILE SEE?",
+
+		"tut53"	   : "SOME MINES FEEL VERY LONELY",
+		"tut53a"   : "But the heart cares\nThe heart sees ONLY mines who are all alone.",
+
+		"tut_compass"	   : "HOW MANY DIRECTIONS?",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "ONLY THE BEST FOR THE KING",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "SHARING OUR MINES",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "NOT SHARING OUR MINES",
+		"tut_nosharea"   : "OThese two clues are sharing 0 mines.",
 		
 	},
 
-	zh : {
+	"zh" : {
 		"Title"	   : "MINE OF SIGHT",
 		"New Game" : "MENU",
 		"Tutorial" : "教程",
@@ -131,15 +181,34 @@ g_texts = {
 
 	},
 
-	ja : {
+	"ja" : {
 		"Title"	   : "MINE OF SIGHT",
-		"New Game" : "MENU",
+		"New Game" : "メニュー",
 		"Tutorial" : "TUTORIAL",
-		"Sound"	   : "SOUND",
+		"Sound"	   : "音",
 		"Music"	   : "Music",
+		"LEVELS"   : "レベル",
+		"LEVEL EDITOR"   : "レベル 設計",
+		"COMMUNITY LEVELS"   : "コミュニティレベル",
 
-		"ON"	   : " ON",
-		"OFF"	   : " OFF",
+		"ON"	   : " に",
+		"OFF"	   : " オフ",
+
+		"hold": "旗を置くために押す",	
+		"mark": "最初にマークする",
+		"right": "右クリックしてフラグを立てる",
+
+		"hold_long": "旗を置くために押す, クリックして掘る",
+		"mark_long": "最初に多くの場所にマークを付け、次に多くの旗を置くか、すべてを掘るかを決める",
+		"right_long": "右クリックしてフラグを設定し、左クリックして掘る",
+
+		"hand"	   : "      4つの最も近い隣人。どれくらいの爆弾？.",
+		"eye"	   : "      視線内の爆弾の数。この行と列。それは壁によってブロックされています。",
+		"eighthand": "      8つの最も近い隣人。どれくらいの爆弾？.",
+		"heart"	   : "      目のように見えますが、孤独な爆弾だけが見えます. 孤独な爆弾は、4つの密接なタイルで友人がいません.",
+		"compass"	   : "      爆弾が存在する方向（北、南、東、西）の数. 目と同じ範囲.",
+		"crown"	   : "      ギャップのない最大の一連の爆弾. 目と同じ範囲.",
+		"eyebracket"	   : "      見た爆弾のグループ数. ギャップで隔てられた. 目と同じ範囲.",
 
 		"tut0"	   : "どこに爆弾が隠れているの？",
 		"tut0a"	   : "白いタイルが安全な場合は、それを取り外します \n白いタイルが危険な場合は、それにフラグを立てます",
@@ -156,8 +225,35 @@ g_texts = {
 		"tut5"	   : "このパズルは難しい",
 		"tut5a"	   : "しかし、あなたは推測する必要はありません",
 
-		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6"	   : "壁が視界を止める",
 		"tut6a"	   : "",
+
+		"tut7"	   : "あなたが勝つためには\nすべてのタイルに印をつけたり掘ったりする必要があります",
+
+		"tut8"	   : "その行動を覚えているヒントをクリックしてください",
+
+		"tut13"	   : "壁が視界を止める",
+		"tut13a"   : "",
+
+		"tut18"	   : "1992年へようこそ ;)",
+
+		"tut28"	   : "2つのタイルが1つの大きなタイルになる",
+		"tut28a"   : "大男は何匹の爆弾を見ることができますか？",
+
+		"tut53"	   : "いくつかの爆弾は孤独を感じる",
+		"tut53a"   : "しかし、「愛の心」は孤独な爆弾を気にする\n「愛の心」は一人で感じる爆弾だけを見る",
+
+		"tut_compass"	   : "多くの方法は？",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "王は最高の報酬を得る",
+		"tut_crowna"   : "王冠は最大量しか報告しない",
+
+		"tut_share"	   : "彼らは爆弾を共有している",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "彼らは爆弾を共有しない",
+		"tut_nosharea"   : "OThese two clues are sharing 0 mines.",
 
 	}
 
@@ -180,19 +276,19 @@ MenuItems = [
 	//[0, "Game"],
 	
 	[1, Types.Events.NEW_GAME, g_get_text("New Game"),"home_icon.png",],
-	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
+	[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
-	[1, Types.Events.GOTO_COMMUNITY_LEVELS, "COMMUNITY LEVELS","home_icon.png",],
+	[1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png",],
+	[1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png",],
 	
 
 	[0, "CONTROLS"],
 	//[3,
-	[3, Types.Events.HOLD_TO_FLAG, "HOLD TO FLAG","redflag.png",],
+	[3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",],
 
-	[3, Types.Events.CLICK_TO_DIG, "MARK FIRST","redflag.png",],
+	[3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",],
 	
-	[3, Types.Events.RIGHT_TO_FLAG, "RIGHT TO FLAG","redflag.png",],
+	[3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",],
 	//],  // 3
 
 	//[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],

@@ -693,6 +693,11 @@ SpriteClass = Class.extend({
 		else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
 		else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
 		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+
+		return;
+		
+		if (layer == Types.Layer.GAME_MENU && 
+		    menu_scale_ratio > 1) this.phasersprite.scale.setTo(menu_scale_ratio, menu_scale_ratio);
 	},
 
 	x: -999,
@@ -740,6 +745,8 @@ SpriteClass = Class.extend({
 	},
 
 	rotate_ninety: function () {
+
+		
 		
 		this.phasersprite.angle += 90;
 	},

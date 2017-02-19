@@ -993,28 +993,28 @@ InfoClass = Class.extend({
 	set_hint_type: function(hint_) {
 		if (hint_ == 1) {
 				this.block_obj.set_texture('hand.png');
-				this.text.change_text("      Number of mines in the 4 surrounding tiles.");
+				this.text.change_text(g_get_text("hand"));
 			} else if (hint_ == 2) {
 				this.block_obj.set_texture('eye.png');
-				this.text.change_text("      Number of mines in line of sight, this row and column. Blocked by walls.");
+				this.text.change_text(g_get_text("eye"));
 			} else if (hint_ == 3) {
 				this.block_obj.set_texture('eyeplustouch.png');
 				this.text.change_text("      The number of mines seen PLUS the number of mines touched, by this tile. So any adjacent mines will be counted 2X");
 			} else if (hint_ == 4) {
 				this.block_obj.set_texture('8hand.png');
-				this.text.change_text("      Number of mines in the 8 surrounding tiles.");
+				this.text.change_text(g_get_text("eighthand"));
 			} else if (hint_ == 5) {
 				this.block_obj.set_texture('heart.png');
-				this.text.change_text("      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.");
+				this.text.change_text(g_get_text("heart"));
 			} else if (hint_ == 11) {
 				this.block_obj.set_texture('compass.png');
-				this.text.change_text("      Number of DIRECTIONS in which mines are seen. Same range as the eye.");
+				this.text.change_text(g_get_text("compass"));
 			}else if (hint_ == 12) {
 				this.block_obj.set_texture('crown.png');
-				this.text.change_text("      BIGGEST unbroken sequence of mines seen. Same range as the eye.");
+				this.text.change_text(g_get_text("crown"));
 			}else if (hint_ == 13) {
 				this.block_obj.set_texture('eyebracket.png');
-				this.text.change_text("      How many unbroken GROUPS of mines seen. Same range as the eye.");
+				this.text.change_text(g_get_text("eyebracket"));
 			}else {
 				// uncovered, no hint, empty
 				
@@ -1257,7 +1257,7 @@ BlockClass = Class.extend({
 		this.flag_sprite.setup_sprite("flagblock.png",Types.Layer.GAME);
 		this.flag_sprite.hide();
 
-		this.hint_eye_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_eye_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_eye_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_eye_num_text.set_text("");
 		this.hint_eye_num_text.update_pos(-999,-999);
@@ -1431,6 +1431,9 @@ BlockClass = Class.extend({
 	},
 
 	include_range_of_joined_tile: function (otherx, othery) {
+
+		console.log('include_range_of_joined_tile this.x' + this.x + 'this.y' + this.y);
+
 		// check that other tile is in the same join group as me..
 		if (this.join_group == 0) return;
 		if (this.join_group != this.game_state.blocks[this.game_state.tiles[otherx][othery]].join_group) return;
@@ -1448,6 +1451,15 @@ BlockClass = Class.extend({
 					already_got = 1;
 
 				}
+
+				if (this.game_state.blocks[this.game_state.tiles[x][y]].join_group == this.join_group) {
+					already_got = 1;	// inside the group ... lets exclude from range
+
+				}
+
+				
+
+				// should also splice out this.x this.y - is this included in basic hints??
 
 			}
 
@@ -1538,6 +1550,18 @@ BlockClass = Class.extend({
 		return 0;
 	},
 
+	link_hint_to_sharegroup : function (s_group) {
+
+		this.share_groups.push(s_group);
+
+		if (this.join_group != 0 && this.i_know_join_leader_xy == true) {
+			this.game_state.blocks[this.game_state.tiles[this.my_join_leader_x][this.my_join_leader_y]].link_hint_to_sharegroup(s_group);
+			return;
+		}
+
+		
+	},
+
 	calc_sharesquare: function() {
 
 		var all_the_mines = [];
@@ -1546,7 +1570,9 @@ BlockClass = Class.extend({
 		console.log('calc sharesquare at : this.x ' + this.x + ' this.y ' + this.y);
 
 		for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+
 			if (this.game_state.blocks[b].preset_hint_type == 0) continue;
+
 			var not_in_my_group = 1;
 		
 			for (var s = 0; s < this.game_state.blocks[b].share_groups.length; s++) {
@@ -1557,8 +1583,9 @@ BlockClass = Class.extend({
 
 			num_hints_in_group++;
 
-			console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type);
-
+			console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
+			console.dir(this.game_state.blocks[b].x_in_range);
+			console.dir(this.game_state.blocks[b].y_in_range);
 
 			//console.log('hint in MY group at x: ' +this.game_state.blocks[b].x + '  y: ' + this.game_state.blocks[b].y);
 
@@ -1611,8 +1638,13 @@ BlockClass = Class.extend({
 
 	show_sharesquare: function () {
 
+		
+
 
 		if (this.share_groups.length == 0) return;
+
+		if (this.join_group != 0) return;	// blue-joined tiles getting wiped by being in a share group 
+
 		if (this.preset_hint_type != 0) return;
 
 		this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 									this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 1);
@@ -1625,6 +1657,8 @@ BlockClass = Class.extend({
 		
 
 		if (this.sharesquare) {
+
+			console.log('show_sharesquare on x ' +this.x+ ' y ' + this.y);
 
 			if (this.x > 0 && !this.game_state.blocks[this.game_state.tiles[this.x - 1][this.y]].is_in_share_group(this.share_groups[0])) left = false;
 
@@ -1732,6 +1766,11 @@ BlockClass = Class.extend({
 	},
 
 	identify_mines_in_range: function () {
+
+		if (this.join_group != 0 && this.join_leader == true) this.get_range_for_joined();
+
+		this.mines_seen_xy = [];
+
 		// used for the sharesquare hint
 		for (var i = 0; i < this.x_in_range.length; i++) {
 			var x = this.x_in_range[i];
@@ -1741,8 +1780,8 @@ BlockClass = Class.extend({
 				this.mines_seen_xy.push({x: x, y: y});
 			}
 		}
-
-		console.log('this.mines_seen_xy ' + this.mines_seen_xy.length);
+ 
+		console.log('this.mines_seen_xy ' + this.mines_seen_xy.length + ' from hint at x ' +this.x + ' y ' + this.y + ' which has in range ' + this.x_in_range.length);
 	},
 
 	show_math_stuff : function () {
@@ -1756,8 +1795,20 @@ BlockClass = Class.extend({
 		this.hint_crown_num_text.update_pos(-999,-999);
 		this.hint_eyebracket_num_text.update_pos(-999,-999);
 
+		var pos_x = this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size - 3;
+		var pos_y = this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 3;
+
+		this.join_sprite_any.update_pos(pos_x, 	pos_y);
+
 		if (this.math_equalbox == true) {
-			this.join_sprite_any.set_texture("math_joiner_right.png");
+			if (this.math_connect_left == true) {
+				this.join_sprite_any.set_texture("math_joiner_left_equals.png");
+				this.join_sprite_any.rotate_ninety();
+				this.join_sprite_any.rotate_ninety();
+			}
+			//else if (this.math_connect_right == true) this.join_sprite_any.set_texture("math_joiner_left_equals.png");
+			//else if (this.math_connect_up == true) this.join_sprite_any.set_texture("math_joiner_down_equals.png");
+			//else if (this.math_connect_down == true) this.join_sprite_any.set_texture("math_joiner_up_equals.png");
 
 			this.hint_eye_num_text.change_text(this.math_equal_num.toString());
 
@@ -1785,10 +1836,7 @@ BlockClass = Class.extend({
 			// impossible
 		}
 
-		var pos_x = this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size - 3;
-		var pos_y = this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 3;
-
-		this.join_sprite_any.update_pos(pos_x, 	pos_y);
+		
 	},
 
 	calc_math : function () {
@@ -1872,6 +1920,10 @@ BlockClass = Class.extend({
 
 		this.join_leader = false;	// show the hint - store the range
 		this.join_second_leader = false;	// show the number
+
+		this.i_know_join_leader_xy = false;
+		this.my_join_leader_x = -1;
+		this.my_join_leader_y = -1;
 
 
 		this.join_h = false;
@@ -2029,6 +2081,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 							        icon_y);
 			
 		} else if (hinttype == 5) {
+
+			
 			
 			this.hint_heart_num_text.change_text(hint_.toString());
 			this.hint_heart_num_text.update_pos(text_x, 
@@ -2081,9 +2135,10 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 		}
 	},
 
-	
+	stored_crown_num: 0,
 
 	calc_hint: function(hinttype) {
+
 
 		var num = 0;
 
@@ -2126,6 +2181,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 			var count_directions_with_mines = false;
 			var count_highest_sequence = true;
 			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence ); // get range
+
+			this.stored_crown_num = num;
 			
 			
 		}  else if (hinttype == 13) {
@@ -2141,11 +2198,38 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 			
 		}
 
+		
+
 		return num;
 	},
 
 	join_leader: false,	// show the hint - 
 	join_second_leader: false,	// show the number
+
+	i_know_join_leader_xy: false,
+	my_join_leader_x: -1,
+	my_join_leader_y: -1,
+
+	uncover_math: function() {
+
+		
+	
+		this.take_flag_off();
+		
+		if (this.block_type == 1) return;	// wall
+		this.deselect();
+		this.covered_up = false;
+		this.flag_on = false;
+		this.set_type(this.block_type);
+
+		var hint_ = this.calc_hint(this.preset_hint_type);
+		
+		this.show_hint(this.preset_hint_type, hint_);
+
+		this.stored_hint_num = hint_;
+
+		this.show_math_stuff();
+	},
 
 	uncover_joined: function() {
 
@@ -2193,6 +2277,15 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 	},
 
 	is_in_share_group: function(group_num) {
+
+		if (this.join_group != 0 && this.i_know_join_leader_xy == true) {
+			var ask_leader = this.game_state.blocks[this.game_state.tiles[this.my_join_leader_x][this.my_join_leader_y]].is_in_share_group(group_num);
+			return ask_leader;
+		}
+
+		
+
+
 		for (var s = 0; s < this.share_groups.length; s++) {
 			if (group_num == this.share_groups[s]) return true;
 		}
@@ -2263,13 +2356,18 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 
 			if (leader_b == -1) return;
 
+			this.game_state.blocks[leader_b].calc_hint(hint_type);
+
+
 			// now combine the ranges of all in this group
 			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
-				if (this.game_state.blocks[b].join_group == this.join_group) {
+				if (this.game_state.blocks[b].join_group == this.join_group && b != leader_b) {
 
 					var otherx = this.game_state.blocks[b].x;
 					var othery = this.game_state.blocks[b].y;	
 					this.game_state.blocks[b].calc_hint(hint_type);	// stores range	
+
+					// so... calc_hint on join leader, wipes range...
 
 					this.game_state.blocks[leader_b].include_range_of_joined_tile(otherx, othery);
 
@@ -2283,12 +2381,38 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 			} else {
 				this.game_state.blocks[leader_b].join_v = true;
 			}
+
+			var hint_ = 0;
 			
 			
-			var hint_ = this.game_state.blocks[leader_b].calc_hint_from_range();	// use range
+			// for certain hint types we need a different approach - get the max of the individual tiles
+			if (hint_type == 12) {
+				// crown - get best of this group
+				for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+					if (this.game_state.blocks[b].join_group != this.join_group) continue;
+
+					if (this.game_state.blocks[b].stored_crown_num > hint_) hint_ = this.game_state.blocks[b].stored_crown_num;
+				}
+			} else {
+	
+			
+				// calc_hint_from_range just counts the mines in range
+				// then how is this working for hearts?
+				// IN calc_hint_eye_num, if we're only counting lonely mines, only lonely mines get added to range
+				hint_ = this.game_state.blocks[leader_b].calc_hint_from_range();	// use range
+
+
+			}
+
 			this.game_state.blocks[leader_b].show_hint(hint_type, hint_);
 
 			this.stored_hint_num = hint_;
+
+
+			// 
+			this.game_state.blocks[leader_b].mines_seen_xy = [];
+			this.game_state.blocks[leader_b].identify_mines_in_range();
+
 
 			return;
 
@@ -2306,17 +2430,47 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 
 			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
 
-				if (this.game_state.blocks[b].covered_up == false) continue;
+				//if (this.game_state.blocks[b].covered_up == false) continue;
 
 				for (var s = 0; s < this.game_state.blocks[b].share_groups.length; s++) {
 
 					if (this.game_state.blocks[b].share_groups[s] != share_group) continue;
 
 					this.game_state.blocks[b].uncover_shared();	
+
+					// may be blue-join tiles on the ends of this share-tentacle:
+					if (this.game_state.blocks[b].join_group != 0) this.game_state.blocks[b].uncover();
 				}
+
+				
 			}
+
+			
 			 
 		}
+
+		if (this.math_group != -1) {
+			//var hint_ = this.calc_hint(this.preset_hint_type);
+
+			//this.stored_hint_num = hint_;
+
+			this.uncover_math();
+			
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+
+				if (this.game_state.blocks[b].covered_up == false) continue; // excludes this entity, so gotta call uncover_math as above 
+
+				
+
+				if (this.game_state.blocks[b].math_group != this.math_group) continue;
+
+				this.game_state.blocks[b].uncover_math();	
+				
+			}
+			
+			return;
+
+		} // math_group
 
 		if (this.block_type == 2 || show_hint == false) {
 			return;		// dont show the hint
@@ -2331,12 +2485,41 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 		
 	},
 
+	get_range_for_joined : function () {
+		if (this.join_leader == false) return;
+
+		console.log('get_range_for_joined ' + this.x + ' ' + this.y);
+
+		this.calc_hint(this.preset_hint_type);  // wipes and recalcs range
+
+
+			// now combine the ranges of all in this group
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+				if (this.game_state.blocks[b].join_group == this.join_group && 
+					(this.game_state.blocks[b].x != this.x || this.game_state.blocks[b].y != this.y)) {
+
+					var otherx = this.game_state.blocks[b].x;
+					var othery = this.game_state.blocks[b].y;	
+					this.game_state.blocks[b].calc_hint(this.preset_hint_type);	// stores range	
+
+					// so... calc_hint on join leader, wipes range...
+
+					this.include_range_of_joined_tile(otherx, othery);
+
+
+				}
+
+			} // blocks
+	},
+
 	calc_hint_from_range: function () {
 		var num = 0;
 		for (var i = 0; i < this.x_in_range.length; i++) {
 			if (this.game_state.get_block_type(this.x_in_range[i], this.y_in_range[i]) == 2) num++;
 
 		}
+
+		//alert('calc_hint_from_range this.present_hint_type' + this.preset_hint_type + ' num ' + num );
 		return num;
 
 	},
