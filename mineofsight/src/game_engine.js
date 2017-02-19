@@ -60,9 +60,13 @@ var language = window.navigator.userLanguage || window.navigator.language || 'en
 if (language.length > 2) language = language[0]+language[1];	// first 2 letters 
 //language = 'zh';
 //alert(language); //works IE/SAFARI/CHROME/FF https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx
-if (language != 'en' && language != 'zh') language = 'en';
+if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
 
+function g_get_text (tx) {
+	if (g_texts[language] == null) return g_texts['en'][tx];
+	return g_texts[language][tx];
+}
 
 g_texts = {
 
@@ -76,23 +80,85 @@ g_texts = {
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
 
-		"tut1"	   : "Drop new peices onto the grid",
-		"tut2"	   : "Match fires next to bombs",
-		"tut3"	   : "Or on top",
-		"tut4"	   : "Some blocks have extra armor",
-		"tut5"	   : "Blocks extinguish fires",
-		"tut6"	   : "Blocks also squish bombs",
-		"tut7"     : "Fires can be stacked",
-		"tut8"	   : "Let's make a combo",
-		"tut9"	   : "And clear the screen!",
+		"tut0"	   : "WHERE ARE THE MINES HIDDEN?",
+		"tut0a"	   : "If a white tile is safe then remove it \nIf a white tile is unsafe then flag it",
+
+		"tut1"	   : "NOT DIAGONALLY",
+		"tut1a"	   : "Just up and down and left and right",
+
+		"tut2"	   : "HOW MANY MINES CAN THE EYE SEE?",
+		"tut2a"	   : "The eye is a different type of clue",
+
+		"tut3"	   : "FOLLOW THE CLUES",
+		"tut3a"	   : "You don't need to guess",
+
+		"tut5"	   : "THIS ONE IS TRICKY",
+		"tut5a"	   : "But you still don't need to guess",
+
+		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6a"	   : "",
+		
 	},
 
 	zh : {
-		"Title"	   : "火加弹",
-		"New Game" : "新游戏",
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "MENU",
 		"Tutorial" : "教程",
 		"Sound"	   : "声音",
 		"Music"	   : "音乐",
+
+		"ON"	   : " ON",
+		"OFF"	   : " OFF",
+
+		"tut0"	   : "炸弹隐藏在哪里？",
+		"tut0a"	   : "如果白色瓷砖是安全的，然后删除它 \n如果白色瓷砖不安全，请标记它",
+
+		"tut1"	   : "只有四个方向",
+		"tut1a"	   : "不是八",
+
+		"tut2"	   : "眼睛可以看到炸弹",
+		"tut2a"	   : "眼睛是不同类型的线索",
+
+		
+		"tut3"	   : "FOLLOW THE CLUES",
+		"tut3a"	   : "You don't need to guess",
+
+		"tut5"	   : "THIS ONE IS TRICKY",
+		"tut5a"	   : "But you still don't need to guess",
+
+		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6a"	   : "",
+
+	},
+
+	ja : {
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "MENU",
+		"Tutorial" : "TUTORIAL",
+		"Sound"	   : "SOUND",
+		"Music"	   : "Music",
+
+		"ON"	   : " ON",
+		"OFF"	   : " OFF",
+
+		"tut0"	   : "どこに爆弾が隠れているの？",
+		"tut0a"	   : "白いタイルが安全な場合は、それを取り外します \n白いタイルが危険な場合は、それにフラグを立てます",
+
+		"tut1"	   : "唯一の4つの側面",
+		"tut1a"	   : "上、下、左、右のみ",
+
+		"tut2"	   : "目は遠くの爆弾を見ることができます",
+		"tut2a"	   : "目は新しい種類の手がかりです",
+
+		"tut3"	   : "手がかりを使ってパズルを解く",
+		"tut3a"	   : "あなたは推測する必要はありません",
+
+		"tut5"	   : "このパズルは難しい",
+		"tut5a"	   : "しかし、あなたは推測する必要はありません",
+
+		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6a"	   : "",
+
 	}
 
 };
@@ -113,7 +179,7 @@ MenuItems = [
 
 	//[0, "Game"],
 	
-	[1, Types.Events.NEW_GAME, g_texts[language]["New Game"],"home_icon.png",],
+	[1, Types.Events.NEW_GAME, g_get_text("New Game"),"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
 	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
@@ -638,8 +704,8 @@ BlipFrogMenuClass = Class.extend({
 			
 
 			if (event_type == Types.Events.MOUSE_UP &&
-			    mouse.x/options_menu_group.scale.x < 2*this.menu_icon_size &&
-			    mouse.y > this.menu_icon_y - this.menu_icon_size*options_menu_group.scale.x) {
+			    mouse.x < 2*this.menu_icon_size &&
+			    mouse.y > this.menu_icon_y - this.menu_icon_size) {
 				this.pop_up();
 			} else {
 
@@ -660,8 +726,8 @@ BlipFrogMenuClass = Class.extend({
 		
 		//if (event_type == Types.Events.WHEEL) 
 		
-		y = mouse.y/menu_ratio;//y*ratio;
-		x = mouse.x/menu_ratio;//x*ratio;
+		y = mouse.y;///menu_ratio;//y*ratio;
+		x = mouse.x;///menu_ratio;//x*ratio;
 
 		
 
