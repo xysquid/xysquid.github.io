@@ -54,15 +54,14 @@
 <link rel="canonical" href="http://www.zblip.com/mineofsight"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="user-scalable=no" />
+<!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
 
 
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
 
 <!-- https://developers.google.com/web/fundamentals/design-and-ui/responsive/?hl=en#set-the-viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
@@ -122,6 +121,8 @@
 				local('Montserrat');
 				url(https://fonts.googleapis.com/css?family=Montserrat);
 	}
+
+
 
 	progress {
   		border: none;
@@ -382,15 +383,39 @@ var do_resize = function(e) {
 	menu_scale_ratio = 1;
 	//if (window.devicePixelRatio > 1) menu_scale_ratio = window.devicePixelRatio;
 
+	//if (window.devicePixelRatio > 1) menu_ratio = window.devicePixelRatio;
+
+
+	//var rr = screen_width / screen_height;
+	//console.log('screen_width / screen_height' + rr);
+
+	// screen_width = some_unknown_num*actual_screen_width
+	// screen_height = some_unknown_num*actual_screen_height
+
+	var secret_ratio = 1;
+
+	// lets make two cases:
+	if (screen_width > screen_height) {
+		secret_ratio = screen_width / 800;	// how much bigger than the ideal game size (~12*tilesize)
+	} else {
+		secret_ratio = screen_height / 800;
+	}
+
+	// var ideal_width = 800
+	// var ideal_height = 400
+	// Math.max(screen_width / ideal_width, screen_height / ideal_height);
+
+	console.log('menu_ratio ' + menu_ratio);
+
 	//if (true || window.devicePixelRatio != 1) console.log('window.devicePixelRatio ' + window.devicePixelRatio)
 
-	Math.max(screen_width,screen_height);
+	
 
 	// physical pixels
 	//screen_width = screen_width*window.devicePixelRatio;
 	//screen_height = screen_height*window.devicePixelRatio;
 
-	//game_menu_group.scale.set(menu_ratio,menu_ratio);
+	//game_menu_group.scale.set(ratio,ratio);
 	//options_menu_group.scale.set(menu_ratio,menu_ratio);
 
 	//if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
@@ -410,11 +435,11 @@ var do_resize = function(e) {
 	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
-	
+	console.log('ratio ' + ratio);
 
 	play_group.scale.set(ratio, ratio);
 
-
+	
 	var over_x = 0;//screen_width - (8*96);
 	if (screen_width > screen_height) over_x = screen_width - w*ratio;
 	else over_x = screen_width - w_portrait*ratio;
@@ -427,23 +452,36 @@ var do_resize = function(e) {
 	play_group.position.set(x_shift_screen, 0);
 
 
-	game.width = screen_width;
-  	game.height = screen_height;
-  	//game.stage.bounds.width = screen_width;
-  	//game.stage.bounds.height = screen_height;
+	//game.width = screen_width;		// what does this do??
+  	//game.height = screen_height;
+
+
  
   	if (game.renderType === 1) {
-    		game.renderer.resize(screen_width, screen_height);
-    		Phaser.Canvas.setSmoothingEnabled(game.context, false);
+    		//game.renderer.resize(screen_width, screen_height);		// what does this do??
+
+    		//Phaser.Canvas.setSmoothingEnabled(game.context, false);	// what does this do??
+
   	}
 
-	game.camera.setSize(screen_width, screen_height);
+	//game.camera.setSize(screen_width, screen_height);	// what does this do??
 
 	// after adjusting tile and game containers
-	//screen_width = screen_width*menu_ratio;
-	//screen_height = screen_height*menu_ratio;;
 
 	console.log(screen_width + ' by ' + screen_height);
+
+	menu_ratio = ratio;
+
+	menu_ratio = Math.max(1,menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(1.75,menu_ratio);	// upper bound of 1.75
+
+	
+
+	game_menu_group.scale.set(menu_ratio,menu_ratio);
+	options_menu_group.scale.set(menu_ratio,menu_ratio);
+
+	screen_width = screen_width/menu_ratio;
+	screen_height = screen_height/menu_ratio;
 
 	gBlipFrogMenu.on_screen_resize();
 
