@@ -54,9 +54,15 @@
 <link rel="canonical" href="http://www.zblip.com/mineofsight"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="user-scalable=no" />
+<!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
+
+
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
+
+<!-- https://developers.google.com/web/fundamentals/design-and-ui/responsive/?hl=en#set-the-viewport -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
 <meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
  
 <meta name="twitter:card" content="summary" />
@@ -115,6 +121,8 @@
 				local('Montserrat');
 				url(https://fonts.googleapis.com/css?family=Montserrat);
 	}
+
+
 
 	progress {
   		border: none;
@@ -201,13 +209,15 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+// 
+
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
 
 var on_kong = 0;
 
 if (location.hostname == "game274082.konggames.com") on_kong = 1;	// not www.kongregate.com 
 
-if (on_kong == 1) scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
+if (on_kong == 1) scriptList.push("https://www.kongregate.com/javascripts/kongregate_api.js");
 
 var on_facebook = 0;
 
@@ -218,7 +228,7 @@ if (g_autoload_level.length > 1) g_autoload_level = g_autoload_level.substring(1
 
 g_autoload_level = g_autoload_level.split("=")[1];
 
-if (on_kong == 1) g_autoload_level = "";
+if (on_kong == 1 || location.hostname != "www.zblip.com") g_autoload_level = "";
 
 
 var kongregate;
@@ -334,14 +344,28 @@ var menu_ratio = 1;	// menu, pop up menu
 var x_shift_screen = 0;
 var scale_man;
 
+var menu_scale_ratio = 1;
+
 var do_resize = function(e) {  
 
 	if (game == null) return;
 	if (play_screen_group == null) return;
 
 	// dips
-	screen_width =  document.documentElement.clientWidth - 1;//
-	screen_height = document.documentElement.clientHeight - 1;
+	//screen_width =  document.documentElement.clientWidth - 1;//
+
+//	screen_width =	window.innerWidth && document.documentElement.clientWidth ? 
+//			Math.min(window.innerWidth, document.documentElement.clientWidth) : 
+//			window.innerWidth || 
+//			document.documentElement.clientWidth || 
+//			document.getElementsByTagName('body')[0].clientWidth;
+
+	screen_width = window.innerWidth;	
+
+	screen_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  	screen_height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+	//screen_height = document.documentElement.clientHeight - 1;
 
 	// document.body.offsetWidth ?
 
@@ -356,24 +380,37 @@ var do_resize = function(e) {
 
 	// ------------------------ only mention of device pixel ratio
 	menu_ratio = 1;
+	menu_scale_ratio = 1;
+	//if (window.devicePixelRatio > 1) menu_scale_ratio = window.devicePixelRatio;
+
 	//if (window.devicePixelRatio > 1) menu_ratio = window.devicePixelRatio;
 
-	Math.max(screen_width,screen_height);
 
-	// physical pixels
-	//screen_width = screen_width*window.devicePixelRatio;
-	//screen_height = screen_height*window.devicePixelRatio;
+	//var rr = screen_width / screen_height;
+	//console.log('screen_width / screen_height' + rr);
 
-	//game_menu_group.scale.set(menu_ratio,menu_ratio);
-	options_menu_group.scale.set(menu_ratio,menu_ratio);
+	// the browser (on chrome dev mobile, at least) seems to invent its own width and height, which nonetheless maintain
+	// the same ratio as the real witdh and height
+	// so my in-game tile grid was resizing with no problems because it uses the approach below (w_portrait etc)
+	// so i'm going to mimic this for the GUI stuff
+	// note that I'm ignoring devicePixelRatio, as the browser just seems to resize everything anyway
+	// my job here is just to fill the screen
 
-	//if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
+	// screen_width = some_unknown_num*actual_screen_width
+	// screen_height = some_unknown_num*actual_screen_height
 
 	
 
-	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
+	
 
-	//alert('document.documentElement.clientHeight ' + document.documentElement.clientHeight + ' window.innerHeight ' + 	window.innerHeight + 'window.devicePixelRatio ' + window.devicePixelRatio);
+	console.log('menu_ratio ' + menu_ratio);
+
+	
+
+	//game_menu_group.scale.set(ratio,ratio);
+	//options_menu_group.scale.set(menu_ratio,menu_ratio);
+
+	
 
 
 	var w = 12.5*60;
@@ -384,11 +421,11 @@ var do_resize = function(e) {
 	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
-	
+	console.log('ratio ' + ratio);
 
 	play_group.scale.set(ratio, ratio);
 
-
+	
 	var over_x = 0;//screen_width - (8*96);
 	if (screen_width > screen_height) over_x = screen_width - w*ratio;
 	else over_x = screen_width - w_portrait*ratio;
@@ -401,23 +438,38 @@ var do_resize = function(e) {
 	play_group.position.set(x_shift_screen, 0);
 
 
-	game.width = screen_width;
-  	game.height = screen_height;
-  	//game.stage.bounds.width = screen_width;
-  	//game.stage.bounds.height = screen_height;
+	//game.width = screen_width;		// what does this do??
+  	//game.height = screen_height;
+
+
  
   	if (game.renderType === 1) {
-    		game.renderer.resize(screen_width, screen_height);
-    		Phaser.Canvas.setSmoothingEnabled(game.context, false);
+    		//game.renderer.resize(screen_width, screen_height);		// what does this do??
+
+    		//Phaser.Canvas.setSmoothingEnabled(game.context, false);	// what does this do??
+
   	}
 
-	game.camera.setSize(screen_width, screen_height);
+	//game.camera.setSize(screen_width, screen_height);	// what does this do??
 
 	// after adjusting tile and game containers
-	//screen_width = screen_width*menu_ratio;
-	//screen_height = screen_height*menu_ratio;;
+
+	console.log(screen_width + ' by ' + screen_height);
+
+	// So I will just sort of mimic what the tile grid is doing
+	menu_ratio = ratio;
+
+	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
+	// Basically just a small increase in scale if needed
+	menu_ratio = Math.max(1,menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(1.75,menu_ratio);	// upper bound of 1.75
 
 
+	game_menu_group.scale.set(menu_ratio,menu_ratio);
+	options_menu_group.scale.set(menu_ratio,menu_ratio);
+
+	screen_width = screen_width/menu_ratio;
+	screen_height = screen_height/menu_ratio;
 
 	gBlipFrogMenu.on_screen_resize();
 
