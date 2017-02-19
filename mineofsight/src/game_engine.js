@@ -146,19 +146,42 @@ g_texts = {
 		"tut_sharea"   : "One mine is shared between two clues.",
 
 		"tut_noshare"	   : "NOT SHARING OUR MINES",
-		"tut_nosharea"   : "OThese two clues are sharing 0 mines.",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
 		
 	},
 
+	// simplified
 	"zh" : {
 		"Title"	   : "MINE OF SIGHT",
 		"New Game" : "MENU",
 		"Tutorial" : "教程",
 		"Sound"	   : "声音",
 		"Music"	   : "音乐",
+		"LEVELS"   : "水平",
+		"COMMUNITY LEVELS"   : "社区层面",
+		"LEVEL EDITOR"   : "级别编辑器",
 
-		"ON"	   : " ON",
-		"OFF"	   : " OFF",
+		"ON"	   : " 上",
+		"OFF"	   : " 关闭",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "右键单击放置一个标志",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "右键单击放置一个标志, LEFT TO DIG",
+
+		
+		"hand"	   : "      在4个最近的地砖中的地雷数.",
+		"eye"	   : "      视线中的地雷数，此行和列。被墙壁阻挡。",
+		"eighthand": "      在8个最近的地砖中的地雷数.",
+		"heart"	   : "      像眼睛，但只看到孤独的地雷。孤独的地雷在他们周围的4个地砖中没有其他地雷。",
+		"compass"	   : "      计算地雷的所有方向（北+南+东+西等于0到4）。与眼睛相同的范围。",
+		"crown"	   : "      看到最大的不间断矿井序列。与眼睛相同的范围。",
+		"eyebracket"	   : "      看到了多少不间断的矿山。这些组由间隙分开。与眼睛相同的范围。",
+
 
 		"tut0"	   : "炸弹隐藏在哪里？",
 		"tut0a"	   : "如果白色瓷砖是安全的，然后删除它 \n如果白色瓷砖不安全，请标记它",
@@ -170,14 +193,41 @@ g_texts = {
 		"tut2a"	   : "眼睛是不同类型的线索",
 
 		
-		"tut3"	   : "FOLLOW THE CLUES",
-		"tut3a"	   : "You don't need to guess",
+		"tut3"	   : "跟着线索",
+		"tut3a"	   : "没有必要猜测",
 
-		"tut5"	   : "THIS ONE IS TRICKY",
-		"tut5a"	   : "But you still don't need to guess",
+		"tut5"	   : "这是一个艰难的时刻",
+		"tut5a"	   : "但你不需要猜测",
 
-		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6"	   : "墙壁阻挡视线T",
 		"tut6a"	   : "",
+
+		"tut7"	   : "你必须挖或标记每个瓷砖",
+
+		"tut8"	   : "你可以点击一个线索，如果你忘记了线索的工作原理",
+
+		"tut13"	   : "墙壁阻挡视线",
+		"tut13a"   : "",
+
+		"tut18"	   : "欢迎来到1992年 ;)",
+
+		"tut28"	   : "两个瓦片变成单个大瓦片",
+		"tut28a"   : "新瓷砖看到了什么？",
+
+		"tut53"	   : "一些矿山非常孤独",
+		"tut53a"   : "但心脏关心。心脏看到只有地雷是孤独的。",
+
+		"tut_compass"	   : "多少方向？",
+		"tut_compassa"   : "The compass only tells you how many DIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "国王只得到最好的",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "他们正在分享一个地雷",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "他们不共享一个矿",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
 
 	},
 
