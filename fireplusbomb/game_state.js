@@ -18,7 +18,11 @@ GameStateClass = Class.extend({
 
   	handle_events: function(engine,x,y, event_type){
 
-		
+		if (event_type == Types.Events.WHEEL) {
+				
+			this.handle_wheel(); 
+			
+		}
 
 		if (event_type == Types.Events.MOUSE_CLICK|| event_type == Types.Events.MOUSE_UP || event_type == Types.Events.MOUSE_CLICK_RIGHT) {
 			this.handle_click(engine,x,y,event_type);
@@ -45,6 +49,9 @@ GameStateClass = Class.extend({
 	handle_mouse_down: function(engine,x,y){},
 	handle_mouse_up: function(engine,x,y){},
 	handle_mouse_move: function(engine,x,y){},
+
+	handle_wheel: function(){},
+
   	update: function(engine){},
   	draw: function(engine){},
 	
@@ -69,8 +76,8 @@ PlayStateClass = GameStateClass.extend({
 	engine: null,
 
 	tiles: [],	// holds indexes to this.blocks
-	grid_w: 8,
-	grid_h: 8,
+	grid_w: 9,
+	grid_h: 9,
 	tile_size: 64,
 	blocks: [],	// 1D array of BlockClass objects
 
@@ -283,6 +290,147 @@ PlayStateClass = GameStateClass.extend({
 		
 	},
 
+	mark_column: function (x) {
+		for (var y = 0; y < this.grid_h; y++) {
+			if (this.blocks[this.tiles[x][y]] == -1) continue;
+			this.blocks[this.tiles[x][y]].marked = true;
+			//this.blocks[this.tiles[x][y]].blink_on();
+		}
+	},
+
+	mark_row: function (y) {
+		for (var x = 0; x < this.grid_w; x++) {
+			if (this.blocks[this.tiles[x][y]] == -1) continue;
+			this.blocks[this.tiles[x][y]].marked = true;
+			//this.blocks[this.tiles[x][y]].blink_on();
+		}
+	},
+
+	check_for_lines: function () {
+
+		var lines_ = false;
+		
+		for (var x = 0; x < this.grid_w; x++) {
+			var current = this.get_block_type(x,0);
+			if (current == 0) continue;
+
+			for (var y = 0; y < this.grid_h; y++) {
+				if (this.get_block_type(x,y) == 0) break;
+
+
+				if (y == this.grid_h - 1) {
+					// match!
+					this.mark_column(x);
+					lines_ = true;
+				}
+			}
+		}
+
+		for (var y = 0; y < this.grid_h; y++) {
+			var current = this.get_block_type(0,y);
+			if (current == 0) continue;
+
+			for (var x = 0; x < this.grid_w; x++) {
+				if (this.get_block_type(x,y) == 0) break;
+
+				if (x == this.grid_w - 1) {
+					// match!
+					this.mark_row(y);
+					lines_ = true;
+				}
+			}
+		}
+
+		if (lines_ == true) this.lines_timer = 8*this.grid_w + 1;
+
+		
+
+		return;
+
+		for (var b = 0; b < this.blocks.length; b++) {
+			if (this.blocks[b].marked == true) {
+				this.blocks[b].marked = false;
+				
+				var stack_height = this.blocks[b].get_stack_num();
+
+				if (stack_height == 1) this.change_tile(this.blocks[b].x,this.blocks[b].y,0,0,null,null);
+				else this.blocks[b].set_stack_num(stack_height - 1);
+			}
+		}	
+
+	},
+
+	
+
+	lines_timer: 0,
+
+	do_delete_lines_step: function() {
+
+		if (this.lines_timer % 4 != 0) return;
+
+		var x = this.lines_timer / 4;	// 0 to 20
+		var y = x;
+		//var y = 0;
+
+		if (x < 0 || x >= 2*this.grid_w) return;
+
+		var pop_ = 0;
+
+		
+
+		for (var b = 0; b < this.blocks.length; b++) {
+			if (this.blocks[b].x + this.blocks[b].y == x &&
+			    this.blocks[b].marked == true) {
+				this.blocks[b].marked = false;
+
+				this.change_tile(this.blocks[b].x,this.blocks[b].y,0,0,null,null);
+
+				
+
+				pop_ = 1;
+			}
+		}
+
+		if (pop_ == 1) {
+			if (Math.random() < 0.5) playSoundInstance('pop3.wav',0.3);
+			else playSoundInstance('pop2.wav',0.1);
+
+			this.increase_score(1);
+		}
+
+		return;
+
+		for (var xx = x; xx >= 0; xx--) {
+			
+			var b = this.tiles[xx][y];
+			if (b==-1) continue;
+			if (this.blocks[b].marked == true) {
+				this.blocks[b].marked = false;
+
+				this.change_tile(this.blocks[b].x,this.blocks[b].y,0,0,null,null);
+
+				pop_ = 1;
+
+			}
+		}
+		
+		for (var yy = y; yy >= 0 ; yy--) {
+			continue;
+			var b = this.tiles[x][yy];
+			if (b==-1) continue;
+			if (this.blocks[b].marked == true) {
+				this.blocks[b].marked = false;
+
+				this.change_tile(this.blocks[b].x,this.blocks[b].y,0,0,null,null);
+
+				pop_ = 1;
+			}
+		}
+
+		
+		
+	},
+
 	
 
 	get_block_type: function(x,y) {
@@ -479,8 +627,10 @@ PlayStateClass = GameStateClass.extend({
 		var b = this.tiles[x][y];
 		var block_ = this.blocks[b].get_type();
 
-		if (block_ == 1) this.change_tile(x,y,0);
-		else if (block_ == 2) this.change_tile(x,y,1);
+		if (block_ == 1) {
+			this.change_tile(x,y,0);
+			this.increase_score(1);
+		} else if (block_ == 2) this.change_tile(x,y,1);
 		else if (block_ == 3) this.change_tile(x,y,2);
 		else if (block_ == 4) this.change_tile(x,y,3);
 		else if (block_ == 5) {
@@ -503,7 +653,7 @@ PlayStateClass = GameStateClass.extend({
 
 	start_lit_bomb: function(x,y,horiz,vert) {
 
-		//horiz = vert = 1;
+		horiz = vert = 1;
 		
 		if (this.lit_timer == 0) {
 			var volume_ = 0.06 + 0.03*Math.random();
@@ -529,7 +679,7 @@ PlayStateClass = GameStateClass.extend({
 
 	start_explosion: function(x,y, horiz, vert) {
 
-		this.increase_score(1);
+		
 		
 		this.explosion_timer = this.grid_w + 6;	// 6 frames for explode anim
 		this.explosion_timer = 3*this.explosion_timer + 10;	// +10 just to be sure
@@ -555,6 +705,14 @@ PlayStateClass = GameStateClass.extend({
 	should_check_fit: false,
 
 	update: function() { 
+
+		if (this.lines_timer >= 0) {
+			this.do_delete_lines_step();
+
+			this.should_redraw = true;
+
+			this.lines_timer--;
+		}
 
 
 		if (this.pop_sounds > 0) {
@@ -1098,9 +1256,20 @@ DuringGameStateClass = GameStateClass.extend({
 	grabbing_new_piece: false,
 	grabbing_new_piece_two: false,
 
+	handle_wheel: function () {
+		console.log('mouse wheeeeeeeeel');
+		if (this.wheel_rotate_timer > 0) this.wheel_rotate_timer--;
+		else {
+			this.wheel_rotate_timer = 3;
+			this.play_state.new_piece_obj.rotate_with_effect();
+		}
+	},
+
 	handle_mouse_down: function(engine,x,y) {
 
 		
+		this.handle_mouse_move(engine,x,y);	// onMouseMove isnt working in chrome
+							// is this the only entry into handle_mouse_move?
 	
 		if (this.mouse_down == true) {
 			return;
@@ -1108,7 +1277,6 @@ DuringGameStateClass = GameStateClass.extend({
 
 		this.mouse_down = true;
 
-		this.handle_mouse_move(engine,x,y);
 
 		if (mouse.y > screen_height - 100 &&
 		    mouse.x > screen_width - 100) return;	// undo button
@@ -1136,6 +1304,7 @@ DuringGameStateClass = GameStateClass.extend({
 
 		this.mouse_down = false;
 
+		
 		if (this.grabbing_new_piece == true) {
 			this.play_state.new_piece_obj.player_drop(this.highlighted_x,this.highlighted_y);
 
@@ -1159,7 +1328,8 @@ DuringGameStateClass = GameStateClass.extend({
 		this.grabbing_new_piece_two = false;
 
 
-		
+		this.play_state.check_for_lines();
+
 
 		
 	},
@@ -1170,6 +1340,8 @@ DuringGameStateClass = GameStateClass.extend({
 	only_clicked_new_peice: false,	// only clicked on new peice - rotate
 	
 	handle_mouse_move: function(engine,x,y) {
+
+		console.log('handle_mouse_move x ' + mouse.x + ' y ' + mouse.y);
 
 		if (screen_height > screen_width &&
 		    y < this.play_state.grid_h*this.play_state.tile_size &&
@@ -1189,6 +1361,8 @@ DuringGameStateClass = GameStateClass.extend({
 
 		// if we drag the peice onto the board:
 		if (this.grabbing_new_piece == true || this.grabbing_new_piece_two == true) {
+
+			console.log('dragging');
 
 			if (this.highlighted_x < this.play_state.grid_w &&
 			    this.highlighted_y < this.play_state.grid_h) this.only_clicked_new_peice = false;
@@ -1341,7 +1515,7 @@ GameOverStateClass = GameStateClass.extend({
 
 		}
 
-		if (false && this.play_state.score > 60 &&
+		if (this.play_state.score > 60 &&
 		    location.hostname != "www.facebook.com") this.prompt_button = 1;		// tweet score
 	
 		//this.screen_resized();	// this would make the new piece instantly snap to position
@@ -1372,15 +1546,15 @@ GameOverStateClass = GameStateClass.extend({
 			this.game_over_text2_x = 10*this.play_state.tile_size;//screen_width - 96;
 			this.game_over_text2_y = 128;
 
-			this.newgame_x = screen_width - 64;
-			this.newgame_y = screen_height - 64;
+			this.newgame_x = screen_width - 64 - 64;
+			this.newgame_y = screen_height - 64 - 64;
 
-			this.score_x = screen_width - 64;
-			this.score_y = screen_height - 128;
+			this.score_x = screen_width - 64 - 64;
+			this.score_y = screen_height  - 64;
 
 			if (this.prompt_button == 1) {
 				this.twitter_x = screen_width - 64;
-				this.twitter_y = screen_height - 128;
+				this.twitter_y = 32;
 			} else {
 				this.twitter_y = -999;
 			}
@@ -1392,11 +1566,11 @@ GameOverStateClass = GameStateClass.extend({
 			this.game_over_text2_x = 96;
 			this.game_over_text2_y = 10*this.play_state.tile_size;
 
-			this.newgame_x = screen_width - 64;
-			this.newgame_y = screen_height - 64;
+			this.newgame_x = screen_width - 64 - 64;
+			this.newgame_y = screen_height - 64 - 64;
 
-			this.score_x = screen_width - 64;
-			this.score_y = screen_height - 128;
+			this.score_x = screen_width - 64 - 64;
+			this.score_y = screen_height - 64;
 
 			if (this.prompt_button == 1) {
 				this.twitter_x = 132;
@@ -1417,7 +1591,11 @@ GameOverStateClass = GameStateClass.extend({
 		
 	},
 
-	
+	handle_mouse_down: function(engine,x,y) {	
+		this.handle_mouse_up(engine,x,y);	// some players reported that they cant click on 'play again'
+							// maybe handle_mouse_up isnt being accessed
+	},
+
 	handle_mouse_up: function(engine,x,y) {
 
 		x = mouse.x;
@@ -1465,6 +1643,7 @@ GameOverStateClass = GameStateClass.extend({
 			g_final_score_text.update_pos(this.score_x, this.score_y + 32);
 			g_final_score_text.center_x(this.score_x);
 		}
+
 		g_game_over_text.update_pos(this.game_over_text_x, this.game_over_text_y);
 		g_game_over_text.center_x(this.game_over_text_x);
 
@@ -1544,11 +1723,23 @@ tut_block_patterns = [
 	0,0,0,0,0,
 	0,0,0,0,0,],	// tut_text_8 = null;
 
-	[0,6,0,0,0,
-	6,6,6,0,0,
+	[6,6,6,6,0,
 	0,6,0,0,0,
 	0,0,0,0,0,
-	0,0,0,0,0,],	// tut_text_8 = null;
+	0,0,0,0,0,
+	0,0,0,0,0],	// tut_text_8 = null;
+
+	[1,1,1,6,1,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0],	// tut_text_10	"OR YOU COULD JUST"
+
+	[1,1,5,1,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0],	// tut_text_11	"form a line"
 ];
 
 tut_highlight_squares = [];
@@ -1571,6 +1762,9 @@ TutStateClass = GameStateClass.extend({
 		this.play_state = play_state;
 
 		this.play_state.new_game(0);	// clear the board
+
+		this.play_state.new_piece_obj.hide_next = true;
+		this.play_state.new_piece_obj.calc_position();
 
 		if (tut_text_1 == null) {
 			tut_text_1 = new TextClass(Types.Layer.TILE);
@@ -1639,6 +1833,16 @@ TutStateClass = GameStateClass.extend({
 			tut_text_9.set_font(Types.Fonts.MEDIUM);
 			tut_text_9.set_text("And clear the screen!");
 			tut_text_9.update_pos(-999, -999);
+
+			tut_text_10 = new TextClass(Types.Layer.TILE);
+			tut_text_10.set_font(Types.Fonts.MEDIUM);
+			tut_text_10.set_text("Or you could simply...");
+			tut_text_10.update_pos(-999, -999);
+
+			tut_text_11 = new TextClass(Types.Layer.TILE);
+			tut_text_11.set_font(Types.Fonts.MEDIUM);
+			tut_text_11.set_text("Make a line");
+			tut_text_11.update_pos(-999, -999);
 			
 
 			for (var i = 0; i < 5; i++) {
@@ -1675,33 +1879,39 @@ TutStateClass = GameStateClass.extend({
 	update: function() { 
 		this.play_state.update();
 
-		if (this.stage == 1 && this.play_state.get_block_type(2,4) != 0) {
+		if (this.stage == 1 && this.play_state.get_block_type(2-2,4-2) != 0) {
 			this.stage = 2;
 			this.do_tut_stage(2);
-		} else if (this.stage == 2 && this.play_state.get_block_type(2,4) == 0) {
+		} else if (this.stage == 2 && this.play_state.get_block_type(2-2,4-2) == 0) {
 			this.stage = 3;
 			this.do_tut_stage(3);
-		} else if (this.stage == 3 && this.play_state.get_block_type(3,2) == 0 && this.play_state.get_block_type(3,3) == 0) {
+		} else if (this.stage == 3 && this.play_state.get_block_type(3-2,2-2) == 0 && this.play_state.get_block_type(3-2,3-2) == 0) {
 			this.stage = 4;
 			this.do_tut_stage(4);
-		} else if (this.stage == 4 && this.play_state.get_block_type(4,4) == 0 && this.play_state.get_block_type(4,3) == 0) {
+		} else if (this.stage == 4 && this.play_state.get_block_type(4-2,4-2) == 0 && this.play_state.get_block_type(4-2,3-2) == 0) {
 			this.stage = 5;
 			this.do_tut_stage(5);
-		} else if (this.stage == 5 && this.play_state.get_block_type(4,7) == 1 && this.play_state.get_block_type(5,7) == 1) {
+		} else if (this.stage == 5 && this.play_state.get_block_type(4-2,7-2) == 1 && this.play_state.get_block_type(5-2,7-2) == 1) {
 			this.stage = 6;
 			this.do_tut_stage(6);
-		} else if (this.stage == 6 && this.play_state.get_block_type(6,6) == 1) {
+		} else if (this.stage == 6 && this.play_state.get_block_type(6-2,6-2) == 1) {
 			this.stage = 7;
 			this.do_tut_stage(7);
-		}  else if (this.stage == 7 && this.play_state.get_block_type(2,4) == 1) {
+		}  else if (this.stage == 7 && this.play_state.get_block_type(2-2,4-2) == 1) {
 			this.stage = 8;
 			this.do_tut_stage(8);
-		} else if (this.stage == 8 && this.play_state.get_block_type(2,2) == 5) {
+		} else if (this.stage == 8 && this.play_state.get_block_type(2-2,2-2) == 5) {
 			this.stage = 9;
 			this.do_tut_stage(9);
-		} else if (this.stage == 9 && this.play_state.get_block_type(6,7) == 0) {
+		} else if (this.stage == 9 && this.play_state.get_block_type(6-2,7-2) == 0) {
 			this.stage = 10;
 			this.do_tut_stage(10);
+		} else if (this.stage == 10 && this.play_state.get_block_type(0,0) == 1) {
+			this.stage = 11;
+			this.do_tut_stage(11);
+		} else if (this.stage == 11 && this.play_state.get_block_type(0,0) == 0) {
+			this.stage = 12;
+			this.do_tut_stage(12);
 		}
 	},
 
@@ -1748,7 +1958,11 @@ TutStateClass = GameStateClass.extend({
 
 		} else if (this.stage == 10) {
 			tut_text_9.update_pos(-999, -999);
+			tut_text_10.update_pos(this.text_x, this.text_y,96*7.5,999);
 
+		} else if (this.stage == 11) {
+			tut_text_10.update_pos(-999, -999);
+			tut_text_11.update_pos(this.text_x, this.text_y,96*7.5,999);
 		}
 	},
 
@@ -1813,8 +2027,16 @@ TutStateClass = GameStateClass.extend({
 
 	},
 
-	
-	
+	wheel_rotate_timer: 0,
+
+	handle_wheel: function () {
+		console.log('mouse wheeeeeeeeel');
+		if (this.wheel_rotate_timer > 0) this.wheel_rotate_timer--;
+		else {
+			this.wheel_rotate_timer = 3;
+			this.play_state.new_piece_obj.rotate_with_effect();
+		}
+	},
 	
 
 	handle_mouse_up: function(engine,x,y) {
@@ -1838,7 +2060,7 @@ TutStateClass = GameStateClass.extend({
 		//this.stage++;
 		//this.do_tut_stage(this.stage);
 
-		
+		this.play_state.check_for_lines();
 
 		
 	},
@@ -1865,33 +2087,33 @@ TutStateClass = GameStateClass.extend({
 			
 		} else if (stage_n == 1) {
 			
-			this.play_state.tut_no_grid[2][4] = 0;
-			this.play_state.tut_no_grid[3][4] = 0;
-			this.play_state.tut_no_grid[4][4] = 0;
-			this.play_state.tut_no_grid[5][4] = 0;
-			this.play_state.tut_no_grid[6][4] = 0;
+			this.play_state.tut_no_grid[2 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][4 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(2*t, 4*t, t, t);
-			tut_highlight_squares[1].update_pos(3*t, 4*t, t, t);
-			tut_highlight_squares[2].update_pos(4*t, 4*t, t, t);
-			tut_highlight_squares[3].update_pos(5*t, 4*t, t, t);
-			tut_highlight_squares[4].update_pos(6*t, 4*t, t, t);
+			tut_highlight_squares[0].update_pos(0*t, 2*t, t, t);
+			tut_highlight_squares[1].update_pos(1*t, 2*t, t, t);
+			tut_highlight_squares[2].update_pos(2*t, 2*t, t, t);
+			tut_highlight_squares[3].update_pos(3*t, 2*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 2*t, t, t);
 
 			// text: 
 			tut_text_1.update_pos(this.text_x, this.text_y);
 		} else if (stage_n == 2) {
 
-			this.play_state.tut_no_grid[3][2] = 0;
-			this.play_state.tut_no_grid[4][2] = 0;
-			this.play_state.tut_no_grid[5][2] = 0;
-			this.play_state.tut_no_grid[6][2] = 0;
-			this.play_state.tut_no_grid[6][3] = 0;
+			this.play_state.tut_no_grid[3 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][3 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(3*t, 2*t, t, t);
-			tut_highlight_squares[1].update_pos(4*t, 2*t, t, t);
-			tut_highlight_squares[2].update_pos(5*t, 2*t, t, t);
-			tut_highlight_squares[3].update_pos(6*t, 2*t, t, t);
-			tut_highlight_squares[4].update_pos(6*t, 3*t, t, t);
+			tut_highlight_squares[0].update_pos(1*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(2*t, 0*t, t, t);
+			tut_highlight_squares[2].update_pos(3*t, 0*t, t, t);
+			tut_highlight_squares[3].update_pos(4*t, 0*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 1*t, t, t);
 
 			// text: 
 			tut_text_1.update_pos(-999, -999);
@@ -1900,17 +2122,17 @@ TutStateClass = GameStateClass.extend({
 
 		} else if (stage_n == 3) {
 
-			this.play_state.tut_no_grid[3][2] = 0;
-			this.play_state.tut_no_grid[3][3] = 0;
-			this.play_state.tut_no_grid[4][3] = 0;
-			this.play_state.tut_no_grid[5][3] = 0;
-			this.play_state.tut_no_grid[5][2] = 0;
+			this.play_state.tut_no_grid[3 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][3 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][3 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][3 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][2 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(3*t, 2*t, t, t);
-			tut_highlight_squares[1].update_pos(3*t, 3*t, t, t);
-			tut_highlight_squares[2].update_pos(4*t, 3*t, t, t);
-			tut_highlight_squares[3].update_pos(5*t, 3*t, t, t);
-			tut_highlight_squares[4].update_pos(5*t, 2*t, t, t);
+			tut_highlight_squares[0].update_pos(1*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(1*t, 1*t, t, t);
+			tut_highlight_squares[2].update_pos(2*t, 1*t, t, t);
+			tut_highlight_squares[3].update_pos(3*t, 1*t, t, t);
+			tut_highlight_squares[4].update_pos(3*t, 0*t, t, t);
 
 			// text: 
 
@@ -1918,17 +2140,17 @@ TutStateClass = GameStateClass.extend({
 			tut_text_3.update_pos(this.text_x, this.text_y);
 		} else if (stage_n == 4) {
 
-			this.play_state.tut_no_grid[4][3] = 0;
-			this.play_state.tut_no_grid[4][4] = 0;
-			this.play_state.tut_no_grid[4][5] = 0;
-			this.play_state.tut_no_grid[4][6] = 0;
-			this.play_state.tut_no_grid[4][7] = 0;
+			this.play_state.tut_no_grid[4 - 2][3 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][5 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][6 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][7 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(4*t, 3*t, t, t);
-			tut_highlight_squares[1].update_pos(4*t, 4*t, t, t);
-			tut_highlight_squares[2].update_pos(4*t, 5*t, t, t);
-			tut_highlight_squares[3].update_pos(4*t, 6*t, t, t);
-			tut_highlight_squares[4].update_pos(4*t, 7*t, t, t);
+			tut_highlight_squares[0].update_pos(2*t, 1*t, t, t);
+			tut_highlight_squares[1].update_pos(2*t, 2*t, t, t);
+			tut_highlight_squares[2].update_pos(2*t, 3*t, t, t);
+			tut_highlight_squares[3].update_pos(2*t, 4*t, t, t);
+			tut_highlight_squares[4].update_pos(2*t, 5*t, t, t);
 
 			// text: 
 			tut_text_3.update_pos(-999, -999);
@@ -1937,17 +2159,17 @@ TutStateClass = GameStateClass.extend({
 
 		} else if (stage_n == 5) {
 
-			this.play_state.tut_no_grid[4][7] = 0;
-			this.play_state.tut_no_grid[5][6] = 0;
-			this.play_state.tut_no_grid[5][7] = 0;
-			this.play_state.tut_no_grid[6][6] = 0;
-			this.play_state.tut_no_grid[6][7] = 0;
+			this.play_state.tut_no_grid[4 - 2][7 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][6 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][7 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][6 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][7 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(4*t, 7*t, t, t);
-			tut_highlight_squares[1].update_pos(5*t, 6*t, t, t);
-			tut_highlight_squares[2].update_pos(5*t, 7*t, t, t);
-			tut_highlight_squares[3].update_pos(6*t, 6*t, t, t);
-			tut_highlight_squares[4].update_pos(6*t, 7*t, t, t);
+			tut_highlight_squares[0].update_pos(2*t, 5*t, t, t);
+			tut_highlight_squares[1].update_pos(3*t, 4*t, t, t);
+			tut_highlight_squares[2].update_pos(3*t, 5*t, t, t);
+			tut_highlight_squares[3].update_pos(4*t, 4*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 5*t, t, t);
 
 
 			// text: 
@@ -1956,17 +2178,17 @@ TutStateClass = GameStateClass.extend({
 
 		} else if (stage_n == 6) {
 
-			this.play_state.tut_no_grid[4][4] = 0;
-			this.play_state.tut_no_grid[5][4] = 0;
-			this.play_state.tut_no_grid[5][5] = 0;
-			this.play_state.tut_no_grid[6][5] = 0;
-			this.play_state.tut_no_grid[6][6] = 0;
+			this.play_state.tut_no_grid[4 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][5 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][5 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][6 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(4*t, 4*t, t, t);
-			tut_highlight_squares[1].update_pos(5*t, 4*t, t, t);
-			tut_highlight_squares[2].update_pos(5*t, 5*t, t, t);
-			tut_highlight_squares[3].update_pos(6*t, 5*t, t, t);
-			tut_highlight_squares[4].update_pos(6*t, 6*t, t, t);
+			tut_highlight_squares[0].update_pos(2*t, 2*t, t, t);
+			tut_highlight_squares[1].update_pos(3*t, 2*t, t, t);
+			tut_highlight_squares[2].update_pos(3*t, 3*t, t, t);
+			tut_highlight_squares[3].update_pos(4*t, 3*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 4*t, t, t);
 
 			// text: 
 			tut_text_5.update_pos(-999, -999);
@@ -1976,33 +2198,33 @@ TutStateClass = GameStateClass.extend({
 
 		} else if (stage_n == 7) {
 
-			this.play_state.tut_no_grid[4][4] = 0;
-			this.play_state.tut_no_grid[3][4] = 0;
-			this.play_state.tut_no_grid[2][4] = 0;
-			this.play_state.tut_no_grid[3][3] = 0;
-			this.play_state.tut_no_grid[3][5] = 0;
+			this.play_state.tut_no_grid[4 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[2 - 2][4 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][3 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][5 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(4*t, 4*t, t, t);
-			tut_highlight_squares[1].update_pos(3*t, 4*t, t, t);
-			tut_highlight_squares[2].update_pos(2*t, 4*t, t, t);
-			tut_highlight_squares[3].update_pos(3*t, 3*t, t, t);
-			tut_highlight_squares[4].update_pos(3*t, 5*t, t, t);
+			tut_highlight_squares[0].update_pos(2*t, 2*t, t, t);
+			tut_highlight_squares[1].update_pos(1*t, 2*t, t, t);
+			tut_highlight_squares[2].update_pos(0*t, 2*t, t, t);
+			tut_highlight_squares[3].update_pos(1*t, 1*t, t, t);
+			tut_highlight_squares[4].update_pos(1*t, 3*t, t, t);
 
 			tut_text_6.update_pos(-999, -999);
 			tut_text_7.update_pos(this.text_x, this.text_y);
 		} else if (stage_n == 8) {
 
-			this.play_state.tut_no_grid[2][2] = 0;
-			this.play_state.tut_no_grid[3][2] = 0;
-			this.play_state.tut_no_grid[4][2] = 0;
-			this.play_state.tut_no_grid[5][2] = 0;
-			this.play_state.tut_no_grid[6][2] = 0;
+			this.play_state.tut_no_grid[2 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[3 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[4 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[5 - 2][2 - 2] = 0;
+			this.play_state.tut_no_grid[6 - 2][2 - 2] = 0;
 
-			tut_highlight_squares[0].update_pos(2*t, 2*t, t, t);
-			tut_highlight_squares[1].update_pos(3*t, 2*t, t, t);
-			tut_highlight_squares[2].update_pos(4*t, 2*t, t, t);
-			tut_highlight_squares[3].update_pos(5*t, 2*t, t, t);
-			tut_highlight_squares[4].update_pos(6*t, 2*t, t, t);
+			tut_highlight_squares[0].update_pos(0*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(1*t, 0*t, t, t);
+			tut_highlight_squares[2].update_pos(2*t, 0*t, t, t);
+			tut_highlight_squares[3].update_pos(3*t, 0*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 0*t, t, t);
 
 
 			tut_text_7.update_pos(-999, -999);
@@ -2011,24 +2233,60 @@ TutStateClass = GameStateClass.extend({
 			
 		}  else if (stage_n == 9) {
 
-			this.play_state.tut_no_grid[3][2] = 0;
-			this.play_state.tut_no_grid[4][2] = 0;
-			this.play_state.tut_no_grid[5][2] = 0;
-			this.play_state.tut_no_grid[4][1] = 0;
-			this.play_state.tut_no_grid[4][3] = 0;
+			
 
-			tut_highlight_squares[0].update_pos(3*t, 2*t, t, t);
-			tut_highlight_squares[1].update_pos(3*t, 2*t, t, t);
-			tut_highlight_squares[2].update_pos(5*t, 2*t, t, t);
-			tut_highlight_squares[3].update_pos(4*t, 1*t, t, t);
-			tut_highlight_squares[4].update_pos(4*t, 3*t, t, t);
+			this.play_state.tut_no_grid[1][0] = 0;
+			this.play_state.tut_no_grid[2][0] = 0;
+			this.play_state.tut_no_grid[3][0] = 0;
+			this.play_state.tut_no_grid[4][0] = 0;
+			this.play_state.tut_no_grid[2][1] = 0;
+
+			tut_highlight_squares[0].update_pos(1*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(2*t, 0*t, t, t);
+			tut_highlight_squares[2].update_pos(3*t, 0*t, t, t);
+			tut_highlight_squares[3].update_pos(2*t, 1*t, t, t);
+			tut_highlight_squares[4].update_pos(4*t, 0*t, t, t);
 
 			tut_text_8.update_pos(-999, -999);
 			tut_text_9.update_pos(this.text_x, this.text_y);
 			
 		} else if (stage_n == 10) {
 
+			this.play_state.tut_no_grid[0][0] = 0;
+			this.play_state.tut_no_grid[1][0] = 0;
+			this.play_state.tut_no_grid[2][0] = 0;
+			this.play_state.tut_no_grid[3][0] = 0;
+			this.play_state.tut_no_grid[4][0] = 0;
+
+			tut_highlight_squares[0].update_pos(1*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(2*t, 0*t, t, t);
+			tut_highlight_squares[2].update_pos(3*t, 0*t, t, t);
+			tut_highlight_squares[3].update_pos(4*t, 0*t, t, t);
+			tut_highlight_squares[4].update_pos(0*t, 0*t, t, t);
+
 			tut_text_9.update_pos(-999, -999);
+			tut_text_10.update_pos(this.text_x, this.text_y);
+			
+		} else if (stage_n == 11) {
+
+			this.play_state.tut_no_grid[5][0] = 0;
+			this.play_state.tut_no_grid[6][0] = 0;
+			this.play_state.tut_no_grid[7][0] = 0;
+			this.play_state.tut_no_grid[8][0] = 0;
+			this.play_state.tut_no_grid[8][0] = 0;
+
+			tut_highlight_squares[0].update_pos(5*t, 0*t, t, t);
+			tut_highlight_squares[1].update_pos(6*t, 0*t, t, t);
+			tut_highlight_squares[2].update_pos(7*t, 0*t, t, t);
+			tut_highlight_squares[3].update_pos(8*t, 0*t, t, t);
+			tut_highlight_squares[4].update_pos(8*t, 0*t, t, t);
+
+			tut_text_10.update_pos(-999, -999);
+			tut_text_11.update_pos(this.text_x, this.text_y);
+			
+		} else if (stage_n == 12) {
+
+			tut_text_11.update_pos(-999, -999);
 			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
 		}
 	},
@@ -2040,7 +2298,7 @@ TutStateClass = GameStateClass.extend({
 
 		if (screen_width > screen_height) {
 
-			this.text_x = 8.5*this.play_state.tile_size;
+			this.text_x = 9.5*this.play_state.tile_size;
 			this.text_y = this.play_state.tile_size;
 			this.text_w = 4*this.play_state.tile_size;
 			return;
@@ -2344,7 +2602,32 @@ BootStateClass = GameStateClass.extend({
 		
 	},
 
+	store_cookie:function() {
+
+		var level_ = 3;
+		
+		var str_ = level_.toString();
+
+		var now = new Date();
+  		var time = now.getTime();
+		
+  		var expireTime = time + 20000*36000;	// seconds? 40 days
+		now.setTime(expireTime);
+
+		//localStorage.setItem('mine of sight level ' + str_,'1');
+		document.cookie="fireplusbomb"+str_+"=1;expires=" +now.toGMTString();
+
+		console.log("cookie expires " + now.toGMTString());
+
+		//if(localStorage.getItem('mine of sight level 3'))
+		//localStorage.getItem('mine of sight level 3');
+		
+	},
+
 	start_game: function (engine) {
+
+		//this.store_cookie();	// testing on Kongregate the cookie is under konggame#####
+
 		var play_state = new PlayStateClass(engine);
 
 		engine.push_state(play_state);

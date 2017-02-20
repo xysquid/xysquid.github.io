@@ -14,7 +14,7 @@ block_patterns = [
 
 
 
-	/*
+	
 
 	[1,1,1,0,0,
 	1,1,0,0,0,
@@ -130,7 +130,61 @@ block_patterns = [
 	0,0,0,0,0,
 	0,0,0,0,0,],
 
-	*/
+	[0,1,0,0,0,
+	1,1,1,0,0,
+	0,1,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+
+	[1,1,0,0,0,
+	1,1,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,1,1,1,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,1,0,0,
+	1,0,0,0,0,
+	1,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,0,0,0,
+	1,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,1,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,1,1,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,0,0,0,0,
+	1,1,1,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
+	[1,1,1,0,0,
+	1,1,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,
+	0,0,0,0,0,],
+
 
 	
 ];
@@ -424,6 +478,7 @@ BlockClass = Class.extend({
 	block_sprite: null,
 	block_shadow_sprite: null,
 	
+	marked: false,
 
 	x: -1,
 	y: -1,
@@ -511,7 +566,7 @@ BlockClass = Class.extend({
 
 	set_type: function(gemtype) {
 
-		
+		this.marked = false;
 		this.y_scale = 1;
 		this.block_sprite.set_scale_y(this.y_scale);
 		this.block_shadow_sprite.set_scale_y(this.y_scale);
@@ -900,7 +955,7 @@ NewPieceClass = Class.extend({
 		if (this.turns > 27 && this.turns % 3 == 0) rand = 1;;
 		if (this.turns > 52 && (this.turns % 3 == 0 || this.turns % 3 == 1)) rand = 1;;
 
-		
+		var rand = Math.floor(Math.random()*block_patterns.length);
 
 		for (var i = 0; i < 25; i++) {
 			var x = i % 5;
@@ -984,7 +1039,7 @@ NewPieceClass = Class.extend({
 
 				
 
-				if (Math.random() < 0.66) {
+				if (Math.random() < 0.075) {	// 0.66
 					if (Math.random() < 0.5 && total_bombs <= 0.66*total_hp) {  // 1.33
 
 						if ((x > 0 && this.next_tiles[x-1][y] == 6) || 
@@ -1183,7 +1238,7 @@ NewPieceClass = Class.extend({
 
 		} else {
 
-			this.x_anchor = 9.0*this.game_state.tile_size;
+			this.x_anchor = 10.0*this.game_state.tile_size;
 			this.y_anchor = 3.5*this.game_state.tile_size + 2*this.anchor_offset*2*this.game_state.tile_size ;
 
 			this.next_x_anchor = this.x_anchor + 4*this.game_state.tile_size;
@@ -1197,6 +1252,10 @@ NewPieceClass = Class.extend({
 			
 		} else {
 			this.box_next.resize(-999, -999, -999, -999);	
+
+			this.next_x_anchor = -999;
+			this.next_y_anchor = -999;
+
 
 		}
 

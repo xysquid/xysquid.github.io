@@ -77,7 +77,6 @@
 	<meta itemprop="description" content="Addictive block puzzle game">
 	<meta itemprop="image" content="www.zblip.com/fireplusbomb/boom.png">
 
-	
 
 	<style>
 
@@ -179,6 +178,8 @@
 			BOOKMARK: 12,
 			GAME_OVER: 12,
 
+			WHEEL: 20,
+
 			NO_EVENT: 0,
 		},
 
@@ -279,7 +280,8 @@
 	
 
 	// create an new instance of a pixi stage
-	var stage = new PIXI.Stage(0x322c35);
+	//var pixi_interactive = true; // http://www.goodboydigital.com/pixi-js-gets-interactive/
+	var stage = new PIXI.Stage(0x322c35);	
 
 	var menu_container= new PIXI.Container(0x322c35);	// like a HUD, text, score, etc
 								// scales with game objects
@@ -434,6 +436,8 @@
 	function onProgressCallback() {
 		pBar.value += 20; 
 	}
+
+	var interaction_man;
 	
 	function setup_pixi() {
 		
@@ -443,6 +447,18 @@
  
 		// add the renderer view element to the DOM
 		document.body.appendChild(renderer.view);
+
+		// PIXI interaction manager
+		// https://gist.github.com/drkibitz/6143035
+		// create a manager instance, passing stage and renderer.view
+		//interaction_man = new PIXI.interaction.InteractionManager(stage, {});
+
+		console.log('renderer.plugins.interaction.mouse ' + renderer.plugins.interaction.mouse);
+
+		//stage.setInteractive(true);
+
+
+		// https://www.goose.ninja/tutorials/pixi-js/click-on-things/
 
 	}
 
@@ -559,8 +575,16 @@
 
 		renderer.view.onmousemove = onMouseMove;
 
+		//renderer.view.onpointermove = onMouseMove;	// this doesnt work in IE
+
+		renderer.view.onwheel = onMouseWheel;	// testing!
+
+		// So in IE, when the mouse is down, the mouse x and y stays where it was when it was down
+		// only in this game though
+		// in AcanttouchB its fine
+
 		// 'pointer' events are needed for IE
-		//renderer.view.addEventListener('pointermove',onMouseMove, false);
+		renderer.view.addEventListener('pointermove',onMouseMove, false);	// this is actually needed in IE
 		renderer.view.addEventListener('mousemove',onMouseMove, false);
 		//renderer.view.addEventListener('mousedown', onMouseClick, false);
 		//renderer.view.addEventListener('mouseup', onMouseUp, false);	
@@ -575,9 +599,20 @@
 		//window.addEventListener('keyup',onKeyUp, false);
 	};
 
+
+	// http://www.html5gamedevs.com/topic/14509-mouse-events-stagegetmouseposition/
+	get_pixi_mouse = function() {
+		// reachable in IE but renderer.interaction is null
+		var mousePosition = renderer.interaction.mouse.global;
+		console.log(mousePosition.toString());
+	};
+
 	get_relative_MousePos = function(canvas, evt) {
 		
 		var mouseX, mouseY;
+
+		//console.log('get_relative_MousePos');
+		//get_pixi_mouse();
 
 		if (browser == "f" )
 		{
@@ -587,7 +622,7 @@
 		else if (browser == "m")
 		{
 			   mouseX = evt.clientX + document.body.scrollLeft;
-    				mouseY = evt.clientY + document.body.scrollTop;
+    			   mouseY = evt.clientY + document.body.scrollTop;
 		}
 		else //"s" or "c"
 		{
@@ -646,11 +681,21 @@
 	console.log('navigator.sayswho = ' +navigator.sayswho);
 	console.log('browser = ' +browser);
 
+	onMouseWheel = function () {
+		gBlipFrogMenu.handle_events(mouse['x'],mouse['y'],Types.Events.WHEEL);
+		
+	};
+
 	onMouseClick = function (event) {
 		if(event.which == 3) {	// RMB
 			mouseclickright = true;
 		}
 		mousedown = true;
+
+		//var rel_pos = get_relative_MousePos(renderer.view,event);
+
+    		//mouse['x'] = rel_pos.x;	// this.   doesnt work!
+		//mouse['y'] = rel_pos.y;;
 
 		if (gBlipFrogMenu.menu_up == true) {
 			gBlipFrogMenu.handle_menu_event(mouse['x'],mouse['y'],Types.Events.MOUSE_CLICK);
@@ -670,13 +715,14 @@
 		mousemove = true;
 	};
 
-	onMouseMove = function (event) {
+	onMouseMove = function (event) {	
 	
 		// Grab the clientX and clientY properties of the event object parameter.
 		// Make sure you use the clientX and clientY values, as they are canvas translated.
 		// After that, return the posx value.
 	
-		var rel_pos = get_relative_MousePos(renderer.view,event);
+		//console.log('onMouseMove');	// only in IE !? not in chrome
+		var rel_pos = get_relative_MousePos(renderer.view, event);
 
     		mouse['x'] = rel_pos.x;	// this.   doesnt work!
 		mouse['y'] = rel_pos.y;;
@@ -700,6 +746,11 @@
 	onMouseUp = function(event) {
 		mouseclick = true;
 		mousedown = false;
+
+		var rel_pos = get_relative_MousePos(renderer.view,event);
+
+    		mouse['x'] = rel_pos.x;	// this.   doesnt work!
+		mouse['y'] = rel_pos.y;;
 
 		
 	};

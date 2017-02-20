@@ -129,7 +129,7 @@ function tweetscore(score) {
 
 	var tweetbegin = 'http://twitter.com/home?status=';        
 	
-	var tweettxt = 'I got '+ score +' in this game: www.zblip.com/fireplusbomb';    
+	var tweettxt = 'I got '+ score +' in this game: www.zblip.com/fireplusbomb @ZBlipGames';    
 	//var tweettxt = 'www.zblip.com/fireplusbomb';
 	var finaltweet = tweetbegin +encodeURIComponent(tweettxt);        
 	window.open(finaltweet,'_blank');    
@@ -510,7 +510,7 @@ BlipFrogMenuClass = Class.extend({
 	handle_menu_event: function(x,y,event_type) {
 
 		
-		
+		//if (event_type == Types.Events.WHEEL) 
 		
 		y = mouse.y;//y*ratio;
 		x = mouse.x;//x*ratio;
@@ -718,7 +718,7 @@ GameEngineClass = Class.extend({
 		//console.log("Event received by game engine");
 		this.state_stack[this.state_stack.length - 1].handle_events(this, x, y, event_type);
 
-		
+	
 		
 	},
 
