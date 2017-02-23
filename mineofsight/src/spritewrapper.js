@@ -438,6 +438,11 @@ ButtonClass = Class.extend({
 		this.sprite_obj.setup_sprite(name,layer);
 	},
 
+
+	rotate_ninety : function() {
+		this.sprite_obj.rotate_ninety();
+	},
+
 	update_pos: function(x,y) {
 		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
 		this.button_sprite.update_pos(x,y);

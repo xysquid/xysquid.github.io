@@ -51,6 +51,7 @@ g_block_blink_sprites = {
 	13: "S10.png"
 };
 
+
 TableAreaClass = Class.extend({
 
 	text: null,	// text object
@@ -188,6 +189,71 @@ ExplosionClass = Class.extend({
 	}
 
 });
+
+
+UserInterfaceClass = Class.extend({
+	
+	// buttons (w text), toggles (w text), texts
+
+	// so what about positioning?
+
+	// maybe i'll use this class only for ui stuff that can be easily positioned
+
+	// different types of text:
+	// TOP (tut levels) ignores screen rotation
+	// SIDE (solved! whoops!) on portait it goes to bottom
+
+	// buttons
+	button_x: [],
+	button_y: [],
+
+	button_text_x: [],
+	button_text_y: [],
+
+	button_obj: [],
+
+	button_text_obj: [],
+
+	// toggles
+	toggle_x: [],
+	toggle_y: [],
+
+	toggle_text_x: [],
+	toggle_text_y: [],
+
+	toggle_obj: [],
+
+	toggle_text_obj: [],
+
+	// text
+	text_x: [],
+	text_y: [],
+	text_size: [],
+	text_obj: [],
+	
+
+	init : function () {
+
+	},
+
+	screen_resized : function () {
+
+	},
+
+	add_button : function () {
+
+	},
+
+	clear : function () {
+		for (var i = 0; i < this.text_obj.length; i++) {
+			this.button_text_obj.hide();
+			this.button_obj.hide();
+		}
+	}
+
+});
+
+g_UI = new UserInterfaceClass();
 
 LevelEditorTileSelectClass = Class.extend({
 
@@ -387,13 +453,20 @@ CommunityLevelBrowser = Class.extend({
 	level_play_sprite: [6],
 	level_id: [6],
 
+	level_tick: [6],
+	level_done: [0,0,0,0,0,0],
+
 	levels_added: 0,
 
 	search_button: null,
+	up_button: null,
+	down_button: null,
 
 	rating_text: null,
 	wins_text: null,
 	downloads_text: null,
+
+	h_text: null,
 
 
 	init: function(game_state) {
@@ -402,6 +475,14 @@ CommunityLevelBrowser = Class.extend({
 		
 		this.search_button = new ButtonClass();
 		this.search_button.setup_sprite('new_icon.png',Types.Layer.GAME_MENU);
+
+		this.up_button = new ButtonClass();
+		this.up_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
+
+		this.down_button = new ButtonClass();
+		this.down_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
+
+		
 
 		var toggle_hand = new ToggleClass();
 		toggle_hand.setup_sprite("hand.png",Types.Layer.GAME_MENU);
@@ -490,6 +571,10 @@ CommunityLevelBrowser = Class.extend({
 
 			this.level_play_sprite[i] = new ButtonClass();
 			this.level_play_sprite[i].setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+
+			this.level_tick[i] = new SpriteClass();
+			this.level_tick[i].setup_sprite('tick.png',Types.Layer.GAME_MENU);
+			this.level_tick[i].hide();
 		}
 
 		this.rating_text = new TextClass(Types.Layer.GAME_MENU);
@@ -504,6 +589,9 @@ CommunityLevelBrowser = Class.extend({
 		this.wins_text.set_text('WINS');
 		this.downloads_text.set_text('ATTEMPTS');
 
+		this.h_text = new TextClass(Types.Layer.GAME_MENU);
+		this.h_text.set_font(Types.Fonts.MEDIUM);
+		this.h_text.set_text('COMMUNITY LEVELS');
 
 	},
 
@@ -519,6 +607,8 @@ CommunityLevelBrowser = Class.extend({
 
 	make_vis: function() {
 
+		this.h_text.update_pos(16,16);
+
 		this.rating_text.update_pos(200+ 64,140);
 		//this.wins_text.update_pos(400+ 64,140);
 		//this.downloads_text.update_pos(300+ 64,140);
@@ -531,24 +621,27 @@ CommunityLevelBrowser = Class.extend({
 
 			var y = 150 + i*52;
 
-			this.level_name[i].make_vis();
+			this.level_name[i].hide();
 			this.level_author[i].make_vis();
 			this.level_rating[i].make_vis();
 			//this.level_attempts[i].make_vis();
 			//this.level_wins[i].make_vis();
 			this.level_play_sprite[i].make_vis();
 
-			this.level_name[i].update_pos(6 + 64,y);
+			this.level_name[i].update_pos(-999,-999);//.update_pos(6 + 64,y);
 			this.level_author[i].update_pos(6+ 64,y + 20);
 			this.level_rating[i].update_pos(200+ 64,y);
-			this.level_attempts[i].update_pos(300+ 64,y);
-			this.level_wins[i].update_pos(400+ 64,y);
+			if (this.level_done[i] == 1) this.level_tick[i].update_pos(200+ 128 + 128, y + 15);
+			//this.level_attempts[i].update_pos(300+ 64,y);
+			//this.level_wins[i].update_pos(400+ 64,y);
 			this.level_play_sprite[i].update_pos(500+ 64,y + 16);
 		}
 
 		for (var i = 0; i < this.hint_toggles.length; i++) {
 			this.hint_toggles[i].make_vis();
-			this.hint_toggles[i].update_pos(1*32 + i*32, 96);
+			
+			//this.hint_toggles[i].update_pos(1*32 + i*32, 96);
+			this.hint_toggles[i].update_pos(-999, -999);	// for now
 		}
 
 		/*
@@ -572,20 +665,35 @@ CommunityLevelBrowser = Class.extend({
 		this.search_button.make_vis();
 		this.search_button.update_pos( this.search_x, this.search_y);
 
+		this.up_button.make_vis();
+		this.up_button.update_pos( this.up_x, this.up_y);
+
+		this.down_button.make_vis();
+		this.down_button.update_pos( this.down_x, this.down_y);
+
 		//this.toggle_rating.make_vis();
 		//this.toggle_random.make_vis();
 
+		this.down_button.rotate_ninety();
+		this.down_button.rotate_ninety();
+
 	},
 
-	search_x: 11*32,
-	search_y: 96,
+	search_x: -999,//11*32,
+	search_y: -999,//screen_height - 64,
+
+	up_x: 32,
+	up_y: 150,
+
+	down_x: 32,
+	down_y: 150 + 32*8.5,
 
 	hide: function() {
 
 		this.rating_text.hide();
 		this.wins_text.hide();
 		this.downloads_text.hide();
-
+		this.h_text.hide();
 
 		for (var i = 0; i < this.level_name.length; i++) {
 
@@ -596,6 +704,8 @@ CommunityLevelBrowser = Class.extend({
 			this.level_attempts[i].hide();
 			this.level_wins[i].hide();
 			this.level_play_sprite[i].hide();
+			this.level_tick[i].hide();
+			this.level_done[i] = 0;
 		}
 
 		for (var i = 0; i < this.hint_toggles.length; i++) {
@@ -613,6 +723,8 @@ CommunityLevelBrowser = Class.extend({
 		//this.toggle_random.hide();
 
 		this.search_button.hide();
+		this.up_button.hide();
+		this.down_button.hide();
 	},
 
 	reset: function() {
@@ -620,7 +732,7 @@ CommunityLevelBrowser = Class.extend({
 		this.levels_added = 0;
 	},
 
-	add_level: function (name, author, rating, attempts, wins, id) {
+	add_level: function (name, author, rating, attempts, wins, id, tick) {
 
 		
 
@@ -630,20 +742,29 @@ CommunityLevelBrowser = Class.extend({
 
 		this.level_name[this.levels_added].change_text(name);
 		this.level_author[this.levels_added].change_text('BY ' +author);
+		//rating = rating / g_community_list_data[level].num_ratings;
+		rating = Math.round(rating*10)/10;
 		this.level_rating[this.levels_added].change_text(rating.toString());
 		this.level_attempts[this.levels_added].change_text(attempts.toString());
 		this.level_wins[this.levels_added].change_text(wins.toString());
 		this.level_play_sprite[this.levels_added].make_vis();
 		this.level_id[this.levels_added] = id;
 
+		if (tick == true) this.level_done[this.levels_added] = 1;
+		else this.level_done[this.levels_added] = 0;
+
 		this.levels_added++;
 	},
 
 	selected_level_id: -1,
 	clicked_fetch: false,
+	clicked_scrollup: false,
+	clicked_scrolldown: false,
 
 	click : function (x, y) {
 
+		this.clicked_scrolldown = false;
+		this.clicked_scrollup = false;
 		this.clicked_fetch = false;
 		this.selected_level_id = -1;;
 
@@ -670,6 +791,14 @@ CommunityLevelBrowser = Class.extend({
 		if (x < this.search_x + 32 && x > this.search_x - 32 && 
 		    y < this.search_y + 32 && y > this.search_y - 32) {
 			this.clicked_fetch = true;
+			return;
+		} else if (x < this.up_x + 32 && x > this.up_x - 32 && 
+		    	   y < this.up_y + 32 && y > this.up_y - 32) {
+			this.clicked_scrollup = true;
+			return;
+		} else if (x < this.down_x + 32 && x > this.down_x - 32 && 
+		    	   y < this.down_y + 32 && y > this.down_y - 32) {
+			this.clicked_scrolldown = true;
 			return;
 		}
 

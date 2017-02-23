@@ -63,6 +63,7 @@ if (language.length > 2) language = language[0]+language[1];	// first 2 letters
 if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
 
+
 function g_get_text (tx) {
 	if (g_texts[language] == null) return g_texts['en'][tx];
 	if (g_texts[language][tx] == null) return g_texts['en'][tx];
@@ -150,6 +151,90 @@ g_texts = {
 		
 	},
 
+	// th thai
+	// ko korean
+	// ar arabic	
+
+	// hindi
+	"hi" : {
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "मेन्यू",
+		"Tutorial" : "TUTORIAL",
+		"Sound"	   : "ध्वनि",
+		"Music"	   : "Music",
+		"LEVELS"   : "स्तरों",
+		"COMMUNITY LEVELS"   : "समुदाय का स्तर",
+		"LEVEL EDITOR"   : "स्तर संपादक",
+
+		"ON"	   : " पर",
+		"OFF"	   : " बंद",
+
+		"hold": "झंडा पकड़ क्लिक करें",	
+		"mark": "MARK FIRST",
+		"right": "सही ध्वज क्लिक करें",
+
+
+		"hold_long": "झंडा पकड़ क्लिक करें, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "सही ध्वज क्लिक करें, खोदो क्लिक करें छोड़ दिया",
+
+
+		"hand"	   : "           चार आसपास टाइल्स में खानों की संख्या",
+		"eye"	   : "           दृष्टि, इस पंक्ति और स्तंभ की लाइन में खानों की संख्या। दीवारों से अवरोधित।",
+		"eighthand": "      आठ आसपास के टाइल्स में खानों की संख्या",
+		"heart"	   : "      आँख की तरह है, लेकिन केवल अकेला खानों को देखता है। लोनली खानों उन्हें चारों ओर 4 टाइल्स में कोई अन्य खानों है।",
+		"compass"	   : "           निर्देश (नॉर्थ + ईस्ट + वेस्ट + साउथ = 0 से 4), जो खानों की संख्या में देखा जाता है। आंख के रूप में एक ही श्रेणी।",
+		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
+		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
+
+
+		"tut0"	   : "जहां खानों छिपा रहे हैं?",
+		"tut0a"	   : "टाइल झंडा असुरक्षित है, और सुरक्षित खुदाई टाइल",
+
+		"tut1"	   : "नहीं तिरछे",
+		"tut1a"	   : "बस के ऊपर और नीचे और बाएँ और दाएँ",
+
+		"tut2"	   :   "आंख कितने खानों देख सकते हैं?",
+		"tut2a"	   : "आंख सुराग के एक अलग प्रकार है",
+
+		"tut3"	   : "सुराग का पालन करें",
+		"tut3a"	   : "तुम भाग्य की जरूरत नहीं",
+
+		"tut5"	   : "इस पहेली मुश्किल है",
+		"tut5a"	   : "लेकिन अभी भी आपको भाग्य की जरूरत नहीं",
+
+		"tut6"	   : "दीवारों दृष्टि की लाइन ब्लॉक",
+		"tut6a"	   : "",
+
+		"tut7"	   : "YOU MUST DIG OR FLAG EVERY TILE TO WIN",
+
+		"tut8"	   : "You can click on a hint tile if you forget how it works",
+
+		"tut13"	   : "दीवारों दृष्टि की लाइन ब्लॉक",
+		"tut13a"   : "",
+
+		"tut18"	   : "WELCOME TO 1992 ;)",
+
+		"tut28"	   : "TWO TILES BECOME ONE BIG TILE",
+		"tut28a"   : "HOW MANY MINES CAN THIS ONE BIG TILE SEE?",
+
+		"tut53"	   : "SOME MINES FEEL VERY LONELY",
+		"tut53a"   : "But the heart cares\nThe heart sees ONLY mines who are all alone.",
+
+		"tut_compass"	   : "HOW MANY DIRECTIONS?",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "ONLY THE BEST FOR THE KING",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "SHARING OUR MINES",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "NOT SHARING OUR MINES",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
+		
+	},
+
 	// simplified
 	"zh" : {
 		"Title"	   : "MINE OF SIGHT",
@@ -186,6 +271,87 @@ g_texts = {
 		"tut0"	   : "炸弹隐藏在哪里？",
 		"tut0a"	   : "如果白色瓷砖是安全的，然后删除它 \n如果白色瓷砖不安全，请标记它",
 
+		"tut1"	   : "只有四个方向",
+		"tut1a"	   : "不是八",
+
+		"tut2"	   : "眼睛可以看到炸弹",
+		"tut2a"	   : "眼睛是不同类型的线索",
+
+		
+		"tut3"	   : "跟着线索",
+		"tut3a"	   : "没有必要猜测",
+
+		"tut5"	   : "这是一个艰难的时刻",
+		"tut5a"	   : "但你不需要猜测",
+
+		"tut6"	   : "墙壁阻挡视线T",
+		"tut6a"	   : "",
+
+		"tut7"	   : "你必须挖或标记每个瓷砖",
+
+		"tut8"	   : "你可以点击一个线索，如果你忘记了线索的工作原理",
+
+		"tut13"	   : "墙壁阻挡视线",
+		"tut13a"   : "",
+
+		"tut18"	   : "欢迎来到1992年 ;)",
+
+		"tut28"	   : "两个瓦片变成单个大瓦片",
+		"tut28a"   : "新瓷砖看到了什么？",
+
+		"tut53"	   : "一些矿山非常孤独",
+		"tut53a"   : "但心脏关心。心脏看到只有地雷是孤独的。",
+
+		"tut_compass"	   : "多少方向？",
+		"tut_compassa"   : "The compass only tells you how many DIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "国王只得到最好的",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "他们正在分享一个地雷",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "他们不共享一个矿",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
+
+	},
+
+	// traditional
+	"zhtrad" : {
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "MENU",
+		"Tutorial" : "教程",
+		"Sound"	   : "聲音",
+
+		"LEVELS"   : "水平",
+		"COMMUNITY LEVELS"   : "社區層面",
+		"LEVEL EDITOR"   : "級別編輯器",
+
+		"ON"	   : " 上",
+		"OFF"	   : " 關閉",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "右鍵單擊放置一個標誌",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "右鍵單擊放置一個標誌, LEFT TO DIG",
+
+		
+		"hand"	   : "      在4個最近的地磚中的地雷數.",
+		"eye"	   : "      視線中的地雷數，此行和列。被牆壁阻擋。",
+		"eighthand": "      在8個最近的地磚中的地雷數.",
+		"heart"	   : "      像眼睛，但只看到孤獨的地雷。孤獨的地雷在他們周圍的4個地磚中沒有其他地雷。",
+		"compass"	   : "      計算地雷的所有方向（北+南+東+西等於0到4）。與眼睛相同的範圍。",
+		"crown"	   : "      看到最大的不間斷礦井序列。與眼睛相同的範圍。",
+		"eyebracket"	   : "      看到了多少不間斷的礦山。這些組由間隙分開。與眼睛相同的範圍。",
+
+
+		"tut0"	   : "炸彈隱藏在哪裡？",
+		"tut0a"	   : "如果白色瓷磚是安全的，然後刪除它 \n如果白色瓷磚不安全，請標記它",
+// simp:
 		"tut1"	   : "只有四个方向",
 		"tut1a"	   : "不是八",
 
@@ -1250,9 +1416,15 @@ GameEngineClass = Class.extend({
 
 			// For now, just load and jump in to the levels:			
 
-			//this.push_state(new CommunityOverworldStateClass(this, this.state_stack[1]));
+			// will check if there are zero unsolved levels fetched, fetch more if needed
+			// otherwise just show what is already downloaded
+			// no need to reconnect each time I click 'community levels'
 			
-			this.push_state(new CommunityFetchStateClass(this, this.state_stack[1]));
+			if (g_community_list_data.length > 0) { 
+				this.push_state(new CommunityOverworldStateClass(this, this.state_stack[1]));
+			} else {
+				this.push_state(new CommunityFetchStateClass(this, this.state_stack[1]));
+			}
 
 		} else if (event_type == Types.Events.GAME_OVER) {
 
