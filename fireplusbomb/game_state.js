@@ -754,7 +754,7 @@ PlayStateClass = GameStateClass.extend({
 
 		}
 
-		if (this.should_check_fit == true && this.explosion_timer == 0 && this.lit_timer == 0) {
+		if (this.should_check_fit == true && this.explosion_timer == 0 && this.lit_timer == 0 && this.lines_timer <= 0) {
 			
 			this.should_check_fit = false;
 
