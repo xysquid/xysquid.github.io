@@ -102,18 +102,6 @@
 <!--<script src="phaser-slim.min.js"></script>-->
 <script src="src/core.js"></script>
 <script src="src/asset_manager.js"></script>	
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('set', 'anonymizeIp', true);
-  ga('create', 'UA-89380699-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 		
 
 <style>
@@ -202,6 +190,7 @@ var assets_loaded = false;
 var scriptList = [
 
 		"phaser-slim.min.js",
+		//"phaser.min.js",
 
 		//"playtomic.js",
 
@@ -316,7 +305,7 @@ start_phaser = function() {
 
 				
 
-
+				
 				
 
 				
@@ -415,8 +404,6 @@ var do_resize = function(e) {
 
 	
 
-	console.log('menu_ratio ' + menu_ratio);
-
 	
 
 	//game_menu_group.scale.set(ratio,ratio);
@@ -433,7 +420,6 @@ var do_resize = function(e) {
 	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
-	console.log('ratio ' + ratio);
 
 	play_group.scale.set(ratio, ratio);
 
@@ -466,7 +452,6 @@ var do_resize = function(e) {
 
 	// after adjusting tile and game containers
 
-	console.log(screen_width + ' by ' + screen_height);
 
 	// So I will just sort of mimic what the tile grid is doing
 	menu_ratio = ratio;
