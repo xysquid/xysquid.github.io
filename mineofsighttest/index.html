@@ -32,6 +32,7 @@
 	Music By:
 
 
+	
 */
 
 -->
@@ -45,7 +46,7 @@
 
 <meta charset="UTF-8" />
      
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+<!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">-->
 <title>Mine of Sight</title>
       
 
@@ -56,7 +57,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
 
-
+<meta name="viewport" content="width=device-width">
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
 
@@ -90,6 +91,9 @@
 	<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 
+	
+
+
 </head>
     
 
@@ -105,7 +109,16 @@
 		
 
 <style>
-    	body{
+    	
+
+	@font-face {
+				font-family: 'Montserrat';
+				src: url('fonts/Montserrat.ttf');
+				//local('Montserrat');
+				//url(https://fonts.googleapis.com/css?family=Montserrat);
+	}
+
+	body{
 				overflow:hidden;
 				margin:0;
 			     	font-family: 'Montserrat', sans-serif;
@@ -114,12 +127,6 @@
 		  		font-family: 'Montserrat';
 		  		position:absolute;
 		  		left:-100px;
-	}
-
-	@font-face {
-				font-family: 'Montserrat';
-				local('Montserrat');
-				url(https://fonts.googleapis.com/css?family=Montserrat);
 	}
 
 
@@ -190,6 +197,7 @@ var assets_loaded = false;
 var scriptList = [
 
 		"phaser-slim.min.js",
+		//"phaser.min.js",
 
 		//"playtomic.js",
 
@@ -209,7 +217,7 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
-// 
+// https://cookieconsent.insites.com/download/
 
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
 
@@ -304,7 +312,7 @@ start_phaser = function() {
 
 				
 
-
+				
 				
 
 				
@@ -389,42 +397,26 @@ var do_resize = function(e) {
 	//var rr = screen_width / screen_height;
 	//console.log('screen_width / screen_height' + rr);
 
+	// the browser (on chrome dev mobile, at least) seems to invent its own width and height, which nonetheless maintain
+	// the same ratio as the real witdh and height
+	// so my in-game tile grid was resizing with no problems because it uses the approach below (w_portrait etc)
+	// so i'm going to mimic this for the GUI stuff
+	// note that I'm ignoring devicePixelRatio, as the browser just seems to resize everything anyway
+	// my job here is just to fill the screen
+
 	// screen_width = some_unknown_num*actual_screen_width
 	// screen_height = some_unknown_num*actual_screen_height
 
-	var secret_ratio = 1;
-
-	// lets make two cases:
-	if (screen_width > screen_height) {
-		secret_ratio = screen_width / 800;	// how much bigger than the ideal game size (~12*tilesize)
-	} else {
-		secret_ratio = screen_height / 800;
-	}
-
-	// var ideal_width = 800
-	// var ideal_height = 400
-	// Math.max(screen_width / ideal_width, screen_height / ideal_height);
-
-	console.log('menu_ratio ' + menu_ratio);
-
-	//if (true || window.devicePixelRatio != 1) console.log('window.devicePixelRatio ' + window.devicePixelRatio)
+	
 
 	
 
-	// physical pixels
-	//screen_width = screen_width*window.devicePixelRatio;
-	//screen_height = screen_height*window.devicePixelRatio;
+	
 
 	//game_menu_group.scale.set(ratio,ratio);
 	//options_menu_group.scale.set(menu_ratio,menu_ratio);
 
-	//if (menu_ratio != 1) options_menu_group.scale.x = options_menu_group.scale.y = window.devicePixelRatio;
-
 	
-
-	//alert('document.documentElement.clientWidth ' + document.documentElement.clientWidth + ' window.innerWidth ' + 	window.innerWidth + 'window.devicePixelRatio ' + window.devicePixelRatio);
-
-	//alert('document.documentElement.clientHeight ' + document.documentElement.clientHeight + ' window.innerHeight ' + 	window.innerHeight + 'window.devicePixelRatio ' + window.devicePixelRatio);
 
 
 	var w = 12.5*60;
@@ -435,7 +427,6 @@ var do_resize = function(e) {
 	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(14*60));
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
-	console.log('ratio ' + ratio);
 
 	play_group.scale.set(ratio, ratio);
 
@@ -468,14 +459,25 @@ var do_resize = function(e) {
 
 	// after adjusting tile and game containers
 
-	console.log(screen_width + ' by ' + screen_height);
 
+	// So I will just sort of mimic what the tile grid is doing
 	menu_ratio = ratio;
 
-	menu_ratio = Math.max(1,menu_ratio);	// lower bound of 1.0
-	menu_ratio = Math.min(1.75,menu_ratio);	// upper bound of 1.75
+	console.log('ratio ' + ratio);
 
-	alert('menu_ratio ' + menu_ratio);
+	var tot_ = screen_width + screen_height;
+	var max_len = Math.max(screen_width, screen_height);
+	// the corner menu tab should be ...
+	
+
+	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
+	// Basically just a small increase in scale if needed
+	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(2.75, menu_ratio);	// upper bound of 1.75
+
+	//if (screen_width > screen_height) menu_ratio = 1;
+
+	menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
 
 	game_menu_group.scale.set(menu_ratio,menu_ratio);
 	options_menu_group.scale.set(menu_ratio,menu_ratio);
