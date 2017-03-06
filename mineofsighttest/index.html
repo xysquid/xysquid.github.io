@@ -473,11 +473,11 @@ var do_resize = function(e) {
 	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
 	// Basically just a small increase in scale if needed
 	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
-	menu_ratio = Math.min(1.75, menu_ratio);	// upper bound of 1.75
+	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
 
 	//if (screen_width > screen_height) menu_ratio = 1;
 
-	menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
+	//menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
 
 	// why use <meta name="viewport" content="width=device-width">
 	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
