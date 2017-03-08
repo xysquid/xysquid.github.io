@@ -30,6 +30,7 @@ Types = {
 			GOTO_AUTOGEN: 41,
 			GOTO_EDITOR: 42,
 			GOTO_COMMUNITY_LEVELS: 43,
+			GOTO_CREDITS: 44,
 
 			NO_EVENT: 0,
 
@@ -63,8 +64,10 @@ if (language.length > 2) language = language[0]+language[1];	// first 2 letters
 if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
 
+
 function g_get_text (tx) {
 	if (g_texts[language] == null) return g_texts['en'][tx];
+	if (g_texts[language][tx] == null) return g_texts['en'][tx];
 	return g_texts[language][tx];
 }
 
@@ -76,9 +79,33 @@ g_texts = {
 		"Tutorial" : "TUTORIAL",
 		"Sound"	   : "SOUND",
 		"Music"	   : "Music",
+		"LEVELS"   : "LEVELS",
+		"COMMUNITY LEVELS"   : "COMMUNITY LEVELS",
+		"LEVEL EDITOR"   : "LEVEL EDITOR",
 
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "RIGHT TO FLAG",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "RIGHT CLICK TO FLAG, LEFT TO DIG",
+
+
+		"hand"	   : "      Number of mines in the 4 surrounding tiles.",
+		"eye"	   : "      Number of mines in line of sight, this row and column. Blocked by walls.",
+		"eighthand": "      Number of mines in the 8 surrounding tiles.",
+		"heart"	   : "      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.",
+		"compass"	   : "      Number of DIRECTIONS in which mines are seen. Same range as the eye.",
+		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
+		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
+		"ghost"	   : "      Counts EMPTY tiles. Same range as the eye. Vision is BLOCKED BY MINES.",
+
+
 
 		"tut0"	   : "WHERE ARE THE MINES HIDDEN?",
 		"tut0a"	   : "If a white tile is safe then remove it \nIf a white tile is unsafe then flag it",
@@ -97,18 +124,152 @@ g_texts = {
 
 		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
 		"tut6a"	   : "",
+
+		"tut7"	   : "YOU MUST DIG OR FLAG EVERY TILE TO WIN",
+
+		"tut8"	   : "You can click on a hint tile if you forget how it works",
+
+		"tut13"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut13a"   : "",
+
+		"tut18"	   : "WELCOME TO 1992 ;)",
+
+		"tut28"	   : "TWO TILES BECOME ONE BIG TILE",
+		"tut28a"   : "HOW MANY MINES CAN THIS ONE BIG TILE SEE?",
+
+		"tut53"	   : "SOME MINES FEEL VERY LONELY",
+		"tut53a"   : "But the heart cares\nThe heart sees ONLY mines who are all alone.",
+
+		"tut_compass"	   : "HOW MANY DIRECTIONS?",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "ONLY THE BEST FOR THE KING",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "SHARING OUR MINES",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "NOT SHARING OUR MINES",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
 		
 	},
 
-	zh : {
+	// th thai
+	// ko korean
+	// ar arabic	
+
+	// hindi
+	"hi" : {
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "मेन्यू",
+		"Tutorial" : "TUTORIAL",
+		"Sound"	   : "ध्वनि",
+		"Music"	   : "Music",
+		"LEVELS"   : "स्तरों",
+		"COMMUNITY LEVELS"   : "समुदाय का स्तर",
+		"LEVEL EDITOR"   : "स्तर संपादक",
+
+		"ON"	   : " पर",
+		"OFF"	   : " बंद",
+
+		"hold": "झंडा पकड़ क्लिक करें",	
+		"mark": "MARK FIRST",
+		"right": "सही ध्वज क्लिक करें",
+
+
+		"hold_long": "झंडा पकड़ क्लिक करें, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "सही ध्वज क्लिक करें, खोदो क्लिक करें छोड़ दिया",
+
+
+		"hand"	   : "           चार आसपास टाइल्स में खानों की संख्या",
+		"eye"	   : "           दृष्टि, इस पंक्ति और स्तंभ की लाइन में खानों की संख्या। दीवारों से अवरोधित।",
+		"eighthand": "      आठ आसपास के टाइल्स में खानों की संख्या",
+		"heart"	   : "      आँख की तरह है, लेकिन केवल अकेला खानों को देखता है। लोनली खानों उन्हें चारों ओर 4 टाइल्स में कोई अन्य खानों है।",
+		"compass"	   : "           निर्देश (नॉर्थ + ईस्ट + वेस्ट + साउथ = 0 से 4), जो खानों की संख्या में देखा जाता है। आंख के रूप में एक ही श्रेणी।",
+		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
+		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
+
+
+		"tut0"	   : "जहां खानों छिपा रहे हैं?",
+		"tut0a"	   : "टाइल झंडा असुरक्षित है, और सुरक्षित खुदाई टाइल",
+
+		"tut1"	   : "नहीं तिरछे",
+		"tut1a"	   : "बस के ऊपर और नीचे और बाएँ और दाएँ",
+
+		"tut2"	   :   "आंख कितने खानों देख सकते हैं?",
+		"tut2a"	   : "आंख सुराग के एक अलग प्रकार है",
+
+		"tut3"	   : "सुराग का पालन करें",
+		"tut3a"	   : "तुम भाग्य की जरूरत नहीं",
+
+		"tut5"	   : "इस पहेली मुश्किल है",
+		"tut5a"	   : "लेकिन अभी भी आपको भाग्य की जरूरत नहीं",
+
+		"tut6"	   : "दीवारों दृष्टि की लाइन ब्लॉक",
+		"tut6a"	   : "",
+
+		"tut7"	   : "YOU MUST DIG OR FLAG EVERY TILE TO WIN",
+
+		"tut8"	   : "You can click on a hint tile if you forget how it works",
+
+		"tut13"	   : "दीवारों दृष्टि की लाइन ब्लॉक",
+		"tut13a"   : "",
+
+		"tut18"	   : "WELCOME TO 1992 ;)",
+
+		"tut28"	   : "TWO TILES BECOME ONE BIG TILE",
+		"tut28a"   : "HOW MANY MINES CAN THIS ONE BIG TILE SEE?",
+
+		"tut53"	   : "SOME MINES FEEL VERY LONELY",
+		"tut53a"   : "But the heart cares\nThe heart sees ONLY mines who are all alone.",
+
+		"tut_compass"	   : "HOW MANY DIRECTIONS?",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "ONLY THE BEST FOR THE KING",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "SHARING OUR MINES",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "NOT SHARING OUR MINES",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
+		
+	},
+
+	// simplified
+	"zh" : {
 		"Title"	   : "MINE OF SIGHT",
 		"New Game" : "MENU",
 		"Tutorial" : "教程",
 		"Sound"	   : "声音",
 		"Music"	   : "音乐",
+		"LEVELS"   : "水平",
+		"COMMUNITY LEVELS"   : "社区层面",
+		"LEVEL EDITOR"   : "级别编辑器",
 
-		"ON"	   : " ON",
-		"OFF"	   : " OFF",
+		"ON"	   : " 上",
+		"OFF"	   : " 关闭",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "右键单击放置一个标志",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "右键单击放置一个标志, LEFT TO DIG",
+
+		
+		"hand"	   : "      在4个最近的地砖中的地雷数.",
+		"eye"	   : "      视线中的地雷数，此行和列。被墙壁阻挡。",
+		"eighthand": "      在8个最近的地砖中的地雷数.",
+		"heart"	   : "      像眼睛，但只看到孤独的地雷。孤独的地雷在他们周围的4个地砖中没有其他地雷。",
+		"compass"	   : "      计算地雷的所有方向（北+南+东+西等于0到4）。与眼睛相同的范围。",
+		"crown"	   : "      看到最大的不间断矿井序列。与眼睛相同的范围。",
+		"eyebracket"	   : "      看到了多少不间断的矿山。这些组由间隙分开。与眼睛相同的范围。",
+
 
 		"tut0"	   : "炸弹隐藏在哪里？",
 		"tut0a"	   : "如果白色瓷砖是安全的，然后删除它 \n如果白色瓷砖不安全，请标记它",
@@ -120,26 +281,153 @@ g_texts = {
 		"tut2a"	   : "眼睛是不同类型的线索",
 
 		
-		"tut3"	   : "FOLLOW THE CLUES",
-		"tut3a"	   : "You don't need to guess",
+		"tut3"	   : "跟着线索",
+		"tut3a"	   : "没有必要猜测",
 
-		"tut5"	   : "THIS ONE IS TRICKY",
-		"tut5a"	   : "But you still don't need to guess",
+		"tut5"	   : "这是一个艰难的时刻",
+		"tut5a"	   : "但你不需要猜测",
 
-		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6"	   : "墙壁阻挡视线T",
 		"tut6a"	   : "",
+
+		"tut7"	   : "你必须挖或标记每个瓷砖",
+
+		"tut8"	   : "你可以点击一个线索，如果你忘记了线索的工作原理",
+
+		"tut13"	   : "墙壁阻挡视线",
+		"tut13a"   : "",
+
+		"tut18"	   : "欢迎来到1992年 ;)",
+
+		"tut28"	   : "两个瓦片变成单个大瓦片",
+		"tut28a"   : "新瓷砖看到了什么？",
+
+		"tut53"	   : "一些矿山非常孤独",
+		"tut53a"   : "但心脏关心。心脏看到只有地雷是孤独的。",
+
+		"tut_compass"	   : "多少方向？",
+		"tut_compassa"   : "The compass only tells you how many DIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "国王只得到最好的",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "他们正在分享一个地雷",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "他们不共享一个矿",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
 
 	},
 
-	ja : {
+	// traditional
+	"zhtrad" : {
 		"Title"	   : "MINE OF SIGHT",
 		"New Game" : "MENU",
-		"Tutorial" : "TUTORIAL",
-		"Sound"	   : "SOUND",
-		"Music"	   : "Music",
+		"Tutorial" : "教程",
+		"Sound"	   : "聲音",
 
-		"ON"	   : " ON",
-		"OFF"	   : " OFF",
+		"LEVELS"   : "水平",
+		"COMMUNITY LEVELS"   : "社區層面",
+		"LEVEL EDITOR"   : "級別編輯器",
+
+		"ON"	   : " 上",
+		"OFF"	   : " 關閉",
+
+		"hold": "HOLD TO FLAG",	
+		"mark": "MARK FIRST",
+		"right": "右鍵單擊放置一個標誌",
+
+
+		"hold_long": "HOLD TO FLAG, CLICK TO DIG",
+		"mark_long": "MARK TILES, THEN FLAG OR DIG",
+		"right_long": "右鍵單擊放置一個標誌, LEFT TO DIG",
+
+		
+		"hand"	   : "      在4個最近的地磚中的地雷數.",
+		"eye"	   : "      視線中的地雷數，此行和列。被牆壁阻擋。",
+		"eighthand": "      在8個最近的地磚中的地雷數.",
+		"heart"	   : "      像眼睛，但只看到孤獨的地雷。孤獨的地雷在他們周圍的4個地磚中沒有其他地雷。",
+		"compass"	   : "      計算地雷的所有方向（北+南+東+西等於0到4）。與眼睛相同的範圍。",
+		"crown"	   : "      看到最大的不間斷礦井序列。與眼睛相同的範圍。",
+		"eyebracket"	   : "      看到了多少不間斷的礦山。這些組由間隙分開。與眼睛相同的範圍。",
+
+
+		"tut0"	   : "炸彈隱藏在哪裡？",
+		"tut0a"	   : "如果白色瓷磚是安全的，然後刪除它 \n如果白色瓷磚不安全，請標記它",
+// simp:
+		"tut1"	   : "只有四个方向",
+		"tut1a"	   : "不是八",
+
+		"tut2"	   : "眼睛可以看到炸弹",
+		"tut2a"	   : "眼睛是不同类型的线索",
+
+		
+		"tut3"	   : "跟着线索",
+		"tut3a"	   : "没有必要猜测",
+
+		"tut5"	   : "这是一个艰难的时刻",
+		"tut5a"	   : "但你不需要猜测",
+
+		"tut6"	   : "墙壁阻挡视线T",
+		"tut6a"	   : "",
+
+		"tut7"	   : "你必须挖或标记每个瓷砖",
+
+		"tut8"	   : "你可以点击一个线索，如果你忘记了线索的工作原理",
+
+		"tut13"	   : "墙壁阻挡视线",
+		"tut13a"   : "",
+
+		"tut18"	   : "欢迎来到1992年 ;)",
+
+		"tut28"	   : "两个瓦片变成单个大瓦片",
+		"tut28a"   : "新瓷砖看到了什么？",
+
+		"tut53"	   : "一些矿山非常孤独",
+		"tut53a"   : "但心脏关心。心脏看到只有地雷是孤独的。",
+
+		"tut_compass"	   : "多少方向？",
+		"tut_compassa"   : "The compass only tells you how many DIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "国王只得到最好的",
+		"tut_crowna"   : "The crown tells you the highest\nunbroken sequence of mines that it can see.",
+
+		"tut_share"	   : "他们正在分享一个地雷",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "他们不共享一个矿",
+		"tut_nosharea"   : "These two clues are sharing 0 mines.",
+
+	},
+
+	"ja" : {
+		"Title"	   : "MINE OF SIGHT",
+		"New Game" : "メニュー",
+		"Tutorial" : "TUTORIAL",
+		"Sound"	   : "音",
+		"Music"	   : "Music",
+		"LEVELS"   : "レベル",
+		"LEVEL EDITOR"   : "レベル 設計",
+		"COMMUNITY LEVELS"   : "コミュニティレベル",
+
+		"ON"	   : " に",
+		"OFF"	   : " オフ",
+
+		"hold": "旗を置くために押す",	
+		"mark": "最初にマークする",
+		"right": "右クリックしてフラグを立てる",
+
+		"hold_long": "旗を置くために押す, クリックして掘る",
+		"mark_long": "最初に多くの場所にマークを付け、次に多くの旗を置くか、すべてを掘るかを決める",
+		"right_long": "右クリックしてフラグを設定し、左クリックして掘る",
+
+		"hand"	   : "      4つの最も近い隣人。どれくらいの爆弾？.",
+		"eye"	   : "      視線内の爆弾の数。この行と列。それは壁によってブロックされています。",
+		"eighthand": "      8つの最も近い隣人。どれくらいの爆弾？.",
+		"heart"	   : "      目のように見えますが、孤独な爆弾だけが見えます. 孤独な爆弾は、4つの密接なタイルで友人がいません.",
+		"compass"	   : "      爆弾が存在する方向（北、南、東、西）の数. 目と同じ範囲.",
+		"crown"	   : "      ギャップのない最大の一連の爆弾. 目と同じ範囲.",
+		"eyebracket"	   : "      見た爆弾のグループ数. ギャップで隔てられた. 目と同じ範囲.",
 
 		"tut0"	   : "どこに爆弾が隠れているの？",
 		"tut0a"	   : "白いタイルが安全な場合は、それを取り外します \n白いタイルが危険な場合は、それにフラグを立てます",
@@ -156,8 +444,35 @@ g_texts = {
 		"tut5"	   : "このパズルは難しい",
 		"tut5a"	   : "しかし、あなたは推測する必要はありません",
 
-		"tut6"	   : "WALLS BLOCK THE LINE OF SIGHT",
+		"tut6"	   : "壁が視界を止める",
 		"tut6a"	   : "",
+
+		"tut7"	   : "あなたが勝つためには\nすべてのタイルに印をつけたり掘ったりする必要があります",
+
+		"tut8"	   : "その行動を覚えているヒントをクリックしてください",
+
+		"tut13"	   : "壁が視界を止める",
+		"tut13a"   : "",
+
+		"tut18"	   : "1992年へようこそ ;)",
+
+		"tut28"	   : "2つのタイルが1つの大きなタイルになる",
+		"tut28a"   : "大男は何匹の爆弾を見ることができますか？",
+
+		"tut53"	   : "いくつかの爆弾は孤独を感じる",
+		"tut53a"   : "しかし、「愛の心」は孤独な爆弾を気にする\n「愛の心」は一人で感じる爆弾だけを見る",
+
+		"tut_compass"	   : "多くの方法は？",
+		"tut_compassa"   : "The compass only tells you how many\nDIRECTIONS (0-4) it sees mines in.",
+
+		"tut_crown"	   : "王は最高の報酬を得る",
+		"tut_crowna"   : "王冠は最大量しか報告しない",
+
+		"tut_share"	   : "彼らは爆弾を共有している",
+		"tut_sharea"   : "One mine is shared between two clues.",
+
+		"tut_noshare"	   : "彼らは爆弾を共有しない",
+		"tut_nosharea"   : "OThese two clues are sharing 0 mines.",
 
 	}
 
@@ -180,19 +495,19 @@ MenuItems = [
 	//[0, "Game"],
 	
 	[1, Types.Events.NEW_GAME, g_get_text("New Game"),"home_icon.png",],
-	[1, Types.Events.GOTO_LEVELS, "LEVELS","home_icon.png",],
+	[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	[1, Types.Events.GOTO_EDITOR, "LEVEL EDITOR","home_icon.png",],
-	[1, Types.Events.GOTO_COMMUNITY_LEVELS, "COMMUNITY LEVELS","home_icon.png",],
+	[1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png",],
+	[1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png",],
 	
 
 	[0, "CONTROLS"],
 	//[3,
-	[3, Types.Events.HOLD_TO_FLAG, "HOLD TO FLAG","redflag.png",],
+	[3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",],
 
-	[3, Types.Events.CLICK_TO_DIG, "MARK FIRST","redflag.png",],
+	[3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",],
 	
-	[3, Types.Events.RIGHT_TO_FLAG, "RIGHT TO FLAG","redflag.png",],
+	[3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",],
 	//],  // 3
 
 	//[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
@@ -257,9 +572,18 @@ MenuItems = [
 if(true || location.hostname == "www.zblip.com") {
 	MenuItems.push([1, Types.Events.WEB_LINK, "LEGAL","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
 }
+
+var on_coolmath = false;
+
+var credits_via_web = true;
+
+if (credits_via_web == false) {
+MenuItems.push([1, Types.Events.GOTO_CREDITS, "CREDITS","ic_list_white_24dp_2x.png"]);
+
+} else {
 MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png","http://www.zblip.com/mineofsight/credits"]);
 
-
+}
 
 if(location.hostname != "www.facebook.com"){
 	// gotta check for mobile as well
@@ -397,7 +721,7 @@ function g_set_menu_screen_x(newx) {
 
 
 function g_set_menu_screen_y(newy) {
-	return;
+	
 	options_menu_group.y = newy;
 };
 
@@ -738,30 +1062,30 @@ BlipFrogMenuClass = Class.extend({
 			this.pop_down_click = true;
 			this.mouse_down = 0;
 			return;
-		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 0) {
+		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down < 2) {
 			
 				
 	
-			//this.mouse_down = 1;
+			this.mouse_down++;
 			this.mouse_down_y = y;
 
 			//return;
 
-			//alert(' DOWN    y = ' + y);
+			console.log(' DOWN    y = ' + y);
 
-			this.menu_scroll = 1;
+			//this.menu_scroll = 1;
 
-			if (y < 32) this.menu_y += 4;
-			else if (y > screen_height - 32) this.menu_y -= 4;
-			else this.menu_scroll = 0;
+			//if (y < 32) this.menu_y += 4;
+			//else if (y > screen_height - 32) this.menu_y -= 4;
+			//else this.menu_scroll = 0;
 
-			this.menu_y = Math.min(0, this.menu_y);
+			//this.menu_y = Math.min(0, this.menu_y);
 			//this.menu_y = Math.max(this.menu_y, this.menu_positions.menu_height);
 
 			
 
 				
-			g_set_menu_screen_y(this.menu_y);
+			//g_set_menu_screen_y(this.menu_y);
 
 			//var need = screen_height - 32;
 
@@ -769,49 +1093,39 @@ BlipFrogMenuClass = Class.extend({
 
 			return;
 
-		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down == 1) {
+		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down >= 2 && 
+				this.mouse_down_y != y) {
 
-			if (Math.abs(y - this.mouse_down_y) > 6) {}
 			
-			if (false && Math.abs(y - this.mouse_down_y) > 3) { //&& 
-			   // Math.abs(y - this.mouse_down_y) > 3 && 
-			   // Math.abs(y - this.mouse_down_y) < 32) {
+			
+			
 				
-				//alert(' SCROLL    y = ' + y);
+			console.log(' SCROLL    y == ' + y );
 				
-				//this.menu_y += y - this.mouse_down_y;
+			this.menu_y += y - this.mouse_down_y;
+			this.mouse_down_y = y;
+			this.menu_scroll = 1;
+			g_set_menu_screen_y(this.menu_y);
 
-				if (y > this.mouse_down_y + 4) {
-					this.menu_y -= 4;
-					this.menu_scroll = 1;
-					this.menu_y = Math.min(0, this.menu_y);
-					g_set_menu_screen_y(this.menu_y);
-					//this.mouse_down_y = y;
-				} else if (y < this.mouse_down_y - 4) {
-					this.menu_y += 4;
-					this.menu_scroll = 1;
-					this.menu_y = Math.min(0, this.menu_y);
-					g_set_menu_screen_y(this.menu_y);
-				}
-				//this.mouse_down_y = y;
+			
 				
 
 				
 				//this.menu_y = Math.max(this.menu_y, this.menu_positions.menu_height);
 
 				
-				//g_set_menu_screen_y(this.menu_y);
 
-			}
+			
 			
 
 		} 
 		
 		if (event_type != Types.Events.MOUSE_UP) return;
-		//alert('MOUSEUP')
+		//alert('MOUSEUP');
 		
 
 		this.mouse_down = 0;
+		
 
 		if (this.menu_scroll == 1) {
 			this.menu_scroll = 0;
@@ -820,7 +1134,7 @@ BlipFrogMenuClass = Class.extend({
 
 		this.menu_scroll = 0;
 
-		
+		console.log('this.menu_y ' + this.menu_y);
 
 		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y);
 
@@ -849,6 +1163,12 @@ BlipFrogMenuClass = Class.extend({
 		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_LEVELS) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GOTO_LEVELS);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_CREDITS) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_CREDITS);
 
 			this.pop_down();
 			
@@ -1079,6 +1399,14 @@ GameEngineClass = Class.extend({
 			}
 			this.push_state(new OverworldStateClass(this, this.state_stack[1]));
 
+		} else if (event_type == Types.Events.GOTO_CREDITS) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new CreditsStateClass(this, this.state_stack[1]));
+
 		} else if (event_type == Types.Events.GOTO_AUTOGEN) {
 
 			while(this.state_stack.length > 2) {
@@ -1104,9 +1432,15 @@ GameEngineClass = Class.extend({
 
 			// For now, just load and jump in to the levels:			
 
-			//this.push_state(new CommunityOverworldStateClass(this, this.state_stack[1]));
+			// will check if there are zero unsolved levels fetched, fetch more if needed
+			// otherwise just show what is already downloaded
+			// no need to reconnect each time I click 'community levels'
 			
-			this.push_state(new CommunityFetchStateClass(this, this.state_stack[1]));
+			if (g_community_list_data.length > 0) { 
+				this.push_state(new CommunityOverworldStateClass(this, this.state_stack[1]));
+			} else {
+				this.push_state(new CommunityFetchStateClass(this, this.state_stack[1]));
+			}
 
 		} else if (event_type == Types.Events.GAME_OVER) {
 
