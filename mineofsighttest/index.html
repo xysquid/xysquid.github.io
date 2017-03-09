@@ -57,7 +57,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
 
-<meta name="viewport" content="width=100%, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">-->
+
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
 
@@ -91,7 +92,7 @@
 	<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 
-	
+	<style type="text/css">	body { padding: 0; margin: 0; }</style>
 
 
 </head>
@@ -281,14 +282,24 @@ start_phaser = function() {
 
 	}
 
-	game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, "game", {
+	// window.devicePixelRatio
+
+	game = new Phaser.Game(document.documentElement.clientWidth, 
+				document.documentElement.clientHeight, Phaser.CANVAS, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
     	});
 
+	
 
-				
+	Phaser.Canvas.setSmoothingEnabled(game, false);
+
+
+				//game.renderer.renderSession.roundPixels = true;
+				//Phaser.Canvas.setImageRenderingCrisp(game.canvas);
+				//Phaser.Canvas.setSmoothingEnabled(game.canvas, false);
+				//PIXI.scaleModes.DEFAULT = PIXI.scaleModes.BEST;
 
 	
 				// remove_splash();
@@ -479,9 +490,20 @@ var do_resize = function(e) {
 	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
 	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
 
+	if (screen_width > screen_height) {
+		// screen_height shrink to --> 13.5*60
+		menu_ratio = screen_height/(9.5*60);
+		
+	} else {
+		// screen_width shrink to --> 10*60
+		menu_ratio = screen_width/(7*60);
+	}
+
+	//menu_ratio = 1/menu_ratio;
+
 	//if (screen_width > screen_height) menu_ratio = 1;
 
-	menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
+	//menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
 
 	// why use <meta name="viewport" content="width=device-width">
 	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
