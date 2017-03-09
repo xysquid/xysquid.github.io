@@ -285,7 +285,7 @@ start_phaser = function() {
 	// window.devicePixelRatio
 
 	game = new Phaser.Game(document.documentElement.clientWidth, 
-				document.documentElement.clientHeight, Phaser.CANVAS, "game", {
+				document.documentElement.clientHeight, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
