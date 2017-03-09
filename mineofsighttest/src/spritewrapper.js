@@ -220,8 +220,8 @@ TextClass = Class.extend({
 			this.font = "22";
 			this.font_size = 22;
 		} else if (font == Types.Fonts.MEDIUM) {
-			this.font = "32";
-			this.font_size = 32;
+			this.font = "30";
+			this.font_size = 30;
 			//this.set_scale(1.5);
 		} else if (font == Types.Fonts.MED_SMALL) {
 			this.font = "18";
@@ -241,6 +241,8 @@ TextClass = Class.extend({
 			this.font = "32";
 			this.font_size = 32;
 		}
+
+		//this.font_size = this.font_size*window.devicePixelRatio;	
 	},
 
 	use_pixitext: 1,
@@ -294,15 +296,20 @@ TextClass = Class.extend({
 			};
 			
 			this.pixitext = game.add.text(-999,-999, str);//, st_);
-			this.pixitext.font = 'Arial';
+			//this.pixitext.font = 'Arial';
 			this.pixitext.font = 'Montserrat';
 			this.pixitext.fill = '#ffffff';
 			this.pixitext.fontSize = this.font_size;
+
+			//this.pixitext.smoothed = false;
+
+			
 
 			// set padding may help with the garbled text problem
 			this.pixitext.padding.set(2, 2);	// http://www.html5gamedevs.com/topic/11469-text-cut-out-with-webfont/
 
 			//this.pixitext = new PIXI.Text(str, this.style);
+			this.pixitext.resolution = window.devicePixelRatio;
 
 
 			this.pixitext.x = -999;		
@@ -316,6 +323,10 @@ TextClass = Class.extend({
 			else if(this.layer == Types.Layer.HUD) menu_group.add(this.pixitext);
 			else if(this.layer == Types.Layer.TILE) tile_group.add(this.pixitext);
 			else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.pixitext);
+
+			//this.pixitext.smoothed = true;
+			//this.pixitext.scale.x = 1/window.devicePixelRatio;
+			//this.pixitext.scale.y = 1/window.devicePixelRatio;
 
 			return;
 
@@ -351,6 +362,8 @@ TextClass = Class.extend({
 			//this.pixitext.anchor.x = this.pixitext.width;// (x, this.pixitext.y);
 
 			//this.pixitext.x = x - this.pixitext.width*0.5;
+
+			
 		
 
 	},
@@ -391,7 +404,7 @@ TextClass = Class.extend({
 
 		//this.pixitext.style = this.style;
 
-			
+		
 
 		
 	},
@@ -436,6 +449,11 @@ ButtonClass = Class.extend({
 		//this.button_shadow_sprite.setup_sprite("button_shadow.png",layer);
 		this.button_sprite.setup_sprite("button.png",layer);
 		this.sprite_obj.setup_sprite(name,layer);
+	},
+
+
+	rotate_ninety : function() {
+		this.sprite_obj.rotate_ninety();
 	},
 
 	update_pos: function(x,y) {
@@ -505,10 +523,22 @@ StarRatingClass = Class.extend({
 		this.star_sprites[3].make_vis();
 		this.star_sprites[4].make_vis();
 
+		this.star_sprites[0].set_alpha(0.5);
+		this.star_sprites[1].set_alpha(0.5);
+		this.star_sprites[2].set_alpha(0.5);
+		this.star_sprites[3].set_alpha(0.5);
+		this.star_sprites[4].set_alpha(0.5);
+
 		this.voted = 0;
 	},
 
 	set_rating: function(rating) {
+
+		this.star_sprites[0].set_alpha(1);
+		this.star_sprites[1].set_alpha(1);
+		this.star_sprites[2].set_alpha(1);
+		this.star_sprites[3].set_alpha(1);
+		this.star_sprites[4].set_alpha(1);
 
 		// input 1-5
 		if (rating >= 5) this.rating = 5;
@@ -641,6 +671,227 @@ ToggleClass = Class.extend({
 
 });
 
+var mini_wall_sprite = null;
+var mini_cover_sprite = null;
+var mini_heart_sprite = null;
+var mini_eye_sprite = null;
+var mini_joiner_sprite = null;
+
+BitmapClass = Class.extend({
+
+	// maybe:
+	// http://examples.phaser.io/_site/view_full.html?d=display&f=render%20texture%20trail.js&t=render%20texture%20trail&phaser_version=v2.0.7&
+
+	bitmapdata: null,
+	
+	w: 0,
+	h: 0,
+
+	x: 0,
+	y: 0,
+
+	scale: 1,
+
+	image: null,
+
+	rendertexture: null,
+	rendertexturesprite: null,
+
+	init: function(layer, w, h) {
+
+		if (mini_wall_sprite == null) {
+			mini_wall_sprite = game.add.sprite(-999,-999,'atlas_blocks','wall_minimap.png');
+			mini_cover_sprite = game.add.sprite(-999,-999,'atlas_blocks','cover_minimap.png');
+			mini_heart_sprite = game.add.sprite(-999,-999,'atlas_blocks','heart_minimap.png');
+			mini_eye_sprite = game.add.sprite(-999,-999,'atlas_blocks','eye_minimap.png');
+			mini_joiner_sprite = game.add.sprite(-999,-999,'atlas_blocks','joiner_minimap.png');
+		}
+
+		//this.bitmapdata = game.add.bitmapData(w, h);
+		this.bitmapdata = game.add.bitmapData(100, 100);
+
+		//http://examples.phaser.io/_site/view_full.html?d=display&f=render%20texture%20trail.js&t=render%20texture%20trail&phaser_version=v2.0.7&
+		this.rendertexture = game.add.renderTexture(100, 100);
+		this.rendertexturesprite = game.add.sprite(0,0,this.rendertexture);
+
+		
+		//this.bitmapdata.rect(3, 7, 22, 22, '#00dd00');
+		this.bitmapdata.update();
+		
+		// http://blogs.bytecode.com.au/glen/2015/12/23/hacking-bitmap-sprites-in-phaser.html
+
+		//this.image = this.bitmapdata.addToWorld(0, 0, 0, 0, 1, 1);
+
+		this.image = game.add.sprite(0, 0, this.bitmapdata);
+
+		//this.w = w;
+		//this.h = h;
+
+
+		if (layer == Types.Layer.GAME) game_group.add(this.bitmapdata);		// game_container
+		else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.bitmapdata);   // options_menu_container
+		else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.image);  // game_menu_container
+		else if(layer == Types.Layer.HUD) menu_group.add(this.bitmapdata);	// menu_container
+		else if(layer == Types.Layer.TILE) tile_group.add(this.bitmapdata);	// tile_container
+		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.bitmapdata);    // background_container
+
+		
+
+	},
+
+	last_tile_addx: 0,
+	last_tile_addy: 0,
+	last_tile_col: "",
+
+	secret: 0,
+
+	set_secret: function (newsec) {
+		this.secret = newsec;
+		
+	},
+
+	// currently assuming this is only used for minimaps in the level selection
+	add_tile : function(x,y, code) {
+
+		
+
+
+		this.last_tile_addx = x;
+		this.last_tile_addy = y;
+
+		console.log('this.last_tile_addx ' + this.last_tile_addx);
+
+		//console.log('spritesheet add_tile ' + code + ' x ' + x + ' y ' + y);
+		
+		//this.bitmapdata.rect(3, 7, 22, 22, '#ee0000'); 
+
+		var colour = '#000000';
+		
+		if (code == 0) {
+			colour = '#00FF00'; //empty
+		} else if (code == 1) {
+			colour = '#2E70ee'; // wall
+			this.bitmapdata.draw(mini_wall_sprite,x*5, y*5);
+		} else if (code == 6) {
+			colour = '#D3D3D3'; // whitetile cover
+			this.bitmapdata.draw(mini_cover_sprite,x*5, y*5);
+		} else if (code == 10) {
+			colour = '#FF7777'; // red
+			this.bitmapdata.draw(mini_heart_sprite,x*5, y*5);
+		} else if (code == 4) {
+			colour = '#FF7777'; // red
+			this.bitmapdata.draw(mini_eye_sprite,x*5, y*5);
+		} else if (code == 7 || code == 8) {
+			colour = '#FF7777'; // red
+			this.bitmapdata.draw(mini_joiner_sprite,x*5, y*5);
+		} else return;
+
+		this.last_tile_col = colour;
+
+		//this.bitmapdata.rect(x*5, y*5, 5, 5, colour);	
+	
+		
+			
+		//this.bitmapdata.update(100, 100);
+
+
+		//this.rendertexture.rect(x*10, y*10, 10, 10, colour);
+
+		console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
+
+	},
+
+	clear : function () {
+		this.bitmapdata.clear();
+	},
+
+	add_a_rect : function () {
+		
+		console.log('blue rect added and bitmapdata updated');
+		this.bitmapdata.rect(0, 0, 20, 10, '#0000FF');
+		this.bitmapdata.update();
+	},
+
+	fill_map : function(data_, w, h) {
+		for (var x = 0; x < w; x++) {
+			for (var y = 0; y < h; y++) {
+
+				
+
+				var code = 0;
+				var n = 1 + 10*x + y;
+
+
+				if (data_[n] >= 100 ) code = 6;
+				else if (data_[n] == 1 ) code = 1;
+
+				this.add_tile(x,y,code);
+
+			} } // for x for y
+	},
+
+	update_pos : function (x, y) {
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
+
+		
+
+		this.image.x = x;
+		this.image.y = y;
+
+		//this.rendertexturesprite.x = x;
+		//this.rendertexturesprite.y = y;
+
+//
+		//this.bitmapdata.x = x;
+		//this.bitmapdata.y = y;
+
+		//this.image = game.add.sprite(0, 0, this.bitmapdata);
+
+		
+		console.log('butmap update pos ' + x + ' ' + y);
+
+		
+		
+		//if (tilecode != null)  {
+		
+			// changes seem to get ignored after the first frame of this objects life
+			//this.add_tile(tilex, tiley, tilecode); // this does not work 
+			//this.add_tile(5,5, 1); 		       // this does not work works
+		//}
+
+		this.bitmapdata.update(100, 100);
+		this.bitmapdata.render();
+
+	},
+
+	resize : function (newsize) {
+		
+		this.bitmapdata.resize(newsize,newsize);	// width, height
+	},
+
+	
+
+	fill : function(colour_) {
+		//console.log('FILL');
+		this.bitmapdata.ctx.rect(0, 0, this.w, this.h);	
+		this.bitmapdata.ctx.fillStyle = colour_;//'#b2ddc8';
+        	this.bitmapdata.ctx.fill();
+	},
+
+	// rect(x, y, width, height, fillStyle) → {Phaser.BitmapData}
+	// Draws a filled Rectangle to the BitmapData at the given x, y coordinates and width / height in size.
+
+	// circle(x, y, radius, fillStyle) 
+
+	// https://phaser.io/docs/2.3.0/Phaser.BitmapData.html#draw
+	draw_sprite : function(sprite, x, y) {
+		this.bitmapdata.draw(sprite, x, y );
+	}
+
+});
+
 
 SpriteClass = Class.extend({
 
@@ -654,6 +905,9 @@ SpriteClass = Class.extend({
 
 	setup_sprite: function(name,layer,x,y) {
 		// 'pixi layer' is now 'phaser group'
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
 
 		this.name = name;
 		this.layer = layer;
@@ -674,6 +928,7 @@ SpriteClass = Class.extend({
 		this.phasersprite = game.add.image(x,y,'atlas_blocks',name);
 		this.phasersprite.anchor.setTo(0.5,0.5);
 		
+		//this.phasersprite.smoothed = false;
 
 		if (layer == Types.Layer.GAME) game_group.add(this.phasersprite);		// game_container
 		else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.phasersprite);   // options_menu_container
@@ -681,12 +936,24 @@ SpriteClass = Class.extend({
 		else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
 		else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
 		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+
+		// all our sprites are 2x - do nothing if DPR == 2
+		//this.phasersprite.scale.setTo(window.devicePixelRatio/2, window.devicePixelRatio/2);
+
+		return;
+		
+		if (layer == Types.Layer.GAME_MENU && 
+		    menu_scale_ratio > 1) this.phasersprite.scale.setTo(menu_scale_ratio, menu_scale_ratio);
 	},
 
 	x: -999,
 	y: -999,
 
 	make_vis: function() {
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
+
 		 //this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
 		 //this.phasersprite.destroy();
 		//this.setup_sprite(this.name, this.layer, this.x, this.y);
@@ -699,6 +966,9 @@ SpriteClass = Class.extend({
 	},
 
 	hide: function() { 
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
 		
 		this.phasersprite.visible = false;
 
@@ -710,10 +980,18 @@ SpriteClass = Class.extend({
 	},
 
 	scale: function(xscale, yscale) {
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
+
 		this.phasersprite.scale.setTo(xscale, yscale);
 	},
 
 	update_pos: function(x,y) {
+
+		tile_group.cacheAsBitmap = false;
+		game_group.cacheAsBitmap = false;
+
 		this.x = x;
 		this.y = y;
 		this.phasersprite.body = null;
@@ -725,6 +1003,13 @@ SpriteClass = Class.extend({
 		//this.phasersprite.x = x;
 		//this.phasersprite.y = y;
 		
+	},
+
+	rotate_ninety: function () {
+
+		
+		
+		this.phasersprite.angle += 90;
 	},
 
 	set_z_to_top: function() {

@@ -115,6 +115,7 @@ theGame.prototype = {
 		game_group = game.add.group();
 		menu_group = game.add.group();
 		
+		//tile_group.cacheAsBitmap = true;
 		
 
 		play_screen_group =  game.add.group();
