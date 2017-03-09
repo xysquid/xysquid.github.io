@@ -32,6 +32,7 @@
 	Music By:
 
 
+	
 */
 
 -->
@@ -45,7 +46,7 @@
 
 <meta charset="UTF-8" />
      
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+<!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">-->
 <title>Mine of Sight</title>
       
 
@@ -56,6 +57,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
 
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1">-->
 
 <!--<meta name="viewport" content="width=device-width"> weird scaling -->
 <!--<meta name="viewport" content="width=device-height">-->
@@ -90,6 +92,9 @@
 	<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
 
+	<style type="text/css">	body { padding: 0; margin: 0; }</style>
+
+
 </head>
     
 
@@ -105,7 +110,16 @@
 		
 
 <style>
-    	body{
+    	
+
+	@font-face {
+				font-family: 'Montserrat';
+				src: url('fonts/Montserrat.ttf');
+				//local('Montserrat');
+				//url(https://fonts.googleapis.com/css?family=Montserrat);
+	}
+
+	body{
 				overflow:hidden;
 				margin:0;
 			     	font-family: 'Montserrat', sans-serif;
@@ -114,12 +128,6 @@
 		  		font-family: 'Montserrat';
 		  		position:absolute;
 		  		left:-100px;
-	}
-
-	@font-face {
-				font-family: 'Montserrat';
-				local('Montserrat');
-				url(https://fonts.googleapis.com/css?family=Montserrat);
 	}
 
 
@@ -210,7 +218,7 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
-// 
+// https://cookieconsent.insites.com/download/
 
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
 
@@ -274,14 +282,24 @@ start_phaser = function() {
 
 	}
 
-	game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, "game", {
+	// window.devicePixelRatio
+
+	game = new Phaser.Game(document.documentElement.clientWidth, 
+				document.documentElement.clientHeight, Phaser.AUTO, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
     	});
 
+	
 
-				
+	Phaser.Canvas.setSmoothingEnabled(game, false);
+
+
+				//game.renderer.renderSession.roundPixels = true;
+				//Phaser.Canvas.setImageRenderingCrisp(game.canvas);
+				//Phaser.Canvas.setSmoothingEnabled(game.canvas, false);
+				//PIXI.scaleModes.DEFAULT = PIXI.scaleModes.BEST;
 
 	
 				// remove_splash();
@@ -400,7 +418,9 @@ var do_resize = function(e) {
 	// screen_width = some_unknown_num*actual_screen_width
 	// screen_height = some_unknown_num*actual_screen_height
 
-	
+	// maybe setting meta viewport width = 100% fixed this nonsense?
+
+	// width = device-width will make the viewport stretch on orientation change
 
 	
 
@@ -456,11 +476,38 @@ var do_resize = function(e) {
 	// So I will just sort of mimic what the tile grid is doing
 	menu_ratio = ratio;
 
+	console.log('ratio ' + ratio);
+
+	var tot_ = screen_width + screen_height;
+	var max_len = Math.max(screen_width, screen_height);
+	
+	// the corner menu tab should be ...
+	
+	
+
 	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
 	// Basically just a small increase in scale if needed
-	menu_ratio = Math.max(1,menu_ratio);	// lower bound of 1.0
-	menu_ratio = Math.min(2.25,menu_ratio);	// upper bound of 1.75
+	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
 
+	if (screen_width > screen_height) {
+		// screen_height shrink to --> 13.5*60
+		menu_ratio = screen_height/(9.5*60);
+		
+	} else {
+		// screen_width shrink to --> 10*60
+		menu_ratio = screen_width/(7*60);
+	}
+
+	//menu_ratio = 1/menu_ratio;
+
+	//if (screen_width > screen_height) menu_ratio = 1;
+
+	//menu_ratio = 1;		// combined with <meta name="viewport" content="width=device-width"> this seems to work ok
+
+	// why use <meta name="viewport" content="width=device-width">
+	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
+	// using width=100% seems to work ok
 
 	game_menu_group.scale.set(menu_ratio,menu_ratio);
 	options_menu_group.scale.set(menu_ratio,menu_ratio);
