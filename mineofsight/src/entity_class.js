@@ -1,4 +1,31 @@
-﻿
+﻿g_tetro_shapes = [
+	// coming sooooon
+	[[1,1,0,0],
+	[1,1,0,0],
+	[0,0,0,0],
+	[0,0,0,0],],
+
+	[[1,0,0,0],
+	[1,1,1,0],
+	[0,0,0,0],
+	[0,0,0,0],],
+
+	[[0,0,1,0],
+	[1,1,1,0],
+	[0,0,0,0],
+	[0,0,0,0],],
+
+	[[1,0,0,0],
+	[1,0,0,0],
+	[1,0,0,0],
+	[1,0,0,0],],
+
+	[[1,0,0,0],
+	[1,1,0,0],
+	[1,0,0,0],
+	[0,0,0,0],],	
+
+];
 
 g_block_sprites = {
 	1: "block0.png",
@@ -453,6 +480,8 @@ CommunityLevelBrowser = Class.extend({
 	level_play_sprite: [6],
 	level_id: [6],
 
+	level_minimap: [6],
+
 	level_tick: [6],
 	level_done: [0,0,0,0,0,0],
 
@@ -575,6 +604,10 @@ CommunityLevelBrowser = Class.extend({
 			this.level_tick[i] = new SpriteClass();
 			this.level_tick[i].setup_sprite('tick.png',Types.Layer.GAME_MENU);
 			this.level_tick[i].hide();
+
+			this.level_minimap[i] = new BitmapClass(Types.Layer.GAME_MENU, 100, 100);
+			
+			//this.level_minimap[i].update_pos(60,50);
 		}
 
 		this.rating_text = new TextClass(Types.Layer.GAME_MENU);
@@ -609,7 +642,7 @@ CommunityLevelBrowser = Class.extend({
 
 		this.h_text.update_pos(16,16);
 
-		this.rating_text.update_pos(200+ 64,140);
+		this.rating_text.update_pos(200+ 164,140);
 		//this.wins_text.update_pos(400+ 64,140);
 		//this.downloads_text.update_pos(300+ 64,140);
 
@@ -619,7 +652,7 @@ CommunityLevelBrowser = Class.extend({
 			if (i >= this.levels_added) break;
 
 
-			var y = 150 + i*52;
+			var y = 150 + i*52; 
 
 			this.level_name[i].hide();
 			this.level_author[i].make_vis();
@@ -628,14 +661,32 @@ CommunityLevelBrowser = Class.extend({
 			//this.level_wins[i].make_vis();
 			this.level_play_sprite[i].make_vis();
 
-			this.level_name[i].update_pos(-999,-999);//.update_pos(6 + 64,y);
-			this.level_author[i].update_pos(6+ 64,y + 20);
-			this.level_rating[i].update_pos(200+ 64,y);
+			this.level_name[i].update_pos(-999 + 6 + 64,-999 + y);
+			this.level_author[i].update_pos(6+ 64 + 100,y );
+			this.level_rating[i].update_pos(200+ 164 ,y);
 			if (this.level_done[i] == 1) this.level_tick[i].update_pos(200+ 128 + 128, y + 15);
 			//this.level_attempts[i].update_pos(300+ 64,y);
 			//this.level_wins[i].update_pos(400+ 64,y);
 			this.level_play_sprite[i].update_pos(500+ 64,y + 16);
+
+		
+			
+			
+
+			
+
+			this.level_minimap[i].update_pos(64 + 32, y - 20);
+
+			
+
+			
+			
+			
 		}
+
+		
+		
+		// 
 
 		for (var i = 0; i < this.hint_toggles.length; i++) {
 			this.hint_toggles[i].make_vis();
@@ -686,7 +737,7 @@ CommunityLevelBrowser = Class.extend({
 	up_y: 150,
 
 	down_x: 32,
-	down_y: 150 + 32*8.5,
+	down_y: 150 + 32*7.5,
 
 	hide: function() {
 
@@ -706,6 +757,7 @@ CommunityLevelBrowser = Class.extend({
 			this.level_play_sprite[i].hide();
 			this.level_tick[i].hide();
 			this.level_done[i] = 0;
+			this.level_minimap[i].update_pos(-999,-999);
 		}
 
 		for (var i = 0; i < this.hint_toggles.length; i++) {
@@ -732,6 +784,36 @@ CommunityLevelBrowser = Class.extend({
 		this.levels_added = 0;
 	},
 
+	juggle_minimap_on_scroll: function(y_off) {
+
+	},
+
+	add_to_minimap_data: function(data_) {
+
+		return;
+		
+		if (this.levels_added - 1 >= this.level_name.length) return -1;
+		if (this.levels_added - 1 <= 0) return -1;
+
+		//console.log('entity add_to_minimap x ' + x + ' y ' + y);
+		
+		this.level_minimap[this.levels_added - 1].fill_map(data_, this.game_state.grid_w, this.game_state.grid_h);
+	},
+
+
+	add_to_minimap: function(x, y, blocktype) {
+
+		
+
+		//this.level_minimap[i].draw_sprite(this.blocksprites[blocktype], x*this.game_state.tile_size, y*this.game_state.tile_size);
+		
+		if (this.levels_added - 1>= this.level_name.length) return -1;
+
+		//console.log('entity add_to_minimap x ' + x + ' y ' + y);
+		
+		this.level_minimap[this.levels_added - 1].add_tile(x,y,blocktype);
+	},
+
 	add_level: function (name, author, rating, attempts, wins, id, tick) {
 
 		
@@ -752,6 +834,11 @@ CommunityLevelBrowser = Class.extend({
 
 		if (tick == true) this.level_done[this.levels_added] = 1;
 		else this.level_done[this.levels_added] = 0;
+
+		// get ready to be drawn to:
+		//this.level_minimap[this.levels_added].resize(10*this.game_state.tile_size, 10*this.game_state.tile_size);
+		this.level_minimap[this.levels_added].clear();
+		//this.level_minimap[this.levels_added].update_pos(0,0);
 
 		this.levels_added++;
 	},
@@ -1141,10 +1228,16 @@ InfoClass = Class.extend({
 			}else if (hint_ == 12) {
 				this.block_obj.set_texture('crown.png');
 				this.text.change_text(g_get_text("crown"));
-			}else if (hint_ == 13) {
+			} else if (hint_ == 13) {
 				this.block_obj.set_texture('eyebracket.png');
 				this.text.change_text(g_get_text("eyebracket"));
-			}else {
+			} else if (hint_ == 47) {
+				this.block_obj.set_texture('ghost.png');
+				this.text.change_text(g_get_text("ghost"));
+			} else if (hint_ == 49) {
+				this.block_obj.set_texture('zap.png');
+				this.text.change_text("	    Number of mines reachable via mine-to-mine contact");
+			} else {
 				// uncovered, no hint, empty
 				
 			}
@@ -1287,6 +1380,18 @@ BlockClass = Class.extend({
 	hint_heart_num: -1,
 	hint_heart_num_text: null,
 
+	hint_ghost_sprite: null,
+	hint_ghost_num: -1,
+	hint_ghost_num_text: null,
+
+	hint_zap_sprite: null,
+	hint_zap_num: -1,
+	hint_zap_num_text: null,
+
+	hint_gem_sprite: null,
+	hint_gem_num: -1,
+	hint_gem_num_text: null,
+
 	hint_eye_sprite: null,
 	hint_eye_num: -1,
 	hint_eye_num_text: null,
@@ -1352,6 +1457,10 @@ BlockClass = Class.extend({
 
 	hints_that_see_me: [],
 
+	// tetromino shape detection
+	// some clues report the number of shapes that match a mine pattern
+	
+
 	init: function(game_state) {
 
 		this.game_state = game_state;
@@ -1363,7 +1472,7 @@ BlockClass = Class.extend({
 		this.block_blink_sprite.hide();
 		
 		//this.block_shadow_sprite = new SpriteClass();
-		//this.block_shadow_sprite.setup_sprite("block1_shadow.png",Types.Layer.TILE);
+		//this.block_shadow_sprite.setup_sprite("block1_shadow.png",Types.Layer.GAME);
 		//this.block_shadow_sprite.hide();
 
 		this.block_sprite = new SpriteClass();
@@ -1371,7 +1480,7 @@ BlockClass = Class.extend({
 		this.block_sprite.hide();
 
 		this.join_v_sprite = new SpriteClass();
-		//this.join_v_sprite.setup_sprite('joiner_v.png',Types.Layer.TILE);
+		//this.join_v_sprite.setup_sprite('joiner_v.png',Types.Layer.GAME);
 		//this.join_v_sprite.hide();
 
 		this.join_h_sprite = new SpriteClass();
@@ -1379,7 +1488,7 @@ BlockClass = Class.extend({
 		//this.join_h_sprite.hide();
 
 		this.join_sprite_any = new SpriteClass();
-		this.join_sprite_any.setup_sprite('joiner_up.png',Types.Layer.TILE);
+		this.join_sprite_any.setup_sprite('joiner_up.png',Types.Layer.GAME);
 		this.join_sprite_any.hide();
 
 		this.flag_sprite = new SpriteClass();
@@ -1397,7 +1506,7 @@ BlockClass = Class.extend({
 		this.hint_eye_sprite.hide();
 
 		
-		this.hint_heart_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_heart_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_heart_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_heart_num_text.set_text("");
 		this.hint_heart_num_text.update_pos(-999,-999);
@@ -1407,8 +1516,39 @@ BlockClass = Class.extend({
 		this.hint_heart_sprite.setup_sprite("heart.png",Types.Layer.GAME);
 		this.hint_heart_sprite.hide();
 
+		this.hint_ghost_num_text = new CounterClass(Types.Layer.GAME);
+		this.hint_ghost_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_ghost_num_text.set_text("");
+		this.hint_ghost_num_text.update_pos(-999,-999);
 
-		this.hint_touch_num_text = new CounterClass(Types.Layer.TILE);
+		
+		this.hint_ghost_sprite = new SpriteClass();
+		this.hint_ghost_sprite.setup_sprite("ghost.png",Types.Layer.GAME);
+		this.hint_ghost_sprite.hide();
+
+		this.hint_zap_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_zap_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_zap_num_text.set_text("");
+		this.hint_zap_num_text.update_pos(-999,-999);
+
+		
+		this.hint_zap_sprite = new SpriteClass();
+		this.hint_zap_sprite.setup_sprite("zap.png",Types.Layer.GAME);
+		this.hint_zap_sprite.hide();
+
+		
+		this.hint_gem_num_text = new CounterClass(Types.Layer.GAME);
+		this.hint_gem_num_text.set_font(Types.Fonts.MEDIUM);
+		this.hint_gem_num_text.set_text("");
+		this.hint_gem_num_text.update_pos(-999,-999);
+
+		
+		this.hint_gem_sprite = new SpriteClass();
+		this.hint_gem_sprite.setup_sprite("gem.png",Types.Layer.GAME);
+		this.hint_gem_sprite.hide();
+
+
+		this.hint_touch_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_touch_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_touch_num_text.set_text("");
 		this.hint_touch_num_text.update_pos(-999,-999);
@@ -1421,7 +1561,7 @@ BlockClass = Class.extend({
 		this.hint_eight_touch_sprite.setup_sprite("8hand.png",Types.Layer.GAME);
 		this.hint_eight_touch_sprite.hide();
 
-		this.hint_add_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_add_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_add_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_add_num_text.set_text("");
 		this.hint_add_num_text.update_pos(-999,-999);
@@ -1434,7 +1574,7 @@ BlockClass = Class.extend({
 		this.hint_compass_sprite.setup_sprite("compass.png",Types.Layer.GAME);
 		this.hint_compass_sprite.hide();
 
-		this.hint_compass_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_compass_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_compass_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_compass_num_text.set_text("");
 		this.hint_compass_num_text.update_pos(-999,-999);
@@ -1443,7 +1583,7 @@ BlockClass = Class.extend({
 		this.hint_crown_sprite.setup_sprite("crown.png",Types.Layer.GAME);
 		this.hint_crown_sprite.hide();
 
-		this.hint_crown_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_crown_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_crown_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_crown_num_text.set_text("");
 		this.hint_crown_num_text.update_pos(-999,-999);
@@ -1452,7 +1592,7 @@ BlockClass = Class.extend({
 		this.hint_eyebracket_sprite.setup_sprite("eyebracket.png",Types.Layer.GAME);
 		this.hint_eyebracket_sprite.hide();
 
-		this.hint_eyebracket_num_text = new CounterClass(Types.Layer.TILE);
+		this.hint_eyebracket_num_text = new CounterClass(Types.Layer.GAME);
 		this.hint_eyebracket_num_text.set_font(Types.Fonts.MEDIUM);
 		this.hint_eyebracket_num_text.set_text("");
 		this.hint_eyebracket_num_text.update_pos(-999,-999);
@@ -2115,6 +2255,9 @@ BlockClass = Class.extend({
 			this.hint_compass_sprite.hide();
 			this.hint_crown_sprite.hide();
 			this.hint_eyebracket_sprite.hide();
+			this.hint_ghost_sprite.hide();
+			this.hint_gem_sprite.hide();
+			this.hint_zap_sprite.hide();
 			this.join_sprite_any.hide();
 			
 
@@ -2125,6 +2268,9 @@ BlockClass = Class.extend({
 			this.hint_compass_num_text.update_pos(-999,-999);
 			this.hint_crown_num_text.update_pos(-999,-999);
 			this.hint_eyebracket_num_text.update_pos(-999,-999);
+			this.hint_ghost_num_text.update_pos(-999,-999);
+			this.hint_zap_num_text.update_pos(-999,-999);
+			this.hint_gem_num_text.update_pos(-999,-999);
 		}
 
 
@@ -2261,6 +2407,45 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 			this.hint_eyebracket_sprite.update_pos(icon_x, 
 							  icon_y);
 			
+		} else if (hinttype == 47) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_ghost_num_text.change_text(hint_.toString());
+			this.hint_ghost_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_ghost_num_text.center_x(text_x);
+
+			this.hint_ghost_sprite.make_vis();
+			this.hint_ghost_sprite.update_pos(icon_x, 
+							  icon_y);
+			
+		} else if (hinttype == 48) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_gem_num_text.change_text(hint_.toString());
+			this.hint_gem_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_gem_num_text.center_x(text_x);
+
+			this.hint_gem_sprite.make_vis();
+			this.hint_gem_sprite.update_pos(icon_x, 
+							  icon_y);
+			
+		} else if (hinttype == 49) {
+
+			//alert('this.hint_compass_num_text ' + hint_.toString());
+			
+			this.hint_zap_num_text.change_text(hint_.toString());
+			this.hint_zap_num_text.update_pos(text_x, 
+							  text_y);
+			this.hint_zap_num_text.center_x(text_x);
+
+			this.hint_zap_sprite.make_vis();
+			this.hint_zap_sprite.update_pos(icon_x, 
+							  icon_y);
+			
 		}
 	},
 
@@ -2325,11 +2510,47 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence , only_count_groups); // get range
 			
 			
+		} else if (hinttype == 47) {
+
+			// counts emtpys until mines (or walls) - ghost
+
+			var only_count_lonely_mines = false;
+			var count_directions_with_mines = false;
+			var count_highest_sequence = false;
+			var only_count_groups = false;
+			var only_count_empties = true;
+			var mines_are_walls = true;
+			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence , only_count_groups, only_count_empties, mines_are_walls); // get range
+			
+			
+		}  else if (hinttype == 48) {
+
+			// counts emtpys until mines (or walls) - gem
+
+			var only_count_lonely_mines = false;
+			var count_directions_with_mines = false;
+			var count_highest_sequence = false;
+			var only_count_groups = false;
+			var only_count_empties = false;
+			var mines_are_walls = true;
+			var only_count_gems = true; // gems are preset_hint == 48
+			num = this.calc_hint_eye_num(only_count_lonely_mines, count_directions_with_mines, count_highest_sequence , only_count_groups, only_count_empties, mines_are_walls, only_count_gems); // get range
+			
+			
+		} else if (hinttype == 49) {
+			// zap
 		}
 
 		
 
 		return num;
+	},
+
+	
+	counted_already: false,	// general purpose
+
+	reset_all_counted_already: function() {
+		//for (var x = 0)
 	},
 
 	join_leader: false,	// show the hint - 
@@ -2883,7 +3104,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 
 	},
 
-	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence, only_count_groups) {
+	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence, only_count_groups,
+					only_count_empties, mines_are_wall, only_count_gems) {
 
 		var only_vert = false;
 		var only_horiz = false;
@@ -2893,6 +3115,9 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 		if (only_horiz == null) only_horiz = false;
 		if (only_vert == null) only_vert = false;
 		if (only_count_groups == null) only_count_groups = false;
+		if (only_count_empties == null) only_count_empties = false;
+		if (mines_are_wall == null ) mines_are_wall = false;
+		if (only_count_gems == null) only_count_gems = false;
 
 		var mines_seen = 0;
 		// look up
@@ -2907,12 +3132,18 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 
 		var num_groups = 0;
 
+		var num_empties = -4;	// we count ourselves four times
+		var num_gems = -4;
+
 		for (var y = this.y; y >= 0; y--) {
 			if (only_horiz == true) break;
+
 			var tile_ = this.game_state.get_block_type(this.x,y);
+
 			if (only_count_lonely_mines == true && tile_ == 2 &&
 			    this.game_state.blocks[this.game_state.tiles[this.x][y]].is_lonely() == false) continue;
 
+			
 
 			if (tile_ != 2) {
 
@@ -2923,6 +3154,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				current_sequence = 0;
 			}
 
+			if (tile_ == 2 && mines_are_wall == true) break;
+
 			if (tile_ == 2) {
 
 				if (current_sequence == 0) num_groups++;
@@ -2932,6 +3165,10 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				mines_seen++;
 				up_ = 1;
 			} else if (tile_ == 1) break;
+			else if (tile_ == 0) num_empties++;
+
+			if (only_count_gems == true &&
+			    this.game_state.blocks[this.game_state.tiles[this.x][y]].preset_hint_type == 48) num_gems++;
 
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
@@ -2949,6 +3186,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				current_sequence = 0;
 			}
 
+			if (tile_ == 2 && mines_are_wall == true) break;
+
 			if (tile_ == 2) {
 
 				if (current_sequence == 0) num_groups++;
@@ -2958,7 +3197,10 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				mines_seen++;
 				left_ = 1;
 			} else if (tile_ == 1) break;
+			else if (tile_ == 0) num_empties++;
 
+			if (only_count_gems == true &&
+			    this.game_state.blocks[this.game_state.tiles[x][this.y]].preset_hint_type == 48) num_gems++;
 	
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
@@ -2976,6 +3218,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				current_sequence = 0;
 			}
 
+			if (tile_ == 2 && mines_are_wall == true) break;
+
 			if (tile_ == 2) {
 
 				if (current_sequence == 0) num_groups++;
@@ -2985,7 +3229,10 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				mines_seen++;
 				right_ = 1;
 			} else if (tile_ == 1) break;
+			else if (tile_ == 0) num_empties++;
 
+			if (only_count_gems == true &&
+			    this.game_state.blocks[this.game_state.tiles[x][this.y]].preset_hint_type == 48) num_gems++;
 
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
@@ -3003,6 +3250,8 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				current_sequence = 0;
 			}
 
+			if (tile_ == 2 && mines_are_wall == true) break;
+
 			if (tile_ == 2) {
 
 				if (current_sequence == 0) num_groups++;
@@ -3012,13 +3261,20 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 				mines_seen++;
 				down_ = 1;
 			} else if (tile_ == 1) break;
+			else if (tile_ == 0) num_empties++;
 
+			if (only_count_gems == true &&
+			    this.game_state.blocks[this.game_state.tiles[this.x][y]].preset_hint_type == 48) num_gems++;
 
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
 		}
 
 		this.hint_eye_num = mines_seen;
+
+		if (only_count_empties == true) return num_empties;
+
+		if (only_count_gems == true) return num_gems;
 
 		if (count_highest_sequence == true) return best_sequence;
 
