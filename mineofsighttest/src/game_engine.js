@@ -1,4 +1,5 @@
-﻿
+﻿g_cache_as_bitmap = true;
+
 Types = {
 
 
@@ -598,9 +599,10 @@ if(location.hostname == "www.zblip.com"){
 //social buttons:
 //MenuItems.push([2, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
 MenuItems.push([1, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
-MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+//MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
-
+//MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+//MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
 
@@ -638,7 +640,7 @@ MenuPositions = Class.extend({
 	menu_item_type: [],
 
 	menu_item_width: 148,
-	menu_item_height: 28,
+	menu_item_height: 32,
 
 	menu_width: 0,
 	menu_height: 0,
@@ -811,12 +813,30 @@ BlipFrogMenuClass = Class.extend({
 		//draw_rect_perm(0,0,1,1,0x333333,Types.Layer.POP_MENU, 0, 0);
 		this.graphics_menu_body.phasersprite.anchor.setTo(0,0);
 		this.graphics_menu_body.update_pos(0,0);
-		
+		// this.graphics_menu_body.scale(2*this.menu_width/50, 4*screen_height/50);
+
+
+		var graphics_obj = game.add.graphics(0,0);
+		options_menu_group.add(graphics_obj);
+
+
+
+		graphics_obj.beginFill(0x546D6F);
+		graphics_obj.lineStyle(0, 0xffd900, 0);
+		graphics_obj.moveTo(0,0);
+    		graphics_obj.lineTo(this.menu_width, 0);
+    		graphics_obj.lineTo(this.menu_width,  4*screen_height);
+    		graphics_obj.lineTo(0, 4*screen_height);
+		graphics_obj.lineTo(0, 0);
+		graphics_obj.endFill();
 		
 
 		this.spr_menu_button = new SpriteClass();
 		
 		this.spr_menu_button.setup_sprite('menu_button.png', Types.Layer.GAME_MENU);//Types.Layer.POP_MENU); //
+
+
+		
 		
 		//this.line_above_social = new PIXI.Graphics();
 		
@@ -827,9 +847,42 @@ BlipFrogMenuClass = Class.extend({
 
 		for (var i = 0; i < MenuItems.length; i++) {
 
-			if (MenuItems[i][0] == 3) {
+		/*	var graphics_line = game.add.graphics(0,0);
+			options_menu_group.add(graphics_line);
+			graphics_line.lineStyle(2, 0x112829, 1);
+			var y_pos = (i+1.33)*this.menu_positions.menu_item_height;
+			graphics_line.moveTo(0,y_pos);
+    			graphics_line.lineTo(this.menu_width, y_pos);
+		*/
+			
+			if (MenuItems[i][0] == 0) {
+				var graphics_obj = game.add.graphics(0,0);
+				options_menu_group.add(graphics_obj);
+
+				var y_pos = (i+0.33)*this.menu_positions.menu_item_height;
+
+				//if (i == 0) y_pos -= ;
+
+				var box_h = this.menu_positions.menu_item_height;
+
+				graphics_obj.beginFill(0x112829);
+				graphics_obj.lineStyle(0, 0xffd900, 0);
+				if (i != 0) {
+					graphics_obj.moveTo(0,y_pos);
+    					graphics_obj.lineTo(this.menu_width, y_pos);
+				} else {
+					graphics_obj.moveTo(0,-1);
+    					graphics_obj.lineTo(this.menu_width, -1);
+
+				}
+    				graphics_obj.lineTo(this.menu_width, y_pos + box_h);
+    				graphics_obj.lineTo(0, y_pos + box_h);
+				graphics_obj.lineTo(0, y_pos);
+				graphics_obj.endFill();
 
 			}
+
+			
 
 			if (MenuItems[i][0] != 1 && MenuItems[i][0] != 0 && MenuItems[i][0] != 3) continue;	
 			// Only the first type of menu items
@@ -845,12 +898,19 @@ BlipFrogMenuClass = Class.extend({
 			this.menu_texts[i].set_font(Types.Fonts.MED_SMALL);
 
 			if (MenuItems[i][0] == 0) {
+				
+
+
+				
+
 				this.menu_texts[i].set_text(MenuItems[i][1]);		// heading
-				this.menu_texts[i].set_colour("#112829");
+				//this.menu_texts[i].set_colour("#112829");
+				this.menu_texts[i].set_colour("#ffffff");
+
 			} else {
 				this.menu_texts[i].set_text(MenuItems[i][2]);
 
-				this.menu_texts[i].set_colour("#ffffff");
+				this.menu_texts[i].set_colour("#000000");
 			}
 		}
 
@@ -1079,8 +1139,7 @@ BlipFrogMenuClass = Class.extend({
 			//else if (y > screen_height - 32) this.menu_y -= 4;
 			//else this.menu_scroll = 0;
 
-			//this.menu_y = Math.min(0, this.menu_y);
-			//this.menu_y = Math.max(this.menu_y, this.menu_positions.menu_height);
+			
 
 			
 
@@ -1103,6 +1162,10 @@ BlipFrogMenuClass = Class.extend({
 			console.log(' SCROLL    y == ' + y );
 				
 			this.menu_y += y - this.mouse_down_y;
+
+			this.menu_y = Math.max(this.menu_y, -this.menu_positions.menu_height - 32 + screen_height);
+			this.menu_y = Math.min(0, this.menu_y);
+
 			this.mouse_down_y = y;
 			this.menu_scroll = 1;
 			g_set_menu_screen_y(this.menu_y);
@@ -1233,10 +1296,10 @@ BlipFrogMenuClass = Class.extend({
 			// mark first
 
 			for (var m = 0; m < MenuItems.length; m++) {
-				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#ffffff");	
+				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#000000");	
 			}
 
-			this.menu_texts[menu_i].set_colour("#112829");	
+			this.menu_texts[menu_i].set_colour("#ffffff");	
 
 			this.game_engine.on_screen_resize();
 
@@ -1246,9 +1309,9 @@ BlipFrogMenuClass = Class.extend({
 			g_click_to_dig = true;
 
 			for (var m = 0; m < MenuItems.length; m++) {
-				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#ffffff");	
+				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#000000");	
 			}
-			this.menu_texts[menu_i].set_colour("#112829");			
+			this.menu_texts[menu_i].set_colour("#ffffff");			
 
 			this.game_engine.on_screen_resize();
 
@@ -1260,10 +1323,10 @@ BlipFrogMenuClass = Class.extend({
 			this.game_engine.on_screen_resize();
 
 			for (var m = 0; m < MenuItems.length; m++) {
-				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#ffffff");	
+				if (MenuItems[m][0] == 3) this.menu_texts[m].set_colour("#000000");	
 			}
 
-			this.menu_texts[menu_i].set_colour("#112829");	
+			this.menu_texts[menu_i].set_colour("#ffffff");	
 
 			//this.pop_down();
 		}
