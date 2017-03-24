@@ -95,6 +95,34 @@
 	<style type="text/css">	body { padding: 0; margin: 0; }</style>
 
 
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#e2e2e2",
+      "text": "#1f1129"
+    },
+    "button": {
+      "background": "#112829",
+      "text": "#e2e2e2"
+    }
+  },
+  "theme": "edgeless",
+  //"position": "top",	// bottom is default
+  "content": {
+    "message": "This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.",
+    "link": "Learn more",
+    "href": "http://www.zblip.com/legal/pp"
+  }
+})});
+</script>
+
+
+
+
 </head>
     
 
@@ -109,6 +137,19 @@
 <script src="src/asset_manager.js"></script>	
 		
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('set', 'anonymizeIp', true);	// this seems nice to do
+					// https://developers.google.com/analytics/devguides/collection/analyticsjs/ip-anonymization
+
+  ga('create', 'UA-89380699-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <style>
     	
 
