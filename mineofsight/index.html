@@ -94,7 +94,29 @@
 
 	<style type="text/css">	body { padding: 0; margin: 0; }</style>
 
-
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#e2e2e2",
+      "text": "#1f1129"
+    },
+    "button": {
+      "background": "#112829",
+      "text": "#e2e2e2"
+    }
+  },
+  "theme": "edgeless",
+  //"position": "top",	// bottom is default
+  "content": {
+    "message": "This website uses cookies. By continuing to use the site, you agree to our use of cookies.",
+    "link": "Learn more",
+    "href": "http://www.zblip.com/legal/pp"
+  }
+})});
 </head>
     
 
@@ -108,7 +130,19 @@
 <script src="src/core.js"></script>
 <script src="src/asset_manager.js"></script>	
 		
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('set', 'anonymizeIp', true);	// this seems nice to do
+					// https://developers.google.com/analytics/devguides/collection/analyticsjs/ip-anonymization
+
+  ga('create', 'UA-89380699-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <style>
     	
 
@@ -180,7 +214,7 @@
 
 <div id = 'pbar' >
 	
-	<div id = 'splashdiv' align = "center">
+	<div id = 'splashdiv' align = "center" width ="100%" overflow ="hidden">
 		<img id = 'splash' src = 'assets/title2.png'>
 	</div>
 	<progress id='prog_bar' value = '0' max='100'></progress>
@@ -192,12 +226,14 @@
 
     
 
+var using_pixi = false;
+var using_phaser = true;
 
-var game;
+var game;	// used by phaser
 var assets_loaded = false;
 var scriptList = [
 
-		"phaser-slim.min.js",
+		
 		//"phaser.min.js",
 
 		//"playtomic.js",
@@ -205,7 +241,7 @@ var scriptList = [
 		//"src/boot.js",
 		//"src/preload.js",
 		//"src/gametitle.js",		
-		"src/thegame.js",
+		//"src/thegame.js",
 
 		//"assets/blocks.png",
 		//"assets/blocks.json",
@@ -218,6 +254,13 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+if (using_pixi == true) {
+	scriptList.push("pixi.min.js");
+	scriptList.push("src/pixigame.js");
+} else {
+	scriptList.push("phaser-slim.min.js");
+	scriptList.push("src/thegame.js");
+}
 // https://cookieconsent.insites.com/download/
 
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
@@ -244,25 +287,55 @@ var kongregate;
 var kong_token;
 
 
+using_cocoon_js = false;
+cordova_ready = false;
+on_cordova_ready = function() {
+	cordova_ready = true;
+};
+
+if (using_cocoon_js == true) {
+	scriptList.push("cocoon.min.js");
+	scriptList.push("cordova.js");
+	document.addEventListener('deviceready', on_cordova_ready, false);
+
+}
+
 //alert('<!--<meta name="viewport" content="width=device-width">-->');
 
-var pBar = document.getElementById('prog_bar');
+if (using_cocoon_js == false) var pBar = document.getElementById('prog_bar');
+else var pBar = {value: 0};
 pBar.value += 20; 
 
 
 window.onload = function () {
-	load_script_assets(scriptList, start_phaser);
+	if (using_pixi == true) load_script_assets(scriptList, start_pixi);
+	else load_script_assets(scriptList, start_phaser);
+
+	pBar.value += 10; 
+};
+
+start_pixi = function () {
+	pBar.value += 10; 
+
+	// pixi is for cocoon, so not checking kongregate
+
+	setup_layers();
+
+	loadpixiimages();
+	
 };
 
 start_phaser = function() {
 
-	pBar.value += 20; 
+	pBar.value += 10; 
+
+	
 
 			
 	if (on_kong == 1) {
-	// Load the API
+		// Load the API
 	
-	kongregateAPI.loadAPI(function(){
+		kongregateAPI.loadAPI(function(){
 		
 			// Callback function
 			// Set the global kongregate API object
@@ -282,10 +355,16 @@ start_phaser = function() {
 
 	}
 
+	var phaser_type = Phaser.CANVAS;
+
+	if (using_cocoon_js == true) phaser_type = Phaser.AUTO;	// using_cocoon lives in game_engine.js
+
+
 	// window.devicePixelRatio
 
 	game = new Phaser.Game(document.documentElement.clientWidth, 
-				document.documentElement.clientHeight, Phaser.AUTO, "game", {
+			       document.documentElement.clientHeight, 
+			       phaser_type, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
@@ -320,7 +399,7 @@ start_phaser = function() {
 				
 				game.state.start("Boot");
 
-
+				
 				
 
 				
@@ -335,7 +414,11 @@ g_splash_parent = null;
 g_splash_image = null;
 
 remove_splash = function() {
-	 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+
+	if (using_cocoon_js == false && pBar.parentNode != null) {
+	 	pBar.parentNode.removeChild(pBar);	// remove the progress bar
+	}
+
 			var splash = document.getElementById('splash');
 				if (splash != null) {
 					
@@ -367,7 +450,7 @@ var menu_scale_ratio = 1;
 
 var do_resize = function(e) {  
 
-	if (game == null) return;
+	//if (game == null) return;
 	if (play_screen_group == null) return;
 
 	// dips
@@ -422,9 +505,12 @@ var do_resize = function(e) {
 
 	// width = device-width will make the viewport stretch on orientation change
 
-	
-
-	
+	if (using_pixi == true && renderer != null) {
+		//this part resizes the canvas but keeps ratio the same
+    		//renderer.view.style.width = (screen_width) + "px";
+    		//renderer.view.style.height = (screen_height) + "px";
+		renderer.resize(screen_width,screen_height);
+	}
 
 	//game_menu_group.scale.set(ratio,ratio);
 	//options_menu_group.scale.set(menu_ratio,menu_ratio);
@@ -441,7 +527,7 @@ var do_resize = function(e) {
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
 
-	play_group.scale.set(ratio, ratio);
+	play_group.scale(ratio, ratio);//.set(ratio, ratio);
 
 	
 	var over_x = 0;//screen_width - (8*96);
@@ -453,7 +539,11 @@ var do_resize = function(e) {
 	if (over_x > 0) x_shift_screen = 0.5*over_x;
 	else x_shift_screen = 0;
 
-	play_group.position.set(x_shift_screen, 0);
+	var y_shift_screen = 0;
+
+	if (using_cocoon_js == true) y_shift_screen = 32;
+
+	play_group.set_pos(x_shift_screen, 0);//position.set(x_shift_screen, y_shift_screen);
 
 
 	//game.width = screen_width;		// what does this do??
@@ -461,12 +551,12 @@ var do_resize = function(e) {
 
 
  
-  	if (game.renderType === 1) {
+  	//if (game.renderType === 1) {
     		//game.renderer.resize(screen_width, screen_height);		// what does this do??
 
     		//Phaser.Canvas.setSmoothingEnabled(game.context, false);	// what does this do??
 
-  	}
+  	//}
 
 	//game.camera.setSize(screen_width, screen_height);	// what does this do??
 
@@ -509,8 +599,8 @@ var do_resize = function(e) {
 	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
 	// using width=100% seems to work ok
 
-	game_menu_group.scale.set(menu_ratio,menu_ratio);
-	options_menu_group.scale.set(menu_ratio,menu_ratio);
+	game_menu_group.scale(menu_ratio,menu_ratio);//set(menu_ratio,menu_ratio);
+	options_menu_group.scale(menu_ratio,menu_ratio);//set(menu_ratio,menu_ratio);
 
 	screen_width = screen_width/menu_ratio;
 	screen_height = screen_height/menu_ratio;
@@ -545,6 +635,10 @@ else {
 }
 
 window.onresize = do_resize; 
+
+window.onorientationchange = function() {
+    		window.onresize();
+}
 
     </script>
 
