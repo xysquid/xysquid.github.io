@@ -194,6 +194,12 @@ TextClass = Class.extend({
 
 		g_text_objs.push(this);
 
+		if (using_phaser == true) {
+			this.use_pixitext = 1;
+		} else {
+			
+		}
+
 		
 
 		
@@ -202,16 +208,22 @@ TextClass = Class.extend({
 	
 
 	set_scale: function (scale) {
-		this.scale = scale;
+		if (using_phaser == true) {
+			this.scale = scale;
+		}
 	},
 
 	set_width: function (width) {
-		this.width = width;
+		if (using_phaser == true) {
+			this.width = width;
+		}
 	},
 
 	set_font_size : function(size) {
-		this.font = size.toString();
-		this.font_size = size;
+		if (using_phaser == true) {
+			this.font = size.toString();
+			this.font_size = size;
+		}
 	},
 
 	set_font: function (font) {
@@ -261,7 +273,15 @@ TextClass = Class.extend({
 	},
 
 	set_colour : function (col_) {
-		this.pixitext.fill = col_;//'#ffffff';
+		if (using_phaser == true) {
+			this.pixitext.fill = col_;//'#ffffff';
+		} else {
+			//this.pixitext.tint = '0xffffff';
+			//this.pixitext.tint = col_;
+
+			this.pixitext.style.fill = col_;
+
+		}
 	},
 
 	set_text : function(str) {
@@ -272,20 +292,20 @@ TextClass = Class.extend({
 			//font = '36px Hind Vadodara';
 			var fill = "#ffffff";
 
-		if (this.use_pixitext == 1) {
+		if (using_phaser == true) {
 
 			this.style = {	
-		font : font,				
-		fill : fill,	
-		align : "left",			
-		//stroke : '#4a1850',				
-		//strokeThickness : 5,				
-		//dropShadow : true,				
-		//dropShadowColor : '#000000',				
-		//dropShadowAngle : Math.PI / 6,				
-		//dropShadowDistance : 6,				
-		wordWrap : true,				
-		wordWrapWidth : 9999			};
+				font : font,				
+				fill : fill,	
+				align : "left",			
+				//stroke : '#4a1850',				
+				//strokeThickness : 5,				
+				//dropShadow : true,				
+				//dropShadowColor : '#000000',				
+				//dropShadowAngle : Math.PI / 6,				
+				//dropShadowDistance : 6,				
+				wordWrap : true,				
+				wordWrapWidth : 9999			};
 
 
 
@@ -317,20 +337,53 @@ TextClass = Class.extend({
 
 			
 
-			if (this.layer == Types.Layer.GAME) game_group.add(this.pixitext);
-			else if(this.layer == Types.Layer.POP_MENU) options_menu_group.add(this.pixitext);
-			else if(this.layer == Types.Layer.GAME_MENU) game_menu_group.add(this.pixitext);
-			else if(this.layer == Types.Layer.HUD) menu_group.add(this.pixitext);
-			else if(this.layer == Types.Layer.TILE) tile_group.add(this.pixitext);
-			else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.pixitext);
+			
 
 			//this.pixitext.smoothed = true;
 			//this.pixitext.scale.x = 1/window.devicePixelRatio;
 			//this.pixitext.scale.y = 1/window.devicePixelRatio;
 
-			return;
+			
+
+		} else {
+			this.style = {	
+				font : font,				
+				fill : fill,	
+				align : "left",			
+				//stroke : '#4a1850',				
+				//strokeThickness : 5,				
+				//dropShadow : true,				
+				//dropShadowColor : '#000000',				
+				//dropShadowAngle : Math.PI / 6,				
+				//dropShadowDistance : 6,				
+				wordWrap : true,				
+				wordWrapWidth : 9999			};
+
+
+
+
+
+			
+			
+
+			this.pixitext = new PIXI.Text(str, this.style);
+
+			this.pixitext.x = -999;		
+			this.pixitext.y = -999;
 
 		}
+
+
+
+
+		if (this.layer == Types.Layer.GAME) game_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.POP_MENU) options_menu_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.GAME_MENU) game_menu_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.HUD) menu_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.TILE) tile_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.pixitext);
+
+		return;
 
 		this.text_string = str;
 
@@ -355,6 +408,8 @@ TextClass = Class.extend({
 
 	center_x: function(x) {
 			if (this.pixitext == null) return;
+
+		if (using_phaser == true) {
 			this.pixitext.anchor.set(0.5,0);
 			//this.style.align = 'center';
 
@@ -364,18 +419,36 @@ TextClass = Class.extend({
 			//this.pixitext.x = x - this.pixitext.width*0.5;
 
 			
-		
+		} else {
+			this.style.align = 'center';
+
+			//this.pixitext.style = this.style;
+			//this.pixitext.anchor.x = this.pixitext.width;// (x, this.pixitext.y);
+
+			this.pixitext.x = x - this.pixitext.width*0.5;
+
+		}
 
 	},
 
 	hide: function () {
-		this.pixitext.visible = false;
-		this.pixitext.kill();
+		if (using_phaser == true) {
+			this.pixitext.visible = false;
+			this.pixitext.kill();
+		} else {
+			this.pixitext.visible = false;
+
+		}
 	},
 
 	make_vis: function () {
-		this.pixitext.visible = true;
-		this.pixitext.revive();
+		if (using_phaser == true) {
+			this.pixitext.visible = true;
+			this.pixitext.revive();
+		} else {
+			this.pixitext.visible = true;
+
+		}
 	},
 
 
@@ -383,28 +456,38 @@ TextClass = Class.extend({
 
 		if (this.pixitext == null) return;	// do phaser text L8R
 
+		if (using_phaser == true) {
+			this.pixitext.x = x_start;		
+			this.pixitext.y = y_start;
 
-		this.pixitext.x = x_start;		
-		this.pixitext.y = y_start;
+			//this.pixitext.height = 999;
 
-		//this.pixitext.height = 999;
+			if (x_start < 0) {
+				this.pixitext.visible = false;
+			} else this.pixitext.visible = true;
 
-		if (x_start < 0) {
-			this.pixitext.visible = false;
-		} else this.pixitext.visible = true;
+			//this.pixitext.wordWrapWidth = w;
 
-		//this.pixitext.wordWrapWidth = w;
-
-		if (w != null) {
-			this.pixitext.wordWrap = true;
-			this.pixitext.wordWrapWidth = w;
-		}
+			if (w != null) {
+				this.pixitext.wordWrap = true;
+				this.pixitext.wordWrapWidth = w;
+			}
 			
-		//this.style.wordWrapWidth = w;
+			//this.style.wordWrapWidth = w;
 
-		//this.pixitext.style = this.style;
+			//this.pixitext.style = this.style;
 
-		
+		} else {
+			this.pixitext.x = x_start;		
+			this.pixitext.y = y_start;
+			this.pixitext.wordWrapWidth = w;
+			
+			this.style.wordWrapWidth = w;
+
+			this.pixitext.style = this.style;
+
+
+		}
 
 		
 	},
@@ -639,6 +722,7 @@ ToggleClass = Class.extend({
 	horiz: true,
 
 	update_pos: function(x,y) {
+		this.make_vis();
 		this.x = x;
 		this.y = y;
 		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
@@ -832,9 +916,9 @@ BitmapClass = Class.extend({
 
 	update_pos : function (x, y) {
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
-
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
 		
 
 		this.image.x = x;
@@ -893,9 +977,124 @@ BitmapClass = Class.extend({
 });
 
 
+LayerClass = Class.extend({
+
+	layer: null,
+	
+	init: function() {
+		if (using_phaser == true) {
+			this.layer = game.add.group();
+
+		} else {
+			// 0x1F1129
+			// pixi
+			this.layer = new PIXI.Container('0x1F1129');
+		}
+
+	},
+
+	set_color: function (col) {
+		if (using_phaser == true) {
+			
+
+		} else {
+			
+		}
+
+	},
+
+	set_x: function (x) {
+		if (using_phaser == true) {
+			this.layer.x = x;
+
+		} else {
+			// 0x1F1129
+			// pixi
+			this.layer.position.x = x;
+		}
+
+	},
+
+	set_y: function (y) {
+		if (using_phaser == true) {
+			this.layer.y = y;
+
+		} else {
+			// 0x1F1129
+			// pixi
+			this.layer.position.y = y;
+		}
+
+	},
+
+	set_pos: function(x, y) {
+		if (using_phaser == true) {
+			this.layer.position.set(x, y);
+
+		} else {
+			// 0x1F1129
+			// pixi
+			this.layer.position.x = x;
+			this.layer.position.y = y;
+		}
+	},
+
+	hide: function () {
+		if (using_phaser == true) {
+			this.layer.visible = false;
+
+		} else { //pixi
+			this.layer.visible = false;
+		}
+	},
+
+	make_vis: function () {
+		if (using_phaser == true) {
+			this.layer.visible = true;
+
+		} else { //pixi
+			this.layer.visible = true;
+		}
+	},
+
+	scale: function(x, y) {
+		if (using_phaser == true) {
+			this.layer.scale.set(x,y);
+
+		} else { //pixi
+			this.layer.scale.x = x;
+			this.layer.scale.y = y;
+		}
+
+	},
+
+
+	add: function (another) {
+		if (using_phaser == true) {
+			this.layer.add(another);
+
+		} else {
+			this.layer.addChild(another);
+
+		}
+
+	},
+
+	cache_as_bitmap: function(bool) {
+		if (using_phaser == true) {
+			this.layer.cacheAsBitmap = bool;
+		} else {
+			
+
+		}
+	}
+
+});
+
 SpriteClass = Class.extend({
 
 	phasersprite: null,
+	pixisprite: null,
 
 	layer: 0,
 	name: '',
@@ -906,8 +1105,9 @@ SpriteClass = Class.extend({
 	setup_sprite: function(name,layer,x,y) {
 		// 'pixi layer' is now 'phaser group'
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
 
 		this.name = name;
 		this.layer = layer;
@@ -922,20 +1122,38 @@ SpriteClass = Class.extend({
 		//var test = game.add.sprite(20,40,'atlas_blocks',name);
 		//
 	
-		
+		if (using_phaser == true) {
 
-		//this.phasersprite = game.add.sprite(x,y,'atlas_blocks',name);
-		this.phasersprite = game.add.image(x,y,'atlas_blocks',name);
-		this.phasersprite.anchor.setTo(0.5,0.5);
+			//this.phasersprite = game.add.sprite(x,y,'atlas_blocks',name);
+			this.phasersprite = game.add.image(x,y,'atlas_blocks',name);
+			this.phasersprite.anchor.setTo(0.5,0.5);
 		
-		//this.phasersprite.smoothed = false;
+			//this.phasersprite.smoothed = false;
 
-		if (layer == Types.Layer.GAME) game_group.add(this.phasersprite);		// game_container
-		else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.phasersprite);   // options_menu_container
-		else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.phasersprite);  // game_menu_container
-		else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
-		else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
-		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+			if (layer == Types.Layer.GAME) game_group.add(this.phasersprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.phasersprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.phasersprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+
+		} else {
+			this.pixisprite = new PIXI.Sprite(g_textures[name]);
+			this.pixisprite.anchor.x = 0.5;
+			this.pixisprite.anchor.y = 0.5;
+			this.pixisprite.visible = true;
+
+			if (layer == Types.Layer.GAME) game_group.add(this.pixisprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.pixisprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.pixisprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.pixisprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.pixisprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.pixisprite);    // background_container
+
+
+		}
+
+		
 
 		// all our sprites are 2x - do nothing if DPR == 2
 		//this.phasersprite.scale.setTo(window.devicePixelRatio/2, window.devicePixelRatio/2);
@@ -946,70 +1164,131 @@ SpriteClass = Class.extend({
 		    menu_scale_ratio > 1) this.phasersprite.scale.setTo(menu_scale_ratio, menu_scale_ratio);
 	},
 
+	
+
 	x: -999,
 	y: -999,
 
 	make_vis: function() {
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
 
-		 //this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
-		 //this.phasersprite.destroy();
-		//this.setup_sprite(this.name, this.layer, this.x, this.y);
+		if (using_phaser == true) {
+			
+			
 
-		this.phasersprite.revive();
+		 	//this.phasersprite.body = null;	
+			// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
+		 	//this.phasersprite.destroy();
+			//this.setup_sprite(this.name, this.layer, this.x, this.y);
 
-		this.phasersprite.visible = true;
+			this.phasersprite.revive();
+
+			this.phasersprite.visible = true;
+		} else {
+			this.pixisprite.visible = true;
+			this.pixisprite.alpha = 1;
+			
+		}
+
+		
 
 		
 	},
 
 	hide: function() { 
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
 		
-		this.phasersprite.visible = false;
 
-		this.phasersprite.kill();
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;		
 
-		// just destroy the object?
-		// this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
-		// this.phasersprite.destroy();
+		if (using_phaser == true) {
+			
+
+			this.phasersprite.visible = false;
+
+			this.phasersprite.kill();
+
+			// just destroy the object?
+			// this.phasersprite.body = null;	
+			// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
+			// this.phasersprite.destroy();
+		} else {
+			this.pixisprite.visible = false;
+			//this.pixisprite.rotation = 0;
+		}
 	},
 
 	scale: function(xscale, yscale) {
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
 
-		this.phasersprite.scale.setTo(xscale, yscale);
+		if (using_phaser == true) {
+			this.phasersprite.scale.setTo(xscale, yscale);
+		} else {
+			this.pixisprite.scaleMode = PIXI.SCALE_MODES.NEAREST;
+			this.pixisprite.scale.set(xscale,yscale);
+		}
 	},
 
 	update_pos: function(x,y) {
 
-		tile_group.cacheAsBitmap = false;
-		game_group.cacheAsBitmap = false;
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
 
 		this.x = x;
 		this.y = y;
-		this.phasersprite.body = null;
-		this.phasersprite.destroy();
 
-		this.setup_sprite(this.name, this.layer,x,y);
+		if (using_phaser == true) {
+			
+			this.phasersprite.body = null;
+			this.phasersprite.destroy();
+
+			this.setup_sprite(this.name, this.layer,x,y);
 		
 		
-		//this.phasersprite.x = x;
-		//this.phasersprite.y = y;
+			//this.phasersprite.x = x;
+			//this.phasersprite.y = y;
+		} else {
+			
+		
+			this.pixisprite.position.x = x;
+			this.pixisprite.position.y = y;
+
+			//this.pixisprite.rotation = 0;
+			
+
+		}
 		
 	},
 
-	rotate_ninety: function () {
+	reset_angle: function () {
+		if (using_phaser == true) {
+		
+		
+			this.phasersprite.angle = 0;
+		} else {
+			this.pixisprite.rotation = 0;
 
+		}
+	},
+
+	rotate_ninety: function () {
+		if (using_phaser == true) {
 		
 		
-		this.phasersprite.angle += 90;
+			this.phasersprite.angle += 90;
+		} else {
+			this.pixisprite.rotation += 1.5708;
+
+		}
 	},
 
 	set_z_to_top: function() {
@@ -1017,19 +1296,116 @@ SpriteClass = Class.extend({
 	},
 
 	set_texture: function(name) {
-		// this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
-		this.phasersprite.destroy();
+		if (using_phaser == true) {
+		
+			// this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
+			this.phasersprite.destroy();
 
-		this.setup_sprite(name, this.layer, this.x, this.y);
+			this.setup_sprite(name, this.layer, this.x, this.y);
+
+		} else {
+			
+			//this.pixisprite.setTexture(g_textures[name]);
+			this.pixisprite.texture = g_textures[name];
+			this.pixisprite.rotation = 0;
+
+		}
+	},
+
+	set_anchor: function(x, y) {
+		if (using_phaser == true) {
+			this.phasersprite.anchor.setTo(0,0);
+		} else {
+
+
+		}
+
 	},
 
 	set_alpha: function(alpha_) {
-		this.phasersprite.alpha = alpha_;
-	}
+		if (using_phaser == true) {
+			this.phasersprite.alpha = alpha_;
+		} else {
+			this.pixisprite.alpha = alpha_;
+		}
+	},
+
+	
 
 	
 });
 
+var background_group;
+var tile_group;
+var game_group;
+var menu_group;
+var game_menu_group;
+var game_screen_group;
+var options_menu_group;
+var whole_app_group;
 
+var background_container;
+var tile_container;
+var game_container;
+var menu_container;
+var game_menu_container;
+var options_menu_container;
+
+var play_screen_group;
+var play_screen_container;
+
+var play_group;
+var play_container;
+
+setup_layers = function () {
+	background_group = new LayerClass();//game.add.group();
+		tile_group = new LayerClass();//game.add.group();
+		game_group = new LayerClass();//game.add.group();
+		menu_group = new LayerClass();//game.add.group();
+		
+		//tile_group.cacheAsBitmap = true;
+		
+
+		play_screen_group =  new LayerClass();//game.add.group();
+
+		play_group =  new LayerClass();//game.add.group();
+
+		
+		
+		play_screen_group.add(tile_group.layer);
+		play_screen_group.add(game_group.layer);
+		
+		play_group.add(background_group.layer);
+		play_group.add(play_screen_group.layer);
+		play_group.add(menu_group.layer);
+
+		game_screen_group = new LayerClass();//game.add.group(); // used for menu pop up (pop right)
+		game_screen_group.add(play_group.layer);
+
+		game_menu_group = new LayerClass();//game.add.group();
+		
+
+		options_menu_group = new LayerClass();//game.add.group();
+		//options_menu_group.bringToTop();
+		//game.bringToTop(options_menu_group.layer);
+
+		background_container = background_group;
+		tile_container =tile_group;
+		game_container =game_group;
+		menu_container =menu_group;
+		game_group_container =game_menu_group;
+		options_menu_container =options_menu_group;
+
+		whole_app_group = new LayerClass();//game.add.group();
+		//whole_app_group.add(play_group);
+		//whole_app_group.add(game_menu_group);
+		///whole_app_group.add(options_menu_group);
+
+		play_screen_container = play_screen_group;
+
+		play_container = play_group;
+};
+
+g_cache_as_bitmap_timer = 10;
 
 pBar.value += 10;

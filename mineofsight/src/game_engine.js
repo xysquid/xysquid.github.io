@@ -1,4 +1,6 @@
-﻿
+﻿g_cache_as_bitmap = true;
+
+
 Types = {
 
 
@@ -85,6 +87,8 @@ g_texts = {
 
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
+
+		"digflag" : "TAP TO DIG the safe tile\nPRESS TO FLAG the unsafe tile",
 
 		"hold": "HOLD TO FLAG",	
 		"mark": "MARK FIRST",
@@ -478,6 +482,26 @@ g_texts = {
 
 };
 
+
+
+open_url = function(url) {
+	
+	if (using_cocoon_js == true) {
+		//document.addEventListener("deviceready", onDeviceReady, false);
+		//function onDeviceReady() {
+    			// Cocoon Canvas+ code here
+			//Cocoon.App.openURL(url);
+			Cocoon.App.openURL(url);
+		//}  
+
+		
+	} else {
+		window.open(url);
+	
+	}
+
+};
+
 g_sound_on = true;
 
 g_click_to_dig = true;
@@ -496,77 +520,34 @@ MenuItems = [
 	
 	[1, Types.Events.NEW_GAME, g_get_text("New Game"),"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
-	[1, Types.Events.GOTO_AUTOGEN, "MINESWEEPER++","home_icon.png",],
-	[1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png",],
-	[1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png",],
+	[1, Types.Events.GOTO_AUTOGEN, "MINES++","home_icon.png",],
+
+];
+
+if (using_cocoon_js == false) {
+	MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
+
+	MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 	
-
-	[0, "CONTROLS"],
-	//[3,
-	[3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",],
-
-	[3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",],
+	MenuItems.push([0, "CONTROLS"]);
 	
-	[3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",],
-	//],  // 3
+	MenuItems.push([3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",]);
 
-	//[1, Types.Events.TUTORIAL, g_texts[language]["Tutorial"],"tut_icon.png",],
-
-	//[1, Types.Events.GAME_OVER, "GAME OVER","games_icon.png"],
-
-	// 
-	[1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"],
-	//[1, Types.Events.MUSIC_ONOFF, g_texts[language]["Music"],"music_on_icon.png","sound_off_icon.png"],
-
+	MenuItems.push([3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",]);
+	
+	MenuItems.push([3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",]);
+	
+	MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]					["ON"],"sound_on_icon.png","sound_off_icon.png"]);
+	
 	// Only include the bookmark if we are on zblip.com
 	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
 
-	//[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],[0, "Social"],
-	
+}
 
 	
-	
-	//[1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"],
+MenuItems.push([0, "LINKS"]);
 
-	
 
-	//[1, Types.Events.TWEET_SCORE, "Tweet", "button_empty.png"],
-
-	//[1, Types.Events.WEB_LINK, "Legal","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"],
-
-	//[1, Types.Events.WEB_LINK, "Credits","ic_list_white_24dp_2x.png","http://www.zblip.com/fireplusbomb/credits"],
-
-	//[1, Types.Events.WEB_LINK, "THEMES","button_empty.png","http://www.twitter.com"],
-
-	//[1, Types.Events.WEB_LINK, "SETTINGS","button_empty.png","http://www.twitter.com"],
-
-	//[1, Types.Events.WEB_LINK, "IOS","button_empty.png","http://www.twitter.com"],
-
-	//[1, Types.Events.WEB_LINK, "ANDROID","button_empty.png","http://www.twitter.com"],
-
-	//[1, Types.Events.WEB_LINK, "APP","button_empty.png","http://www.twitter.com"],
-	// either outgoing web links or trigger something inside
-
-	// new game
-	// restart
-	// tutorial
-
-	// get apps (ios, android, chrome)
-	// share on fb
-
-	// settings, sound, music
-	
-	// more games
-	// feedback
-	// TOS, privacy, legal
-	// credits
-	
-	// social - fb, twitter, tumbler, g+
-
-	
-	[0, "LINKS"],
-
-];
 
 
 if(true || location.hostname == "www.zblip.com") {
@@ -597,10 +578,13 @@ if(location.hostname == "www.zblip.com"){
 
 //social buttons:
 //MenuItems.push([2, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
-MenuItems.push([1, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+
 //MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
-//MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+if (using_cocoon_js == false) {
+	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+}
 //MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
@@ -648,7 +632,10 @@ MenuPositions = Class.extend({
 
 	social_y: 0,	// where the social buttons sta
 
-	init: function() {},
+	init: function() {
+
+		if (using_cocoon_js == true) this.menu_item_height = 42;
+	},
 
 	add_item: function (item_num, menu_type) {
 		this.menu_item_pos_x.push(0);
@@ -717,13 +704,13 @@ function g_set_game_screen_x(newx) {
 
 function g_set_menu_screen_x(newx) {
 	//return;
-	options_menu_group.x = newx*menu_ratio;
+	options_menu_group.set_x(newx*menu_ratio);// = newx*menu_ratio;
 };
 
 
 function g_set_menu_screen_y(newy) {
 	
-	options_menu_group.y = newy;
+	options_menu_group.set_y(newy);// = newy;
 };
 
 
@@ -798,7 +785,7 @@ BlipFrogMenuClass = Class.extend({
 
 		this.game_engine = new GameEngineClass();
 
-		
+		if (using_cocoon_js == true) g_cache_as_bitmap = true;
 
 		this.game_engine.push_state(new BootStateClass());
 
@@ -810,24 +797,39 @@ BlipFrogMenuClass = Class.extend({
 		this.graphics_menu_body = new SpriteClass();
 		this.graphics_menu_body.setup_sprite('menubody.png',Types.Layer.POP_MENU, 0, 0);
 		//draw_rect_perm(0,0,1,1,0x333333,Types.Layer.POP_MENU, 0, 0);
-		this.graphics_menu_body.phasersprite.anchor.setTo(0,0);
+		this.graphics_menu_body.set_anchor(0,0);
 		this.graphics_menu_body.update_pos(0,0);
 		// this.graphics_menu_body.scale(2*this.menu_width/50, 4*screen_height/50);
 
+		if (using_phaser == true) {
 
-		var graphics_obj = game.add.graphics(0,0);
-		options_menu_group.add(graphics_obj);
+			var graphics_obj = game.add.graphics(0,0);
+			options_menu_group.add(graphics_obj);
 
 
 
-		graphics_obj.beginFill(0x546D6F);
-		graphics_obj.lineStyle(0, 0xffd900, 0);
-		graphics_obj.moveTo(0,0);
-    		graphics_obj.lineTo(this.menu_width, 0);
-    		graphics_obj.lineTo(this.menu_width,  4*screen_height);
-    		graphics_obj.lineTo(0, 4*screen_height);
-		graphics_obj.lineTo(0, 0);
-		graphics_obj.endFill();
+			graphics_obj.beginFill(0x546D6F);
+			graphics_obj.lineStyle(0, 0xffd900, 0);
+			graphics_obj.moveTo(0,0);
+    			graphics_obj.lineTo(this.menu_width, 0);
+    			graphics_obj.lineTo(this.menu_width,  4*screen_height);
+    			graphics_obj.lineTo(0, 4*screen_height);
+			graphics_obj.lineTo(0, 0);
+			graphics_obj.endFill();
+
+		} else {
+			var graphics = new PIXI.Graphics();
+			graphics.beginFill(0x546D6F);
+			graphics.drawRect(0, 0,this.menu_width, 4*screen_height);
+			options_menu_group.add(graphics);
+
+
+			var graphicstop = new PIXI.Graphics();
+			graphicstop.beginFill(0x112829);
+			graphicstop.drawRect(0, -1,this.menu_width,  this.menu_positions.menu_item_height);
+			options_menu_group.add(graphicstop);
+
+		}
 		
 
 		this.spr_menu_button = new SpriteClass();
@@ -853,8 +855,9 @@ BlipFrogMenuClass = Class.extend({
 			graphics_line.moveTo(0,y_pos);
     			graphics_line.lineTo(this.menu_width, y_pos);
 		*/
-			
-			if (MenuItems[i][0] == 0) {
+			var box_h = this.menu_positions.menu_item_height;
+
+			if (using_phaser == true && MenuItems[i][0] == 0) {
 				var graphics_obj = game.add.graphics(0,0);
 				options_menu_group.add(graphics_obj);
 
@@ -862,8 +865,7 @@ BlipFrogMenuClass = Class.extend({
 
 				//if (i == 0) y_pos -= ;
 
-				var box_h = this.menu_positions.menu_item_height;
-
+				
 				graphics_obj.beginFill(0x112829);
 				graphics_obj.lineStyle(0, 0xffd900, 0);
 				if (i != 0) {
@@ -879,7 +881,19 @@ BlipFrogMenuClass = Class.extend({
 				graphics_obj.lineTo(0, y_pos);
 				graphics_obj.endFill();
 
+			}  else if (using_pixi == true && MenuItems[i][0] == 0) {
+				
+				var graphics = new PIXI.Graphics();
+				graphics.beginFill(0x112829);
+				var y_pos = (i+0.33)*this.menu_positions.menu_item_height;
+				
+				graphics.drawRect(0, y_pos,this.menu_width,  box_h);
+				
+				options_menu_group.add(graphics);
+				
 			}
+
+
 
 			
 
@@ -904,7 +918,7 @@ BlipFrogMenuClass = Class.extend({
 
 				this.menu_texts[i].set_text(MenuItems[i][1]);		// heading
 				//this.menu_texts[i].set_colour("#112829");
-				this.menu_texts[i].set_colour("#ffffff");
+				this.menu_texts[i].set_colour("#000000");		// bl
 
 			} else {
 				this.menu_texts[i].set_text(MenuItems[i][2]);
@@ -970,6 +984,10 @@ BlipFrogMenuClass = Class.extend({
 
 	show_all_menu_text: function() {
 		for (var i = 0; i < this.sprites_buttons.length; i++) {
+
+
+			
+
 			var x = this.menu_positions.menu_item_pos_x[i];
 			var y = this.menu_positions.menu_item_pos_y[i];
 			this.sprites_buttons[i].hide();
@@ -980,7 +998,14 @@ BlipFrogMenuClass = Class.extend({
 			else this.menu_texts[i].update_pos(32,y,999,999);
 			//this.menu_texts[i].center_x(x);
 
-			
+			if (MenuItems[i][0] == 0) {
+
+				this.menu_texts[i].set_colour("#ffffff");		// white
+
+			} else {
+
+				this.menu_texts[i].set_colour("#000000");
+			}
 
 		}
 	},
@@ -1112,7 +1137,7 @@ BlipFrogMenuClass = Class.extend({
 		y = mouse.y;///menu_ratio;//y*ratio;
 		x = mouse.x;///menu_ratio;//x*ratio;
 
-		
+		if (event_type == Types.Events.MOUSE_DOWN) console.log('x ' + x + ' this.menu_width ' + this.menu_width);
 
 		if (event_type == Types.Events.MOUSE_DOWN && 
 			x > this.menu_width) {
@@ -1261,7 +1286,10 @@ BlipFrogMenuClass = Class.extend({
 		} else if (MenuItems[menu_i][1] == Types.Events.WEB_LINK) {
 			// MenuItems[menu_i][4]	// url
 			//window.open("http://www.w3schools.com");
-			window.open(MenuItems[menu_i][4]);
+			//window.open();
+
+			open_url(MenuItems[menu_i][4]);
+
 			//var newWin = window.open();
 			//newWin.location = MenuItems[menu_i][4];
 			

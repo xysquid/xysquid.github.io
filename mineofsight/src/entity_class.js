@@ -967,7 +967,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 			var box_ = new SpriteClass();
 
-			box_.setup_sprite('level_button_on.png',Types.Layer.TILE);	// default sprite, may need to change
+			box_.setup_sprite('level_button_on.png',Types.Layer.HUD);	// default sprite, may need to change
 
 			var text_ = new TextClass(Types.Layer.HUD);			// dunno if BACKGROUND works yet
 			text_.set_font(Types.Fonts.MEDIUM);
@@ -979,7 +979,7 @@ OverworldSpritesClassReuseable = Class.extend({
 			this.special_code[i] = 0;	// not special
 
 			var icon_ = new SpriteClass();
-			icon_.setup_sprite('eye.png',Types.Layer.TILE);
+			icon_.setup_sprite('eye.png',Types.Layer.HUD);
 			icon_.hide();
 
 			this.level_sprite[i] = icon_;
@@ -1088,6 +1088,10 @@ OverworldSpritesClassReuseable = Class.extend({
 
 		this.level_status[level] = 0;
 
+		if (this.status_sprite[level] == null){
+			console.log('this.status_sprite[level] == null ' + level);
+		}
+
 		this.status_sprite[level].hide();
 	},
 
@@ -1149,8 +1153,10 @@ OverworldSpritesClassReuseable = Class.extend({
 				this.status_sprite[i].update_pos(x + 45, y - 23);
 			} else this.status_sprite[i].hide();
 
+			
 			if (this.special_code[i] == 0) {
 				this.level_text[i].update_pos(x - 35, y - 20,96,999);
+
 				//this.level_text[i].center_x(x + 20);
 			} else {
 				this.level_text[i].update_pos(3.5*this.level_tile_size, y - 0.125*this.level_tile_size,999,999);
@@ -1269,9 +1275,16 @@ InfoClass = Class.extend({
 			return;
 		} 
 
-		this.block_obj.make_vis();
-		this.block_obj.update_pos(0.75*this.game_state.tile_size + 8, 10.5*this.game_state.tile_size + 8);
-		this.text.update_pos(0.75*this.game_state.tile_size, 10.5*this.game_state.tile_size, 10*this.game_state.tile_size, 200);
+		if (screen_width > screen_height) {
+			this.block_obj.make_vis();
+			this.block_obj.update_pos(0.75*this.game_state.tile_size + 8, 10.5*this.game_state.tile_size + 8);
+			this.text.update_pos(0.75*this.game_state.tile_size, 10.5*this.game_state.tile_size, 10*this.game_state.tile_size, 200);
+		} else {
+			this.block_obj.make_vis();
+			this.block_obj.update_pos(0.25*this.game_state.tile_size, 10.5*this.game_state.tile_size + 8);
+			this.text.update_pos(0.25*this.game_state.tile_size - 8, 10.5*this.game_state.tile_size, 10*this.game_state.tile_size, 200);
+
+		}
 		return;
 
 		if (screen_width > screen_height) {
@@ -1853,8 +1866,8 @@ BlockClass = Class.extend({
 			num_hints_in_group++;
 
 			console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
-			console.dir(this.game_state.blocks[b].x_in_range);
-			console.dir(this.game_state.blocks[b].y_in_range);
+			//console.dir(this.game_state.blocks[b].x_in_range);
+			//console.dir(this.game_state.blocks[b].y_in_range);
 
 			//console.log('hint in MY group at x: ' +this.game_state.blocks[b].x + '  y: ' + this.game_state.blocks[b].y);
 
@@ -1869,7 +1882,7 @@ BlockClass = Class.extend({
 		console.log('this.share_groups[0] ' + this.share_groups[0]);
 		console.log('num_hints_in_group ' + num_hints_in_group);
 		console.log('all_the_mines.length ' + all_the_mines.length);
-		console.dir(all_the_mines);
+		//console.dir(all_the_mines);
 
 		console.log('this.share_connect_up ' + this.share_connect_up);
 		console.log('this.share_connect_left ' + this.share_connect_left);
@@ -1917,6 +1930,8 @@ BlockClass = Class.extend({
 		if (this.preset_hint_type != 0) return;
 
 		this.join_sprite_any.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 									this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size + 1);
+
+		this.join_sprite_any.make_vis();
 
 		var left = this.share_connect_left;
 		var right = this.share_connect_right;
@@ -2184,8 +2199,11 @@ BlockClass = Class.extend({
 		//this.join_h_sprite.hide();
 		////this.join_v_sprite.hide();
 
+
 		this.join_sprite_any.hide();
 		this.hint_eye_num_text.update_pos(-999,-999);	// sharesquare num
+
+		
 
 		this.join_leader = false;	// show the hint - store the range
 		this.join_second_leader = false;	// show the number
@@ -2208,6 +2226,11 @@ BlockClass = Class.extend({
 		this.reset_math_stuff();
 
 		this.hints_that_see_me = [];
+
+		
+
+
+		
 	},
 
 	join_h: false,
@@ -2582,7 +2605,7 @@ if (this.editor_mode == 1 && this.block_type == 2) this.put_flag_on();
 	},
 
 	uncover_joined: function() {
-
+		
 		this.join_sprite_any.make_vis();
 	
 		this.take_flag_off();

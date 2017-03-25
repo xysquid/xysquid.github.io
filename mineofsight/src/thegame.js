@@ -1,25 +1,5 @@
 ﻿
-var background_group;
-var tile_group;
-var game_group;
-var menu_group;
-var game_menu_group;
-var game_screen_group;
-var options_menu_group;
-var whole_app_group;
 
-var background_container;
-var tile_container;
-var game_container;
-var menu_container;
-var game_menu_container;
-var options_menu_container;
-
-var play_screen_group;
-var play_screen_container;
-
-var play_group;
-var play_container;
 
 var input_down = false;
 var mouse = {x: 0, y: 0};
@@ -67,7 +47,7 @@ theGame.prototype = {
 	preload: function(){
 
 		 //  Load the Google WebFont Loader script
-    		game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+    		//game.load.script('webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 
 		
 
@@ -110,52 +90,7 @@ theGame.prototype = {
 		//music.play();
 		//music.volume = 0.08;	// music.mute = false;
 
-		background_group = game.add.group();
-		tile_group = game.add.group();
-		game_group = game.add.group();
-		menu_group = game.add.group();
-		
-		//tile_group.cacheAsBitmap = true;
-		
-
-		play_screen_group =  game.add.group();
-
-		play_group =  game.add.group();
-
-		
-		
-		play_screen_group.add(tile_group);
-		play_screen_group.add(game_group);
-		
-		play_group.add(background_group);
-		play_group.add(play_screen_group);
-		play_group.add(menu_group);
-
-		game_screen_group = game.add.group(); // used for menu pop up (pop right)
-		game_screen_group.add(play_group);
-
-		game_menu_group = game.add.group();
-		
-
-		options_menu_group = game.add.group();
-		//options_menu_group.bringToTop();
-		//game.bringToTop(options_menu_group);
-
-		background_container = background_group;
-		tile_container =tile_group;
-		game_container =game_group;
-		menu_container =menu_group;
-		game_group_container =game_menu_group;
-		options_menu_container =options_menu_group;
-
-		whole_app_group = game.add.group();
-		//whole_app_group.add(play_group);
-		//whole_app_group.add(game_menu_group);
-		///whole_app_group.add(options_menu_group);
-
-		play_screen_container = play_screen_group;
-
-		play_container = play_group;
+		setup_layers();	
 
 		gBlipFrogMenu.setup();
 		
