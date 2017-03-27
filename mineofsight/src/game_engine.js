@@ -569,7 +569,7 @@ MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png",
 var country_code = navigator.language.slice(-2);
 
  
-if (using_cocoon_js == false && (country_code == 'AU'  || country_code == 'GB')) {
+if (using_cocoon_js == false && country_code != 'US') {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Google Play App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
 
 
