@@ -65,7 +65,7 @@ if (language.length > 2) language = language[0]+language[1];	// first 2 letters
 //alert(language); //works IE/SAFARI/CHROME/FF https://msdn.microsoft.com/en-us/library/ms533052(v=vs.85).aspx
 if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
-
+if (using_cocoon_js == true) language = 'en';
 
 function g_get_text (tx) {
 	if (g_texts[language] == null) return g_texts['en'][tx];
@@ -566,8 +566,9 @@ MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png",
 
 }
 
-var country_code = navigator.language.slice(-2);
-
+var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
+country_code = country_code.slice(-2);  // 
+if (country_code == null) country_code = 'a';
  
 if (using_cocoon_js == false && country_code != 'US') {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Google Play App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
