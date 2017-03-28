@@ -573,7 +573,7 @@ country_code = country_code.slice(-2);  //
 if (country_code == null) country_code = 'a';
  
 if (using_cocoon_js == false && country_code != 'US') {
-	// MenuItems.push([1, Types.Events.WEB_LINK, "Get Android™ App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android™ App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
 
 
 }
