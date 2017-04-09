@@ -237,7 +237,7 @@ var browser_url = (window.location != window.parent.location)
             ? document.referrer
             : document.location.href;
 
-browser_url = g_autoload_level.split("/")[2];
+browser_url = browser_url.split("/")[2];
 
 if (location.hostname == "game274082.konggames.com" ||
 	browser_url == "www.kongregate.com" ||
