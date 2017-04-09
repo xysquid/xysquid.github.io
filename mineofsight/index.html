@@ -233,7 +233,19 @@ if (using_pixi == true) {
 
 var on_kong = 0;
 
-if (location.hostname == "game274082.konggames.com") on_kong = 1;	// not www.kongregate.com 
+var browser_url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href;
+
+if (location.hostname == "game274082.konggames.com" ||
+	browser_url == "http://www.kongregate.com/games/ZBlip/mine-of-sight" ||
+	browser_url == "http://www.kongregate.com/games/ZBlip/mine-of-sight/" ||
+	browser_url == "www.kongregate.com/games/ZBlip/mine-of-sight/" ||
+	browser_url == "www.kongregate.com/games/ZBlip/mine-of-sight") on_kong = 1;	// not www.kongregate.com 
+
+console.log('browser url ' + browser_url);
+
+
 
 if (on_kong == 1) scriptList.push("https://www.kongregate.com/javascripts/kongregate_api.js");
 
@@ -532,7 +544,6 @@ var do_resize = function(e) {
 	// So I will just sort of mimic what the tile grid is doing
 	menu_ratio = ratio;
 
-	console.log('ratio ' + ratio);
 
 	var tot_ = screen_width + screen_height;
 	var max_len = Math.max(screen_width, screen_height);
