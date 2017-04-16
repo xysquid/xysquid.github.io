@@ -105,7 +105,7 @@ g_texts = {
 		"hand"	   : "      Number of mines in the 4 surrounding tiles.",
 		"eye"	   : "      Number of mines in line of sight, this row and column. Blocked by walls.",
 		"eighthand": "      Number of mines in the 8 surrounding tiles.",
-		"heart"	   : "      Like the eye, but only sees lonely mines. Lonely mines have no other mines in the 4 tiles around them.",
+		"heart"	   : "      Like the eye, but only counts LONELY mines. Lonely mines have no other mines in the 4 tiles around them.",
 		"compass"	   : "      Number of DIRECTIONS in which mines are seen. Same range as the eye.",
 		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
 		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
@@ -123,7 +123,7 @@ g_texts = {
 		"tut2a"	   : "The eye is a different type of clue",
 
 		"tut3"	   : "FOLLOW THE CLUES",
-		"tut3a"	   : "You don't need to guess",
+		"tut3a"	   : "You don't need to guess in this game",
 
 		"tut5"	   : "THIS ONE IS TRICKY",
 		"tut5a"	   : "But you still don't need to guess",
@@ -572,8 +572,8 @@ var country_code = window.navigator.userLanguage || window.navigator.language ||
 country_code = country_code.slice(-2);  // 
 if (country_code == null) country_code = 'a';
  
-if (using_cocoon_js == false && country_code != 'US') {
-	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android™ App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
+if (using_cocoon_js == false && on_coolmath == false) {
+	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
 
 
 }
@@ -1295,7 +1295,8 @@ BlipFrogMenuClass = Class.extend({
 
 			this.pop_down();
 			
-		} else if (MenuItems[menu_i][1] == Types.Events.WEB_LINK) {
+		} else if (MenuItems[menu_i][1] == Types.Events.WEB_LINK &&
+				x > 64) {
 			// MenuItems[menu_i][4]	// url
 			//window.open("http://www.w3schools.com");
 			//window.open();
