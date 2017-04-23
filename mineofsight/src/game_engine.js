@@ -1,5 +1,6 @@
 ﻿g_cache_as_bitmap = true;
 
+var on_coolmath = false;
 
 Types = {
 
@@ -69,6 +70,8 @@ if (language != 'en' && language != 'zh' && language != 'ja') language = 'en';
 
 if (using_cocoon_js == true) language = 'en';
 
+language = 'en';
+
 function g_get_text (tx) {
 	if (g_texts[language] == null) return g_texts['en'][tx];
 	if (g_texts[language][tx] == null) return g_texts['en'][tx];
@@ -114,7 +117,7 @@ g_texts = {
 
 
 		"tut0"	   : "WHERE ARE THE MINES HIDDEN?",
-		"tut0a"	   : "If a white tile is safe then remove it \nIf a white tile is unsafe then flag it",
+		"tut0a"	   : "If a white tile is safe then remove it \nIf a white tile is unsafe then flag it (click and hold)",
 
 		"tut1"	   : "NOT DIAGONALLY",
 		"tut1a"	   : "Just up and down and left and right",
@@ -530,16 +533,31 @@ if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
 
 	MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
-	
-	MenuItems.push([0, "CONTROLS"]);
-	
-	MenuItems.push([3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",]);
+}
 
-	MenuItems.push([3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",]);
+MenuItems.push([0, "APP VERSION"]);
+
+var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
+country_code = country_code.slice(-2);  // 
+if (country_code == null) country_code = 'a';
+ 
+if (using_cocoon_js == false && on_coolmath == false) {
+	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
+
+
+}
+
+
+MenuItems.push([0, "CONTROLS"]);
 	
+MenuItems.push([3, Types.Events.HOLD_TO_FLAG, g_get_text("hold"),"redflag.png",]);
+
+MenuItems.push([3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",]);
+
+if (using_cocoon_js == false) {
 	MenuItems.push([3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",]);
 	
-	MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]					["ON"],"sound_on_icon.png","sound_off_icon.png"]);
+	MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
 	
 	// Only include the bookmark if we are on zblip.com
 	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
@@ -556,7 +574,6 @@ if(true || location.hostname == "www.zblip.com") {
 	MenuItems.push([1, Types.Events.WEB_LINK, "LEGAL","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
 }
 
-var on_coolmath = false;
 
 var credits_via_web = true;
 
@@ -568,15 +585,6 @@ MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png",
 
 }
 
-var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
-country_code = country_code.slice(-2);  // 
-if (country_code == null) country_code = 'a';
- 
-if (using_cocoon_js == false && on_coolmath == false) {
-	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
-
-
-}
 
 if(location.hostname != "www.facebook.com"){
 	// gotta check for mobile as well
