@@ -28,6 +28,7 @@ Types = {
 			CLICK_TO_DIG: 30,
 			HOLD_TO_FLAG: 31,
 			RIGHT_TO_FLAG: 32,
+			SHOW_GRID: 33,
 
 			GOTO_LEVELS: 40,
 			GOTO_AUTOGEN: 41,
@@ -112,7 +113,7 @@ g_texts = {
 		"compass"	   : "      Number of DIRECTIONS in which mines are seen. Same range as the eye.",
 		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
 		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
-		"ghost"	   : "      Counts EMPTY tiles. Same range as the eye. Vision is BLOCKED BY MINES.",
+		"ghost"	   : "      Counts EMPTY tiles. Same range as the eye. Vision is BLOCKED BY MINES AND WALLS.",
 
 
 
@@ -564,6 +565,11 @@ if (using_cocoon_js == false) {
 
 }
 
+var g_show_grid = false;
+var g_show_grid_update = false;
+var g_player_set_show_grid = false;
+MenuItems.push([1, Types.Events.SHOW_GRID, "SHOW GRID","redflag.png",]);
+
 	
 MenuItems.push([0, "LINKS"]);
 
@@ -603,7 +609,7 @@ if(location.hostname == "www.zblip.com"){
 
 if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "@ZBlipGames","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
 }
 //MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
@@ -972,11 +978,16 @@ BlipFrogMenuClass = Class.extend({
 		this.pop_down();
 
 		// instantly set the containers in place
+		this.hurry_menu();
+
+	},
+
+	hurry_menu: function () {
+		// instantly set the containers in place
 		this.game_x = this.game_x_target;
 		this.menu_x = this.menu_x_target;
 		g_set_game_screen_x(this.game_x_target);
 		g_set_menu_screen_x(this.menu_x_target);
-
 	},
 
 	pop_up: function() {
@@ -1375,6 +1386,25 @@ BlipFrogMenuClass = Class.extend({
 			}
 
 			this.menu_texts[menu_i].set_colour("#ffffff");	
+
+			//this.pop_down();
+		} else if (MenuItems[menu_i][1] == Types.Events.SHOW_GRID) {
+			
+			if (g_show_grid) g_show_grid = false;
+			else g_show_grid = true;
+
+			if (g_show_grid) g_player_set_show_grid = true;
+
+			g_show_grid_update = true;
+
+			this.game_engine.on_screen_resize();  // game state will set g_show_grid
+
+			if (!g_show_grid) this.menu_texts[menu_i].set_colour("#000000");
+			else this.menu_texts[menu_i].set_colour("#ffffff");	
+
+			
+
+			
 
 			//this.pop_down();
 		}

@@ -179,10 +179,14 @@ theGame.prototype = {
 
 			input_down = true;
 
+			//alert('right mouse down');
+
 		} else if (game.input.isDown || 
 			   game.input.mousePointer.leftButton.isDown ||
 		    	   //game.input.activePointer.leftButton.isDown ||
 			   game.input.pointer1.isDown) {
+
+			//alert('left mouse down');
 
 			this.left_down = true;
 
@@ -261,7 +265,7 @@ preload.prototype = {
 		//  Note that the JSON file should be saved with UTF-8 encoding or some browsers (such as Firefox) won't load it.
 		this.game.load.atlas('atlas_blocks', 'assets/blocks.png', 'assets/blocks.json', Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
 
-		
+		this.game.load.image('titlesplash','assets/title2.png');		
 	},
 
   	create: function(){

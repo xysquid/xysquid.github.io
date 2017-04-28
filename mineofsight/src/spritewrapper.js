@@ -6,7 +6,6 @@ function update_webfonts() {
 	
 	for (var i = 0; i < g_text_objs.length; i++) {
 		if (g_text_objs[i].pixitext == null) continue;
-		g_text_objs[i].pixitext.font = 'Arial';
 		g_text_objs[i].pixitext.font = 'Montserrat';
 		
 		//if (g_text_objs[i].pixitext.font != 'Montserrat') {
@@ -29,11 +28,11 @@ CounterClass = Class.extend({
 
 	pos : {x: 0, y: 0},
 
-	numerals: [2],
+	numerals: [3],
 
-	char_sprites: [2],
+	char_sprites: [3],
 
-	char_widths: [2],
+	char_widths: [3],
 
 	font_type: 0,
 	font: "",
@@ -48,6 +47,7 @@ CounterClass = Class.extend({
 
 		this.char_sprites[0] = new SpriteClass();
 		this.char_sprites[1] = new SpriteClass();
+		this.char_sprites[2] = new SpriteClass();
 
 		for(var i = 0; i < this.char_sprites.length; i++) {
 			this.numerals[i] = 0;
@@ -74,17 +74,34 @@ CounterClass = Class.extend({
 
 		this.str_len = text_.length;
 
+		var crown = false;
+
+		// if (this.str_len > 0) alert(text_ + ' ' + this.str_len);
+
+		this.char_sprites[2].hide();
+		this.char_sprites[1].hide();
+
 		for(var i = 0; i < this.char_sprites.length; i++) {
 
-			this.char_sprites[i].make_vis();
+
+			this.char_sprites[i].hide();
+
 			if (this.num_to_str.length <= i) {
 				this.char_sprites[i].hide();
 				continue;
 			}
-			this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
+
+			this.char_sprites[i].make_vis();
+
+			if (this.num_to_str[i] == 'K') {
+				this.char_sprites[i].set_texture('tinycrown.png');
+				
+			} else if (this.num_to_str[i] == 'L') this.char_sprites[i].set_texture('tinyheart.png');
+			 else if (this.num_to_str[i] == '.') this.char_sprites[i].set_texture('cover_minimap.png');
+			else this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
 		}
 
-		
+		if (this.char_sprites.length == 2) this.char_sprites[2].hide();
 	},
 
 	str_len: 1,
@@ -117,6 +134,7 @@ CounterClass = Class.extend({
 	update_pos : function (x_start,y_start,w,h) {
 
 		if (this.str_len == 2) x_start = x_start - 10;
+		if (this.str_len == 3) x_start = x_start - 13;
 
 		this.pos.x = x_start;
 		this.pos.y = y_start;
@@ -129,6 +147,7 @@ CounterClass = Class.extend({
 		for(var i = 0; i < this.char_sprites.length; i++) {
 
 			if (this.str_len == 1 && i == 1) break; 
+			if (this.str_len == 2 && i == 2) break; 
 
 			this.char_sprites[i].update_pos(x,y + 16);
 
@@ -673,7 +692,76 @@ StarRatingClass = Class.extend({
 
 });
 
+MultiToggleClass = Class.extend({
+	x: 0,
+	y: 0,
 
+	code: 0,
+	
+	sprite_obj: null,
+
+	button_sprite: null,
+
+	layer: 0,
+
+	init: function() {
+		//this.button_shadow_sprite = new SpriteClass();
+		this.button_sprite = new SpriteClass();
+		this.sprite_obj = new SpriteClass();
+	},
+
+	set_scale: function(scale) {
+		this.sprite_obj.set_scale(scale);
+	},
+
+	make_vis: function() {
+		this.button_sprite.make_vis();
+		//this.button_shadow_sprite.make_vis();
+		this.sprite_obj.make_vis();
+	},
+
+	hide: function() {
+		this.button_sprite.hide();
+		//this.button_shadow_sprite.hide();
+		this.sprite_obj.hide();
+	},
+
+	setup_sprite: function(name,layer) {
+		this.layer = layer;
+		//this.button_shadow_sprite.setup_sprite("button_shadow.png",layer);
+		this.button_sprite.setup_sprite("button_small.png",layer);
+		this.sprite_obj.setup_sprite(name,layer);
+
+		this.toggle();
+	},
+
+	horiz: true,
+
+	update_pos: function(x,y) {
+		this.make_vis();
+		this.x = x;
+		this.y = y;
+		//this.button_shadow_sprite.update_pos(x + 6,y + 6);
+		this.button_sprite.update_pos(x,y);
+		if (this.horiz == true) this.sprite_obj.update_pos(x + 52,y);
+		else this.sprite_obj.update_pos(x,y + 38);
+	},
+
+	toggled: -1,	// -1, 0, 1
+
+	toggle: function() {
+		
+		this.toggled++;
+		if (this.toggled == 2) this.toggled = -1;
+		
+		//this.toggled = -this.toggled;
+		if (this.toggled == 1) this.button_sprite.set_texture("button_small_on.png",this.layer);
+		else if (this.toggled == -1) this.button_sprite.set_texture("button_small.png",this.layer);
+		else this.button_sprite.set_texture("button_small_half.png",this.layer);
+		
+		
+	}
+});
 
 ToggleClass = Class.extend({
 
@@ -770,6 +858,7 @@ BitmapClass = Class.extend({
 	
 	w: 0,
 	h: 0,
+	layer: 0,
 
 	x: 0,
 	y: 0,
@@ -783,19 +872,22 @@ BitmapClass = Class.extend({
 
 	init: function(layer, w, h) {
 
+
 		if (mini_wall_sprite == null) {
 			mini_wall_sprite = game.add.sprite(-999,-999,'atlas_blocks','wall_minimap.png');
 			mini_cover_sprite = game.add.sprite(-999,-999,'atlas_blocks','cover_minimap.png');
 			mini_heart_sprite = game.add.sprite(-999,-999,'atlas_blocks','heart_minimap.png');
 			mini_eye_sprite = game.add.sprite(-999,-999,'atlas_blocks','eye_minimap.png');
 			mini_joiner_sprite = game.add.sprite(-999,-999,'atlas_blocks','joiner_minimap.png');
+			
 		}
 
-		//this.bitmapdata = game.add.bitmapData(w, h);
-		this.bitmapdata = game.add.bitmapData(100, 100);
+		this.bitmapdata = game.add.bitmapData(w, h);
+		//this.bitmapdata = game.add.bitmapData(100, 100); 
 
 		//http://examples.phaser.io/_site/view_full.html?d=display&f=render%20texture%20trail.js&t=render%20texture%20trail&phaser_version=v2.0.7&
-		this.rendertexture = game.add.renderTexture(100, 100);
+		//this.rendertexture = game.add.renderTexture(100, 100);
+		this.rendertexture = game.add.renderTexture(w, h);
 		this.rendertexturesprite = game.add.sprite(0,0,this.rendertexture);
 
 		
@@ -808,16 +900,17 @@ BitmapClass = Class.extend({
 
 		this.image = game.add.sprite(0, 0, this.bitmapdata);
 
-		//this.w = w;
-		//this.h = h;
+		this.w = w;
+		this.h = h;
+		this.layer = layer;
 
 
-		if (layer == Types.Layer.GAME) game_group.add(this.bitmapdata);		// game_container
-		else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.bitmapdata);   // options_menu_container
+		if (layer == Types.Layer.GAME) game_group.add(this.image);		// game_container
+		else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.image);   // options_menu_container
 		else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.image);  // game_menu_container
-		else if(layer == Types.Layer.HUD) menu_group.add(this.bitmapdata);	// menu_container
-		else if(layer == Types.Layer.TILE) tile_group.add(this.bitmapdata);	// tile_container
-		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.bitmapdata);    // background_container
+		else if(layer == Types.Layer.HUD) menu_group.add(this.image);	// menu_container
+		else if(layer == Types.Layer.TILE) tile_group.add(this.image);	// tile_container
+		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.image);    // background_container
 
 		
 
@@ -834,6 +927,77 @@ BitmapClass = Class.extend({
 		
 	},
 
+	hide : function() {
+		this.bitmapdata.destroy();
+		this.image.destroy();
+		this.rendertexture.destroy();
+		this.rendertexturesprite.destroy();
+	},
+
+	make_vis : function () {
+
+		if (this.bitmapdate != null) return;
+
+		this.bitmapdata = game.add.bitmapData(this.w, this.h);
+		this.rendertexture = game.add.renderTexture(this.w, this.h);
+		this.rendertexturesprite = game.add.sprite(0,0,this.rendertexture);
+
+		this.bitmapdata.update();
+
+		this.image = game.add.sprite(0, 0, this.bitmapdata);
+
+
+		if (this.layer == Types.Layer.GAME) game_group.add(this.image);		// game_container
+		else if(this.layer == Types.Layer.POP_MENU) options_menu_group.add(this.image);   // options_menu_container
+		else if(this.layer == Types.Layer.GAME_MENU) game_menu_group.add(this.image);  // game_menu_container
+		else if(this.layer == Types.Layer.HUD) menu_group.add(this.image);	// menu_container
+		else if(this.layer == Types.Layer.TILE) tile_group.add(this.image);	// tile_container
+		else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.image);    // background_container
+	},
+
+	draw_rect : function (x, y, w, h, colour) {
+
+		
+		this.bitmapdata.fillStyle = colour;
+		this.bitmapdata.rect(x, y, w, h, colour); 
+		return;
+
+		if (using_phaser == true) {
+
+			var graphics_obj = game.add.graphics(x,y);
+			this.bitmapdata.ctx.add(graphics_obj);
+
+
+
+			graphics_obj.beginFill(colour);
+			graphics_obj.lineStyle(0, colour, 0);
+			graphics_obj.moveTo(x,y);
+    			graphics_obj.lineTo(x + w, y);
+    			graphics_obj.lineTo(x + w, y + h);
+    			graphics_obj.lineTo(x, y + h);
+			graphics_obj.lineTo(x, y);
+			graphics_obj.endFill();
+
+		} else {
+			var graphics = new PIXI.Graphics();
+			graphics.beginFill(colour);
+			graphics.drawRect(x, y,w, h);
+			this.bitmapdata.ctx.add(graphics);
+
+
+
+		}
+		return;
+
+		//this.bitmapdata.ctx.fillStyle = colour;
+		//this.bitmapdata.ctx.rect(x, y, w, h, colour); 
+		
+		this.bitmapdata.ctx.beginPath();
+		this.bitmapdata.ctx.rect(x, y, w, h);
+		//this.bitmapdata.ctx.fillStyle = colour;
+		this.bitmapdata.ctx.fill();
+	},
+
 	// currently assuming this is only used for minimaps in the level selection
 	add_tile : function(x,y, code) {
 
@@ -843,9 +1007,9 @@ BitmapClass = Class.extend({
 		this.last_tile_addx = x;
 		this.last_tile_addy = y;
 
-		console.log('this.last_tile_addx ' + this.last_tile_addx);
+		//console.log('this.last_tile_addx ' + this.last_tile_addx);
 
-		//console.log('spritesheet add_tile ' + code + ' x ' + x + ' y ' + y);
+		////console.log('spritesheet add_tile ' + code + ' x ' + x + ' y ' + y);
 		
 		//this.bitmapdata.rect(3, 7, 22, 22, '#ee0000'); 
 
@@ -881,7 +1045,7 @@ BitmapClass = Class.extend({
 
 		//this.rendertexture.rect(x*10, y*10, 10, 10, colour);
 
-		console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
+		//console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
 
 	},
 
@@ -891,7 +1055,7 @@ BitmapClass = Class.extend({
 
 	add_a_rect : function () {
 		
-		console.log('blue rect added and bitmapdata updated');
+		//console.log('blue rect added and bitmapdata updated');
 		this.bitmapdata.rect(0, 0, 20, 10, '#0000FF');
 		this.bitmapdata.update();
 	},
@@ -914,6 +1078,8 @@ BitmapClass = Class.extend({
 			} } // for x for y
 	},
 
+	
+
 	update_pos : function (x, y) {
 
 		tile_group.cache_as_bitmap(false);// false;
@@ -934,7 +1100,7 @@ BitmapClass = Class.extend({
 		//this.image = game.add.sprite(0, 0, this.bitmapdata);
 
 		
-		console.log('butmap update pos ' + x + ' ' + y);
+		//console.log('butmap update pos ' + x + ' ' + y);
 
 		
 		
@@ -958,7 +1124,7 @@ BitmapClass = Class.extend({
 	
 
 	fill : function(colour_) {
-		//console.log('FILL');
+		////console.log('FILL');
 		this.bitmapdata.ctx.rect(0, 0, this.w, this.h);	
 		this.bitmapdata.ctx.fillStyle = colour_;//'#b2ddc8';
         	this.bitmapdata.ctx.fill();
@@ -1088,6 +1254,106 @@ LayerClass = Class.extend({
 
 		}
 	}
+
+});
+
+SplashClass = Class.extend({
+	phasersprite: null,
+	pixisprite: null,
+
+	init: function(x, y) {
+		if (using_phaser == true) {
+
+			this.phasersprite = game.add.sprite(x, y, 'titlesplash');
+			this.phasersprite.anchor.setTo(0.5,0.5);
+
+			game_menu_group.add(this.phasersprite);  // game_menu_container
+		} else {
+			this.pixisprite = new PIXI.Sprite.fromImage('assets/title2.png');
+			this.pixisprite.anchor.x = 0.5;
+			this.pixisprite.anchor.y = 0.5;
+			this.pixisprite.visible = true;
+
+			game_menu_group.add(this.pixisprite);  // game_menu_container
+
+		}
+	},
+
+	make_vis: function() {
+
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
+
+		if (using_phaser == true) {
+			this.phasersprite.revive();
+			this.phasersprite.visible = true;
+		} else {
+			this.pixisprite.visible = true;
+			//this.pixisprite.alpha = 1;
+			
+		}
+
+		
+
+		
+	},
+
+	hide: function() { 
+
+		
+
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;		
+
+		if (using_phaser == true) {
+			this.phasersprite.visible = false;
+			this.phasersprite.kill();
+		} else {
+			this.pixisprite.visible = false;
+			//this.pixisprite.rotation = 0;
+		}
+	},
+
+	scale: function(xscale, yscale) {
+
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
+
+		if (using_phaser == true) {
+			this.phasersprite.scale.setTo(xscale, yscale);
+		} else {
+			//this.pixisprite.scaleMode = PIXI.SCALE_MODES.NEAREST;
+			//this.pixisprite.scale.set(xscale,yscale);
+		}
+	},
+
+	update_pos: function(x,y) {
+
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
+
+		this.x = x;
+		this.y = y;
+
+		if (using_phaser == true) {
+			this.phasersprite.position.x = x;
+			this.phasersprite.position.y = y;
+		} else {
+			
+		
+			this.pixisprite.position.x = x;
+			this.pixisprite.position.y = y;
+
+			//this.pixisprite.rotation = 0;
+			
+
+		}
+		
+	},
 
 });
 
