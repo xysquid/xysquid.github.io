@@ -610,8 +610,9 @@ if(location.hostname == "www.zblip.com"){
 if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
 	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 }
-//MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+//
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
 
