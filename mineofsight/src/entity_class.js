@@ -235,6 +235,9 @@ OnFlagEffect = Class.extend({
 	sprite_left: null,
 	sprite_right: null,
 
+	grow_circle: null,
+	big_circle: null,
+
 	timer: 0,
 
 	init : function (game_state) {
@@ -254,6 +257,13 @@ OnFlagEffect = Class.extend({
 		this.sprite_down.hide();
 		this.sprite_left.hide();
 		this.sprite_right.hide();
+
+		this.big_circle = new CircleClass(Types.Layer.HUD, "0xD94699", this.game_state.tile_size*1.25, false);  // layer, colour, radius, filled
+
+		this.grow_circle = new CircleClass(Types.Layer.HUD, "0xD94699", 1, true);  // layer, colour, radius, filled
+		
+		this.big_circle.update_pos(-999,-999);
+		this.grow_circle.update_pos(-999,-999);
 	},
 
 	x_start: 0,
@@ -262,14 +272,31 @@ OnFlagEffect = Class.extend({
 	x_off: 0,
 	y_off: 0,
 
-	go : function (xtile, ytile) {
-		this.timer = 15;
+	timer_max: 15,
+
+	go : function (xtile, ytile, timerset) {
+
+		if (g_hold_to_flag == false && g_click_to_dig == false) return;
+		if (g_click_to_dig == false) return;
+		if (g_hold_to_flag == false) return;
+
+		if (xtile < 0 || ytile < 0 ||
+		    xtile >= this.game_state.grid_w || ytile >= this.game_state.grid_h) return;
+
+		if (this.game_state.blocks[this.game_state.tiles[xtile][ytile]].covered_up == false) return;
+
+		this.timer = timerset;
+		this.timer_max = timerset;
 
 		var x = xtile*this.game_state.tile_size + 0.5*this.game_state.tile_size;
 		var y = ytile*this.game_state.tile_size + 0.5*this.game_state.tile_size;
 
 		this.x_start = x;
 		this.y_start = y;
+
+		this.pop_scale = 1;
+
+		return;
 
 		this.sprite_up.update_pos(x, y);
 		this.sprite_down.update_pos(x, y);
@@ -282,23 +309,69 @@ OnFlagEffect = Class.extend({
 		this.sprite_right.make_vis();
 	},
 
+	
+
+	
+
+	cancel : function() {
+		this.timer = -99;
+		this.big_circle.update_pos(-999,-999);
+		this.grow_circle.update_pos(-999,-999);
+	},
+
+	radius: 1,
+	pop_scale: 1,
+
 	draw : function () {
-		if (this.timer <= 0) return;
+		if (this.timer <= -25) return;
 		this.timer--;
+
+		if (this.timer == 8) {
+
+			this.big_circle.update_pos(this.x_start, this.y_start);
+			this.grow_circle.update_pos(this.x_start, this.y_start);
+
+			this.grow_circle.set_scale(1,1);
+			this.big_circle.set_scale(1,1);
+		}
 
 		var timeleft = 15 - this.timer;
 		var dist_ = 60 - this.timer*(60/15);
 		var vel = 60 - 0.3*dist_;
 		dist_ += vel;
 		var dist = 15 - this.timer;
-		dist = dist*3;
-		
-		this.sprite_up.update_pos(this.x_start, this.y_start - dist_);
-		this.sprite_down.update_pos(this.x_start, this.y_start + dist_);
-		this.sprite_left.update_pos(this.x_start - dist, this.y_start);
-		this.sprite_right.update_pos(this.x_start + dist, this.y_start);
+		dist = dist;
 
-		if (this.timer == 0) {
+		this.radius = this.game_state.tile_size*1.5 - this.timer*(this.game_state.tile_size*1.5/this.timer_max);
+
+		var scale_ = Math.max(0, this.radius);
+
+		if (this.timer > 0) this.grow_circle.set_scale(scale_, scale_);
+
+		if (this.timer < 0) {
+			this.grow_circle.update_pos(-999,-999);
+			this.big_circle.update_pos(this.x_start, this.y_start);
+
+			var time_after = - this.timer;
+			var vel_out = 5 - time_after;
+			this.pop_scale += vel_out*0.01;
+			this.pop_scale = Math.max(1, this.pop_scale);
+	
+			
+			
+			this.big_circle.set_scale(this.pop_scale, this.pop_scale);
+
+		}
+		
+		//this.sprite_up.update_pos(this.x_start, this.y_start - dist_);
+		//this.sprite_down.update_pos(this.x_start, this.y_start + dist_);
+		//this.sprite_left.update_pos(this.x_start - dist, this.y_start);
+		//this.sprite_right.update_pos(this.x_start + dist, this.y_start);
+
+		if (this.timer <= -20) {
+			this.big_circle.update_pos(-999,-999);
+			this.grow_circle.update_pos(-999,-999);
+
 			this.sprite_up.hide();
 			this.sprite_down.hide();
 			this.sprite_left.hide();
@@ -1376,7 +1449,7 @@ InfoClass = Class.extend({
 
 	hint: 0,
 
-	set_hint_type: function(hint_) {
+	set_hint_type: function(hint_, x, y) {
 		this.hint = hint_;
 		if (hint_ == 1) {
 				this.block_obj.set_texture('hand.png');
@@ -1384,6 +1457,7 @@ InfoClass = Class.extend({
 			} else if (hint_ == 2) {
 				this.block_obj.set_texture('eye.png');
 				this.text.change_text(g_get_text("eye"));
+				//this.text.change_text("           MINESWEEPER'S WEIRD COUSIN");
 			} else if (hint_ == 3) {
 				this.block_obj.set_texture('eyeplustouch.png');
 				this.text.change_text("      The number of mines seen PLUS the number of mines touched, by this tile. So any adjacent mines will be counted 2X");
@@ -1407,7 +1481,18 @@ InfoClass = Class.extend({
 				this.text.change_text(g_get_text("ghost"));
 			} else if (hint_ == 32) {
 				this.block_obj.set_texture('sharetut.png');
-				this.text.change_text("	    Number of mines SHARED by both/all of the connected hints");
+				this.text.change_text("	    Number of mines SHARED by both of the connected hints");
+
+				if (this.game_state.blocks[this.game_state.tiles[x][y]].shared_crown == true) {
+					this.block_obj.set_texture('sharecrowntut.png');
+					this.text.change_text("	    Number of mines that are IN THE LARGEST SEQUENCE(S), as seen by the crown, that are SHARED by the other hint");
+				}
+
+				if (this.game_state.blocks[this.game_state.tiles[x][y]].shared_eyebracket == true) {
+					this.block_obj.set_texture('sharetutbracket.png');
+					this.text.change_text("	    Number of GROUPS, seen by the bracket-eye, SHARED with the other hint. The other hint only needs to see part of a group.");
+				}
+
 			} else if (hint_ == 49) {
 				this.block_obj.set_texture('zap.png');
 				this.text.change_text("	    Number of mines reachable via mine-to-mine contact");
@@ -1466,7 +1551,7 @@ InfoClass = Class.extend({
 			
 		} else if (this.game_state.blocks[this.game_state.tiles[x][y]].sharesquare == true) {
 			var hint_ = 32;
-			this.set_hint_type(hint_);
+			this.set_hint_type(hint_, x, y);
 		} else {
 			this.hidden = true;
 		}
@@ -2102,6 +2187,7 @@ BlockClass = Class.extend({
 
 	shared_crown: false,
 	shared_heart: false,
+	shared_eyebracket: false,
 
 	calc_sharesquare: function() {
 
@@ -2110,8 +2196,9 @@ BlockClass = Class.extend({
 
 		this.shared_crown = false;
 		this.shared_heart = false;
+		this.shared_eyebracket = false;
 
-		console.log('calc sharesquare at : this.x ' + this.x + ' this.y ' + this.y);
+		//console.log('calc sharesquare at : this.x ' + this.x + ' this.y ' + this.y);
 
 		for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
 
@@ -2127,10 +2214,14 @@ BlockClass = Class.extend({
 
 			if (this.game_state.blocks[b].preset_hint_type == 12) this.shared_crown = true;
 			else if (this.game_state.blocks[b].preset_hint_type == 5) this.shared_heart = true;
-
+			else if (this.game_state.blocks[b].preset_hint_type == 13) {
+				// this.game_state.blocks[b].which_eyebracket_groups_do_i_see();
+				this.game_state.calc_sequence_lengths();
+				this.shared_eyebracket = true;
+			}
 			num_hints_in_group++;
 
-			console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
+			//console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
 			//console.dir(this.game_state.blocks[b].x_in_range);
 			//console.dir(this.game_state.blocks[b].y_in_range);
 
@@ -2143,16 +2234,16 @@ BlockClass = Class.extend({
 			
 		}
 
-		console.log('this.share_groups.length ' + this.share_groups.length);
-		console.log('this.share_groups[0] ' + this.share_groups[0]);
-		console.log('num_hints_in_group ' + num_hints_in_group);
-		console.log('all_the_mines.length ' + all_the_mines.length);
+		//console.log('this.share_groups.length ' + this.share_groups.length);
+		//console.log('this.share_groups[0] ' + this.share_groups[0]);
+		//console.log('num_hints_in_group ' + num_hints_in_group);
+		//console.log('all_the_mines.length ' + all_the_mines.length);
 		//console.dir(all_the_mines);
 
-		console.log('this.share_connect_up ' + this.share_connect_up);
-		console.log('this.share_connect_left ' + this.share_connect_left);
-		console.log('this.share_connect_down ' + this.share_connect_down);
-		console.log('this.share_connect_right ' + this.share_connect_right);
+		//console.log('this.share_connect_up ' + this.share_connect_up);
+		//console.log('this.share_connect_left ' + this.share_connect_left);
+		//console.log('this.share_connect_down ' + this.share_connect_down);
+		//console.log('this.share_connect_right ' + this.share_connect_right);
 
 		if (num_hints_in_group <= 1) {
 			// error !!!
@@ -2164,8 +2255,13 @@ BlockClass = Class.extend({
 
 		var shared = 0;
 
+		var horiz_eyebracket_groups_counted = [];	// ONLY IF one hint is eyebracket
+		var vert_eyebracket_groups_counted = [];	// ONLY IF one hint is eyebracket
+
+		// look for mines in all_the_mines that are counted 2x
 		for (var m = 0; m < all_the_mines.length; m++) {
 			var num_of_m = 1;
+			
 			
 			for (var n = m + 1; n < all_the_mines.length; n++) {
 				if (all_the_mines[m].x == all_the_mines[n].x &&
@@ -2177,7 +2273,48 @@ BlockClass = Class.extend({
 			// how many mines in this tiile? is it a double? usually just 1
 			var multi_ = this.game_state.get_num_mines(all_the_mines[m].x, all_the_mines[m].y);
 
-			if (num_of_m == num_hints_in_group) shared += multi_;
+			if (num_of_m == num_hints_in_group && 
+			    this.shared_eyebracket == true) {
+
+				multi_ = 0;
+				var counted_v_group = 0;
+				var counted_h_group = 0;
+				var b = this.game_state.tiles[all_the_mines[m].x][all_the_mines[m].y];
+				for (var j = 0; j < horiz_eyebracket_groups_counted.length; j++) {
+					if (this.game_state.blocks[b].my_horiz_seq_id == horiz_eyebracket_groups_counted[j]) {
+						counted_h_group = 1;
+					} 
+				}
+				for (var j = 0; j < vert_eyebracket_groups_counted.length; j++) {
+					if (this.game_state.blocks[b].my_vert_seq_id == vert_eyebracket_groups_counted[j]) {
+						
+						counted_v_group = 1;
+					} 
+				}
+				
+				// this is working, but i'm not 100% clear if its correct
+				if (counted_h_group == 0 && counted_v_group == 0) {
+					//alert('counting horiz group ' + this.game_state.blocks[b].my_horiz_seq_id + ' and vert group ' + this.game_state.blocks[b].my_vert_seq_id);
+					horiz_eyebracket_groups_counted.push(this.game_state.blocks[b].my_horiz_seq_id);
+					vert_eyebracket_groups_counted.push(this.game_state.blocks[b].my_vert_seq_id);
+					multi_ = 1;
+				}
+
+			
+
+			}
+
+			if (num_of_m == num_hints_in_group) shared += multi_;		// shared++
+		}
+
+		// for eyebracket - a group is one unit
+		// how many groups (from the eyebracket persepective) are shared
+		// will result in subtracting the num of groups that are counted > 1
+		if (this.shared_eyebracket == true) {
+		
+			
+			
+			
 		}
 
 		this.sharesquare_num = shared;
@@ -2185,7 +2322,40 @@ BlockClass = Class.extend({
 		console.log('this.sharesquare_num ' + this.sharesquare_num);
 	},
 
-	
+	horiz_eyebracket_groups_seen: [],
+	vert_eyebracket_groups_seen: [],
+
+	which_eyebracket_groups_do_i_see : function () {
+		this.game_state.calc_sequence_lengths();
+
+		this.horiz_eyebracket_groups_seen = [];
+		this.vert_eyebracket_groups_seen = [];
+
+		for (var i = 0; i < this.x_in_range.length; i++) {
+			var x = this.x_in_range[i];
+			var y = this.y_in_range[i];
+			var b = this.game_state.tiles[x][y];
+			if (this.game_state.blocks[b].block_type != 2) continue;
+			if (x == this.x) {
+				// vert_eyebracket_groups_seen
+				var vert_id = this.game_state.blocks[b].my_vert_seq_id;
+				var present_ = 0;
+				for (var j = 0; j < this.vert_eyebracket_groups_seen.length; j++) {
+					if (this.vert_eyebracket_groups_seen[j] == vert_id) present_ = 1;
+				}
+				if (present_ == 0) this.vert_eyebracket_groups_seen.push(vert_id);
+			} else if (y == this.y) {
+				// horiz_eyebracket_groups_seen
+				var horiz_id = this.game_state.blocks[b].my_horiz_seq_id;
+				var present_ = 0;
+				for (var j = 0; j < this.horiz_eyebracket_groups_seen.length; j++) {
+					if (this.horiz_eyebracket_groups_seen[j] == horiz_id) present_ = 1;
+				}
+				if (present_ == 0) this.horiz_eyebracket_groups_seen.push(horiz_id);
+			}
+		}
+	},
+
 
 	show_sharesquare: function () {
 
@@ -2268,8 +2438,14 @@ BlockClass = Class.extend({
 			}
 
 			if (this.shared_crown == true) this.hint_eye_num_text.change_text(this.sharesquare_num.toString() + 'K');
+			else if (this.shared_eyebracket == true) this.hint_eye_num_text.change_text(this.sharesquare_num.toString() + 'B');
 			else if (this.shared_heart == true) this.hint_eye_num_text.change_text(this.sharesquare_num.toString() + 'L');
 			else this.hint_eye_num_text.change_text(this.sharesquare_num.toString());
+
+			if (this.shared_crown == true && this.shared_eyebracket == true) this.hint_eye_num_text.change_text('');
+
+			// NO eyebracket
+			if (this.shared_eyebracket == true) this.hint_eye_num_text.change_text('');
 
 			var text_x = this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size;
 			var text_y = this.y*this.game_state.tile_size + 0.25*this.game_state.tile_size;
@@ -3260,15 +3436,21 @@ BlockClass = Class.extend({
 
 	count_total_mine_contacts: function () {
 		var total_mine_contacts = 0;
-		for (var x = 0; x < this.game_state.grid_w - 1; x++) {
-			for (var y = 0; y < this.game_state.grid_h - 1; y++) {
-				if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 2 &&
+		for (var x = 0; x < this.game_state.grid_w; x++) {
+			for (var y = 0; y < this.game_state.grid_h; y++) {
+
+				if (x < this.game_state.grid_w - 1 &&
+				    this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 2 &&
 			    	    this.game_state.blocks[this.game_state.tiles[x + 1][y]].block_type == 2) total_mine_contacts++;
-				if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 2 &&
+
+				if (y < this.game_state.grid_h - 1 && 
+				    this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 2 &&
 			    	    this.game_state.blocks[this.game_state.tiles[x][y + 1]].block_type == 2) total_mine_contacts++;
 			}
 			
 		}
+
+		
 		return total_mine_contacts;
 		
 	},
@@ -3376,7 +3558,8 @@ BlockClass = Class.extend({
 	my_vert_seq_length: 0,
 	my_horiz_seq_length: 0,
 
-	
+	my_vert_seq_id: 0,
+	my_horiz_seq_id: 0,
 
 	can_i_actually_see: function (x, y) {
 
@@ -3389,7 +3572,7 @@ BlockClass = Class.extend({
 		} else if (this.preset_hint_type == 12) {
 			// crown
 			
-			this.game_state.calc_sequence_lengths();
+			this.game_state.calc_sequence_lengths();	// will only execute one per level after a reset
 
 			//alert('crown at x: ' + x + ', y: ' + y + ',this.stored_hint_num: ' + this.stored_hint_num);
 

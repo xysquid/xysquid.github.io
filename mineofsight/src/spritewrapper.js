@@ -81,6 +81,11 @@ CounterClass = Class.extend({
 		this.char_sprites[2].hide();
 		this.char_sprites[1].hide();
 
+		if (this.str_len == 0) {
+			this.char_sprites[0].hide();
+			return;
+		} 
+
 		for(var i = 0; i < this.char_sprites.length; i++) {
 
 
@@ -97,7 +102,8 @@ CounterClass = Class.extend({
 				this.char_sprites[i].set_texture('tinycrown.png');
 				
 			} else if (this.num_to_str[i] == 'L') this.char_sprites[i].set_texture('tinyheart.png');
-			 else if (this.num_to_str[i] == '.') this.char_sprites[i].set_texture('cover_minimap.png');
+			else if (this.num_to_str[i] == 'B') this.char_sprites[i].set_texture('tinybracket.png');
+			else if (this.num_to_str[i] == '.') this.char_sprites[i].set_texture('cover_minimap.png');
 			else this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
 		}
 
@@ -132,6 +138,13 @@ CounterClass = Class.extend({
 	},
 
 	update_pos : function (x_start,y_start,w,h) {
+
+		if (this.str_len == 0) {
+			this.char_sprites[0].hide();
+			this.char_sprites[1].hide();	
+			this.char_sprites[2].hide();
+			return;
+		} 
 
 		if (this.str_len == 2) x_start = x_start - 10;
 		if (this.str_len == 3) x_start = x_start - 13;
@@ -1354,6 +1367,96 @@ SplashClass = Class.extend({
 		}
 		
 	},
+
+});
+
+CircleClass = Class.extend({
+	phasersprite: null,
+	pixisprite: null,
+	layer: 0,
+	filled: true,
+
+	init: function(layer, colour, radius, filled) {
+		if (using_phaser == true) {
+			radius = radius*1.25;
+			this.phasersprite = game.add.graphics(0,0);
+
+			if (filled == false) this.phasersprite.lineStyle(8, colour);
+			else this.phasersprite.beginFill(colour, 1);  // colour, alpha
+
+			this.phasersprite.drawCircle(0, 0, radius);
+			this.phasersprite.endFill();
+			
+
+			// drawCircle(x, y, diameter)
+
+			if (layer == Types.Layer.GAME) game_group.add(this.phasersprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.phasersprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.phasersprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+			
+		} else {
+			this.pixisprite = new PIXI.Graphics();
+			if (filled == true) this.pixisprite.beginFill(colour);
+			if (filled == false) this.pixisprite.lineStyle( 8 , colour);
+			
+			this.pixisprite.drawCircle(0, 0, radius); // the circle is at 0,0 rel to pixisprite
+			this.pixisprite.endFill();
+
+			if (layer == Types.Layer.GAME) game_group.add(this.pixisprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.pixisprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.pixisprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.pixisprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.pixisprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.pixisprite);    // background_container
+
+		}
+	},
+
+	set_colour: function() {
+
+	},
+
+	set_scale: function(x, y) {
+		if (using_phaser == true) {
+			this.phasersprite.scale.setTo(x, y);
+			//this.phasersprite.scale = x;
+		} else {
+			this.pixisprite.scale.x = x;
+			this.pixisprite.scale.y = y;
+		}
+	},
+
+	update_pos: function(x, y) {
+		if (using_phaser == true) {
+			//this.phasersprite.moveTo(x, y);
+			this.phasersprite.position.x = x;
+			this.phasersprite.position.y = y;
+		} else {
+			this.pixisprite.position.x = x;
+			this.pixisprite.position.y = y;
+		}
+	},
+
+	make_vis: function() {
+		if (using_phaser == true) {
+			
+		} else {
+			
+		}
+	},
+
+	hide: function () {
+		if (using_phaser == true) {
+			//this.phasersprite.moveTo(-999, -999);
+			this.update_pos(-999,-999);
+		} else {
+			this.pixisprite.position.x = -999;
+			this.pixisprite.position.y = -999;
+		}
+	}
 
 });
 

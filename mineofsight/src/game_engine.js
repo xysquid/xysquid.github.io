@@ -112,7 +112,7 @@ g_texts = {
 		"heart"	   : "      Like the eye, but only counts LONELY mines. Lonely mines have no other mines in the 4 tiles around them.",
 		"compass"	   : "      Number of DIRECTIONS in which mines are seen. Same range as the eye.",
 		"crown"	   : "      BIGGEST unbroken sequence of mines seen. Same range as the eye.",
-		"eyebracket"	   : "      How many unbroken GROUPS of mines seen. Same range as the eye.",
+		"eyebracket"	   : "       How many unbroken GROUPS of mines seen, from this position, separated by gaps. Same range as the eye.",
 		"ghost"	   : "      Counts EMPTY tiles. Same range as the eye. Vision is BLOCKED BY MINES AND WALLS.",
 
 
