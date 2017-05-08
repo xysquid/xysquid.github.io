@@ -180,7 +180,7 @@
 
 <div id = 'pbar' >
 	
-	<div id = 'splashdiv' align = "center">
+	<div id = 'splashdiv' align = "center" width ="100%" overflow ="hidden">
 		<img id = 'splash' src = 'assets/title2.png'>
 	</div>
 	<progress id='prog_bar' value = '0' max='100'></progress>
@@ -192,12 +192,14 @@
 
     
 
+var using_pixi = false;
+var using_phaser = true;
 
-var game;
+var game;	// used by phaser
 var assets_loaded = false;
 var scriptList = [
 
-		"phaser-slim.min.js",
+		
 		//"phaser.min.js",
 
 		//"playtomic.js",
@@ -205,7 +207,7 @@ var scriptList = [
 		//"src/boot.js",
 		//"src/preload.js",
 		//"src/gametitle.js",		
-		"src/thegame.js",
+		//"src/thegame.js",
 
 		//"assets/blocks.png",
 		//"assets/blocks.json",
@@ -218,13 +220,36 @@ var scriptList = [
 		//"sound_manager.js",
 	];
 
+if (using_pixi == true) {
+	scriptList.push("pixi.min.js");
+	scriptList.push("src/pixigame.js");
+} else {
+	scriptList.push("phaser-slim.min.js");
+	scriptList.push("src/thegame.js");
+}
 // https://cookieconsent.insites.com/download/
 
 //if (location.hostname == "www.kongregate.com") scriptList.push("http://www.kongregate.com/javascripts/kongregate_api.js");
 
 var on_kong = 0;
 
-if (location.hostname == "game274082.konggames.com") on_kong = 1;	// not www.kongregate.com 
+var browser_url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href;
+
+browser_url = browser_url.split("/")[2];
+
+if (location.hostname == "game274082.konggames.com" ||
+	browser_url == "www.kongregate.com" ||
+	browser_url == "http://www.kongregate.com/games/ZBlip/mine-of-sight" ||
+	browser_url == "http://www.kongregate.com/games/ZBlip/mine-of-sight/" ||
+	browser_url == "http://www.kongregate.com/games/ZBlip/mine-of-sight_preview/" ||
+	browser_url == "www.kongregate.com/games/ZBlip/mine-of-sight/" ||
+	browser_url == "www.kongregate.com/games/ZBlip/mine-of-sight") on_kong = 1;	// not www.kongregate.com 
+
+console.log('browser url ' + browser_url);
+
+
 
 if (on_kong == 1) scriptList.push("https://www.kongregate.com/javascripts/kongregate_api.js");
 
@@ -239,30 +264,61 @@ g_autoload_level = g_autoload_level.split("=")[1];
 
 if (on_kong == 1 || location.hostname != "www.zblip.com") g_autoload_level = "";
 
+console.log('g_autoload_level' + g_autoload_level);
 
 var kongregate;
 var kong_token;
 
 
+using_cocoon_js = false;
+cordova_ready = false;
+on_cordova_ready = function() {
+	cordova_ready = true;
+};
+
+if (using_cocoon_js == true) {
+	scriptList.push("cocoon.min.js");
+	scriptList.push("cordova.js");
+	document.addEventListener('deviceready', on_cordova_ready, false);
+
+}
+
 //alert('<!--<meta name="viewport" content="width=device-width">-->');
 
-var pBar = document.getElementById('prog_bar');
+if (using_cocoon_js == false) var pBar = document.getElementById('prog_bar');
+else var pBar = {value: 0};
 pBar.value += 20; 
 
 
 window.onload = function () {
-	load_script_assets(scriptList, start_phaser);
+	if (using_pixi == true) load_script_assets(scriptList, start_pixi);
+	else load_script_assets(scriptList, start_phaser);
+
+	pBar.value += 10; 
+};
+
+start_pixi = function () {
+	pBar.value += 10; 
+
+	// pixi is for cocoon, so not checking kongregate
+
+	setup_layers();
+
+	loadpixiimages();
+	
 };
 
 start_phaser = function() {
 
-	pBar.value += 20; 
+	pBar.value += 10; 
+
+	
 
 			
 	if (on_kong == 1) {
-	// Load the API
+		// Load the API
 	
-	kongregateAPI.loadAPI(function(){
+		kongregateAPI.loadAPI(function(){
 		
 			// Callback function
 			// Set the global kongregate API object
@@ -282,10 +338,16 @@ start_phaser = function() {
 
 	}
 
+	var phaser_type = Phaser.CANVAS;
+
+	if (using_cocoon_js == true) phaser_type = Phaser.AUTO;	// using_cocoon lives in game_engine.js
+
+
 	// window.devicePixelRatio
 
 	game = new Phaser.Game(document.documentElement.clientWidth, 
-				document.documentElement.clientHeight, Phaser.AUTO, "game", {
+			       document.documentElement.clientHeight, 
+			       phaser_type, "game", {
     		create : function() {
         		this.game.stage.backgroundColor = "0x1F1129";
 		}
@@ -320,7 +382,7 @@ start_phaser = function() {
 				
 				game.state.start("Boot");
 
-
+				
 				
 
 				
@@ -335,7 +397,11 @@ g_splash_parent = null;
 g_splash_image = null;
 
 remove_splash = function() {
-	 pBar.parentNode.removeChild(pBar);	// remove the progress bar
+
+	if (using_cocoon_js == false && pBar.parentNode != null) {
+	 	pBar.parentNode.removeChild(pBar);	// remove the progress bar
+	}
+
 			var splash = document.getElementById('splash');
 				if (splash != null) {
 					
@@ -367,7 +433,7 @@ var menu_scale_ratio = 1;
 
 var do_resize = function(e) {  
 
-	if (game == null) return;
+	//if (game == null) return;
 	if (play_screen_group == null) return;
 
 	// dips
@@ -422,9 +488,12 @@ var do_resize = function(e) {
 
 	// width = device-width will make the viewport stretch on orientation change
 
-	
-
-	
+	if (using_pixi == true && renderer != null) {
+		//this part resizes the canvas but keeps ratio the same
+    		//renderer.view.style.width = (screen_width) + "px";
+    		//renderer.view.style.height = (screen_height) + "px";
+		renderer.resize(screen_width,screen_height);
+	}
 
 	//game_menu_group.scale.set(ratio,ratio);
 	//options_menu_group.scale.set(menu_ratio,menu_ratio);
@@ -441,7 +510,7 @@ var do_resize = function(e) {
 	else ratio = Math.min(screen_width/w, screen_height/(11.5*60));
 
 
-	play_group.scale.set(ratio, ratio);
+	play_group.scale(ratio, ratio);//.set(ratio, ratio);
 
 	
 	var over_x = 0;//screen_width - (8*96);
@@ -453,7 +522,11 @@ var do_resize = function(e) {
 	if (over_x > 0) x_shift_screen = 0.5*over_x;
 	else x_shift_screen = 0;
 
-	play_group.position.set(x_shift_screen, 0);
+	var y_shift_screen = 0;
+
+	if (using_cocoon_js == true) y_shift_screen = 32;
+
+	play_group.set_pos(x_shift_screen, 0);//position.set(x_shift_screen, y_shift_screen);
 
 
 	//game.width = screen_width;		// what does this do??
@@ -461,12 +534,12 @@ var do_resize = function(e) {
 
 
  
-  	if (game.renderType === 1) {
+  	//if (game.renderType === 1) {
     		//game.renderer.resize(screen_width, screen_height);		// what does this do??
 
     		//Phaser.Canvas.setSmoothingEnabled(game.context, false);	// what does this do??
 
-  	}
+  	//}
 
 	//game.camera.setSize(screen_width, screen_height);	// what does this do??
 
@@ -476,7 +549,6 @@ var do_resize = function(e) {
 	// So I will just sort of mimic what the tile grid is doing
 	menu_ratio = ratio;
 
-	console.log('ratio ' + ratio);
 
 	var tot_ = screen_width + screen_height;
 	var max_len = Math.max(screen_width, screen_height);
@@ -485,10 +557,7 @@ var do_resize = function(e) {
 	
 	
 
-	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
-	// Basically just a small increase in scale if needed
-	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
-	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
+	
 
 	if (screen_width > screen_height) {
 		// screen_height shrink to --> 13.5*60
@@ -498,6 +567,11 @@ var do_resize = function(e) {
 		// screen_width shrink to --> 10*60
 		menu_ratio = screen_width/(7*60);
 	}
+
+	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
+	// Basically just a small increase in scale if needed
+	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
 
 	//menu_ratio = 1/menu_ratio;
 
@@ -509,8 +583,9 @@ var do_resize = function(e) {
 	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
 	// using width=100% seems to work ok
 
-	game_menu_group.scale.set(menu_ratio,menu_ratio);
-	options_menu_group.scale.set(menu_ratio,menu_ratio);
+	game_menu_group.scale(menu_ratio,menu_ratio);
+	// i think this should NOT change scale:
+	options_menu_group.scale(menu_ratio,menu_ratio);
 
 	screen_width = screen_width/menu_ratio;
 	screen_height = screen_height/menu_ratio;
@@ -545,6 +620,10 @@ else {
 }
 
 window.onresize = do_resize; 
+
+window.onorientationchange = function() {
+    		window.onresize();
+}
 
     </script>
 
