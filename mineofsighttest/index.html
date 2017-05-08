@@ -555,7 +555,10 @@ var do_resize = function(e) {
 	
 	// the corner menu tab should be ...
 	
-	
+	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
+	// Basically just a small increase in scale if needed
+	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
+	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
 
 	
 
@@ -568,10 +571,7 @@ var do_resize = function(e) {
 		menu_ratio = screen_width/(7*60);
 	}
 
-	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
-	// Basically just a small increase in scale if needed
-	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
-	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
+	
 
 	//menu_ratio = 1/menu_ratio;
 
