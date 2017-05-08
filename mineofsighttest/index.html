@@ -571,7 +571,20 @@ var do_resize = function(e) {
 		menu_ratio = screen_width/(7*60);
 	}
 
-	
+	// testing: delete this if its bad
+	if (screen_width > screen_height) {
+		// landscape
+		menu_ratio = 1;
+		
+		
+	} else {
+		// portrait
+		// we want the menu (250px wide) to take up 66% of screen_width
+		var aim = screen_width*0.66;
+		menu_ratio = aim/250;
+		//menu_ratio = screen_width/(7*60);
+		// menu_ratio = Math.min(screen_width/250, screen_height/250);
+	}
 
 	//menu_ratio = 1/menu_ratio;
 
