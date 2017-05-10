@@ -55,6 +55,8 @@ Types = {
 			HUD: 3,
 			POP_MENU: 4,
 			GAME_MENU: 5,
+			GAME_SCREEN: 6,
+			LEVEL_TEXT: 7,
 		},
 	
 	

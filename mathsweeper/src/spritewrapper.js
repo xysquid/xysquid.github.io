@@ -170,11 +170,37 @@ SquareClass = Class.extend({
 
 	set_scale: function(x, y) {
 		if (using_phaser == true) {
-			this.phasersprite.scale.setTo(x, y);
+			//this.phasersprite.scale(x, y);
 			//this.phasersprite.scale = x;
+			this.phasersprite.width *= x;
+			this.phasersprite.height *= y;
+			this.phasersprite.scale.x = x;
+			this.phasersprite.scale.y = y;
 		} else {
 			this.pixisprite.scale.x = x;
 			this.pixisprite.scale.y = y;
+		}
+	},
+
+	update_line_w : function (w) {
+		if (using_phaser == true) {
+			this.phasersprite.lineStyle(w, '0xffffff');
+		}
+	},
+
+	update_size : function(x, y, w, h) {
+		this.x = x;
+		this.y = y;
+		if (using_phaser == true) {
+			//this.phasersprite.scale.setTo(x,y,w,h);
+			//alert('before ' +this.phasersprite.bottomRight);
+			//this.phasersprite.bottomRight = new Phaser.Point(x + w, y + h);
+			//alert('after ' +this.phasersprite.bottomRight);
+			//this.phasersprite.topLeft = new Phaser.Point(x, y);
+			this.phasersprite.x = x;
+			this.phasersprite.y = y;
+			this.phasersprite.width = w;
+			this.phasersprite.height = h;
 		}
 	},
 
@@ -600,6 +626,8 @@ TextClass = Class.extend({
 		else if(this.layer == Types.Layer.HUD) menu_group.add(this.pixitext);
 		else if(this.layer == Types.Layer.TILE) tile_group.add(this.pixitext);
 		else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.GAME_SCREEN) game_screen_group.add(this.pixitext);
+		else if(this.layer == Types.Layer.LEVEL_TEXT) text_group.add(this.pixitext);
 
 		return;
 
@@ -1601,6 +1629,8 @@ SpriteClass = Class.extend({
 			else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
 			else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
 			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+			else if(this.layer == Types.Layer.GAME_SCREEN) game_screen_group.add(this.phasersprite);
+			else if(this.layer == Types.Layer.LEVEL_TEXT) text_group.add(this.phasersprite);
 
 		} else {
 			this.pixisprite = new PIXI.Sprite(g_textures[name]);
@@ -1614,7 +1644,8 @@ SpriteClass = Class.extend({
 			else if(layer == Types.Layer.HUD) menu_group.add(this.pixisprite);	// menu_container
 			else if(layer == Types.Layer.TILE) tile_group.add(this.pixisprite);	// tile_container
 			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.pixisprite);    // background_container
-
+			else if(this.layer == Types.Layer.GAME_SCREEN) game_screen_group.add(this.pixisprite);
+			else if(this.layer == Types.Layer.LEVEL_TEXT) text_group.add(this.pixisprite);
 
 		}
 
@@ -1848,7 +1879,9 @@ setup_layers = function () {
 		game_screen_group.add(play_group.layer);
 
 		game_menu_group = new LayerClass();//game.add.group();
-		
+
+		text_group = new LayerClass();//game.add.group();
+		game_screen_group.add(text_group.layer);
 
 		options_menu_group = new LayerClass();//game.add.group();
 		//options_menu_group.bringToTop();
