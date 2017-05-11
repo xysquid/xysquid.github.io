@@ -34,6 +34,7 @@ Types = {
 			GOTO_EDITOR: 42,
 			GOTO_COMMUNITY_LEVELS: 43,
 			GOTO_CREDITS: 44,
+			GOTO_NEG_MODE: 45,
 
 			NO_EVENT: 0,
 
@@ -530,6 +531,9 @@ MenuItems = [
 	//[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
 	//[1, Types.Events.GOTO_AUTOGEN, "MINES++","home_icon.png",],
 
+	[0, "CHALLENGE MODES"],
+	[1, Types.Events.GOTO_NEG_MODE, "NEGATIVE NUMS","home_icon.png",],
+
 ];
 
 if (using_cocoon_js == false) {
@@ -613,7 +617,7 @@ if(location.hostname == "www.zblip.com"){
 //MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
 if (using_cocoon_js == false) {
-	//MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","fblogo.png","https://www.facebook.com/mathsweeper"]);
 	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
 	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 }
@@ -1009,6 +1013,14 @@ BlipFrogMenuClass = Class.extend({
 		update_webfonts();
 	},
 
+	hurry_menu: function () {
+		// instantly set the containers in place
+		this.game_x = this.game_x_target;
+		this.menu_x = this.menu_x_target;
+		g_set_game_screen_x(this.game_x_target);
+		g_set_menu_screen_x(this.menu_x_target);
+	},
+
 	hide_all_menu_text: function() {
 		for (var i = 0; i < this.sprites_buttons.length; i++) {
 			this.menu_texts[i].update_pos(-999,-999);
@@ -1217,7 +1229,7 @@ BlipFrogMenuClass = Class.extend({
 				
 			this.menu_y += y*menu_ratio - this.mouse_down_y;
 
-			this.menu_y = Math.max(this.menu_y, (-this.menu_positions.menu_height - 32 + screen_height)*menu_ratio);
+			this.menu_y = Math.max(this.menu_y, (-this.menu_positions.menu_height - 32 + screen_height)*menu_ratio - 200);
 			this.menu_y = Math.min(0, this.menu_y);
 
 			this.mouse_down_y = y*menu_ratio;
@@ -1268,6 +1280,12 @@ BlipFrogMenuClass = Class.extend({
 			// lower_state?
 			//this.menu_selected = Types.Events.NEW_GAME;
 			this.game_engine.handle_events(0, 0, Types.Events.NEW_GAME);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_NEG_MODE) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_NEG_MODE);
 
 			this.pop_down();
 			
@@ -1497,6 +1515,16 @@ GameEngineClass = Class.extend({
 	handle_events: function(x, y, event_type) {
 
 		if (event_type == Types.Events.NEW_GAME) {
+			g_allow_negatives = false;
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			//this.change_state(new RestartGameStateClass(this, this.state_stack[1]));
+			//this.push_state(new RestartGameStateClass(this, this.state_stack[1]));
+			this.push_state(new GenerateRandStateClass(this, this.state_stack[1]));
+		} else if (event_type == Types.Events.GOTO_NEG_MODE) {
+			g_allow_negatives = true;
 			while(this.state_stack.length > 2) {
 				var state_ = this.state_stack.pop();
 				state_.cleanup();

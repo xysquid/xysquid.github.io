@@ -93,6 +93,8 @@ flip_wall_pattern = function (pattern) {
 
 };
 
+
+
 g_multi_sprite_cover = {
 	1: "bluetiletut.png",
 	2: "bluetile2.png",
@@ -105,6 +107,11 @@ g_multi_sprite_cover = {
 	9: "bluetile9.png",
 };
 
+g_multi_neg_sprite_cover = {
+	1: "bluetileneg1.png",
+	2: "bluetileneg2.png",
+};
+
 g_multi_sprite_flag = {
 	1: "redtiletut.png",
 	2: "redtile2.png",
@@ -115,6 +122,11 @@ g_multi_sprite_flag = {
 	7: "redtile7.png",
 	8: "redtile8.png",
 	9: "redtile9.png",
+};
+
+g_multi_neg_sprite_flag = {
+	1: "redtileneg1.png",
+	2: "redtileneg2.png",
 };
 
 g_block_sprites = {
@@ -2700,6 +2712,8 @@ BlockClass = Class.extend({
 
 	show_hint: function(hinttype, hint_) {
 
+		
+
 		var text_x = this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size;
 		var text_y = this.y*this.game_state.tile_size + 0.25*this.game_state.tile_size - 2;
 
@@ -4636,15 +4650,15 @@ BlockClass = Class.extend({
 			} else {
 				//this.block_sprite.set_texture('g_block2.png');
 				//this.block_sprite.set_texture(g_multi_sprite_cover[this.mine_multi]);
-				this.block_sprite.set_texture(g_multi_sprite_cover[this.mine_multi]);
-
+				if (this.mine_multi > 0) this.block_sprite.set_texture(g_multi_sprite_cover[this.mine_multi]);
+				else this.block_sprite.set_texture(g_multi_neg_sprite_cover[-this.mine_multi]);
 				
 			}
 			
 			
 
-			this.flag_sprite.set_texture(g_multi_sprite_flag[this.mine_multi]);
-			
+			if (this.mine_multi > 0) this.flag_sprite.set_texture(g_multi_sprite_flag[this.mine_multi]);
+			else this.flag_sprite.set_texture(g_multi_neg_sprite_flag[-this.mine_multi]);
 
 			
 			if (this.flag_on == true) {
@@ -4685,6 +4699,9 @@ BlockClass = Class.extend({
 		if (gemtype == 2 && this.mine_multi == 2) this.block_sprite.set_texture("2bomb.png");
 		if (gemtype == 2 && this.mine_multi == 3) this.block_sprite.set_texture("3bomb.png");
 		if (gemtype == 2 && this.mine_multi == 4) this.block_sprite.set_texture("4bomb.png");
+		if (gemtype == 2 && this.mine_multi == 1) this.block_sprite.set_texture("bomb.png");
+		if (gemtype == 2 && this.mine_multi == -1) this.block_sprite.set_texture("neg1bomb.png");
+		if (gemtype == 2 && this.mine_multi == -2) this.block_sprite.set_texture("neg2bomb.png");
 
 		//this.block_blink_sprite.set_texture(g_block_blink_sprites[gemtype]);
 

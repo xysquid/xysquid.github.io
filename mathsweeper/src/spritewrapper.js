@@ -246,6 +246,7 @@ SquareClass = Class.extend({
 });
 
 
+
 CounterClass = Class.extend({
 
 	number: 0,
@@ -295,6 +296,7 @@ CounterClass = Class.extend({
 	},
 
 	change_text: function(text_) {
+		
 		this.num_to_str = text_;
 
 		this.str_len = text_.length;
@@ -305,6 +307,11 @@ CounterClass = Class.extend({
 
 		this.char_sprites[2].hide();
 		this.char_sprites[1].hide();
+
+		if (this.str_len == 0) {
+			this.char_sprites[0].hide();
+			return;
+		} 
 
 		for(var i = 0; i < this.char_sprites.length; i++) {
 
@@ -322,7 +329,10 @@ CounterClass = Class.extend({
 				this.char_sprites[i].set_texture('tinycrown.png');
 				
 			} else if (this.num_to_str[i] == 'L') this.char_sprites[i].set_texture('tinyheart.png');
-			 else if (this.num_to_str[i] == '.') this.char_sprites[i].set_texture('cover_minimap.png');
+			else if (this.num_to_str[i] == 'B') this.char_sprites[i].set_texture('tinybracket.png');
+			else if (this.num_to_str[i] == '.') this.char_sprites[i].set_texture('cover_minimap.png');
+			else if (this.num_to_str[i] == '-') this.char_sprites[i].set_texture('negsign.png');
+			else if (this.num_to_str[i] == 'N') this.char_sprites[i].set_texture('negsign.png');
 			else this.char_sprites[i].set_texture(this.num_to_str[i] + '.png');
 		}
 
@@ -357,6 +367,13 @@ CounterClass = Class.extend({
 	},
 
 	update_pos : function (x_start,y_start,w,h) {
+
+		if (this.str_len == 0) {
+			this.char_sprites[0].hide();
+			this.char_sprites[1].hide();	
+			this.char_sprites[2].hide();
+			return;
+		} 
 
 		if (this.str_len == 2) x_start = x_start - 10;
 		if (this.str_len == 3) x_start = x_start - 13;

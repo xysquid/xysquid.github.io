@@ -47,12 +47,12 @@
 <meta charset="UTF-8" />
      
 <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">-->
-<title>Mine of Sight</title>
+<title>mathsweeper</title>
       
 
 <meta name="description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
 	
-<link rel="canonical" href="http://www.zblip.com/mineofsight"/>
+<link rel="canonical" href="http://www.zblip.com/mathsweeper"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <!--<meta name="viewport" content="user-scalable=no" /> why stop users scaling?-->
@@ -65,28 +65,28 @@
 <!-- https://developers.google.com/web/fundamentals/design-and-ui/responsive/?hl=en#set-the-viewport -->
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
-<meta name = "apple-mobile-web-app-title" content = "Mine of Sight">
+<meta name = "apple-mobile-web-app-title" content = "mathsweeper">
  
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@ZBlipGames" />
-<meta name="twitter:title" content="Mine of Sight" />
+<meta name="twitter:title" content="Mathsweeper" />
 <meta name="twitter:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web - Play Now" />
-<meta name="twitter:image" content="http://www.zblip.com/mineofsight/thumb440.png" />
-<meta name="twitter:url" content="http://www.zblip.com/mineofsight/" />
+<meta name="twitter:image" content="http://www.zblip.com/mathsweeper/thumb440.png" />
+<meta name="twitter:url" content="http://www.zblip.com/mathsweeper/" />
 
-<meta property="og:url" content="http://www.zblip.com/mineofsight">
+<meta property="og:url" content="http://www.zblip.com/mathsweeper">
 	
-	<meta property="og:image" content="www.zblip.com/mineofsight/thumb440.jpg">
+	<meta property="og:image" content="www.zblip.com/mathsweeper/thumb440.jpg">
 	<meta property="og:description" content="Challenging logic puzzle, playable for free online in the browser, desktop and mobile web">
-	<meta property="og:title" content="Mine of Sight">
+	<meta property="og:title" content="Mathsweeper">
 	<meta property="og:site_name" content="ZBlip">
 	
 	<meta property="og:type"          content="game" />
 	<meta property="og:see_also" content="http://www.zblip.com">
 
-	<meta itemprop="name" content="Mine of Sight">
+	<meta itemprop="name" content="Mathsweeper">
 	<meta itemprop="description" content="Challenging logic puzzle">
-	<meta itemprop="image" content="www.zblip.com/mineofsight/thumb440.png">
+	<meta itemprop="image" content="www.zblip.com/mathsweeper/thumb440.png">
 
 
 	<!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
@@ -102,7 +102,18 @@
 
     
 
+<!--
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=1079707205462152";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+-->
 
 <!--<script src="phaser-slim.min.js"></script>-->
 <script src="src/core.js"></script>
@@ -129,9 +140,35 @@
 		  		position:absolute;
 		  		left:-100px;
 	}
+<!--
+.fb-like-container {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
 
+.fb-like-old {
+  position: fixed;
+  margin-right: 100%;
+ 
 
+  
+}
 
+.fb-dummy-left {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+ 
+
+  
+}
+
+.fb-like {
+ 	 position: relative;
+ 	 right: 0px;
+}
+-->
 	progress {
   		border: none;
 		-webkit-appearance: none;
@@ -178,6 +215,7 @@
    </style>
 
 
+
 <div id = 'pbar' >
 	
 	<div id = 'splashdiv' align = "center" width ="100%" overflow ="hidden">
@@ -185,6 +223,14 @@
 	</div>
 	<progress id='prog_bar' value = '0' max='100'></progress>
 </div>
+
+<!--
+<div class = "fb-like-container">
+<div class = "fb-dummy-left">
+<div class="fb-like" data-href="http://www.zblip.com/mathsweeper" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+</div>
+</div>
+-->
 
 <!-- <script src='https://www.kongregate.com/javascripts/kongregate_api.js'></script> -->
 
@@ -672,5 +718,12 @@ window.onorientationchange = function() {
 
     </script>
 
-    </body>
+    
+
+
+</body>
+
+
+
+
 </html>
