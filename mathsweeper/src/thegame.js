@@ -75,7 +75,7 @@ theGame.prototype = {
 
 		//game.input.mousePointer.rightButton.onDown.add(this.onRightDown, this);
 
-		game.stage.backgroundColor = "0x000000";	// 1F1129
+		game.stage.backgroundColor = "0x061419";	// 1F1129
 
 		game.curveSound = game.add.audio('curve',0.15);		// this.curveSound.play();
 		game.thudSound = game.add.audio('thud',0.15);
@@ -260,7 +260,7 @@ preload.prototype = {
           //loadingBar.anchor.setTo(0.5,0.5);
           //this.load.setPreloadSprite(loadingBar);
 
-		if (game.stage != null) game.stage.backgroundColor = "0x000000";
+		if (game.stage != null) game.stage.backgroundColor = "0x061419";
 
 		//  Note that the JSON file should be saved with UTF-8 encoding or some browsers (such as Firefox) won't load it.
 		this.game.load.atlas('atlas_blocks', 'assets/blocks.png', 'assets/blocks.json', Phaser.Loader.TEXTURE_ATLAS_JSON_ARRAY);
@@ -270,7 +270,7 @@ preload.prototype = {
 
   	create: function(){
 
-		if (game.stage != null) game.stage.backgroundColor = "0x000000";
+		if (game.stage != null) game.stage.backgroundColor = "0x061419";
 
 		
 

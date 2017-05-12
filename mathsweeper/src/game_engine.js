@@ -885,7 +885,7 @@ BlipFrogMenuClass = Class.extend({
 		
 		
 
-		this.engine_fb_rect = new SquareClass(0,0,29*4,29*4,Types.Layer.POP_MENU,0x000000,true);
+		this.engine_fb_rect = new SquareClass(0,0,29*4,29*4,Types.Layer.POP_MENU,0x061419,true);
 
 		this.engine_fb = new SpriteClass();
 		this.engine_fb.setup_sprite('fblogo.png',Types.Layer.POP_MENU);
@@ -1184,9 +1184,14 @@ BlipFrogMenuClass = Class.extend({
 			// fb?
 			if (event_type == Types.Events.MOUSE_UP &&
 			    mouse.x > this.fb_x - 29*0.5 &&
-			    mouse.y > this.fb_y - 29*0.5 && this.clicked_fb == false) {
+			    mouse.y > this.fb_y - 29*0.5 && 
+			    mouse.x < this.fb_x + 29*0.5 &&
+			    mouse.y < this.fb_y + 29*0.5 &&this.clicked_fb == false) {
 				this.clicked_fb = true;
-				open_url('https://www.facebook.com/mathsweeper/');
+				//open_url('https://www.facebook.com/mathsweeper/'); 
+				// https://www.facebook.com/sharer/sharer.php?u=www.zblip.com/mathsweeper
+				// https://www.facebook.com/sharer/sharer.php?u=www.facebook.com/mathsweeper
+				open_url('https://www.facebook.com/sharer/sharer.php?u=www.zblip.com/mathsweeper'); 
 				return;
 			}
 			

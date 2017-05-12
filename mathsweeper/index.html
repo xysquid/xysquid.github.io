@@ -134,7 +134,7 @@
 				overflow:hidden;
 				margin:0;
 			     	font-family: 'Montserrat', sans-serif;
-			     	background: #000000;	}
+			     	background: #061419;	}
 				.fontPreload {
 		  		font-family: 'Montserrat';
 		  		position:absolute;
@@ -395,7 +395,7 @@ start_phaser = function() {
 			       document.documentElement.clientHeight, 
 			       phaser_type, "game", {
     		create : function() {
-        		this.game.stage.backgroundColor = "0x000000";
+        		this.game.stage.backgroundColor = "0x061419";
 		}
     	});
 
@@ -436,7 +436,7 @@ start_phaser = function() {
 
 				
 			
-	if (game.stage != null) game.stage.backgroundColor = "0x000000";
+	if (game.stage != null) game.stage.backgroundColor = "0x061419";
 };
 
 g_splash_parent = null;
@@ -552,7 +552,7 @@ var do_resize = function(e) {
 
 
 	var w = 15*48;
-	var w_portrait = 12*48;
+	var w_portrait = 13*48;
 
 	// tile size of 60
 
@@ -572,8 +572,8 @@ var do_resize = function(e) {
 
 
 
-	if (over_x > 0) x_shift_screen = 0.5*over_x;
-	else x_shift_screen = 0;
+	if (over_x > 0) x_shift_screen = screen_width*0.5 - 6*48*ratio;// 0.5*over_x;
+	else x_shift_screen = screen_width*0.5 - 6*48*ratio;
 
 	x_shift_screen += level_x_shift;
 
@@ -581,7 +581,7 @@ var do_resize = function(e) {
 
 	if (using_cocoon_js == true) y_shift_screen = 32;
 
-	y_shift_screen = 42;
+	y_shift_screen = 48*0.5*ratio;
 
 	play_group.set_pos(x_shift_screen, y_shift_screen );//position.set(x_shift_screen, y_shift_screen);
 
