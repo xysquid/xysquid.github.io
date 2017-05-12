@@ -126,7 +126,9 @@ SquareClass = Class.extend({
 			
 			this.phasersprite = game.add.graphics(0,0);
 
-			if (filled == false) this.phasersprite.lineStyle(8, colour);
+			this.phasersprite.lineStyle(8, colour);
+
+			if (filled == false) {}
 			else this.phasersprite.beginFill(colour, 1);  // colour, alpha
 
 			this.phasersprite.moveTo(x,y);

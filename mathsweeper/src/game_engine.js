@@ -792,6 +792,9 @@ BlipFrogMenuClass = Class.extend({
 	//menu_highlight_sprite: null,
 	spr_menu_button: null,
 
+	engine_fb: null,
+	engine_fb_rect: null,
+
 	sprites_buttons: [],
 
 	menu_texts: [],
@@ -811,7 +814,11 @@ BlipFrogMenuClass = Class.extend({
 
 	setup: false,
 	
+	fb_x: 0,
+	fb_y: 0,
+
 	init: function() {
+		
 		
 
 		this.menu_positions = new MenuPositions();
@@ -874,6 +881,14 @@ BlipFrogMenuClass = Class.extend({
 		
 		this.spr_menu_button.setup_sprite('menu_button.png', Types.Layer.GAME_MENU);//Types.Layer.POP_MENU); //
 
+
+		
+		
+
+		this.engine_fb_rect = new SquareClass(0,0,29*4,29*4,Types.Layer.POP_MENU,0x000000,true);
+
+		this.engine_fb = new SpriteClass();
+		this.engine_fb.setup_sprite('fblogo.png',Types.Layer.POP_MENU);
 
 		
 		
@@ -1123,7 +1138,15 @@ BlipFrogMenuClass = Class.extend({
 		if (this.menu_up == true) g_set_menu_screen_x(0);//screen_height - g_menu_font_height*MenuItems.length);
 		else g_set_menu_screen_x(-this.menu_width);//screen_height);
 
-		
+		if (screen_width > screen_height) {
+			this.fb_x = screen_width - 29 - 0.5*29;
+			this.fb_y = screen_height - 29 - 0.5*29;
+		} else {
+			this.fb_x = -999;
+			this.fb_y = -999;
+		} 
+		this.engine_fb.update_pos(this.fb_x + this.menu_width, this.fb_y);
+		this.engine_fb_rect.update_pos(this.fb_x - 29 - 0.5*29 + this.menu_width, this.fb_y - 29 - 0.5*29);
 
 		return;
 
@@ -1136,6 +1159,8 @@ BlipFrogMenuClass = Class.extend({
 	},
 
 	pop_down_click: false,
+
+	clicked_fb: false,
 
 	handle_events: function(x, y, event_type) {
 
@@ -1155,6 +1180,15 @@ BlipFrogMenuClass = Class.extend({
 		
 
 		if (this.menu_up == false) {
+
+			// fb?
+			if (event_type == Types.Events.MOUSE_UP &&
+			    mouse.x > this.fb_x - 29*0.5 &&
+			    mouse.y > this.fb_y - 29*0.5 && this.clicked_fb == false) {
+				this.clicked_fb = true;
+				open_url('https://www.facebook.com/mathsweeper/');
+				return;
+			}
 			
 
 			if (event_type == Types.Events.MOUSE_UP &&
