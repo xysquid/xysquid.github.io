@@ -187,8 +187,10 @@ onPIXIdown = function (event) {
 	if (event.data.originalEvent.which == 1 || event.data.originalEvent.button == 0) mousedown = true;
 	//if (event.data.originalEvent.which == 3 || event.data.originalEvent.button == 2) mouseclickright = true;
 	
-	if (mouseclickright != true) update_mouse_pos(pos.x, pos.y);
-	//mousedown = true;
+	if (mouseclickright != true) {
+		update_mouse_pos(pos.x, pos.y);
+		mousedown = true;
+	}
 };
 
 
