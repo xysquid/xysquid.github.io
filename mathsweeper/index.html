@@ -134,7 +134,7 @@
 				overflow:hidden;
 				margin:0;
 			     	font-family: 'Montserrat', sans-serif;
-			     	background: #061419;	}
+			     	background: #293D56;	}
 				.fontPreload {
 		  		font-family: 'Montserrat';
 		  		position:absolute;
@@ -238,8 +238,8 @@
 
     
 
-var using_pixi = false;
-var using_phaser = true;
+var using_pixi = true;;//false;
+var using_phaser = false;//true;
 
 var game;	// used by phaser
 var assets_loaded = false;
@@ -551,13 +551,15 @@ var do_resize = function(e) {
 	
 
 
-	var w = 15*48;
+	var w = 17.5*48;
+	var h = 13.5*48;
 	var w_portrait = 13*48;
+	var h_portrait = 17.5*48;
 
 	// tile size of 60
 
-	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/(w_portrait));
-	else ratio = Math.min(screen_width/w, screen_height/(w));
+	if (screen_width < screen_height) ratio = Math.min(screen_width/w_portrait, screen_height/h_portrait);
+	else ratio = Math.min(screen_width/w, screen_height/h);
 
 	text_group.scale(ratio, ratio);		// unaffected by level size
 
@@ -575,7 +577,7 @@ var do_resize = function(e) {
 	if (over_x > 0) x_shift_screen = screen_width*0.5 - 6*48*ratio;// 0.5*over_x;
 	else x_shift_screen = screen_width*0.5 - 6*48*ratio;
 
-	x_shift_screen += level_x_shift;
+	//x_shift_screen += level_x_shift;
 
 	//var y_shift_screen = 0;
 

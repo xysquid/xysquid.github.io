@@ -120,10 +120,10 @@ SquareClass = Class.extend({
 	y: 0,
 
 	init: function(x, y, xx, yy,layer, colour, filled) {
-		this.x = (x + xx)/2;
-		this.y = (y + yy)/2;
+		
 		if (using_phaser == true) {
-			
+			this.x = (x + xx)/2;
+			this.y = (y + yy)/2;
 			this.phasersprite = game.add.graphics(0,0);
 
 			this.phasersprite.lineStyle(8, colour);
@@ -149,6 +149,8 @@ SquareClass = Class.extend({
 			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
 			
 		} else {
+			xx = xx - x;
+			yy = yy - y;
 			this.pixisprite = new PIXI.Graphics();
 			if (filled == true) this.pixisprite.beginFill(colour);
 			if (filled == false) this.pixisprite.lineStyle( 8 , colour);
@@ -179,6 +181,7 @@ SquareClass = Class.extend({
 			this.phasersprite.scale.x = x;
 			this.phasersprite.scale.y = y;
 		} else {
+			
 			this.pixisprite.scale.x = x;
 			this.pixisprite.scale.y = y;
 		}
@@ -207,13 +210,15 @@ SquareClass = Class.extend({
 	},
 
 	update_pos: function(x, y) {
-		this.x = x;
-		this.y = y;
+		
 		if (using_phaser == true) {
+			this.x = x;
+			this.y = y;
 			//this.phasersprite.moveTo(x, y);
 			this.phasersprite.position.x = x;
 			this.phasersprite.position.y = y;
 		} else {
+			
 			this.pixisprite.position.x = x;
 			this.pixisprite.position.y = y;
 		}
@@ -240,8 +245,8 @@ SquareClass = Class.extend({
 			//this.update_pos(-999,-999);
 			this.phasersprite.visible = false;
 		} else {
-			this.pixisprite.position.x = -999;
-			this.pixisprite.position.y = -999;
+			this.pixisprite.position.x = -9999;
+			this.pixisprite.position.y = -9999;
 		}
 	}
 
@@ -1423,6 +1428,10 @@ LayerClass = Class.extend({
 			// 0x1F1129
 			// pixi
 			this.layer.position.x = x;
+
+			//for (var c = 0; c < this.layer.children.length; c++) {
+			//	this.layer.children[c].position.x = x;
+			//}
 		}
 
 	},

@@ -96,7 +96,7 @@ g_texts = {
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
 
-		"digflag" : "TAP TO DIG the safe tile\nPRESS TO FLAG the unsafe tile",
+		"digflag" : "TAP TO DIG the safe tile\nPRESS TO FLAG the unsafe tile\n\nYOU CAN SKIP THIS TUTORIAL\nVIA MENU > NEW GAME",
 
 		"hold": "HOLD TO FLAG",	
 		"mark": "MARK FIRST",
@@ -129,7 +129,7 @@ g_texts = {
 		"tut2a"	   : "TRIPLE OR NOTHING",
 
 		"tut3"	   : "GOOD LUCK!",
-		"tut3a"	   : "YOU CAN CHANGE THE CONTROL MODE FROM THE SIDE MENU",
+		"tut3a"	   : "YOU CAN CHANGE THE CONTROL MODE\nFROM THE SIDE MENU",
 
 		"tut5"	   : "THIS ONE IS TRICKY",
 		"tut5a"	   : "But you still don't need to guess",
@@ -532,7 +532,7 @@ MenuItems = [
 	//[1, Types.Events.GOTO_AUTOGEN, "MINES++","home_icon.png",],
 
 	[0, "CHALLENGE MODES"],
-	[1, Types.Events.GOTO_NEG_MODE, "NEGATIVE NUMS","home_icon.png",],
+	[1, Types.Events.GOTO_NEG_MODE, "NEGATIVE NUMS (-1)","home_icon.png",],
 
 ];
 
@@ -568,7 +568,7 @@ MenuItems.push([3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",]
 if (using_cocoon_js == false) {
 	MenuItems.push([3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",]);
 	
-	MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
+	if (using_phaser == true) MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
 	
 	// Only include the bookmark if we are on zblip.com
 	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
@@ -622,6 +622,13 @@ if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 }
 //
+
+
+MenuItems.push([0, "SHARE"]);
+MenuItems.push([1, Types.Events.WEB_LINK, "on Facebook","facebook-24x24.png","https://www.facebook.com/sharer/sharer.php?u=www.zblip.com/mathsweeper"]);
+MenuItems.push([1, Types.Events.WEB_LINK, "on Twitter","twitter-24x24.png","https://twitter.com/home?status=www.zblip.com/mathsweeper"]);
+MenuItems.push([1, Types.Events.WEB_LINK, "on Google+","twitter-24x24.png","https://plus.google.com/share?url=www.zblip.com/mathsweeper"]);
+MenuItems.push([1, Types.Events.WEB_LINK, "on Pinterest","twitter-24x24.png","https://pinterest.com/pin/create/button/?url=http%3A//www.zblip.com/mathsweeper&media=http%3A//www.zblip.com/mathsweeper/mathsweeper440.png&description=Mathsweeper"]);
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
 
@@ -734,6 +741,11 @@ g_menu_font_height = 24;
 function g_set_game_screen_x(newx) {
 	game_screen_group.set_x(newx*menu_ratio);
 	game_menu_group.set_x(newx*menu_ratio);
+
+	if (using_pixi == true) {
+		// why do i need to do this???
+		play_group.set_x(x_shift_screen + newx*menu_ratio);
+	}
 	
 };
 
@@ -864,13 +876,13 @@ BlipFrogMenuClass = Class.extend({
 
 		} else {
 			var graphics = new PIXI.Graphics();
-			graphics.beginFill(0x546D6F);
+			graphics.beginFill(0xFFD08E);
 			graphics.drawRect(0, 0,this.menu_width, 4*screen_height);
 			options_menu_group.add(graphics);
 
 
 			var graphicstop = new PIXI.Graphics();
-			graphicstop.beginFill(0x112829);
+			graphicstop.beginFill(0xE28E1C);
 			graphicstop.drawRect(0, -1,this.menu_width,  this.menu_positions.menu_item_height);
 			options_menu_group.add(graphicstop);
 
@@ -885,7 +897,7 @@ BlipFrogMenuClass = Class.extend({
 		
 		
 
-		this.engine_fb_rect = new SquareClass(0,0,29*4,29*4,Types.Layer.POP_MENU,0x061419,true);
+		this.engine_fb_rect = new SquareClass(0,0,29*4,29*4,Types.Layer.POP_MENU,0x293D56,true);
 
 		this.engine_fb = new SpriteClass();
 		this.engine_fb.setup_sprite('fblogo.png',Types.Layer.POP_MENU);
@@ -937,7 +949,7 @@ BlipFrogMenuClass = Class.extend({
 			}  else if (using_pixi == true && MenuItems[i][0] == 0) {
 				
 				var graphics = new PIXI.Graphics();
-				graphics.beginFill(0x112829);
+				graphics.beginFill(0xE28E1C);
 				var y_pos = (i+0.33)*this.menu_positions.menu_item_height;
 				
 				graphics.drawRect(0, y_pos,this.menu_width,  box_h);
@@ -1268,7 +1280,7 @@ BlipFrogMenuClass = Class.extend({
 				
 			this.menu_y += y*menu_ratio - this.mouse_down_y;
 
-			this.menu_y = Math.max(this.menu_y, (-this.menu_positions.menu_height - 32 + screen_height)*menu_ratio - 200);
+			this.menu_y = Math.max(this.menu_y, (-this.menu_positions.menu_height - 32 + screen_height)*menu_ratio );
 			this.menu_y = Math.min(0, this.menu_y);
 
 			this.mouse_down_y = y*menu_ratio;

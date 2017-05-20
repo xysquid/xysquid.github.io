@@ -1816,7 +1816,7 @@ BlockClass = Class.extend({
 		//this.block_shadow_sprite.hide();
 
 		this.block_sprite = new SpriteClass();
-		this.block_sprite.setup_sprite("bluetiletut.png",Types.Layer.TILE);
+		this.block_sprite.setup_sprite("bluetiletut.png",Types.Layer.GAME);
 		this.block_sprite.hide();
 
 		this.join_v_sprite = new SpriteClass();
@@ -2775,9 +2775,11 @@ BlockClass = Class.extend({
 		} else if (hinttype == 4) {
 			
 			this.hint_touch_num_text.change_text(hint_.toString());
-			this.hint_touch_num_text.update_pos(text_x, 
-							    text_y);
-			this.hint_touch_num_text.center_x(text_x);
+			if (hint_ < 10) this.hint_touch_num_text.update_pos(text_x - 0, 
+							    		    text_y - 2);
+			else this.hint_touch_num_text.update_pos(text_x - 2, 
+							    	 text_y - 2);
+			//this.hint_touch_num_text.center_x(text_x);
 
 			//this.//hint_eight_touch_sprite.make_vis();
 			//this.//hint_eight_touch_sprite.update_pos(icon_x, 
@@ -4290,14 +4292,14 @@ BlockClass = Class.extend({
 
 			
 
-			this.block_blink_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 0.5*this.game_state.tile_size - 4);
+			this.block_blink_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 							   y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
 
 			this.block_blink_sprite.hide();
 
-			this.block_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+			this.block_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 						     y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
 			
 
-			this.flag_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+			this.flag_sprite.update_pos(x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 						    y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
 		}
 
 		
