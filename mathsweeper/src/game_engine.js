@@ -542,16 +542,16 @@ if (using_cocoon_js == false) {
 	//MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
 
-var app_exists = false;
+var app_exists = true;
 if (app_exists) {
 MenuItems.push([0, "APP VERSION"]);
 
-var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
-country_code = country_code.slice(-2);  // 
-if (country_code == null) country_code = 'a';
+//var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
+//country_code = country_code.slice(-2);  // 
+//if (country_code == null) country_code = 'a';
  
 if (using_cocoon_js == false && on_coolmath == false) {
-	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mathsweeper"]);
 
 
 }
