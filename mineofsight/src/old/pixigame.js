@@ -110,10 +110,6 @@ setup_pixi = function () {
 
 last_update = 0;
 
-// input
-// this animate loop is agnostic to how input is received
-// it just checks (1) mousemove (2) mousedown (3) mouseclick (4) mouseclickright (5) mouse.x / y
-
 animate = function (timestamp) {
 	if(timestamp > last_update + 16) {
 		gBlipFrogMenu.update();
@@ -129,29 +125,25 @@ animate = function (timestamp) {
 
 	if(mousemove) {
 		mousemove = false;
-		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,
-					    (mouse_abs['y'] - y_shift_screen)/ratio,Types.Events.MOUSE_MOVE);
+		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,mouse_abs['y']/ratio,Types.Events.MOUSE_MOVE);
 	}
 
 	if(mousedown) {
 			
-		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio , 
-					   (mouse_abs['y'] - y_shift_screen)/ratio,Types.Events.MOUSE_DOWN);
+		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio , mouse_abs['y']/ratio,Types.Events.MOUSE_DOWN);
 			
 	}
 
 	if(mouseclick) {
 		mouseclick = false;
 			
-		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,
-					    (mouse_abs['y'] - y_shift_screen)/ratio,Types.Events.MOUSE_UP);
+		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,mouse_abs['y']/ratio,Types.Events.MOUSE_UP);
 			//mouse_down_x = -1;
 	}
 
 	if(mouseclickright) {
 		mouseclickright = false;
-		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,
-					    (mouse_abs['y'] - y_shift_screen)/ratio, Types.Events.MOUSE_CLICK_RIGHT);
+		gBlipFrogMenu.handle_events(mouse_abs['x']/ratio - x_shift_screen,mouse_abs['y']/ratio, Types.Events.MOUSE_CLICK_RIGHT);
 	}
 
 	requestAnimationFrame( animate );
@@ -159,7 +151,6 @@ animate = function (timestamp) {
 
 var mouseclick = false;
 var mouseclickright = false;
-var mousedownright = false;
 var mousedown = false;
 var mousemove = false;
 var mouse = {
@@ -172,66 +163,6 @@ var mouse_abs = {
 	y: 0
 };
 
-// when a pixi sprite reports being clicked on, it calls this and gives it's position
-// http://www.goodboydigital.com/pixijs/examples/6/
-// http://pixijs.github.io/examples/index.html?s=demos&f=dragging.js&title=Dragging#/demos/dragging.js
-on_sprite_click = function (x, y) {
-	
-};
-
-
-
-onPIXIdown = function (event) {
-	var pos = event.data.getLocalPosition(stage);
-
-	if (event.data.originalEvent.which == 1 || event.data.originalEvent.button == 0) mousedown = true;
-	//if (event.data.originalEvent.which == 3 || event.data.originalEvent.button == 2) mouseclickright = true;
-	
-	if (mouseclickright != true) {
-		update_mouse_pos(pos.x, pos.y);
-		mousedown = true;
-	}
-};
-
-
-
-onPIXIup = function (event) {
-	//alert('event.data.originalEvent.which ' + event.data.originalEvent.which +
-	//	'event.data.originalEvent.button ' + event.data.originalEvent.button);
-	
-	var pos = event.data.getLocalPosition(stage);
-	
-
-	if (event.data.originalEvent.which == 1 || event.data.originalEvent.button == 0) mouseclick = true;
-	else if (event.data.originalEvent.which == 3 || event.data.originalEvent.button == 2) mouseclickright = true;
-
-	//if (mouseclickright == true) alert('mouseclickright');
-	//if (mouseclick == true) alert('mouseclick');
-
-	if (mouseclick == true) update_mouse_pos(pos.x, pos.y);
-
-	mousedown = false;
-	mousedownright = false;
-	
-};
-
-onPIXImove = function (event) {
-	//if (mouseclickright == true) return; 
-	var pos = event.data.getLocalPosition(stage);
-	update_mouse_pos(pos.x, pos.y);
-	mousemove = true;
-};
-
-setup_input_cocoon_canvas_plus = function () {
-	renderer.view.addEventListener('mousemove',onMouseMove, false);
-	renderer.view.addEventListener('mousedown', onMouseClick, false);
-	renderer.view.addEventListener('mouseup', onMouseUp, false);	
-	renderer.view.addEventListener('touchstart', onTouchDown, false);
-	renderer.view.addEventListener('touchmove', onTouchMove, false);
-	renderer.view.addEventListener('touchend', onTouchUp, false);	
-
-};
-
 setup_input = function () {
 	// Listener, NOT Handler
 
@@ -239,36 +170,6 @@ setup_input = function () {
 		//addListener(renderer.view,'mouseup',onMouseUp);
 		//addListener(renderer.view,'pointerdown',onMouseClick);
 		//addListener(renderer.view,'pointerup',onMouseUp);
-
-		if (using_cocoon_js) setup_input_cocoon_canvas_plus();
-
-		
-		// https://pixijs.github.io/examples/#/demos/dragging.js
-		stage.hitArea = new PIXI.Rectangle(0, 0, 4000, 4000);
-		stage.interactive = true;
-		//stage.on('mousedown',function(){alert('down');},false);
-		stage.on('pointerdown',onPIXIdown,false)
-		     .on('pointerup',onPIXIup,false)
-		     .on('pointermove',onPIXImove,false);
-		     //.on('rightclick',onPIXIrightup,false);
-
-		// disable right-menu
-		renderer.view.addEventListener('contextmenu', (e) => {
-    			e.preventDefault();
-			//mouseclickright = true;
-  		});
-
-
-		return;
-
-		// http://www.html5gamedevs.com/topic/23828-right-mouse-clicks/
-		// http://www.html5gamedevs.com/topic/25254-how-do-do-right-click-on-a-container/
-
-		//stage.mousedown = function (moveData) {	alert("mousedown");};
-		//stage.mousemove = function (moveData) {	alert("mousemove");};
-		//stage.mouseup = function (moveDate) {	alert("mouseup");};
-
-		//return;
 
 		// http://www.quirksmode.org/js/introevents.html	
 		//renderer.view.onclick = onMouseClick;	
@@ -378,7 +279,7 @@ onMouseClick = function (event) {
 
 	if (gBlipFrogMenu.menu_up == true) {
 		gBlipFrogMenu.handle_menu_event(mouse['x'],mouse['y'],Types.Events.MOUSE_DOWN);
-		//mousedown = false;
+		mousedown = false;
 	}
 };
 
@@ -396,11 +297,6 @@ onTouchDown = function (event) {
     	//mouse['x'] = parseInt(pos.clientX)//(window.devicePixelRatio || 1) ;;
 	//mouse['y'] = parseInt(pos.clientY)//(window.devicePixelRatio || 1) ;;
 	mousemove = true;
-
-	if (gBlipFrogMenu.menu_up == true) {
-		gBlipFrogMenu.handle_menu_event(mouse['x'],mouse['y'],Types.Events.MOUSE_DOWN);
-		//mousedown = false;
-	}
 };
 
 onMouseMove = function (event) {	
@@ -436,12 +332,6 @@ onTouchMove = function (event) {
 		mousemove = true;
 };
 	
-
-onMouseRightUp = function() {
-	mousedown = false;
-	rightmouseclick = true;
-	
-};
 
 	onMouseUp = function(event) {
 		mouseclick = true;

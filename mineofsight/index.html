@@ -192,8 +192,8 @@
 
     
 
-var using_pixi = false;
-var using_phaser = true;
+var using_pixi = true;//false;
+var using_phaser = false;//true;
 
 var game;	// used by phaser
 var assets_loaded = false;
@@ -300,6 +300,8 @@ window.onload = function () {
 start_pixi = function () {
 	pBar.value += 10; 
 
+	load_kong();
+
 	// pixi is for cocoon, so not checking kongregate
 
 	setup_layers();
@@ -308,13 +310,7 @@ start_pixi = function () {
 	
 };
 
-start_phaser = function() {
-
-	pBar.value += 10; 
-
-	
-
-			
+load_kong = function() {
 	if (on_kong == 1) {
 		// Load the API
 	
@@ -331,12 +327,19 @@ start_phaser = function() {
 			// Connect
 			kongregate.services.connect();	// I'm guessing I need this for auth
 
-
-		
-
 		});
 
 	}
+};
+
+start_phaser = function() {
+
+	pBar.value += 10; 
+
+	
+	load_kong();
+			
+	
 
 	var phaser_type = Phaser.CANVAS;
 
@@ -427,14 +430,20 @@ var screen_height = 600;
 var ratio = 1;		// tiles in game
 var menu_ratio = 1;	// menu, pop up menu
 var x_shift_screen = 0;
+var y_shift_screen = 0;
 var scale_man;
 
 var menu_scale_ratio = 1;
 
 var do_resize = function(e) {  
 
-	//if (game == null) return;
-	if (play_screen_group == null) return;
+	try {
+		//if (game == null) return;
+		if (play_screen_group == null) return;
+
+	} catch(e) {
+		return;
+	}
 
 	// dips
 	//screen_width =  document.documentElement.clientWidth - 1;//
@@ -522,7 +531,7 @@ var do_resize = function(e) {
 	if (over_x > 0) x_shift_screen = 0.5*over_x;
 	else x_shift_screen = 0;
 
-	var y_shift_screen = 0;
+	
 
 	if (using_cocoon_js == true) y_shift_screen = 32;
 
@@ -555,12 +564,12 @@ var do_resize = function(e) {
 	
 	// the corner menu tab should be ...
 	
-	
-
 	// With some senisible limits - this should work within reason, maybe not for HUGE resolutions
 	// Basically just a small increase in scale if needed
 	menu_ratio = Math.max(1.0, menu_ratio);	// lower bound of 1.0
 	menu_ratio = Math.min(1.5, menu_ratio);	// upper bound of 1.75
+
+	
 
 	if (screen_width > screen_height) {
 		// screen_height shrink to --> 13.5*60
@@ -569,6 +578,21 @@ var do_resize = function(e) {
 	} else {
 		// screen_width shrink to --> 10*60
 		menu_ratio = screen_width/(7*60);
+	}
+
+	// testing: delete this if its bad
+	if (screen_width > screen_height) {
+		// landscape
+		menu_ratio = 1;
+		
+		
+	} else {
+		// portrait
+		// we want the menu (250px wide) to take up 66% of screen_width
+		var aim = screen_width*0.66;
+		menu_ratio = aim/250;
+		//menu_ratio = screen_width/(7*60);
+		// menu_ratio = Math.min(screen_width/250, screen_height/250);
 	}
 
 	//menu_ratio = 1/menu_ratio;
@@ -581,8 +605,9 @@ var do_resize = function(e) {
 	// https://sunpig.com/martin/2012/03/18/goldilocks-and-the-three-device-pixel-ratios/
 	// using width=100% seems to work ok
 
-	game_menu_group.scale(menu_ratio,menu_ratio);//set(menu_ratio,menu_ratio);
-	options_menu_group.scale(menu_ratio,menu_ratio);//set(menu_ratio,menu_ratio);
+	game_menu_group.scale(menu_ratio,menu_ratio);
+	// i think this should NOT change scale:
+	options_menu_group.scale(menu_ratio,menu_ratio);
 
 	screen_width = screen_width/menu_ratio;
 	screen_height = screen_height/menu_ratio;

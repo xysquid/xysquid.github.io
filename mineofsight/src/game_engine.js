@@ -558,7 +558,7 @@ MenuItems.push([3, Types.Events.CLICK_TO_DIG, g_get_text("mark"),"redflag.png",]
 if (using_cocoon_js == false) {
 	MenuItems.push([3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",]);
 	
-	MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
+	if (using_phaser == true) MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
 	
 	// Only include the bookmark if we are on zblip.com
 	//[1, Types.Events.BOOKMARK, "Bookmark","games_icon.png"],	// on iphone
@@ -613,6 +613,7 @@ if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 }
 //
+
 
 var pic_url = 'https://pbs.twimg.com/media/CvuK418VYAEm5g_.jpg'
 
@@ -1137,7 +1138,8 @@ BlipFrogMenuClass = Class.extend({
 		} 
 
 		
-
+		if (event_type == Types.Events.MOUSE_DOWN &&
+			this.pop_down_click == true) return;
 		
 
 		if (this.menu_up == false) {
@@ -1165,8 +1167,10 @@ BlipFrogMenuClass = Class.extend({
 
 		
 		//if (event_type == Types.Events.WHEEL) 
+
 		
-		y = mouse.y;///menu_ratio;//y*ratio;
+		
+		y = mouse.y;//*menu_ratio;//y*ratio;
 		x = mouse.x;///menu_ratio;//x*ratio;
 
 		if (event_type == Types.Events.MOUSE_DOWN) console.log('x ' + x + ' this.menu_width ' + this.menu_width);
@@ -1183,11 +1187,11 @@ BlipFrogMenuClass = Class.extend({
 				
 	
 			this.mouse_down++;
-			this.mouse_down_y = y;
+			this.mouse_down_y = y*menu_ratio;
 
 			//return;
 
-			console.log(' DOWN    y = ' + y);
+			//console.log(' DOWN    y = ' + y);
 
 			//this.menu_scroll = 1;
 
@@ -1209,7 +1213,7 @@ BlipFrogMenuClass = Class.extend({
 			return;
 
 		} else if (event_type == Types.Events.MOUSE_DOWN && x < this.menu_width && this.mouse_down >= 2 && 
-				this.mouse_down_y != y) {
+				this.mouse_down_y != y*menu_ratio) {
 
 			
 			
@@ -1217,12 +1221,12 @@ BlipFrogMenuClass = Class.extend({
 				
 			console.log(' SCROLL    y == ' + y );
 				
-			this.menu_y += y - this.mouse_down_y;
+			this.menu_y += y*menu_ratio - this.mouse_down_y;
 
-			this.menu_y = Math.max(this.menu_y, -this.menu_positions.menu_height - 32 + screen_height);
+			this.menu_y = Math.max(this.menu_y, (-this.menu_positions.menu_height - 32 + screen_height)*menu_ratio);
 			this.menu_y = Math.min(0, this.menu_y);
 
-			this.mouse_down_y = y;
+			this.mouse_down_y = y*menu_ratio;
 			this.menu_scroll = 1;
 			g_set_menu_screen_y(this.menu_y);
 
@@ -1245,8 +1249,10 @@ BlipFrogMenuClass = Class.extend({
 
 		this.mouse_down = 0;
 		
+		// so we dont accidently click a link as soon as the menu pops up
+		//if (x < 64*menu_ratio) return;
 
-		if (this.menu_scroll == 1) {
+		if (this.menu_scroll == 1) { 
 			this.menu_scroll = 0;
 			return;	// we wereonly scrolling
 		}
@@ -1255,7 +1261,7 @@ BlipFrogMenuClass = Class.extend({
 
 		console.log('this.menu_y ' + this.menu_y);
 
-		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y);
+		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y/menu_ratio);
 
 		//alert('menu_i ' + menu_i);
 

@@ -240,6 +240,8 @@ OnFlagEffect = Class.extend({
 
 	timer: 0,
 
+	max_radius: 0,
+
 	init : function (game_state) {
 		this.game_state = game_state;
 
@@ -258,13 +260,22 @@ OnFlagEffect = Class.extend({
 		this.sprite_left.hide();
 		this.sprite_right.hide();
 
-		this.big_circle = new CircleClass(Types.Layer.HUD, "0xD94699", this.game_state.tile_size*1.25, false);  // layer, colour, radius, filled
+		this.max_radius = this.game_state.tile_size*1.25;
+		this.max_radius += 0.25*this.game_state.tile_size;
+
+		this.big_circle = new CircleClass(Types.Layer.HUD, "0xD94699", this.max_radius, false);  // layer, colour, radius, filled
 
 		this.grow_circle = new CircleClass(Types.Layer.HUD, "0xD94699", 1, true);  // layer, colour, radius, filled
 		
 		this.big_circle.update_pos(-999,-999);
 		this.grow_circle.update_pos(-999,-999);
+
+		this.cancel();
 	},
+
+	
+
+	
 
 	x_start: 0,
 	y_start: 0,
@@ -275,6 +286,8 @@ OnFlagEffect = Class.extend({
 	timer_max: 15,
 
 	go : function (xtile, ytile, timerset) {
+
+		
 
 		if (g_hold_to_flag == false && g_click_to_dig == false) return;
 		if (g_click_to_dig == false) return;
@@ -342,7 +355,7 @@ OnFlagEffect = Class.extend({
 		var dist = 15 - this.timer;
 		dist = dist;
 
-		this.radius = this.game_state.tile_size*1.5 - this.timer*(this.game_state.tile_size*1.5/this.timer_max);
+		this.radius = this.max_radius - this.timer*(this.max_radius/this.timer_max);
 
 		var scale_ = Math.max(0, this.radius);
 

@@ -885,6 +885,8 @@ BitmapClass = Class.extend({
 
 	init: function(layer, w, h) {
 
+		if (using_phaser == true) {
+
 
 		if (mini_wall_sprite == null) {
 			mini_wall_sprite = game.add.sprite(-999,-999,'atlas_blocks','wall_minimap.png');
@@ -925,7 +927,9 @@ BitmapClass = Class.extend({
 		else if(layer == Types.Layer.TILE) tile_group.add(this.image);	// tile_container
 		else if(layer == Types.Layer.BACKGROUND) background_group.add(this.image);    // background_container
 
-		
+		} else if (using_pixi == true) {
+
+		}
 
 	},
 
@@ -941,31 +945,44 @@ BitmapClass = Class.extend({
 	},
 
 	hide : function() {
-		this.bitmapdata.destroy();
-		this.image.destroy();
-		this.rendertexture.destroy();
-		this.rendertexturesprite.destroy();
+		if (using_phaser) {
+			this.bitmapdata.destroy();
+			this.image.destroy();
+			this.rendertexture.destroy();
+			this.rendertexturesprite.destroy();
+
+		} else {
+
+	
+		}
 	},
 
 	make_vis : function () {
 
-		if (this.bitmapdate != null) return;
+		if (using_phaser) {
 
-		this.bitmapdata = game.add.bitmapData(this.w, this.h);
-		this.rendertexture = game.add.renderTexture(this.w, this.h);
-		this.rendertexturesprite = game.add.sprite(0,0,this.rendertexture);
+			if (this.bitmapdate != null) return;
 
-		this.bitmapdata.update();
+			this.bitmapdata = game.add.bitmapData(this.w, this.h);
+			this.rendertexture = game.add.renderTexture(this.w, this.h);
+			this.rendertexturesprite = game.add.sprite(0,0,this.rendertexture);
 
-		this.image = game.add.sprite(0, 0, this.bitmapdata);
+			this.bitmapdata.update();
+
+			this.image = game.add.sprite(0, 0, this.bitmapdata);
 
 
-		if (this.layer == Types.Layer.GAME) game_group.add(this.image);		// game_container
-		else if(this.layer == Types.Layer.POP_MENU) options_menu_group.add(this.image);   // options_menu_container
-		else if(this.layer == Types.Layer.GAME_MENU) game_menu_group.add(this.image);  // game_menu_container
-		else if(this.layer == Types.Layer.HUD) menu_group.add(this.image);	// menu_container
-		else if(this.layer == Types.Layer.TILE) tile_group.add(this.image);	// tile_container
-		else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.image);    // background_container
+			if (this.layer == Types.Layer.GAME) game_group.add(this.image);		// game_container
+			else if(this.layer == Types.Layer.POP_MENU) options_menu_group.add(this.image);   // options_menu_container
+			else if(this.layer == Types.Layer.GAME_MENU) game_menu_group.add(this.image);  // game_menu_container
+			else if(this.layer == Types.Layer.HUD) menu_group.add(this.image);	// menu_container
+			else if(this.layer == Types.Layer.TILE) tile_group.add(this.image);	// tile_container
+			else if(this.layer == Types.Layer.BACKGROUND) background_group.add(this.image);    // background_container
+
+		} else if (using_pixi) {
+
+
+		}
 	},
 
 	draw_rect : function (x, y, w, h, colour) {
@@ -1015,7 +1032,7 @@ BitmapClass = Class.extend({
 	add_tile : function(x,y, code) {
 
 		
-
+		if (using_phaser == true) {
 
 		this.last_tile_addx = x;
 		this.last_tile_addy = y;
@@ -1060,17 +1077,25 @@ BitmapClass = Class.extend({
 
 		//console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
 
+		} else if (using_pixi) {
+
+		}
+
 	},
 
 	clear : function () {
-		this.bitmapdata.clear();
+		if (using_phaser == true) this.bitmapdata.clear();
 	},
 
 	add_a_rect : function () {
 		
+		if (using_phaser == true) {
 		//console.log('blue rect added and bitmapdata updated');
 		this.bitmapdata.rect(0, 0, 20, 10, '#0000FF');
 		this.bitmapdata.update();
+		} else {
+
+		}
 	},
 
 	fill_map : function(data_, w, h) {
@@ -1094,6 +1119,8 @@ BitmapClass = Class.extend({
 	
 
 	update_pos : function (x, y) {
+
+		if (using_phaser == true) {
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1127,20 +1154,29 @@ BitmapClass = Class.extend({
 		this.bitmapdata.update(100, 100);
 		this.bitmapdata.render();
 
+		} else {
+
+
+		}
+
 	},
 
 	resize : function (newsize) {
 		
-		this.bitmapdata.resize(newsize,newsize);	// width, height
+		if (using_phaser == true) this.bitmapdata.resize(newsize,newsize);	// width, height
 	},
 
 	
 
 	fill : function(colour_) {
-		////console.log('FILL');
-		this.bitmapdata.ctx.rect(0, 0, this.w, this.h);	
-		this.bitmapdata.ctx.fillStyle = colour_;//'#b2ddc8';
-        	this.bitmapdata.ctx.fill();
+		if (using_phaser == true) {
+			////console.log('FILL');
+			this.bitmapdata.ctx.rect(0, 0, this.w, this.h);	
+			this.bitmapdata.ctx.fillStyle = colour_;//'#b2ddc8';
+        		this.bitmapdata.ctx.fill();
+		} else {
+
+		}
 	},
 
 	// rect(x, y, width, height, fillStyle) → {Phaser.BitmapData}
@@ -1150,7 +1186,7 @@ BitmapClass = Class.extend({
 
 	// https://phaser.io/docs/2.3.0/Phaser.BitmapData.html#draw
 	draw_sprite : function(sprite, x, y) {
-		this.bitmapdata.draw(sprite, x, y );
+		if (using_phaser == true) this.bitmapdata.draw(sprite, x, y );
 	}
 
 });
@@ -1274,13 +1310,23 @@ SplashClass = Class.extend({
 	phasersprite: null,
 	pixisprite: null,
 
+	ready: false,
+
 	init: function(x, y) {
+
+		try {
+
+		// some players on Kong reported that the game stops loading at 90%
+		// around the time I introduced this SplashClass, so maybe its crashing here
+
 		if (using_phaser == true) {
 
 			this.phasersprite = game.add.sprite(x, y, 'titlesplash');
 			this.phasersprite.anchor.setTo(0.5,0.5);
 
 			game_menu_group.add(this.phasersprite);  // game_menu_container
+
+			this.ready = true;
 		} else {
 			this.pixisprite = new PIXI.Sprite.fromImage('assets/title2.png');
 			this.pixisprite.anchor.x = 0.5;
@@ -1289,10 +1335,18 @@ SplashClass = Class.extend({
 
 			game_menu_group.add(this.pixisprite);  // game_menu_container
 
+			this.ready = true;
+
 		}
+
+		} catch (e) {}
 	},
 
 	make_vis: function() {
+
+		if (this.ready == false) return;
+
+		
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1314,7 +1368,7 @@ SplashClass = Class.extend({
 
 	hide: function() { 
 
-		
+		if (this.ready == false) return;
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1331,6 +1385,8 @@ SplashClass = Class.extend({
 
 	scale: function(xscale, yscale) {
 
+		if (this.ready == false) return;
+
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
 		g_cache_as_bitmap_timer = 10;
@@ -1344,6 +1400,8 @@ SplashClass = Class.extend({
 	},
 
 	update_pos: function(x,y) {
+
+		if (this.ready == false) return;
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1398,6 +1456,7 @@ CircleClass = Class.extend({
 			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
 			
 		} else {
+			radius = radius*0.75;
 			this.pixisprite = new PIXI.Graphics();
 			if (filled == true) this.pixisprite.beginFill(colour);
 			if (filled == false) this.pixisprite.lineStyle( 8 , colour);
@@ -1538,7 +1597,11 @@ SpriteClass = Class.extend({
 	x: -999,
 	y: -999,
 
+	visible: true,
+
 	make_vis: function() {
+
+		this.visible = true;
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1568,8 +1631,8 @@ SpriteClass = Class.extend({
 	},
 
 	hide: function() { 
-
-		
+		if (this.visible == false) return;
+		this.visible = false;
 
 		tile_group.cache_as_bitmap(false);// false;
 		game_group.cache_as_bitmap(false);// false;
@@ -1615,6 +1678,8 @@ SpriteClass = Class.extend({
 		this.x = x;
 		this.y = y;
 
+		this.visible = true;
+
 		if (using_phaser == true) {
 			
 			this.phasersprite.body = null;
@@ -1635,6 +1700,9 @@ SpriteClass = Class.extend({
 			
 
 		}
+
+		//if (x <= 990) this.hide();
+		
 		
 	},
 
@@ -1665,6 +1733,7 @@ SpriteClass = Class.extend({
 	},
 
 	set_texture: function(name) {
+		this.visible = true;
 		if (using_phaser == true) {
 		
 			// this.phasersprite.body = null;	// may need to do this first http://www.html5gamedevs.com/topic/4774-destroy-a-sprite/
