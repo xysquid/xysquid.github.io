@@ -1,11 +1,12 @@
 {
 
      "gamename" : "Mine of Sight",
+     "game_id": "mineofsight",
      "words" : "Try our other game about mines",
 
      "weburl": "www.zblip.com/mineofsight",
-     "GPurl": "www.zblip.com/mineofsight"
-
+     "GPurl": "www.zblip.com/mineofsight",
+     "url": "http://www.zblip.com/mineofsight"
    
 	
 }
