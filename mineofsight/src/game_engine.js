@@ -35,6 +35,7 @@ Types = {
 			GOTO_EDITOR: 42,
 			GOTO_COMMUNITY_LEVELS: 43,
 			GOTO_CREDITS: 44,
+			GOTO_SEED_LEVEL: 45,
 
 			NO_EVENT: 0,
 
@@ -47,6 +48,7 @@ Types = {
 			SMALL_WHITE: 2,
 			XSMALL: 3,
 			MED_SMALL: 4,
+			TITLE: 5,
 		},
 
 		Layer: {
@@ -490,6 +492,8 @@ g_texts = {
 
 
 
+
+
 open_url = function(url) {
 	
 	if (using_cocoon_js == true) {
@@ -527,6 +531,7 @@ MenuItems = [
 	[1, Types.Events.NEW_GAME, g_get_text("New Game"),"home_icon.png",],
 	[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINES++","home_icon.png",],
+	//[1, Types.Events.GOTO_SEED_LEVEL, "DAILY CHALLENGE","home_icon.png",],
 
 ];
 
@@ -536,13 +541,14 @@ if (using_cocoon_js == false) {
 	MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
 
-MenuItems.push([0, "APP VERSION"]);
+
 
 var country_code = window.navigator.userLanguage || window.navigator.language || 'en';
 country_code = country_code.slice(-2);  // 
 if (country_code == null) country_code = 'a';
  
 if (using_cocoon_js == false && on_coolmath == false) {
+	MenuItems.push([0, "GET THE APP"]);
 	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
 
 
@@ -570,6 +576,21 @@ var g_show_grid_update = false;
 var g_player_set_show_grid = false;
 MenuItems.push([1, Types.Events.SHOW_GRID, "SHOW GRID","redflag.png",]);
 
+if(location.hostname != "www.facebook.com"){
+	// gotta check for mobile as well
+	MenuItems.push([0, "MORE GAMES"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"]);
+}
+
+
+
+
+if (using_cocoon_js == false) {
+	MenuItems.push([0, "FOLLOW"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+}
 	
 MenuItems.push([0, "LINKS"]);
 
@@ -578,6 +599,8 @@ MenuItems.push([0, "LINKS"]);
 
 if(true || location.hostname == "www.zblip.com") {
 	MenuItems.push([1, Types.Events.WEB_LINK, "LEGAL","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "TERMS OF USE","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/tos"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "PRIVACY POLICY","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/pp"]);
 }
 
 
@@ -592,10 +615,7 @@ MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png",
 }
 
 
-if(location.hostname != "www.facebook.com"){
-	// gotta check for mobile as well
-	MenuItems.push([1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"]);
-}
+
 
 if(location.hostname == "www.zblip.com"){
 	// gotta check for mobile as well
@@ -607,11 +627,6 @@ if(location.hostname == "www.zblip.com"){
 
 //MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
-if (using_cocoon_js == false) {
-	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
-}
 //
 
 
@@ -724,6 +739,16 @@ g_menu_font_height = 24;
 //alert('new game_engine.js - will shift options_menu_group.x, ignore menu_ratio ');
 
 function g_set_game_screen_x(newx) {
+
+
+	game_screen_group.set_x(newx*menu_ratio);
+	game_menu_group.set_x(newx*menu_ratio);
+
+	if (using_pixi == true) {
+		// why do i need to do this???
+		play_group.set_x(x_shift_screen + newx*menu_ratio);
+	}
+
 	return;
 	//game_screen_group.x = newx;
 	play_group.x = (newx + x_shift_screen)/menu_ratio; // horrid coupling i know
@@ -1173,7 +1198,7 @@ BlipFrogMenuClass = Class.extend({
 		y = mouse.y;//*menu_ratio;//y*ratio;
 		x = mouse.x;///menu_ratio;//x*ratio;
 
-		if (event_type == Types.Events.MOUSE_DOWN) console.log('x ' + x + ' this.menu_width ' + this.menu_width);
+		if (event_type == Types.Events.MOUSE_DOWN) //console.log('x ' + x + ' this.menu_width ' + this.menu_width);
 
 		if (event_type == Types.Events.MOUSE_DOWN && 
 			x > this.menu_width) {
@@ -1191,7 +1216,7 @@ BlipFrogMenuClass = Class.extend({
 
 			//return;
 
-			//console.log(' DOWN    y = ' + y);
+			////console.log(' DOWN    y = ' + y);
 
 			//this.menu_scroll = 1;
 
@@ -1219,7 +1244,7 @@ BlipFrogMenuClass = Class.extend({
 			
 			
 				
-			console.log(' SCROLL    y == ' + y );
+			//console.log(' SCROLL    y == ' + y );
 				
 			this.menu_y += y*menu_ratio - this.mouse_down_y;
 
@@ -1259,7 +1284,7 @@ BlipFrogMenuClass = Class.extend({
 
 		this.menu_scroll = 0;
 
-		console.log('this.menu_y ' + this.menu_y);
+		//console.log('this.menu_y ' + this.menu_y);
 
 		var menu_i = this.menu_positions.check_for_click(x,y - this.menu_y/menu_ratio);
 
@@ -1300,6 +1325,12 @@ BlipFrogMenuClass = Class.extend({
 		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_AUTOGEN) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GOTO_AUTOGEN);
+
+			this.pop_down();
+			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_SEED_LEVEL) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_SEED_LEVEL);
 
 			this.pop_down();
 			
@@ -1500,7 +1531,7 @@ GameEngineClass = Class.extend({
 	},
 
 	push_state: function(new_state) {
-		//console.log("Pushed new state");
+		////console.log("Pushed new state");
 		this.state_stack.push(new_state);
 	},
 
@@ -1563,6 +1594,14 @@ GameEngineClass = Class.extend({
 			}
 			this.push_state(new SetupRandStateClass(this, this.state_stack[1]));
 
+		} else if (event_type == Types.Events.GOTO_SEED_LEVEL) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new GenerateFromSeedStateClass(this, this.state_stack[1]));
+
 		} else if (event_type == Types.Events.GOTO_EDITOR) {
 
 			while(this.state_stack.length > 2) {
@@ -1602,7 +1641,7 @@ GameEngineClass = Class.extend({
 		
 		
 		// Call handle_eventson the topmost element of the state stack
-		//console.log("Event received by game engine");
+		////console.log("Event received by game engine");
 		this.state_stack[this.state_stack.length - 1].handle_events(this, x, y, event_type);
 
 	
@@ -1634,6 +1673,6 @@ GameEngineClass = Class.extend({
 
 
 gBlipFrogMenu = new BlipFrogMenuClass();
-gGameEngine = new GameEngineClass();
+//gGameEngine = new GameEngineClass();
 
 pBar.value += 10;

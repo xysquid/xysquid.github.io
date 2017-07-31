@@ -3,7 +3,7 @@
 g_text_objs = [];
 // web fonts take unpredictable time to load properly, so I just call this a few times
 function update_webfonts() {
-	
+	return;
 	for (var i = 0; i < g_text_objs.length; i++) {
 		if (g_text_objs[i].pixitext == null) continue;
 		g_text_objs[i].pixitext.font = 'Montserrat';
@@ -19,6 +19,8 @@ function update_webfonts() {
 NumberClass = Class.extend({
 
 });
+
+
 
 
 CounterClass = Class.extend({
@@ -187,6 +189,150 @@ CounterClass = Class.extend({
 });
 
 
+SquareClass = Class.extend({
+	phasersprite: null,
+	pixisprite: null,
+	layer: 0,
+	filled: true,
+
+	x: 0,
+	y: 0,
+
+	init: function(x, y, xx, yy,layer, colour, filled) {
+		
+		if (using_phaser == true) {
+			this.x = (x + xx)/2;
+			this.y = (y + yy)/2;
+			this.phasersprite = game.add.graphics(0,0);
+
+			this.phasersprite.lineStyle(8, colour);
+
+			if (filled == false) {}
+			else this.phasersprite.beginFill(colour, 1);  // colour, alpha
+
+			this.phasersprite.moveTo(x,y);
+    			this.phasersprite.lineTo(xx, y);
+    			this.phasersprite.lineTo(xx,  yy);
+    			this.phasersprite.lineTo(x, yy);
+			this.phasersprite.lineTo(x, y);
+			this.phasersprite.endFill();
+			
+
+			// drawCircle(x, y, diameter)
+
+			if (layer == Types.Layer.GAME) game_group.add(this.phasersprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.phasersprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.phasersprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.phasersprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.phasersprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.phasersprite);    // background_container
+			
+		} else {
+			xx = xx - x;
+			yy = yy - y;
+			this.pixisprite = new PIXI.Graphics();
+			if (filled == true) this.pixisprite.beginFill(colour);
+			if (filled == false) this.pixisprite.lineStyle( 8 , colour);
+			
+			this.pixisprite.drawRect(x, y,xx, yy);
+			this.pixisprite.endFill();
+
+			if (layer == Types.Layer.GAME) game_group.add(this.pixisprite);		// game_container
+			else if(layer == Types.Layer.POP_MENU) options_menu_group.add(this.pixisprite);   // options_menu_container
+			else if(layer == Types.Layer.GAME_MENU) game_menu_group.add(this.pixisprite);  // game_menu_container
+			else if(layer == Types.Layer.HUD) menu_group.add(this.pixisprite);	// menu_container
+			else if(layer == Types.Layer.TILE) tile_group.add(this.pixisprite);	// tile_container
+			else if(layer == Types.Layer.BACKGROUND) background_group.add(this.pixisprite);    // background_container
+
+		}
+	},
+
+	set_colour: function() {
+
+	},
+
+	set_scale: function(x, y) {
+		if (using_phaser == true) {
+			//this.phasersprite.scale(x, y);
+			//this.phasersprite.scale = x;
+			this.phasersprite.width *= x;
+			this.phasersprite.height *= y;
+			this.phasersprite.scale.x = x;
+			this.phasersprite.scale.y = y;
+		} else {
+			
+			this.pixisprite.scale.x = x;
+			this.pixisprite.scale.y = y;
+		}
+	},
+
+	update_line_w : function (w) {
+		if (using_phaser == true) {
+			this.phasersprite.lineStyle(w, '0xffffff');
+		}
+	},
+
+	update_size : function(x, y, w, h) {
+		this.x = x;
+		this.y = y;
+		if (using_phaser == true) {
+			//this.phasersprite.scale.setTo(x,y,w,h);
+			//alert('before ' +this.phasersprite.bottomRight);
+			//this.phasersprite.bottomRight = new Phaser.Point(x + w, y + h);
+			//alert('after ' +this.phasersprite.bottomRight);
+			//this.phasersprite.topLeft = new Phaser.Point(x, y);
+			this.phasersprite.x = x;
+			this.phasersprite.y = y;
+			this.phasersprite.width = w;
+			this.phasersprite.height = h;
+		}
+	},
+
+	update_pos: function(x, y) {
+		
+		if (using_phaser == true) {
+			this.x = x;
+			this.y = y;
+			//this.phasersprite.moveTo(x, y);
+			this.phasersprite.position.x = x;
+			this.phasersprite.position.y = y;
+		} else {
+			
+			this.pixisprite.position.x = x;
+			this.pixisprite.position.y = y;
+		}
+	},
+
+	visible: true,
+
+	make_vis: function() {
+		//if (this.visible == true) return;
+		//this.visible = true;
+		if (using_phaser == true) {
+			//this.update_pos(this.x, this.y);
+			this.phasersprite.visible = true;
+		} else {
+			this.update_pos(this.x, this.y);
+		}
+	},
+
+	hide: function () {
+		//if (this.visible == false) return;
+		//this.visible = false;
+		if (using_phaser == true) {
+			//this.phasersprite.moveTo(-999, -999);
+			//this.update_pos(-999,-999);
+			this.phasersprite.visible = false;
+		} else {
+			this.pixisprite.position.x = -9999;
+			this.pixisprite.position.y = -9999;
+		}
+	}
+
+});
+
+
+
 createText = function () {};
 
 TextClass = Class.extend({
@@ -215,6 +361,8 @@ TextClass = Class.extend({
 	
 
 	init: function(layer) {
+
+		//alert('new next ' + g_text_objs.length);
 
 		update_webfonts();
 
@@ -281,6 +429,9 @@ TextClass = Class.extend({
 			this.font = "14";
 			this.font_size = 14;
 			//this.set_scale(1.5);
+		}  else if (font == Types.Fonts.TITLE) {
+			this.font = "38";
+			this.font_size = 38;
 		} else {
 			this.font = "32";
 			this.font_size = 32;
@@ -354,9 +505,8 @@ TextClass = Class.extend({
 			this.pixitext.fontSize = this.font_size;
 
 			//this.pixitext.smoothed = false;
-
 			
-
+			
 			// set padding may help with the garbled text problem
 			this.pixitext.padding.set(2, 2);	// http://www.html5gamedevs.com/topic/11469-text-cut-out-with-webfont/
 
@@ -392,10 +542,20 @@ TextClass = Class.extend({
 				wordWrapWidth : 9999			};
 
 
-
-
-
+			//this.style.fill = '#F8F328'
+			//this.style.dropShadow = true;
+			//this.style.dropShadowColor = '#E2E2E2';
+			//this.style.dropShadowDistance = 3;
+			//this.style.dropShadowAngle = Math.PI / 2;
 			
+			if (this.font_size == 38) {
+				this.style.dropShadow = true;
+				//this.style.dropShadow = true;
+				this.style.dropShadowColor = '#8F27DA';
+				this.style.dropShadowDistance = 3;
+				this.style.dropShadowAngle = Math.PI / 2;
+			}
+
 			
 
 			this.pixitext = new PIXI.Text(str, this.style);
@@ -1037,9 +1197,9 @@ BitmapClass = Class.extend({
 		this.last_tile_addx = x;
 		this.last_tile_addy = y;
 
-		//console.log('this.last_tile_addx ' + this.last_tile_addx);
+		////console.log('this.last_tile_addx ' + this.last_tile_addx);
 
-		////console.log('spritesheet add_tile ' + code + ' x ' + x + ' y ' + y);
+		//////console.log('spritesheet add_tile ' + code + ' x ' + x + ' y ' + y);
 		
 		//this.bitmapdata.rect(3, 7, 22, 22, '#ee0000'); 
 
@@ -1075,7 +1235,7 @@ BitmapClass = Class.extend({
 
 		//this.rendertexture.rect(x*10, y*10, 10, 10, colour);
 
-		//console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
+		////console.log('spritesheet done! added_tile ' + code + ' x ' + x + ' y ' + y + ' colour ' + colour);
 
 		} else if (using_pixi) {
 
@@ -1090,7 +1250,7 @@ BitmapClass = Class.extend({
 	add_a_rect : function () {
 		
 		if (using_phaser == true) {
-		//console.log('blue rect added and bitmapdata updated');
+		////console.log('blue rect added and bitmapdata updated');
 		this.bitmapdata.rect(0, 0, 20, 10, '#0000FF');
 		this.bitmapdata.update();
 		} else {
@@ -1140,7 +1300,7 @@ BitmapClass = Class.extend({
 		//this.image = game.add.sprite(0, 0, this.bitmapdata);
 
 		
-		//console.log('butmap update pos ' + x + ' ' + y);
+		////console.log('butmap update pos ' + x + ' ' + y);
 
 		
 		
@@ -1170,7 +1330,7 @@ BitmapClass = Class.extend({
 
 	fill : function(colour_) {
 		if (using_phaser == true) {
-			////console.log('FILL');
+			//////console.log('FILL');
 			this.bitmapdata.ctx.rect(0, 0, this.w, this.h);	
 			this.bitmapdata.ctx.fillStyle = colour_;//'#b2ddc8';
         		this.bitmapdata.ctx.fill();
@@ -1314,6 +1474,28 @@ SplashClass = Class.extend({
 
 	init: function(x, y) {
 
+		
+
+		if (using_cocoon_js == true) {
+			if (using_phaser == true) {
+				this.phasersprite = game.add.image(x,y,'atlas_blocks','title2.png');
+				this.phasersprite.anchor.setTo(0.5,0.5);
+				game_menu_group.add(this.phasersprite);  // game_menu_container
+			} else {
+				this.pixisprite = new PIXI.Sprite(g_textures['bomb.png']);
+				this.pixisprite.anchor.x = 0.5;
+				this.pixisprite.anchor.y = 0.5;
+				this.pixisprite.visible = true;
+
+				game_menu_group.add(this.pixisprite);		// game_container
+			}
+
+			this.ready = true;
+			this.hide();
+
+			return;
+		}
+
 		try {
 
 		// some players on Kong reported that the game stops loading at 90%
@@ -1343,6 +1525,8 @@ SplashClass = Class.extend({
 	},
 
 	make_vis: function() {
+
+		if (using_cocoon_js == true) return;
 
 		if (this.ready == false) return;
 

@@ -253,10 +253,12 @@ setup_input = function () {
 		     //.on('rightclick',onPIXIrightup,false);
 
 		// disable right-menu
-		renderer.view.addEventListener('contextmenu', (e) => {
-    			e.preventDefault();
-			//mouseclickright = true;
-  		});
+		if (using_cocoon_js == false) {
+			renderer.view.addEventListener('contextmenu', (e) => {
+    				e.preventDefault();
+				//mouseclickright = true;
+  			});
+		}
 
 
 		return;

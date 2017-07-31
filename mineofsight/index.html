@@ -216,6 +216,7 @@ var scriptList = [
 		"src/game_engine.js",
 		"src/game_state.js",
 		"src/entity_class.js",	
+		"src/production_rules.js",	
 		
 		//"sound_manager.js",
 	];
@@ -274,6 +275,21 @@ using_cocoon_js = false;
 cordova_ready = false;
 on_cordova_ready = function() {
 	cordova_ready = true;
+
+	// https://github.com/asfandiyark7/cordova-plugin-audio-mode
+	// https://www.npmjs.com/package/cordova-plugin-audio-mode
+	// set app to silent mode with the above plugin:
+	// will this stop the app from requesting audio focus?
+	// does 'audio mode' mean the whole phone???
+
+	//this is success callback function 
+	//var success = function(message) {}
+
+	//this is failure callback function 
+	//var failure = function() {}
+
+	//audio_mode.change_audio_mode("silent", success, failure); 
+	//instead of 'vibrate' other values are 'normal' or 'silent' 
 };
 
 if (using_cocoon_js == true) {
@@ -435,7 +451,15 @@ var scale_man;
 
 var menu_scale_ratio = 1;
 
-var do_resize = function(e) {  
+var do_resize = function(e) {
+	try {
+		do_resize_internal(e);
+	} catch (err) {
+
+	}
+};
+
+var do_resize_internal = function(e) {  
 
 	try {
 		//if (game == null) return;
@@ -535,7 +559,7 @@ var do_resize = function(e) {
 
 	if (using_cocoon_js == true) y_shift_screen = 32;
 
-	play_group.set_pos(x_shift_screen, 0);//position.set(x_shift_screen, y_shift_screen);
+	play_group.set_pos(x_shift_screen, y_shift_screen);
 
 
 	//game.width = screen_width;		// what does this do??
