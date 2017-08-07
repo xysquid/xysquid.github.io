@@ -801,6 +801,9 @@ CommunityLevelBrowser = Class.extend({
 		this.h_text.set_font(Types.Fonts.MEDIUM);
 		this.h_text.set_text('COMMUNITY LEVELS');
 
+		this.down_button.rotate_ninety();
+		this.down_button.rotate_ninety();
+
 	},
 
 	get_hint_status: function (hintcode) {
@@ -900,8 +903,7 @@ CommunityLevelBrowser = Class.extend({
 		//this.toggle_rating.make_vis();
 		//this.toggle_random.make_vis();
 
-		this.down_button.rotate_ninety();
-		this.down_button.rotate_ninety();
+		
 
 	},
 
@@ -1145,7 +1147,7 @@ OverworldSpritesClassReuseable = Class.extend({
 			box_.setup_sprite('level_button_on.png',Types.Layer.HUD);	// default sprite, may need to change
 
 			var text_ = new TextClass(Types.Layer.HUD);			// dunno if BACKGROUND works yet
-			text_.set_font(Types.Fonts.MEDIUM);
+			text_.set_font(Types.Fonts.SMALL);
 			text_.set_text(i.toString());
 			text_.update_pos(-999,-999);
 
@@ -1332,7 +1334,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 			
 			if (this.special_code[i] == 0) {
-				this.level_text[i].update_pos(x - 35, y - 20,96,999);
+				this.level_text[i].update_pos(x - 35, y - 14,96,999);
 
 				//this.level_text[i].center_x(x + 20);
 			} else {
@@ -1944,6 +1946,8 @@ BlockClass = Class.extend({
 		this.deselect();
 	},
 
+	b_in_range: [],
+
 	include_range_of_joined_tile: function (otherx, othery) {
 
 		////console.log('include_range_of_joined_tile this.x' + this.x + 'this.y' + this.y);
@@ -1980,6 +1984,7 @@ BlockClass = Class.extend({
 			if (already_got == 0) {
 				this.x_in_range.push(x);
 				this.y_in_range.push(y);
+				this.b_in_range.push(this.game_state.tiles[x][y]);
 			}
 		}
 		
@@ -1990,6 +1995,7 @@ BlockClass = Class.extend({
 
 		this.x_in_range.push(x);
 		this.y_in_range.push(y);
+		this.b_in_range.push(this.game_state.tiles[x][y]);
 	},
 
 	
@@ -3022,13 +3028,16 @@ BlockClass = Class.extend({
 		this.my_gen_parent = -1;
 		this.my_gen_parents = [];
 		this.wiped_gen_stage = 0;
+		this.gen_solved_by = -1;
 
 		this.final_lock = false;
 		this.final_solve = false;
+		this.solve_me = false;
 	},
 
 	final_lock: false,
 	final_solve: false,
+	solve_me: false,
 
 	hint_safe_gen: false,
 	safe_gen: false,
@@ -3039,10 +3048,12 @@ BlockClass = Class.extend({
 		this.safe_gen = true;
 		for (var i = 0; i < this.x_in_range.length; i++) { //alert('wjj');
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
+			if (this.game_state.blocks[b].gen_solved_by != this.index) continue;
 			this.game_state.blocks[b].safe_gen = true;
 			//if (this.game_state.blocks[b].gen_stage < this.gen_stage) this.game_state.blocks[b].mark_safe_gen();
 		}
-		//console.log('this.my_gen_parent ' + this.my_gen_parent);
+		//console.log('block b: ' + this.index + ' gen_stage ' + this.gen_stage + 'my parents: ');
+		//console.dir(this.my_gen_parents);
 		if (this.my_gen_parents.length > 0 && this.parent_marked_safe_gen == false) {
 			this.parent_marked_safe_gen = true;
 			for (var p = 0; p < this.my_gen_parents.length; p++) {
@@ -3051,6 +3062,7 @@ BlockClass = Class.extend({
 		}
 	},
 	
+	gen_solved_by: -1,
 	gen_stage: 0,
 	wiped_gen_stage: 0,
 	locked_to_child_gen_stage: false,
@@ -3058,7 +3070,7 @@ BlockClass = Class.extend({
 	my_gen_parent: -1,
 	my_gen_parents: [],
 
-	project_range_generator : function () {
+	project_range_generator : function (min_gen_stage) {
 		this.calc_hint(this.preset_hint_type);
 
 		//alert(this.preset_hint_type);
@@ -3075,17 +3087,31 @@ BlockClass = Class.extend({
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 
 			if (this.game_state.blocks[b].covered_up == true) { 
+				var solved_by = this.game_state.blocks[b].gen_solved_by;
+				//console.log('solved_by ' + solved_by);
+				this.my_gen_parents.push(solved_by);
+
 				parent_gen_stage = Math.max(parent_gen_stage, this.game_state.blocks[b].gen_stage);
 				if (this.game_state.blocks[b].gen_stage == 0) //console.log('FOUND LOOPED TILE b: ' + b);
 				if (this.game_state.blocks[b].gen_stage == 0) found_looped_tile = true;
 				//console.log('this.game_state.blocks[b].gen_stage ' + this.game_state.blocks[b].gen_stage + ' b= ' + b);
 				covers_in_range++;
+
+				
+				
 				
 			}
 
+			if (parent_gen_stage < min_gen_stage) {
+				return false;
+			}
+
+			// dont short circuit!
 			if (this.game_state.blocks[b].final_solve == true) final_tiles++;
 			if (this.game_state.blocks[b].final_solve == false && 
 			    this.game_state.blocks[b].covered_up == true) non_final_tiles++;
+
+			//if (final_tiles > 0) 
 
 			// deprecating:
 			//if (this.game_state.blocks[b].seed_gen_stage < this.seed_gen_stage) continue;
@@ -3093,7 +3119,7 @@ BlockClass = Class.extend({
 			
 		}
 
-		if (this.index == 13) //console.log('this.index == 13 is a hint now');
+		
 		this.wiped_gen_stage = this.gen_stage;	// store old gen stage, before this became a hint
 		this.gen_stage = parent_gen_stage + 1;
 
@@ -3109,21 +3135,24 @@ BlockClass = Class.extend({
 		for (var i = 0; i < this.x_in_range.length; i++) { 
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 
-			if (b == 13) //console.log('projecting into b == 13  this.game_state.blocks[b].locked_to_child_gen_stage ' + this.game_state.blocks[b].locked_to_child_gen_stage + ' this.game_state.blocks[b].gen_stage ' + this.game_state.blocks[b].gen_stage + ' this.gen_stage ' + this.gen_stage);
+			
 			
 			if (this.game_state.blocks[b].locked_to_child_gen_stage == true &&
-			    this.game_state.blocks[b].gen_stage < this.gen_stage) continue;
-
-			if (b == 13) //console.log('sucess');
+			    this.game_state.blocks[b].gen_stage < this.gen_stage) {
+				//if (this.game_state.blocks[b].covered_up == true) this.my_gen_parents.push(b);
+				continue;
+			}
+			if (b != this.index) {
+				//this.game_state.blocks[b].my_gen_parents.push(this.index);
+			}
 
 			this.game_state.blocks[b].locked_to_child_gen_stage = true;
 			if (b != this.index) this.game_state.blocks[b].gen_stage = this.gen_stage;
-			if (b != this.index) {
-				//if (this.my_gen_parent != -1) alert('multiple parents');
-				this.game_state.blocks[b].my_gen_parents.push(this.index);
-			}
+			this.game_state.blocks[b].gen_solved_by = this.index;
 			
 		}
+
+		return true;
 	},
 
 	pick_tile_in_range : function (rand_seed) {
@@ -3147,6 +3176,9 @@ BlockClass = Class.extend({
 
 		return nummines;
 	},
+
+	generator_knowns: [],
+	
 
 	must_be_safe: false,
 	must_be_uncovered: false,
@@ -3308,6 +3340,7 @@ BlockClass = Class.extend({
 
 		this.x_in_range = [];
 		this.y_in_range = [];
+		this.b_in_range = [];
 
 		if (hinttype == 2) {
 			num = this.calc_hint_eye_num();
@@ -3330,6 +3363,8 @@ BlockClass = Class.extend({
 		} else if (hinttype == 5) {
 			var only_count_lonely_mines = true;
 			num = this.calc_hint_eye_num(only_count_lonely_mines);
+
+			// if there is a 2x cover in range, this needs to change to an eye
 			
 			
 		} else if (hinttype == 6) {
@@ -3539,6 +3574,7 @@ BlockClass = Class.extend({
 
 		this.x_in_range = [];	// clear
 		this.y_in_range = [];	// add a tile back ONLY if its flowfill_seen = false
+		this.b_in_range = [];
 
 		var loops = 0;
 
@@ -3561,6 +3597,7 @@ BlockClass = Class.extend({
 
 			this.x_in_range.push(x);
 			this.y_in_range.push(y);
+			this.b_in_range.push(this.game_state.tiles[x][y]);
 
 			if (this.game_state.blocks[b].block_type == 2 &&
 			    this.game_state.blocks[b].eyerepeat_steps < max_steps) {
@@ -3570,6 +3607,7 @@ BlockClass = Class.extend({
 
 				this.game_state.blocks[b].x_in_range = [];	// clear the mine's range
 				this.game_state.blocks[b].y_in_range = [];	// 
+				this.game_state.blocks[b].b_in_range = [];
 				var num_mine_sees = this.game_state.blocks[b].calc_hint_eye_num(); // calc range
 
 				for (var i = 0; i < this.game_state.blocks[b].x_in_range.length; i++) {
@@ -3852,7 +3890,24 @@ BlockClass = Class.extend({
 
 			var hint_ = 0;
 			
-			
+			// hearts cant see x2 mines
+			if (hint_type == 5) {
+				
+				var doubles = 0;
+				for (var r = 0; r < this.game_state.blocks[leader_b].b_in_range.length; r++) {
+					var b = this.game_state.blocks[leader_b].b_in_range[r];
+					
+					if (this.game_state.blocks[b].mine_multi > 1) doubles++;
+				}
+				
+				if (doubles != 0) {
+					hint_type = 2;
+					this.game_state.blocks[leader_b].preset_hint(2);
+					
+					this.game_state.blocks[leader_b].uncover();
+				}
+		
+			}
 			
 			// for certain hint types we need a different approach - get the max of the individual tiles
 			if (hint_type == 12) {
@@ -3872,6 +3927,8 @@ BlockClass = Class.extend({
 
 				
 			}
+			
+			
 
 			this.game_state.blocks[leader_b].show_hint(hint_type, hint_);
 			this.game_state.blocks[leader_b].shared_wanted_num = hint_; // for calculating happines
@@ -3935,28 +3992,7 @@ BlockClass = Class.extend({
 			 
 		}
 
-		if (this.math_group != -1) {
-			//var hint_ = this.calc_hint(this.preset_hint_type);
-
-			//this.stored_hint_num = hint_;
-
-			this.uncover_math();
-			
-			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
-
-				if (this.game_state.blocks[b].covered_up == false) continue; // excludes this entity, so gotta call uncover_math as above 
-
-				
-
-				if (this.game_state.blocks[b].math_group != this.math_group) continue;
-
-				this.game_state.blocks[b].uncover_math();	
-				
-			}
-			
-			return;
-
-		} // math_group
+		
 
 		if (this.block_type == 2 || show_hint == false) {
 			return;		// dont show the hint
@@ -4167,21 +4203,25 @@ BlockClass = Class.extend({
 		if (this.x - 1 >= 0 && this.y - 1 >= 0) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y - 1);
+			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y - 1]);
 		}
 
 		if (this.x < this.game_state.grid_w - 1 && this.y - 1 >= 0) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y - 1);
+			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y - 1]);
 		}		
 
 		if (this.x < this.game_state.grid_w - 1 && this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y + 1);
+			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y + 1]);
 		}
 
 		if (this.x - 1 >= 0 && this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y + 1);
+			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y + 1]);
 		}
 
 		// PLUS equals
@@ -4222,21 +4262,25 @@ BlockClass = Class.extend({
 		if (this.x > 0) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y);
+			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y]);
 		}
 
 		if (this.x < this.game_state.grid_w - 1) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y);
+			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y]);
 		}
 
 		if (this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(this.y + 1);
+			this.b_in_range.push(this.game_state.tiles[this.x][this.y + 1]);
 		}
 
 		if (this.y > 0) {
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(this.y - 1);
+			this.b_in_range.push(this.game_state.tiles[this.x][this.y - 1]);
 		}
 
 		this.hint_touch_num = mines_touching;
@@ -4424,6 +4468,7 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
+			this.b_in_range.push(this.game_state.tiles[this.x][y]);
 			
 		}
 
@@ -4470,6 +4515,7 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
+			this.b_in_range.push(this.game_state.tiles[x][this.y]);
 			
 		}
 
@@ -4516,7 +4562,7 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
-			
+			this.b_in_range.push(this.game_state.tiles[x][this.y]);
 		}
 
 		// look down
@@ -4570,7 +4616,7 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
-			
+			this.b_in_range.push(this.game_state.tiles[this.x][y]);
 		}
 
 		if (only_count_lonely_mines == true) mines_seen = lonely_mines;
@@ -5035,7 +5081,11 @@ BlockClass = Class.extend({
 	draw: function() {
 		
 
-	}
+	},
+
+	try_solve: function () {
+		
+	},
 
 });
 
