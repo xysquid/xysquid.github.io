@@ -242,11 +242,11 @@
 },
 {
 	"filename": "double_tut.png",
-	"frame": {"x":113,"y":114,"w":16,"h":10},
+	"frame": {"x":113,"y":114,"w":16,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":10},
-	"sourceSize": {"w":16,"h":10}
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
 },
 {
 	"filename": "emptystar.png",
@@ -759,6 +759,6 @@
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:4f078c5f112a56e6907c88f6e8ccaf58:3925fc35717a81896f1dfd9bb84a977c:b1f1a031cef7856acce3e479bba415bf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:85c3815cabc49abc644afae438effb2a:9a4cdf7f43dd91df761a0748737ee244:b1f1a031cef7856acce3e479bba415bf$"
 }
 }
