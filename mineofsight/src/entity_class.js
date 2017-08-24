@@ -1242,7 +1242,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 	set_status: function(level, status_) {
 
-		//alert('overworld level ' + level + ' status ' + status_);
+		////alert('overworld level ' + level + ' status ' + status_);
 
 		if (level >= this.status_sprite.length) return;
 
@@ -2200,7 +2200,7 @@ BlockClass = Class.extend({
 				
 				// this is working, but i'm not 100% clear if its correct
 				if (counted_h_group == 0 && counted_v_group == 0) {
-					//alert('counting horiz group ' + this.game_state.blocks[b].my_horiz_seq_id + ' and vert group ' + this.game_state.blocks[b].my_vert_seq_id);
+					////alert('counting horiz group ' + this.game_state.blocks[b].my_horiz_seq_id + ' and vert group ' + this.game_state.blocks[b].my_vert_seq_id);
 					horiz_eyebracket_groups_counted.push(this.game_state.blocks[b].my_horiz_seq_id);
 					vert_eyebracket_groups_counted.push(this.game_state.blocks[b].my_vert_seq_id);
 					multi_ = 1;
@@ -2854,7 +2854,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 12) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_crown_num_text.change_text(hint_.toString());
 			this.hint_crown_num_text.update_pos(text_x, 
@@ -2868,7 +2868,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 13) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_eyebracket_num_text.change_text(hint_.toString());
 			this.hint_eyebracket_num_text.update_pos(text_x, 
@@ -2882,7 +2882,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 47) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_ghost_num_text.change_text(hint_.toString());
 			this.hint_ghost_num_text.update_pos(text_x, 
@@ -2896,7 +2896,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 48) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_gem_num_text.change_text(hint_.toString());
 			this.hint_gem_num_text.update_pos(text_x, 
@@ -2910,7 +2910,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 49) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2924,7 +2924,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 50) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2938,7 +2938,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 51) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2952,7 +2952,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 52) {
 
-			//alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 
 			
 			
@@ -3046,7 +3046,7 @@ BlockClass = Class.extend({
 	mark_safe_gen : function () {
 		this.hint_safe_gen = true;
 		this.safe_gen = true;
-		for (var i = 0; i < this.x_in_range.length; i++) { //alert('wjj');
+		for (var i = 0; i < this.x_in_range.length; i++) { ////alert('wjj');
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 			if (this.game_state.blocks[b].gen_solved_by != this.index) continue;
 			this.game_state.blocks[b].safe_gen = true;
@@ -3073,8 +3073,8 @@ BlockClass = Class.extend({
 	project_range_generator : function (min_gen_stage) {
 		this.calc_hint(this.preset_hint_type);
 
-		//alert(this.preset_hint_type);
-		//alert(this.x_in_range.length);
+		////alert(this.preset_hint_type);
+		////alert(this.x_in_range.length);
 
 		var parent_gen_stage = 0;
 		var covers_in_range = 0;
@@ -3083,7 +3083,7 @@ BlockClass = Class.extend({
 		var final_tiles = 0;
 		var non_final_tiles = 0;
 
-		for (var i = 0; i < this.x_in_range.length; i++) { //alert('wjj');
+		for (var i = 0; i < this.x_in_range.length; i++) { ////alert('wjj');
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 
 			if (this.game_state.blocks[b].covered_up == true) { 
@@ -3156,7 +3156,7 @@ BlockClass = Class.extend({
 	},
 
 	pick_tile_in_range : function (rand_seed) {
-		//alert('pick_tile_in_range this.preset_hint_type ' + this.preset_hint_type + ' this.x_in_range.length ' + this.x_in_range.length);
+		////alert('pick_tile_in_range this.preset_hint_type ' + this.preset_hint_type + ' this.x_in_range.length ' + this.x_in_range.length);
 		var i = rand_seed % this.x_in_range.length;
 
 		var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
@@ -3560,7 +3560,7 @@ BlockClass = Class.extend({
 
 		var num = this.calc_hint_eye_num();	// fills out range
 
-		//alert('eye at ' + this.x + ' ' + this.y + ' this.x_in_range.length ' + this.x_in_range.length);
+		////alert('eye at ' + this.x + ' ' + this.y + ' this.x_in_range.length ' + this.x_in_range.length);
 
 		var fringe_ = [];
 
@@ -3570,7 +3570,7 @@ BlockClass = Class.extend({
 			fringe_.push(b);
 		}
 
-		//alert('eye at ' + this.x + ' ' + this.y + ' initial fringe ' + fringe_);
+		////alert('eye at ' + this.x + ' ' + this.y + ' initial fringe ' + fringe_);
 
 		this.x_in_range = [];	// clear
 		this.y_in_range = [];	// add a tile back ONLY if its flowfill_seen = false
@@ -3587,8 +3587,8 @@ BlockClass = Class.extend({
 			var x = this.game_state.blocks[b].x;
 			var y = this.game_state.blocks[b].y;
 
-			//alert('pushing ' + x + ' ' + y);
-			//alert('b ' + b);
+			////alert('pushing ' + x + ' ' + y);
+			////alert('b ' + b);
 
 			if (this.game_state.blocks[b].flowfill_seen == true) continue; 
 			this.game_state.blocks[b].flowfill_seen = true;
@@ -3786,7 +3786,7 @@ BlockClass = Class.extend({
 			
 			this.game_state.calc_sequence_lengths();	// will only execute one per level after a reset
 
-			//alert('crown at x: ' + x + ', y: ' + y + ',this.stored_hint_num: ' + this.stored_hint_num);
+			////alert('crown at x: ' + x + ', y: ' + y + ',this.stored_hint_num: ' + this.stored_hint_num);
 
 			if (this.x != x && this.y == y &&
 			    this.game_state.blocks[this.game_state.tiles[x][y]].my_horiz_seq_length == this.stored_hint_num) return true;
@@ -3951,7 +3951,7 @@ BlockClass = Class.extend({
 			// its possible for a hint that belongs to a share clue to be uncovered while the share clue is covered
 			// but not vice versa
 
-			//alert('uncovered a share group tile ' + this.share_groups[0]);
+			////alert('uncovered a share group tile ' + this.share_groups[0]);
 
 			var share_group = this.share_groups[0];
 
@@ -4067,7 +4067,7 @@ BlockClass = Class.extend({
 
 		}
 
-		//alert('calc_hint_from_range this.present_hint_type' + this.preset_hint_type + ' num ' + num + ' this.x ' + this.x + ' this.y ' + this.y );
+		////alert('calc_hint_from_range this.present_hint_type' + this.preset_hint_type + ' num ' + num + ' this.x ' + this.x + ' this.y ' + this.y );
 		return num;
 
 	},
@@ -4241,7 +4241,7 @@ BlockClass = Class.extend({
 
 
 		if (this.count_flags == 1) {
-			alert('this.count_flags == 1');
+			//alert('this.count_flags == 1');
 			mines_touching = 0;
 
 			if (this.x > 0 && this.game_state.blocks[this.game_state.tiles[this.x - 1][this.y]].flag_on == true) mines_touching++;
@@ -4633,7 +4633,7 @@ BlockClass = Class.extend({
 
 		if (only_count_directions == true) {
 			var dirs_ = up_ + down_ + left_ + right_;
-			//alert('only directions ' + dirs_);
+			////alert('only directions ' + dirs_);
 			return dirs_;
 		}
 
@@ -4791,7 +4791,7 @@ BlockClass = Class.extend({
 			var y = this.y_in_range[i];
 
 			if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type != 2) {
-				alert('error here: x ' + x + ' y ' + y + ' is falsely in the range of zap at ' + this.x + ' ' + this.y);
+				//alert('error here: x ' + x + ' y ' + y + ' is falsely in the range of zap at ' + this.x + ' ' + this.y);
 
 			}
 
@@ -4812,7 +4812,7 @@ BlockClass = Class.extend({
 		var lonely_ = 0;
 		var unknown_ = 0;
 
-		//alert('calc_happiness_heart');
+		////alert('calc_happiness_heart');
 
 		for (var i = 0; i < this.x_in_range.length; i++) {
 
@@ -4843,7 +4843,7 @@ BlockClass = Class.extend({
 
 		if (unknown_ > 0) this.happy = false;
 
-		//alert('x ' + this.x + ' y ' + this.y +'\nlonely_ ' +lonely_ + '\nthis.wanted_num ' + this.wanted_num + '\nunknown_'+unknown_);
+		////alert('x ' + this.x + ' y ' + this.y +'\nlonely_ ' +lonely_ + '\nthis.wanted_num ' + this.wanted_num + '\nunknown_'+unknown_);
 
 		if (this.happy) this.grey_out();
 		else this.ungrey();		
