@@ -191,8 +191,11 @@ onPIXIdown = function (event) {
 		update_mouse_pos(pos.x, pos.y);
 		mousedown = true;
 	}
-};
 
+	gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio , 
+					   (mouse_abs['y'] - y_shift_screen)/ratio,Types.Events.MOUSE_DOWN);
+};
+// on mousedown needs to happen in the same frame for opening web links (for crosspromotion)
 
 
 onPIXIup = function (event) {
