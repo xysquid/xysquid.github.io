@@ -222,7 +222,11 @@ onPIXIdown = function (event) {
 	if (event.data.originalEvent.which == 1 || event.data.originalEvent.button == 0) mousedown = true;
 
 	if (event.data.originalEvent.which == 1 || event.data.originalEvent.button == 0) leftmousedown = true;
-	if (event.data.originalEvent.which == 3 || event.data.originalEvent.button == 2) rightmousedown = true;
+	if (event.data.originalEvent.which == 3 || event.data.originalEvent.button == 2) {
+		rightmousedown = true;
+	} else leftmousedown = true;
+
+	
 	
 	if (mouseclickright != true) {
 		update_mouse_pos(pos.x, pos.y);
@@ -587,6 +591,9 @@ function defSprite(name, x, y, w, h, cx, cy) {
 
 	name_index[name] = this.sprites.length - 1;
 }
+
+// https://github.com/kittykatattack/learningPixi#keyboard
+
 
 pBar.value += 10;
 
