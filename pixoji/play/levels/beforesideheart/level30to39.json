@@ -2,13 +2,13 @@
 
     "mapdata_version_mines": 1,
 
-    "levels_starting_from": 40,
+    "levels_starting_from": 30,
     
     "tut": {
 		
         
-        "40" : {
-            "levelnum": 40,
+        "30" : {
+            "levelnum": 30,
 	     "text" : [
 		     "TIME FOR A NEW CLUE-TYPE",
              "THE CROWN TELLS YOU\nTHE HIGHEST SEQUENCE IT SEES",
@@ -32,8 +32,8 @@
                 3,2,2,1,2,2]
 	    },
         
-          "42" : {
-            "levelnum": 42,
+          "32" : {
+            "levelnum": 32,
               "startclear": 1,
               "dofill": [6],
 	     "text" : [
@@ -60,8 +60,8 @@
                 0,1,1,1,1,1]
 	    },
         
-        "46" : {
-            "levelnum": 46,
+        "36" : {
+            "levelnum": 36,
               "startclear": 1,
               "dofill": [2],
               "dodig": [3,9],

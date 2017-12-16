@@ -2,13 +2,13 @@
 
     "mapdata_version_mines": 1,
 
-    "levels_starting_from": 50,
+    "levels_starting_from": 40,
     
      "tut": {
 		
         
-        "50" : {
-            "levelnum": 50,
+        "40" : {
+            "levelnum": 40,
 	     "text" : [
 		     "TIME FOR A NEW CLUE-TYPE",
              "THIS CLUE DETECTS THE\nNUMBER OF UNBROKEN SEQUENCES",
@@ -33,8 +33,8 @@
                 5,2,2,1,2,2]
 	    },
          
-          "54" : {
-            "levelnum": 54,
+          "44" : {
+            "levelnum": 44,
               "startclear": 1,
                "dofill": [2,15],
                 "dodig": [],
