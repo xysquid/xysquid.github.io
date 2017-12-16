@@ -41,6 +41,8 @@ Types = {
 
 			MENU: 50,
 
+			REVERSE_MOUSE: 47,
+
 			NO_EVENT: 0,
 
 			MOUSE_DOWN:  14,
@@ -93,6 +95,8 @@ function g_get_text (tx) {
 	if (g_texts[language][tx] == null) return g_texts['en'][tx];
 	return g_texts[language][tx];
 }
+
+g_reverse_mouse_buttons = false;
 
 g_texts = {
 
@@ -585,6 +589,7 @@ MenuItems.push([0, "SETTINGS"]);
 
 // does sound clash with cocoon_js?
 MenuItems.push([1, Types.Events.SOUND_ONOFF, g_texts[language]["Sound"] + g_texts[language]["ON"],"sound_on_icon.png","sound_off_icon.png"]);
+//if (using_cocoon_js == false) MenuItems.push([1, Types.Events.REVERSE_MOUSE, "REVERSE MOUSE" + g_texts[language]["OFF"],"sound_on_icon.png","sound_off_icon.png"]);
 
 if (using_cocoon_js == false) {
 	//MenuItems.push([3, Types.Events.RIGHT_TO_FLAG, g_get_text("right"),"redflag.png",]);
@@ -1238,6 +1243,11 @@ BlipFrogMenuClass = Class.extend({
 
 		if (this.menu_up == false) {
 
+			if (g_reverse_mouse_buttons == true) {
+				if (event_type == Types.Events.LEFT_MOUSE_DOWN) event_type = Types.Events.RIGHT_MOUSE_DOWN;
+				else if (event_type == Types.Events.RIGHT_MOUSE_DOWN) event_type = Types.Events.LEFT_MOUSE_DOWN;
+			}
+
 			// fb?
 			if (event_type == Types.Events.MOUSE_UP &&
 			    mouse.x > this.fb_x - 29*0.5 &&
@@ -1460,6 +1470,18 @@ BlipFrogMenuClass = Class.extend({
 			} else {
 				g_sound_on = true;
 				this.menu_texts[menu_i].change_text(g_texts[language]["Sound"] + g_texts[language]["ON"]);
+			}
+
+			
+
+		} else if (MenuItems[menu_i][1] == Types.Events.REVERSE_MOUSE) {
+			//gSM.togglemute();
+			if (g_reverse_mouse_buttons) {
+				g_reverse_mouse_buttons = false;
+				this.menu_texts[menu_i].change_text("REVERSE MOUSE" + g_texts[language]["OFF"]);
+			} else {
+				g_reverse_mouse_buttons = true;
+				this.menu_texts[menu_i].change_text("REVERSE MOUSE" + g_texts[language]["ON"]);
 			}
 
 			

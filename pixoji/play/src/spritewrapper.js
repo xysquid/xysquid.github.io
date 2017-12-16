@@ -1700,9 +1700,32 @@ SplashClass = Class.extend({
 
 });
 
+pixi_render_sprite_to_tilegrid = function(pixisprite) {
+	return;
+	if (g_tilegrid_ready == false) return;
+	pixisprite.visible = true;
+	g_tile_canvas_renderer.render(pixisprite, g_tile_canvas_texture);
+	pixisprite.visible = false;
+	static_tile_group.hide();
+	g_tile_canvas_texture.update();
+	return;
+	if (g_tilegrid_ready == false) return;
+
+	pixisprite.visible = true;
+	pixisprite.blendMode = PIXI.BLEND_MODES.SCREEN;
+	renderer.render(pixisprite, g_pixi_tilegrid_texture);
+
+	pixisprite.visible = false;
+
+	g_pixi_tilegrid_single_sprite.texture = g_pixi_tilegrid_texture;
+};
+
 // http://pixijs.github.io/examples/?v=v4.1.1#/basics/render-texture.js
 var g_tilegrid_changed = false;
 var g_tilegrid_ready = false;
+
+var g_pixi_tilegrid_w = 48*12;
+var g_pixi_tilegrid_h = 48*12;
 
 // call this once per draw
 pixi_update_tilegrid = function() {
@@ -1710,7 +1733,14 @@ pixi_update_tilegrid = function() {
 	if (g_tilegrid_changed == false) return;
 	if (g_tilegrid_ready == false) return;
 	g_tilegrid_changed = false;
-	
+
+	//g_tile_canvas_texture.setFrame(new PIXI.Rectangle(0, 0, g_pixi_tilegrid_w, g_pixi_tilegrid_h));
+	//g_tile_canvas_texture.update();	// if using canvas
+	//return;
+
+	// need to clear g_pixi_tilegrid_texture
+	g_pixi_tilegrid_texture.setFrame(new PIXI.Rectangle(0, 0, g_pixi_tilegrid_w, g_pixi_tilegrid_h));
+
 
 	static_tile_group.make_vis();
 
@@ -1718,6 +1748,7 @@ pixi_update_tilegrid = function() {
 
 	// // ... add all the sprites to the container
 	// // render the tilemap to a render texture
+	
 
 	// waiiit maybe replace mapContainer with tile_group / game_group.layer
 	// I've been using PIXI.Container for layers
@@ -1755,22 +1786,62 @@ pixi_update_tilegrid = function() {
 // unless i set the resolution/dpi to 2 ... but then the canvas+ app (whole app) is zoomed in 2x
 // https://phaser.io/docs/2.4.4/PIXI.RenderTexture.html#clear
 
+// https://github.com/pixijs/pixi.js/issues/1147
+// RenderTexture not clearing correctly on CanvasRenderer
+// WebGL seems fine
+// so my cocoon.js build is using CanvasRenderer?????????
+// yes it does! console says Pixi ... Canvas
+// on my laptop the console says Pixi ... WebGL
+
+// idea: can I just resize the rendertexture (or baserendertexture) ?
+// A texture is just a description of what rectangle of a base texture to use, a base texture is just a description of what image to use.
+// A sprite describes where and how to draw a texture in the world. This includes scaling and other things.
+// g_pixi_tilegrid_texture.width = tile_size*level_w
+
+
+// google for things around 'pixi paintbrush effect'
+
 g_pixi_tilegrid_container = null;
 g_pixi_tilegrid_base_render_texture = null;
 g_pixi_tilegrid_texture = null;
 g_pixi_tilegrid_single_sprite = null;
+
+g_tile_canvas = null;
+g_tile_canvas_renderer = null;
+g_tile_canvas_texture = null;
+g_tile_canvas_sprite = null;
 
 pixi_init_tilegrid = function() {
 	return;
 	console.log('pixi_init_tilegrid');
 	g_tilegrid_ready = true;
 
+	/*
+	g_tile_canvas =  document.getElementById("tilecanvas");   // <canvas> at the end of index.html
+	g_tile_canvas_renderer = new PIXI.CanvasRenderer(g_tile_canvas.width, g_tile_canvas.height,g_tile_canvas,true);	
+	g_tile_canvas_texture = PIXI.Texture.fromCanvas(g_tile_canvas, PIXI.SCALE_MODES.LINEAR);
+	g_tile_canvas_sprite = new PIXI.Sprite(g_tile_canvas_texture);
+	g_tile_canvas_sprite.anchor.x = 0;
+	g_tile_canvas_sprite.anchor.y = 0;
+	g_tile_canvas_sprite.visible = true;
+	
+	//g_tile_canvas_sprite.scale = 1;
+	play_screen_group.add(g_tile_canvas_sprite);
+	*/
+	// g_tile_canvas_texture.update();	// https://github.com/pixijs/pixi.js/issues/1980
+
 	g_pixi_tilegrid_container = new PIXI.DisplayObjectContainer();
 
 	// the last param is the resolution/device pixel ratio of the texture being generated
 	// http://pixijs.download/dev/docs/PIXI.BaseRenderTexture.html
 	//g_pixi_tilegrid_base_render_texture = new PIXI.BaseRenderTexture(2000, 2000, PIXI.SCALE_MODES.LINEAR, 1);
-	g_pixi_tilegrid_base_render_texture = new PIXI.BaseRenderTexture(2000, 2000, PIXI.SCALE_MODES.LINEAR);
+	var resolution = 1;
+	if (using_cocoon_js == false) resolution = 2;
+	//resolution = 2;
+	g_pixi_tilegrid_base_render_texture = new PIXI.BaseRenderTexture(48*12, 48*12, PIXI.SCALE_MODES.LINEAR, resolution);
+
+	// BaseTexture - my blocks.png assest would be a BaseTexture
+	// A Texture describes a frame into that source
 
 	// is this reusable?
 	g_pixi_tilegrid_texture = new PIXI.RenderTexture(g_pixi_tilegrid_base_render_texture);
@@ -1911,6 +1982,8 @@ SpriteClass = Class.extend({
 		} else {
 			this.pixisprite.visible = true;
 			this.pixisprite.alpha = 1;
+
+			if(this.layer == Types.Layer.STATIC_TILE) pixi_render_sprite_to_tilegrid(this.pixisprite);
 			
 		}
 
@@ -1989,7 +2062,7 @@ SpriteClass = Class.extend({
 
 			//this.pixisprite.rotation = 0;
 			
-
+			if(this.layer == Types.Layer.STATIC_TILE) pixi_render_sprite_to_tilegrid(this.pixisprite);
 		}
 		
 	},

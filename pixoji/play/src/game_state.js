@@ -1,1 +1,10718 @@
-var _0xe113=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x61\x6C\x74\x79\x2D\x72\x61\x76\x69\x6E\x65\x2D\x39\x35\x39\x30\x35\x2E\x68\x65\x72\x6F\x6B\x75\x61\x70\x70\x2E\x63\x6F\x6D\x2F","\x57\x48\x45\x45\x4C","\x45\x76\x65\x6E\x74\x73","\x68\x61\x6E\x64\x6C\x65\x5F\x77\x68\x65\x65\x6C","\x4D\x4F\x55\x53\x45\x5F\x43\x4C\x49\x43\x4B\x5F\x52\x49\x47\x48\x54","\x68\x61\x6E\x64\x6C\x65\x5F\x72\x69\x67\x68\x74\x5F\x63\x6C\x69\x63\x6B","\x4D\x4F\x55\x53\x45\x5F\x43\x4C\x49\x43\x4B","\x4D\x4F\x55\x53\x45\x5F\x55\x50","\x68\x61\x6E\x64\x6C\x65\x5F\x63\x6C\x69\x63\x6B","\x4D\x4F\x55\x53\x45\x5F\x4D\x4F\x56\x45","\x68\x61\x6E\x64\x6C\x65\x5F\x6D\x6F\x75\x73\x65\x5F\x6D\x6F\x76\x65","\x4B\x45\x59\x5F\x44\x4F\x57\x4E","\x68\x61\x6E\x64\x6C\x65\x5F\x6B\x65\x79","\x4D\x4F\x55\x53\x45\x5F\x44\x4F\x57\x4E","\x68\x61\x6E\x64\x6C\x65\x5F\x6D\x6F\x75\x73\x65\x5F\x64\x6F\x77\x6E","\x68\x61\x6E\x64\x6C\x65\x5F\x6D\x6F\x75\x73\x65\x5F\x75\x70","\x4C\x45\x46\x54\x5F\x4D\x4F\x55\x53\x45\x5F\x44\x4F\x57\x4E","\x68\x61\x6E\x64\x6C\x65\x5F\x6C\x65\x66\x74\x5F\x6D\x6F\x75\x73\x65","\x52\x49\x47\x48\x54\x5F\x4D\x4F\x55\x53\x45\x5F\x44\x4F\x57\x4E","\x68\x61\x6E\x64\x6C\x65\x5F\x72\x69\x67\x68\x74\x5F\x6D\x6F\x75\x73\x65","\x63\x68\x61\x6E\x67\x65\x5F\x73\x74\x61\x74\x65","\x70\x75\x73\x68\x5F\x73\x74\x61\x74\x65","\x70\x6F\x70\x5F\x73\x74\x61\x74\x65","\x65\x78\x74\x65\x6E\x64","\x63\x6D\x67\x47\x61\x6D\x65\x45\x76\x65\x6E\x74","\x73\x74\x61\x72\x74","\x72\x65\x70\x6C\x61\x79","\x4C\x61\x79\x65\x72","\x61\x64\x64\x5F\x74\x69\x6C\x65","\x75\x70\x64\x61\x74\x65\x5F\x70\x6F\x73","\x65\x6E\x67\x69\x6E\x65","\x6F\x6E\x5F\x66\x6C\x61\x67\x5F\x65\x66\x66\x65\x63\x74","\x67\x72\x69\x64\x5F\x77","\x74\x69\x6C\x65\x73","\x67\x72\x69\x64\x5F\x68","\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x74\x69\x6C\x65\x73","\x6A\x6F\x69\x6E\x65\x64\x5F\x74\x69\x6C\x65\x73","\x62\x61\x63\x6B\x75\x70\x5F\x6C\x65\x76\x65\x6C","\x70\x75\x73\x68","\x74\x6F\x70\x5F\x6E\x6F\x6E\x6F","\x6C\x65\x66\x74\x5F\x6E\x6F\x6E\x6F","\x69\x6E\x64\x65\x78","\x62\x6C\x6F\x63\x6B\x73","\x74\x65\x73\x74\x65\x72\x5F\x65\x64\x67\x65\x5F\x6E\x6F\x6E\x6F","\x70\x69\x78\x65\x6C\x5F\x6D\x6F\x64\x65","\x74\x65\x73\x74\x65\x72\x5F\x74\x69\x6C\x65\x5F\x6E\x6F\x6E\x6F","\x63\x68\x61\x6E\x67\x65\x5F\x74\x69\x6C\x65","\x68\x69\x64\x65","\x62\x6C\x6F\x63\x6B\x5F\x73\x70\x72\x69\x74\x65","\x77\x68\x69\x74\x65\x5F\x62\x6F\x72\x64\x65\x72","\x74\x69\x6C\x65\x5F\x73\x69\x7A\x65","\x64\x72\x61\x77\x5F\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x69\x6E\x66\x6F\x5F\x6F\x62\x6A","\x67\x61\x6D\x65\x70\x61\x64","\x73\x63\x72\x65\x65\x6E\x5F\x72\x65\x73\x69\x7A\x65\x64","\x73\x65\x74\x75\x70","\x6C\x65\x76\x65\x6C\x5F\x77","\x6C\x65\x76\x65\x6C\x5F\x68","\x67\x65\x74\x5F\x70\x69\x78\x65\x6C","\x67\x65\x74\x5F\x70\x69\x78\x65\x6C\x5F\x63\x6F\x6C\x6F\x75\x72","\x67\x65\x74\x5F\x70\x6C\x61\x79\x65\x72\x5F\x70\x69\x78\x65\x6C","\x67\x65\x74\x5F\x6E\x75\x6D\x5F\x6D\x69\x6E\x65\x73","\x67\x65\x74\x5F\x70\x6C\x61\x79\x65\x72\x5F\x70\x69\x78\x65\x6C\x5F\x63\x6F\x6C\x6F\x75\x72","\x6C\x65\x6E\x67\x74\x68","\x6D\x69\x6D\x69\x63","\x73\x79\x6D\x62\x6F\x6C\x5F\x74\x79\x70\x65","\x63\x61\x6C\x63\x5F\x68\x69\x6E\x74","\x63\x6F\x6D\x70\x61\x72\x65","\x68\x61\x70\x70\x79","\x67\x72\x65\x79","\x75\x6E\x67\x72\x65\x79","\x6C\x6F\x6E\x67\x65\x73\x74\x5F\x6E\x6F\x6E\x6F","\x73\x68\x6F\x77\x5F\x68\x69\x6E\x74","\x63\x61\x6C\x63\x5F\x73\x70\x61\x63\x65\x5F\x6E\x65\x65\x64\x65\x64","\x6D\x61\x78","\x73\x68\x6F\x77\x5F\x62\x6F\x72\x64\x65\x72","\x68\x69\x64\x65\x5F\x62\x6F\x72\x64\x65\x72","\x6D\x61\x6B\x65\x5F\x76\x69\x73","\x77\x68\x69\x74\x65\x5F\x62\x6F\x72\x64\x65\x72\x33","\x77\x68\x69\x74\x65\x5F\x62\x6F\x72\x64\x65\x72\x34","\x77\x68\x69\x74\x65\x5F\x62\x6F\x72\x64\x65\x72\x31\x32","\x75\x70\x64\x61\x74\x65\x5F\x73\x69\x7A\x65","\x75\x70\x64\x61\x74\x65\x5F\x6C\x69\x6E\x65\x5F\x77","\x73\x65\x65\x6E\x5F\x62\x79\x5F\x66\x6C\x6F\x77\x66\x69\x6C\x6C","\x69\x73\x5F\x73\x65\x65\x6E\x5F\x62\x79\x5F\x66\x6C\x6F\x77\x66\x69\x6C\x6C","\x6E\x75\x6D\x5F\x6A\x6F\x69\x6E\x65\x64\x5F\x67\x72\x6F\x75\x70\x73","\x6C\x65\x76\x65\x6C\x5F\x74\x69\x6D\x65\x72","\x74\x69\x6D\x65\x72\x5F\x78","\x74\x69\x6D\x65\x72\x5F\x79","\x70\x72\x65\x73\x65\x74\x5F\x68\x69\x6E\x74","\x6A\x6F\x69\x6E\x5F\x67\x72\x6F\x75\x70","\x72\x65\x73\x65\x74","\x73\x65\x74\x5F\x74\x69\x6D\x65\x72","\x67\x65\x74\x5F\x62\x6C\x6F\x63\x6B\x5F\x74\x79\x70\x65","\x6D\x79\x5F\x76\x65\x72\x74\x5F\x73\x65\x71\x5F\x6C\x65\x6E\x67\x74\x68","\x6D\x79\x5F\x68\x6F\x72\x69\x7A\x5F\x73\x65\x71\x5F\x6C\x65\x6E\x67\x74\x68","\x69\x73\x5F\x75\x6E\x64\x75\x67\x5F\x61\x6E\x64\x5F\x75\x6E\x66\x6C\x61\x67\x67\x65\x64","\x69\x73\x5F\x73\x6F\x6C\x76\x65\x64","\x63\x6F\x76\x65\x72\x65\x64\x5F\x75\x70","\x66\x6C\x61\x67\x5F\x6F\x6E","\x78\x5F\x6F\x6E","\x6E\x75\x6D\x5F\x66\x6C\x61\x67\x67\x65\x64","\x6E\x75\x6D\x5F\x6D\x69\x6E\x65\x73","\x62\x6C\x6F\x63\x6B\x5F\x74\x79\x70\x65","\x6D\x69\x6E\x65\x5F\x6D\x75\x6C\x74\x69","\x67\x65\x74\x5F\x74\x69\x6C\x65\x5F\x63\x6F\x64\x65","\x73\x65\x74\x5F\x74\x69\x6C\x65\x5F\x66\x72\x6F\x6D\x5F\x63\x6F\x64\x65","\x70\x72\x65\x73\x65\x74\x5F\x68\x69\x6E\x74\x5F\x74\x79\x70\x65","\x65\x64\x69\x74\x6F\x72\x5F\x6D\x6F\x64\x65","\x70\x75\x74\x5F\x66\x6C\x61\x67\x5F\x6F\x6E","\x63\x6F\x76\x65\x72","\x75\x6E\x63\x6F\x76\x65\x72","\x63\x61\x6C\x63\x5F\x73\x68\x61\x72\x65\x5F\x67\x72\x6F\x75\x70\x73","\x6A\x6F\x69\x6E\x5F\x74\x69\x6C\x65\x73","\x73\x65\x74\x5F\x73\x68\x61\x72\x65\x73\x71\x75\x61\x72\x65\x5F\x63\x6F\x64\x65","\x73\x68\x61\x72\x65\x73\x71\x75\x61\x72\x65","\x67\x65\x74\x5F\x73\x68\x61\x72\x65\x73\x71\x75\x61\x72\x65\x5F\x63\x6F\x64\x65","\x73\x68\x61\x72\x65\x5F\x70\x69\x70\x65","\x72\x61\x6E\x64\x6F\x6D","\x62\x67\x5F\x73\x71\x75\x61\x72\x65\x73","\x61\x6C\x70\x68\x61","\x6A\x6F\x69\x6E\x5F\x6C\x65\x61\x64\x65\x72","\x6A\x6F\x69\x6E\x5F\x73\x65\x63\x6F\x6E\x64\x5F\x6C\x65\x61\x64\x65\x72","\x6D\x79\x5F\x6A\x6F\x69\x6E\x5F\x6C\x65\x61\x64\x65\x72\x5F\x78","\x6D\x79\x5F\x6A\x6F\x69\x6E\x5F\x6C\x65\x61\x64\x65\x72\x5F\x79","\x69\x5F\x6B\x6E\x6F\x77\x5F\x6A\x6F\x69\x6E\x5F\x6C\x65\x61\x64\x65\x72\x5F\x78\x79","\x63\x61\x6C\x63\x5F\x6A\x6F\x69\x6E\x65\x72\x5F\x73\x70\x72\x69\x74\x65","\x73\x68\x61\x72\x65\x64\x5F\x68\x69\x6E\x74","\x6A\x6F\x69\x6E\x5F\x68","\x6A\x6F\x69\x6E\x5F\x76","\x6D\x61\x70\x64\x61\x74\x61\x5F\x76\x65\x72\x73\x69\x6F\x6E\x5F\x6D\x69\x6E\x65\x73","\x66\x6C\x6F\x6F\x72","\x4C\x4F\x41\x44\x20\x4C\x45\x56\x45\x4C\x20\x49\x4E\x54\x45\x52\x4E\x41\x4C","\x6C\x6F\x67","\x6E\x6F\x6E\x6F\x5F\x74\x79\x70\x65","\x4E\x4F\x5F\x43\x4C\x55\x45","\x45\x64\x67\x65\x43\x6C\x75\x65\x73","\x54\x4F\x54\x41\x4C","\x43\x52\x4F\x57\x4E","\x45\x59\x45\x42\x52\x41\x43\x4B\x45\x54","\x48\x45\x41\x52\x54","\x53\x4D\x49\x4C\x45\x59","\x50\x69\x78\x65\x6C\x43\x6C\x75\x65\x73","\x43\x4F\x4E\x4E\x45\x43\x54\x49\x4F\x4E\x53","\x4C\x4F\x43\x4B\x45\x44","\x45\x49\x47\x48\x54\x54\x4F\x55\x43\x48","\x45\x51\x55\x41\x4C\x5F\x48\x4F\x52\x49\x5A","\x53\x4D\x49\x4C\x45","\x43\x4F\x52\x4E\x45\x52","\x5A\x41\x50","\x6C\x69\x6E\x6B\x5F\x74\x69\x6C\x65\x73","\x66\x69\x6E\x64\x5F\x61\x6C\x6C\x5F\x63\x6F\x6E\x6E\x65\x63\x74\x65\x64\x5F\x6C\x69\x6E\x6B\x5F\x74\x69\x6C\x65\x73","\x6C\x69\x6E\x6B\x65\x64\x5F\x67\x72\x6F\x75\x70","\x6C\x69\x6E\x6B\x65\x64\x5F\x75\x70","\x6C\x69\x6E\x6B\x65\x64\x5F\x64\x6F\x77\x6E","\x6C\x69\x6E\x6B\x65\x64\x5F\x6C\x65\x66\x74","\x6C\x69\x6E\x6B\x65\x64\x5F\x72\x69\x67\x68\x74","\x4E\x45\x55\x54\x52\x41\x4C","\x6C\x65\x76\x65\x6C","\x6C\x6F\x61\x64\x5F\x6C\x65\x76\x65\x6C\x5F\x69\x6E\x74\x65\x72\x6E\x61\x6C","\x65\x61\x73\x79","\x63\x68\x61\x6C\x6C\x65\x6E\x67\x65\x5F\x6C\x65\x76\x65\x6C\x5F\x68\x61\x72\x64\x6E\x65\x73\x73","\x6D\x65\x64","\x68\x61\x72\x64","\x6E\x6F\x73\x6D\x69\x6C\x65\x79","\x6C\x69\x6E\x6B\x65\x64\x5F\x67\x72\x6F\x75\x70\x73","\x6D\x69\x6E","\x78","\x6C\x69\x6E\x6B\x65\x64\x5F\x62\x6C\x6F\x63\x6B\x73","\x67\x65\x74\x5F\x74\x79\x70\x65","\x73\x65\x74\x5F\x74\x79\x70\x65","\x73\x65\x74\x5F\x70\x6F\x73\x69\x74\x69\x6F\x6E\x5F\x67\x72\x69\x64","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x78","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x79","\x64\x72\x61\x77\x5F\x74\x69\x6D\x65\x72","\x64\x72\x61\x77","\x73\x63\x6F\x72\x65","\x73\x65\x74\x5F\x6E\x75\x6D","\x73\x63\x6F\x72\x65\x5F\x6F\x62\x6A","\x73\x63\x6F\x72\x65\x5F\x78","\x73\x63\x6F\x72\x65\x5F\x79","\x63\x61\x6C\x63\x5F\x73\x70\x72\x69\x74\x65","\x62\x65\x67\x69\x6E\x46\x69\x6C\x6C","\x6C\x69\x6E\x65\x53\x74\x79\x6C\x65","\x64\x72\x61\x77\x52\x65\x63\x74","\x61\x64\x64","\x67\x72\x61\x70\x68\x69\x63\x73","\x6D\x6F\x76\x65\x54\x6F","\x6C\x69\x6E\x65\x54\x6F","\x65\x6E\x64\x46\x69\x6C\x6C","\x64\x72\x61\x77\x5F\x72\x65\x63\x74\x5F\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x70\x6C\x61\x79\x5F\x73\x74\x61\x74\x65","\x78\x5F\x70\x6F\x73","\x67\x61\x6D\x65\x5F\x6D\x6F\x64\x65","\x63\x75\x72\x72\x65\x6E\x74\x5F\x6C\x65\x76\x65\x6C","\x6C\x65\x76\x65\x6C\x73\x2F\x6C\x65\x76\x65\x6C","\x74\x6F","\x2E\x6A\x73\x6F\x6E","\x63\x61\x63\x68\x65\x5F\x61\x73\x5F\x62\x69\x74\x6D\x61\x70","\x75\x70\x64\x61\x74\x65","\x73\x65\x74\x5F\x78","\x74\x69\x6D\x65\x72","\x6C\x6F\x61\x64\x5F\x6C\x65\x76\x65\x6C","\x6C\x6F\x61\x64\x5F\x63\x68\x61\x6C\x6C\x65\x6E\x67\x65\x5F\x6C\x65\x76\x65\x6C","\x77\x6F\x6E\x5F\x6F\x72\x5F\x6C\x6F\x73\x74","\x6C\x6F\x61\x64","\x63\x61\x6C\x63\x5F\x73\x65\x71\x75\x65\x6E\x63\x65\x5F\x6C\x65\x6E\x67\x74\x68\x73","\x63\x61\x6C\x63\x5F\x65\x64\x67\x65\x5F\x6E\x6F\x6E\x6F\x67\x72\x61\x6D","\x72\x65\x73\x69\x7A\x65","\x6D\x69\x73\x74\x61\x6B\x65\x73\x5F\x74\x68\x69\x73\x5F\x6C\x65\x76\x65\x6C","\x66\x69\x72\x73\x74\x5F\x74\x69\x6C\x65\x5F\x73\x61\x66\x65","\x61\x74\x74\x65\x6D\x70\x74\x73","\x4E\x4F\x5F\x53\x50\x41\x43\x45","\x41\x4E\x59\x53\x49\x5A\x45\x5F\x4D\x41\x54\x43\x48","\x6E\x6F\x6E\x6F\x5F\x73\x75\x62\x74\x79\x70\x65","\x70","\x47\x6F\x61\x6C\x20\x73\x74\x61\x63\x6B\x73\x20\x6D\x75\x73\x74\x20\x62\x65\x20\x6F\x66\x20\x74\x68\x65\x20\x73\x61\x6D\x65\x20\x73\x75\x69\x74","\x47\x6F\x61\x6C\x20\x73\x74\x61\x63\x6B\x73\x20\x6D\x75\x73\x74\x20\x62\x65\x20\x62\x75\x69\x6C\x74\x20\x66\x72\x6F\x6D\x20\x41\x20\x74\x6F\x20\x4B","\x6D\x6F\x75\x73\x65\x5F\x64\x6F\x77\x6E","\x61\x6C\x6C\x6F\x77\x5F\x66\x72\x65\x65\x5F\x64\x69\x67","\x70\x75\x6E\x69\x73\x68\x5F\x6F\x6E\x5F\x6D\x69\x73\x74\x61\x6B\x65","\x68\x6F\x6D\x65\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x73\x65\x74\x75\x70\x5F\x73\x70\x72\x69\x74\x65","\x46\x6F\x6E\x74\x73","\x73\x65\x74\x5F\x66\x6F\x6E\x74","\x43\x48\x41\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C","\x73\x65\x74\x5F\x74\x65\x78\x74","","\x68\x65\x61\x72\x74\x2E\x70\x6E\x67","\x6E\x65\x77\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x6D\x69\x73\x74\x61\x6B\x65\x2E\x70\x6E\x67","\x67\x72\x65\x79\x5F\x62\x75\x74\x74\x6F\x6E\x2E\x70\x6E\x67","\x66\x69\x6C\x6C\x5F\x62\x75\x74\x74\x6F\x6E\x2E\x70\x6E\x67","\x72\x65\x64\x66\x6C\x61\x67\x2E\x70\x6E\x67","\x73\x65\x6C\x65\x63\x74\x2E\x70\x6E\x67","\x68\x6F\x6C\x64\x5F\x74\x69\x6D\x65\x5F\x66\x6F\x72\x5F\x66\x6C\x61\x67","\x73\x65\x74\x5F\x68\x69\x6E\x74\x5F\x74\x79\x70\x65","\x68\x69\x64\x64\x65\x6E","\x64\x72\x61\x77\x5F\x6F\x6E\x63\x65","\x73\x68\x6F\x77\x5F\x6C\x65\x76\x65\x6C\x5F\x74\x65\x78\x74","\x4C\x45\x54\x27\x53\x20\x50\x4C\x41\x59\x20\x50\x49\x58\x4F\x4A\x49","\x63\x68\x61\x6E\x67\x65\x5F\x74\x65\x78\x74","\x54\x48\x45\x20\x4E\x55\x4D\x42\x45\x52\x20\x49\x53\x20\x54\x48\x45\x20\x50\x49\x58\x45\x4C\x53\x20\x49\x4E\x20\x54\x48\x45\x20\x33\x78\x33\x20\x41\x52\x45\x41\x0A\x46\x49\x4C\x4C\x20\x39\x20\x50\x49\x58\x45\x4C\x53\x0A\x43\x4C\x49\x43\x4B\x20\x4F\x4E\x20\x45\x41\x43\x48\x20\x50\x49\x58\x45\x4C\x0A\x4F\x52\x20\x43\x4C\x49\x43\x4B\x20\x41\x4E\x44\x20\x44\x52\x41\x47","\x68\x69\x64\x65\x5F\x78","\x4D\x41\x4B\x45\x20\x38\x20\x50\x49\x58\x45\x4C\x53\x20\x46\x49\x4C\x4C\x45\x44","\x57\x48\x49\x54\x45\x20\x3D\x20\x55\x4E\x53\x4F\x4C\x56\x45\x44\x0A\x50\x55\x52\x50\x4C\x45\x20\x3D\x20\x46\x49\x4C\x4C\x45\x44\x0A\x47\x52\x45\x59\x20\x3D\x20\x4F\x46\x46","\x54\x48\x45\x20\x4E\x55\x4D\x42\x45\x52\x20\x52\x45\x50\x4F\x52\x54\x53\x20\x49\x54\x53\x20\x33\x78\x33\x20\x41\x52\x45\x41","\x4E\x4F\x20\x47\x55\x45\x53\x53\x45\x53\x20\x4E\x45\x45\x44\x45\x44","\x59\x4F\x55\x20\x4E\x45\x56\x45\x52\x20\x4E\x45\x45\x44\x20\x54\x4F\x20\x47\x55\x45\x53\x53\x20\x3A\x29","\x52\x49\x47\x48\x54\x20\x43\x4C\x49\x43\x4B\x20\x54\x4F\x20\x47\x52\x45\x59","\x47\x52\x45\x59\x20\x4D\x45\x41\x4E\x53\x20\x45\x4D\x50\x54\x59\x0A\x59\x4F\x55\x20\x44\x4F\x4E\x54\x20\x4E\x45\x45\x44\x20\x54\x4F\x20\x47\x55\x45\x53\x53","\x31\x20\x52\x45\x44\x20\x50\x49\x58\x45\x4C","\x54\x48\x41\x54\x20\x4D\x45\x41\x4E\x53\x20\x38\x20\x47\x52\x45\x59\x20\x50\x49\x58\x45\x4C\x53","\x45\x41\x43\x48\x20\x4E\x55\x4D\x42\x45\x52\x20\x52\x45\x50\x4F\x52\x54\x53\x20\x49\x54\x53\x20\x33\x78\x33\x20\x41\x52\x45\x41","\x54\x48\x45\x20\x43\x4F\x52\x4E\x45\x52\x20\x4E\x55\x4D\x42\x45\x52\x20\x4F\x4E\x4C\x59\x20\x53\x45\x45\x53\x20\x34\x20\x54\x49\x4C\x45\x53","\x59\x4F\x55\x20\x43\x41\x4E\x20\x53\x4F\x4C\x56\x45\x20\x54\x48\x49\x53\x21","\x4E\x45\x57\x20\x48\x49\x4E\x54\x20\x54\x59\x50\x45","\x48\x45\x52\x45\x20\x49\x53\x20\x54\x48\x45\x20\x54\x4F\x54\x41\x4C\x20\x50\x49\x58\x45\x4C\x53\x0A\x49\x4E\x20\x53\x4F\x4D\x45\x20\x52\x4F\x57\x53\x20\x41\x4E\x44\x20\x43\x4F\x4C\x55\x4D\x4E\x53","\x74\x75\x74\x35","\x74\x75\x74\x35\x61","\x74\x75\x74\x32","\x74\x75\x74\x32\x61","\x74\x75\x74\x36","\x54\x57\x4F\x20\x50\x49\x58\x45\x4C\x53\x20\x41\x52\x45\x20\x4C\x49\x4E\x4B\x45\x44","\x54\x48\x45\x59\x20\x4D\x55\x53\x54\x20\x42\x45\x20\x54\x48\x45\x20\x53\x41\x4D\x45\x20\x43\x4F\x4C\x4F\x55\x52","\x53\x4F\x4D\x45\x20\x50\x49\x58\x45\x4C\x53\x20\x41\x52\x45\x20\x4C\x4F\x4E\x45\x4C\x59","\x42\x55\x54\x20\x54\x48\x45\x20\x48\x45\x41\x52\x54\x20\x43\x41\x52\x45\x53\x0A\x54\x48\x45\x20\x48\x45\x41\x52\x54\x20\x53\x45\x45\x53\x20\x4F\x4E\x4C\x59\x20\x49\x53\x4F\x4C\x41\x54\x45\x44\x20\x50\x49\x58\x45\x4C\x53","\x54\x57\x4F\x20\x4C\x4F\x4E\x45\x4C\x59\x20\x50\x49\x58\x45\x4C\x53","\x54\x48\x45\x20\x52\x45\x53\x54\x20\x41\x52\x45\x20\x4E\x4F\x54\x20\x4C\x4F\x4E\x45\x4C\x59\x0A\x42\x45\x43\x41\x55\x53\x45\x20\x54\x48\x45\x59\x20\x41\x52\x45\x20\x41\x4C\x4C\x20\x54\x4F\x55\x43\x48\x49\x4E\x47","\x4E\x4F\x20\x4C\x4F\x4E\x45\x4C\x59\x20\x50\x49\x58\x45\x4C\x53","\x54\x48\x45\x59\x20\x41\x52\x45\x20\x41\x4C\x4C\x0A\x54\x4F\x55\x43\x48\x49\x4E\x47\x20\x41\x4E\x4F\x54\x48\x45\x52\x20\x50\x49\x58\x45\x4C","\x4F\x4E\x4C\x59\x20\x54\x48\x45\x20\x42\x45\x53\x54\x20\x46\x4F\x52\x20\x54\x48\x45\x20\x4B\x49\x4E\x47\x21\x0A\x54\x48\x45\x20\x43\x52\x4F\x57\x4E\x20\x52\x45\x50\x4F\x52\x54\x53\x20\x54\x48\x45\x20\x4C\x4F\x4E\x47\x45\x53\x54\x0A\x53\x45\x51\x55\x45\x4E\x43\x45\x20\x4F\x46\x20\x50\x49\x58\x45\x4C\x53","\x48\x41\x50\x50\x59\x20\x50\x49\x58\x45\x4C\x53\x0A\x49\x4E\x20\x54\x48\x45\x20\x33\x78\x33\x20\x41\x52\x45\x41","\x74\x75\x74\x31\x33","\x74\x75\x74\x31\x33\x61","\x54\x48\x45\x20\x4E\x55\x4D\x42\x45\x52\x20\x4F\x46\x20\x53\x45\x51\x55\x45\x4E\x43\x45\x53\x20\x4F\x46\x20\x50\x49\x58\x45\x4C\x53\x0A\x53\x45\x50\x41\x52\x41\x54\x45\x44\x20\x42\x59\x20\x47\x41\x50\x53","\x45\x41\x53\x59\x20","\x4D\x45\x44\x49\x55\x4D\x20","\x48\x41\x52\x44\x20","\x4E\x4F\x53\x4D\x49\x4C\x45\x59\x20","\x4C\x45\x56\x45\x4C\x20","\x42\x59\x20","\x0A\x52\x41\x54\x49\x4E\x47\x3A\x20","\x0A\x56\x4F\x54\x45\x53\x3A","\x44\x75\x72\x69\x6E\x67\x47\x61\x6D\x65\x53\x74\x61\x74\x65\x43\x6C\x61\x73\x73\x20\x3E\x20\x20\x3E\x20\x67\x5F\x67\x65\x6E\x65\x72\x61\x74\x6F\x72\x5F\x63\x6C\x61\x73\x73\x2E\x67\x6F\x20","\x67\x6F","\x6C\x6F\x61\x64\x5F\x6C\x65\x76\x65\x6C\x5F\x73\x74\x61\x74\x65","\x68\x69\x64\x65\x5F\x75\x6E\x68\x61\x70\x70\x79\x5F\x68\x69\x6E\x74","\x64\x65\x73\x65\x6C\x65\x63\x74","\x73\x61\x76\x65\x5F\x6C\x65\x76\x65\x6C\x5F\x73\x74\x61\x74\x65","\x63\x75\x72\x72\x65\x6E\x74\x5F\x6D\x6F\x76\x65\x5F\x62","\x63\x75\x72\x72\x65\x6E\x74\x5F\x6D\x6F\x76\x65\x5F\x6C\x61\x73\x74\x5F\x63\x6F\x6C\x6F\x75\x72","\x70\x72\x65\x76\x5F\x63\x6F\x6C\x6F\x75\x72","\x63\x6F\x6C\x6F\x75\x72\x73","\x6D\x6F\x76\x65\x5F\x68\x69\x73\x74\x6F\x72\x79","\x70\x6F\x70","\x74\x61\x6B\x65\x5F\x78\x5F\x6F\x66\x66","\x74\x61\x6B\x65\x5F\x66\x6C\x61\x67\x5F\x6F\x66\x66","\x70\x75\x74\x5F\x78\x5F\x6F\x6E","\x64\x75\x72\x69\x6E\x67\x6C\x65\x76\x65\x6C\x73\x74\x61\x74\x65","\x67\x65\x74\x49\x74\x65\x6D","\x70\x61\x72\x73\x65","\x6C\x65\x76\x65\x6C\x6E\x75\x6D","\x67\x72\x69\x64","\x6D\x69\x73\x74\x61\x6B\x65\x73","\x68\x69\x74\x5F\x70\x6F\x69\x6E\x74\x73","\x77","\x68","\x6C\x6F\x61\x64\x65\x64\x5F\x66\x72\x6F\x6D\x5F\x73\x74\x6F\x72\x61\x67\x65","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x73\x65\x74\x49\x74\x65\x6D","\x65\x5F\x74\x65\x78\x74","\x65\x5F\x74\x65\x78\x74\x5F\x74\x69\x6D\x65\x72","\x66\x6C\x61\x67\x5F\x78","\x66\x6C\x61\x67\x5F\x79","\x64\x69\x67\x5F\x78","\x64\x69\x67\x5F\x79","\x66\x72\x65\x65\x64\x69\x67\x5F\x78","\x66\x72\x65\x65\x64\x69\x67\x5F\x79","\x63\x68\x61\x6E\x67\x65\x5F\x73\x69\x7A\x65","\x75\x6E\x64\x6F\x5F\x78","\x75\x6E\x64\x6F\x5F\x79","\x6D\x69\x73\x74\x61\x6B\x65\x73\x5F\x78","\x6D\x69\x73\x74\x61\x6B\x65\x73\x5F\x79","\x63\x65\x6E\x74\x65\x72\x5F\x78","\x75\x70\x64\x61\x74\x65\x5F\x64\x69\x67\x66\x6C\x61\x67\x5F\x73\x65\x6C\x65\x63\x74\x5F\x70\x6F\x73","\x64\x69\x67\x66\x6C\x61\x67\x5F\x73\x65\x6C\x65\x63\x74","\x4D\x49\x53\x54\x41\x4B\x45\x53\x3A","\x68\x6F\x6D\x65\x5F\x78","\x68\x6F\x6D\x65\x5F\x79","\x4C\x45\x46\x54\x20\x43\x4C\x49\x43\x4B","\x48\x4F\x4C\x44","\x43\x4C\x49\x43\x4B","\x52\x49\x47\x48\x54\x20\x43\x4C\x49\x43\x4B","\x6E\x75\x6D\x5F\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x74\x69\x6C\x65\x73","\x44\x49\x47\x20","\x20\x54\x49\x4C\x45\x53","\x46\x4C\x41\x47\x20","\x4E\x4F\x20\x54\x49\x4C\x45\x53\x20\x53\x45\x4C\x45\x43\x54\x45\x44","\x4E\x4F\x20\x54\x49\x4C\x45\x53\x0A\x53\x45\x4C\x45\x43\x54\x45\x44","\x63\x68\x65\x63\x6B\x5F\x66\x6F\x72\x5F\x76\x69\x63\x74\x6F\x72\x79","\x63\x6F\x6E\x74\x72\x6F\x6C\x5F\x6D\x6F\x64\x65","\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x79","\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x78","\x79","\x6E\x65\x77\x5F\x61\x63\x74\x69\x6F\x6E\x5F\x62\x75\x74\x74\x6F\x6E\x5F\x70\x72\x65\x73\x73","\x66\x6C\x61\x67\x5F\x73\x65\x6C\x65\x63\x74\x65\x64","\x63\x6C\x65\x61\x72\x5F\x73\x65\x6C\x65\x63\x74\x65\x64","\x64\x69\x67\x66\x6C\x61\x67\x5F\x68\x6F\x6C\x64","\x64\x69\x67\x5F\x73\x65\x6C\x65\x63\x74\x65\x64","\x72\x69\x67\x68\x74\x5F\x6D\x6F\x75\x73\x65\x5F\x64\x6F\x77\x6E","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x74\x69\x6C\x65\x5F\x78","\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x65\x64\x5F\x78","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x74\x69\x6C\x65\x5F\x79","\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x65\x64\x5F\x79","\x66\x6C\x61\x67\x5F\x74\x69\x6D\x65\x72","\x64\x72\x61\x67\x5F\x74\x79\x70\x65","\x6F\x6E\x5F\x6D\x69\x73\x74\x61\x6B\x65","\x63\x68\x61\x6E\x67\x65\x5F\x74\x69\x6C\x65\x5F\x74\x6F","\x61\x73\x73\x65\x74\x73\x2F\x63\x6F\x69\x6E\x30\x2E\x77\x61\x76","\x73\x69\x6E\x67\x6C\x65\x5F\x6D\x6F\x76\x65\x5F\x68\x69\x73\x74\x6F\x72\x79","\x62","\x70\x72\x65\x76\x5F\x63\x6F\x6C","\x63\x68\x61\x6E\x67\x65\x5F\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x74\x69\x6C\x65\x20\x74\x68\x69\x73\x2E\x64\x72\x61\x67\x5F\x74\x79\x70\x65\x20","\x6D\x69\x73\x74\x61\x6B\x65\x5F\x63\x6F\x6F\x6C\x64\x6F\x77\x6E","\x73\x74\x6F\x70\x5F\x69\x6E\x70\x75\x74\x5F\x75\x6E\x74\x69\x6C\x5F\x6D\x6F\x75\x73\x65\x75\x70","\x64\x72\x61\x67\x5F\x6D\x6F\x64\x65","\x66\x6F\x72\x67\x65\x74\x5F\x73\x61\x76\x65\x5F\x73\x74\x61\x74\x65","\x61\x73\x73\x65\x74\x73\x2F\x52\x61\x6E\x64\x6F\x6D\x69\x7A\x65\x33\x2E\x77\x61\x76","\x73\x63\x72\x65\x65\x6E\x73\x68\x61\x6B\x65\x5F\x79\x5F\x76\x65\x6C","\x73\x63\x72\x65\x65\x6E\x73\x68\x61\x6B\x65\x5F\x74\x69\x6D\x65\x72","\x63\x68\x61\x6E\x67\x65\x5F\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x65\x64\x5F\x74\x69\x6C\x65","\x78\x5F\x64\x69\x72","\x79\x5F\x64\x69\x72","\x69\x6E\x70\x75\x74\x5F\x64\x6F\x77\x6E","\x67\x61\x6D\x65\x70\x61\x64\x5F\x74\x69\x6D\x65\x72","\x67\x61\x6D\x65\x70\x61\x64\x5F\x75\x70\x64\x61\x74\x65\x5F\x63\x75\x72\x73\x6F\x72","\x68\x6F\x6C\x64\x5F\x64\x6F\x77\x6E\x5F\x74\x69\x6D\x65\x72","\x69\x73\x5F\x66\x6C\x61\x67\x67\x65\x64","\x69\x73\x5F\x63\x72\x6F\x73\x73\x65\x64","\x64\x72\x61\x67\x5F\x68\x6F\x72\x69\x7A","\x64\x72\x61\x67\x5F\x76\x65\x72\x74","\x6D\x6F\x75\x73\x65\x5F\x64\x6F\x77\x6E\x5F\x79","\x61\x62\x73","\x6D\x6F\x75\x73\x65\x5F\x64\x6F\x77\x6E\x5F\x78","\x75\x6E\x64\x6F\x5F\x73\x69\x6E\x67\x6C\x65\x6D\x6F\x76\x65","\x73\x61\x76\x65\x5F\x6C\x61\x73\x74\x5F\x6D\x6F\x76\x65","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x68\x69\x6E\x74\x5F\x78","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x68\x69\x6E\x74\x5F\x79","\x63\x61\x6C\x63\x5F\x68\x61\x70\x70\x69\x6E\x65\x73\x73","\x73\x68\x61\x72\x65\x5F\x67\x72\x6F\x75\x70\x73","\x63\x68\x61\x6E\x67\x65\x5F\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x74\x69\x6C\x65","\x64\x65\x73\x65\x6C\x65\x63\x74\x5F\x61\x6C\x6C","\x61\x75\x74\x6F\x5F\x64\x69\x67\x5F\x74\x69\x6D\x65\x72","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72","\x70\x72\x65\x76\x5F\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x65\x64\x5F\x78","\x70\x72\x65\x76\x5F\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x65\x64\x5F\x79","\x72\x6F\x75\x6E\x64","\x67\x72\x65\x79\x5F\x69\x66\x5F\x72\x61\x6E\x67\x65\x5F\x69\x73\x5F\x63\x6C\x65\x61\x72","\x6D\x69\x73\x74\x61\x6B\x65\x5F\x78","\x6D\x69\x73\x74\x61\x6B\x65\x5F\x79","\x6D\x69\x73\x74\x61\x6B\x65\x5F\x72\x65\x67\x69\x6F\x6E","\x74\x65\x73\x74\x5F\x74\x69\x6C\x65\x5F\x68\x69\x6E\x74","\x74\x65\x73\x74\x5F\x65\x64\x67\x65\x5F\x6E\x6F\x6E\x6F\x67\x72\x61\x6D","\x76\x69\x63\x74\x6F\x72\x79","\x6F\x6E\x5F\x64\x69\x67\x6F\x72\x66\x6C\x61\x67","\x6D\x75\x73\x74\x5F\x67\x72\x65\x79","\x67\x72\x65\x65\x6E\x5F\x63\x6F\x6C\x75\x6D\x6E","\x66\x69\x6E\x64\x5F\x75\x6E\x68\x61\x70\x70\x79\x5F\x68\x69\x6E\x74","\x73\x68\x6F\x77\x5F\x75\x6E\x68\x61\x70\x70\x79\x5F\x68\x69\x6E\x74","\x61\x75\x74\x6F\x5F\x64\x69\x67\x5F\x78","\x61\x75\x74\x6F\x5F\x64\x69\x67\x5F\x79","\x61\x75\x74\x6F\x5F\x64\x69\x67","\x73\x63\x72\x65\x65\x6E\x73\x68\x61\x6B\x65\x5F\x79\x5F\x70\x6F\x73","\x73\x65\x74\x5F\x79","\x74\x69\x6D\x65\x5F\x74\x69\x6D\x65\x72","\x75\x70\x64\x61\x74\x65\x5F\x74\x69\x6D\x65\x72","\x73\x74\x61\x72\x74\x5F\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72","\x64\x72\x61\x67\x67\x69\x6E\x67\x5F\x66\x6C\x61\x67","\x67\x65\x74\x55\x73\x65\x72\x49\x64","\x73\x65\x72\x76\x69\x63\x65\x73","\x61\x6C\x6C\x6F\x77\x5F\x72\x61\x74\x69\x6E\x67","\x57\x48\x4F\x4F\x50\x53\x21","\x54\x4F\x4F\x20\x4D\x41\x4E\x59\x20\x4D\x49\x53\x54\x41\x4B\x45\x53\x21","\x53\x68\x61\x72\x65\x20\x79\x6F\x75\x72\x20\x73\x63\x6F\x72\x65\x3A\x20","\x54\x52\x59\x20\x41\x47\x41\x49\x4E\x3A\x20","\x46\x69\x6E\x61\x6C\x20\x73\x63\x6F\x72\x65\x3A\x20","\x61\x72\x72\x61\x6E\x67\x65\x5F\x73\x63\x72\x65\x65\x6E","\x66\x62\x5F\x78","\x66\x62\x5F\x79","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x74\x65\x78\x74\x5F\x78","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x74\x65\x78\x74\x5F\x79","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x74\x65\x78\x74\x32\x5F\x78","\x67\x61\x6D\x65\x5F\x6F\x76\x65\x72\x5F\x74\x65\x78\x74\x32\x5F\x79","\x6E\x65\x77\x67\x61\x6D\x65\x5F\x78","\x6E\x65\x77\x67\x61\x6D\x65\x5F\x79","\x73\x74\x61\x72\x72\x61\x74\x65\x5F\x78","\x73\x74\x61\x72\x72\x61\x74\x65\x5F\x79","\x70\x72\x6F\x6D\x70\x74\x5F\x62\x75\x74\x74\x6F\x6E","\x74\x77\x69\x74\x74\x65\x72\x5F\x78","\x74\x77\x69\x74\x74\x65\x72\x5F\x79","\x73\x6F\x6C\x76\x65\x64\x5F\x74\x69\x6C\x65\x73","\x77\x61\x69\x74\x5F\x74\x69\x6D\x65\x72","\x63\x6C\x69\x63\x6B","\x72\x61\x74\x69\x6E\x67","\x6C\x65\x76\x65\x6C\x5F\x69\x64","\x73\x74\x61\x72\x74\x5F\x76\x69\x73","\x72\x65\x76\x65\x61\x6C\x5F\x62","\x73\x63\x72\x65\x65\x6E\x73\x68\x61\x6B\x65\x5F\x78\x5F\x70\x6F\x73","\x73\x63\x72\x65\x65\x6E\x73\x68\x61\x6B\x65\x5F\x78\x5F\x76\x65\x6C","\x70\x6C\x61\x79\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x70\x69\x78\x6F\x6A\x69\x2F\x3F\x6C\x65\x76\x65\x6C\x3D","\x55\x50\x4C\x4F\x41\x44\x45\x44\x21","\x70\x6C\x61\x79\x5F\x78","\x70\x6C\x61\x79\x5F\x79","\x63\x6C\x69\x70\x62\x6F\x61\x72\x64\x5F\x78","\x63\x6C\x69\x70\x62\x6F\x61\x72\x64\x5F\x79","\x63\x6F\x70\x79","\x74\x65\x78\x74\x2F\x70\x6C\x61\x69\x6E","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x70\x69\x78\x6F\x6A\x69\x2F\x3F\x6C\x65\x76\x65\x6C\x3D","\x73\x65\x74\x44\x61\x74\x61","\x63\x6C\x69\x70\x62\x6F\x61\x72\x64\x44\x61\x74\x61","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x65\x78\x65\x63\x43\x6F\x6D\x6D\x61\x6E\x64","\x6F\x70\x65\x6E","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x73\x69\x74\x65","\x67\x6F\x5F\x74\x6F\x5F\x73\x69\x74\x65","\x45\x52\x52\x4F\x52","\x4C\x4F\x41\x44\x49\x4E\x47\x2E\x2E\x2E","\x66\x65\x74\x63\x68","\x64\x6F\x6E\x65","\x68\x61\x73\x68","\x30","\x31","\x6F\x6E\x65\x72\x72\x6F\x72","\x6F\x6E\x6C\x6F\x61\x64","\x72\x65\x73\x70\x6F\x6E\x73\x65\x54\x65\x78\x74","\x6E\x75\x6D\x5F\x72\x61\x74\x69\x6E\x67\x73","\x73\x6F\x72\x74","\x4D\x6F\x53\x68\x61\x73\x68","\x58\x44\x6F\x6D\x61\x69\x6E\x52\x65\x71\x75\x65\x73\x74","\x50\x4F\x53\x54","\x6C\x65\x76\x65\x6C\x73\x67\x65\x74","\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65","\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x6A\x73\x6F\x6E\x3B\x63\x68\x61\x72\x73\x65\x74\x3D\x55\x54\x46\x2D\x38","\x73\x65\x74\x52\x65\x71\x75\x65\x73\x74\x48\x65\x61\x64\x65\x72","\x73\x65\x6E\x64","\x43\x4F\x55\x4C\x44\x4E\x27\x54\x20\x43\x4F\x4E\x4E\x45\x43\x54","\x70\x6C\x61\x79\x65\x72\x6E\x61\x6D\x65","\x41\x4E\x4F\x4E","\x6C\x65\x76\x65\x6C\x6E\x61\x6D\x65","\x55\x4E\x4E\x41\x4D\x45\x44\x20\x4C\x45\x56\x45\x4C","\x6E\x75\x6D\x5F\x64\x6F\x77\x6E\x6C\x6F\x61\x64\x65\x64","\x5F\x69\x64","\x61\x64\x64\x5F\x6C\x65\x76\x65\x6C","\x6D\x61\x70","\x2C","\x73\x70\x6C\x69\x74","\x64\x61\x74\x61","\x61\x64\x64\x5F\x74\x6F\x5F\x6D\x69\x6E\x69\x6D\x61\x70","\x6F\x6E\x5F\x66\x61\x69\x6C","\x73\x6F\x72\x74\x5F\x62\x79\x5F\x72\x61\x74\x69\x6E\x67","\x61\x75\x74\x6F\x5F\x6C\x6F\x61\x64","\x62\x72\x6F\x77\x73\x65\x72\x5F\x70","\x73\x63\x72\x6F\x6C\x6C\x5F\x6F\x66\x66\x73\x65\x74","\x6E\x75\x6D\x5F\x77\x69\x6E\x6E\x65\x72\x73","\x66\x69\x72\x73\x74\x5F\x74\x69\x63\x6B","\x73\x63\x72\x6F\x6C\x6C\x5F\x62\x72\x6F\x77\x73\x65\x72","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x66\x65\x74\x63\x68","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x73\x63\x72\x6F\x6C\x6C\x75\x70","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x73\x63\x72\x6F\x6C\x6C\x64\x6F\x77\x6E","\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x6C\x65\x76\x65\x6C\x5F\x69\x64","\x70\x6F\x73\x74\x5F\x77\x69\x6E","\x70\x5F\x6C\x65\x76\x65\x6C\x5F\x66\x6F\x6C\x64\x65\x72","\x74\x68\x69\x73\x2E\x70\x6C\x61\x79\x5F\x73\x74\x61\x74\x65\x2E\x63\x68\x61\x6C\x6C\x65\x6E\x67\x65\x5F\x6C\x65\x76\x65\x6C\x5F\x68\x61\x72\x64\x6E\x65\x73\x73\x20","\x6C\x65\x76\x65\x6C\x73\x2F","\x2F\x6C\x65\x76\x65\x6C","\x6C\x65\x76\x65\x6C\x73\x5F\x73\x74\x61\x72\x74\x69\x6E\x67\x5F\x66\x72\x6F\x6D","\x66\x69\x6C\x65\x70\x61\x74\x68","\x61\x6C\x72\x65\x61\x64\x79\x5F\x6C\x6F\x61\x64\x65\x64","\x65\x78\x74\x72\x61\x63\x74\x5F\x74\x75\x74\x5F\x64\x61\x74\x61","\x65\x78\x74\x72\x61\x63\x74\x5F\x63\x6F\x6C\x6F\x75\x72\x5F\x64\x61\x74\x61","\x6C\x6F\x61\x64\x5F\x6C\x65\x76\x65\x6C\x5F\x6F\x6E\x65\x5F\x64\x5F\x61\x72\x72\x61\x79","\x63\x6F\x6C\x6F\x75\x72","\x74\x65\x78\x74","\x74\x75\x74","\x6C\x6F\x61\x64\x5F\x74\x75\x74\x5F\x6C\x65\x76\x65\x6C\x5F\x6F\x6E\x65\x5F\x64\x5F\x61\x72\x72\x61\x79","\x73\x74\x61\x72\x74\x63\x6C\x65\x61\x72","\x64\x6F\x66\x69\x6C\x6C","\x64\x6F\x64\x69\x67","\x73\x71\x72\x74","\x68\x69\x64\x65\x5F\x62\x67\x5F\x73\x71\x75\x61\x72\x65\x73","\x78\x5F\x76\x65\x6C","\x79\x5F\x76\x65\x6C","\x4C\x45\x56\x45\x4C\x20\x4E\x41\x4D\x45\x3A","\x41\x55\x54\x48\x4F\x52\x20\x4E\x41\x4D\x45\x3A","\x4D\x59\x20\x4C\x45\x56\x45\x4C","\x75\x70\x61\x72\x72\x6F\x77\x2E\x70\x6E\x67","\x6C\x65\x76\x65\x6C\x6E\x61\x6D\x65\x5F\x79","\x61\x75\x74\x68\x6F\x72\x5F\x79","\x75\x70\x6C\x6F\x61\x64\x5F\x78","\x75\x70\x6C\x6F\x61\x64\x5F\x79","\x77\x72\x69\x74\x69\x6E\x67\x5F\x6E\x61\x6D\x65","\x77\x72\x69\x74\x65\x5F\x6E\x61\x6D\x65","\x77\x72\x69\x74\x65\x5F\x61\x75\x74\x68\x6F\x72","\x69\x6E\x70\x75\x74\x5F\x63\x75\x72\x73\x6F\x72","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x73\x65\x65\x64","\x61\x75\x74\x68\x6F\x72\x6E\x61\x6D\x65","\x43\x4F\x4E\x46\x49\x52\x4D\x20\x55\x50\x4C\x4F\x41\x44","\x73\x68\x6F\x77\x5F\x6C\x65\x76\x65\x6C","\x67\x65\x74\x55\x73\x65\x72\x6E\x61\x6D\x65","\x55\x50\x4C\x4F\x41\x44\x20\x41\x53\x0A","\x55\x50\x4C\x4F\x41\x44\x20\x41\x53\x0A\x41\x4E\x4F\x4E","\x6C\x65\x66\x74\x61\x72\x72\x6F\x77\x2E\x70\x6E\x67","\x53\x41\x56\x45\x20\x4C\x4F\x43\x41\x4C\x4C\x59","\x4C\x4F\x41\x44\x20\x4C\x4F\x43\x41\x4C\x4C\x59","\x72\x69\x67\x68\x74\x61\x72\x72\x6F\x77\x2E\x70\x6E\x67","\x50\x4C\x41\x59\x54\x45\x53\x54","\x67\x72\x65\x79\x74\x69\x6C\x65\x2E\x70\x6E\x67","\x61\x64\x64\x5F\x6E\x65\x77","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x62\x72\x6F\x77\x6E\x2E\x70\x6E\x67","\x43\x6F\x6C\x6F\x75\x72\x73","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x64\x61\x72\x6B\x62\x6C\x75\x65\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x67\x72\x65\x65\x6E\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x6C\x69\x67\x68\x74\x62\x6C\x75\x65\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x6F\x72\x61\x6E\x67\x65\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x70\x69\x6E\x6B\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x70\x75\x72\x70\x6C\x65\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x72\x65\x64\x2E\x70\x6E\x67","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6C\x65\x5F\x79\x65\x6C\x6C\x6F\x77\x2E\x70\x6E\x67","\x62\x6C\x75\x65\x74\x69\x6C\x65\x2E\x70\x6E\x67","\x64\x65\x6C\x65\x74\x65\x5F\x74\x69\x6C\x65","\x73\x68\x6F\x77\x5F\x67\x72\x69\x64","\x74\x65\x73\x74\x5F\x78","\x74\x65\x73\x74\x5F\x79","\x6C\x6F\x63\x61\x6C\x73\x61\x76\x65\x5F\x78","\x6C\x6F\x63\x61\x6C\x73\x61\x76\x65\x5F\x79","\x6C\x6F\x63\x61\x6C\x6C\x6F\x61\x64\x5F\x78","\x6C\x6F\x63\x61\x6C\x6C\x6F\x61\x64\x5F\x79","\x73\x65\x6C\x65\x63\x74\x65\x64","\x62\x75\x69\x6C\x64\x5F\x63\x6F\x64\x65\x73","\x67\x65\x74\x5F\x6A\x73\x6F\x6E\x5F\x6C\x65\x76\x65\x6C\x5F\x63\x6F\x64\x65","\x73\x65\x63\x72\x65\x74\x5F\x63\x6F\x6C\x6F\x75\x72","\x67\x65\x74\x54\x69\x6D\x65","\x2F","\x2E\x74\x78\x74","\x62\x67\x5F\x63\x6F\x6C\x6F\x75\x72","\x73\x75\x63\x63\x65\x73\x73","\x65\x78\x70\x6F\x72\x74\x5F\x74\x6F\x5F\x6A\x73\x6F\x6E\x5F\x63\x6F\x6C\x6F\x75\x72","\x70\x6C\x61\x79\x5F\x6C\x65\x76\x65\x6C","\x63\x6F\x6C\x6F\x75\x72\x5F\x6D\x6F\x64\x65","\x63\x68\x65\x63\x6B\x5F\x75\x6E\x6A\x6F\x69\x6E\x65\x64","\x67\x65\x74\x47\x61\x6D\x65\x41\x75\x74\x68\x54\x6F\x6B\x65\x6E","\x6C\x6F\x67\x69\x6E\x6B\x6F\x6E\x67\x72\x65\x67\x61\x74\x65","\x72\x65\x71\x75\x65\x73\x74\x65\x64\x5F\x6C\x6F\x67\x5F\x69\x6E","\x73\x75\x62\x6D\x69\x74\x74\x65\x64\x5F\x72\x61\x74\x69\x6E\x67","\x6C\x65\x76\x65\x6C\x72\x61\x74\x65","\x73\x75\x62\x6D\x69\x74\x5F\x72\x61\x74\x69\x6E\x67","\x30\x2C","\x55\x50\x4C\x4F\x41\x44\x20\x53\x55\x43\x43\x45\x53\x53\x46\x55\x4C","\x55\x50\x4C\x4F\x41\x44\x49\x4E\x47\x2E\x2E\x2E","\x6C\x65\x76\x65\x6C\x73\x74\x72\x69\x6E\x67","\x70\x6F\x73\x74\x65\x64","\x75\x73\x65\x5F\x6B\x6F\x6E\x67\x5F\x6E\x61\x6D\x65","\x61\x61\x61","\x4D\x79\x20\x6C\x65\x76\x65\x6C","\x64\x61\x74\x61\x3D","\x6C\x65\x76\x65\x6C\x73","\x70\x6F\x73\x74","\x6C\x6F\x61\x64\x5F\x69\x6E\x66\x6F","\x6C\x69\x73\x74","\x50\x6C\x61\x79\x65\x72\x4C\x65\x76\x65\x6C\x73","\x42\x65\x6E","\x73\x61\x76\x65","\x4A\x41\x43\x4F\x42","\x2F\x75\x73\x65\x72\x6C\x65\x76\x65\x6C\x73\x2F","\x72\x65\x66","\x64\x61\x74\x61\x62\x61\x73\x65","\x76\x61\x6C\x75\x65","\x76\x61\x6C","\x6F\x6E\x63\x65","\x6B\x65\x79\x63\x6F\x64\x65","\x63\x68\x69\x6C\x64","\x68\x61\x73\x43\x68\x69\x6C\x64","\x6B\x65\x79\x63\x6F\x64\x65\x5F\x63\x68\x65\x63\x6B","\x73\x65\x74","\x63\x68\x65\x63\x6B\x5F\x6B\x65\x79","\x74\x6F\x6C\x64\x5F\x75\x73\x65\x72\x5F\x69\x5F\x70\x6F\x73\x74\x65\x64","\x4C\x45\x56\x45\x4C\x20\x50\x4F\x53\x54\x45\x44\x20\x41\x53\x20","\x63\x68\x65\x72\x72\x79\x2E\x70\x6E\x67","\x65\x6C\x65\x70\x68\x61\x6E\x74\x2E\x70\x6E\x67","\x47\x45\x54\x20\x54\x48\x45\x20\x46\x52\x45\x45\x20\x41\x50\x50\x20\x28\x4D\x4F\x52\x45\x20\x4C\x45\x56\x45\x4C\x53\x21\x29","\x47\x5F\x4F\x56\x45\x52\x57\x4F\x52\x4C\x44\x20\x54\x45\x58\x54","\x46\x49\x4E\x44\x20\x55\x53\x20\x4F\x4E\x20\x46\x41\x43\x45\x42\x4F\x4F\x4B\x3A\x20\x20\x20","\x65\x79\x65\x2E\x70\x6E\x67","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4D\x4F\x44\x45\x53","\x4C\x45\x56\x45\x4C\x53\x20\x33\x31\x20\x2D\x20\x36\x30","\x6C\x6F\x61\x64\x5F\x63\x68\x61\x6C\x6C\x65\x6E\x67\x65\x5F\x6C\x65\x76\x65\x6C\x73","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C\x53\x0A\x2D\x52\x45\x4C\x41\x58\x49\x4E\x47","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C\x53\x0A\x2D\x4D\x45\x44\x49\x55\x4D","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C\x53\x0A\x2D\x41\x4C\x4C\x20\x43\x4C\x55\x45\x53","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C\x53\x0A\x2D\x4E\x4F\x20\x53\x4D\x49\x4C\x45\x59","\x73\x61\x74\x75\x72\x6E\x2E\x70\x6E\x67","\x73\x65\x74\x5F\x74\x65\x78\x74\x75\x72\x65","\x6C\x6F\x61\x64\x5F\x63\x61\x6D\x70\x61\x69\x67\x6E\x5F\x31\x74\x6F\x33\x30","\x6C\x6F\x61\x64\x5F\x63\x61\x6D\x70\x61\x69\x67\x6E\x5F\x33\x31\x74\x6F\x36\x30","\x6C\x6F\x61\x64\x5F\x63\x61\x6D\x70\x61\x69\x67\x6E\x5F\x36\x31\x74\x6F\x39\x30","\x6C\x6F\x61\x64\x5F\x63\x61\x6D\x70\x61\x69\x67\x6E\x5F\x66\x72\x6F\x6D","\x4C\x45\x56\x45\x4C\x53\x20\x31\x20\x2D\x20\x33\x30","\x4C\x45\x56\x45\x4C\x53\x20\x36\x31\x20\x2D\x20\x39\x30","\x4C\x45\x56\x45\x4C\x53\x20","\x20\x2D\x20","\x4C\x45\x56\x45\x4C\x53\x20\x39\x31\x20\x2D\x20\x31\x32\x30","\x73\x65\x74\x5F\x73\x74\x61\x74\x75\x73","\x6E\x6F\x5F\x73\x74\x61\x74\x75\x73","\x68\x61\x6E\x64\x2E\x70\x6E\x67","\x72\x65\x64\x74\x69\x6C\x65\x38\x74\x6F\x75\x63\x68\x2E\x70\x6E\x67","\x70\x6C\x75\x73\x2E\x70\x6E\x67","\x72\x65\x64\x74\x69\x6C\x65\x68\x65\x61\x72\x74\x2E\x70\x6E\x67","\x63\x72\x6F\x77\x6E\x2E\x70\x6E\x67","\x72\x65\x64\x74\x69\x6C\x65\x73\x6D\x69\x6C\x65\x2E\x70\x6E\x67","\x65\x79\x65\x72\x65\x70\x65\x61\x74\x2E\x70\x6E\x67","\x64\x6F\x75\x62\x6C\x65\x5F\x74\x75\x74\x2E\x70\x6E\x67","\x65\x79\x65\x62\x72\x61\x63\x6B\x65\x74\x2E\x70\x6E\x67","\x41\x50\x50","\x72\x65\x64\x74\x69\x6C\x65\x7A\x61\x70\x2E\x70\x6E\x67","\x72\x65\x64\x32\x6D\x75\x6C\x74\x69\x2E\x70\x6E\x67","\x63\x68\x61\x6C\x6C\x65\x6E\x67\x65\x5F\x6C\x65\x76\x65\x6C\x73\x5F\x73\x74\x61\x72\x74","\x67\x65\x74\x44\x61\x74\x65","\x67\x65\x74\x4D\x6F\x6E\x74\x68","\x67\x65\x74\x46\x75\x6C\x6C\x59\x65\x61\x72","\x6C\x65\x66\x74\x5F\x61\x72\x72\x6F\x77\x5F\x78","\x6C\x65\x66\x74\x5F\x61\x72\x72\x6F\x77\x5F\x79","\x72\x69\x67\x68\x74\x5F\x61\x72\x72\x6F\x77\x5F\x78","\x72\x69\x67\x68\x74\x5F\x61\x72\x72\x6F\x77\x5F\x79","\x61\x70\x70\x5F\x79","\x61\x70\x70\x5F\x78","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x6D\x61\x74\x68\x73\x77\x65\x65\x70\x65\x72\x2F","\x6D\x6F\x75\x73\x65\x64\x6F\x77\x6E","\x73\x65\x6C\x65\x63\x74\x65\x64\x5F\x73\x70\x65\x63\x69\x61\x6C","\x67\x6F\x5F\x74\x6F\x5F\x66\x62","\x68\x69\x67\x68\x6C\x69\x67\x68\x74\x5F\x6F\x6E","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x61\x70\x70","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x70\x69\x78\x6F\x6A\x69","\x74\x75\x74\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x50\x4C\x41\x59","\x54\x75\x74\x6F\x72\x69\x61\x6C","\x54\x69\x74\x6C\x65","\x62\x6F\x6D\x62\x5F\x73\x68\x61\x64\x6F\x77\x2E\x70\x6E\x67","\x62\x6F\x6D\x62\x2E\x70\x6E\x67","\x66\x69\x72\x65\x5F\x73\x68\x61\x64\x6F\x77\x2E\x70\x6E\x67","\x66\x69\x72\x65\x2E\x70\x6E\x67","\x74\x75\x74\x5F\x61\x63\x74\x75\x61\x6C\x5F\x78","\x70\x6C\x61\x79\x5F\x61\x63\x74\x75\x61\x6C\x5F\x78","\x74\x69\x74\x6C\x65\x5F\x61\x63\x74\x75\x61\x6C\x5F\x79","\x74\x75\x74\x5F\x78","\x43\x48\x41\x4E\x47\x45\x20\x43\x4F\x4E\x54\x52\x4F\x4C\x20\x53\x43\x48\x45\x4D\x45\x3F\x0A\x28\x59\x4F\x55\x20\x43\x41\x4E\x20\x43\x48\x41\x4E\x47\x45\x20\x54\x48\x49\x53\x20\x4C\x41\x54\x45\x52\x20\x46\x52\x4F\x4D\x20\x54\x48\x45\x20\x42\x4F\x54\x54\x4F\x4D\x20\x4D\x45\x4E\x55\x29","\x72\x69\x67\x68\x74\x5F\x6C\x6F\x6E\x67","\x68\x6F\x6C\x64\x5F\x6C\x6F\x6E\x67","\x6D\x61\x72\x6B\x5F\x6C\x6F\x6E\x67","\x74\x6F\x67\x67\x6C\x65","\x6D\x61\x72\x6B\x5F\x78","\x6D\x61\x72\x6B\x5F\x79","\x68\x6F\x6C\x64\x5F\x78","\x68\x6F\x6C\x64\x5F\x79","\x72\x69\x67\x68\x74\x5F\x78","\x72\x69\x67\x68\x74\x5F\x79","\x74\x6F\x67\x67\x6C\x65\x64","\x43\x48\x41\x4C\x4C\x45\x4E\x47\x45\x20\x4C\x45\x56\x45\x4C\x53\x0A","\x4E\x4F\x20\x46\x45\x45\x44\x46\x41\x43\x4B\x20\x4F\x4E\x20\x4D\x49\x53\x54\x41\x4B\x45\x53\x0A\x4D\x4F\x52\x45\x20\x43\x4F\x4C\x4F\x55\x52\x45\x44\x20\x50\x49\x43\x54\x55\x52\x45\x53\x0A\x4E\x45\x57\x20\x4C\x45\x56\x45\x4C\x53\x20\x41\x44\x44\x45\x44\x20\x50\x45\x52\x49\x4F\x44\x49\x43\x41\x4C\x4C\x59","\x52\x45\x4C\x41\x58\x49\x4E\x47","\x4D\x45\x44\x49\x55\x4D","\x4E\x4F\x20\x53\x4D\x49\x4C\x45\x59","\x48\x41\x52\x44","\x41\x4C\x4C\x20\x43\x4C\x55\x45\x53\x0A\x28\x41\x50\x50\x20\x4F\x4E\x4C\x59\x29","\x68\x65\x61\x72\x74\x5F\x70\x69\x78\x2E\x70\x6E\x67","\x72\x61\x69\x6E\x62\x6F\x77\x73\x74\x61\x72\x74\x72\x69\x6D\x2E\x70\x6E\x67","\x65\x61\x73\x79\x5F\x78","\x6D\x65\x64\x5F\x78","\x68\x61\x72\x64\x5F\x78","\x65\x61\x73\x79\x5F\x79","\x6D\x65\x64\x5F\x79","\x68\x61\x72\x64\x5F\x79","\x6E\x6F\x73\x6D\x69\x6C\x65\x79\x5F\x78","\x6E\x6F\x73\x6D\x69\x6C\x65\x79\x5F\x79","\x73\x68\x61\x72\x65\x74\x75\x74\x2E\x70\x6E\x67","\x38\x68\x61\x6E\x64\x2E\x70\x6E\x67","\x65\x79\x65\x70\x6C\x75\x73\x74\x6F\x75\x63\x68\x2E\x70\x6E\x67","\x6A\x6F\x69\x6E\x5F\x74\x75\x74\x2E\x70\x6E\x67","\x63\x6F\x6D\x70\x61\x73\x73\x2E\x70\x6E\x67","\x7A\x61\x70\x2E\x70\x6E\x67","\x62\x6C\x6F\x63\x6B\x30\x2E\x70\x6E\x67","\x74\x69\x6D\x65\x72\x2E\x70\x6E\x67","\x4D\x49\x4E\x45\x53\x2B\x2B","\x43\x48\x4F\x4F\x53\x45\x20\x59\x4F\x55\x52\x20\x43\x4C\x55\x45\x53\x0A\x28\x54\x48\x49\x53\x20\x4D\x4F\x44\x45\x20\x49\x53\x20\x41\x55\x54\x4F\x2D\x47\x45\x4E\x45\x52\x41\x54\x45\x44\x20\x0A\x41\x4E\x44\x20\x4D\x41\x59\x20\x52\x45\x51\x55\x49\x52\x45\x20\x47\x55\x45\x53\x53\x49\x4E\x47\x29","\x54\x59\x50\x45\x3A\x20\x53\x43\x41\x54\x54\x45\x52\x45\x44","\x65\x79\x65\x5F\x78","\x65\x79\x65\x5F\x79","\x68\x61\x6E\x64\x5F\x78","\x68\x61\x6E\x64\x5F\x79","\x65\x69\x67\x68\x74\x68\x61\x6E\x64\x5F\x78","\x65\x69\x67\x68\x74\x68\x61\x6E\x64\x5F\x79","\x70\x6C\x75\x73\x5F\x78","\x70\x6C\x75\x73\x5F\x79","\x6A\x6F\x69\x6E\x5F\x78","\x6A\x6F\x69\x6E\x5F\x79","\x68\x65\x61\x72\x74\x5F\x78","\x68\x65\x61\x72\x74\x5F\x79","\x63\x6F\x6D\x70\x61\x73\x73\x5F\x78","\x63\x6F\x6D\x70\x61\x73\x73\x5F\x79","\x63\x72\x6F\x77\x6E\x5F\x78","\x63\x72\x6F\x77\x6E\x5F\x79","\x65\x79\x65\x62\x72\x61\x63\x6B\x65\x74\x5F\x78","\x65\x79\x65\x62\x72\x61\x63\x6B\x65\x74\x5F\x79","\x73\x68\x61\x72\x65\x5F\x78","\x73\x68\x61\x72\x65\x5F\x79","\x7A\x61\x70\x5F\x78","\x7A\x61\x70\x5F\x79","\x77\x61\x6C\x6C\x5F\x78","\x77\x61\x6C\x6C\x5F\x79","\x6C\x65\x76\x65\x6C\x74\x79\x70\x65\x5F\x78","\x6C\x65\x76\x65\x6C\x74\x79\x70\x65\x5F\x79","\x54\x59\x50\x45\x3A\x20\x43\x52\x4F\x53\x53\x2D\x47\x52\x49\x44","\x54\x59\x50\x45\x3A\x20\x43\x41\x4D\x50\x41\x49\x47\x4E\x20\x4C\x45\x56\x45\x4C\x20\x42\x55\x54\x20\x52\x45\x41\x52\x52\x41\x4E\x47\x45\x44","\x54\x59\x50\x45\x3A\x20\x43\x48\x45\x43\x4B\x45\x52\x42\x4F\x41\x52\x44","\x57\x65\x20\x68\x61\x76\x65\x20\x75\x73\x65\x64\x20\x74\x68\x65\x20\x66\x6F\x6C\x6C\x6F\x77\x69\x6E\x67\x20\x6F\x70\x65\x6E\x20\x73\x6F\x75\x72\x63\x65\x20\x70\x72\x6F\x6A\x65\x63\x74\x73\x20\x2F\x20\x63\x6F\x64\x65\x3A\x20\x0A\x70\x68\x61\x73\x65\x72\x2E\x6A\x73\x20\x0A\x43\x6F\x70\x79\x72\x69\x67\x68\x74\x20\xA9\x20\x32\x30\x31\x37\x20\x52\x69\x63\x68\x61\x72\x64\x20\x44\x61\x76\x65\x79\x2C\x20\x50\x68\x6F\x74\x6F\x6E\x20\x53\x74\x6F\x72\x6D\x20\x4C\x74\x64\x2E\x20\x0A\x50\x68\x61\x73\x65\x72\x20\x69\x73\x20\x64\x69\x73\x74\x72\x69\x62\x75\x74\x65\x64\x20\x75\x6E\x64\x65\x72\x20\x74\x68\x65\x20\x4D\x49\x54\x20\x4C\x69\x63\x65\x6E\x73\x65\x2E\x0A\x68\x74\x74\x70\x73\x3A\x2F\x2F\x70\x68\x61\x73\x65\x72\x2E\x69\x6F\x2F\x64\x6F\x77\x6E\x6C\x6F\x61\x64\x2F\x6C\x69\x63\x65\x6E\x73\x65\x0A\x0A\x43\x6C\x61\x73\x73\x20\x6F\x62\x6A\x65\x63\x74\x20\x62\x61\x73\x65\x64\x20\x6F\x6E\x20\x4A\x6F\x68\x6E\x20\x52\x65\x73\x69\x67\x27\x73\x20\x63\x6F\x64\x65\x3B\x69\x6E\x73\x70\x69\x72\x65\x64\x20\x62\x79\x20\x62\x61\x73\x65\x32\x20\x61\x6E\x64\x20\x50\x72\x6F\x74\x6F\x74\x79\x70\x65\x0A\x68\x74\x74\x70\x3A\x2F\x2F\x65\x6A\x6F\x68\x6E\x2E\x6F\x72\x67\x2F\x62\x6C\x6F\x67\x2F\x73\x69\x6D\x70\x6C\x65\x2D\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x2D\x69\x6E\x68\x65\x72\x69\x74\x61\x6E\x63\x65\x2F\x20\x0A\x46\x6F\x6E\x74\x20\x75\x73\x65\x64\x20\x69\x73\x20\x4D\x6F\x6E\x74\x73\x65\x72\x72\x61\x74\x2E\x20\x53\x49\x4C\x20\x4F\x70\x65\x6E\x20\x46\x6F\x6E\x74\x20\x4C\x69\x63\x65\x6E\x73\x65\x20\x0A\x53\x6F\x63\x69\x61\x6C\x20\x6D\x65\x64\x69\x61\x20\x69\x63\x6F\x6E\x73\x20\x28\x46\x61\x63\x65\x62\x6F\x6F\x6B\x2C\x20\x54\x77\x69\x74\x74\x65\x72\x29\x20\x61\x72\x65\x20\x66\x72\x6F\x6D\x20\x0A\x68\x74\x74\x70\x73\x3A\x2F\x2F\x70\x61\x75\x6C\x72\x6F\x62\x65\x72\x74\x6C\x6C\x6F\x79\x64\x2E\x63\x6F\x6D\x2F\x32\x30\x30\x39\x2F\x30\x36\x2F\x73\x6F\x63\x69\x61\x6C\x5F\x6D\x65\x64\x69\x61\x5F\x69\x63\x6F\x6E\x73\x20\x0A\x20\x55\x49\x20\x69\x63\x6F\x6E\x73\x20\x61\x72\x65\x20\x66\x72\x6F\x6D\x20\x68\x74\x74\x70\x3A\x2F\x2F\x67\x6F\x6F\x67\x6C\x65\x2E\x67\x69\x74\x68\x75\x62\x2E\x69\x6F\x2F\x6D\x61\x74\x65\x72\x69\x61\x6C\x2D\x64\x65\x73\x69\x67\x6E\x2D\x69\x63\x6F\x6E\x73\x2F\x20\x75\x6E\x64\x65\x72\x20\x74\x68\x65\x20\x41\x70\x61\x63\x68\x65\x20\x4C\x69\x63\x65\x6E\x73\x65\x20\x56\x65\x72\x73\x69\x6F\x6E\x20\x32\x2E\x30\x2E\x20\x0A\x20","\x43\x52\x45\x44\x49\x54\x53","\x47\x4F\x20\x54\x4F\x20\x53\x54\x4F\x52\x45\x20\x50\x41\x47\x45\x3A","\x43\x4F\x4E\x54\x49\x4E\x55\x45\x3A","\x54\x68\x61\x6E\x6B\x73\x20\x66\x6F\x72\x20\x70\x6C\x61\x79\x69\x6E\x67\x20\x6D\x79\x20\x67\x61\x6D\x65\x21\x21\x0A\x49\x66\x20\x79\x6F\x75\x20\x63\x6F\x75\x6C\x64\x20\x72\x61\x74\x65\x20\x61\x6E\x64\x2F\x6F\x72\x20\x72\x65\x76\x69\x65\x77\x0A\x74\x68\x61\x74\x20\x77\x6F\x75\x6C\x64\x20\x68\x65\x6C\x70\x20\x6D\x65\x20\x74\x6F\x20\x6B\x65\x65\x70\x20\x6D\x61\x6B\x69\x6E\x67\x20\x67\x61\x6D\x65\x73\x20\x6C\x69\x6B\x65\x20\x74\x68\x69\x73","\x79\x65\x73\x5F\x78","\x79\x65\x73\x5F\x79","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x79\x65\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x70\x6C\x61\x79\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x73\x74\x6F\x72\x65\x2F\x61\x70\x70\x73\x2F\x64\x65\x74\x61\x69\x6C\x73\x3F\x69\x64\x3D\x63\x6F\x6D\x2E\x7A\x62\x6C\x69\x70\x2E\x70\x69\x78\x6F\x6A\x69","\x6E\x6F\x5F\x78","\x6E\x6F\x5F\x79","\x67\x6F\x74\x6F\x5F\x6E\x65\x78\x74\x5F\x67\x61\x6D\x65\x73\x74\x61\x74\x65","\x46\x49\x52\x53\x54\x20\x54\x49\x4D\x45\x0A","\x73\x75\x6E\x66\x6C\x6F\x77\x65\x72\x2E\x70\x6E\x67","\x4D\x41\x49\x4E\x20\x4C\x45\x56\x45\x4C\x53\x0A","\x47\x45\x54\x20\x54\x48\x45\x20\x46\x52\x45\x45\x20\x41\x50\x50\x0A\x28\x4D\x4F\x52\x45\x20\x4C\x45\x56\x45\x4C\x53\x21\x29","\x73\x68\x61\x64\x6F\x77","\x50\x49\x58\x4F\x4A\x49","\x3E\x20\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x20\x3C","\x66\x62\x6C\x6F\x67\x6F\x2E\x70\x6E\x67","\x74\x77\x69\x74\x74\x65\x72\x6C\x6F\x67\x6F\x2E\x70\x6E\x67","\x61\x74\x74\x6E\x5F\x72\x61\x6E\x64\x6F\x6D\x6D\x6F\x64\x65","\x72\x65\x64\x6F\x5F\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x66\x69\x72\x73\x74\x5F\x78","\x66\x69\x72\x73\x74\x5F\x79","\x6F\x76\x65\x72\x77\x6F\x72\x6C\x64\x5F\x78","\x6F\x76\x65\x72\x77\x6F\x72\x6C\x64\x5F\x79","\x72\x61\x6E\x64\x67\x65\x6E\x5F\x78","\x72\x61\x6E\x64\x67\x65\x6E\x5F\x79","\x7A\x62\x6C\x69\x70\x5F\x78","\x7A\x62\x6C\x69\x70\x5F\x79","\x66\x62\x6C\x6F\x67\x6F\x5F\x78","\x66\x62\x6C\x6F\x67\x6F\x5F\x79","\x74\x77\x69\x74\x74\x65\x72\x6C\x6F\x67\x6F\x5F\x78","\x74\x77\x69\x74\x74\x65\x72\x6C\x6F\x67\x6F\x5F\x79","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x66\x62","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x4D\x69\x6E\x65\x2D\x6F\x66\x2D\x53\x69\x67\x68\x74\x2D\x31\x30\x33\x37\x36\x33\x35\x30\x39\x36\x33\x38\x31\x39\x37\x36\x2F","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x74\x77\x69\x74\x74\x65\x72\x2E\x63\x6F\x6D\x2F\x5A\x42\x6C\x69\x70\x47\x61\x6D\x65\x73","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x7A\x62\x6C\x69\x70","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D","\x61\x74\x74\x6E\x5F\x74\x69\x6D\x65\x72","\x73\x63\x61\x6C\x65","\x57\x45\x4C\x43\x4F\x4D\x45\x20\x54\x4F\x20\x50\x49\x58\x4F\x4A\x49","\x54\x48\x45\x20\x47\x4F\x41\x4C\x20\x49\x53\x20\x54\x4F\x0A\x46\x49\x4E\x44\x20\x54\x48\x45\x20\x48\x49\x44\x44\x45\x4E\x20\x50\x49\x43\x54\x55\x52\x45","\x54\x48\x49\x53\x20\x4C\x45\x56\x45\x4C\x20\x49\x53\x20\x41\x4C\x52\x45\x41\x44\x59\x20\x44\x52\x41\x57\x4E\x0A\x54\x4F\x20\x53\x48\x4F\x57\x20\x59\x4F\x55\x20\x48\x4F\x57\x20\x54\x4F\x20\x50\x4C\x41\x59","\x4F\x4E\x20\x53\x4F\x4D\x45\x20\x54\x49\x4C\x45\x53\x20\x54\x48\x45\x52\x45\x20\x49\x53\x20\x41\x20\x4E\x55\x4D\x42\x45\x52\x0A\x46\x52\x4F\x4D\x20\x30\x20\x54\x4F\x20\x39","\x45\x41\x43\x48\x20\x4E\x55\x4D\x42\x45\x52\x20\x54\x45\x4C\x4C\x53\x0A\x54\x48\x45\x20\x41\x4D\x4F\x55\x4E\x54\x20\x4F\x46\x20\x44\x41\x52\x4B\x20\x50\x49\x58\x45\x4C\x53\x0A\x49\x4E\x20\x49\x54\x53\x20\x33\x78\x33\x20\x41\x52\x45\x41","\x54\x48\x49\x53\x20\x39\x20\x4D\x45\x41\x4E\x53\x2E\x2E\x2E","\x54\x48\x49\x53\x20\x39\x20\x4D\x45\x41\x4E\x53\x20\x39\x20\x54\x49\x4C\x45\x53\x20\x41\x52\x4F\x55\x4E\x44\x20\x49\x54\x0A\x41\x52\x45\x20\x46\x49\x4C\x4C\x45\x44","\x54\x48\x49\x53\x20\x38\x20\x4D\x45\x41\x4E\x53\x2E\x2E\x2E","\x54\x48\x49\x53\x20\x38\x20\x4D\x45\x41\x4E\x53\x20\x38\x20\x54\x49\x4C\x45\x53\x20\x41\x52\x4F\x55\x4E\x44\x20\x49\x54\x0A\x41\x52\x45\x20\x46\x49\x4C\x4C\x45\x44","\x54\x48\x49\x53\x20\x37\x20\x4D\x45\x41\x4E\x53\x2E\x2E\x2E","\x54\x48\x49\x53\x20\x37\x20\x4D\x45\x41\x4E\x53\x20\x37\x20\x54\x49\x4C\x45\x53\x20\x41\x52\x4F\x55\x4E\x44\x20\x49\x54\x0A\x41\x52\x45\x20\x46\x49\x4C\x4C\x45\x44","\x54\x48\x49\x53\x20\x35\x20\x4D\x45\x41\x4E\x53\x2E\x2E\x2E","\x54\x48\x49\x53\x20\x35\x20\x4D\x45\x41\x4E\x53\x20\x35\x20\x54\x49\x4C\x45\x53\x20\x41\x52\x4F\x55\x4E\x44\x20\x49\x54\x0A\x41\x52\x45\x20\x46\x49\x4C\x4C\x45\x44","\x54\x48\x49\x53\x20\x34\x20\x4D\x45\x41\x4E\x53\x2E\x2E\x2E","\x54\x48\x49\x53\x20\x34\x20\x4D\x45\x41\x4E\x53\x20\x34\x20\x54\x49\x4C\x45\x53\x20\x41\x52\x4F\x55\x4E\x44\x20\x49\x54\x0A\x41\x52\x45\x20\x46\x49\x4C\x4C\x45\x44","\x4F\x4B\x41\x59\x20\x4E\x4F\x57\x20\x49\x54\x53\x20\x54\x49\x4D\x45\x20\x46\x4F\x52\x0A\x59\x4F\x55\x20\x54\x4F\x20\x44\x52\x41\x57\x20\x50\x49\x43\x54\x55\x52\x45\x53","\x6E\x6F\x5F\x73\x75\x63\x68\x5F\x74\x75\x74","\x6C\x6F\x61\x64\x5F\x74\x75\x74","\x6C\x6F\x61\x64\x5F\x74\x75\x74\x5F\x6C\x65\x76\x65\x6C","\x67\x6F\x74\x6F\x5F\x6C\x65\x76\x65\x6C","\x67\x6F\x74\x6F\x5F\x74\x75\x74","\x74\x75\x74\x5F\x6C\x65\x76\x65\x6C","\x73\x6B\x69\x70\x5F\x69\x63\x6F\x6E\x2E\x70\x6E\x67","\x73\x65\x74\x5F\x74\x75\x74\x5F\x73\x75\x62\x73\x74\x61\x67\x65","\x6E\x65\x78\x74\x5F\x78","\x6E\x65\x78\x74\x5F\x79","\x72\x65\x73\x65\x74\x5F\x78","\x72\x65\x73\x65\x74\x5F\x79","\x73\x6B\x69\x70\x5F\x78","\x73\x6B\x69\x70\x5F\x79","\x74\x75\x74\x5F\x73\x75\x62\x73\x74\x61\x67\x65","\x6E\x65\x78\x74\x5F\x73\x75\x62\x73\x74\x61\x67\x65","\x61\x64\x64\x5F\x74\x69\x6C\x65\x5F\x78\x79","\x66\x69\x6C\x6C","\x64\x69\x67","\x73\x6B\x69\x70","\x73\x61\x76\x65\x5F\x73\x74\x61\x74\x65","\x73\x68\x6F\x77\x5F\x73\x61\x76\x65\x5F\x6F\x70\x74\x69\x6F\x6E","\x72\x65\x64\x74\x69\x6C\x65\x2E\x70\x6E\x67","\x4E\x45\x58\x54\x20\x4C\x45\x56\x45\x4C\x3A","\x53\x4F\x4C\x56\x45\x44\x21","\x50\x49\x43\x54\x55\x52\x45\x4E\x41\x4D\x45","\x46\x4F\x4C\x4C\x4F\x57\x20\x40\x5A\x42\x6C\x69\x70\x47\x61\x6D\x65\x73\x3A","\x52\x45\x4D\x45\x4D\x42\x45\x52\x20\x4D\x59\x20\x50\x52\x4F\x47\x52\x45\x53\x53","\x62\x75\x74\x74\x6F\x6E\x5F\x73\x6D\x61\x6C\x6C\x2E\x70\x6E\x67","\x64\x6F\x5F\x63\x6F\x6C\x6F\x75\x72","\x0A","\x20\x4D\x49\x53\x54\x41\x4B\x45\x53","\x4E\x75\x6D\x62\x65\x72\x20\x6F\x66\x20\x63\x61\x6D\x70\x61\x69\x67\x6E\x20\x6C\x65\x76\x65\x6C\x73\x20\x63\x6F\x6D\x70\x6C\x65\x74\x65\x64","\x73\x75\x62\x6D\x69\x74","\x73\x74\x61\x74\x73","\x70\x69\x78\x6F\x6A\x69\x6C\x65\x76\x65\x6C\x73","\x73\x65\x74\x54\x69\x6D\x65","\x70\x69\x78\x6F\x6A\x69\x6C\x65\x76\x65\x6C\x73\x3D","\x63\x6F\x6F\x6B\x69\x65","\x3B\x65\x78\x70\x69\x72\x65\x73\x3D\x46\x72\x69\x2C\x20\x33\x31\x20\x44\x65\x63\x20\x32\x30\x32\x30\x20\x32\x33\x3A\x35\x39\x3A\x35\x39\x20\x47\x4D\x54","\x73\x61\x76\x65\x5F\x73\x74\x61\x74\x65\x5F\x63\x6F\x6D\x6D\x75\x6E\x69\x74\x79\x5F\x6C\x65\x76\x65\x6C\x73","\x70\x69\x78\x6F\x6A\x69\x63\x6C\x69\x63\x6B\x74\x6F\x64\x69\x67\x3D","\x70\x69\x78\x6F\x6A\x69\x68\x6F\x6C\x64\x74\x6F\x66\x6C\x61\x67\x3D","\x70\x69\x78\x6F\x6A\x69\x63\x6C\x69\x63\x6B\x74\x6F\x64\x69\x67","\x70\x69\x78\x6F\x6A\x69\x68\x6F\x6C\x64\x74\x6F\x66\x6C\x61\x67","\x74\x6F\x74\x61\x6C\x5F\x6C\x65\x76\x65\x6C\x73\x5F\x70\x6C\x61\x79\x65\x64","\x6C\x65\x76\x65\x6C\x73\x5F\x75\x6E\x74\x69\x6C\x5F\x61\x64","\x67\x5F\x73\x65\x65\x6E\x5F\x62\x65\x67","\x7A\x62\x6C\x69\x70\x5F\x70\x69\x78\x6F\x6A\x69\x5F\x67\x5F\x61\x6C\x6C\x5F\x6C\x65\x76\x65\x6C\x5F\x73\x74\x61\x74\x75\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x66\x61\x63\x65\x62\x6F\x6F\x6B\x2E\x63\x6F\x6D\x2F\x4D\x69\x6E\x65\x2D\x6F\x66\x2D\x53\x69\x67\x68\x74\x2D\x31\x30\x33\x37\x36\x33\x35\x30\x39\x36\x33\x38\x31\x39\x37\x36","\x73\x61\x76\x65\x5F\x79","\x73\x61\x76\x65\x5F\x78","\x63\x6F\x6C\x6F\x75\x72\x74\x69\x6D\x65\x72","\x63\x6F\x6C\x6F\x75\x72\x5F\x79","\x63\x6F\x6C\x6F\x75\x72\x5F\x78","\x61\x73\x73\x65\x74\x73\x2F\x63\x6F\x69\x6E\x31\x2E\x77\x61\x76","\x64\x6F\x5F\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x62\x67\x5F\x74\x69\x6D\x65\x72","\x73\x75\x62\x6D\x69\x74\x5F\x6B\x6F\x6E\x67\x5F\x73\x74\x61\x74\x73","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x73\x6F\x63\x69\x61\x6C","\x67\x6F\x5F\x74\x6F\x5F\x74\x77\x69\x74","\x75\x73\x65\x72\x5F\x63\x6C\x69\x63\x6B\x65\x64\x5F\x73\x61\x76\x65","\x62\x75\x74\x74\x6F\x6E\x5F\x73\x6D\x61\x6C\x6C\x5F\x6F\x6E\x2E\x70\x6E\x67","\x76\x6F\x74\x65\x64","\x70\x69\x78\x6F\x6A\x69","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x63\x72\x6F\x73\x73\x70\x72\x6F\x6D\x6F\x74\x65\x2F\x63\x75\x72\x72\x65\x6E\x74\x67\x61\x6D\x65\x2E\x6A\x73\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x7A\x62\x6C\x69\x70\x2E\x63\x6F\x6D\x2F\x63\x72\x6F\x73\x73\x70\x72\x6F\x6D\x6F\x74\x65\x2F\x63\x75\x72\x72\x65\x6E\x74\x67\x61\x6D\x65\x2E\x70\x6E\x67","\x67\x61\x6D\x65\x5F\x69\x64","\x63\x72\x6F\x73\x73\x70\x72\x6F\x6D\x6F\x74\x65\x2E\x70\x6E\x67","\x67\x61\x6D\x65\x6E\x61\x6D\x65","\x77\x6F\x72\x64\x73","\x68\x65\x61\x64\x65\x72","\x43\x4F\x4E\x54\x49\x4E\x55\x45","\x75\x72\x6C","\x67\x70\x5F\x61\x70\x70\x5F\x75\x72\x6C","\x61\x64\x5F\x78","\x61\x64\x5F\x79","\x63\x6C\x69\x63\x6B\x65\x64\x5F\x61\x64","\x6E\x6F\x70\x65\x5F\x78","\x6E\x6F\x70\x65\x5F\x79","\x73\x68\x6F\x77","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x77\x77\x77\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x65\x64\x69\x74\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x77\x77\x77\x2E\x73\x74\x61\x67\x65\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x65\x64\x69\x74\x2D\x73\x74\x61\x67\x65\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x64\x65\x76\x2E\x63\x6F\x6F\x6C\x6D\x61\x74\x68\x2D\x67\x61\x6D\x65\x73\x2E\x63\x6F\x6D","\x46\x49\x4E\x44\x20\x55\x53\x20\x4F\x4E\x20\x46\x41\x43\x45\x42\x4F\x4F\x4B","\x6C\x6F\x63\x61\x6C\x53\x74\x6F\x72\x61\x67\x65","\x66\x69\x72\x73\x74\x5F\x74\x69\x6D\x65","\x73\x74\x61\x72\x74\x5F\x6C\x65\x76\x65\x6C","\x61","\x70\x69\x78\x6F\x6A\x69\x6C\x65\x76\x65\x6C","\x6E\x75\x6D\x73\x65\x73\x73\x69\x6F\x6E\x73","\x61\x63\x74\x69\x76\x61\x74\x65\x64","\x6F\x6E","\x41\x70\x70","\x73\x75\x73\x70\x65\x6E\x64\x65\x64","\x73\x75\x73\x70\x65\x6E\x64\x69\x6E\x67","\x63\x61\x2D\x61\x70\x70\x2D\x70\x75\x62\x2D\x33\x39\x34\x30\x32\x35\x36\x30\x39\x39\x39\x34\x32\x35\x34\x34\x2F\x31\x30\x33\x33\x31\x37\x33\x37\x31\x32","\x63\x72\x65\x61\x74\x65\x49\x6E\x74\x65\x72\x73\x74\x69\x74\x69\x61\x6C","\x41\x64\x4D\x6F\x62","\x41\x64","\x66\x61\x69\x6C","\x64\x69\x73\x6D\x69\x73\x73","\x3B\x20","\x3D","\x73\x74\x61\x72\x74\x5F\x67\x61\x6D\x65","\x68\x6F\x73\x74\x6E\x61\x6D\x65","\x63\x68\x65\x63\x6B\x5F\x73\x69\x74\x65\x6C\x6F\x63\x6B","\x63\x68\x65\x63\x6B\x5F\x62\x6C\x61\x63\x6B\x6C\x69\x73\x74","\x70\x6F\x70\x5F\x75\x70","\x70\x6F\x70\x5F\x64\x6F\x77\x6E","\x68\x75\x72\x72\x79\x5F\x6D\x65\x6E\x75","\x67\x65\x74\x5F\x73\x74\x61\x74\x65"];var backend_url=_0xe113[0];GameStateClass= Class[_0xe113[23]]({init:function(){},cleanup:function(){},pause:function(){},resume:function(){},screen_resized:function(){},add_button:function(_0xb5aax2,_0xb5aax3){},handle_events:function(_0xb5aax4,_0xb5aax5,_0xb5aax6,_0xb5aax7){if(_0xb5aax7== Types[_0xe113[2]][_0xe113[1]]){this[_0xe113[3]]()};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[4]]){this[_0xe113[5]](_0xb5aax4,_0xb5aax5,_0xb5aax6);return};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[6]]|| _0xb5aax7== Types[_0xe113[2]][_0xe113[7]]){this[_0xe113[8]](_0xb5aax4,_0xb5aax5,_0xb5aax6,_0xb5aax7)}else {if(_0xb5aax7== Types[_0xe113[2]][_0xe113[9]]){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6)}else {if(_0xb5aax7== Types[_0xe113[2]][_0xe113[11]]){this[_0xe113[12]](g_key_pressed)}else {}}};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[13]]){this[_0xe113[14]](_0xb5aax4,_0xb5aax5,_0xb5aax6)};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[7]]){this[_0xe113[15]](_0xb5aax4,_0xb5aax5,_0xb5aax6)};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[16]]){this[_0xe113[17]](_0xb5aax4,_0xb5aax5,_0xb5aax6)};if(_0xb5aax7== Types[_0xe113[2]][_0xe113[18]]){this[_0xe113[19]](_0xb5aax4,_0xb5aax5,_0xb5aax6)}},handle_key:function(_0xb5aax8){},handle_click:function(_0xb5aax4,_0xb5aax5,_0xb5aax6,_0xb5aax7){},handle_right_click:function(_0xb5aax4,_0xb5aax5,_0xb5aax6,_0xb5aax7){},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_left_mouse:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_right_mouse:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_wheel:function(){},update:function(_0xb5aax4){},draw:function(_0xb5aax4){},change_state:function(_0xb5aax4,_0xb5aax9){_0xb5aax4[_0xe113[20]](_0xb5aax9)},push_state:function(_0xb5aax4,_0xb5aax9){_0xb5aax4[_0xe113[21]](_0xb5aax9)},kill:function(_0xb5aax4){_0xb5aax4[_0xe113[22]]()}});g_zblip_on_start_level= function(_0xb5aaxa){if(on_coolmath== false){return};if(parent[_0xe113[24]]== null){return};parent[_0xe113[24]](_0xe113[25],_0xb5aaxa.toString())};g_zblip_on_replay_level= function(_0xb5aaxa){if(on_coolmath== false){return};if(parent[_0xe113[24]]== null){return};parent[_0xe113[24]](_0xe113[26],_0xb5aaxa.toString())};g_zblip_on_play_button= function(){if(on_coolmath== false){return};if(parent[_0xe113[24]]== null){return};parent[_0xe113[24]](_0xe113[25])};unlockAllLevels= function(){if(on_coolmath== false){return}};PlayStateClass= GameStateClass[_0xe113[23]]({engine:null,tiles:[],grid_w:15,grid_h:15,current_grid_w:12,current_grid_h:12,tile_size:48,blocks:[],selected_tiles:[],joined_tiles:[],backup_level:[],num_join_groups:0,current_level:0,info_obj:null,gamepad:null,game_mode:0,challenge_level_hardness:0,top_nono:[],left_nono:[],tester_edge_nono:null,tester_tile_nono:null,won_or_lost:false,on_flag_effect:null,white_border:[],mistakes_this_level:0,init:function(_0xb5aax4){if(false){var _0xb5aaxb= new BitmapClass(Types[_0xe113[27]].GAME_MENU,100,100);_0xb5aaxb[_0xe113[28]](6,5,6);_0xb5aaxb[_0xe113[28]](6,6,1);_0xb5aaxb[_0xe113[28]](6,8,6);_0xb5aaxb[_0xe113[28]](6,9,6);_0xb5aaxb[_0xe113[29]](50,25);_0xb5aaxb[_0xe113[28]](6,2,6);_0xb5aaxb[_0xe113[29]](10,250);_0xb5aaxb[_0xe113[28]](1,1,10);_0xb5aaxb[_0xe113[29]](40,250)};this[_0xe113[30]]= _0xb5aax4;if(screen_width< screen_height){}else {};this[_0xe113[31]]=  new OnFlagEffect(this);for(var _0xb5aaxc=0;_0xb5aaxc< this[_0xe113[32]];_0xb5aaxc++){this[_0xe113[33]][_0xb5aaxc]=  new Array(this[_0xe113[34]]);this[_0xe113[35]][_0xb5aaxc]=  new Array(this[_0xe113[34]]);this[_0xe113[36]][_0xb5aaxc]=  new Array(this[_0xe113[34]]);this[_0xe113[37]][_0xb5aaxc]=  new Array(this[_0xe113[34]])};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[33]][_0xb5aax5][_0xb5aax6]=  -1;this[_0xe113[36]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0}};for(var _0xb5aaxd=0;_0xb5aaxd< this[_0xe113[32]];_0xb5aaxd++){this[_0xe113[39]][_0xe113[38]]( new EdgeNono(this,_0xb5aaxd,-1))};for(var _0xb5aaxe=0;_0xb5aaxe< this[_0xe113[34]];_0xb5aaxe++){this[_0xe113[40]][_0xe113[38]]( new EdgeNono(this,-1,_0xb5aaxe))};for(var _0xb5aaxf=0;_0xb5aaxf< this[_0xe113[32]]* this[_0xe113[34]];_0xb5aaxf++){var _0xb5aax10= new TileNono(this);_0xb5aax10[_0xe113[41]]= _0xb5aaxf;this[_0xe113[42]][_0xe113[38]](_0xb5aax10)};this[_0xe113[43]]=  new EdgeNono(this,_0xb5aaxd,-1);this[_0xe113[43]][_0xe113[44]]= 2;this[_0xe113[45]]=  new TileNono(this);this[_0xe113[45]][_0xe113[44]]= 2;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0)}};for(var _0xb5aaxf=0;_0xb5aaxf< this[_0xe113[32]]* this[_0xe113[34]];_0xb5aaxf++){this[_0xe113[42]][_0xb5aaxf][_0xe113[48]][_0xe113[47]]()};for(var _0xb5aax11=0;_0xb5aax11<= this[_0xe113[32]];_0xb5aax11++){this[_0xe113[49]][_0xb5aax11]=  new SquareClass(0,0,this[_0xe113[50]]* _0xb5aax11,this[_0xe113[50]]* _0xb5aax11,Types[_0xe113[27]].TILE,0x222222,false);this[_0xe113[49]][_0xb5aax11][_0xe113[47]]()};this[_0xe113[51]]();this[_0xe113[52]]=  new InfoClass(this);this[_0xe113[53]]=  new GamepadClass();this[_0xe113[54]]();if(g_solver_class){g_solver_class[_0xe113[55]](this)};if(g_solver_class){g_generator_class[_0xe113[55]](this,g_solver_class)}},is_pixel_same_as:function(_0xb5aax12,_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[58]](_0xb5aax5,_0xb5aax6)== _0xb5aax12){return true}},is_pixel_same_colour_as:function(_0xb5aax12,_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[59]](_0xb5aax5,_0xb5aax6)== _0xb5aax12){return true}},is_pixel_lonely:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[58]](_0xb5aax5,_0xb5aax6)== 0){return false};if(_0xb5aax5> 0&& this[_0xe113[58]](_0xb5aax5- 1,_0xb5aax6)> 0){return false};if(_0xb5aax6> 0&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6- 1)> 0){return false};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[58]](_0xb5aax5+ 1,_0xb5aax6)> 0){return false};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6+ 1)> 0){return false};return true},is_player_pixel_lonely:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[60]](_0xb5aax5,_0xb5aax6)== 0){return false};if(_0xb5aax5> 0&& this[_0xe113[60]](_0xb5aax5- 1,_0xb5aax6)> 0){return false};if(_0xb5aax6> 0&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6- 1)> 0){return false};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[60]](_0xb5aax5+ 1,_0xb5aax6)> 0){return false};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6+ 1)> 0){return false};return true},is_pixel_social:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[58]](_0xb5aax5,_0xb5aax6)== 0){return false};if(_0xb5aax5> 0&& this[_0xe113[58]](_0xb5aax5- 1,_0xb5aax6)== 0){return false};if(_0xb5aax6> 0&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6- 1)== 0){return false};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[58]](_0xb5aax5+ 1,_0xb5aax6)== 0){return false};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6+ 1)== 0){return false};return true},is_player_pixel_social:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[60]](_0xb5aax5,_0xb5aax6)== 0){return false};if(_0xb5aax5> 0&& this[_0xe113[60]](_0xb5aax5- 1,_0xb5aax6)== 0){return false};if(_0xb5aax6> 0&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6- 1)== 0){return false};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[60]](_0xb5aax5+ 1,_0xb5aax6)== 0){return false};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6+ 1)== 0){return false};return true},is_pixel_elbow:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[58]](_0xb5aax5,_0xb5aax6)== 0){return false};var _0xb5aax13=0;if(_0xb5aax5> 0&& this[_0xe113[58]](_0xb5aax5- 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6> 0&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6- 1)> 0){_0xb5aax13++};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[58]](_0xb5aax5+ 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6+ 1)> 0){_0xb5aax13++};if(_0xb5aax13== 2){return true};return false},is_player_pixel_elbow:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[60]](_0xb5aax5,_0xb5aax6)== 0){return false};var _0xb5aax13=0;if(_0xb5aax5> 0&& this[_0xe113[60]](_0xb5aax5- 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6> 0&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6- 1)> 0){_0xb5aax13++};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[60]](_0xb5aax5+ 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6+ 1)> 0){_0xb5aax13++};if(_0xb5aax13== 2){return true};return false},is_pixel_corner:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[58]](_0xb5aax5,_0xb5aax6)== 0){return false};var _0xb5aax13=0;if(_0xb5aax5> 0&& this[_0xe113[58]](_0xb5aax5- 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6> 0&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6- 1)> 0){_0xb5aax13++};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[58]](_0xb5aax5+ 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6+ 1)> 0){_0xb5aax13++};if(_0xb5aax13!= 2){return false};if(_0xb5aax5> 0&& this[_0xe113[58]](_0xb5aax5- 1,_0xb5aax6)> 0&& _0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[58]](_0xb5aax5+ 1,_0xb5aax6)> 0){return false};if(_0xb5aax6> 0&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6- 1)> 0&& _0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[58]](_0xb5aax5,_0xb5aax6+ 1)> 0){return false};return true},is_player_pixel_corner:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[60]](_0xb5aax5,_0xb5aax6)== 0){return false};var _0xb5aax13=0;if(_0xb5aax5> 0&& this[_0xe113[60]](_0xb5aax5- 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6> 0&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6- 1)> 0){_0xb5aax13++};if(_0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[60]](_0xb5aax5+ 1,_0xb5aax6)> 0){_0xb5aax13++};if(_0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6+ 1)> 0){_0xb5aax13++};if(_0xb5aax13!= 2){return false};if(_0xb5aax5> 0&& this[_0xe113[60]](_0xb5aax5- 1,_0xb5aax6)> 0&& _0xb5aax5< this[_0xe113[56]]- 1&& this[_0xe113[60]](_0xb5aax5+ 1,_0xb5aax6)> 0){return false};if(_0xb5aax6> 0&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6- 1)> 0&& _0xb5aax6< this[_0xe113[57]]- 1&& this[_0xe113[60]](_0xb5aax5,_0xb5aax6+ 1)> 0){return false};return true},get_pixel:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return 0};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[61]]()},get_pixel_colour:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return 0};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[61]]()== 0){return 0}else {return 1}},is_player_pixel_same_as:function(_0xb5aax12,_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[60]](_0xb5aax5,_0xb5aax6)== _0xb5aax12){return true}},is_player_pixel_colour_same_as:function(_0xb5aax12,_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[62]](_0xb5aax5,_0xb5aax6)== _0xb5aax12){return true}},is_player_pixel_same_colour_as:function(_0xb5aax12,_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return false};if(this[_0xe113[62]](_0xb5aax5,_0xb5aax6)== _0xb5aax12){return true}},get_player_pixel_b:function(_0xb5aax11){if(_0xb5aax11< 0|| _0xb5aax11>= this[_0xe113[42]][_0xe113[63]]){return 0};return this[_0xe113[42]][_0xb5aax11][_0xe113[60]]()},get_player_pixel:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return 0};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[60]]()},get_player_pixel_colour:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return 0};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[60]]()== 0){return 0};return 1},test_tile_hint:function(_0xb5aax14){this[_0xe113[45]][_0xe113[64]](this[_0xe113[42]][_0xb5aax14]);this[_0xe113[45]][_0xe113[66]](this[_0xe113[45]][_0xe113[65]]);var _0xb5aax15=this[_0xe113[45]][_0xe113[67]](this[_0xe113[42]][_0xb5aax14]);if(_0xb5aax15== true){this[_0xe113[42]][_0xb5aax14][_0xe113[68]]= true}else {this[_0xe113[42]][_0xb5aax14][_0xe113[68]]= false}},test_edge_nonogram:function(){for(var _0xb5aaxd=0;_0xb5aaxd< this[_0xe113[32]];_0xb5aaxd++){this[_0xe113[43]][_0xe113[64]](this[_0xe113[39]][_0xb5aaxd]);this[_0xe113[43]][_0xe113[66]]();var _0xb5aax15=this[_0xe113[43]][_0xe113[67]](this[_0xe113[39]][_0xb5aaxd]);if(_0xb5aax15== true){this[_0xe113[39]][_0xb5aaxd][_0xe113[69]]()}else {this[_0xe113[39]][_0xb5aaxd][_0xe113[70]]()}};for(var _0xb5aaxd=0;_0xb5aaxd< this[_0xe113[34]];_0xb5aaxd++){this[_0xe113[43]][_0xe113[64]](this[_0xe113[40]][_0xb5aaxd]);this[_0xe113[43]][_0xe113[66]]();var _0xb5aax15=this[_0xe113[43]][_0xe113[67]](this[_0xe113[40]][_0xb5aaxd]);if(_0xb5aax15== true){this[_0xe113[40]][_0xb5aaxd][_0xe113[69]]()}else {this[_0xe113[40]][_0xb5aaxd][_0xe113[70]]()}}},longest_nono:0,calc_edge_nonogram:function(){this[_0xe113[71]]= 0.5;g_top_nono_size= 0.5;g_left_nono_size= 0.5;for(var _0xb5aaxd=0;_0xb5aaxd< this[_0xe113[32]];_0xb5aaxd++){this[_0xe113[39]][_0xb5aaxd][_0xe113[66]]();this[_0xe113[39]][_0xb5aaxd][_0xe113[72]]();rect_y= this[_0xe113[39]][_0xb5aaxd][_0xe113[73]]();this[_0xe113[71]]= Math[_0xe113[74]](this[_0xe113[71]],rect_y);g_top_nono_size= Math[_0xe113[74]](g_top_nono_size,rect_y)};for(var _0xb5aaxe=0;_0xb5aaxe< this[_0xe113[34]];_0xb5aaxe++){this[_0xe113[40]][_0xb5aaxe][_0xe113[66]]();this[_0xe113[40]][_0xb5aaxe][_0xe113[72]]();var _0xb5aax16=this[_0xe113[40]][_0xb5aaxe][_0xe113[73]]();this[_0xe113[71]]= Math[_0xe113[74]](this[_0xe113[71]],_0xb5aax16);g_left_nono_size= Math[_0xe113[74]](g_left_nono_size,_0xb5aax16)}},resize:function(){this[_0xe113[75]]();g_level_size= Math[_0xe113[74]](this[_0xe113[56]]+ this[_0xe113[71]],7);g_level_w= this[_0xe113[56]]+ this[_0xe113[71]];do_resize()},show_border:function(){this[_0xe113[76]]();this[_0xe113[49]][this[_0xe113[56]]][_0xe113[77]]();return;if(this[_0xe113[56]]== 3){this[_0xe113[78]][_0xe113[77]]()}else {if(this[_0xe113[56]]== 4){this[_0xe113[79]][_0xe113[77]]()}else {if(this[_0xe113[56]]== 12){this[_0xe113[80]][_0xe113[77]]()}else {if(this[_0xe113[56]]== 12){this[_0xe113[80]][_0xe113[77]]()}}}};return;this[_0xe113[49]][_0xe113[81]](0,0,this[_0xe113[56]]* this[_0xe113[50]],this[_0xe113[57]]* this[_0xe113[50]]);this[_0xe113[49]][_0xe113[82]](8);this[_0xe113[49]][_0xe113[77]]()},hide_border:function(){for(var _0xb5aax11=0;_0xb5aax11<= this[_0xe113[32]];_0xb5aax11++){this[_0xe113[49]][_0xb5aax11][_0xe113[47]]()}},reset_flowfill:function(){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[83]]= 0}}},mark_as_seen_by_flowfill:function(_0xb5aax5,_0xb5aax6){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[83]]= 1},is_seen_by_flowfill:function(_0xb5aax5,_0xb5aax6){return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[84]]()},reset:function(){this[_0xe113[85]]= 0;this[_0xe113[86]]= 0;this[_0xe113[87]]= [];this[_0xe113[88]]= [];for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0);this[_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[36]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[90]]= 0;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[91]]()}}},level_timer:0,update_timer:function(){if(this[_0xe113[87]][_0xe113[63]]== 0){return};this[_0xe113[86]]--;for(var _0xb5aax17=0;_0xb5aax17< this[_0xe113[87]][_0xe113[63]];_0xb5aax17++){var _0xb5aax5=this[_0xe113[87]][_0xb5aax17];var _0xb5aax6=this[_0xe113[88]][_0xb5aax17];this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[92]](this[_0xe113[86]])}},add_timer:function(_0xb5aax5,_0xb5aax6){this[_0xe113[87]][_0xe113[38]](_0xb5aax5);this[_0xe113[88]][_0xe113[38]](_0xb5aax6);this[_0xe113[86]]+= 30;if(this[_0xe113[86]]> 99){this[_0xe113[86]]= 99};for(var _0xb5aax17=0;_0xb5aax17< this[_0xe113[87]][_0xe113[63]];_0xb5aax17++){var _0xb5aax5=this[_0xe113[87]][_0xb5aax17];var _0xb5aax6=this[_0xe113[88]][_0xb5aax17];this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[92]](this[_0xe113[86]])}},calc_sequence_lengths:function(){var _0xb5aax18=0;var _0xb5aax19=-1;var _0xb5aax1a=0;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){_0xb5aax18= 0;_0xb5aax1a= 0;_0xb5aax19=  -1;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){tile_= this[_0xe113[93]](_0xb5aax5,_0xb5aax6);if(tile_== _0xb5aax19){_0xb5aax1a++}else {_0xb5aax19= tile_;_0xb5aax1a= 1};for(var _0xb5aax1b=_0xb5aax6- _0xb5aax1a+ 1;_0xb5aax1b<= _0xb5aax6;_0xb5aax1b++){if(_0xb5aax1b>= this[_0xe113[34]]){continue};if(_0xb5aax1b< 0){continue};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax1b]][_0xe113[94]]= _0xb5aax18}}};_0xb5aax18= 0;_0xb5aax1a= 0;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){_0xb5aax18= 0;_0xb5aax1a= 0;_0xb5aax19=  -1;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){tile_= this[_0xe113[93]](_0xb5aax5,_0xb5aax6);if(tile_== _0xb5aax19){_0xb5aax1a++}else {_0xb5aax19= tile_;_0xb5aax1a= 1};for(var _0xb5aax1c=_0xb5aax5- _0xb5aax1a+ 1;_0xb5aax1c<= _0xb5aax5;_0xb5aax1c++){if(_0xb5aax1c>= this[_0xe113[32]]){continue};if(_0xb5aax1c< 0){continue};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax1c][_0xb5aax6]][_0xe113[95]]= _0xb5aax18}}}},is_undug_and_unflagged:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return false};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[96]]()},is_solved:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return false};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[97]]()},is_flagged:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return false};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== false){return false};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]},is_crossed:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return false};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]]== false){return false};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]]},is_covered:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return false};return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]},num_flagged:0,num_mines:0,count_up_flags:function(){this[_0xe113[101]]= 0;this[_0xe113[102]]= 0;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 2){this[_0xe113[102]]+= this[_0xe113[61]](_0xb5aax5,_0xb5aax6)};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]== false){continue};this[_0xe113[101]]+= this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]}}},backup_level:function(){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[37]][_0xb5aax5][_0xb5aax6]= this[_0xe113[105]](_0xb5aax5,_0xb5aax6)}}},restore_backup:function(){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[106]](_0xb5aax5,_0xb5aax6,this[_0xe113[37]][_0xb5aax5][_0xb5aax6]);if(this[_0xe113[93]](_0xb5aax5,_0xb5aax6)== 0&& this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]]!= 0&& this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== false){}else {if(this[_0xe113[93]](_0xb5aax5,_0xb5aax6)== 0&& this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]]!= 0&& this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== false&& this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[108]]== 1){}else {if(this[_0xe113[93]](_0xb5aax5,_0xb5aax6)== 2){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]()}}}}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== true){continue};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()}};this[_0xe113[112]]()},set_tile_from_code:function(_0xb5aax5,_0xb5aax6,_0xb5aax1d){var _0xb5aax1e=0;if(_0xb5aax1d>= 100){_0xb5aax1e= 1;_0xb5aax1d-= 100};if(_0xb5aax1d== 0){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0)}else {if(_0xb5aax1d== 1){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,1)}else {if(_0xb5aax1d== 2){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}else {if(_0xb5aax1d== 3){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](1)}else {if(_0xb5aax1d== 4){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](2)}else {if(_0xb5aax1d== 5){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](4)}else {if(_0xb5aax1d== 10){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](5)}else {if(_0xb5aax1d== 11){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](11)}else {if(_0xb5aax1d== 12){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](12)}else {if(_0xb5aax1d== 13){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](13)}else {if(_0xb5aax1d== 49){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](49)}else {if(_0xb5aax1d== 80){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](80)}else {if(_0xb5aax1d== 7){if(_0xb5aax5> 0){this[_0xe113[113]](_0xb5aax5,_0xb5aax6,_0xb5aax5- 1,_0xb5aax6)}}else {if(_0xb5aax1d== 8){if(_0xb5aax6> 0){this[_0xe113[113]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6- 1)}}else {if(_0xb5aax1d>= 17&& _0xb5aax1d<= 32){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[114]](_0xb5aax1d)}}}}}}}}}}}}}}};if(_0xb5aax1e== 1){if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[108]]== 1){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]()}else {this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()}},get_tile_code:function(_0xb5aax5,_0xb5aax6){var _0xb5aax1f=this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]];if(_0xb5aax1f== 1){return 1};var _0xb5aax20=0;if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== true){_0xb5aax20= 100};if(_0xb5aax1f== 0){_0xb5aax20+= 0}else {if(_0xb5aax1f== 1){_0xb5aax20== 1;return _0xb5aax20}else {if(_0xb5aax1f== 2){_0xb5aax20+= 2;return _0xb5aax20}}};var _0xb5aax21=this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]];if(_0xb5aax21== 0){if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0){if(_0xb5aax5> 0&& this[_0xe113[36]][_0xb5aax5- 1][_0xb5aax6]== this[_0xe113[36]][_0xb5aax5][_0xb5aax6]){_0xb5aax20+= 7}else {if(_0xb5aax6> 0&& this[_0xe113[36]][_0xb5aax5][_0xb5aax6- 1]== this[_0xe113[36]][_0xb5aax5][_0xb5aax6]){_0xb5aax20+= 8}}}}else {if(_0xb5aax21== 1){_0xb5aax20+= 3}else {if(_0xb5aax21== 2){_0xb5aax20+= 4}else {if(_0xb5aax21== 4){_0xb5aax20+= 5}else {if(_0xb5aax21== 5){_0xb5aax20+= 10}else {if(_0xb5aax21== 11){_0xb5aax20+= 11}else {if(_0xb5aax21== 12){_0xb5aax20+= 12}else {if(_0xb5aax21== 13){_0xb5aax20+= 13}else {if(_0xb5aax21== 49){_0xb5aax20+= 49}else {if(_0xb5aax21== 80){_0xb5aax20+= 80}}}}}}}}}};if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[115]]== true){_0xb5aax20+= this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[116]]()}else {if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[117]]== true){_0xb5aax20+= this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[116]]()}};return _0xb5aax20},new_game:function(_0xb5aax22){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0);this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();if(Math[_0xe113[118]]()< 0.25){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,1)}else {if(Math[_0xe113[118]]()< 0.33){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}};this[_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0}};var _0xb5aax23=0;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){if(_0xb5aax23< 4&& Math[_0xe113[118]]()< 0.2&& this[_0xe113[93]](_0xb5aax5,_0xb5aax6)== 0){_0xb5aax23++;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()}}};for(var _0xb5aaxc=0;_0xb5aaxc< this[_0xe113[119]][_0xe113[63]];_0xb5aaxc++){this[_0xe113[119]][_0xb5aaxc][_0xe113[120]]= 1}},join_tiles:function(_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25,_0xb5aax26){var _0xb5aax26=this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[107]];if(_0xb5aax26== 11|| _0xb5aax26== 13){return};var _0xb5aax27=-1;if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0|| this[_0xe113[36]][_0xb5aax24][_0xb5aax25]!= 0){};if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]== 0&& this[_0xe113[36]][_0xb5aax24][_0xb5aax25]== 0){this[_0xe113[85]]++;this[_0xe113[36]][_0xb5aax5][_0xb5aax6]= this[_0xe113[85]];this[_0xe113[36]][_0xb5aax24][_0xb5aax25]= this[_0xe113[85]];this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[121]]= true;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[122]]= true;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[123]]= _0xb5aax24;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[124]]= _0xb5aax25;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[125]]= true;_0xb5aax27= this[_0xe113[85]]}else {if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0&& this[_0xe113[36]][_0xb5aax24][_0xb5aax25]== 0){this[_0xe113[36]][_0xb5aax24][_0xb5aax25]= this[_0xe113[36]][_0xb5aax5][_0xb5aax6];_0xb5aax27= this[_0xe113[36]][_0xb5aax24][_0xb5aax25]}else {if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]== 0&& this[_0xe113[36]][_0xb5aax24][_0xb5aax25]!= 0){this[_0xe113[36]][_0xb5aax5][_0xb5aax6]= this[_0xe113[36]][_0xb5aax24][_0xb5aax25];_0xb5aax27= this[_0xe113[36]][_0xb5aax24][_0xb5aax25]}else {if(this[_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0&& this[_0xe113[36]][_0xb5aax24][_0xb5aax25]!= 0){_0xb5aax27= this[_0xe113[36]][_0xb5aax24][_0xb5aax25]}}}};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[90]]= _0xb5aax27;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[90]]= _0xb5aax27;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[126]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[126]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[127]]= _0xb5aax26;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[127]]= _0xb5aax26;return;if(_0xb5aax5> _0xb5aax24){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[128]]= true}else {if(_0xb5aax24> _0xb5aax5){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[128]]= true}else {if(_0xb5aax6> _0xb5aax25){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[129]]= true}else {if(_0xb5aax25> _0xb5aax6){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[129]]= true}}}}},load_level_JSON:function(_0xb5aax28,_0xb5aax29){this[_0xe113[91]]();if(_0xb5aax28[_0xe113[130]]== 1){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){var _0xb5aax2a=_0xb5aax28[_0xe113[131]][_0xb5aax29][_0xb5aax6][_0xb5aax5];this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);if(_0xb5aax2a== 1){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,1)}else {if(_0xb5aax2a== 2){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}else {if(_0xb5aax2a== 8){if(_0xb5aax6> 0){this[_0xe113[113]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6- 1,this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6- 1]][_0xe113[107]])}}else {if(_0xb5aax2a== 7){if(_0xb5aax5> 0){this[_0xe113[113]](_0xb5aax5,_0xb5aax6,_0xb5aax5- 1,_0xb5aax6,this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[107]])}}else {if(_0xb5aax2a== 3){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](2)}else {if(_0xb5aax2a== 4){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](3)}else {if(_0xb5aax2a== 5){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](1)}}}}}}}}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){var _0xb5aax2a=_0xb5aax28[_0xe113[131]][_0xb5aax29][_0xb5aax6][_0xb5aax5];if(_0xb5aax28[_0xe113[110]][_0xb5aax29][_0xb5aax6][_0xb5aax5]== 6){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]()}else {this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]](true)};if(_0xb5aax2a== 1){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]](false)}}}}},level_w:10,level_h:10,load_level_internal:function(_0xb5aax2b,_0xb5aax2c){console[_0xe113[133]](_0xe113[132]);this[_0xe113[91]]();if(_0xb5aax2b== null){return};this[_0xe113[56]]= _0xb5aax2b[_0xe113[63]]- 1;this[_0xe113[57]]= _0xb5aax2b[0][_0xe113[63]]- 1;if(_0xb5aax2c== 1){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[91]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]](true)}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[57]];_0xb5aax6++){var _0xb5aax2d=_0xb5aax2b[_0xb5aax6+ 1][0];if(_0xb5aax2d== 4){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]]};if(_0xb5aax2d== 3){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[138]]};if(_0xb5aax2d== 5){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[139]]};if(_0xb5aax2d== 36){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[140]]};if(_0xb5aax2d== 37){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[141]]}};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[56]];_0xb5aax5++){var _0xb5aax2e=_0xb5aax2b[0][_0xb5aax5+ 1];if(_0xb5aax2e== 4){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]]};if(_0xb5aax2e== 3){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[138]]};if(_0xb5aax2e== 5){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[139]]};if(_0xb5aax2e== 36){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[140]]};if(_0xb5aax2e== 37){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[141]]}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[56]];_0xb5aax5++){var _0xb5aax2a=_0xb5aax2b[_0xb5aax6+ 1][_0xb5aax5+ 1];var _0xb5aax2f=false;if(_0xb5aax2a== 2|| _0xb5aax2a== 12|| _0xb5aax2a== 13|| _0xb5aax2a== 14|| _0xb5aax2a== 15|| _0xb5aax2a== 16|| _0xb5aax2a== 17|| _0xb5aax2a== 18|| _0xb5aax2a== 19|| _0xb5aax2a== 24|| _0xb5aax2a== 31|| _0xb5aax2a== 33|| _0xb5aax2a== 35|| _0xb5aax2a== 25|| _0xb5aax2a== 26|| _0xb5aax2a== 27|| _0xb5aax2a== 30){_0xb5aax2f= true};var _0xb5aax26=GameTypes[_0xe113[142]][_0xe113[135]];if(_0xb5aax2a== 6|| _0xb5aax2a== 12){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[143]]};if(_0xb5aax2a== 11|| _0xb5aax2a== 19){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[144]]};if(_0xb5aax2a== 9|| _0xb5aax2a== 16){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[145]]};if(_0xb5aax2a== 10|| _0xb5aax2a== 17){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[140]]};if(_0xb5aax2a== 7|| _0xb5aax2a== 13){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[146]]};if(_0xb5aax2a== 30|| _0xb5aax2a== 29){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[147]]};if(_0xb5aax2a== 31|| _0xb5aax2a== 28){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[148]]};if(_0xb5aax2a== 33|| _0xb5aax2a== 32){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[149]]};if(_0xb5aax2a== 23|| _0xb5aax2a== 26){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5+ 1,_0xb5aax6)};if(_0xb5aax2a== 21|| _0xb5aax2a== 24){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6+ 1)};if(_0xb5aax2a== 22|| _0xb5aax2a== 25){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5- 1,_0xb5aax6)};if(_0xb5aax2a== 20|| _0xb5aax2a== 27|| _0xb5aax2a== 14){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6- 1)};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](_0xb5aax26);this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= 1;var _0xb5aax30=1;if(_0xb5aax2a== 34|| _0xb5aax2a== 35){_0xb5aax30= 2};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= _0xb5aax30;if(_0xb5aax2f== true){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}else {this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0)};if(_0xb5aax2a== 1){}else {if(_0xb5aax2a== 2){}}}};this[_0xe113[151]]()}},get_json_level_code:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5==  -1|| _0xb5aax6==  -1){if(_0xb5aax5==  -1){var _0xb5aax31=this[_0xe113[40]][_0xb5aax6][_0xe113[134]]};if(_0xb5aax6==  -1){var _0xb5aax31=this[_0xe113[39]][_0xb5aax5][_0xe113[134]]};if(_0xb5aax31== 0){return 0};if(_0xb5aax31== GameTypes[_0xe113[136]][_0xe113[137]]){return 4};if(_0xb5aax31== GameTypes[_0xe113[136]][_0xe113[138]]){return 3};if(_0xb5aax31== GameTypes[_0xe113[136]][_0xe113[139]]){return 5};return 0};var _0xb5aax11=this[_0xe113[33]][_0xb5aax5][_0xb5aax6];var _0xb5aax12=this[_0xe113[42]][_0xb5aax11][_0xe113[103]];var _0xb5aax31=this[_0xe113[42]][_0xb5aax11][_0xe113[65]];var _0xb5aax32=this[_0xe113[42]][_0xb5aax11][_0xe113[152]];if(_0xb5aax12== 0){if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[153]]== true){return 20};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[154]]== true){return 21};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[155]]== true){return 22};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[156]]== true){return 23};if(_0xb5aax31== 0&& this[_0xe113[42]][_0xb5aax11][_0xe113[104]]== 1){return 1};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[145]]){return 9};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[140]]){return 10};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[147]]){return 29};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[157]]){return 28};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[149]]){return 32};if(this[_0xe113[42]][_0xb5aax11][_0xe113[104]]== 2){return 34}}else {if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[153]]== true){return 27};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[154]]== true){return 24};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[155]]== true){return 25};if(_0xb5aax32!=  -1&& this[_0xe113[42]][_0xb5aax11][_0xe113[156]]== true){return 26};if(_0xb5aax31== 0&& this[_0xe113[42]][_0xb5aax11][_0xe113[104]]== 1){return 2};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[145]]){return 16};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[140]]){return 17};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[147]]){return 30};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[157]]){return 31};if(_0xb5aax31== GameTypes[_0xe113[142]][_0xe113[149]]){return 33};if(this[_0xe113[42]][_0xb5aax11][_0xe113[104]]== 2){return 35}};return 0},load_tut_level:function(_0xb5aax33,_0xb5aax34){if(g_tut_content[_0xb5aax33]== null){return};var _0xb5aax2b=g_tut_content[_0xb5aax33][_0xe113[158]];this[_0xe113[159]](_0xb5aax2b,_0xb5aax34)},load_challenge_level:function(_0xb5aax29,_0xb5aax34){var _0xb5aax35=g_all_level_data_floor_layer[_0xe113[160]];if(this[_0xe113[161]]== 2){_0xb5aax35= g_all_level_data_floor_layer[_0xe113[162]]};if(this[_0xe113[161]]== 3){_0xb5aax35= g_all_level_data_floor_layer[_0xe113[163]]};if(this[_0xe113[161]]== 4){_0xb5aax35= g_all_level_data_floor_layer[_0xe113[164]]};if(_0xb5aax35[_0xb5aax29]== null){return};var _0xb5aax2b=_0xb5aax35[_0xb5aax29];this[_0xe113[159]](_0xb5aax2b,_0xb5aax34)},load_level:function(_0xb5aax29,_0xb5aax34){if(g_all_level_data_floor_layer[_0xb5aax29]== null){return};var _0xb5aax2b=g_all_level_data_floor_layer[_0xb5aax29];this[_0xe113[159]](_0xb5aax2b,_0xb5aax34)},load_level_old:function(_0xb5aax29,_0xb5aax2c){this[_0xe113[91]]();if(g_all_level_data_floor_layer[_0xb5aax29]== null){return};this[_0xe113[56]]= g_all_level_data_floor_layer[_0xb5aax29][_0xe113[63]]- 1;this[_0xe113[57]]= g_all_level_data_floor_layer[_0xb5aax29][0][_0xe113[63]]- 1;if(_0xb5aax2c== 1){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[91]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]](true)}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[57]];_0xb5aax6++){var _0xb5aax2d=g_all_level_data_floor_layer[_0xb5aax29][_0xb5aax6+ 1][0];if(_0xb5aax2d== 4){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]]};if(_0xb5aax2d== 3){this[_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[138]]}};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[56]];_0xb5aax5++){var _0xb5aax2e=g_all_level_data_floor_layer[_0xb5aax29][0][_0xb5aax5+ 1];if(_0xb5aax2e== 4){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]]};if(_0xb5aax2e== 3){this[_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[138]]}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[56]];_0xb5aax5++){var _0xb5aax2a=g_all_level_data_floor_layer[_0xb5aax29][_0xb5aax6+ 1][_0xb5aax5+ 1];var _0xb5aax2f=false;if(_0xb5aax2a== 2|| _0xb5aax2a== 12|| _0xb5aax2a== 13|| _0xb5aax2a== 14|| _0xb5aax2a== 15|| _0xb5aax2a== 16|| _0xb5aax2a== 17|| _0xb5aax2a== 18|| _0xb5aax2a== 19|| _0xb5aax2a== 24|| _0xb5aax2a== 25|| _0xb5aax2a== 26|| _0xb5aax2a== 27){_0xb5aax2f= true};var _0xb5aax26=GameTypes[_0xe113[142]][_0xe113[135]];if(_0xb5aax2a== 6|| _0xb5aax2a== 12){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[143]]};if(_0xb5aax2a== 11|| _0xb5aax2a== 19){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[144]]};if(_0xb5aax2a== 9|| _0xb5aax2a== 16){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[145]]};if(_0xb5aax2a== 10|| _0xb5aax2a== 17){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[140]]};if(_0xb5aax2a== 7|| _0xb5aax2a== 13){_0xb5aax26= GameTypes[_0xe113[142]][_0xe113[146]]};if(_0xb5aax2a== 23|| _0xb5aax2a== 26){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5+ 1,_0xb5aax6)};if(_0xb5aax2a== 21|| _0xb5aax2a== 24){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6+ 1)};if(_0xb5aax2a== 22|| _0xb5aax2a== 25){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5- 1,_0xb5aax6)};if(_0xb5aax2a== 20|| _0xb5aax2a== 27|| _0xb5aax2a== 14){this[_0xe113[150]](_0xb5aax5,_0xb5aax6,_0xb5aax5,_0xb5aax6- 1)};this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](_0xb5aax26);this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= 1;var _0xb5aax30=1;this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= _0xb5aax30;if(_0xb5aax2f== true){this[_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}else {this[_0xe113[46]](_0xb5aax5,_0xb5aax6,0)};if(_0xb5aax2a== 1){}else {if(_0xb5aax2a== 2){}}}};this[_0xe113[151]]()}},linked_groups:0,link_tiles:function(_0xb5aax5,_0xb5aax6,_0xb5aax36,_0xb5aax37){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[56]]|| _0xb5aax6>= this[_0xe113[57]]){return};if(_0xb5aax36< 0|| _0xb5aax37< 0|| _0xb5aax36>= this[_0xe113[56]]|| _0xb5aax37>= this[_0xe113[57]]){return};var _0xb5aax11=this[_0xe113[33]][_0xb5aax5][_0xb5aax6];var _0xb5aax38=this[_0xe113[33]][_0xb5aax36][_0xb5aax37];var _0xb5aax39=Math[_0xe113[74]](this[_0xe113[42]][_0xb5aax11][_0xe113[152]],this[_0xe113[42]][_0xb5aax38][_0xe113[152]]);if(_0xb5aax39==  -1){_0xb5aax39= this[_0xe113[165]]++};if(this[_0xe113[42]][_0xb5aax11][_0xe113[152]]!=  -1&& this[_0xe113[42]][_0xb5aax38][_0xe113[152]]!=  -1){var _0xb5aax3a=Math[_0xe113[166]](this[_0xe113[42]][_0xb5aax11][_0xe113[152]],this[_0xe113[42]][_0xb5aax38][_0xe113[152]]);for(var _0xb5aax3b=0;_0xb5aax3b< this[_0xe113[42]][_0xe113[63]];_0xb5aax3b++){if(_0xb5aax3b== _0xb5aax11|| _0xb5aax3b== _0xb5aax38){continue};if(this[_0xe113[42]][_0xb5aax3b][_0xe113[152]]== _0xb5aax3a){this[_0xe113[42]][_0xb5aax3b][_0xe113[152]]= _0xb5aax39}}};this[_0xe113[42]][_0xb5aax11][_0xe113[89]](0);this[_0xe113[42]][_0xb5aax38][_0xe113[89]](0);this[_0xe113[42]][_0xb5aax11][_0xe113[152]]= _0xb5aax39;this[_0xe113[42]][_0xb5aax38][_0xe113[152]]= _0xb5aax39},find_all_connected_link_tiles:function(){for(var _0xb5aax11=0;_0xb5aax11< this[_0xe113[42]][_0xe113[63]];_0xb5aax11++){if(this[_0xe113[42]][_0xb5aax11][_0xe113[167]]> this[_0xe113[56]]|| this[_0xe113[42]][_0xb5aax11][_0xe113[167]]> this[_0xe113[56]]){continue};if(this[_0xe113[42]][_0xb5aax11][_0xe113[152]]==  -1){continue};this[_0xe113[42]][_0xb5aax11][_0xe113[168]]= [];for(var _0xb5aax3c=0;_0xb5aax3c< this[_0xe113[42]][_0xe113[63]];_0xb5aax3c++){if(this[_0xe113[42]][_0xb5aax3c][_0xe113[167]]> this[_0xe113[56]]|| this[_0xe113[42]][_0xb5aax3c][_0xe113[167]]> this[_0xe113[56]]){continue};if(this[_0xe113[42]][_0xb5aax3c][_0xe113[152]]==  -1){continue};if(this[_0xe113[42]][_0xb5aax11][_0xe113[152]]== this[_0xe113[42]][_0xb5aax3c][_0xe113[152]]){this[_0xe113[42]][_0xb5aax11][_0xe113[168]][_0xe113[38]](_0xb5aax3c)}}}},calc_all_hints:function(){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){if(this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== true){}else {this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]](true)}}}},get_num_mines:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return -1};if(this[_0xe113[33]][_0xb5aax5][_0xb5aax6]==  -1){return 0}else {return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[61]]()}},get_block_type:function(_0xb5aax5,_0xb5aax6){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return -1};if(this[_0xe113[33]][_0xb5aax5][_0xb5aax6]==  -1){return 0}else {return this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[169]]()}},change_tile:function(_0xb5aax5,_0xb5aax6,_0xb5aax3d){if(_0xb5aax5< 0|| _0xb5aax6< 0|| _0xb5aax5>= this[_0xe113[32]]|| _0xb5aax6>= this[_0xe113[34]]){return};if(this[_0xe113[33]][_0xb5aax5][_0xb5aax6]!=  -1){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[170]](_0xb5aax3d);return};for(var _0xb5aax11=0;_0xb5aax11< this[_0xe113[42]][_0xe113[63]];_0xb5aax11++){if(this[_0xe113[42]][_0xb5aax11][_0xe113[167]]!=  -1){continue};this[_0xe113[42]][_0xb5aax11][_0xe113[170]](_0xb5aax3d);this[_0xe113[42]][_0xb5aax11][_0xe113[171]](_0xb5aax5,_0xb5aax6);this[_0xe113[33]][_0xb5aax5][_0xb5aax6]= _0xb5aax11;return}},game_over_x:0,game_over_y:0,start_game_over:function(_0xb5aax5,_0xb5aax6){this[_0xe113[172]]= _0xb5aax5;this[_0xe113[173]]= _0xb5aax6},update:function(){},draw_timer:0,draw:function(){if(this[_0xe113[174]]<= 0){this[_0xe113[174]]= 300};this[_0xe113[174]]--;this[_0xe113[31]][_0xe113[175]]()},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},increase_score:function(_0xb5aax3e){this[_0xe113[176]]+= _0xb5aax3e;this[_0xe113[178]][_0xe113[177]](this[_0xe113[176]]);if(screen_width> screen_height){this[_0xe113[179]]= screen_width- 32- 18* this[_0xe113[176]].toString()[_0xe113[63]];this[_0xe113[180]]= 32}else {this[_0xe113[179]]= screen_width- 32- 18* this[_0xe113[176]].toString()[_0xe113[63]];this[_0xe113[180]]= screen_height- 64};this[_0xe113[178]][_0xe113[29]](this[_0xe113[179]],this[_0xe113[180]])},screen_resized:function(){update_webfonts();if(g_should_redraw_grid== true){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[56]];_0xb5aax5++){var _0xb5aax11=this[_0xe113[33]][_0xb5aax5][_0xb5aax6];this[_0xe113[42]][_0xb5aax11][_0xe113[181]]()}};g_should_redraw_grid= false}},old_draw_rect_background:function(_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25,_0xb5aax3f,_0xb5aax40){if(_0xb5aax40== null){_0xb5aax40= 1};var _0xb5aax41= new PIXI.Graphics();_0xb5aax41[_0xe113[120]]= _0xb5aax40;_0xb5aax41[_0xe113[182]](_0xb5aax3f);_0xb5aax41[_0xe113[183]](0,_0xb5aax3f);_0xb5aax41[_0xe113[184]](_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25);background_group[_0xe113[185]](_0xb5aax41);return _0xb5aax41},draw_rect_background:function(_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25,_0xb5aax3f){return  new SquareClass(_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25,Types[_0xe113[27]].BACKGROUND,_0xb5aax3f,true);if(using_phaser== true){var _0xb5aax42=game[_0xe113[185]][_0xe113[186]](0,0);background_group[_0xe113[185]](_0xb5aax42);_0xb5aax42[_0xe113[182]](_0xb5aax3f);_0xb5aax42[_0xe113[183]](0,_0xb5aax3f,0);_0xb5aax42[_0xe113[187]](_0xb5aax5,_0xb5aax6);_0xb5aax42[_0xe113[188]](_0xb5aax24,_0xb5aax6);_0xb5aax42[_0xe113[188]](_0xb5aax24,_0xb5aax25);_0xb5aax42[_0xe113[188]](_0xb5aax5,_0xb5aax25);_0xb5aax42[_0xe113[188]](_0xb5aax5,_0xb5aax6);_0xb5aax42[_0xe113[189]]();return _0xb5aax42}else {var _0xb5aax41= new PIXI.Graphics();_0xb5aax41[_0xe113[182]](0x546D6F);_0xb5aax41[_0xe113[184]](_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25);background_group[_0xe113[185]](_0xb5aax41);return _0xb5aax41}},draw_triangle_background:function(_0xb5aax43,_0xb5aax44,_0xb5aax45,_0xb5aax46,_0xb5aax47,_0xb5aax48,_0xb5aax3f,_0xb5aax40){var _0xb5aax41= new PIXI.Graphics();_0xb5aax41[_0xe113[182]](_0xb5aax3f);_0xb5aax41[_0xe113[120]]= _0xb5aax40;_0xb5aax41[_0xe113[187]](_0xb5aax43,_0xb5aax44);_0xb5aax41[_0xe113[188]](_0xb5aax45,_0xb5aax46);_0xb5aax41[_0xe113[188]](_0xb5aax47,_0xb5aax48);_0xb5aax41[_0xe113[189]]();background_group[_0xe113[185]](_0xb5aax41)},bg_squares:[],draw_background:function(){var _0xb5aax49=this[_0xe113[50]]* 0.5;for(var _0xb5aax6=-1;_0xb5aax6< this[_0xe113[34]]+ 4;_0xb5aax6++){continue;for(var _0xb5aax5=-4;_0xb5aax5< this[_0xe113[32]]+ 4;_0xb5aax5++){if((_0xb5aax5+ _0xb5aax6)% 2== 0){continue};var _0xb5aax4a=(_0xb5aax6+ 0.5)* this[_0xe113[50]]- _0xb5aax49;var _0xb5aax4b=(_0xb5aax6+ 0.5)* this[_0xe113[50]]+ _0xb5aax49;var _0xb5aax4c=(_0xb5aax5+ 0.5)* this[_0xe113[50]]- _0xb5aax49;var _0xb5aax4d=(_0xb5aax5+ 0.5)* this[_0xe113[50]]+ _0xb5aax49;if(_0xb5aax5<=  -3|| _0xb5aax5>= this[_0xe113[32]]+ 2|| _0xb5aax6>= this[_0xe113[34]]+ 2){this[_0xe113[190]](_0xb5aax4c,_0xb5aax4a,_0xb5aax4d,_0xb5aax4b,0x2B425D,Types[_0xe113[27]].BACKGROUND)}else {if(_0xb5aax5==  -2|| _0xb5aax5== this[_0xe113[32]]+ 1|| _0xb5aax6== this[_0xe113[34]]+ 1){this[_0xe113[190]](_0xb5aax4c,_0xb5aax4a,_0xb5aax4d,_0xb5aax4b,0x2D4764,Types[_0xe113[27]].BACKGROUND)}else {this[_0xe113[190]](_0xb5aax4c,_0xb5aax4a,_0xb5aax4d,_0xb5aax4b,0x35577A,Types[_0xe113[27]].BACKGROUND)}}}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){continue;var _0xb5aax4a=Math[_0xe113[74]]((_0xb5aax6+ 0.5)* this[_0xe113[50]]- _0xb5aax49,2);var _0xb5aax4b=Math[_0xe113[166]]((_0xb5aax6+ 0.5)* this[_0xe113[50]]+ _0xb5aax49,this[_0xe113[50]]* this[_0xe113[34]]- 2);var _0xb5aax4c=Math[_0xe113[74]]((_0xb5aax5+ 0.5)* this[_0xe113[50]]- _0xb5aax49,2);var _0xb5aax4d=Math[_0xe113[166]]((_0xb5aax5+ 0.5)* this[_0xe113[50]]+ _0xb5aax49,this[_0xe113[50]]* this[_0xe113[32]]- 2);var _0xb5aax4e;if((_0xb5aax5+ _0xb5aax6)% 2== 0){_0xb5aax4e= this[_0xe113[190]](_0xb5aax4c,_0xb5aax4a,_0xb5aax4d,_0xb5aax4b,0x000000,Types[_0xe113[27]].BACKGROUND)}else {_0xb5aax4e= this[_0xe113[190]](_0xb5aax4c,_0xb5aax4a,_0xb5aax4d,_0xb5aax4b,0x000000,Types[_0xe113[27]].BACKGROUND)};this[_0xe113[119]][_0xe113[38]](_0xb5aax4e)}}},hide_bg_squares:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){this[_0xe113[39]][_0xb5aax5][_0xe113[47]]()};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){this[_0xe113[40]][_0xb5aax6][_0xe113[47]]()};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[34]];_0xb5aax6++){this[_0xe113[42]][this[_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[47]]()}}}});temp_level_flip_array=  new Array(10);RestartGameStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,timer:30,x_pos:0,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[47]]();this[_0xe113[192]]= 0;if(this[_0xe113[191]][_0xe113[193]]== 0&& this[_0xe113[191]][_0xe113[194]]< g_total_num_of_levels- 1){if(g_all_level_data_floor_layer[this[_0xe113[191]][_0xe113[194]]+ 1]== null){var _0xb5aax50=Math[_0xe113[131]]((this[_0xe113[191]][_0xe113[194]]+ 1)/ 10)* 10;var _0xb5aax51=_0xb5aax50+ 9;var _0xb5aax52=_0xe113[195]+ _0xb5aax50.toString()+ _0xe113[196]+ _0xb5aax51+ _0xe113[197];load_level_from_file(_0xb5aax52,function(){})}};tile_group[_0xe113[198]](false);game_group[_0xe113[198]](false);g_cache_as_bitmap_timer= 10},start_vis:function(){if(this[_0xe113[191]][_0xe113[193]]== 0){play_screen_container[_0xe113[77]]()}},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},screen_resized:function(){this[_0xe113[191]][_0xe113[54]]()},handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},update:function(){this[_0xe113[191]][_0xe113[199]]();this[_0xe113[192]]--;var _0xb5aax53=(0- this[_0xe113[192]]);this[_0xe113[192]]= this[_0xe113[192]]- 0.25* _0xb5aax53;play_screen_group[_0xe113[200]](this[_0xe113[192]]);this[_0xe113[201]]--;;;if(this[_0xe113[201]]<= 0){var _0xb5aax54=this[_0xe113[191]][_0xe113[194]];var _0xb5aax2c=1;if(this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[191]][_0xe113[202]](_0xb5aax54,_0xb5aax2c)};if(this[_0xe113[191]][_0xe113[193]]== 6){this[_0xe113[191]][_0xe113[203]](_0xb5aax54,_0xb5aax2c)};if(this[_0xe113[191]][_0xe113[193]]== 5){this[_0xe113[20]](this[_0xe113[30]], new InstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};if(using_cocoon_js== true&& g_seen_beg< 4&& total_levels_played> 100&& total_levels_played% 50== 0){};if(g_seen_beg== 0&& total_levels_played>= 50&& total_levels_played% 25== 0&& using_cocoon_js== true){this[_0xe113[20]](this[_0xe113[30]], new BegForRatingState(this[_0xe113[30]],this[_0xe113[191]]));return};if(g_show_crosspromote== true&& this[_0xe113[191]][_0xe113[204]]== true&& total_levels_played> 20&& on_kong== false){this[_0xe113[20]](this[_0xe113[30]], new ShowZblipGame(this[_0xe113[30]],this[_0xe113[191]]));return};if(false&& this[_0xe113[191]][_0xe113[194]]== 9999&& already_setup_input== false&& using_phaser== true&& using_cocoon_js== false){this[_0xe113[20]](this[_0xe113[30]], new SetupInputStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(g_show_ads== true&& this[_0xe113[191]][_0xe113[204]]== true){if(levels_until_ad== 1){g_interstitial[_0xe113[205]]()}else {if(levels_until_ad<= 0&& g_interstitial_loaded== false){g_interstitial[_0xe113[205]]();levels_until_ad= 1}else {if(levels_until_ad<= 0&& g_interstitial_loaded== true){this[_0xe113[20]](this[_0xe113[30]], new ShowAdStateClass(this[_0xe113[30]],this[_0xe113[191]]));levels_until_ad= 6;return}}};if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}else {if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}}}},cleanup:function(){game_group[_0xe113[198]](false)},draw:function(){this[_0xe113[191]][_0xe113[175]]()}});StartGameStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,x_pos:2999,timer:55,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[200]](2999);if(this[_0xe113[191]][_0xe113[194]]== 0){g_zblip_on_play_button();g_zblip_on_start_level(0)}else {g_zblip_on_start_level(this[_0xe113[191]][_0xe113[194]])};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(_0xb5aax5< this[_0xe113[191]][_0xe113[56]]&& _0xb5aax6< this[_0xe113[191]][_0xe113[57]]){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[77]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[47]]()}}};level_ratio= 1;level_x_shift= 0;if(this[_0xe113[191]][_0xe113[193]]== 0){};this[_0xe113[191]][_0xe113[206]]();this[_0xe113[191]][_0xe113[207]]();this[_0xe113[191]][_0xe113[208]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[181]]()}};this[_0xe113[191]][_0xe113[209]]= 0},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},screen_resized:function(){this[_0xe113[191]][_0xe113[54]]()},handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},update:function(){this[_0xe113[201]]--;if(this[_0xe113[201]]> 50){return};this[_0xe113[192]]= this[_0xe113[192]]- 0.15* (this[_0xe113[192]]);play_screen_container[_0xe113[200]](this[_0xe113[192]]);play_screen_container[_0xe113[77]]();background_group[_0xe113[77]]();this[_0xe113[191]][_0xe113[199]]();if(this[_0xe113[201]]== 0){this[_0xe113[20]](this[_0xe113[30]], new DuringGameStateClass(this[_0xe113[30]],this[_0xe113[191]]));play_screen_container[_0xe113[200]](0)}},cleanup:function(){play_screen_group[_0xe113[200]](0);game_group[_0xe113[198]](false)},draw:function(){this[_0xe113[191]][_0xe113[175]]()}});g_rand_gen_sprite= null;g_allow_negatives= false;GenerateRandStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,load_sprite_x:0,load_sprite_v:10,square_mode:false,checkerboard_mode:false,scatter_mode:false,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[193]]= 1;play_screen_container[_0xe113[47]]();background_group[_0xe113[47]]();this[_0xe113[191]][_0xe113[56]]= 10;this[_0xe113[191]][_0xe113[57]]= 10},cleanup:function(){this[_0xe113[191]][_0xe113[210]]= false;play_screen_container[_0xe113[77]]()},draw:function(){},update:function(){if(this[_0xe113[211]]== 0){play_screen_container[_0xe113[47]]()};this[_0xe113[191]][_0xe113[91]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){if(Math[_0xe113[118]]()< 0.5){continue};if(this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[134]]== GameTypes[_0xe113[136]][_0xe113[212]]){continue};this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]];continue;this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[213]];this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[214]]= Math[_0xe113[131]](g_anysize_patterns[_0xe113[63]]* Math[_0xe113[118]]());var _0xb5aax55=g_anysize_patterns[this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[214]]][_0xe113[215]][_0xe113[63]];if(_0xb5aax55- 1+ _0xb5aax5>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[214]]= 0}else {for(var _0xb5aax56=_0xb5aax5+ 1;_0xb5aax56< _0xb5aax5+ _0xb5aax55;_0xb5aax56++){this[_0xe113[191]][_0xe113[39]][_0xb5aax56][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[212]]}}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[135]]};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){if(Math[_0xe113[118]]()< 0.5){continue};if(this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[134]]== GameTypes[_0xe113[136]][_0xe113[212]]){continue};this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[137]];continue;this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[213]];this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[214]]= Math[_0xe113[131]](g_anysize_patterns[_0xe113[63]]* Math[_0xe113[118]]());var _0xb5aax57=g_anysize_patterns[this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[214]]][_0xe113[215]][_0xe113[63]];if(_0xb5aax57- 1+ _0xb5aax6>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[214]]= 0}else {for(var _0xb5aax58=_0xb5aax6+ 1;_0xb5aax58< _0xb5aax6+ _0xb5aax57;_0xb5aax58++){this[_0xe113[191]][_0xe113[40]][_0xb5aax58][_0xe113[134]]= GameTypes[_0xe113[136]][_0xe113[212]]}}};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);var _0xb5aax59=Math[_0xe113[118]]();if(_0xb5aax59< 0.20){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].HEART)}else {if(_0xb5aax59< 0.33){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].EIGHTTOUCH)}else {if(_0xb5aax59< 0.44){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].FOUR_SQUARES)}else {if(_0xb5aax59< 0.50){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].CONNECTIONS)}else {if(_0xb5aax59< 0.90&& _0xb5aax5> 0&& _0xb5aax5< this[_0xe113[191]][_0xe113[56]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].EQUAL_HORIZ)}else {if(_0xb5aax59< 0.99){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](GameTypes[_0xe113[142]].LOCKED)}}}}}};if(_0xb5aax5> 0&& Math[_0xe113[118]]()< 0.1&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[152]]==  -1&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[152]]==  -1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[89]](0);if(Math[_0xe113[118]]()< 0.5){this[_0xe113[191]][_0xe113[46]](_0xb5aax5,_0xb5aax6,2);this[_0xe113[191]][_0xe113[46]](_0xb5aax5- 1,_0xb5aax6,2)}else {this[_0xe113[191]][_0xe113[46]](_0xb5aax5,_0xb5aax6,0);this[_0xe113[191]][_0xe113[46]](_0xb5aax5- 1,_0xb5aax6,0)};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[155]]= true;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[156]]= true;var _0xb5aax5a=this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6];this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[152]]= _0xb5aax5a;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[152]]= _0xb5aax5a};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= 1}};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[152]]!=  -1){continue};if(Math[_0xe113[118]]()< 0.5){this[_0xe113[191]][_0xe113[46]](_0xb5aax5,_0xb5aax6,2)}else {this[_0xe113[191]][_0xe113[46]](_0xb5aax5,_0xb5aax6,0)}}};this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))},attempts:0});g_undo_button_sprite= null;gameplay_errors= [_0xe113[216],_0xe113[217]];g_gameplay_error_text_objs= [];g_mistake_sprite= null;g_dig_button= null;g_flag_button= null;g_digflag_select= null;g_flag_cursor_sprite= null;g_cursor_right= null;g_cursor_left= null;g_selected_tile_sprite= null;g_level_text_1= null;g_level_text_2= null;g_skip_tut_button= null;g_skip_tut_text= null;g_dig_tiles_text= null;g_flag_tiles_text= null;g_freedig_text= null;g_freedig_button= null;g_mistakes_text= null;g_this_level_num_text= null;DuringGameStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,mouse_down:false,e_text:-1,e_text_timer:0,flag_x:0,flag_y:0,dig_x:0,dig_y:0,freedig_x:0,freedig_y:0,grey_x:0,grey_y:0,show_level_text:false,auto_dig_timer:0,flag_timer:0,selected_x:0,selected_y:0,move_history:[],current_move_b:[],current_move_c:[],current_move_last_colour:0,digflag_selected:1,hide_x:false,mistake_cooldown:0,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[77]]();this[_0xe113[218]]= false;this[_0xe113[191]][_0xe113[204]]= false;if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[191]][_0xe113[219]]= 1};if(this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[220]]= true}else {this[_0xe113[220]]= false};if(g_level_text_1== null){g_skip_tut_button=  new ButtonClass();g_skip_tut_button[_0xe113[222]](_0xe113[221],Types[_0xe113[27]].GAME_MENU);g_skip_tut_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_skip_tut_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_skip_tut_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_skip_tut_text[_0xe113[226]](_0xe113[225]);g_dig_tiles_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);if(using_pixi){g_dig_tiles_text[_0xe113[224]](Types[_0xe113[223]].XSMALL)}else {g_dig_tiles_text[_0xe113[224]](Types[_0xe113[223]].SMALL)};g_dig_tiles_text[_0xe113[226]](_0xe113[227]);g_flag_tiles_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);if(using_pixi){g_flag_tiles_text[_0xe113[224]](Types[_0xe113[223]].XSMALL)}else {g_flag_tiles_text[_0xe113[224]](Types[_0xe113[223]].SMALL)};g_flag_tiles_text[_0xe113[226]](_0xe113[227]);g_freedig_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_freedig_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_freedig_text[_0xe113[226]](_0xe113[227]);g_freedig_button=  new ButtonClass();g_freedig_button[_0xe113[222]](_0xe113[228],Types[_0xe113[27]].GAME_MENU);g_freedig_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_freedig_button[_0xe113[47]]();g_undo_button_sprite=  new SpriteClass();g_undo_button_sprite[_0xe113[222]](_0xe113[229],Types[_0xe113[27]].GAME_MENU);g_mistake_sprite=  new SpriteClass();g_mistake_sprite[_0xe113[222]](_0xe113[230],Types[_0xe113[27]].HUD);g_mistake_sprite[_0xe113[29]](-999,-999);g_help_text=  new TextClass(Types[_0xe113[27]].TILE);g_help_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_help_text[_0xe113[226]](_0xe113[227]);g_level_text_1=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_level_text_1[_0xe113[224]](Types[_0xe113[223]].MED_SMALL);g_level_text_1[_0xe113[226]](_0xe113[227]);g_level_text_2=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_level_text_2[_0xe113[224]](Types[_0xe113[223]].TUTSMALL);g_level_text_2[_0xe113[226]](_0xe113[227]);g_this_level_num_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_this_level_num_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_this_level_num_text[_0xe113[226]](_0xe113[227]);g_mistakes_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_mistakes_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_mistakes_text[_0xe113[226]](_0xe113[227]);for(var _0xb5aax5b=0;_0xb5aax5b< gameplay_errors[_0xe113[63]];_0xb5aax5b++){var _0xb5aax5c= new TextClass(Types[_0xe113[27]].GAME_MENU);_0xb5aax5c[_0xe113[224]](Types[_0xe113[223]].MEDIUM);_0xb5aax5c[_0xe113[226]](gameplay_errors[_0xb5aax5b]);_0xb5aax5c[_0xe113[29]](-999,-999);g_gameplay_error_text_objs[_0xe113[38]](_0xb5aax5c)};g_flag_button=  new SpriteClass();g_flag_button[_0xe113[222]](_0xe113[231],Types[_0xe113[27]].GAME_MENU);g_flag_button[_0xe113[29]](screen_width- 200,screen_height* 0.5);g_dig_button=  new SpriteClass();g_dig_button[_0xe113[222]](_0xe113[232],Types[_0xe113[27]].GAME_MENU);g_dig_button[_0xe113[29]](screen_width- 200,screen_height* 0.5);g_flag_cursor_sprite=  new SpriteClass();g_flag_cursor_sprite[_0xe113[222]](_0xe113[233],Types[_0xe113[27]].GAME_MENU);g_flag_cursor_sprite[_0xe113[29]](-999,-999);g_selected_tile_sprite=  new SpriteClass();g_selected_tile_sprite[_0xe113[222]](_0xe113[234],Types[_0xe113[27]].HUD);g_selected_tile_sprite[_0xe113[29]](-999,-999);g_selected_tile_sprite[_0xe113[47]]();g_digflag_select=  new SpriteClass();g_digflag_select[_0xe113[222]](_0xe113[234],Types[_0xe113[27]].GAME_MENU);g_digflag_select[_0xe113[29]](-999,-999);g_digflag_select[_0xe113[47]]()};g_flag_button[_0xe113[77]]();g_dig_button[_0xe113[77]]();this[_0xe113[235]]= 2;if(this[_0xe113[191]][_0xe113[194]]== 0&& this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[191]][_0xe113[52]][_0xe113[236]](1);this[_0xe113[191]][_0xe113[52]][_0xe113[237]]= false;this[_0xe113[191]][_0xe113[52]][_0xe113[238]]();this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[240]);g_level_text_2[_0xe113[241]](_0xe113[242]);if(using_cocoon_js== true){};this[_0xe113[243]]= true}else {if(this[_0xe113[191]][_0xe113[194]]== 1&& this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[244]);g_level_text_2[_0xe113[241]](_0xe113[245]);this[_0xe113[243]]= true}else {if(this[_0xe113[191]][_0xe113[194]]== 2&& this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[246]);g_level_text_2[_0xe113[241]](_0xe113[245]);this[_0xe113[243]]= true}else {if(this[_0xe113[191]][_0xe113[194]]== 3&& this[_0xe113[191]][_0xe113[193]]== 0){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[247]);g_level_text_2[_0xe113[241]](_0xe113[248]);this[_0xe113[243]]= true}else {if(this[_0xe113[191]][_0xe113[194]]== 4){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[247]);g_level_text_2[_0xe113[241]](_0xe113[248])}else {if(this[_0xe113[191]][_0xe113[194]]== 7){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[249]);g_level_text_2[_0xe113[241]](_0xe113[250])}else {if(this[_0xe113[191]][_0xe113[194]]== 999){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[251]);g_level_text_2[_0xe113[241]](_0xe113[252])}else {if(this[_0xe113[191]][_0xe113[194]]== 999){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[253]);g_level_text_2[_0xe113[241]](_0xe113[254])}else {if(this[_0xe113[191]][_0xe113[194]]== 3){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[255]);g_level_text_2[_0xe113[241]](_0xe113[253])}else {if(this[_0xe113[191]][_0xe113[194]]== 9){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[256]);g_level_text_2[_0xe113[241]](_0xe113[257])}else {if(false&& this[_0xe113[191]][_0xe113[194]]== 5){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](g_texts[language][_0xe113[258]]);g_level_text_2[_0xe113[241]](g_texts[language][_0xe113[259]])}else {if(false&& this[_0xe113[191]][_0xe113[194]]== 2){this[_0xe113[191]][_0xe113[52]][_0xe113[236]](2);this[_0xe113[191]][_0xe113[52]][_0xe113[237]]= false;this[_0xe113[191]][_0xe113[52]][_0xe113[238]]();this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](g_texts[language][_0xe113[260]]);g_level_text_2[_0xe113[241]](g_texts[language][_0xe113[261]])}else {if(false&& this[_0xe113[191]][_0xe113[194]]== 6){g_level_text_1[_0xe113[241]](g_get_text(_0xe113[262]));g_level_text_2[_0xe113[241]](_0xe113[227])}else {if(this[_0xe113[191]][_0xe113[194]]== 13){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[263]);g_level_text_2[_0xe113[241]](_0xe113[264])}else {if(this[_0xe113[191]][_0xe113[194]]== 20){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[265]);g_level_text_2[_0xe113[241]](_0xe113[266])}else {if(this[_0xe113[191]][_0xe113[194]]== 21){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[267]);g_level_text_2[_0xe113[241]](_0xe113[268])}else {if(this[_0xe113[191]][_0xe113[194]]== 22){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[269]);g_level_text_2[_0xe113[241]](_0xe113[270])}else {if(this[_0xe113[191]][_0xe113[194]]== 30){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[256]);g_level_text_2[_0xe113[241]](_0xe113[271])}else {if(this[_0xe113[191]][_0xe113[194]]== 50|| this[_0xe113[191]][_0xe113[194]]== 52){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[256]);g_level_text_2[_0xe113[241]](_0xe113[272])}else {if(false&& this[_0xe113[191]][_0xe113[194]]== 13){this[_0xe113[191]][_0xe113[52]][_0xe113[236]](4);this[_0xe113[191]][_0xe113[52]][_0xe113[237]]= false;this[_0xe113[191]][_0xe113[52]][_0xe113[238]]();this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](g_get_text(_0xe113[273]));g_level_text_2[_0xe113[241]](g_get_text(_0xe113[274]))}else {if(this[_0xe113[191]][_0xe113[194]]== 40){this[_0xe113[239]]= true;g_level_text_1[_0xe113[241]](_0xe113[256]);g_level_text_2[_0xe113[241]](_0xe113[275])}}}}}}}}}}}}}}}}}}}}};var _0xb5aax5d=_0xe113[227];if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aax5d= _0xe113[276]};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aax5d= _0xe113[277]};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aax5d= _0xe113[278]};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aax5d= _0xe113[279]};g_this_level_num_text[_0xe113[241]](_0xb5aax5d+ _0xe113[280]+ (this[_0xe113[191]][_0xe113[194]]+ 1).toString());if(this[_0xe113[191]][_0xe113[193]]== 0){g_this_level_num_text[_0xe113[29]](16,16)}else {if(this[_0xe113[191]][_0xe113[193]]== 3){g_this_level_num_text[_0xe113[29]](16,16);g_this_level_num_text[_0xe113[241]](_0xe113[281]+ g_current_community_level_author+ _0xe113[282]+ g_current_community_level_rating+ _0xe113[283]+ g_current_community_level_votes)}else {g_this_level_num_text[_0xe113[29]](-999,-999)}};if(this[_0xe113[191]][_0xe113[193]]!= 0){this[_0xe113[191]][_0xe113[52]][_0xe113[237]]= true;g_level_text_1[_0xe113[241]](_0xe113[227]);g_level_text_2[_0xe113[241]](_0xe113[227]);g_level_text_1[_0xe113[29]](-999,-999);g_level_text_2[_0xe113[29]](-999,-999);g_level_text_1[_0xe113[47]]();g_level_text_2[_0xe113[47]]();this[_0xe113[239]]= false};if(this[_0xe113[191]][_0xe113[56]]> 5){this[_0xe113[191]][_0xe113[53]][_0xe113[77]]()}else {this[_0xe113[191]][_0xe113[53]][_0xe113[47]]()};g_digflag_select[_0xe113[77]]();this[_0xe113[54]]();if(g_solver_class){console[_0xe113[133]](_0xe113[284]);g_generator_class[_0xe113[285]](this)};this[_0xe113[286]]()},cleanup:function(){game_group[_0xe113[198]](false);play_screen_container[_0xe113[200]](0);g_digflag_select[_0xe113[47]]();this[_0xe113[191]][_0xe113[53]][_0xe113[47]]();this[_0xe113[287]]();g_mistakes_text[_0xe113[29]](-999,-999);g_this_level_num_text[_0xe113[29]](-999,-999);g_dig_button[_0xe113[29]](-999,-999);g_flag_button[_0xe113[29]](-999,-999);g_flag_tiles_text[_0xe113[29]](-999,-999);g_dig_tiles_text[_0xe113[29]](-999,-999);g_level_text_1[_0xe113[29]](-999,-999);g_level_text_2[_0xe113[29]](-999,-999);g_undo_button_sprite[_0xe113[29]](-999,-999);g_skip_tut_button[_0xe113[29]](-999,-999);g_skip_tut_text[_0xe113[29]](-999,-999);g_freedig_text[_0xe113[29]](-999,-999);g_freedig_button[_0xe113[47]]();g_selected_tile_sprite[_0xe113[47]]();for(var _0xb5aax5b=0;_0xb5aax5b< g_gameplay_error_text_objs[_0xe113[63]];_0xb5aax5b++){g_gameplay_error_text_objs[_0xb5aax5b][_0xe113[29]](-999,-999)};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[288]]()}};this[_0xe113[191]][_0xe113[52]][_0xe113[237]]= true;this[_0xe113[191]][_0xe113[52]][_0xe113[238]]()},save_last_move:function(){if(this[_0xe113[220]]== true){this[_0xe113[289]]();this[_0xe113[290]]= [];return};if(this[_0xe113[290]][_0xe113[63]]== 0){return};var _0xb5aax5e={blocks:[],colours:[],colour:this[_0xe113[291]]};for(var _0xb5aax11=0;_0xb5aax11< this[_0xe113[290]][_0xe113[63]];_0xb5aax11++){_0xb5aax5e[_0xe113[42]][_0xe113[38]](this[_0xe113[290]][_0xb5aax11]);var _0xb5aax5f=this[_0xe113[290]][_0xb5aax11];_0xb5aax5e[_0xe113[293]][_0xe113[38]](this[_0xe113[191]][_0xe113[42]][_0xb5aax5f][_0xe113[292]])};this[_0xe113[294]][_0xe113[38]](_0xb5aax5e);this[_0xe113[290]]= [];this[_0xe113[289]]()},undo:function(){if(this[_0xe113[294]][_0xe113[63]]<= 0){return};var _0xb5aax60=this[_0xe113[294]][_0xe113[295]]();var _0xb5aax61=_0xb5aax60[_0xe113[42]];var _0xb5aax62=_0xb5aax60[_0xe113[293]];for(var _0xb5aaxc=0;_0xb5aaxc< _0xb5aax61[_0xe113[63]];_0xb5aaxc++){var _0xb5aax11=_0xb5aax61[_0xb5aaxc];if(this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[292]][_0xe113[63]]<= 0){continue};var _0xb5aax3f=_0xb5aax62[_0xb5aaxc];if(_0xb5aax3f== 1){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[296]]();this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[297]]()}else {if(_0xb5aax3f== 0){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[298]]()}else {if(_0xb5aax3f== 2){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[109]]()}}}};this[_0xe113[289]]()},load_level_state:function(){if(use_browser_cookies== false){return};var _0xb5aax4f=this[_0xe113[191]];var _0xb5aax63=localStorage[_0xe113[300]](this_game_id+ _0xe113[299]);if(_0xb5aax63== null){return};var _0xb5aax64;try{var _0xb5aax64=JSON[_0xe113[301]](_0xb5aax63)}catch(e){return};if(_0xb5aax64[_0xe113[193]]== null|| _0xb5aax64[_0xe113[302]]== null|| _0xb5aax64[_0xe113[303]]== null){return};if(_0xb5aax64[_0xe113[193]]==  -1){return};if(_0xb5aax64[_0xe113[193]]!= _0xb5aax4f[_0xe113[193]]|| _0xb5aax64[_0xe113[302]]!= _0xb5aax4f[_0xe113[194]]){return};if(_0xb5aax64[_0xe113[193]]== 6&& _0xb5aax64[_0xe113[161]]!= _0xb5aax4f[_0xe113[161]]){return};this[_0xe113[304]]= _0xb5aax64[_0xe113[304]];this[_0xe113[305]]= _0xb5aax64[_0xe113[305]];var _0xb5aaxc=0;for(var _0xb5aax5=0;_0xb5aax5< _0xb5aax64[_0xe113[306]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< _0xb5aax64[_0xe113[307]];_0xb5aax6++){if(_0xb5aaxc>= _0xb5aax64[_0xe113[303]][_0xe113[63]]){return};var _0xb5aaxd=_0xb5aax64[_0xe113[303]][_0xb5aaxc];var _0xb5aax11=_0xb5aax4f[_0xe113[33]][_0xb5aax5][_0xb5aax6];if(_0xb5aaxd== 1){_0xb5aax4f[_0xe113[42]][_0xb5aax11][_0xe113[297]]();_0xb5aax4f[_0xe113[42]][_0xb5aax11][_0xe113[296]]()}else {if(_0xb5aaxd== 2){_0xb5aax4f[_0xe113[42]][_0xb5aax11][_0xe113[109]]()}else {_0xb5aax4f[_0xe113[42]][_0xb5aax11][_0xe113[298]]()}};_0xb5aaxc++}};this[_0xe113[308]]= true},forget_save_state:function(){if(use_browser_cookies== false){return};var _0xb5aax64={game_mode:-1,levelnum:this[_0xe113[191]][_0xe113[194]],w:this[_0xe113[191]][_0xe113[56]],h:this[_0xe113[191]][_0xe113[57]],grid:[],mistakes:0,hit_points:0};levelstate_string= JSON[_0xe113[309]](_0xb5aax64);localStorage[_0xe113[310]](this_game_id+ _0xe113[299],levelstate_string)},save_level_state:function(){if(use_browser_cookies== false){return};var _0xb5aax64={game_mode:this[_0xe113[191]][_0xe113[193]],levelnum:this[_0xe113[191]][_0xe113[194]],w:this[_0xe113[191]][_0xe113[56]],h:this[_0xe113[191]][_0xe113[57]],grid:[],mistakes:this[_0xe113[304]],hit_points:this[_0xe113[305]],challenge_level_hardness:this[_0xe113[191]][_0xe113[161]]};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){var _0xb5aax3f=1;var _0xb5aax11=this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6];if(this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[100]]== true){_0xb5aax3f= 0}else {if(this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[99]]== true){_0xb5aax3f= 2}};_0xb5aax64[_0xe113[303]][_0xe113[38]](_0xb5aax3f)}};levelstate_string= JSON[_0xe113[309]](_0xb5aax64);localStorage[_0xe113[310]](this_game_id+ _0xe113[299],levelstate_string)},do_error_text:function(_0xb5aax65){for(var _0xb5aax5b=0;_0xb5aax5b< g_gameplay_error_text_objs[_0xe113[63]];_0xb5aax5b++){g_gameplay_error_text_objs[_0xb5aax5b][_0xe113[29]](-999,-999)};this[_0xe113[311]]= _0xb5aax65;this[_0xe113[312]]= 1200},home_x:-999,home_y:-999,undo_x:0,undo_y:0,mistakes_x:0,mistakes_y:0,screen_resized:function(){if(this[_0xe113[191]][_0xe113[56]]> 5){this[_0xe113[191]][_0xe113[53]][_0xe113[54]]()};if(screen_width> screen_height){this[_0xe113[313]]= screen_width- 64;this[_0xe113[314]]= screen_height* 0.25;this[_0xe113[315]]= screen_width- 64;this[_0xe113[316]]= screen_height* 0.5;this[_0xe113[317]]=  -999;this[_0xe113[318]]= screen_height* 0.75;if(this[_0xe113[191]][_0xe113[194]]< 2&& this[_0xe113[191]][_0xe113[193]]== 0){};g_dig_tiles_text[_0xe113[319]](Types[_0xe113[223]].XSMALL);g_flag_tiles_text[_0xe113[319]](Types[_0xe113[223]].XSMALL);this[_0xe113[320]]= screen_width- 32;this[_0xe113[321]]= 32;this[_0xe113[322]]= 8;this[_0xe113[323]]= 24;if(this[_0xe113[191]][_0xe113[193]]== 0|| this[_0xe113[191]][_0xe113[193]]== 3|| this[_0xe113[191]][_0xe113[193]]== 6){g_this_level_num_text[_0xe113[29]](8,8)}}else {this[_0xe113[313]]= screen_width* 0.66;this[_0xe113[314]]= screen_height- 96+ 16;this[_0xe113[315]]= screen_width* 0.85;this[_0xe113[316]]= screen_height- 96+ 16;this[_0xe113[317]]=  -999;this[_0xe113[318]]= screen_height- 96;if(g_click_to_dig== true){};g_dig_tiles_text[_0xe113[319]](Types[_0xe113[223]].XSMALL);g_flag_tiles_text[_0xe113[319]](Types[_0xe113[223]].XSMALL);if(this[_0xe113[191]][_0xe113[194]]< 2&& this[_0xe113[191]][_0xe113[193]]== 0){};this[_0xe113[320]]= screen_width- 32;this[_0xe113[321]]= screen_height- 32;this[_0xe113[322]]= screen_width- 96;this[_0xe113[323]]= screen_height- 24;if(this[_0xe113[191]][_0xe113[193]]== 0|| this[_0xe113[191]][_0xe113[193]]== 3|| this[_0xe113[191]][_0xe113[193]]== 6){g_this_level_num_text[_0xe113[29]](screen_width* 0.5,screen_height- 24);g_this_level_num_text[_0xe113[324]](screen_width* 0.5)}};if(this[_0xe113[243]]== true){this[_0xe113[314]]=  -999};this[_0xe113[325]]();if(this[_0xe113[326]]== 1){g_digflag_select[_0xe113[29]](this[_0xe113[313]],this[_0xe113[314]])}else {if(this[_0xe113[326]]== 2){g_digflag_select[_0xe113[29]](this[_0xe113[315]],this[_0xe113[316]])}else {g_digflag_select[_0xe113[29]](-999,-999)}};if(this[_0xe113[220]]== true){this[_0xe113[321]]=  -999}else {this[_0xe113[323]]=  -999};if(this[_0xe113[220]]== true){g_mistakes_text[_0xe113[241]](_0xe113[327]+ this[_0xe113[304]].toString());if(this[_0xe113[304]]== 0){g_mistakes_text[_0xe113[29]](-999,-999)}else {g_mistakes_text[_0xe113[29]](this[_0xe113[322]],this[_0xe113[323]])}};g_skip_tut_button[_0xe113[29]](this[_0xe113[328]],this[_0xe113[329]]);g_skip_tut_text[_0xe113[29]](this[_0xe113[328]]+ 42,this[_0xe113[329]]- 8);g_undo_button_sprite[_0xe113[29]](this[_0xe113[320]],this[_0xe113[321]]);g_flag_button[_0xe113[29]](this[_0xe113[313]],this[_0xe113[314]]);g_dig_button[_0xe113[29]](this[_0xe113[315]],this[_0xe113[316]]);g_flag_button[_0xe113[77]]();g_dig_button[_0xe113[77]]();g_freedig_button[_0xe113[29]](this[_0xe113[317]],this[_0xe113[318]]);g_flag_tiles_text[_0xe113[29]](this[_0xe113[313]]- 170,this[_0xe113[314]]);g_dig_tiles_text[_0xe113[29]](this[_0xe113[315]]- 155,this[_0xe113[316]]);g_freedig_text[_0xe113[29]](this[_0xe113[317]]- 155,this[_0xe113[318]]);g_flag_tiles_text[_0xe113[29]](this[_0xe113[313]],this[_0xe113[314]]+ 42);g_dig_tiles_text[_0xe113[29]](this[_0xe113[315]],this[_0xe113[316]]+ 42);g_flag_tiles_text[_0xe113[324]](this[_0xe113[313]]);g_dig_tiles_text[_0xe113[324]](this[_0xe113[315]]);if(this[_0xe113[239]]== true){g_level_text_1[_0xe113[47]]();g_level_text_2[_0xe113[47]]();g_level_text_1[_0xe113[29]](32,screen_height* 0.7);g_level_text_2[_0xe113[29]](32,screen_height* 0.75);g_level_text_1[_0xe113[324]](screen_width* 0.5);g_level_text_2[_0xe113[324]](screen_width* 0.5);g_level_text_1[_0xe113[77]]();g_level_text_2[_0xe113[77]]();g_level_text_1[_0xe113[324]](screen_width* 0.5);g_level_text_2[_0xe113[324]](screen_width* 0.5)};if(g_click_to_dig== true){g_dig_tiles_text[_0xe113[241]](_0xe113[330]);if(g_hold_to_flag== true){g_flag_tiles_text[_0xe113[241]](_0xe113[331]);g_dig_tiles_text[_0xe113[241]](_0xe113[332])}else {g_flag_tiles_text[_0xe113[241]](_0xe113[333])};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[288]]();this[_0xe113[334]]= 0}}}else {if(g_click_to_dig== false&& this[_0xe113[334]]> 0){g_dig_tiles_text[_0xe113[241]](_0xe113[335]+ this[_0xe113[334]].toString()+ _0xe113[336]);g_flag_tiles_text[_0xe113[241]](_0xe113[337]+ this[_0xe113[334]].toString()+ _0xe113[336])}else {if(g_click_to_dig== false&& this[_0xe113[334]]== 0){if(screen_width< screen_height){g_dig_tiles_text[_0xe113[324]](screen_width* 0.5)};if(screen_width< screen_height){g_dig_tiles_text[_0xe113[241]](_0xe113[338])}else {g_dig_tiles_text[_0xe113[241]](_0xe113[339])};g_flag_tiles_text[_0xe113[241]](_0xe113[227])}else {g_dig_tiles_text[_0xe113[241]](_0xe113[227]);g_flag_tiles_text[_0xe113[241]](_0xe113[227])}}};g_dig_tiles_text[_0xe113[241]](_0xe113[227]);g_flag_tiles_text[_0xe113[241]](_0xe113[227]);if(g_click_to_dig== false){g_selected_tile_sprite[_0xe113[77]]()}else {g_selected_tile_sprite[_0xe113[47]]()};g_selected_tile_sprite[_0xe113[77]]();this[_0xe113[191]][_0xe113[54]]()},update_digflag_select_pos:function(){if(this[_0xe113[326]]== 1){g_digflag_select[_0xe113[29]](this[_0xe113[313]],this[_0xe113[314]])}else {if(this[_0xe113[326]]== 2){g_digflag_select[_0xe113[29]](this[_0xe113[315]],this[_0xe113[316]])}else {g_digflag_select[_0xe113[29]](-999,-999)}}},highlighted_x:0,highlighted_y:0,handle_wheel:function(){},hold_down_timer:0,hold_time_for_flag:2,drag_mode:0,drag_vert:0,drag_horiz:0,mouse_down_x:0,mouse_down_y:0,loaded_from_storage:false,digflag_hold:false,new_action_button_press:true,handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(g_solver_class|| this[_0xe113[308]]){this[_0xe113[340]]();this[_0xe113[308]]= false};if(this[_0xe113[341]]== 2){var _0xb5aax66=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[100]];var _0xb5aax67=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[99]]};if(mouse[_0xe113[344]]> this[_0xe113[314]]- 32&& mouse[_0xe113[344]]< this[_0xe113[314]]+ 32&& mouse[_0xe113[167]]> this[_0xe113[313]]- 32&& mouse[_0xe113[167]]< this[_0xe113[313]]+ 32){this[_0xe113[326]]= 1;this[_0xe113[325]]();if(this[_0xe113[341]]== 2&& this[_0xe113[345]]== true){if(_0xb5aax66== false){this[_0xe113[346]]()}else {this[_0xe113[347]]()};this[_0xe113[348]]= true;this[_0xe113[345]]= false}else {}};if(mouse[_0xe113[344]]> this[_0xe113[316]]- 32&& mouse[_0xe113[344]]< this[_0xe113[316]]+ 32&& mouse[_0xe113[167]]> this[_0xe113[315]]- 32&& mouse[_0xe113[167]]< this[_0xe113[315]]+ 32){this[_0xe113[326]]= 2;this[_0xe113[325]]();if(this[_0xe113[341]]== 2&& this[_0xe113[345]]== true){if(_0xb5aax67== false){this[_0xe113[349]]()}else {this[_0xe113[347]]()};this[_0xe113[348]]= true;this[_0xe113[345]]= false}else {}}},right_mouse_down:false,change_highlighted_tile:function(){if(g_click_to_dig== false){return};this[_0xe113[350]]= false;if(this[_0xe113[351]]== this[_0xe113[352]]&& this[_0xe113[353]]== this[_0xe113[354]]){return};this[_0xe113[351]]= this[_0xe113[352]];this[_0xe113[353]]= this[_0xe113[354]];if(this[_0xe113[355]]> 1){return};if(this[_0xe113[352]]< 0|| this[_0xe113[352]]>= this[_0xe113[191]][_0xe113[56]]|| this[_0xe113[354]]< 0|| this[_0xe113[354]]>= this[_0xe113[191]][_0xe113[57]]){return};var _0xb5aax68=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[99]];var _0xb5aax69=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[100]];var _0xb5aax6a=0;var _0xb5aax6b=1;if(_0xb5aax68== true){_0xb5aax6b= 2};if(_0xb5aax69== true){_0xb5aax6b= 0};if(this[_0xe113[220]]== true){if(_0xb5aax68== true|| _0xb5aax69== true){return};var _0xb5aax6c=this[_0xe113[191]][_0xe113[58]](this[_0xe113[352]],this[_0xe113[354]]);if(_0xb5aax6c== 0&& this[_0xe113[356]]!= 1){this[_0xe113[357]]();return}else {if(_0xb5aax6c> 0&& this[_0xe113[356]]!= 0){this[_0xe113[357]]();return}}};var _0xb5aax5=this[_0xe113[352]];var _0xb5aax6=this[_0xe113[354]];if(this[_0xe113[356]]== 0){if(_0xb5aax68== false){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,2)}else {if(this[_0xe113[356]]== 1){if(_0xb5aax69== false){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,0)}else {if(this[_0xe113[356]]== 2){if(_0xb5aax68== true|| _0xb5aax69== true){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,1)}}};if(_0xb5aax6a== 1){this[_0xe113[290]][_0xe113[38]](this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[292]]= _0xb5aax6b;if(g_sound_on== true){playSoundInstance(_0xe113[359],0.1)}};current_move_last_colour= this[_0xe113[356]];this[_0xe113[355]]= 6;this[_0xe113[340]]()},undo_singlemove:function(){if(this[_0xe113[360]][_0xe113[63]]== 0){return};var _0xb5aax6d=this[_0xe113[360]][_0xe113[295]]();var _0xb5aax11=_0xb5aax6d[_0xe113[361]];var _0xb5aax6e=_0xb5aax6d[_0xe113[362]];if(_0xb5aax6e== 2){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[296]]();this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[109]]()}else {if(_0xb5aax6e== 0){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[297]]();this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[298]]()}else {if(_0xb5aax6e== 1){this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[297]]();this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[296]]()}}};this[_0xe113[289]]()},single_move_history:[],change_tile_to:function(_0xb5aax5,_0xb5aax6,_0xb5aax6f){var _0xb5aax68=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]];var _0xb5aax69=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]];if(_0xb5aax6f== 2&& _0xb5aax68== true){return};if(_0xb5aax6f== 0&& _0xb5aax69== true){return};if(_0xb5aax6f== 1&& _0xb5aax68== false&& _0xb5aax69== false){return};var _0xb5aax6b=1;if(_0xb5aax68== true){_0xb5aax6b= 2};if(_0xb5aax69== true){_0xb5aax6b= 0};if(_0xb5aax6f== 2){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[296]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]()}else {if(_0xb5aax6f== 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[297]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[298]]()}else {if(_0xb5aax6f== 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[297]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[296]]()}}};this[_0xe113[290]][_0xe113[38]](this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[292]]= _0xb5aax6b;var _0xb5aax70={b:this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6],prev_col:_0xb5aax6b};this[_0xe113[360]][_0xe113[38]](_0xb5aax70);this[_0xe113[289]]()},change_selected_tile:function(){console[_0xe113[133]](_0xe113[363]+ this[_0xe113[356]]);if(this[_0xe113[355]]> 1){return};if(this[_0xe113[343]]< 0|| this[_0xe113[343]]>= this[_0xe113[191]][_0xe113[56]]|| this[_0xe113[342]]< 0|| this[_0xe113[342]]>= this[_0xe113[191]][_0xe113[57]]){return};var _0xb5aax68=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[99]];var _0xb5aax69=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[100]];var _0xb5aax6a=0;var _0xb5aax6b=1;if(_0xb5aax68== true){_0xb5aax6b= 2};if(_0xb5aax69== true){_0xb5aax6b= 0};if(this[_0xe113[220]]== true){if(_0xb5aax68== true|| _0xb5aax69== true){return};var _0xb5aax6c=this[_0xe113[191]][_0xe113[58]](this[_0xe113[343]],this[_0xe113[342]]);if(_0xb5aax6c== 0&& this[_0xe113[356]]!= 1){this[_0xe113[357]]();return}else {if(_0xb5aax6c> 0&& this[_0xe113[356]]!= 0){this[_0xe113[357]]();return}}};var _0xb5aax5=this[_0xe113[343]];var _0xb5aax6=this[_0xe113[342]];if(this[_0xe113[356]]== 0){if(_0xb5aax68== false){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,2)}else {if(this[_0xe113[356]]== 1){if(_0xb5aax69== false){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,0)}else {if(this[_0xe113[356]]== 2){if(_0xb5aax68== true|| _0xb5aax69== true){_0xb5aax6a= 1}else {return};this[_0xe113[358]](_0xb5aax5,_0xb5aax6,1)}}};if(_0xb5aax6a== 1){this[_0xe113[290]][_0xe113[38]](this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[292]]= _0xb5aax6b;if(g_sound_on== true){playSoundInstance(_0xe113[359],0.1)}};current_move_last_colour= this[_0xe113[356]];this[_0xe113[355]]= 6;this[_0xe113[340]]()},on_mistake:function(){this[_0xe113[218]]= false;this[_0xe113[364]]= 80;this[_0xe113[365]]= true;this[_0xe113[366]]= 0;this[_0xe113[305]]--;if(Math[_0xe113[118]]()< 0.5){this[_0xe113[305]]--};this[_0xe113[304]]++;if(this[_0xe113[305]]<= 0){this[_0xe113[367]]();this[_0xe113[20]](this[_0xe113[30]], new GameOverStateClass(this[_0xe113[30]],this[_0xe113[191]]));if(g_sound_on== true){playSoundInstance(_0xe113[368],0.35)};return};if(g_sound_on== true){playSoundInstance(_0xe113[368],0.3)};this[_0xe113[54]]();this[_0xe113[369]]=  -5;this[_0xe113[370]]= 15},screenshake_y_pos:0,screenshake_y_vel:0,screenshake_timer:0,punish_on_mistake:true,hit_points:4,mistakes:0,clicked_tile_x:-1,clicked_tile_y:-1,handle_right_mouse:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[364]]> 0){return};this[_0xe113[350]]= true;this[_0xe113[356]]= 1;this[_0xe113[371]]()},control_mode:0,gamepad_update_cursor:function(){var _0xb5aax71=this[_0xe113[191]][_0xe113[53]][_0xe113[372]];var _0xb5aax72=this[_0xe113[191]][_0xe113[53]][_0xe113[373]];if(_0xb5aax71== 0&& _0xb5aax72== 0){return};this[_0xe113[341]]= 2;this[_0xe113[343]]+= _0xb5aax71;this[_0xe113[342]]+= _0xb5aax72;if(this[_0xe113[343]]>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[343]]= 0}else {if(this[_0xe113[343]]< 0){this[_0xe113[343]]= this[_0xe113[191]][_0xe113[56]]- 1}};if(this[_0xe113[342]]>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[342]]= 0}else {if(this[_0xe113[342]]< 0){this[_0xe113[342]]= this[_0xe113[191]][_0xe113[57]]- 1}};g_selected_tile_sprite[_0xe113[77]]();g_selected_tile_sprite[_0xe113[29]]((this[_0xe113[343]]+ 0.5)* this[_0xe113[191]][_0xe113[50]],(this[_0xe113[342]]+ 0.5)* this[_0xe113[191]][_0xe113[50]]);if(this[_0xe113[348]]== true){};this[_0xe113[345]]= true},gamepad_timer:0,handle_left_mouse:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[364]]> 0){return};this[_0xe113[191]][_0xe113[53]][_0xe113[374]](mouse[_0xe113[167]],mouse[_0xe113[344]]);this[_0xe113[375]]--;if(this[_0xe113[375]]<= 0){this[_0xe113[376]]();this[_0xe113[375]]= 15};if(g_hold_to_flag== true){this[_0xe113[377]]++}else {};if(this[_0xe113[377]]== this[_0xe113[235]]&& g_hold_to_flag== true&& g_click_to_dig== true){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);if(this[_0xe113[366]]== 0){if(this[_0xe113[191]][_0xe113[378]](this[_0xe113[352]],this[_0xe113[354]])== true){this[_0xe113[356]]= 1}else {if(this[_0xe113[191]][_0xe113[379]](this[_0xe113[352]],this[_0xe113[354]])== true){this[_0xe113[356]]= 2}else {this[_0xe113[356]]= 0}}};if(this[_0xe113[220]]== true){this[_0xe113[356]]= 0};if(this[_0xe113[326]]== 1){this[_0xe113[356]]= 1};if(this[_0xe113[220]]== false){if(this[_0xe113[326]]== 1){this[_0xe113[356]]= 1};if(this[_0xe113[326]]== 1&& this[_0xe113[191]][_0xe113[379]](this[_0xe113[352]],this[_0xe113[354]])== true){this[_0xe113[356]]= 2};if(this[_0xe113[326]]== 2){this[_0xe113[356]]= 0};if(this[_0xe113[326]]== 2&& this[_0xe113[191]][_0xe113[378]](this[_0xe113[352]],this[_0xe113[354]])== true){this[_0xe113[356]]= 2}};this[_0xe113[371]]();this[_0xe113[366]]= 1};this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);if(g_click_to_dig== false&& this[_0xe113[218]]== true){if(this[_0xe113[380]]> 0){this[_0xe113[380]]--};if(this[_0xe113[381]]> 0){this[_0xe113[381]]--};if(this[_0xe113[381]]> 0&& Math[_0xe113[383]](_0xb5aax6- this[_0xe113[382]])> 120){this[_0xe113[381]]= 0};if(this[_0xe113[380]]> 0&& Math[_0xe113[383]](_0xb5aax5- this[_0xe113[384]])> 120){this[_0xe113[380]]= 0};if(Math[_0xe113[383]](_0xb5aax5- this[_0xe113[384]])> 40&& this[_0xe113[381]]== 0){if(_0xb5aax5- this[_0xe113[384]]> 0){this[_0xe113[343]]++}else {this[_0xe113[343]]--};this[_0xe113[384]]= _0xb5aax5;this[_0xe113[382]]= _0xb5aax6;if(this[_0xe113[366]]== 1){this[_0xe113[346]]()};this[_0xe113[380]]= 30}else {if(Math[_0xe113[383]](_0xb5aax6- this[_0xe113[382]])> 40&& this[_0xe113[380]]== 0){if(_0xb5aax6- this[_0xe113[382]]> 0){this[_0xe113[342]]++}else {this[_0xe113[342]]--};this[_0xe113[384]]= _0xb5aax5;this[_0xe113[382]]= _0xb5aax6;if(this[_0xe113[366]]== 1){this[_0xe113[346]]()};this[_0xe113[381]]= 30}};if(this[_0xe113[343]]>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[343]]= this[_0xe113[191]][_0xe113[56]]- 1}else {if(this[_0xe113[343]]< 0){this[_0xe113[343]]= 0}};if(this[_0xe113[342]]>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[342]]= this[_0xe113[191]][_0xe113[57]]- 1}else {if(this[_0xe113[342]]< 0){this[_0xe113[342]]= 0}};g_selected_tile_sprite[_0xe113[29]]((this[_0xe113[343]]+ 0.5)* this[_0xe113[191]][_0xe113[50]],(this[_0xe113[342]]+ 0.5)* this[_0xe113[191]][_0xe113[50]])};this[_0xe113[384]]= _0xb5aax5;this[_0xe113[382]]= _0xb5aax6;this[_0xe113[218]]= true;if(this[_0xe113[218]]== true){return};if(mouse[_0xe113[344]]> this[_0xe113[329]]- 32&& mouse[_0xe113[344]]< this[_0xe113[329]]+ 32&& mouse[_0xe113[167]]> this[_0xe113[328]]- 32&& mouse[_0xe113[167]]< this[_0xe113[328]]+ 32){this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}},handle_key:function(_0xb5aax8){return;if(_0xb5aax8== 70){return}else {if(_0xb5aax8== 68){}};this[_0xe113[334]]= 0;this[_0xe113[54]]()},num_selected_tiles:0,selected_tool:0,calc_selected_tiles:function(){},clicked_hint_x:-1,clicked_hint_y:-1,stop_input_until_mouseup:false,handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[218]]= false;this[_0xe113[348]]= true;this[_0xe113[345]]= true;if(this[_0xe113[364]]> 0){return};this[_0xe113[375]]= 0;this[_0xe113[351]]=  -1;this[_0xe113[353]]=  -1;this[_0xe113[365]]= false;if(mouse[_0xe113[344]]> this[_0xe113[321]]- 32&& mouse[_0xe113[344]]< this[_0xe113[321]]+ 32&& mouse[_0xe113[167]]> this[_0xe113[320]]- 32&& mouse[_0xe113[167]]< this[_0xe113[320]]+ 32&& this[_0xe113[220]]== false){this[_0xe113[385]]()};this[_0xe113[366]]= 0;this[_0xe113[380]]= 0;this[_0xe113[386]]();this[_0xe113[381]]= 0;if(false&& this[_0xe113[377]]< this[_0xe113[235]]){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);this[_0xe113[371]]();this[_0xe113[377]]= 0;return};if(this[_0xe113[350]]== true){this[_0xe113[377]]= 0;this[_0xe113[350]]= false;return};this[_0xe113[350]]= false;if(this[_0xe113[377]]>= 16){this[_0xe113[377]]= 0;if(g_hold_to_flag== true){return}};if(g_hold_to_flag== false){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6)};this[_0xe113[377]]= 0;this[_0xe113[387]]= this[_0xe113[352]];this[_0xe113[388]]= this[_0xe113[354]];this[_0xe113[377]]= 0},set_info_panel:function(_0xb5aax5,_0xb5aax6){var _0xb5aax1f=this[_0xe113[191]][_0xe113[93]](_0xb5aax5,_0xb5aax6);if(_0xb5aax1f== 1){}else {}},grey_out:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[389]]();if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[68]]== true&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[390]][_0xe113[63]]> 0){}}}},flag_selected:function(){if(this[_0xe113[364]]> 0){return};this[_0xe113[356]]= 1;this[_0xe113[391]]();return;if(this[_0xe113[343]]< 0|| this[_0xe113[343]]> this[_0xe113[191]][_0xe113[56]]- 1|| this[_0xe113[342]]< 0|| this[_0xe113[342]]> this[_0xe113[191]][_0xe113[57]]- 1){return};if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[99]]== false){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[109]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[343]]][this[_0xe113[342]]]][_0xe113[297]]()};this[_0xe113[392]]();this[_0xe113[340]]()},deselect_all:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[288]]();this[_0xe113[334]]= 0}}},game_over:false,clear_selected:function(){if(this[_0xe113[364]]> 0){return};this[_0xe113[356]]= 2;this[_0xe113[391]]();return},dig_selected:function(){if(this[_0xe113[364]]> 0){return};this[_0xe113[356]]= 0;this[_0xe113[391]]();return;this[_0xe113[393]]= 15;var _0xb5aax73=false;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[35]][_0xb5aax5][_0xb5aax6]== 0){continue};this[_0xe113[191]][_0xe113[35]][_0xb5aax5][_0xb5aax6]= 0;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]();if(this[_0xe113[191]][_0xe113[93]](_0xb5aax5,_0xb5aax6)== 2){this[_0xe113[191]][_0xe113[204]]= true;_0xb5aax73= true;this[_0xe113[394]]= true}}};if(_0xb5aax73== true){this[_0xe113[20]](this[_0xe113[30]], new GameOverStateClass(this[_0xe113[30]],this[_0xe113[191]]))};this[_0xe113[392]]();this[_0xe113[340]]()},prev_highlighted_x:0,prev_highlighted_y:0,drag_type:0,handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[395]]= this[_0xe113[352]];this[_0xe113[396]]= this[_0xe113[354]];this[_0xe113[352]]= Math[_0xe113[397]]((_0xb5aax5- 0.5* this[_0xe113[191]][_0xe113[50]])/ this[_0xe113[191]][_0xe113[50]]);this[_0xe113[354]]= Math[_0xe113[397]]((_0xb5aax6- 0.5* this[_0xe113[191]][_0xe113[50]])/ this[_0xe113[191]][_0xe113[50]]);if(this[_0xe113[352]]<  -2|| this[_0xe113[354]]<  -2|| this[_0xe113[352]]> this[_0xe113[191]][_0xe113[56]]+ 2|| this[_0xe113[354]]> this[_0xe113[191]][_0xe113[57]]+ 1){this[_0xe113[218]]= false;this[_0xe113[366]]= 0;this[_0xe113[386]]();this[_0xe113[380]]= 0;this[_0xe113[381]]= 0};if(this[_0xe113[395]]!= this[_0xe113[352]]|| this[_0xe113[396]]!= this[_0xe113[354]]){this[_0xe113[355]]= 0};if((this[_0xe113[395]]!= this[_0xe113[352]]|| this[_0xe113[396]]!= this[_0xe113[354]])&& this[_0xe113[366]]== 1&& g_click_to_dig== true&& this[_0xe113[218]]== true){if(this[_0xe113[356]]== 1&& this[_0xe113[191]][_0xe113[379]](this[_0xe113[352]],this[_0xe113[354]])== false){this[_0xe113[371]]()}else {if(this[_0xe113[356]]== 0&& this[_0xe113[191]][_0xe113[378]](this[_0xe113[352]],this[_0xe113[354]])== false){this[_0xe113[371]]()}else {if(this[_0xe113[356]]== 2&& (this[_0xe113[191]][_0xe113[378]](this[_0xe113[352]],this[_0xe113[354]])== true)|| this[_0xe113[191]][_0xe113[379]](this[_0xe113[352]],this[_0xe113[354]])== true){this[_0xe113[371]]()}}}};if(this[_0xe113[341]]== 1){this[_0xe113[343]]= this[_0xe113[352]];this[_0xe113[342]]= this[_0xe113[354]]};if(this[_0xe113[341]]== 1){if(this[_0xe113[352]]>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[343]]=  -999}else {if(this[_0xe113[352]]< 0){this[_0xe113[343]]=  -999}};if(this[_0xe113[354]]>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[342]]=  -999}else {if(this[_0xe113[354]]< 0){this[_0xe113[342]]=  -999}};g_selected_tile_sprite[_0xe113[29]]((this[_0xe113[343]]+ 0.5)* this[_0xe113[191]][_0xe113[50]],(this[_0xe113[342]]+ 0.5)* this[_0xe113[191]][_0xe113[50]])};if(this[_0xe113[352]]>= 0&& this[_0xe113[354]]>= 0&& this[_0xe113[352]]< this[_0xe113[191]][_0xe113[56]]&& this[_0xe113[354]]< this[_0xe113[191]][_0xe113[57]]){this[_0xe113[341]]= 1}else {if(this[_0xe113[341]]!= 2){this[_0xe113[341]]= 0}}},green_column:function(_0xb5aax5){},green_row:function(_0xb5aax6){},grey_nonos_if_range_is_cleared:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[398]]()};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[398]]()}},victory:false,must_grey:false,show_unhappy_hint:function(){g_mistake_sprite[_0xe113[77]]();var _0xb5aax5=this[_0xe113[399]];var _0xb5aax6=this[_0xe113[400]];if(this[_0xe113[401]]== 0){_0xb5aax6=  -1}else {if(this[_0xe113[401]]== 1){_0xb5aax5=  -1}};if(this[_0xe113[401]]== 2){};var _0xb5aax74=this[_0xe113[191]][_0xe113[50]];g_mistake_sprite[_0xe113[29]](_0xb5aax74* _0xb5aax5+ 0.5* _0xb5aax74,_0xb5aax74* _0xb5aax6+ 0.5* _0xb5aax74)},hide_unhappy_hint:function(){g_mistake_sprite[_0xe113[47]]()},mistake_x:0,mistake_y:0,mistake_region:0,find_unhappy_hint:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[65]]== 0){continue};this[_0xe113[191]][_0xe113[402]](this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]);if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[68]]== false){this[_0xe113[399]]= _0xb5aax5;this[_0xe113[400]]= _0xb5aax6;this[_0xe113[401]]= 2;return}}};this[_0xe113[191]][_0xe113[403]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){if(this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[134]]== 0){continue};if(this[_0xe113[191]][_0xe113[39]][_0xb5aax5][_0xe113[68]]== false){this[_0xe113[399]]= _0xb5aax5;this[_0xe113[400]]=  -1;this[_0xe113[401]]= 0;return}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[134]]== 0){continue};if(this[_0xe113[191]][_0xe113[40]][_0xb5aax6][_0xe113[68]]== false){this[_0xe113[399]]=  -1;this[_0xe113[400]]= _0xb5aax6;this[_0xe113[401]]= 1;return}};this[_0xe113[404]]= true;this[_0xe113[191]][_0xe113[204]]= true;this[_0xe113[191]][_0xe113[209]]= this[_0xe113[304]]},check_for_victory:function(){this[_0xe113[404]]= true;this[_0xe113[191]][_0xe113[52]][_0xe113[405]]();var _0xb5aax75=0;if(this[_0xe113[220]]== false){this[_0xe113[406]]= true};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){var _0xb5aax76=true;var _0xb5aax77=0;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){var _0xb5aax78=this[_0xe113[191]][_0xe113[93]](_0xb5aax5,_0xb5aax6);if(_0xb5aax78== 2&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]== true&& this[_0xe113[406]]== true){}else {if(_0xb5aax78!= 2&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]]== true&& this[_0xe113[406]]== true){}};if(_0xb5aax78== 0&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]== false&& this[_0xe113[406]]== true){this[_0xe113[404]]= false};if(_0xb5aax78== 2&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]]== false&& this[_0xe113[406]]== true){this[_0xe113[404]]= false};if(_0xb5aax78== 2&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]== false){this[_0xe113[404]]= false};if(this[_0xe113[220]]== false&& (this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[99]]== false&& this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[100]]== false)){this[_0xe113[404]]= false;_0xb5aax75++}};if(_0xb5aax76== true){this[_0xe113[407]](_0xb5aax5)}};this[_0xe113[287]]();if(this[_0xe113[220]]== false&& _0xb5aax75== 0&& this[_0xe113[404]]== false){this[_0xe113[408]]();if(this[_0xe113[404]]== false){this[_0xe113[409]]()}};if(this[_0xe113[404]]== true){this[_0xe113[191]][_0xe113[204]]= true;this[_0xe113[191]][_0xe113[209]]= this[_0xe113[304]];this[_0xe113[20]](this[_0xe113[30]], new WinStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {}},auto_dig_x:0,auto_dig_y:0,auto_dig:function(){for(var _0xb5aax5=this[_0xe113[410]];_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=this[_0xe113[411]];_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== true|| this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 1){continue};if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]]== 0){continue};if(this[_0xe113[191]][_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0){continue};if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[66]](this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]])!= 0){continue};if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]]== 1){if(_0xb5aax5> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[111]]()};if(_0xb5aax6> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6- 1]][_0xe113[111]]()};if(_0xb5aax5< this[_0xe113[191]][_0xe113[32]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5+ 1][_0xb5aax6]][_0xe113[111]]()};if(_0xb5aax6< this[_0xe113[191]][_0xe113[34]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6+ 1]][_0xe113[111]]()};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]();this[_0xe113[393]]= 4;return}else {if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[107]]== 4){if(_0xb5aax5> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6]][_0xe113[111]]()};if(_0xb5aax6> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6- 1]][_0xe113[111]]()};if(_0xb5aax5< this[_0xe113[191]][_0xe113[32]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5+ 1][_0xb5aax6]][_0xe113[111]]()};if(_0xb5aax6< this[_0xe113[191]][_0xe113[34]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6+ 1]][_0xe113[111]]()};if(_0xb5aax5> 0&& _0xb5aax6> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6- 1]][_0xe113[111]]()};if(_0xb5aax6> 0&& _0xb5aax5< this[_0xe113[191]][_0xe113[32]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5+ 1][_0xb5aax6- 1]][_0xe113[111]]()};if(_0xb5aax5< this[_0xe113[191]][_0xe113[32]]- 1&& _0xb5aax6< this[_0xe113[191]][_0xe113[34]]- 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5+ 1][_0xb5aax6+ 1]][_0xe113[111]]()};if(_0xb5aax6< this[_0xe113[191]][_0xe113[34]]- 1&& _0xb5aax5> 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5- 1][_0xb5aax6+ 1]][_0xe113[111]]()};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]();this[_0xe113[393]]= 4;return}}}};this[_0xe113[410]]= 0;this[_0xe113[411]]= 0},time_timer:60,update:function(){if(this[_0xe113[364]]> 0){this[_0xe113[364]]--};if(this[_0xe113[355]]> 0){this[_0xe113[355]]--};if(g_cache_as_bitmap== true&& g_cache_as_bitmap_timer> 0){g_cache_as_bitmap_timer--;if(g_cache_as_bitmap_timer<= 0){game_group[_0xe113[198]](true);do_resize();g_cache_as_bitmap_timer= 0}};if(this[_0xe113[393]]> 0&& g_allow_negatives== false){this[_0xe113[393]]--;if(this[_0xe113[393]]== 0){this[_0xe113[412]]();this[_0xe113[340]]()}};this[_0xe113[191]][_0xe113[199]]()},draw_timer:0,draw:function(){this[_0xe113[191]][_0xe113[175]]();if(this[_0xe113[370]]> 0){this[_0xe113[370]]--;this[_0xe113[413]]+= this[_0xe113[369]];this[_0xe113[369]]-= this[_0xe113[413]];this[_0xe113[369]]= 0.95* this[_0xe113[369]];play_screen_container[_0xe113[414]](this[_0xe113[413]])}else {if(this[_0xe113[370]]== 0){play_screen_container[_0xe113[414]](0)}};this[_0xe113[415]]--;if(false&& this[_0xe113[415]]== 0){this[_0xe113[415]]= 60;this[_0xe113[191]][_0xe113[416]]();if(this[_0xe113[191]][_0xe113[87]][_0xe113[63]]> 0&& this[_0xe113[191]][_0xe113[86]]<= 0){this[_0xe113[191]][_0xe113[417]](5,5);this[_0xe113[20]](this[_0xe113[30]], new GameOverStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}};if(this[_0xe113[418]]== true){g_flag_cursor_sprite[_0xe113[29]](mouse[_0xe113[167]],mouse[_0xe113[344]])};if(this[_0xe113[312]]> 0){this[_0xe113[312]]--;if(this[_0xe113[312]]<= 0&& this[_0xe113[311]]!=  -1){g_gameplay_error_text_objs[this[_0xe113[311]]][_0xe113[29]](-999,-999);this[_0xe113[311]]=  -1}};if(this[_0xe113[311]]!=  -1&& this[_0xe113[311]]< g_gameplay_error_text_objs[_0xe113[63]]){g_gameplay_error_text_objs[this[_0xe113[311]]][_0xe113[29]](screen_width/ 2,screen_height- 64,screen_width- 128);g_gameplay_error_text_objs[this[_0xe113[311]]][_0xe113[324]](screen_width/ 2)}}});g_game_over_text= null;g_game_over_text2= null;g_restart_button= null;g_tweet_score_sprite= null;g_sharethis_text= null;g_restart_text= null;g_final_score_text= null;GameOverStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,prompt_button:0,timer:0,pop_dist:1,screenshake_x_pos:0,screenshake_x_vel:5,allow_rating:false,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[77]]();this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[191]][_0xe113[204]]= true;this[_0xe113[191]][_0xe113[394]]= false;total_levels_played++;levels_until_ad--;this[_0xe113[201]]= 3;if(on_kong&& kongregate[_0xe113[420]][_0xe113[419]]()> 0&& this[_0xe113[191]][_0xe113[193]]== 3){this[_0xe113[421]]= true};if(g_star_rating_obj== null){g_star_rating_obj=  new StarRatingClass();g_star_rating_obj[_0xe113[47]]()};if(this[_0xe113[191]][_0xe113[193]]== 3&& this[_0xe113[421]]== true){g_star_rating_obj[_0xe113[77]]()};if(g_game_over_text== null){g_game_over_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_game_over_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_game_over_text[_0xe113[226]](_0xe113[422]);g_game_over_text[_0xe113[29]](-999,-999);g_game_over_text2=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_game_over_text2[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_game_over_text2[_0xe113[226]](_0xe113[423]);g_game_over_text2[_0xe113[29]](-999,-999);g_sharethis_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_sharethis_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_sharethis_text[_0xe113[226]](_0xe113[424]);g_sharethis_text[_0xe113[29]](-999,-999);g_restart_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_restart_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_restart_text[_0xe113[226]](_0xe113[425]);g_restart_text[_0xe113[29]](-999,-999);g_final_score_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_final_score_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_final_score_text[_0xe113[226]](_0xe113[426]);g_final_score_text[_0xe113[29]](-999,-999);g_restart_button=  new SpriteClass();g_restart_button[_0xe113[222]](_0xe113[229],Types[_0xe113[27]].GAME_MENU);g_restart_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5)};this[_0xe113[427]]()},game_over_text_x:0,game_over_text_y:0,game_over_text2_x:0,game_over_text2_y:0,newgame_x:0,newgame_y:0,twitter_x:0,twitter_y:0,score_x:0,score_y:0,starrate_x:0,starrate_y:0,fb_x:0,fb_y:0,arrange_screen:function(){this[_0xe113[428]]=  -999;this[_0xe113[429]]=  -999;if(screen_width> screen_height){this[_0xe113[430]]= screen_width- 64;this[_0xe113[431]]= 20;this[_0xe113[432]]= screen_width- 64- 24;this[_0xe113[433]]= 52;this[_0xe113[434]]= screen_width- 38;this[_0xe113[435]]= 128;this[_0xe113[179]]=  -999;this[_0xe113[180]]=  -999;this[_0xe113[436]]= screen_width- 6* 26;this[_0xe113[437]]= 140;if(this[_0xe113[438]]== 1){this[_0xe113[439]]= screen_width- 64;this[_0xe113[440]]= screen_height- 128- 32}else {this[_0xe113[440]]=  -999};if(this[_0xe113[191]][_0xe113[441]]> 75&& this[_0xe113[191]][_0xe113[193]]== 1){}}else {this[_0xe113[430]]= screen_width* 0.25;;;this[_0xe113[431]]= screen_height- 128- 4;this[_0xe113[432]]= screen_width* 0.75;;;this[_0xe113[433]]= screen_height- 128;this[_0xe113[434]]= screen_width/ 2;;;this[_0xe113[435]]= screen_height- 64;this[_0xe113[179]]=  -999;this[_0xe113[180]]=  -999;if(this[_0xe113[438]]== 1){this[_0xe113[439]]= 132;this[_0xe113[440]]= screen_height- 64}else {this[_0xe113[440]]=  -999}};g_win_fb[_0xe113[29]](this[_0xe113[428]],this[_0xe113[429]]);g_win_fb_text[_0xe113[29]](this[_0xe113[428]]- 220,this[_0xe113[429]]- 6);g_win_fb[_0xe113[77]]();g_star_rating_obj[_0xe113[29]](this[_0xe113[436]],this[_0xe113[437]]);if(this[_0xe113[191]][_0xe113[193]]!= 3|| this[_0xe113[421]]== false){g_star_rating_obj[_0xe113[47]]()}},screen_resized:function(){this[_0xe113[191]][_0xe113[54]]();this[_0xe113[427]]()},wait_timer:30,handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[442]]> 0){return};_0xb5aax5= mouse[_0xe113[167]];_0xb5aax6= mouse[_0xe113[344]];var _0xb5aax79=0;if(this[_0xe113[191]][_0xe113[193]]== 3){g_star_rating_obj[_0xe113[443]](mouse[_0xe113[167]],mouse[_0xe113[344]])};if(_0xb5aax5> this[_0xe113[434]]- 32&& _0xb5aax5< this[_0xe113[434]]+ 32&& _0xb5aax6> this[_0xe113[435]]- 32&& _0xb5aax6< this[_0xe113[435]]+ 32){_0xb5aax79= 1};if(mouse[_0xe113[167]]> this[_0xe113[428]]- 16&& mouse[_0xe113[167]]< this[_0xe113[428]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[429]]- 16&& mouse[_0xe113[344]]< this[_0xe113[429]]+ 16){go_to_fb();return};if(_0xb5aax79== 1){this[_0xe113[191]][_0xe113[176]]= 0;if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {if(this[_0xe113[191]][_0xe113[193]]== 2){this[_0xe113[20]](this[_0xe113[30]], new LevelEditorStateClass(this[_0xe113[30]],this[_0xe113[191]]));for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[108]]= 1}};return}else {if(this[_0xe113[191]][_0xe113[193]]== 3){if(g_star_rating_obj[_0xe113[444]]!=  -1&& this[_0xe113[421]]== true){var _0xb5aax7a= new RateLevel(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aax7a[_0xe113[445]]= g_current_community_level_id;_0xb5aax7a[_0xe113[444]]= g_star_rating_obj[_0xe113[444]];this[_0xe113[20]](this[_0xe113[30]],_0xb5aax7a);return};var _0xb5aax7b=false;this[_0xe113[20]](this[_0xe113[30]], new CommunityOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]],_0xb5aax7b));return}}};if(this[_0xe113[191]][_0xe113[194]]< 99|| this[_0xe113[191]][_0xe113[193]]== 3){}else {};g_zblip_on_replay_level(this[_0xe113[191]][_0xe113[194]]);var _0xb5aax7c= new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aax7c[_0xe113[446]]();this[_0xe113[20]](this[_0xe113[30]],_0xb5aax7c)}else {if(_0xb5aax5> this[_0xe113[439]]- 32&& _0xb5aax5< this[_0xe113[439]]+ 32&& _0xb5aax6> this[_0xe113[440]]- 32&& _0xb5aax6< this[_0xe113[440]]+ 32){tweetscore(this[_0xe113[191]][_0xe113[176]])}}},cleanup:function(){g_restart_button[_0xe113[29]](-999,-999);g_game_over_text2[_0xe113[29]](-999,-999);g_game_over_text[_0xe113[29]](-999,-999);g_sharethis_text[_0xe113[29]](-999,-999);g_restart_text[_0xe113[29]](-999,-999);g_final_score_text[_0xe113[29]](-999,-999);g_star_rating_obj[_0xe113[47]]();g_win_fb[_0xe113[29]](-999,-999);g_win_fb_text[_0xe113[29]](-999,-999);play_screen_container[_0xe113[200]](0);;;play_screen_container[_0xe113[414]](0);;},pop_x:[],pop_y:[],reveal_b:0,update:function(){this[_0xe113[442]]--;this[_0xe113[191]][_0xe113[199]]();if(this[_0xe113[201]]% 1== 0&& this[_0xe113[191]][_0xe113[193]]== 1&& this[_0xe113[447]]< this[_0xe113[191]][_0xe113[42]][_0xe113[63]]){for(var _0xb5aax11=this[_0xe113[447]];_0xb5aax11< this[_0xe113[191]][_0xe113[42]][_0xe113[63]];_0xb5aax11++){this[_0xe113[447]]= _0xb5aax11;if(this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[98]]== false){continue};if(this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[99]]== true&& this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[103]]== 2){continue};this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[89]](0);this[_0xe113[191]][_0xe113[42]][_0xb5aax11][_0xe113[111]]();if(_0xb5aax11% 5== 0){break}}};this[_0xe113[201]]--;if(this[_0xe113[201]]== 0){}},draw:function(){this[_0xe113[448]]+= this[_0xe113[449]];this[_0xe113[449]]-= this[_0xe113[448]];this[_0xe113[449]]= 0.95* this[_0xe113[449]];play_screen_container[_0xe113[414]](this[_0xe113[448]]);this[_0xe113[191]][_0xe113[175]]();if(screen_width> screen_height){g_final_score_text[_0xe113[29]](this[_0xe113[179]]- 128,this[_0xe113[180]]+ 4)}else {g_final_score_text[_0xe113[29]](this[_0xe113[179]],this[_0xe113[180]]+ 32);g_final_score_text[_0xe113[324]](this[_0xe113[179]])};g_game_over_text[_0xe113[29]](this[_0xe113[430]],this[_0xe113[431]]);g_game_over_text[_0xe113[324]](this[_0xe113[430]]);g_game_over_text2[_0xe113[29]](this[_0xe113[432]],this[_0xe113[433]]);g_game_over_text2[_0xe113[324]](this[_0xe113[432]]);g_restart_button[_0xe113[29]](this[_0xe113[434]],this[_0xe113[435]]);if(screen_width> screen_height){g_restart_text[_0xe113[29]](this[_0xe113[434]]- 128,this[_0xe113[435]]- 8)}else {g_restart_text[_0xe113[29]](this[_0xe113[434]],this[_0xe113[435]]+ 32);g_restart_text[_0xe113[324]](this[_0xe113[434]])};if(screen_width> screen_height){g_sharethis_text[_0xe113[29]](this[_0xe113[439]]- 128,this[_0xe113[440]]- 16)}else {g_sharethis_text[_0xe113[29]](this[_0xe113[439]],this[_0xe113[440]]+ 32)}}});g_community_level_info_play= null;g_community_level_info_url= null;g_community_level_info_text= null;g_community_level_info_clipboard= null;CommunityLevelInfoStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,level_id:0,rating:false,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[91]]();if(g_community_level_info_play== null){g_community_level_info_play=  new ButtonClass();g_community_level_info_play[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU);g_community_level_info_url=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_community_level_info_url[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_community_level_info_url[_0xe113[226]](_0xe113[451]+ this[_0xe113[445]]);g_community_level_info_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_community_level_info_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_community_level_info_text[_0xe113[226]](_0xe113[452]);g_community_level_info_clipboard=  new ButtonClass();g_community_level_info_clipboard[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU)};g_community_level_info_play[_0xe113[77]]();g_community_level_info_url[_0xe113[77]]();g_community_level_info_text[_0xe113[77]]();g_community_level_info_clipboard[_0xe113[77]]();this[_0xe113[54]]()},cleanup:function(){g_community_level_info_play[_0xe113[47]]();g_community_level_info_url[_0xe113[47]]();g_community_level_info_text[_0xe113[47]]();g_community_level_info_clipboard[_0xe113[47]]()},play_x:0,play_y:0,clipboard_x:0,clipboard_y:0,screen_resized:function(){this[_0xe113[453]]= -999- screen_width - 64;this[_0xe113[454]]= -999- screen_height - 64;this[_0xe113[455]]= 64;this[_0xe113[456]]= 128;if(on_facebook){this[_0xe113[456]]=  -999};g_community_level_info_text[_0xe113[29]](32,32);g_community_level_info_clipboard[_0xe113[29]](this[_0xe113[455]],this[_0xe113[456]]);g_community_level_info_url[_0xe113[29]](this[_0xe113[455]]+ 64,this[_0xe113[456]]);g_community_level_info_play[_0xe113[29]](this[_0xe113[453]],this[_0xe113[454]])},copy_to_clipboard:function(){document[_0xe113[463]](_0xe113[457],function(_0xb5aax5b){_0xb5aax5b[_0xe113[461]][_0xe113[460]](_0xe113[458],_0xe113[459]+ this[_0xe113[445]]);_0xb5aax5b[_0xe113[462]]()})},go_to_site:function(){window[_0xe113[464]](_0xe113[459]+ this[_0xe113[445]])},clicked_site:false,handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[455]]- 16&& mouse[_0xe113[167]]< this[_0xe113[455]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[456]]- 16&& mouse[_0xe113[344]]< this[_0xe113[456]]+ 16&& this[_0xe113[465]]== false){this[_0xe113[466]]();this[_0xe113[465]]= true}else {if(mouse[_0xe113[167]]> this[_0xe113[453]]- 16&& mouse[_0xe113[167]]< this[_0xe113[453]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[454]]- 16&& mouse[_0xe113[344]]< this[_0xe113[454]]+ 16&& this[_0xe113[465]]== false){}}},load_info:function(_0xb5aax7d){this[_0xe113[445]]= _0xb5aax7d;g_community_level_info_url[_0xe113[241]](_0xe113[451]+ this[_0xe113[445]]);if(this[_0xe113[444]]== true){}}});g_error_message_state_text_obj= null;ErrorMessageStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[91]]();if(g_error_message_state_text_obj== null){g_error_message_state_text_obj=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_error_message_state_text_obj[_0xe113[224]](Types[_0xe113[223]].SMALL);g_error_message_state_text_obj[_0xe113[226]](_0xe113[467])};g_error_message_state_text_obj[_0xe113[77]]();g_error_message_state_text_obj[_0xe113[29]](screen_width/ 2,screen_height/ 2);g_error_message_state_text_obj[_0xe113[324]](screen_width/ 2)},cleanup:function(){g_error_message_state_text_obj[_0xe113[47]]()},set_text:function(_0xb5aax7e){g_error_message_state_text_obj[_0xe113[241]](_0xb5aax7e);g_error_message_state_text_obj[_0xe113[324]](screen_width/ 2)}});g_community_list_data= {};g_community_list_fetched= false;g_community_list_fetch_error= false;g_text_please_wait= null;CommunityFetchStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[91]]();g_community_list_fetched= false;g_community_list_fetch_error= false;if(g_text_please_wait== null){g_text_please_wait=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_please_wait[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_please_wait[_0xe113[226]](_0xe113[468])};g_text_please_wait[_0xe113[77]]();g_text_please_wait[_0xe113[29]](screen_width/ 2,screen_height/ 2);g_text_please_wait[_0xe113[324]](screen_width/ 2);if(g_community_level_browser== null){g_community_level_browser=  new CommunityLevelBrowser(this[_0xe113[191]])};this[_0xe113[469]]();g_community_level_browser[_0xe113[47]]()},fetch:function(){var _0xb5aax7f=[];for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){if(g_community_list_data[_0xb5aaxc][_0xe113[470]]!= null&& g_community_list_data[_0xb5aaxc][_0xe113[470]]== true){_0xb5aax7f[_0xe113[38]](g_community_list_data[_0xb5aaxc][_0xe113[471]])}};var _0xb5aax80={hand:_0xe113[472],eighthand:_0xe113[472],eye:_0xe113[472],heart:_0xe113[472],compass:_0xe113[472],crown:_0xe113[472],eyebracket:_0xe113[472],newest:_0xe113[473],rating:_0xe113[472],random:_0xe113[472],exclude_levels:_0xb5aax7f};if(g_autoload_level!= null&& g_autoload_level[_0xe113[63]]> 5){_0xb5aax80= {hash:g_autoload_level}};var _0xb5aax81=JSON[_0xe113[309]](_0xb5aax80);var _0xb5aax82= new XMLHttpRequest();_0xb5aax82[_0xe113[474]]= function(){g_community_list_fetch_error= true};_0xb5aax82[_0xe113[475]]= function(){g_community_list_data= JSON[_0xe113[301]](_0xb5aax82[_0xe113[476]]);g_community_list_fetched= true;for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){if(g_community_list_data[_0xb5aaxc][_0xe113[477]]< 4){g_community_list_data[_0xb5aaxc][_0xe113[444]]= 3}};g_community_list_data[_0xe113[478]](function(_0xb5aax83,_0xb5aax11){var _0xb5aax84=1;if(_0xb5aax11[_0xe113[477]]!= null&& _0xb5aax11[_0xe113[477]]> 0){_0xb5aax84= _0xb5aax11[_0xe113[477]]};var _0xb5aax85=1;if(_0xb5aax83[_0xe113[477]]!= null&& _0xb5aax83[_0xe113[477]]> 0){_0xb5aax85= _0xb5aax83[_0xe113[477]]};return _0xb5aax11[_0xe113[444]]/ _0xb5aax84- _0xb5aax83[_0xe113[444]]/ _0xb5aax85});for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){var _0xb5aax86=localStorage[_0xe113[300]](_0xe113[479]+ g_community_list_data[_0xb5aaxc][_0xe113[471]]);if(_0xb5aax86!= null&& _0xb5aax86== _0xe113[473]){g_community_list_data[_0xb5aaxc][_0xe113[470]]= true}}};if(window[_0xe113[480]]){_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[482])}else {_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[482],true)};_0xb5aax82[_0xe113[485]](_0xe113[483],_0xe113[484]);_0xb5aax82[_0xe113[486]](_0xb5aax81)},on_fail:function(){var _0xb5aax87= new ErrorMessageStateClass(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aax87[_0xe113[226]](_0xe113[487]);this[_0xe113[20]](this[_0xe113[30]],_0xb5aax87)},cleanup:function(){g_community_level_browser[_0xe113[47]]();g_text_please_wait[_0xe113[47]]()},sort_community_levels:function(){},populate_browser:function(){g_community_level_browser[_0xe113[91]]();for(var _0xb5aaxc=0;_0xb5aaxc< 6;_0xb5aaxc++){if(_0xb5aaxc>= g_community_list_data[_0xe113[63]]){break};var _0xb5aax88=g_community_list_data[_0xb5aaxc][_0xe113[488]]|| _0xe113[489];var _0xb5aax89=g_community_list_data[_0xb5aaxc][_0xe113[490]]|| _0xe113[491];var _0xb5aax8a=g_community_list_data[_0xb5aaxc][_0xe113[444]]|| 0;if(g_community_list_data[_0xb5aaxc][_0xe113[477]]> 0){_0xb5aax8a= _0xb5aax8a/ g_community_list_data[_0xb5aaxc][_0xe113[477]]};var _0xb5aax8b=g_community_list_data[_0xb5aaxc][_0xe113[492]]|| 0;var _0xb5aax8c=g_community_list_data[_0xb5aaxc][_0xe113[477]]|| 0;var _0xb5aax7d=g_community_list_data[_0xb5aaxc][_0xe113[493]]|| 0;g_community_level_browser[_0xe113[494]](name,_0xb5aax88,_0xb5aax8a,_0xb5aax8b,_0xb5aax8c,_0xb5aax7d);var _0xb5aax8d=g_community_list_data[_0xb5aaxc][_0xe113[498]][_0xe113[497]](_0xe113[496])[_0xe113[495]](Number);for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aax8e=0;var _0xb5aax8f=1+ 10* _0xb5aax5+ _0xb5aax6;if(_0xb5aax8d[_0xb5aax8f]> 100){_0xb5aax8e= 6}else {if(_0xb5aax8d[_0xb5aax8f]== 1){_0xb5aax8e= 1}};g_community_level_browser[_0xe113[499]](_0xb5aax5,_0xb5aax6,_0xb5aax8e)}}}},sort_by_rating:function(){},update:function(_0xb5aax4){if(g_community_list_fetch_error== true){g_autoload_level= _0xe113[227];this[_0xe113[500]]();return};if(g_community_list_fetched== false){return};this[_0xe113[501]]();if(g_autoload_level!= null&& g_autoload_level[_0xe113[63]]> 5){g_autoload_level= _0xe113[227];var _0xb5aax7b=true;this[_0xe113[20]](this[_0xe113[30]], new CommunityOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]],_0xb5aax7b));return}else {};this[_0xe113[20]](this[_0xe113[30]], new CommunityOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}});g_community_level_browser= null;g_current_community_level_author= _0xe113[227];g_current_community_level_rating= _0xe113[227];g_current_community_level_votes= _0xe113[227];g_current_community_level_id= 0;CommunityOverworldStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,auto_load:false,init:function(_0xb5aax4,_0xb5aax4f,_0xb5aax7b){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[91]]();if(g_community_level_browser== null){g_community_level_browser=  new CommunityLevelBrowser(this[_0xe113[191]])};this[_0xe113[502]]= _0xb5aax7b},cleanup:function(){g_community_level_browser[_0xe113[47]]()},browser_p:0,scroll_browser:function(_0xb5aax90){this[_0xe113[503]]+= _0xb5aax90;if(this[_0xe113[503]]< 0){this[_0xe113[503]]= 0};g_community_level_browser[_0xe113[91]]();g_community_level_browser[_0xe113[504]]= _0xb5aax90;for(var _0xb5aaxc=0;_0xb5aaxc< 6;_0xb5aaxc++){var _0xb5aax91=_0xb5aaxc+ this[_0xe113[503]];if(_0xb5aax91>= g_community_list_data[_0xe113[63]]){break};var _0xb5aax88=g_community_list_data[_0xb5aax91][_0xe113[488]]|| _0xe113[489];var _0xb5aax89=g_community_list_data[_0xb5aax91][_0xe113[490]]|| _0xe113[491];var _0xb5aax8a=g_community_list_data[_0xb5aax91][_0xe113[444]]|| 0;if(g_community_list_data[_0xb5aax91][_0xe113[477]]> 0){_0xb5aax8a= _0xb5aax8a/ g_community_list_data[_0xb5aax91][_0xe113[477]]};var _0xb5aax8b=g_community_list_data[_0xb5aax91][_0xe113[492]]|| 0;var _0xb5aax8c=g_community_list_data[_0xb5aax91][_0xe113[505]]|| 0;var _0xb5aax7d=g_community_list_data[_0xb5aax91][_0xe113[493]]|| 0;var _0xb5aax92=g_community_list_data[_0xb5aax91][_0xe113[470]]|| false;g_community_level_browser[_0xe113[494]](name,_0xb5aax88,_0xb5aax8a,_0xb5aax8b,_0xb5aax8c,_0xb5aax7d,_0xb5aax92);var _0xb5aax8d=g_community_list_data[_0xb5aax91][_0xe113[498]][_0xe113[497]](_0xe113[496])[_0xe113[495]](Number);for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aax8e=0;var _0xb5aax8f=1+ 10* _0xb5aax5+ _0xb5aax6;if(_0xb5aax8d[_0xb5aax8f]>= 100){_0xb5aax8e= 6}else {if(_0xb5aax8d[_0xb5aax8f]== 1){_0xb5aax8e= 1}else {_0xb5aax8e= _0xb5aax8d[_0xb5aax8f]}};g_community_level_browser[_0xe113[499]](_0xb5aax5,_0xb5aax6,_0xb5aax8e)}}};g_community_level_browser[_0xe113[77]]()},first_tick:false,update:function(_0xb5aax4){if(this[_0xe113[502]]== true){var _0xb5aax93=0;for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){if(g_community_list_data[_0xb5aaxc][_0xe113[470]]!= null&& g_community_list_data[_0xb5aaxc][_0xe113[470]]== true){_0xb5aax93= _0xb5aaxc+ 1}else {break}};if(_0xb5aax93> g_community_list_data[_0xe113[63]]- 1){this[_0xe113[20]](this[_0xe113[30]], new CommunityFetchStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};this[_0xe113[202]](_0xb5aax93);this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {};if(this[_0xe113[506]]== false){g_community_level_browser[_0xe113[77]]();this[_0xe113[507]](0)};this[_0xe113[506]]= true},load_level:function(_0xb5aax94){if(g_community_list_data[_0xb5aax94]== null|| g_community_list_data[_0xb5aax94][_0xe113[471]]== null){var _0xb5aax87= new ErrorMessageStateClass(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aax87[_0xe113[226]](_0xe113[487]);this[_0xe113[20]](this[_0xe113[30]],_0xb5aax87);return};this[_0xe113[191]][_0xe113[193]]= 3;g_current_community_level_id= g_community_list_data[_0xb5aax94][_0xe113[471]];g_current_community_level_author= g_community_list_data[_0xb5aax94][_0xe113[488]];var _0xb5aax95=g_community_list_data[_0xb5aax94][_0xe113[444]];if(g_community_list_data[_0xb5aax94][_0xe113[477]]!= null&& g_community_list_data[_0xb5aax94][_0xe113[477]]> 0){_0xb5aax95= _0xb5aax95/ g_community_list_data[_0xb5aax94][_0xe113[477]];_0xb5aax95= Math[_0xe113[397]](_0xb5aax95* 10)/ 10};g_current_community_level_rating= _0xb5aax95.toString();if(g_community_list_data[_0xb5aax94][_0xe113[477]]!= null){g_current_community_level_votes= g_community_list_data[_0xb5aax94][_0xe113[477]].toString()}else {g_current_community_level_votes= _0xe113[472]};var _0xb5aax8d=g_community_list_data[_0xb5aax94][_0xe113[498]][_0xe113[497]](_0xe113[496])[_0xe113[495]](Number);for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aaxc=1+ 10* _0xb5aax5+ _0xb5aax6;this[_0xe113[191]][_0xe113[106]](_0xb5aax5,_0xb5aax6,_0xb5aax8d[_0xb5aaxc])}};for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== true){continue};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()}};this[_0xe113[191]][_0xe113[112]]()},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){g_community_level_browser[_0xe113[443]](mouse[_0xe113[167]],mouse[_0xe113[344]]);if(g_community_level_browser[_0xe113[508]]== true){this[_0xe113[20]](this[_0xe113[30]], new CommunityFetchStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};if(g_community_level_browser[_0xe113[509]]== true){this[_0xe113[507]](-1);return}else {if(g_community_level_browser[_0xe113[510]]== true){this[_0xe113[507]](1);return}};for(var _0xb5aax94=0;_0xb5aax94< g_community_list_data[_0xe113[63]];_0xb5aax94++){if(g_community_list_data[_0xb5aax94][_0xe113[493]]== g_community_level_browser[_0xe113[511]]){this[_0xe113[202]](_0xb5aax94);this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}}});LoadingChallengeLevelStateClass= GameStateClass[_0xe113[23]]({done_:null,play_state:null,engine:null,already_loaded:false});g_is_the_current_level_loaded= false;g_all_level_data_floor_layer= {};g_all_level_data_cover_layer= {};g_all_level_data_floor_layer[0]= [[0,0,0,0],[0,2,2,2],[0,2,16,2],[0,2,2,2]];g_all_level_data_floor_layer[_0xe113[160]]= {};g_all_level_data_floor_layer[_0xe113[162]]= {};g_all_level_data_floor_layer[_0xe113[163]]= {};g_all_level_data_floor_layer[_0xe113[164]]= {};g_all_level_data_colour_layer= {};g_all_level_data_colour_layer[0]= [];g_all_level_data_colour_layer[_0xe113[160]]= {};g_all_level_data_colour_layer[_0xe113[162]]= {};g_all_level_data_colour_layer[_0xe113[163]]= {};g_all_level_data_colour_layer[_0xe113[164]]= {};g_all_level_data_text= {};g_all_level_data_text[0]= _0xe113[227];g_all_level_data_text[_0xe113[160]]= {};g_all_level_data_text[_0xe113[162]]= {};g_all_level_data_text[_0xe113[163]]= {};g_all_level_data_text[_0xe113[164]]= {};g_all_level_data_cover_layer[0]= [[0,2,2,0,2,0],[2,2,2,0,2,0],[0,2,0,2,2,0],[2,2,2,2,2,0],[2,2,0,2,0,0],[0,0,0,0,0,0]];LoadingLevelStateClass= GameStateClass[_0xe113[23]]({done_:null,play_state:null,engine:null,already_loaded:false,post_win:false,p_level_folder:null,init:function(_0xb5aax4,_0xb5aax4f,_0xb5aax96,_0xb5aax97){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;g_is_the_current_level_loaded= false;if(_0xb5aax97!= null){this[_0xe113[512]]= _0xb5aax97};var _0xb5aax50=Math[_0xe113[131]](_0xb5aax96/ 10)* 10;this[_0xe113[513]]= g_all_level_data_floor_layer;var _0xb5aax98=_0xe113[195]+ _0xb5aax50.toString()+ _0xe113[196]+ _0xb5aax51+ _0xe113[197];if(this[_0xe113[191]][_0xe113[193]]== 6){console[_0xe113[133]](_0xe113[514]+ this[_0xe113[191]][_0xe113[161]]);if(this[_0xe113[191]][_0xe113[161]]== 1){this[_0xe113[513]]= g_all_level_data_floor_layer[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){this[_0xe113[513]]= g_all_level_data_floor_layer[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){this[_0xe113[513]]= g_all_level_data_floor_layer[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){this[_0xe113[513]]= g_all_level_data_floor_layer[_0xe113[164]]};var _0xb5aax99=_0xe113[227];if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aax99= _0xe113[160]};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aax99= _0xe113[162]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aax99= _0xe113[163]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aax99= _0xe113[164]};_0xb5aax98= _0xe113[515]+ _0xb5aax99+ _0xe113[516]+ _0xb5aax50.toString()+ _0xe113[196]+ _0xb5aax51+ _0xe113[197]};if(this[_0xe113[513]][_0xb5aax96]== null&& g_current_level_data[_0xe113[517]]== _0xb5aax50&& g_current_level_data[_0xe113[518]]== _0xb5aax98){g_is_the_current_level_loaded= true}else {if(this[_0xe113[513]][_0xb5aax96]== null){var _0xb5aax51=_0xb5aax50+ 9;var _0xb5aax52=_0xe113[195]+ _0xb5aax50.toString()+ _0xe113[196]+ _0xb5aax51+ _0xe113[197];if(this[_0xe113[191]][_0xe113[193]]== 6){var _0xb5aax99=_0xe113[227];if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aax99= _0xe113[160]};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aax99= _0xe113[162]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aax99= _0xe113[163]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aax99= _0xe113[164]};_0xb5aax52= _0xe113[515]+ _0xb5aax99+ _0xe113[516]+ _0xb5aax50.toString()+ _0xe113[196]+ _0xb5aax51+ _0xe113[197]};console[_0xe113[133]](_0xb5aax52);load_level_from_file(_0xb5aax52,function(){g_is_the_current_level_loaded= true})}else {this[_0xe113[519]]= true}}},screen_resized:function(_0xb5aax4){this[_0xe113[191]][_0xe113[54]](_0xb5aax4)},update:function(_0xb5aax4){if(this[_0xe113[519]]== true){var _0xb5aax7c= new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]);if(this[_0xe113[512]]== true){_0xb5aax7c[_0xe113[446]]()};this[_0xe113[20]](this[_0xe113[30]],_0xb5aax7c);return};if(g_is_the_current_level_loaded== true){g_is_the_current_level_loaded= false;this[_0xe113[520]]();var _0xb5aax9a=g_current_level_data[_0xe113[131]][_0xe113[63]];var _0xb5aax9b=g_current_level_data[_0xe113[517]];var _0xb5aax9c=_0xb5aax9b+ _0xb5aax9a;this[_0xe113[521]](_0xb5aax9b);for(var _0xb5aaxc=_0xb5aax9b;_0xb5aaxc< _0xb5aax9c;_0xb5aaxc++){if(g_all_level_status[_0xb5aaxc]== null){g_all_level_status[_0xb5aaxc]= 1};if(g_current_level_data[_0xe113[131]][_0xb5aaxc- _0xb5aax9b][_0xe113[63]]!= 10){this[_0xe113[522]](_0xb5aaxc,_0xb5aaxc- _0xb5aax9b);continue}else {if(g_current_level_data[_0xe113[131]][_0xb5aaxc- _0xb5aax9b][_0xe113[63]]== 0){continue}};g_all_level_data_floor_layer[_0xb5aaxc]=  new Array(10);for(var _0xb5aax5=0;_0xb5aax5< 10;_0xb5aax5++){this[_0xe113[513]][_0xb5aaxc][_0xb5aax5]=  new Array(10);for(var _0xb5aax6=0;_0xb5aax6< 10;_0xb5aax6++){var _0xb5aax9d=g_current_level_data[_0xe113[131]][_0xb5aaxc- _0xb5aax9b][_0xb5aax5][_0xb5aax6];this[_0xe113[513]][_0xb5aaxc][_0xb5aax5][_0xb5aax6]= _0xb5aax9d}}};if(g_tut_content[this[_0xe113[191]][_0xe113[194]]]!= null&& this[_0xe113[191]][_0xe113[193]]!= 6){this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[20]](this[_0xe113[30]], new LoadInstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};var _0xb5aax7c= new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]);if(this[_0xe113[512]]== true){_0xb5aax7c[_0xe113[446]]()};this[_0xe113[20]](this[_0xe113[30]],_0xb5aax7c)}},extract_colour_data:function(_0xb5aax9e){if(g_current_level_data[_0xe113[523]]== null){return};if(g_current_level_data[_0xe113[524]]== null){return};var _0xb5aax9f=g_all_level_data_colour_layer;var _0xb5aaxa0=g_all_level_data_text;if(this[_0xe113[191]][_0xe113[193]]== 6){if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aax9f= g_all_level_data_colour_layer[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aax9f= g_all_level_data_colour_layer[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aax9f= g_all_level_data_colour_layer[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aax9f= g_all_level_data_colour_layer[_0xe113[164]]};if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aaxa0= g_all_level_data_text[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aaxa0= g_all_level_data_text[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aaxa0= g_all_level_data_text[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aaxa0= g_all_level_data_text[_0xe113[164]]}};for(var _0xb5aaxc=0;_0xb5aaxc< g_current_level_data[_0xe113[523]][_0xe113[63]];_0xb5aaxc++){_0xb5aax9f[_0xb5aax9e+ _0xb5aaxc]= [];for(var _0xb5aax91=0;_0xb5aax91< g_current_level_data[_0xe113[523]][_0xb5aaxc][_0xe113[63]];_0xb5aax91++){_0xb5aax9f[_0xb5aax9e+ _0xb5aaxc][_0xe113[38]](g_current_level_data[_0xe113[523]][_0xb5aaxc][_0xb5aax91])}};for(var _0xb5aaxc=0;_0xb5aaxc< g_current_level_data[_0xe113[524]][_0xe113[63]];_0xb5aaxc++){_0xb5aaxa0[_0xb5aax9e+ _0xb5aaxc]= _0xe113[227];_0xb5aaxa0[_0xb5aax9e+ _0xb5aaxc]= g_current_level_data[_0xe113[524]][_0xb5aaxc]}},extract_tut_data:function(){if(g_current_level_data[_0xe113[525]]== null){return};if(this[_0xe113[191]][_0xe113[193]]== 6){return};for(var _0xb5aaxc in g_current_level_data[_0xe113[525]]){var _0xb5aax94=g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[302]];this[_0xe113[526]](_0xb5aax94);g_tut_content[_0xb5aax94][_0xe113[524]]= [];g_tut_content[_0xb5aax94][_0xe113[33]]= [];for(var _0xb5aaxa1=0;_0xb5aaxa1< g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[524]][_0xe113[63]];_0xb5aaxa1++){var _0xb5aax65=g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[524]][_0xb5aaxa1];g_tut_content[_0xb5aax94][_0xe113[524]][_0xe113[38]](_0xb5aax65);var _0xb5aaxa2=g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[33]][_0xb5aaxa1];g_tut_content[_0xb5aax94][_0xe113[33]][_0xe113[38]](_0xb5aaxa2)};g_tut_content[_0xb5aax94][_0xe113[527]]= 0;if(g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[527]]!= null){g_tut_content[_0xb5aax94][_0xe113[527]]= 1};g_tut_content[_0xb5aax94][_0xe113[528]]= [];if(g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[528]]!= null){for(var _0xb5aaxa3=0;_0xb5aaxa3< g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[528]][_0xe113[63]];_0xb5aaxa3++){g_tut_content[_0xb5aax94][_0xe113[528]][_0xe113[38]](g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[528]][_0xb5aaxa3])}};g_tut_content[_0xb5aax94][_0xe113[529]]= [];if(g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[529]]!= null){for(var _0xb5aaxa3=0;_0xb5aaxa3< g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[529]][_0xe113[63]];_0xb5aaxa3++){g_tut_content[_0xb5aax94][_0xe113[529]][_0xe113[38]](g_current_level_data[_0xe113[525]][_0xb5aaxc][_0xe113[529]][_0xb5aaxa3])}}}},load_tut_level_one_d_array:function(_0xb5aax3d){var _0xb5aaxa4=g_current_level_data[_0xe113[525]][_0xb5aax3d][_0xe113[158]][_0xe113[63]];_0xb5aaxa4= Math[_0xe113[530]](_0xb5aaxa4);g_tut_content[_0xb5aax3d]= {};g_tut_content[_0xb5aax3d][_0xe113[158]]=  new Array(_0xb5aaxa4);for(var _0xb5aax5=0;_0xb5aax5< _0xb5aaxa4;_0xb5aax5++){g_tut_content[_0xb5aax3d][_0xe113[158]][_0xb5aax5]=  new Array(_0xb5aaxa4);for(var _0xb5aax6=0;_0xb5aax6< _0xb5aaxa4;_0xb5aax6++){var _0xb5aax11=_0xb5aax6+ _0xb5aaxa4* _0xb5aax5;var _0xb5aax9d=g_current_level_data[_0xe113[525]][_0xb5aax3d][_0xe113[158]][_0xb5aax11];g_tut_content[_0xb5aax3d][_0xe113[158]][_0xb5aax5][_0xb5aax6]= _0xb5aax9d}}},load_level_one_d_array:function(_0xb5aaxc,_0xb5aaxa5){var _0xb5aaxa4=g_current_level_data[_0xe113[131]][_0xb5aaxa5][_0xe113[63]];_0xb5aaxa4= Math[_0xe113[530]](_0xb5aaxa4);this[_0xe113[513]][_0xb5aaxc]=  new Array(_0xb5aaxa4);for(var _0xb5aax5=0;_0xb5aax5< _0xb5aaxa4;_0xb5aax5++){this[_0xe113[513]][_0xb5aaxc][_0xb5aax5]=  new Array(_0xb5aaxa4);for(var _0xb5aax6=0;_0xb5aax6< _0xb5aaxa4;_0xb5aax6++){var _0xb5aax11=_0xb5aax6+ _0xb5aaxa4* _0xb5aax5;var _0xb5aax9d=g_current_level_data[_0xe113[131]][_0xb5aaxa5][_0xb5aax11];this[_0xe113[513]][_0xb5aaxc][_0xb5aax5][_0xb5aax6]= _0xb5aax9d}}}});StartOverworldStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,y_pos:0,x_pos:0,x_vel:0,y_vel:0,timer:2,init:function(_0xb5aax4,_0xb5aax4f,_0xb5aaxa6,_0xb5aaxa7){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[191]][_0xe113[531]]();this[_0xe113[532]]= _0xb5aaxa6;this[_0xe113[533]]= _0xb5aaxa7;play_screen_container[_0xe113[77]]();play_screen_group[_0xe113[414]](0);play_screen_group[_0xe113[200]](0)},update:function(){this[_0xe113[191]][_0xe113[199]]();this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]));return;this[_0xe113[192]]--;var _0xb5aax53=(0- this[_0xe113[192]]);this[_0xe113[192]]= this[_0xe113[192]]- 0.25* _0xb5aax53;play_screen_group[_0xe113[200]](this[_0xe113[192]]);this[_0xe113[201]]--;if(this[_0xe113[201]]<= 0){this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}},screen_resized:function(){this[_0xe113[191]][_0xe113[54]]()},draw:function(){this[_0xe113[191]][_0xe113[175]]()},cleanup:function(){play_screen_group[_0xe113[414]](0);play_screen_group[_0xe113[200]](0)}});g_text_mylevel_name= null;g_text_myauthor_name= null;g_text_levelname_goeshere= null;g_text_author_goeshere= null;g_confirm_upload_button= null;UploadLevelStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,levelname:_0xe113[227],writing_name:1,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;if(g_text_mylevel_name== null){g_text_levelname_goeshere=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_levelname_goeshere[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_levelname_goeshere[_0xe113[226]](_0xe113[534]);g_text_author_goeshere=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_author_goeshere[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_author_goeshere[_0xe113[226]](_0xe113[535]);g_text_mylevel_name=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_mylevel_name[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_mylevel_name[_0xe113[226]](_0xe113[536]);g_text_myauthor_name=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_myauthor_name[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_myauthor_name[_0xe113[226]](_0xe113[489]);g_confirm_upload_button=  new ButtonClass();g_confirm_upload_button[_0xe113[222]](_0xe113[537],Types[_0xe113[27]].GAME_MENU)}},author_y:128,levelname_y:64,upload_x:0,upload_y:0,screen_resized:function(){g_text_levelname_goeshere[_0xe113[29]](64,this[_0xe113[538]]);g_text_mylevel_name[_0xe113[29]](400,this[_0xe113[538]]);g_text_author_goeshere[_0xe113[29]](64,this[_0xe113[539]]);g_text_myauthor_name[_0xe113[29]](400,this[_0xe113[539]]);this[_0xe113[540]]= screen_width- 64;this[_0xe113[541]]= screen_height- 64;g_confirm_upload_button[_0xe113[29]](this[_0xe113[540]],this[_0xe113[541]])},cleanup:function(){g_text_levelname_goeshere[_0xe113[47]]();g_text_mylevel_name[_0xe113[47]]();g_text_author_goeshere[_0xe113[47]]();g_text_myauthor_name[_0xe113[47]]();g_confirm_upload_button[_0xe113[47]]()},handle_key:function(_0xb5aax8){if(this[_0xe113[542]]== 1){this[_0xe113[543]](_0xb5aax8)}else {this[_0xe113[544]](_0xb5aax8)}},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);if(mouse[_0xe113[167]]> this[_0xe113[540]]- 25&& mouse[_0xe113[167]]< this[_0xe113[540]]+ 25&& mouse[_0xe113[344]]> this[_0xe113[541]]- 25&& mouse[_0xe113[344]]< this[_0xe113[541]]+ 25){this[_0xe113[20]](this[_0xe113[30]], new PostLevel(this[_0xe113[30]],this[_0xe113[191]]));return}},write_name:function(_0xb5aax8){if(_0xb5aax8== 8){if(this[_0xe113[545]]> 0){this[_0xe113[545]]--};var _0xb5aaxa8=_0xe113[227];for(var _0xb5aaxc=0;_0xb5aaxc< this[_0xe113[545]];_0xb5aaxc++){string[_0xe113[185]](this[_0xe113[490]][_0xb5aaxc])};this[_0xe113[490]]= _0xb5aaxa8;g_text_mylevel_name[_0xe113[241]](this[_0xe113[490]]);return};this[_0xe113[490]][_0xe113[185]](String[_0xe113[546]](_0xb5aax8));g_text_mylevel_name[_0xe113[241]](this[_0xe113[490]]);this[_0xe113[545]]++;return;g_seed_texts[this[_0xe113[545]]][_0xe113[241]](String[_0xe113[546]](_0xb5aax8));this[_0xe113[547]][this[_0xe113[545]]]= _0xb5aax8;if(this[_0xe113[545]]< g_seed_texts[_0xe113[63]]){this[_0xe113[545]]++}},write_author:function(_0xb5aax8){if(_0xb5aax8== 8){if(this[_0xe113[545]]> 0){this[_0xe113[545]]--};var _0xb5aaxa8=_0xe113[227];for(var _0xb5aaxc=0;_0xb5aaxc< this[_0xe113[545]];_0xb5aaxc++){string[_0xe113[185]](this[_0xe113[548]][_0xb5aaxc])};this[_0xe113[548]]= _0xb5aaxa8;g_text_myauthor_name[_0xe113[241]](this[_0xe113[548]]);return};this[_0xe113[548]][_0xe113[185]](String[_0xe113[546]](_0xb5aax8));g_text_myauthor_name[_0xe113[241]](this[_0xe113[548]]);this[_0xe113[545]]++}});g_confirm_upload_text= null;g_confirm_upload_button= null;ConfirmUploadStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[77]]();if(g_confirm_upload_text== null){g_confirm_upload_button=  new ButtonClass();g_confirm_upload_button[_0xe113[222]](_0xe113[537],Types[_0xe113[27]].GAME_MENU);g_confirm_upload_button[_0xe113[29]](-999,-999);g_confirm_upload_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_confirm_upload_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_confirm_upload_text[_0xe113[226]](_0xe113[549])};this[_0xe113[54]]()},cleanup:function(){g_confirm_upload_text[_0xe113[29]](-999,-999);g_confirm_upload_button[_0xe113[47]]()},upload_x:0,upload_y:0,screen_resized:function(){this[_0xe113[540]]= screen_width- 64;this[_0xe113[541]]= screen_height- 128;g_confirm_upload_button[_0xe113[29]](this[_0xe113[540]],this[_0xe113[541]]);g_confirm_upload_text[_0xe113[29]](this[_0xe113[540]],this[_0xe113[541]]+ 32);g_confirm_upload_text[_0xe113[324]](this[_0xe113[540]])},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);if(mouse[_0xe113[167]]> this[_0xe113[540]]- 25&& mouse[_0xe113[167]]< this[_0xe113[540]]+ 25&& mouse[_0xe113[344]]> this[_0xe113[541]]- 25&& mouse[_0xe113[344]]< this[_0xe113[541]]+ 25){this[_0xe113[20]](this[_0xe113[30]], new PostLevel(this[_0xe113[30]],this[_0xe113[191]]));return}}});g_editor_sprites_objs= null;g_editor_upload_button= null;g_editor_upload_text= null;g_editor_test_button= null;g_editor_test_text= null;g_editor_localsave_button= null;g_editor_localsave_text= null;g_editor_localload_button= null;g_editor_localload_text= null;LevelEditorStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,selected_type:1,highlighted_x:0,highlighted_y:0,prev_highlighted_x:0,prev_highlighted_y:0,upload_x:0,upload_y:0,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[56]]= 10;this[_0xe113[191]][_0xe113[57]]= 10;play_screen_container[_0xe113[77]]();this[_0xe113[550]]();if(g_editor_upload_button== null){g_editor_upload_button=  new ButtonClass();g_editor_upload_button[_0xe113[222]](_0xe113[537],Types[_0xe113[27]].GAME_MENU);g_editor_upload_button[_0xe113[29]](-999,-999);g_editor_upload_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_editor_upload_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);if(on_kong&& kongregate[_0xe113[420]][_0xe113[419]]()> 0){var _0xb5aaxa9=kongregate[_0xe113[420]][_0xe113[551]]();g_editor_upload_text[_0xe113[226]](_0xe113[552]+ _0xb5aaxa9)}else {g_editor_upload_text[_0xe113[226]](_0xe113[553])};g_editor_localsave_button=  new SpriteClass();g_editor_localsave_button[_0xe113[222]](_0xe113[554],Types[_0xe113[27]].GAME_MENU);g_editor_localsave_button[_0xe113[29]](-999,-999);g_editor_localsave_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_editor_localsave_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_editor_localsave_text[_0xe113[226]](_0xe113[555]);g_editor_localload_button=  new SpriteClass();g_editor_localload_button[_0xe113[222]](_0xe113[554],Types[_0xe113[27]].GAME_MENU);g_editor_localload_button[_0xe113[29]](-999,-999);g_editor_localload_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_editor_localload_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_editor_localload_text[_0xe113[226]](_0xe113[556]);g_editor_test_button=  new ButtonClass();g_editor_test_button[_0xe113[222]](_0xe113[557],Types[_0xe113[27]].GAME_MENU);g_editor_test_button[_0xe113[29]](-999,-999);g_editor_test_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_editor_test_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_editor_test_text[_0xe113[226]](_0xe113[558]);g_editor_sprites_objs=  new LevelEditorTileSelectClass();g_editor_sprites_objs[_0xe113[560]](_0xe113[559],0);g_editor_sprites_objs[_0xe113[560]](_0xe113[561],GameTypes[_0xe113[562]].BROWN);g_editor_sprites_objs[_0xe113[560]](_0xe113[563],GameTypes[_0xe113[562]].DARKBLUE);g_editor_sprites_objs[_0xe113[560]](_0xe113[564],GameTypes[_0xe113[562]].GREEN);g_editor_sprites_objs[_0xe113[560]](_0xe113[565],GameTypes[_0xe113[562]].LIGHTBLUE);g_editor_sprites_objs[_0xe113[560]](_0xe113[566],GameTypes[_0xe113[562]].ORANGE);g_editor_sprites_objs[_0xe113[560]](_0xe113[567],GameTypes[_0xe113[562]].PINK);g_editor_sprites_objs[_0xe113[560]](_0xe113[568],GameTypes[_0xe113[562]].PURPLE);g_editor_sprites_objs[_0xe113[560]](_0xe113[569],GameTypes[_0xe113[562]].RED);g_editor_sprites_objs[_0xe113[560]](_0xe113[570],GameTypes[_0xe113[562]].YELLOW);g_editor_sprites_objs[_0xe113[560]](_0xe113[571],GameTypes[_0xe113[562]].WHITE)};this[_0xe113[191]][_0xe113[91]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[352]]= _0xb5aax5;this[_0xe113[354]]= _0xb5aax6;this[_0xe113[572]](_0xb5aax5,_0xb5aax6)}};g_editor_sprites_objs[_0xe113[77]]();this[_0xe113[54]]()},show_level:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(_0xb5aax5< this[_0xe113[191]][_0xe113[56]]&& _0xb5aax6< this[_0xe113[191]][_0xe113[57]]){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[77]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[47]]()}}};level_ratio= 1;level_x_shift= 0;if(this[_0xe113[191]][_0xe113[193]]== 0){};this[_0xe113[191]][_0xe113[206]]();this[_0xe113[191]][_0xe113[207]]();this[_0xe113[191]][_0xe113[208]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[181]]()}}},play_level:function(){},cleanup:function(){g_editor_sprites_objs[_0xe113[47]]();g_editor_upload_text[_0xe113[29]](-999,-999);g_editor_upload_button[_0xe113[47]]();g_editor_test_text[_0xe113[29]](-999,-999);g_editor_test_button[_0xe113[47]]();g_editor_localsave_text[_0xe113[29]](-999,-999);g_editor_localsave_button[_0xe113[47]]();g_editor_localload_text[_0xe113[29]](-999,-999);g_editor_localload_button[_0xe113[47]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[573]]= false;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[108]]= 0}}},test_x:0,test_y:0,localsave_x:0,localsave_y:0,localload_x:0,localload_y:0,screen_resized:function(){this[_0xe113[540]]= screen_width- 64;this[_0xe113[541]]= 64;this[_0xe113[574]]= screen_width- 64;this[_0xe113[575]]= 128+ 64;this[_0xe113[576]]= -999- screen_width - 64;this[_0xe113[577]]= -999- screen_height - 128 - 64;this[_0xe113[578]]= -999- screen_width - 64;this[_0xe113[579]]= -999- screen_height - 64;g_editor_upload_button[_0xe113[29]](this[_0xe113[540]],this[_0xe113[541]]);g_editor_upload_text[_0xe113[29]](this[_0xe113[540]],this[_0xe113[541]]+ 32);g_editor_upload_text[_0xe113[324]](this[_0xe113[540]]);g_editor_test_button[_0xe113[29]](this[_0xe113[574]],this[_0xe113[575]]);g_editor_test_text[_0xe113[29]](this[_0xe113[574]],this[_0xe113[575]]+ 32);g_editor_test_text[_0xe113[324]](this[_0xe113[574]]);g_editor_localsave_button[_0xe113[29]](this[_0xe113[576]],this[_0xe113[577]]);g_editor_localsave_text[_0xe113[29]](this[_0xe113[576]],this[_0xe113[577]]+ 32);g_editor_localsave_text[_0xe113[324]](this[_0xe113[576]]);g_editor_localload_button[_0xe113[29]](this[_0xe113[578]],this[_0xe113[579]]);g_editor_localload_text[_0xe113[29]](this[_0xe113[578]],this[_0xe113[579]]+ 32);g_editor_localload_text[_0xe113[324]](this[_0xe113[578]]);g_editor_sprites_objs[_0xe113[77]]()},handle_mouse_move:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[395]]= this[_0xe113[352]];this[_0xe113[396]]= this[_0xe113[354]];this[_0xe113[352]]= Math[_0xe113[397]]((_0xb5aax5- 0.5* this[_0xe113[191]][_0xe113[50]])/ this[_0xe113[191]][_0xe113[50]]);this[_0xe113[354]]= Math[_0xe113[397]]((_0xb5aax6- 0.5* this[_0xe113[191]][_0xe113[50]])/ this[_0xe113[191]][_0xe113[50]])},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){g_editor_sprites_objs[_0xe113[443]](mouse[_0xe113[167]],mouse[_0xe113[344]])},delete_tile:function(_0xb5aax5,_0xb5aax6){this[_0xe113[191]][_0xe113[46]](this[_0xe113[352]],this[_0xe113[354]],0);if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 2){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[298]]()}},recalc_hints:function(){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[98]]== false){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]()}}}},localload:function(){},localsave:function(){},export_to_json_colour:function(){var _0xb5aaxaa={};_0xb5aaxaa[_0xe113[131]]= [];var _0xb5aaxab=g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]];for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]]+ 1;_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]]+ 1;_0xb5aax5++){if(_0xb5aax5> 0&& _0xb5aax6> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](_0xb5aax5- 1,_0xb5aax6- 1))}else {if(_0xb5aax5== 0&& _0xb5aax6> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](-1,_0xb5aax6- 1))}else {if(_0xb5aax6== 0&& _0xb5aax5> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](_0xb5aax5- 1,-1))}else {_0xb5aaxaa[_0xe113[131]][_0xe113[38]](0)}}}}};_0xb5aaxaa[_0xe113[523]]= [];for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){var _0xb5aaxac=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[583]];if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 0){_0xb5aaxac= _0xb5aaxab};_0xb5aaxaa[_0xe113[523]][_0xe113[38]](_0xb5aaxac)}};var _0xb5aaxad= new Date()[_0xe113[584]]();var _0xb5aaxae=_0xe113[585]+ _0xb5aaxad.toString()+ _0xe113[586];var _0xb5aaxaf=JSON[_0xe113[309]](_0xb5aaxaa);var _0xb5aaxb0= new File([_0xb5aaxaf],_0xb5aaxae);makeTextFile(_0xb5aaxaf)},export_to_console_colour:function(){var _0xb5aaxaa={};_0xb5aaxaa[_0xe113[131]]= [];var _0xb5aaxab=g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]];for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]]+ 1;_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]]+ 1;_0xb5aax5++){if(_0xb5aax5> 0&& _0xb5aax6> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](_0xb5aax5- 1,_0xb5aax6- 1))}else {if(_0xb5aax5== 0&& _0xb5aax6> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](-1,_0xb5aax6- 1))}else {if(_0xb5aax6== 0&& _0xb5aax5> 0){_0xb5aaxaa[_0xe113[131]][_0xe113[38]](this[_0xe113[191]][_0xe113[582]](_0xb5aax5- 1,-1))}else {_0xb5aaxaa[_0xe113[131]][_0xe113[38]](0)}}}}};_0xb5aaxaa[_0xe113[523]]= [];for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){var _0xb5aaxac=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[583]];if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 0){_0xb5aaxac= _0xb5aaxab};_0xb5aaxaa[_0xe113[523]][_0xe113[38]](_0xb5aaxac)}};var _0xb5aaxad= new Date()[_0xe113[584]]();var _0xb5aaxae=_0xe113[585]+ _0xb5aaxad.toString()+ _0xe113[586];var _0xb5aaxaf=JSON[_0xe113[309]](_0xb5aaxaa);var _0xb5aaxb0= new File([_0xb5aaxaf],_0xb5aaxae)},export_to_json_monochrome:function(){},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[10]](_0xb5aax4,_0xb5aax5,_0xb5aax6);if(mouse[_0xe113[167]]> this[_0xe113[540]]- 25&& mouse[_0xe113[167]]< this[_0xe113[540]]+ 25&& mouse[_0xe113[344]]> this[_0xe113[541]]- 25&& mouse[_0xe113[344]]< this[_0xe113[541]]+ 25){g_generator_class[_0xe113[587]]= g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]];g_generator_class[_0xe113[285]](this);if(g_generator_class[_0xe113[588]]== false){return};this[_0xe113[589]]();return};if(mouse[_0xe113[167]]> this[_0xe113[574]]- 25&& mouse[_0xe113[167]]< this[_0xe113[574]]+ 25&& mouse[_0xe113[344]]> this[_0xe113[575]]- 25&& mouse[_0xe113[344]]< this[_0xe113[575]]+ 25){this[_0xe113[590]]();return};if(this[_0xe113[352]]< 0|| this[_0xe113[352]]>= this[_0xe113[191]][_0xe113[32]]|| this[_0xe113[354]]< 0|| this[_0xe113[354]]>= this[_0xe113[191]][_0xe113[34]]){return};var _0xb5aaxb1=0;var _0xb5aaxb2=g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]];if(_0xb5aaxb2== 0){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]])}else {this[_0xe113[191]][_0xe113[46]](this[_0xe113[352]],this[_0xe113[354]],2);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[583]]= _0xb5aaxb2};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[591]]= true;if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[103]]== 2){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[109]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[298]]()};return;if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 0){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]])}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 1){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[46]](this[_0xe113[352]],this[_0xe113[354]],1)}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 2){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[46]](this[_0xe113[352]],this[_0xe113[354]],2);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[109]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 3){if(this[_0xe113[191]][_0xe113[93]](this[_0xe113[352]],this[_0xe113[354]])== 2){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]])};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 4){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](1);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 5){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](2);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 49){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](49);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 80){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](80);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 6){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](4);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 10){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](5);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 11){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](11);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 12){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](12);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 13){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[89]](13);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 7){if(this[_0xe113[352]]> 0&& this[_0xe113[592]](this[_0xe113[352]],this[_0xe113[354]],this[_0xe113[352]]- 1,this[_0xe113[354]])== true){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[113]](this[_0xe113[352]],this[_0xe113[354]],this[_0xe113[352]]- 1,this[_0xe113[354]])}}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 8){if(this[_0xe113[354]]> 0&& this[_0xe113[592]](this[_0xe113[352]],this[_0xe113[354]],this[_0xe113[352]],this[_0xe113[354]]- 1)== true){this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[113]](this[_0xe113[352]],this[_0xe113[354]],this[_0xe113[352]],this[_0xe113[354]]- 1)}}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 26){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[114]](26);this[_0xe113[191]][_0xe113[112]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]== 31){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[114]](31);this[_0xe113[191]][_0xe113[112]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}else {if(g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]>= 17&& g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]]<= 32){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[98]]== true){_0xb5aaxb1= 1};this[_0xe113[572]](this[_0xe113[352]],this[_0xe113[354]]);var _0xb5aax1d=g_editor_sprites_objs[_0xe113[581]][g_editor_sprites_objs[_0xe113[580]]];this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[114]](_0xb5aax1d);this[_0xe113[191]][_0xe113[112]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[111]]()}}}}}}}}}}}}}}}}}};if(_0xb5aaxb1== 1){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[352]]][this[_0xe113[354]]]][_0xe113[110]]()}},check_unjoined:function(_0xb5aax5,_0xb5aax6,_0xb5aax24,_0xb5aax25){if(this[_0xe113[191]][_0xe113[36]][_0xb5aax5][_0xb5aax6]!= 0){return false};if(this[_0xe113[191]][_0xe113[36]][_0xb5aax24][_0xb5aax25]!= 0){return false};var _0xb5aax21=this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax24][_0xb5aax25]][_0xe113[107]];if(_0xb5aax21!= 1&& _0xb5aax21!= 2&& _0xb5aax21!= 5&& _0xb5aax21!= 4){return false};return true}});RateLevel= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f},log_in:function(){var _0xb5aaxb3=kongregate[_0xe113[420]][_0xe113[593]]();var _0xb5aaxb4=kongregate[_0xe113[420]][_0xe113[419]]();var _0xb5aaxb5=kongregate[_0xe113[420]][_0xe113[551]]();var _0xb5aaxb6={user_id:_0xb5aaxb4,username:_0xb5aaxb5,game_auth_token:_0xb5aaxb3};var _0xb5aax81=JSON[_0xe113[309]](_0xb5aaxb6);var _0xb5aax82= new XMLHttpRequest();_0xb5aax82[_0xe113[474]]= function(){};_0xb5aax82[_0xe113[475]]= function(){g_logged_in= true};if(window[_0xe113[480]]){_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[594])}else {_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[594],true)};_0xb5aax82[_0xe113[485]](_0xe113[483],_0xe113[484]);_0xb5aax82[_0xe113[486]](_0xb5aax81);this[_0xe113[595]]= true},submit_rating:function(_0xb5aaxb7,_0xb5aax94){var _0xb5aaxb3=kongregate[_0xe113[420]][_0xe113[593]]();var _0xb5aaxb4=kongregate[_0xe113[420]][_0xe113[419]]();var _0xb5aaxb5=kongregate[_0xe113[420]][_0xe113[551]]();var _0xb5aaxb8={rating:_0xb5aaxb7,level:_0xb5aax94,kong_user_id:_0xb5aaxb4,user_id:_0xb5aaxb4,username:_0xb5aaxb5,game_auth_token:_0xb5aaxb3};var _0xb5aax81=JSON[_0xe113[309]](_0xb5aaxb8);this[_0xe113[596]]= true;var _0xb5aax82= new XMLHttpRequest();_0xb5aax82[_0xe113[474]]= function(){};_0xb5aax82[_0xe113[475]]= function(){};if(window[_0xe113[480]]){_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[597])}else {_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[597],true)};_0xb5aax82[_0xe113[485]](_0xe113[483],_0xe113[484]);_0xb5aax82[_0xe113[486]](_0xb5aax81)},level_id:0,rating:0,submitted_rating:false,update:function(){if(this[_0xe113[596]]== true){var _0xb5aax7b=false;this[_0xe113[20]](this[_0xe113[30]], new CommunityOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]],_0xb5aax7b));return};if(this[_0xe113[596]]== false){this[_0xe113[598]](this[_0xe113[444]],this[_0xe113[445]]);return}}});g_level_posted= 0;g_levelposted_as_text= null;g_text_uploading_now= null;PostLevel= GameStateClass[_0xe113[23]]({play_state:null,engine:null,posted:false,levelstring:_0xe113[599],init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;if(g_levelposted_as_text== null){g_levelposted_as_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_levelposted_as_text[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_levelposted_as_text[_0xe113[226]](_0xe113[600]);g_levelposted_as_text[_0xe113[29]](-999,-999);g_text_uploading_now=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_uploading_now[_0xe113[224]](Types[_0xe113[223]].SMALL);g_text_uploading_now[_0xe113[226]](_0xe113[601]);g_text_uploading_now[_0xe113[29]](-999,-999)};for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aaxb9=this[_0xe113[191]][_0xe113[105]](_0xb5aax5,_0xb5aax6).toString()+ _0xe113[496];this[_0xe113[602]]+= _0xb5aaxb9}};g_text_uploading_now[_0xe113[29]](32,32)},cleanup:function(){g_levelposted_as_text[_0xe113[47]]();g_text_uploading_now[_0xe113[29]](32,-32)},use_kong_name:true,post:function(){if(this[_0xe113[603]]== true){return};g_level_posted= 0;var _0xb5aaxa9=_0xe113[489];if(on_kong&& kongregate[_0xe113[420]][_0xe113[419]]()> 0&& this[_0xe113[604]]== true){_0xb5aaxa9= kongregate[_0xe113[420]][_0xe113[551]]()};var _0xb5aax94={publickey:_0xe113[605],levelname:_0xe113[606],leveldata:this[_0xe113[602]],playername:_0xb5aaxa9,playerid:_0xe113[472]};var _0xb5aax81=JSON[_0xe113[309]](_0xb5aax94);var _0xb5aax82=window[_0xe113[480]]? new XDomainRequest(): new XMLHttpRequest();var _0xb5aaxba=_0xe113[607]+ _0xb5aax81;var _0xb5aax82= new XMLHttpRequest();_0xb5aax82[_0xe113[474]]= function(){g_level_posted=  -1};_0xb5aax82[_0xe113[475]]= function(){var _0xb5aaxbb=JSON[_0xe113[301]](_0xb5aax82[_0xe113[476]]);g_level_posted= 1;g_level_posted_id= _0xb5aaxbb[0][_0xe113[471]]};if(window[_0xe113[480]]){_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[608])}else {_0xb5aax82[_0xe113[464]](_0xe113[481],backend_url+ _0xe113[608],true)};_0xb5aax82[_0xe113[485]](_0xe113[483],_0xe113[484]);_0xb5aax82[_0xe113[486]](_0xb5aax81);this[_0xe113[603]]= true},update:function(){this[_0xe113[609]]();if(this[_0xe113[603]]== true&& g_level_posted== 1){var _0xb5aaxbc= new CommunityLevelInfoStateClass(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aaxbc[_0xe113[445]]= g_level_posted_id;_0xb5aaxbc[_0xe113[610]](g_level_posted_id);this[_0xe113[20]](this[_0xe113[30]],_0xb5aaxbc)}}});PostPlaytomicLevel= GameStateClass[_0xe113[23]]({play_state:null,engine:null,posted:false,levelstring:_0xe113[599],init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aaxb9=this[_0xe113[191]][_0xe113[105]](_0xb5aax5,_0xb5aax6).toString()+ _0xe113[496];this[_0xe113[602]]+= _0xb5aaxb9}};var _0xb5aaxbd={publickey:_0xe113[605],page:1,perpage:10,data:false,filters:{rnd:0}};Playtomic[_0xe113[612]][_0xe113[611]](_0xb5aaxbd,function(_0xb5aaxbe,_0xb5aaxbf,_0xb5aaxe){})},cleanup:function(){},post:function(){if(this[_0xe113[603]]== true){return};var _0xb5aax94={publickey:_0xe113[605],name:_0xe113[606],data:this[_0xe113[602]],playername:_0xe113[613],playerid:_0xe113[472],source:_0xe113[472],fields:{rnd:0}};Playtomic[_0xe113[612]][_0xe113[614]](_0xb5aax94,PlaytomicSaveComplete);this[_0xe113[603]]= true},update:function(){this[_0xe113[609]]()}});function PlaytomicSaveComplete(_0xb5aax94,_0xb5aaxc1){if(_0xb5aaxc1[_0xe113[588]]){}else {}}g_firebase_keycode_check= 2;g_posted_as_text= null;PostFirebaseLevel= GameStateClass[_0xe113[23]]({play_state:null,engine:null,posted:false,levelstring:_0xe113[599],init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;if(g_posted_as_text== null){g_posted_as_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_posted_as_text[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_posted_as_text[_0xe113[226]](_0xe113[227]);g_posted_as_text[_0xe113[29]](-999,-999)};var _0xb5aaxc2=23;var _0xb5aaxc3=_0xe113[615];g_firebase_keycode_check= 2;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){var _0xb5aaxb9=this[_0xe113[191]][_0xe113[105]](_0xb5aax5,_0xb5aax6).toString()+ _0xe113[496];this[_0xe113[602]]+= _0xb5aaxb9}};if(g_firebase_connected== 0){connect_to_firebase()}else {if(g_firebase_connected== 2){}}},cleanup:function(){g_posted_as_text[_0xe113[29]](-999,-999)},keycode:_0xe113[227],check_key:function(){var _0xb5aaxc4=firebase[_0xe113[618]]()[_0xe113[617]](_0xe113[616]);_0xb5aaxc4[_0xe113[623]](this[_0xe113[622]])[_0xe113[621]](_0xe113[619],function(_0xb5aaxc5){var _0xb5aaxc6=(_0xb5aaxc5[_0xe113[620]]()!== null);if(_0xb5aaxc6== true){g_firebase_keycode_check= 2}else {g_firebase_keycode_check= 1}});return;_0xb5aaxc4[_0xe113[621]](_0xe113[619],function(_0xb5aaxc5){if(_0xb5aaxc5[_0xe113[624]](this[_0xe113[622]])){this[_0xe113[625]]= 2}else {this[_0xe113[625]]= 1}})},post:function(){if(this[_0xe113[603]]== true){return};var _0xb5aaxc7=firebase[_0xe113[618]]()[_0xe113[617]](_0xe113[616]+ this[_0xe113[622]]);_0xb5aaxc7[_0xe113[626]](this[_0xe113[602]]);this[_0xe113[603]]= true},told_user_i_posted:false,update:function(){if(g_firebase_connected== 2){}else {return};if(g_firebase_keycode_check== 2){this[_0xe113[622]]= _0xe113[227];for(var _0xb5aaxc=0;_0xb5aaxc< 5;_0xb5aaxc++){var _0xb5aax59=Math[_0xe113[131]](20* Math[_0xe113[118]]());_0xb5aax59+= 48;if(_0xb5aax59>= 58){_0xb5aax59+= 7};this[_0xe113[622]]+= String[_0xe113[546]](_0xb5aax59)};g_firebase_keycode_check= 0;this[_0xe113[627]]()}else {if(g_firebase_keycode_check== 1){this[_0xe113[609]]()}};if(this[_0xe113[603]]== true&& this[_0xe113[628]]== false){this[_0xe113[628]]= true;g_posted_as_text[_0xe113[226]](_0xe113[629]+ this[_0xe113[622]]);g_posted_as_text[_0xe113[29]](64,screen_height- 32)}}});g_overworld_sprites= null;g_total_num_of_levels= 79;g_levelnum_app_cutoff= 60;g_levelnum_app_cutoff_nosmiley= 30;g_total_challenge_levels_easy= 53;g_total_challenge_levels_med= 72;g_total_challenge_levels_hard= 93;g_total_challenge_levels_nosmiley= 45;g_challenge_levels_easy_progress= 0;g_challenge_levels_med_progress= 0;g_challenge_levels_hard_progress= 0;g_all_level_status= {};g_all_level_status[_0xe113[160]]= {};g_all_level_status[_0xe113[162]]= {};g_all_level_status[_0xe113[163]]= {};g_all_level_status[_0xe113[164]]= {};load_all_level_status= function(_0xb5aaxc8){g_all_level_status= _0xb5aaxc8;if(g_all_level_status[_0xe113[160]]== null){g_all_level_status[_0xe113[160]]= {}};if(g_all_level_status[_0xe113[162]]== null){g_all_level_status[_0xe113[162]]= {}};if(g_all_level_status[_0xe113[163]]== null){g_all_level_status[_0xe113[163]]= {}};if(g_all_level_status[_0xe113[164]]== null){g_all_level_status[_0xe113[164]]= {}}};g_overworld_corner_sprite= null;g_overworld_text= null;g_overworld_fb_button= null;g_overworld_fb_text= null;g_overworld_left_button= null;g_overworld_right_button= null;g_overworld_left_text= null;g_overworld_right_text= null;g_overworld_to_app_button= null;g_overworld_to_app_text= null;g_overworld_to_show= 0;g_challenge_levels_page= 0;OverworldStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,fb_x:0,fb_y:0,left_arrow_x:0,left_arrow_y:0,right_arrow_x:0,right_arrow_y:0,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[47]]();background_group[_0xe113[47]]();this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[191]][_0xe113[531]]();g_top_nono_size= 0;g_left_nono_size= 0;g_level_size= 13;g_level_w= 7;do_resize();if(g_overworld_sprites== null){g_overworld_to_app_button=  new SpriteClass();g_overworld_to_app_button[_0xe113[222]](_0xe113[630],Types[_0xe113[27]].HUD);g_overworld_corner_sprite=  new SpriteClass();g_overworld_corner_sprite[_0xe113[222]](_0xe113[631],Types[_0xe113[27]].GAME_MENU);g_overworld_to_app_text=  new TextClass(Types[_0xe113[27]].HUD);g_overworld_to_app_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_overworld_to_app_text[_0xe113[226]](_0xe113[632]);g_overworld_sprites=  new OverworldSpritesClassReuseable(this[_0xe113[191]]);g_overworld_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_overworld_text[_0xe113[224]](Types[_0xe113[223]].MED_SMALL);g_overworld_text[_0xe113[226]](_0xe113[633]);g_overworld_fb_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_overworld_fb_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_overworld_fb_text[_0xe113[226]](_0xe113[634]);g_overworld_fb_button=  new SpriteClass();g_overworld_fb_button[_0xe113[222]](_0xe113[635],Types[_0xe113[27]].GAME_MENU);g_overworld_left_button=  new SpriteClass();g_overworld_left_button[_0xe113[222]](_0xe113[554],Types[_0xe113[27]].GAME_MENU);g_overworld_right_button=  new SpriteClass();g_overworld_right_button[_0xe113[222]](_0xe113[557],Types[_0xe113[27]].GAME_MENU);g_overworld_left_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_overworld_left_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_overworld_left_text[_0xe113[226]](_0xe113[636]);g_overworld_right_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_overworld_right_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_overworld_right_text[_0xe113[226]](_0xe113[637])};g_overworld_corner_sprite[_0xe113[77]]();g_overworld_to_app_button[_0xe113[77]]();g_overworld_to_app_text[_0xe113[77]]();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[46]](_0xb5aax5,_0xb5aax6,0);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[89]](0);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[111]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[91]]()}};g_overworld_sprites[_0xe113[91]]();if(this[_0xe113[191]][_0xe113[193]]== 6){this[_0xe113[638]]();if(this[_0xe113[191]][_0xe113[161]]== 1){g_overworld_text[_0xe113[241]](_0xe113[639])};if(this[_0xe113[191]][_0xe113[161]]== 2){g_overworld_text[_0xe113[241]](_0xe113[640])};if(this[_0xe113[191]][_0xe113[161]]== 3){g_overworld_text[_0xe113[241]](_0xe113[641])};if(this[_0xe113[191]][_0xe113[161]]== 4){g_overworld_text[_0xe113[241]](_0xe113[642])};g_overworld_sprites[_0xe113[77]]();g_overworld_left_button[_0xe113[77]]();g_overworld_right_button[_0xe113[77]]();g_overworld_corner_sprite[_0xe113[29]](16,16);g_overworld_text[_0xe113[29]](32,16);g_overworld_fb_button[_0xe113[77]]();this[_0xe113[54]]();g_overworld_corner_sprite[_0xe113[644]](_0xe113[643]);return};if(this[_0xe113[191]][_0xe113[193]]== 0){g_overworld_corner_sprite[_0xe113[644]](_0xe113[631])};g_overworld_corner_sprite[_0xe113[29]](16,16);if(g_overworld_to_show== 0){this[_0xe113[645]]()}else {if(g_overworld_to_show== 1){this[_0xe113[646]]()}else {if(g_overworld_to_show== 2){this[_0xe113[638]]()}else {if(g_overworld_to_show== 4){this[_0xe113[647]]()}else {if(g_overworld_to_show>= 5){this[_0xe113[648]]((g_overworld_to_show- 2)* 30+ 1)}else {this[_0xe113[645]]()}}}}};if(g_overworld_to_show== 0){g_overworld_text[_0xe113[241]](_0xe113[649])}else {if(g_overworld_to_show== 1){g_overworld_text[_0xe113[241]](_0xe113[637])}else {if(g_overworld_to_show== 2){g_overworld_text[_0xe113[241]](_0xe113[636])}else {if(g_overworld_to_show== 4){g_overworld_text[_0xe113[241]](_0xe113[650])}else {if(g_overworld_to_show>= 5){var _0xb5aaxc9=(g_overworld_to_show- 2)* 30+ 1;var _0xb5aaxca=_0xb5aaxc9+ 30;g_overworld_text[_0xe113[241]](_0xe113[651]+ _0xb5aaxc9+ _0xe113[652]+ _0xb5aaxca)}}}}};if(g_overworld_to_show== 0){g_overworld_left_text[_0xe113[241]](_0xe113[636])}else {if(g_overworld_to_show== 1){g_overworld_left_text[_0xe113[241]](_0xe113[649])}else {if(g_overworld_to_show== 2){g_overworld_left_text[_0xe113[241]](_0xe113[227])}else {if(g_overworld_to_show== 4){g_overworld_left_text[_0xe113[241]](_0xe113[637])}else {if(g_overworld_to_show>= 5){var _0xb5aaxc9=(g_overworld_to_show- 2)* 30+ 1;_0xb5aaxc9+= 60;var _0xb5aaxca=_0xb5aaxc9+ 30;_0xb5aaxc9--;_0xb5aaxc9--;_0xb5aaxca--;g_overworld_left_text[_0xe113[241]](_0xe113[651]+ _0xb5aaxc9+ _0xe113[652]+ _0xb5aaxca)}}}}};if(g_overworld_to_show== 0){g_overworld_right_text[_0xe113[241]](_0xe113[637])}else {if(g_overworld_to_show== 1){g_overworld_right_text[_0xe113[241]](_0xe113[650])}else {if(g_overworld_to_show== 2){g_overworld_right_text[_0xe113[241]](_0xe113[649])}else {if(g_overworld_to_show== 4){g_overworld_right_text[_0xe113[241]](_0xe113[653])}else {if(g_overworld_to_show>= 5){var _0xb5aaxc9=(g_overworld_to_show- 2)* 30+ 1;_0xb5aaxc9-= 30;if(_0xb5aaxc9<= g_total_num_of_levels){var _0xb5aaxca=_0xb5aaxc9+ 30;g_overworld_left_text[_0xe113[241]](_0xe113[651]+ _0xb5aaxc9+ _0xe113[652]+ _0xb5aaxca)}else {}}}}}};var _0xb5aaxcb=0;if(g_overworld_to_show== 1){_0xb5aaxcb= 30}else {if(g_overworld_to_show== 4){_0xb5aaxcb= 60}else {if(g_overworld_to_show>= 5){_0xb5aaxcb= (g_overworld_to_show- 2)* 30}}};var _0xb5aaxcc=_0xb5aaxcb+ 29;_0xb5aaxcc= Math[_0xe113[166]](_0xb5aaxcc,g_total_num_of_levels);for(var _0xb5aaxcd=_0xb5aaxcb;_0xb5aaxcd<= _0xb5aaxcc;_0xb5aaxcd++){var _0xb5aax94=_0xb5aaxcd;var _0xb5aaxce=_0xb5aax94;if(g_overworld_to_show== 1){_0xb5aaxce-= 30}else {if(g_overworld_to_show== 2){break}else {if(g_overworld_to_show== 4){_0xb5aaxce-= 60}else {if(g_overworld_to_show>= 5){_0xb5aaxce-= (g_overworld_to_show- 2)* 30}}}};if(_0xb5aaxce< 0|| _0xb5aaxce> 29|| _0xb5aaxce== undefined|| _0xb5aaxce== null){continue};if(g_all_level_status[_0xb5aax94]== 2){g_overworld_sprites[_0xe113[654]](_0xb5aaxce,2)}else {if(g_all_level_status[_0xb5aax94]== 3){g_overworld_sprites[_0xe113[654]](_0xb5aaxce,3)}else {if(g_all_level_status[_0xb5aax94]== 4){g_overworld_sprites[_0xe113[654]](_0xb5aaxce,4)}else {g_overworld_sprites[_0xe113[655]](_0xb5aaxce)}}}};g_overworld_left_text[_0xe113[47]]();g_overworld_right_text[_0xe113[47]]();g_overworld_sprites[_0xe113[77]]();g_overworld_left_button[_0xe113[77]]();g_overworld_right_button[_0xe113[77]]();g_overworld_text[_0xe113[29]](32,16);g_overworld_fb_button[_0xe113[77]]();this[_0xe113[54]]()},load_campaign_from:function(_0xb5aaxc9){for(var _0xb5aaxc=_0xb5aaxc9- 1;_0xb5aaxc< _0xb5aaxc9+ 29;_0xb5aaxc++){if(g_all_level_status[_0xb5aaxc]== null){g_all_level_status[_0xb5aaxc]= 1};if(_0xb5aaxc> g_total_num_of_levels){continue};var _0xb5aax89=(_0xb5aaxc+ 1).toString();if(_0xb5aaxc== 9999){g_overworld_sprites[_0xe113[494]](_0xe113[656],_0xb5aax89)}else {if(_0xb5aaxc== 1){g_overworld_sprites[_0xe113[494]](_0xe113[657],_0xb5aax89)}else {if(_0xb5aaxc== 9){g_overworld_sprites[_0xe113[494]](_0xe113[635],_0xb5aax89)}else {if(false&& _0xb5aaxc== 21){g_overworld_sprites[_0xe113[494]](_0xe113[658],_0xb5aax89)}else {if(_0xb5aaxc== 20){g_overworld_sprites[_0xe113[494]](_0xe113[659],_0xb5aax89)}else {if(_0xb5aaxc== 30){g_overworld_sprites[_0xe113[494]](_0xe113[660],_0xb5aax89)}else {if(_0xb5aaxc== 50){g_overworld_sprites[_0xe113[494]](_0xe113[661],_0xb5aax89)}else {if(_0xb5aaxc== 160){g_overworld_sprites[_0xe113[494]](_0xe113[662],_0xb5aax89)}else {if(_0xb5aaxc== 170){g_overworld_sprites[_0xe113[494]](_0xe113[663],_0xb5aax89)}else {g_overworld_sprites[_0xe113[494]](null,_0xb5aax89)}}}}}}}}}}},load_campaign_1to30:function(){for(var _0xb5aaxc=0;_0xb5aaxc< 30;_0xb5aaxc++){if(g_all_level_status[_0xb5aaxc]== null){g_all_level_status[_0xb5aaxc]= 1};if(_0xb5aaxc>= 30){continue};var _0xb5aax89=(_0xb5aaxc+ 1).toString();if(_0xb5aaxc== 9999){g_overworld_sprites[_0xe113[494]](_0xe113[656],_0xb5aax89)}else {if(false&& _0xb5aaxc== 21){g_overworld_sprites[_0xe113[494]](_0xe113[658],_0xb5aax89)}else {if(_0xb5aaxc== 0){g_overworld_sprites[_0xe113[494]](_0xe113[657],_0xb5aax89)}else {if(_0xb5aaxc== 9){g_overworld_sprites[_0xe113[494]](_0xe113[635],_0xb5aax89)}else {if(false&& _0xb5aaxc== 21){g_overworld_sprites[_0xe113[494]](_0xe113[658],_0xb5aax89)}else {if(_0xb5aaxc== 20){g_overworld_sprites[_0xe113[494]](_0xe113[659],_0xb5aax89)}else {g_overworld_sprites[_0xe113[494]](null,_0xb5aax89)}}}}}}}},load_campaign_31to60:function(){for(var _0xb5aaxc=0;_0xb5aaxc< g_total_num_of_levels- 30;_0xb5aaxc++){if(_0xb5aaxc>= 30){break};var _0xb5aax89=(_0xb5aaxc+ 1+ 30).toString();if(_0xb5aaxc+ 1+ 30== 9999){g_overworld_sprites[_0xe113[494]](_0xe113[228],_0xb5aax89)}else {if(false&& _0xb5aaxc== 21){g_overworld_sprites[_0xe113[494]](_0xe113[658],_0xb5aax89)}else {if(_0xb5aaxc== 30- 30){g_overworld_sprites[_0xe113[494]](_0xe113[660],_0xb5aax89)}else {if(_0xb5aaxc== 50- 30){g_overworld_sprites[_0xe113[494]](_0xe113[661],_0xb5aax89)}else {if(_0xb5aaxc== 40- 30){g_overworld_sprites[_0xe113[494]](_0xe113[664],_0xb5aax89)}else {g_overworld_sprites[_0xe113[494]](null,_0xb5aax89)}}}}}}},load_campaign_61to90:function(){for(var _0xb5aaxc=0;_0xb5aaxc< g_total_num_of_levels- 60;_0xb5aaxc++){if(_0xb5aaxc>= 60){break};var _0xb5aax89=(_0xb5aaxc+ 1+ 60).toString();if(_0xb5aaxc+ 1+ 60>= g_levelnum_app_cutoff){_0xb5aax89= _0xe113[665]};if(_0xb5aaxc+ 1+ 60== 61){g_overworld_sprites[_0xe113[494]](_0xe113[666],_0xb5aax89)}else {if(_0xb5aaxc+ 1+ 60== 71){g_overworld_sprites[_0xe113[494]](_0xe113[667],_0xb5aax89)}else {if(_0xb5aaxc+ 1+ 60== 91){g_overworld_sprites[_0xe113[494]](_0xe113[660],_0xb5aax89)}else {g_overworld_sprites[_0xe113[494]](null,_0xb5aax89)}}}}},old_load_challenge_levels:function(){},challenge_levels_start:0,load_challenge_levels:function(){var _0xb5aaxcf=g_challenge_levels_page* 30;if(_0xb5aaxcf< 0){_0xb5aaxcf= 0};var _0xb5aaxd0=_0xb5aaxcf+ 30;var _0xb5aaxd1=999;this[_0xe113[668]]= _0xb5aaxcf;if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aaxd1= g_total_challenge_levels_easy};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aaxd1= g_total_challenge_levels_med};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aaxd1= g_total_challenge_levels_hard};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aaxd1= g_total_challenge_levels_nosmiley};var _0xb5aaxd2=g_all_level_status[_0xe113[160]];if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aaxd2= g_all_level_status[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aaxd2= g_all_level_status[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aaxd2= g_all_level_status[_0xe113[164]]};if(_0xb5aaxd0> _0xb5aaxd1){_0xb5aaxd0= _0xb5aaxd1};for(var _0xb5aaxc=_0xb5aaxcf;_0xb5aaxc< _0xb5aaxd0;_0xb5aaxc++){var _0xb5aax89=(_0xb5aaxc+ 1).toString();if(using_cocoon_js== false&& this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aax89= _0xe113[665]};if(using_cocoon_js== false&& this[_0xe113[191]][_0xe113[161]]== 4&& _0xb5aaxc> g_levelnum_app_cutoff_nosmiley){_0xb5aax89= _0xe113[665]};g_overworld_sprites[_0xe113[494]](null,_0xb5aax89);if(_0xb5aaxd2!= null&& _0xb5aaxd2[_0xb5aaxc]!= null){if(_0xb5aaxd2[_0xb5aaxc]== 4){g_overworld_sprites[_0xe113[654]](_0xb5aaxc- _0xb5aaxcf,4)}}}},cleanup:function(){g_overworld_sprites[_0xe113[47]]();g_overworld_text[_0xe113[29]](-999,-999);g_overworld_corner_sprite[_0xe113[47]]();g_overworld_fb_button[_0xe113[47]]();g_overworld_fb_text[_0xe113[29]](-999,-999);g_overworld_left_button[_0xe113[47]]();g_overworld_right_button[_0xe113[47]]();g_overworld_left_text[_0xe113[29]](-999,-999);g_overworld_right_text[_0xe113[29]](-999,-999);g_overworld_to_app_button[_0xe113[47]]();g_overworld_to_app_text[_0xe113[29]](-999,-999)},app_x:0,app_y:0,clicked_app:false,screen_resized:function(){var _0xb5aaxd3= new Date();var _0xb5aaxd4=_0xb5aaxd3[_0xe113[669]]();var _0xb5aaxd5=_0xb5aaxd3[_0xe113[670]]()+ 1;var _0xb5aaxd6=_0xb5aaxd3[_0xe113[671]]();this[_0xe113[428]]=  -999;this[_0xe113[429]]=  -999;if(using_cocoon_js== true){this[_0xe113[428]]=  -999};this[_0xe113[428]]=  -999;this[_0xe113[672]]= 0.5* screen_width- 64;this[_0xe113[673]]= screen_height- 32;this[_0xe113[674]]= 0.5* screen_width+ 64;this[_0xe113[675]]= screen_height- 32;if(g_overworld_to_show>= 5){var _0xb5aaxc9=(g_overworld_to_show- 2)* 30+ 1;_0xb5aaxc9+= 30;if(_0xb5aaxc9>= g_total_num_of_levels){this[_0xe113[674]]=  -999}};if(g_overworld_to_show== 2){this[_0xe113[673]]=  -999}else {if(g_total_num_of_levels< (g_overworld_to_show- 2)* 30+ 1){this[_0xe113[675]]=  -999}else {if(g_overworld_to_show== 0){this[_0xe113[673]]=  -999}}};g_overworld_left_button[_0xe113[29]](this[_0xe113[672]],this[_0xe113[673]]);g_overworld_right_button[_0xe113[29]](this[_0xe113[674]],this[_0xe113[675]]);if(screen_width> screen_height){this[_0xe113[428]]=  -999;this[_0xe113[429]]=  -999}else {};this[_0xe113[428]]=  -999;g_overworld_fb_button[_0xe113[29]](this[_0xe113[428]],this[_0xe113[429]]);g_overworld_fb_text[_0xe113[29]](this[_0xe113[428]]- 286,this[_0xe113[429]]- 10);g_overworld_sprites[_0xe113[77]]();g_overworld_left_button[_0xe113[77]]();g_overworld_right_button[_0xe113[77]]();this[_0xe113[676]]= 7* 0.5* 120+ 120;this[_0xe113[677]]=  -60;if(using_cocoon_js== true){this[_0xe113[677]]=  -999};g_overworld_to_app_button[_0xe113[29]](this[_0xe113[677]],this[_0xe113[676]]);g_overworld_to_app_text[_0xe113[29]](this[_0xe113[677]]+ 40,this[_0xe113[676]]- 8);g_overworld_text[_0xe113[29]](96- 16,16);g_overworld_corner_sprite[_0xe113[29]](32+ 8,32- 4)},go_to_fb:function(){window[_0xe113[464]](_0xe113[678])},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[679]]= false;g_overworld_sprites[_0xe113[443]](_0xb5aax5,_0xb5aax6);if(g_overworld_sprites[_0xe113[680]]== 1){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {if(g_overworld_sprites[_0xe113[680]]== 4){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new SeedLevelStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {if(g_overworld_sprites[_0xe113[680]]== 7){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new LoadFirebaseLevel(this[_0xe113[30]],this[_0xe113[191]]));return}else {if(g_overworld_sprites[_0xe113[680]]== 6){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new LevelEditorStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}}}};if(g_overworld_sprites[_0xe113[580]]!=  -1&& this[_0xe113[191]][_0xe113[193]]== 6){if(using_cocoon_js== false&& this[_0xe113[191]][_0xe113[161]]== 3){return};g_overworld_sprites[_0xe113[580]]+= this[_0xe113[668]];if(using_cocoon_js== false&& this[_0xe113[191]][_0xe113[161]]== 4&& g_overworld_sprites[_0xe113[580]]> g_levelnum_app_cutoff_nosmiley){return};this[_0xe113[191]][_0xe113[194]]= g_overworld_sprites[_0xe113[580]];this[_0xe113[20]](this[_0xe113[30]], new LoadingLevelStateClass(this[_0xe113[30]],this[_0xe113[191]],this[_0xe113[191]][_0xe113[194]]));return};if(g_overworld_sprites[_0xe113[580]]!=  -1){if(g_overworld_to_show== 0){}else {if(g_overworld_to_show== 1){g_overworld_sprites[_0xe113[580]]+= 30}else {if(g_overworld_to_show== 4){g_overworld_sprites[_0xe113[580]]+= 60}else {if(g_overworld_to_show>= 5){g_overworld_sprites[_0xe113[580]]+= (g_overworld_to_show- 2)* 30}}}};if(using_cocoon_js== false&& g_overworld_sprites[_0xe113[580]]>= g_levelnum_app_cutoff){return};this[_0xe113[191]][_0xe113[194]]= g_overworld_sprites[_0xe113[580]];if(g_tut_content[this[_0xe113[191]][_0xe113[194]]]!= null){this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[20]](this[_0xe113[30]], new LoadInstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};this[_0xe113[191]][_0xe113[193]]= 0;this[_0xe113[20]](this[_0xe113[30]], new LoadingLevelStateClass(this[_0xe113[30]],this[_0xe113[191]],this[_0xe113[191]][_0xe113[194]]));return};if(mouse[_0xe113[167]]> this[_0xe113[428]]- 16&& mouse[_0xe113[167]]< this[_0xe113[428]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[429]]- 16&& mouse[_0xe113[344]]< this[_0xe113[429]]+ 16){this[_0xe113[681]]()};var _0xb5aaxd7=0;var _0xb5aaxd8=0;if(screen_width< screen_height&& mouse[_0xe113[344]]> screen_height* 0.5&& mouse[_0xe113[167]]> screen_width* 0.5){_0xb5aaxd8= 1}else {if(screen_width< screen_height&& mouse[_0xe113[344]]> screen_height* 0.5&& mouse[_0xe113[167]]< screen_width* 0.5){_0xb5aaxd7= 1}};if((mouse[_0xe113[167]]> this[_0xe113[672]]- 16&& mouse[_0xe113[167]]< this[_0xe113[672]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[673]]- 16&& mouse[_0xe113[344]]< this[_0xe113[673]]+ 16)|| _0xb5aaxd7== 1){g_challenge_levels_page--;if(g_overworld_to_show== 0){return}else {if(g_overworld_to_show== 2){return}else {if(g_overworld_to_show== 1){g_overworld_to_show= 0}else {if(g_overworld_to_show== 4){g_overworld_to_show= 1}else {if(g_overworld_to_show>= 5){g_overworld_to_show--}}}}};this[_0xe113[20]](this[_0xe113[30]], new StartOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {if((mouse[_0xe113[167]]> this[_0xe113[674]]- 16&& mouse[_0xe113[167]]< this[_0xe113[674]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[675]]- 16&& mouse[_0xe113[344]]< this[_0xe113[675]]+ 16)|| _0xb5aaxd8== 1){g_challenge_levels_page++;if(g_overworld_to_show== 0){g_overworld_to_show= 1}else {if(g_overworld_to_show== 1){g_overworld_to_show= 4}else {if(g_overworld_to_show== 2){g_overworld_to_show= 0}else {if(g_overworld_to_show== 4){g_overworld_to_show= 5}else {if(g_overworld_to_show>= 5&& g_total_num_of_levels> (g_overworld_to_show- 2)* 30+ 1){g_overworld_to_show++}else {if(g_total_num_of_levels< (g_overworld_to_show- 2)* 30+ 1){return}}}}}};this[_0xe113[20]](this[_0xe113[30]], new StartOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}}},mousedown:false,handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[679]]== true){return};this[_0xe113[679]]= true;g_overworld_sprites[_0xe113[682]](_0xb5aax5,_0xb5aax6);if(_0xb5aax5> this[_0xe113[677]]- 16&& _0xb5aax5< this[_0xe113[677]]+ 16&& _0xb5aax6> this[_0xe113[676]]- 16&& _0xb5aax6< this[_0xe113[676]]+ 16&& this[_0xe113[683]]== false){this[_0xe113[683]]= true;open_url(gettheapp_url);return}},update:function(){},draw:function(){}});gettheapp_url= _0xe113[684];go_to_fb= function(){window[_0xe113[464]](_0xe113[678])};g_play_button_sprite= null;g_tut_button_sprite= null;g_play_button_text= null;g_tut_button_text= null;g_game_name_text= null;g_menu_title_box= null;g_menu_fire_sprite= null;g_menu_bomb_sprite= null;g_menu_fire_sprite_shadow= null;g_menu_bomb_sprite_shadow= null;g_menu_plus_sprite= null;Menu2StateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,tut_x:0,play_x:0,title_y:0,tut_actual_x:0,play_actual_x:0,title_actual_y:0,timer:30,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[77]]();this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;if(g_play_button_sprite== null){g_play_button_sprite=  new ButtonClass();g_play_button_sprite[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU);g_play_button_sprite[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_tut_button_sprite=  new ButtonClass();g_tut_button_sprite[_0xe113[222]](_0xe113[685],Types[_0xe113[27]].GAME_MENU);g_tut_button_sprite[_0xe113[29]](-200,screen_height* 0.5);g_play_button_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_play_button_text[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_play_button_text[_0xe113[226]](_0xe113[686]);g_play_button_text[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_tut_button_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_tut_button_text[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_tut_button_text[_0xe113[226]](g_texts[language][_0xe113[687]]);g_tut_button_text[_0xe113[29]](screen_width- 200,screen_height* 0.5);g_game_name_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_game_name_text[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_game_name_text[_0xe113[226]](g_texts[language][_0xe113[688]]);g_game_name_text[_0xe113[29]](screen_width* 0.5,-999,screen_width,999);g_game_name_text[_0xe113[324]](screen_width* 0.5);g_menu_title_box=  new SquareClass();g_menu_title_box[_0xe113[55]](Types[_0xe113[27]].GAME_MENU);g_menu_title_box[_0xe113[523]]= 0xffffff;g_menu_title_box[_0xe113[29]](screen_width* 0.5- 200,120,400,64);g_menu_bomb_sprite_shadow=  new SpriteClass();g_menu_bomb_sprite_shadow[_0xe113[222]](_0xe113[689],Types[_0xe113[27]].GAME_MENU);g_menu_bomb_sprite=  new SpriteClass();g_menu_bomb_sprite[_0xe113[222]](_0xe113[690],Types[_0xe113[27]].GAME_MENU);g_menu_fire_sprite_shadow=  new SpriteClass();g_menu_fire_sprite_shadow[_0xe113[222]](_0xe113[691],Types[_0xe113[27]].GAME_MENU);g_menu_fire_sprite=  new SpriteClass();g_menu_fire_sprite[_0xe113[222]](_0xe113[692],Types[_0xe113[27]].GAME_MENU);g_menu_plus_sprite=  new SpriteClass();g_menu_plus_sprite[_0xe113[222]](_0xe113[658],Types[_0xe113[27]].GAME_MENU)};this[_0xe113[693]]=  -200;this[_0xe113[694]]= screen_width+ 200;this[_0xe113[695]]=  -200;this[_0xe113[54]]()},screen_resized:function(){this[_0xe113[696]]= 0.25* game_screen_width* 0.5;this[_0xe113[453]]= 0.75* game_screen_width* 0.5;g_menu_title_box[_0xe113[29]](screen_width* 0.5- 150,145,300,1);g_menu_bomb_sprite_shadow[_0xe113[29]](screen_width* 0.5+ 80+ 6,215+ 6);g_menu_bomb_sprite[_0xe113[29]](screen_width* 0.5+ 80,215);g_menu_fire_sprite_shadow[_0xe113[29]](screen_width* 0.5- 80+ 6,215+ 6);g_menu_fire_sprite[_0xe113[29]](screen_width* 0.5- 80,215);g_menu_plus_sprite[_0xe113[29]](screen_width* 0.5,215);this[_0xe113[191]][_0xe113[54]]()},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){_0xb5aax5= mouse[_0xe113[167]];_0xb5aax6= mouse[_0xe113[344]];if(_0xb5aax6< screen_height* 0.66- 64|| _0xb5aax6> screen_height* 0.66+ 64){return};if(_0xb5aax5> this[_0xe113[696]]- 64&& _0xb5aax5< this[_0xe113[696]]+ 64){this[_0xe113[20]](this[_0xe113[30]], new TutStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(_0xb5aax5> this[_0xe113[453]]- 64&& _0xb5aax5< this[_0xe113[453]]+ 64){}}},update:function(){this[_0xe113[191]][_0xe113[199]]();if(this[_0xe113[201]]> 0){this[_0xe113[201]]--}else {this[_0xe113[693]]= this[_0xe113[693]]+ (this[_0xe113[696]]- this[_0xe113[693]])* 0.1;this[_0xe113[694]]= this[_0xe113[694]]+ (this[_0xe113[453]]- this[_0xe113[694]])* 0.1;this[_0xe113[695]]= this[_0xe113[695]]+ (42- this[_0xe113[695]])* 0.1}},draw:function(){this[_0xe113[191]][_0xe113[175]]();g_play_button_sprite[_0xe113[29]](this[_0xe113[694]],screen_height* 0.66);g_tut_button_sprite[_0xe113[29]](this[_0xe113[693]],screen_height* 0.66);g_play_button_text[_0xe113[29]](this[_0xe113[694]],screen_height* 0.66+ 32);g_play_button_text[_0xe113[324]](this[_0xe113[694]]);g_tut_button_text[_0xe113[29]](this[_0xe113[693]],screen_height* 0.66+ 32);g_tut_button_text[_0xe113[324]](this[_0xe113[693]]);g_game_name_text[_0xe113[29]](screen_width* 0.5,this[_0xe113[695]],screen_width,999);g_game_name_text[_0xe113[324]](screen_width* 0.5)},cleanup:function(){g_play_button_sprite[_0xe113[29]](-999,-999);g_tut_button_sprite[_0xe113[29]](-999,-999);g_play_button_text[_0xe113[29]](-999,-999);g_tut_button_text[_0xe113[29]](-999,-999);g_game_name_text[_0xe113[29]](-999,-999);g_menu_fire_sprite[_0xe113[29]](-999,-999);g_menu_fire_sprite_shadow[_0xe113[29]](-999,-999);g_menu_bomb_sprite[_0xe113[29]](-999,-999);g_menu_bomb_sprite_shadow[_0xe113[29]](-999,-999);g_menu_plus_sprite[_0xe113[29]](-999,-999);g_menu_title_box[_0xe113[47]]()}});g_toggle_right_to_flag= null;g_toggle_hold_to_flag= null;g_toggle_mark_first= null;g_text_right_to_flag= null;g_text_hold_to_flag= null;g_text_mark_first= null;g_setup_input_text= null;g_setup_input_play= null;already_setup_input= false;SetupInputStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;already_setup_input= true;if(g_toggle_right_to_flag== null){g_setup_input_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_setup_input_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_setup_input_text[_0xe113[226]](_0xe113[697]);g_toggle_right_to_flag=  new ToggleClass();g_toggle_right_to_flag[_0xe113[222]](_0xe113[233],Types[_0xe113[27]].GAME_MENU);g_text_right_to_flag=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_right_to_flag[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_text_right_to_flag[_0xe113[226]](g_get_text(_0xe113[698]));g_toggle_hold_to_flag=  new ToggleClass();g_toggle_hold_to_flag[_0xe113[222]](_0xe113[233],Types[_0xe113[27]].GAME_MENU);g_text_hold_to_flag=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_hold_to_flag[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_text_hold_to_flag[_0xe113[226]](g_get_text(_0xe113[699]));g_toggle_mark_first=  new ToggleClass();g_toggle_mark_first[_0xe113[222]](_0xe113[233],Types[_0xe113[27]].GAME_MENU);g_text_mark_first=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_text_mark_first[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_text_mark_first[_0xe113[226]](g_get_text(_0xe113[700]));g_setup_input_play=  new ButtonClass();g_setup_input_play[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU)};if(g_click_to_dig== false){g_toggle_right_to_flag[_0xe113[701]]();g_toggle_hold_to_flag[_0xe113[701]]()}else {if(g_hold_to_flag== true){g_toggle_right_to_flag[_0xe113[701]]();g_toggle_mark_first[_0xe113[701]]()}else {g_toggle_hold_to_flag[_0xe113[701]]();g_toggle_mark_first[_0xe113[701]]()}};this[_0xe113[54]]()},mark_x:0,mark_y:0,hold_x:0,hold_y:0,right_x:0,right_y:0,play_x:0,play_y:0,screen_resized:function(){g_setup_input_text[_0xe113[29]](32,32);this[_0xe113[702]]= 32;this[_0xe113[703]]= 3* 64;this[_0xe113[704]]= 32;this[_0xe113[705]]= 4* 64;this[_0xe113[706]]= 32;this[_0xe113[707]]= 5* 64;this[_0xe113[453]]= screen_width- 64;this[_0xe113[454]]= screen_height- 64;g_toggle_mark_first[_0xe113[29]](this[_0xe113[702]],this[_0xe113[703]]);g_toggle_hold_to_flag[_0xe113[29]](this[_0xe113[704]],this[_0xe113[705]]);g_toggle_right_to_flag[_0xe113[29]](this[_0xe113[706]],this[_0xe113[707]]);g_text_right_to_flag[_0xe113[29]](this[_0xe113[706]]+ 64,this[_0xe113[707]]);g_text_hold_to_flag[_0xe113[29]](this[_0xe113[704]]+ 64,this[_0xe113[705]]);g_text_mark_first[_0xe113[29]](this[_0xe113[702]]+ 64,this[_0xe113[703]]);g_setup_input_play[_0xe113[29]](this[_0xe113[453]],this[_0xe113[454]])},cleanup:function(){g_toggle_right_to_flag[_0xe113[47]]();g_toggle_hold_to_flag[_0xe113[47]]();g_toggle_mark_first[_0xe113[47]]();g_setup_input_text[_0xe113[29]](-999,-999);g_text_right_to_flag[_0xe113[29]](-999,-999);g_text_hold_to_flag[_0xe113[29]](-999,-999);g_text_mark_first[_0xe113[29]](-999,-999);g_setup_input_play[_0xe113[47]]();if(g_toggle_right_to_flag[_0xe113[708]]== true){g_hold_to_flag= false;g_click_to_dig= true}else {if(g_toggle_hold_to_flag[_0xe113[708]]== true){g_hold_to_flag= true;g_click_to_dig= true}else {if(g_toggle_mark_first[_0xe113[708]]== true){g_click_to_dig= false}}}},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[704]]- 19&& mouse[_0xe113[167]]< this[_0xe113[704]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[705]]- 19&& mouse[_0xe113[344]]< this[_0xe113[705]]+ 19){g_toggle_hold_to_flag[_0xe113[701]]();if(g_toggle_mark_first[_0xe113[708]]== 1){g_toggle_mark_first[_0xe113[701]]()};if(g_toggle_right_to_flag[_0xe113[708]]== 1){g_toggle_right_to_flag[_0xe113[701]]()}}else {if(mouse[_0xe113[167]]> this[_0xe113[702]]- 19&& mouse[_0xe113[167]]< this[_0xe113[702]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[703]]- 19&& mouse[_0xe113[344]]< this[_0xe113[703]]+ 19){g_toggle_mark_first[_0xe113[701]]();if(g_toggle_right_to_flag[_0xe113[708]]== 1){g_toggle_right_to_flag[_0xe113[701]]()};if(g_toggle_hold_to_flag[_0xe113[708]]== 1){g_toggle_hold_to_flag[_0xe113[701]]()}}else {if(mouse[_0xe113[167]]> this[_0xe113[706]]- 19&& mouse[_0xe113[167]]< this[_0xe113[706]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[707]]- 19&& mouse[_0xe113[344]]< this[_0xe113[707]]+ 19){g_toggle_right_to_flag[_0xe113[701]]();if(g_toggle_mark_first[_0xe113[708]]== 1){g_toggle_mark_first[_0xe113[701]]()};if(g_toggle_hold_to_flag[_0xe113[708]]== 1){g_toggle_hold_to_flag[_0xe113[701]]()}}else {if(mouse[_0xe113[167]]> this[_0xe113[453]]- 19&& mouse[_0xe113[167]]< this[_0xe113[453]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[454]]- 19&& mouse[_0xe113[344]]< this[_0xe113[454]]+ 19){this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}}}}});challenge_select_header= null;challenge_select_subheader= null;challenge_select_easy_button= null;challenge_select_med_button= null;challenge_select_hard_button= null;challenge_select_nosmiley_button= null;challenge_select_easy_text= null;challenge_select_med_text= null;challenge_select_hard_text= null;challenge_select_nosmiley_text= null;ChallengeLevelsSelectHardness= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[47]]();background_container[_0xe113[47]]();if(challenge_select_header== null){challenge_select_header=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_header[_0xe113[224]](Types[_0xe113[223]].SMALL);challenge_select_header[_0xe113[226]](_0xe113[709]);challenge_select_subheader=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_subheader[_0xe113[224]](Types[_0xe113[223]].XSMALL);challenge_select_subheader[_0xe113[226]](_0xe113[710]);challenge_select_easy_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_easy_text[_0xe113[224]](Types[_0xe113[223]].SMALL);challenge_select_easy_text[_0xe113[226]](_0xe113[711]);challenge_select_med_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_med_text[_0xe113[224]](Types[_0xe113[223]].SMALL);challenge_select_med_text[_0xe113[226]](_0xe113[712]);challenge_select_nosmiley_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_nosmiley_text[_0xe113[224]](Types[_0xe113[223]].SMALL);challenge_select_nosmiley_text[_0xe113[226]](_0xe113[713]);challenge_select_hard_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);challenge_select_hard_text[_0xe113[224]](Types[_0xe113[223]].SMALL);if(using_cocoon_js== true){challenge_select_hard_text[_0xe113[226]](_0xe113[714])}else {challenge_select_hard_text[_0xe113[226]](_0xe113[715])};challenge_select_easy_button=  new SpriteClass();challenge_select_easy_button[_0xe113[222]](_0xe113[716],Types[_0xe113[27]].GAME_MENU);challenge_select_med_button=  new SpriteClass();challenge_select_med_button[_0xe113[222]](_0xe113[717],Types[_0xe113[27]].GAME_MENU);challenge_select_hard_button=  new SpriteClass();challenge_select_hard_button[_0xe113[222]](_0xe113[630],Types[_0xe113[27]].GAME_MENU);challenge_select_nosmiley_button=  new SpriteClass();challenge_select_nosmiley_button[_0xe113[222]](_0xe113[716],Types[_0xe113[27]].GAME_MENU)};challenge_select_easy_button[_0xe113[77]]();challenge_select_med_button[_0xe113[77]]();challenge_select_hard_button[_0xe113[77]]();challenge_select_nosmiley_button[_0xe113[77]]();this[_0xe113[54]]()},cleanup:function(){challenge_select_subheader[_0xe113[29]](-999,-999);challenge_select_header[_0xe113[29]](-999,-999);challenge_select_easy_text[_0xe113[29]](-999,-999);challenge_select_med_text[_0xe113[29]](-999,-999);challenge_select_hard_text[_0xe113[29]](-999,-999);challenge_select_nosmiley_text[_0xe113[29]](-999,-999);challenge_select_easy_button[_0xe113[47]]();challenge_select_med_button[_0xe113[47]]();challenge_select_hard_button[_0xe113[47]]();challenge_select_nosmiley_button[_0xe113[47]]()},easy_x:0,easy_y:0,med_x:0,med_y:0,hard_x:0,hard_y:0,nosmiley_x:0,nosmiley_y:0,screen_resized:function(){challenge_select_header[_0xe113[29]](16,16);challenge_select_subheader[_0xe113[29]](16,16+ 32);if(screen_width> screen_height){this[_0xe113[718]]= screen_width* 0.25;this[_0xe113[719]]= screen_width* 0.5;this[_0xe113[720]]= screen_width* 0.75;this[_0xe113[721]]= screen_height* 0.5;this[_0xe113[722]]= screen_height* 0.5;this[_0xe113[723]]= screen_height* 0.5;this[_0xe113[724]]= screen_width* 0.5;this[_0xe113[725]]= screen_height* 0.75}else {this[_0xe113[718]]= screen_width* 0.25;this[_0xe113[719]]= screen_width* 0.25;this[_0xe113[720]]= screen_width* 0.25;this[_0xe113[721]]= screen_height* 0.25;this[_0xe113[722]]= screen_height* 0.5;this[_0xe113[723]]= screen_height* 0.75;this[_0xe113[724]]= screen_width* 0.75;this[_0xe113[725]]= screen_height* 0.25};challenge_select_easy_text[_0xe113[29]](this[_0xe113[718]],this[_0xe113[721]]+ 32);challenge_select_med_text[_0xe113[29]](this[_0xe113[719]],this[_0xe113[722]]+ 32);challenge_select_hard_text[_0xe113[29]](this[_0xe113[720]],this[_0xe113[723]]+ 32);challenge_select_nosmiley_text[_0xe113[29]](this[_0xe113[724]],this[_0xe113[725]]+ 32);challenge_select_easy_text[_0xe113[324]](this[_0xe113[718]]);challenge_select_med_text[_0xe113[324]](this[_0xe113[719]]);challenge_select_hard_text[_0xe113[324]](this[_0xe113[720]]);challenge_select_hard_text[_0xe113[324]](this[_0xe113[720]]);challenge_select_nosmiley_text[_0xe113[324]](this[_0xe113[724]]);challenge_select_easy_button[_0xe113[29]](this[_0xe113[718]],this[_0xe113[721]]);challenge_select_med_button[_0xe113[29]](this[_0xe113[719]],this[_0xe113[722]]);challenge_select_hard_button[_0xe113[29]](this[_0xe113[720]],this[_0xe113[723]]);challenge_select_nosmiley_button[_0xe113[29]](this[_0xe113[724]],this[_0xe113[725]])},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[718]]- 19&& mouse[_0xe113[167]]< this[_0xe113[718]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[721]]- 19&& mouse[_0xe113[344]]< this[_0xe113[721]]+ 19){this[_0xe113[191]][_0xe113[161]]= 1;this[_0xe113[191]][_0xe113[193]]= 6;this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(mouse[_0xe113[167]]> this[_0xe113[719]]- 19&& mouse[_0xe113[167]]< this[_0xe113[719]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[722]]- 19&& mouse[_0xe113[344]]< this[_0xe113[722]]+ 19){this[_0xe113[191]][_0xe113[161]]= 2;this[_0xe113[191]][_0xe113[193]]= 6;this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(mouse[_0xe113[167]]> this[_0xe113[720]]- 19&& mouse[_0xe113[167]]< this[_0xe113[720]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[723]]- 19&& mouse[_0xe113[344]]< this[_0xe113[723]]+ 19){this[_0xe113[191]][_0xe113[161]]= 3;this[_0xe113[191]][_0xe113[193]]= 6;this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(mouse[_0xe113[167]]> this[_0xe113[724]]- 19&& mouse[_0xe113[167]]< this[_0xe113[724]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[725]]- 19&& mouse[_0xe113[344]]< this[_0xe113[725]]+ 19){this[_0xe113[191]][_0xe113[161]]= 4;this[_0xe113[191]][_0xe113[193]]= 6;this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}}}}});ChallengeLevelsOverworld= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4}});g_toggle_hand= null;g_toggle_heart= null;g_toggle_eye= null;g_toggle_8hand= null;g_toggle_plus= null;g_toggle_join= null;g_toggle_compass= null;g_toggle_crown= null;g_toggle_eyebracket= null;g_toggle_share= null;g_toggle_zap= null;g_toggle_timer= null;g_toggle_wall= null;g_setuprand_play= null;g_setuprand_title= null;g_setuprand_subtitle= null;g_setuprand_subtitle2= null;g_setuprand_text_levelshape= null;g_setuprand_levelshape= 0;SetupRandStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[47]]();if(g_toggle_eye== null){g_toggle_eye=  new MultiToggleClass();g_toggle_eye[_0xe113[222]](_0xe113[635],Types[_0xe113[27]].GAME_MENU);g_toggle_share=  new MultiToggleClass();g_toggle_share[_0xe113[222]](_0xe113[726],Types[_0xe113[27]].GAME_MENU);g_toggle_hand=  new MultiToggleClass();g_toggle_hand[_0xe113[222]](_0xe113[656],Types[_0xe113[27]].GAME_MENU);g_toggle_8hand=  new MultiToggleClass();g_toggle_8hand[_0xe113[222]](_0xe113[727],Types[_0xe113[27]].GAME_MENU);g_toggle_plus=  new MultiToggleClass();g_toggle_plus[_0xe113[222]](_0xe113[728],Types[_0xe113[27]].GAME_MENU);g_toggle_join=  new MultiToggleClass();g_toggle_join[_0xe113[222]](_0xe113[729],Types[_0xe113[27]].GAME_MENU);g_toggle_heart=  new MultiToggleClass();g_toggle_heart[_0xe113[222]](_0xe113[228],Types[_0xe113[27]].GAME_MENU);g_toggle_compass=  new MultiToggleClass();g_toggle_compass[_0xe113[222]](_0xe113[730],Types[_0xe113[27]].GAME_MENU);g_toggle_crown=  new MultiToggleClass();g_toggle_crown[_0xe113[222]](_0xe113[660],Types[_0xe113[27]].GAME_MENU);g_toggle_eyebracket=  new MultiToggleClass();g_toggle_eyebracket[_0xe113[222]](_0xe113[664],Types[_0xe113[27]].GAME_MENU);g_toggle_zap=  new MultiToggleClass();g_toggle_zap[_0xe113[222]](_0xe113[731],Types[_0xe113[27]].GAME_MENU);g_toggle_wall=  new MultiToggleClass();g_toggle_wall[_0xe113[222]](_0xe113[732],Types[_0xe113[27]].GAME_MENU);g_toggle_timer=  new MultiToggleClass();g_toggle_timer[_0xe113[222]](_0xe113[733],Types[_0xe113[27]].GAME_MENU);g_toggle_timer[_0xe113[701]]();g_toggle_timer[_0xe113[701]]();g_setuprand_play=  new ButtonClass();g_setuprand_play[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU);g_setuprand_title=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_setuprand_title[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_setuprand_title[_0xe113[226]](_0xe113[734]);g_setuprand_subtitle=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_setuprand_subtitle[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_setuprand_subtitle[_0xe113[226]](_0xe113[735]);g_setuprand_text_levelshape=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_setuprand_text_levelshape[_0xe113[224]](Types[_0xe113[223]].SMALL);g_setuprand_text_levelshape[_0xe113[226]](_0xe113[736])};g_setuprand_play[_0xe113[77]]();this[_0xe113[54]]()},cleanup:function(){g_toggle_eye[_0xe113[47]]();g_toggle_hand[_0xe113[47]]();g_toggle_8hand[_0xe113[47]]();g_toggle_plus[_0xe113[47]]();g_toggle_join[_0xe113[47]]();g_toggle_heart[_0xe113[47]]();g_toggle_share[_0xe113[47]]();g_toggle_compass[_0xe113[47]]();g_toggle_crown[_0xe113[47]]();g_setuprand_play[_0xe113[47]]();g_toggle_eyebracket[_0xe113[47]]();g_toggle_zap[_0xe113[47]]();g_toggle_timer[_0xe113[47]]();g_toggle_wall[_0xe113[47]]();g_setuprand_title[_0xe113[29]](-999,-999);g_setuprand_subtitle[_0xe113[29]](-999,-999);g_setuprand_text_levelshape[_0xe113[29]](-999,-999);play_screen_container[_0xe113[77]]()},eye_x:0,eye_y:0,eyebracket_x:0,eyebracket_y:0,hand_x:0,hand_y:0,share_x:0,share_y:0,eighthand_x:0,eighthand_y:0,plus_x:0,plus_y:0,join_x:0,join_y:0,heart_x:0,heart_y:0,compass_x:0,compass_y:0,crown_x:0,crown_y:0,zap_x:0,zap_y:0,timer_x:0,timer_y:0,wall_x:0,wall_y:0,play_x:0,play_y:0,leveltype_x:0,leveltype_y:0,screen_resized:function(){g_setuprand_title[_0xe113[29]](32,32);g_setuprand_subtitle[_0xe113[29]](32,64);this[_0xe113[737]]= screen_width* 0.25;this[_0xe113[738]]= 3* 52;this[_0xe113[739]]= screen_width* 0.25;this[_0xe113[740]]= 4* 52;this[_0xe113[741]]= screen_width* 0.5;this[_0xe113[742]]= 4* 52;this[_0xe113[743]]=  -999;this[_0xe113[744]]=  -999;this[_0xe113[745]]= screen_width* 0.25;this[_0xe113[746]]= 5* 52;this[_0xe113[747]]= screen_width* 0.25;this[_0xe113[748]]= 6* 52;this[_0xe113[749]]= screen_width* 0.75;this[_0xe113[750]]= 3* 52;this[_0xe113[751]]= screen_width* 0.75;this[_0xe113[752]]= 4* 52;this[_0xe113[753]]= screen_width* 0.75;this[_0xe113[754]]= 5* 52;this[_0xe113[755]]= screen_width* 0.75;this[_0xe113[756]]= 6* 52;this[_0xe113[757]]= screen_width* 0.5;this[_0xe113[758]]= 3* 52;this[_0xe113[87]]= screen_width* 0.5;this[_0xe113[88]]= 5* 52;this[_0xe113[759]]= screen_width* 0.5;this[_0xe113[760]]= 6* 52;this[_0xe113[453]]= screen_width- 64;this[_0xe113[454]]= screen_height- 64;this[_0xe113[761]]= screen_width* 0.25;this[_0xe113[762]]= 7* 52;g_toggle_eye[_0xe113[29]](this[_0xe113[737]],this[_0xe113[738]]);g_toggle_hand[_0xe113[29]](this[_0xe113[739]],this[_0xe113[740]]);g_toggle_8hand[_0xe113[29]](this[_0xe113[741]],this[_0xe113[742]]);g_toggle_plus[_0xe113[29]](this[_0xe113[743]],this[_0xe113[744]]);g_toggle_join[_0xe113[29]](this[_0xe113[745]],this[_0xe113[746]]);g_toggle_heart[_0xe113[29]](this[_0xe113[747]],this[_0xe113[748]]);g_toggle_crown[_0xe113[29]](this[_0xe113[751]],this[_0xe113[752]]);g_toggle_compass[_0xe113[29]](this[_0xe113[749]],this[_0xe113[750]]);g_toggle_eyebracket[_0xe113[29]](this[_0xe113[753]],this[_0xe113[754]]);g_toggle_share[_0xe113[29]](this[_0xe113[755]],this[_0xe113[756]]);g_toggle_zap[_0xe113[29]](this[_0xe113[757]],this[_0xe113[758]]);g_toggle_timer[_0xe113[29]](this[_0xe113[87]],this[_0xe113[88]]);g_toggle_wall[_0xe113[29]](this[_0xe113[759]],this[_0xe113[760]]);g_setuprand_text_levelshape[_0xe113[29]](this[_0xe113[761]],this[_0xe113[762]]);g_setuprand_play[_0xe113[29]](this[_0xe113[453]],this[_0xe113[454]])},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[737]]- 19&& mouse[_0xe113[167]]< this[_0xe113[737]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[738]]- 19&& mouse[_0xe113[344]]< this[_0xe113[738]]+ 19){g_toggle_eye[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[739]]- 19&& mouse[_0xe113[167]]< this[_0xe113[739]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[740]]- 19&& mouse[_0xe113[344]]< this[_0xe113[740]]+ 19){g_toggle_hand[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[741]]- 19&& mouse[_0xe113[167]]< this[_0xe113[741]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[742]]- 19&& mouse[_0xe113[344]]< this[_0xe113[742]]+ 19){g_toggle_8hand[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[743]]- 19&& mouse[_0xe113[167]]< this[_0xe113[743]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[744]]- 19&& mouse[_0xe113[344]]< this[_0xe113[744]]+ 19){g_toggle_plus[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[745]]- 19&& mouse[_0xe113[167]]< this[_0xe113[745]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[746]]- 19&& mouse[_0xe113[344]]< this[_0xe113[746]]+ 19){g_toggle_join[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[751]]- 19&& mouse[_0xe113[167]]< this[_0xe113[751]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[752]]- 19&& mouse[_0xe113[344]]< this[_0xe113[752]]+ 19){g_toggle_crown[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[749]]- 19&& mouse[_0xe113[167]]< this[_0xe113[749]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[750]]- 19&& mouse[_0xe113[344]]< this[_0xe113[750]]+ 19){g_toggle_compass[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[747]]- 19&& mouse[_0xe113[167]]< this[_0xe113[747]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[748]]- 19&& mouse[_0xe113[344]]< this[_0xe113[748]]+ 19){g_toggle_heart[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[753]]- 19&& mouse[_0xe113[167]]< this[_0xe113[753]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[754]]- 19&& mouse[_0xe113[344]]< this[_0xe113[754]]+ 19){g_toggle_eyebracket[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[755]]- 19&& mouse[_0xe113[167]]< this[_0xe113[755]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[756]]- 19&& mouse[_0xe113[344]]< this[_0xe113[756]]+ 19){g_toggle_share[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[759]]- 19&& mouse[_0xe113[167]]< this[_0xe113[759]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[760]]- 19&& mouse[_0xe113[344]]< this[_0xe113[760]]+ 19){g_toggle_wall[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[757]]- 19&& mouse[_0xe113[167]]< this[_0xe113[757]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[758]]- 19&& mouse[_0xe113[344]]< this[_0xe113[758]]+ 19){g_toggle_zap[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[87]]- 19&& mouse[_0xe113[167]]< this[_0xe113[87]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[88]]- 19&& mouse[_0xe113[344]]< this[_0xe113[88]]+ 19){g_toggle_timer[_0xe113[701]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[453]]- 19&& mouse[_0xe113[167]]< this[_0xe113[453]]+ 19&& mouse[_0xe113[344]]> this[_0xe113[454]]- 19&& mouse[_0xe113[344]]< this[_0xe113[454]]+ 19){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(mouse[_0xe113[167]]> this[_0xe113[761]]- 19&& mouse[_0xe113[167]]< this[_0xe113[761]]+ 164&& mouse[_0xe113[344]]> this[_0xe113[762]]- 19&& mouse[_0xe113[344]]< this[_0xe113[762]]+ 19){g_setuprand_levelshape++;if(g_setuprand_levelshape== 2){g_setuprand_levelshape= 0}}}}}}}}}}}}}}}};if(g_setuprand_levelshape== 0){g_setuprand_text_levelshape[_0xe113[241]](_0xe113[736])}else {if(g_setuprand_levelshape== 1){g_setuprand_text_levelshape[_0xe113[241]](_0xe113[763])}else {if(g_setuprand_levelshape== 2){g_setuprand_text_levelshape[_0xe113[241]](_0xe113[764])}else {if(g_setuprand_levelshape== 3){g_setuprand_text_levelshape[_0xe113[241]](_0xe113[765])}}}}}});g_credits_title= null;g_credits_subtitle= null;g_credits= _0xe113[766];CreditsStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;play_screen_container[_0xe113[47]]();if(g_credits_title== null){g_credits_title=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_credits_title[_0xe113[224]](Types[_0xe113[223]].MEDIUM);g_credits_title[_0xe113[226]](_0xe113[767]);g_credits_subtitle=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_credits_subtitle[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_credits_subtitle[_0xe113[226]](g_credits)};this[_0xe113[54]]()},cleanup:function(){g_credits_title[_0xe113[29]](-999,-999);g_credits_subtitle[_0xe113[29]](-999,-999);play_screen_container[_0xe113[77]]()},screen_resized:function(){g_credits_title[_0xe113[29]](32,32);g_credits_subtitle[_0xe113[29]](32,64)},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){}});g_reusable_text= null;beg_yes_button= null;beg_yes_text= null;beg_no_button= null;beg_no_text= null;beg_text= null;g_seen_beg= 0;p_beg_smiley_level= [[0,4,4,3,5,4,4,4],[4,9,9,17,17,35,29,1],[4,29,30,16,30,2,16,9],[4,17,17,9,2,1,2,33],[3,30,30,17,33,16,16,17],[4,30,10,17,30,17,29,2],[5,9,16,10,9,9,16,34],[3,10,29,17,35,17,32,34]];p_beg_smiley_colour= [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,3,3,2,3,3,3,2,2,2,3,3];BegForRatingState= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f;play_screen_container[_0xe113[77]]();play_screen_container[_0xe113[200]](0);if(g_reusable_text== null){};if(beg_yes_button== null){beg_yes_button=  new SpriteClass();beg_yes_button[_0xe113[222]](_0xe113[228],Types[_0xe113[27]].GAME_MENU);beg_no_button=  new SpriteClass();beg_no_button[_0xe113[222]](_0xe113[557],Types[_0xe113[27]].GAME_MENU);beg_yes_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);beg_yes_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);beg_yes_text[_0xe113[226]](_0xe113[768]);beg_no_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);beg_no_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);beg_no_text[_0xe113[226]](_0xe113[769]);beg_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);beg_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);beg_text[_0xe113[226]](_0xe113[770])};beg_yes_button[_0xe113[77]]();beg_no_button[_0xe113[77]]();beg_yes_text[_0xe113[77]]();beg_no_text[_0xe113[77]]();beg_text[_0xe113[77]]();background_group[_0xe113[77]]();play_screen_group[_0xe113[77]]();var _0xb5aax2c=1;this[_0xe113[191]][_0xe113[159]](p_beg_smiley_level,_0xb5aax2c);var _0xb5aaxd9=0;for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[65]]= 0;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[104]]= 1;if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 2){var _0xb5aaxd=p_beg_smiley_colour[_0xb5aaxd9];this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]();this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[591]]= true;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[583]]= _0xb5aaxd}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]()};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[181]]();_0xb5aaxd9++}};this[_0xe113[191]][_0xe113[206]]();this[_0xe113[191]][_0xe113[207]]();this[_0xe113[191]][_0xe113[208]]();g_level_size+= 5;do_resize();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(_0xb5aax5< this[_0xe113[191]][_0xe113[56]]&& _0xb5aax6< this[_0xe113[191]][_0xe113[57]]){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[77]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[47]]()}}};g_seen_beg++;this[_0xe113[54]]()},yes_x:0,yes_y:0,no_x:0,no_y:0,clicked_yes:false,mouse_down:false,handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[218]]= false},handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[218]]== true){return};this[_0xe113[218]]= true;if(mouse[_0xe113[167]]> this[_0xe113[771]]- 16&& mouse[_0xe113[167]]< this[_0xe113[771]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[772]]- 16&& mouse[_0xe113[344]]< this[_0xe113[772]]+ 16){if(this[_0xe113[773]]== true){return};this[_0xe113[773]]= true;open_url(_0xe113[774]);g_seen_beg+= 99;return};if(mouse[_0xe113[167]]> this[_0xe113[775]]- 16&& mouse[_0xe113[167]]< this[_0xe113[775]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[776]]- 16&& mouse[_0xe113[344]]< this[_0xe113[776]]+ 16){this[_0xe113[777]]()}},goto_next_gamestate:function(){if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {if(this[_0xe113[191]][_0xe113[193]]== 5){this[_0xe113[20]](this[_0xe113[30]], new InstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}},cleanup:function(){beg_yes_button[_0xe113[47]]();beg_no_button[_0xe113[47]]();beg_yes_text[_0xe113[47]]();beg_no_text[_0xe113[47]]();beg_text[_0xe113[47]]();background_group[_0xe113[77]]();play_screen_group[_0xe113[77]]()},screen_resized:function(){this[_0xe113[191]][_0xe113[54]]();if(screen_width< screen_height){}else {};this[_0xe113[771]]= screen_width- 32;this[_0xe113[772]]= screen_height- 64- 16;this[_0xe113[775]]= screen_width- 32;this[_0xe113[776]]= screen_height- 32;beg_yes_button[_0xe113[29]](this[_0xe113[771]],this[_0xe113[772]]);beg_yes_text[_0xe113[29]](this[_0xe113[771]]- 128- 64,this[_0xe113[772]]- 8);beg_no_button[_0xe113[29]](this[_0xe113[775]],this[_0xe113[776]]);beg_no_text[_0xe113[29]](this[_0xe113[775]]- 128,this[_0xe113[776]]- 8);beg_text[_0xe113[29]](32,screen_height- 200);beg_text[_0xe113[324]](screen_width* 0.5)}});g_pixoji_title= null;g_pixoji_title_img= null;g_first_time_button= null;g_first_time_text= null;g_menu_to_overworld_button= null;g_menu_to_overworld_text= null;g_menu_to_randgen_button= null;g_menu_to_randgen_text= null;g_menu_to_app_button= null;g_menu_to_app_text= null;g_menu_to_comm_lvl_button= null;g_menu_to_comm_lvl_text= null;g_menu_zblipdotcom_text= null;g_bitmap_menu_bg= null;g_menu_fb_button= null;g_menu_twitter_button= null;menu_fb_rect= null;MenuStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,attn_randommode:false,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[47]]();this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]][_0xe113[531]]();if(g_first_time_button== null){this[_0xe113[191]][_0xe113[76]]();g_first_time_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_first_time_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_first_time_text[_0xe113[226]](_0xe113[778]);g_pixoji_title_img=  new SpriteClass();g_pixoji_title_img[_0xe113[222]](_0xe113[630],Types[_0xe113[27]].HUD);g_first_time_button=  new SpriteClass();g_first_time_button[_0xe113[222]](_0xe113[779],Types[_0xe113[27]].GAME_MENU);g_menu_to_overworld_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_menu_to_overworld_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_menu_to_overworld_text[_0xe113[226]](_0xe113[780]);g_menu_to_overworld_button=  new SpriteClass();g_menu_to_overworld_button[_0xe113[222]](_0xe113[631],Types[_0xe113[27]].GAME_MENU);g_menu_to_randgen_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_menu_to_randgen_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_menu_to_randgen_text[_0xe113[226]](_0xe113[709]);g_menu_to_randgen_button=  new SpriteClass();g_menu_to_randgen_button[_0xe113[222]](_0xe113[643],Types[_0xe113[27]].GAME_MENU);g_menu_to_app_button=  new SpriteClass();g_menu_to_app_button[_0xe113[222]](_0xe113[630],Types[_0xe113[27]].GAME_MENU);g_menu_to_app_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_menu_to_app_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_menu_to_app_text[_0xe113[226]](_0xe113[781]);g_pixoji_title=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_pixoji_title[_0xe113[782]]= true;g_pixoji_title[_0xe113[224]](Types[_0xe113[223]].LARGE);g_pixoji_title[_0xe113[226]](_0xe113[783]);g_menu_zblipdotcom_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_menu_zblipdotcom_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_menu_zblipdotcom_text[_0xe113[226]](_0xe113[784]);g_spash_image=  new SplashClass();menu_fb_rect=  new SquareClass(0,0,29* 6,29* 4,Types[_0xe113[27]].GAME_MENU,0x4B4965,true);g_menu_fb_button=  new SpriteClass();g_menu_fb_button[_0xe113[222]](_0xe113[785],Types[_0xe113[27]].GAME_MENU);g_menu_twitter_button=  new SpriteClass();g_menu_twitter_button[_0xe113[222]](_0xe113[786],Types[_0xe113[27]].GAME_MENU)};g_spash_image[_0xe113[47]]();g_pixoji_title_img[_0xe113[47]]();g_pixoji_title[_0xe113[77]]();g_first_time_button[_0xe113[77]]();g_menu_to_overworld_button[_0xe113[77]]();g_menu_to_randgen_button[_0xe113[77]]();g_menu_to_app_button[_0xe113[77]]();this[_0xe113[54]]();if(g_all_level_status[g_total_num_of_levels- 1]== 4){this[_0xe113[787]]= true}},redo_background:function(){return},cleanup:function(){g_spash_image[_0xe113[47]]();g_first_time_button[_0xe113[47]]();g_menu_to_overworld_button[_0xe113[47]]();g_menu_to_randgen_button[_0xe113[47]]();g_menu_to_app_button[_0xe113[47]]();g_first_time_text[_0xe113[29]](-999,-999);g_menu_to_overworld_text[_0xe113[29]](-999,-999);g_menu_to_randgen_text[_0xe113[29]](-999,-999);g_menu_to_app_text[_0xe113[29]](-999,-999);g_pixoji_title_img[_0xe113[47]]();g_pixoji_title[_0xe113[29]](-999,-999);g_menu_zblipdotcom_text[_0xe113[29]](-999,-999);g_menu_fb_button[_0xe113[47]]();g_menu_twitter_button[_0xe113[47]]();menu_fb_rect[_0xe113[47]]()},first_x:0,first_y:0,overworld_x:0,overworld_y:0,randgen_x:0,randgen_y:0,fblogo_x:-999,fblogo_y:-999,twitterlogo_x:-999,twitterlogo_y:-999,zblip_x:-999,zblip_y:-999,app_x:-999,app_y:-999,screen_resized:function(){g_spash_image[_0xe113[29]](-999,-999);this[_0xe113[788]]();var _0xb5aaxda=0;var _0xb5aaxdb=40;var _0xb5aaxdc=true;if(screen_width< screen_height){g_pixoji_title[_0xe113[29]](32,16);g_pixoji_title[_0xe113[324]](screen_width* 0.5);_0xb5aaxda= 40;_0xb5aaxdb=  -8;_0xb5aaxdc= false;this[_0xe113[789]]= 0.25* screen_width;this[_0xe113[790]]= 0.25* screen_height;this[_0xe113[791]]= 0.25* screen_width;this[_0xe113[792]]= 0.45* screen_height;this[_0xe113[793]]= 0.25* screen_width;this[_0xe113[794]]= 0.65* screen_height;this[_0xe113[677]]= 0.25* screen_width;this[_0xe113[676]]= 0.85* screen_height;this[_0xe113[795]]=  -999;this[_0xe113[796]]=  -999;this[_0xe113[797]]=  -999;this[_0xe113[798]]=  -999;this[_0xe113[799]]=  -999;this[_0xe113[800]]=  -999;menu_fb_rect[_0xe113[47]]()}else {g_pixoji_title[_0xe113[29]](32,32);g_pixoji_title[_0xe113[324]](screen_width* 0.5);this[_0xe113[789]]= 0.25* screen_width;this[_0xe113[790]]= 0.5* screen_height;this[_0xe113[791]]= 0.5* screen_width;this[_0xe113[792]]= 0.5* screen_height;this[_0xe113[793]]= 0.75* screen_width;this[_0xe113[794]]= 0.5* screen_height;this[_0xe113[677]]= 0.5* screen_width;this[_0xe113[676]]= 0.75* screen_height;this[_0xe113[797]]= screen_width- 29- 0.5* 29;this[_0xe113[798]]= screen_height- 29- 0.5* 29;menu_fb_rect[_0xe113[77]]();menu_fb_rect[_0xe113[29]](this[_0xe113[797]]- 29- 3* 29,this[_0xe113[798]]- 29- 0.5* 29);this[_0xe113[795]]= screen_width* 0.5;this[_0xe113[796]]= screen_height- 16;this[_0xe113[799]]= screen_width- 29- 0.5* 29;this[_0xe113[800]]= screen_height- 29- 0.5* 29};if(using_cocoon_js== true){this[_0xe113[797]]=  -999;this[_0xe113[798]]=  -999;this[_0xe113[799]]=  -999;this[_0xe113[800]]=  -999;this[_0xe113[677]]=  -999;this[_0xe113[676]]=  -999;menu_fb_rect[_0xe113[47]]()};this[_0xe113[797]]=  -999;this[_0xe113[798]]=  -999;g_menu_fb_button[_0xe113[29]](this[_0xe113[797]],this[_0xe113[798]]);g_menu_fb_button[_0xe113[77]]();g_menu_twitter_button[_0xe113[29]](this[_0xe113[799]],this[_0xe113[800]]);g_menu_twitter_button[_0xe113[77]]();g_menu_zblipdotcom_text[_0xe113[29]](this[_0xe113[795]],this[_0xe113[796]]);g_menu_zblipdotcom_text[_0xe113[324]](this[_0xe113[795]]);g_first_time_button[_0xe113[29]](this[_0xe113[789]],this[_0xe113[790]]);g_first_time_text[_0xe113[29]](this[_0xe113[789]]+ _0xb5aaxda,this[_0xe113[790]]+ _0xb5aaxdb);if(_0xb5aaxdc){g_first_time_text[_0xe113[324]](this[_0xe113[789]])};g_menu_to_overworld_button[_0xe113[29]](this[_0xe113[791]],this[_0xe113[792]]);g_menu_to_overworld_text[_0xe113[29]](this[_0xe113[791]]+ _0xb5aaxda,this[_0xe113[792]]+ _0xb5aaxdb);if(_0xb5aaxdc){g_menu_to_overworld_text[_0xe113[324]](this[_0xe113[791]])};g_menu_to_randgen_button[_0xe113[29]](this[_0xe113[793]],this[_0xe113[794]]);g_menu_to_randgen_text[_0xe113[29]](this[_0xe113[793]]+ _0xb5aaxda,this[_0xe113[794]]+ _0xb5aaxdb);if(_0xb5aaxdc){g_menu_to_randgen_text[_0xe113[324]](this[_0xe113[793]])};g_menu_to_app_button[_0xe113[29]](this[_0xe113[677]],this[_0xe113[676]]);g_menu_to_app_text[_0xe113[29]](this[_0xe113[677]]+ _0xb5aaxda,this[_0xe113[676]]+ _0xb5aaxdb);if(_0xb5aaxdc){g_menu_to_app_text[_0xe113[324]](this[_0xe113[677]])}},clicked_fb:false,clicked_zblip:false,clicked_app:false,handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[797]]- 16&& mouse[_0xe113[167]]< this[_0xe113[797]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[798]]- 16&& mouse[_0xe113[344]]< this[_0xe113[798]]+ 16&& this[_0xe113[801]]== false){this[_0xe113[801]]= true;open_url(_0xe113[802]);return}else {if(mouse[_0xe113[167]]> this[_0xe113[799]]- 16&& mouse[_0xe113[167]]< this[_0xe113[799]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[800]]- 16&& mouse[_0xe113[344]]< this[_0xe113[800]]+ 16&& this[_0xe113[801]]== false){this[_0xe113[801]]= true;open_url(_0xe113[803]);return}else {if(mouse[_0xe113[167]]> this[_0xe113[795]]- 24&& mouse[_0xe113[167]]< this[_0xe113[795]]+ 24&& mouse[_0xe113[344]]> this[_0xe113[796]]- 16&& mouse[_0xe113[344]]< this[_0xe113[796]]+ 16&& this[_0xe113[804]]== false){this[_0xe113[804]]= true;open_url(_0xe113[805]);return}else {if(mouse[_0xe113[167]]> this[_0xe113[677]]- 24&& mouse[_0xe113[167]]< this[_0xe113[677]]+ 24&& mouse[_0xe113[344]]> this[_0xe113[676]]- 16&& mouse[_0xe113[344]]< this[_0xe113[676]]+ 16&& this[_0xe113[683]]== false){this[_0xe113[683]]= true;open_url(gettheapp_url);return}}}}},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[789]]- 100&& mouse[_0xe113[167]]< this[_0xe113[789]]+ 100&& mouse[_0xe113[344]]> this[_0xe113[790]]- 28&& mouse[_0xe113[344]]< this[_0xe113[790]]+ 28){this[_0xe113[191]][_0xe113[194]]= 0;this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[20]](this[_0xe113[30]], new LoadInstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};if(mouse[_0xe113[167]]> this[_0xe113[791]]- 40&& mouse[_0xe113[167]]< this[_0xe113[791]]+ 40&& mouse[_0xe113[344]]> this[_0xe113[792]]- 28&& mouse[_0xe113[344]]< this[_0xe113[792]]+ 28){g_overworld_to_show= 0;this[_0xe113[191]][_0xe113[193]]= 0;this[_0xe113[20]](this[_0xe113[30]], new OverworldStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};if(mouse[_0xe113[167]]> this[_0xe113[793]]- 40&& mouse[_0xe113[167]]< this[_0xe113[793]]+ 40&& mouse[_0xe113[344]]> this[_0xe113[794]]- 28&& mouse[_0xe113[344]]< this[_0xe113[794]]+ 28){this[_0xe113[191]][_0xe113[194]]= 7;this[_0xe113[191]][_0xe113[210]]= true;this[_0xe113[20]](this[_0xe113[30]], new ChallengeLevelsSelectHardness(this[_0xe113[30]],this[_0xe113[191]]));return}},attn_timer:0,draw:function(){if(this[_0xe113[787]]== true){this[_0xe113[806]]--;if(this[_0xe113[806]]<= 0){this[_0xe113[806]]= 60};var _0xb5aaxdd=this[_0xe113[806]]/ 60;g_menu_to_randgen_button[_0xe113[807]](1+ 0.25* _0xb5aaxdd,1+ 0.25* _0xb5aaxdd)};return;g_first_time_button[_0xe113[29]](this[_0xe113[789]],this[_0xe113[790]]);g_first_time_text[_0xe113[29]](this[_0xe113[789]],this[_0xe113[790]]+ 40);g_first_time_text[_0xe113[324]](this[_0xe113[789]]);g_menu_to_overworld_button[_0xe113[29]](this[_0xe113[791]],this[_0xe113[792]]);g_menu_to_overworld_text[_0xe113[29]](this[_0xe113[791]],this[_0xe113[792]]+ 40);g_menu_to_overworld_text[_0xe113[324]](this[_0xe113[791]]);g_menu_to_randgen_button[_0xe113[29]](this[_0xe113[793]],this[_0xe113[794]]);g_menu_to_randgen_text[_0xe113[29]](this[_0xe113[793]],this[_0xe113[794]]+ 40);g_menu_to_randgen_text[_0xe113[324]](this[_0xe113[793]])}});g_tut_reset_button= null;g_tut_skip_button= null;g_tut_next_button= null;g_tut_text= null;g_tut_highlight= null;g_tut_content= {0:{startclear:0,dofill:[],dodig:[],text:[_0xe113[808],_0xe113[809],_0xe113[810],_0xe113[811],_0xe113[812],_0xe113[813],_0xe113[814],_0xe113[815],_0xe113[816],_0xe113[817],_0xe113[818],_0xe113[819],_0xe113[820],_0xe113[821],_0xe113[822],_0xe113[823]],tiles:[[],[],[],[53],[53],[53],[42,43,44,52,53,54,62,63,64],[22],[11,12,13,21,22,23,31,32,33],[42],[31,32,33,41,42,43,51,52,53],[20],[10,11,20,21,30,31],[2],[1,2,3,11,12,13],[]],level:[[0,0,0,0,0,0,0,0,0],[0,16,1,9,2,9,1,9,1],[0,2,2,2,2,1,1,1,1],[0,9,2,9,2,9,1,9,1],[0,2,2,2,2,1,1,2,1],[0,9,1,16,2,16,1,9,2],[0,1,9,2,16,2,16,1,2],[0,9,1,16,2,16,2,9,2],[0,1,2,2,2,2,2,2,1]]}};LoadInstructionStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,x_pos:0,no_such_tut:false,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;if(g_tut_content[this[_0xe113[191]][_0xe113[194]]]== null){this[_0xe113[824]]= true}else {this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[825]]()}},load_tut:function(){var _0xb5aaxde=this[_0xe113[191]][_0xe113[194]];var _0xb5aax2c=1;this[_0xe113[191]][_0xe113[826]](_0xb5aaxde,_0xb5aax2c);for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[103]]== 2&& g_tut_content[_0xb5aaxde][_0xe113[527]]== 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[109]]()};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[181]]()}};this[_0xe113[191]][_0xe113[206]]();this[_0xe113[191]][_0xe113[207]]();this[_0xe113[191]][_0xe113[208]]();g_level_size++;do_resize();for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){if(_0xb5aax5< this[_0xe113[191]][_0xe113[56]]&& _0xb5aax6< this[_0xe113[191]][_0xe113[57]]){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[77]]()}else {this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[47]]()}}}},timer:0,update:function(_0xb5aax4){if(this[_0xe113[824]]== true){this[_0xe113[827]]();return};this[_0xe113[201]]--;if(this[_0xe113[201]]<= 0){this[_0xe113[828]]()}},goto_level:function(){this[_0xe113[191]][_0xe113[193]]= 0;var _0xb5aaxdf=true;this[_0xe113[20]](this[_0xe113[30]], new LoadingLevelStateClass(this[_0xe113[30]],this[_0xe113[191]],this[_0xe113[191]][_0xe113[194]],_0xb5aaxdf))},goto_tut:function(){this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[20]](this[_0xe113[30]], new InstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]))},cleanup:function(){play_screen_container[_0xe113[77]]();play_screen_container[_0xe113[200]](0)}});InstructionStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,next_x:0,next_y:0,skip_x:0,skip_y:0,reset_x:0,reset_y:0,tut_level:0,tut_substage:0,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[77]]();this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;this[_0xe113[829]]= this[_0xe113[191]][_0xe113[194]];if(g_tut_text== null){g_tut_next_button=  new SpriteClass();g_tut_next_button[_0xe113[222]](_0xe113[557],Types[_0xe113[27]].GAME_MENU);g_tut_next_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_tut_reset_button=  new SpriteClass();g_tut_reset_button[_0xe113[222]](_0xe113[554],Types[_0xe113[27]].GAME_MENU);g_tut_reset_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_tut_skip_button=  new SpriteClass();g_tut_skip_button[_0xe113[222]](_0xe113[830],Types[_0xe113[27]].GAME_MENU);g_tut_skip_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_tut_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_tut_text[_0xe113[224]](Types[_0xe113[223]].TUTSMALL);g_tut_text[_0xe113[226]](_0xe113[227]);g_tut_highlight=  new TutHighlightClass(this[_0xe113[191]])};g_tut_reset_button[_0xe113[77]]();g_tut_skip_button[_0xe113[77]]();g_tut_next_button[_0xe113[77]]();g_tut_text[_0xe113[77]]();this[_0xe113[831]](0);this[_0xe113[54]]()},screen_resized:function(){if(screen_width> screen_height){this[_0xe113[832]]= screen_width- 32;this[_0xe113[833]]= screen_height- 32;this[_0xe113[834]]= screen_width- 32;this[_0xe113[835]]= screen_height- 96;this[_0xe113[836]]= screen_width- 32;this[_0xe113[837]]= screen_height- 96- 64;g_tut_text[_0xe113[29]](96,screen_height- 64)}else {this[_0xe113[832]]= screen_width- 32;this[_0xe113[833]]= screen_height- 32;this[_0xe113[834]]= screen_width- 32;this[_0xe113[835]]= screen_height- 96;this[_0xe113[836]]= screen_width- 32;this[_0xe113[837]]= screen_height- 96- 64;g_tut_text[_0xe113[29]](96,screen_height- 64- 24);g_tut_text[_0xe113[224]](Types[_0xe113[223]].XSMALL)};if(this[_0xe113[191]][_0xe113[194]]== 0){this[_0xe113[837]]=  -999};if(this[_0xe113[838]]== 0){this[_0xe113[835]]=  -999};g_tut_text[_0xe113[324]](screen_width* 0.5);g_tut_next_button[_0xe113[29]](this[_0xe113[832]],this[_0xe113[833]]);g_tut_reset_button[_0xe113[29]](this[_0xe113[834]],this[_0xe113[835]]);g_tut_skip_button[_0xe113[29]](this[_0xe113[836]],this[_0xe113[837]])},update:function(){},skip:function(){this[_0xe113[838]]= 99999;this[_0xe113[839]]()},reset:function(){this[_0xe113[838]]=  -1;this[_0xe113[839]]()},next_substage:function(){g_tut_highlight[_0xe113[91]]();this[_0xe113[838]]++;if(this[_0xe113[838]]>= g_tut_content[this[_0xe113[829]]][_0xe113[524]][_0xe113[63]]){this[_0xe113[191]][_0xe113[193]]= 0;var _0xb5aaxdf=true;this[_0xe113[20]](this[_0xe113[30]], new LoadingLevelStateClass(this[_0xe113[30]],this[_0xe113[191]],this[_0xe113[191]][_0xe113[194]],_0xb5aaxdf));return};this[_0xe113[831]](this[_0xe113[838]]);this[_0xe113[54]]()},set_tut_substage:function(_0xb5aaxe0){g_tut_next_button[_0xe113[807]](1,1);if(_0xb5aaxe0>= g_tut_content[this[_0xe113[829]]][_0xe113[524]][_0xe113[63]]){return};g_tut_text[_0xe113[241]](g_tut_content[this[_0xe113[829]]][_0xe113[524]][_0xb5aaxe0]);for(var _0xb5aax17=0;_0xb5aax17< g_tut_content[this[_0xe113[829]]][_0xe113[33]][_0xb5aaxe0][_0xe113[63]];_0xb5aax17++){var _0xb5aaxe1=g_tut_content[this[_0xe113[829]]][_0xe113[33]][_0xb5aaxe0][_0xb5aax17];var _0xb5aax6=Math[_0xe113[131]](_0xb5aaxe1/ 10);var _0xb5aax5=_0xb5aaxe1% 10;g_tut_highlight[_0xe113[840]](_0xb5aax5,_0xb5aax6)};g_tut_highlight[_0xe113[470]]();var _0xb5aaxe2=false;for(var _0xb5aaxa3=0;_0xb5aaxa3< g_tut_content[this[_0xe113[829]]][_0xe113[528]][_0xe113[63]];_0xb5aaxa3++){if(_0xb5aaxe0== g_tut_content[this[_0xe113[829]]][_0xe113[528]][_0xb5aaxa3]){g_tut_highlight[_0xe113[841]]()}};var _0xb5aaxe3=false;for(var _0xb5aaxa3=0;_0xb5aaxa3< g_tut_content[this[_0xe113[829]]][_0xe113[529]][_0xe113[63]];_0xb5aaxa3++){if(_0xb5aaxe0== g_tut_content[this[_0xe113[829]]][_0xe113[529]][_0xb5aaxa3]){g_tut_highlight[_0xe113[842]]()}}},cleanup:function(){g_tut_next_button[_0xe113[47]]();g_tut_skip_button[_0xe113[47]]();g_tut_reset_button[_0xe113[47]]();g_tut_text[_0xe113[47]]();g_tut_highlight[_0xe113[91]]();g_tut_highlight[_0xe113[47]]()},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(mouse[_0xe113[167]]> this[_0xe113[832]]- 32&& mouse[_0xe113[167]]< this[_0xe113[832]]+ 32&& mouse[_0xe113[344]]> this[_0xe113[833]]- 32&& mouse[_0xe113[344]]< this[_0xe113[833]]+ 32){this[_0xe113[839]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[834]]- 32&& mouse[_0xe113[167]]< this[_0xe113[834]]+ 32&& mouse[_0xe113[344]]> this[_0xe113[835]]- 32&& mouse[_0xe113[344]]< this[_0xe113[835]]+ 32){this[_0xe113[91]]()}else {if(mouse[_0xe113[167]]> this[_0xe113[836]]- 32&& mouse[_0xe113[167]]< this[_0xe113[836]]+ 32&& mouse[_0xe113[344]]> this[_0xe113[837]]- 32&& mouse[_0xe113[344]]< this[_0xe113[837]]+ 32){this[_0xe113[843]]()}}}},attn_timer:0,draw:function(){if(this[_0xe113[838]]== 0){this[_0xe113[806]]--;if(this[_0xe113[806]]<=  -30&& this[_0xe113[838]]== 0){this[_0xe113[806]]= 30};var _0xb5aaxdd=this[_0xe113[806]]/ 30;g_tut_next_button[_0xe113[807]](1+ 0.33* _0xb5aaxdd,1+ 0.33* _0xb5aaxdd)}}});g_next_level_button= null;g_next_level_text= null;g_win_message= null;use_browser_cookies= false;g_win_fb= null;g_win_fb_text= null;g_win_twit= null;g_win_twit_text= null;g_win_save_state= null;g_win_save_state_text= null;g_star_rating_obj= null;g_win_picturename= null;g_win_poptilesprite= null;WinStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,next_x:0,next_y:0,fb_y:-999,fb_x:-999,save_y:-999,save_x:-999,show_save_option:true,allow_rating:false,init:function(_0xb5aax4,_0xb5aax4f){play_screen_container[_0xe113[77]]();this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4;var _0xb5aaxe4=g_all_level_status;if(this[_0xe113[191]][_0xe113[193]]== 6){if(this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aaxe4= g_all_level_status[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aaxe4= g_all_level_status[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aaxe4= g_all_level_status[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aaxe4= g_all_level_status[_0xe113[164]]}};if(this[_0xe113[191]][_0xe113[209]]== 0){_0xb5aaxe4[this[_0xe113[191]][_0xe113[194]]]= 4};total_levels_played++;levels_until_ad--;if(on_kong&& kongregate[_0xe113[420]][_0xe113[419]]()> 0&& this[_0xe113[191]][_0xe113[193]]== 3){this[_0xe113[421]]= true};if(use_browser_cookies){this[_0xe113[844]]();this[_0xe113[845]]= false};if(g_star_rating_obj== null){g_star_rating_obj=  new StarRatingClass();g_star_rating_obj[_0xe113[47]]()};if(g_next_level_button== null){g_win_poptilesprite=  new SpriteClass();g_win_poptilesprite[_0xe113[222]](_0xe113[846],Types[_0xe113[27]].GAME_MENU);g_win_poptilesprite[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_next_level_button=  new SpriteClass();g_next_level_button[_0xe113[222]](_0xe113[557],Types[_0xe113[27]].GAME_MENU);g_next_level_button[_0xe113[29]](screen_width+ 200,screen_height* 0.5);g_next_level_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_next_level_text[_0xe113[224]](Types[_0xe113[223]].SMALL);g_next_level_text[_0xe113[226]](_0xe113[847]);g_win_message=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_win_message[_0xe113[224]](Types[_0xe113[223]].SMALL);g_win_message[_0xe113[226]](_0xe113[848]);g_win_picturename=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_win_picturename[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_win_picturename[_0xe113[226]](_0xe113[849]);g_win_twit_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_win_twit_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_win_twit_text[_0xe113[226]](_0xe113[850]);g_win_twit=  new SpriteClass();g_win_twit[_0xe113[222]](_0xe113[635],Types[_0xe113[27]].GAME_MENU);g_win_save_state_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_win_save_state_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_win_save_state_text[_0xe113[226]](_0xe113[851]);g_win_save_state=  new SpriteClass();g_win_save_state[_0xe113[222]](_0xe113[852],Types[_0xe113[27]].GAME_MENU)};if(this[_0xe113[191]][_0xe113[193]]== 3&& this[_0xe113[421]]== true){g_star_rating_obj[_0xe113[77]]()};g_win_poptilesprite[_0xe113[47]]();g_win_fb[_0xe113[29]](-999,-999);g_win_fb_text[_0xe113[29]](-999,-999);g_win_twit[_0xe113[29]](-999,-999);p_colour_folder= g_all_level_data_colour_layer;p_picturetext_folder= g_all_level_data_text;if(this[_0xe113[191]][_0xe113[193]]== 6){this[_0xe113[191]][_0xe113[209]]= 0;if(this[_0xe113[191]][_0xe113[161]]== 1){p_colour_folder= g_all_level_data_colour_layer[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){p_colour_folder= g_all_level_data_colour_layer[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){p_colour_folder= g_all_level_data_colour_layer[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){p_colour_folder= g_all_level_data_colour_layer[_0xe113[164]]};if(this[_0xe113[191]][_0xe113[161]]== 1){p_picturetext_folder= g_all_level_data_text[_0xe113[160]]};if(this[_0xe113[191]][_0xe113[161]]== 2){p_picturetext_folder= g_all_level_data_text[_0xe113[162]]};if(this[_0xe113[191]][_0xe113[161]]== 3){p_picturetext_folder= g_all_level_data_text[_0xe113[163]]};if(this[_0xe113[191]][_0xe113[161]]== 4){p_picturetext_folder= g_all_level_data_text[_0xe113[164]]}};if(p_colour_folder[this[_0xe113[191]][_0xe113[194]]]!= null&& p_colour_folder[this[_0xe113[191]][_0xe113[194]]][_0xe113[63]]> 0){this[_0xe113[853]]= true;var _0xb5aaxd9=0;for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[57]];_0xb5aax6++){for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[56]];_0xb5aax5++){if(_0xb5aaxd9>= p_colour_folder[this[_0xe113[191]][_0xe113[194]]][_0xe113[63]]){continue};var _0xb5aaxd=p_colour_folder[this[_0xe113[191]][_0xe113[194]]][_0xb5aaxd9];this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[583]]= _0xb5aaxd;_0xb5aaxd9++}}};var _0xb5aax29=this[_0xe113[191]][_0xe113[194]]+ 1;if(p_picturetext_folder[this[_0xe113[191]][_0xe113[194]]]!= null&& p_colour_folder[this[_0xe113[191]][_0xe113[194]]][_0xe113[63]]> 0&& this[_0xe113[191]][_0xe113[209]]== 0){g_win_picturename[_0xe113[241]](_0xe113[280]+ _0xb5aax29+ _0xe113[854]+ p_picturetext_folder[this[_0xe113[191]][_0xe113[194]]])}else {g_win_picturename[_0xe113[241]](_0xe113[280]+ _0xb5aax29+ _0xe113[854]+ this[_0xe113[191]][_0xe113[209]]+ _0xe113[855])};g_win_picturename[_0xe113[77]]();this[_0xe113[54]]()},do_colour:false,bg_colour:0,do_background:false,submit_kong_stats:function(){var _0xb5aaxe5=0;for(lvl in g_all_level_status){if(g_all_level_status[lvl]== 4){_0xb5aaxe5++}};kongregate[_0xe113[858]][_0xe113[857]](_0xe113[856],_0xb5aaxe5)},save_state_localstorage:function(){localStorage[_0xe113[310]](_0xe113[859],cookie_string)},save_state_community_levels:function(){for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){if(g_community_list_data[_0xb5aaxc][_0xe113[470]]!= null&& g_community_list_data[_0xb5aaxc][_0xe113[470]]== true){localStorage[_0xe113[310]](_0xe113[479]+ g_community_list_data[_0xb5aaxc][_0xe113[471]],_0xe113[473])}}},save_state:function(){var _0xb5aaxe6= new Date();var _0xb5aaxe7=_0xb5aaxe6[_0xe113[584]]();var _0xb5aaxe8=_0xb5aaxe7+ 6* 20000* 36000;_0xb5aaxe6[_0xe113[860]](_0xb5aaxe8);var _0xb5aaxe9=_0xe113[861];var _0xb5aaxea=_0xe113[227];var _0xb5aaxeb=_0xe113[227];for(levelnum in g_all_level_status){};if(using_cocoon_js== false){document[_0xe113[862]]= _0xb5aaxe9+ _0xe113[863]};if(this[_0xe113[191]][_0xe113[193]]== 3){this[_0xe113[864]]()};var _0xb5aaxec=0;if(g_click_to_dig== true){_0xb5aaxec= 1};var _0xb5aaxed=0;if(g_hold_to_flag== true){_0xb5aaxed= 1};if(using_cocoon_js== false){document[_0xe113[862]]= _0xe113[865]+ _0xb5aaxec.toString()+ _0xe113[863];document[_0xe113[862]]= _0xe113[866]+ _0xb5aaxed.toString()+ _0xe113[863]};localStorage[_0xe113[310]](_0xe113[867],_0xb5aaxec.toString());localStorage[_0xe113[310]](_0xe113[868],_0xb5aaxed.toString());if(using_cocoon_js== true){localStorage[_0xe113[310]](_0xe113[869],total_levels_played.toString());localStorage[_0xe113[310]](_0xe113[870],levels_until_ad.toString());localStorage[_0xe113[310]](_0xe113[871],g_seen_beg.toString())};localStorage[_0xe113[310]](_0xe113[872],JSON[_0xe113[309]](g_all_level_status))},go_to_fb:function(){window[_0xe113[464]](_0xe113[873])},go_to_twit:function(){window[_0xe113[464]](_0xe113[803])},starrate_x:0,starrate_y:0,screen_resized:function(){this[_0xe113[191]][_0xe113[54]]();this[_0xe113[428]]=  -999;this[_0xe113[429]]=  -999;if(screen_width> screen_height){this[_0xe113[832]]= screen_width- 32;this[_0xe113[833]]= screen_height- 32;if(this[_0xe113[191]][_0xe113[193]]== 1){};this[_0xe113[436]]= screen_width- 6* 26;this[_0xe113[437]]= 140;g_win_picturename[_0xe113[29]](16,16)}else {this[_0xe113[832]]= screen_width- 32;this[_0xe113[833]]= screen_height- 32;this[_0xe113[428]]=  -999;this[_0xe113[429]]=  -999;g_win_picturename[_0xe113[29]](screen_width* 0.5,screen_height- 96);g_win_picturename[_0xe113[324]](screen_width* 0.5)};if(using_cocoon_js== true){this[_0xe113[428]]=  -999};g_star_rating_obj[_0xe113[29]](this[_0xe113[436]],this[_0xe113[437]]);if(this[_0xe113[191]][_0xe113[193]]!= 3|| this[_0xe113[421]]== false){g_star_rating_obj[_0xe113[47]]()};this[_0xe113[874]]= 250;if(this[_0xe113[845]]== true){this[_0xe113[428]]=  -999;if(screen_width> screen_height){this[_0xe113[875]]= screen_width- 32;this[_0xe113[874]]= screen_height- 64- 16- 8}else {this[_0xe113[875]]= screen_width- 32;this[_0xe113[874]]= screen_height- 64- 64- 16}};if(this[_0xe113[191]][_0xe113[194]]% 6== 0){}else {};g_win_fb[_0xe113[29]](this[_0xe113[428]],this[_0xe113[429]]);g_win_fb_text[_0xe113[29]](this[_0xe113[428]]- 220,this[_0xe113[429]]- 6);g_win_fb[_0xe113[77]]();g_win_save_state[_0xe113[77]]();g_win_save_state[_0xe113[29]](this[_0xe113[875]],this[_0xe113[874]]);g_win_save_state_text[_0xe113[29]](this[_0xe113[875]]- 230,this[_0xe113[874]]- 8);if(screen_width> screen_height){g_win_message[_0xe113[29]](screen_width- 124,20)}else {g_win_message[_0xe113[29]](screen_width* 0.5,screen_height- 128);g_win_message[_0xe113[324]](screen_width* 0.5)};g_next_level_button[_0xe113[29]](this[_0xe113[832]],this[_0xe113[833]]);g_next_level_text[_0xe113[29]](this[_0xe113[832]]- 175,this[_0xe113[833]]- 8)},colourtimer:45,colour_x:0,colour_y:0,bg_timer:45,update:function(){this[_0xe113[191]][_0xe113[199]]();this[_0xe113[876]]--;if(this[_0xe113[876]]<= 0&& this[_0xe113[853]]== true){this[_0xe113[876]]= 4;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[153]]= false;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[155]]= false;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[156]]= false;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[154]]= false;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[152]]=  -1;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[104]]= 1;if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[103]]== 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[298]]();if(this[_0xe113[587]]== 0){this[_0xe113[587]]= this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[583]]}}else {if(g_sound_on== true){playSoundInstance(_0xe113[879],0.05)}};this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[591]]= true;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[181]]();this[_0xe113[878]]++;if(this[_0xe113[878]]>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[878]]= 0;this[_0xe113[877]]++;if(this[_0xe113[877]]>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[853]]= false;this[_0xe113[880]]= false;this[_0xe113[878]]= 0;this[_0xe113[877]]= 0;this[_0xe113[881]]= 15}}};this[_0xe113[881]]--;if(this[_0xe113[881]]<= 0&& this[_0xe113[880]]== true){this[_0xe113[881]]= 2;if(this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[103]]== 0){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[583]]= this[_0xe113[587]];this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[591]]= true;this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[170]](2);this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][this[_0xe113[878]]][this[_0xe113[877]]]][_0xe113[181]]()};this[_0xe113[878]]++;if(this[_0xe113[878]]>= this[_0xe113[191]][_0xe113[56]]){this[_0xe113[878]]= 0;this[_0xe113[877]]++;if(this[_0xe113[877]]>= this[_0xe113[191]][_0xe113[57]]){this[_0xe113[880]]= false;this[_0xe113[878]]= 0;this[_0xe113[877]]= 0}}}},cleanup:function(){g_win_poptilesprite[_0xe113[47]]();g_win_message[_0xe113[29]](-999,-999);g_next_level_button[_0xe113[29]](-999,-999);g_next_level_text[_0xe113[29]](-999,-999);g_win_fb_text[_0xe113[29]](-999,-999);g_win_picturename[_0xe113[47]]();g_win_fb[_0xe113[47]]();g_win_save_state_text[_0xe113[29]](-999,-999);g_win_save_state[_0xe113[47]]();g_win_twit_text[_0xe113[29]](-999,-999);g_win_twit[_0xe113[47]]();g_star_rating_obj[_0xe113[47]]();if(use_browser_cookies== true){this[_0xe113[844]]();if(on_kong&& kongregate[_0xe113[420]][_0xe113[419]]()> 0){this[_0xe113[882]]()}}},draw:function(){this[_0xe113[191]][_0xe113[175]]()},clicked_social:0,handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[883]]== 1){return};if(mouse[_0xe113[167]]> this[_0xe113[428]]- 16&& mouse[_0xe113[167]]< this[_0xe113[428]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[429]]- 16&& mouse[_0xe113[344]]< this[_0xe113[429]]+ 16){this[_0xe113[883]]= 1;if(this[_0xe113[191]][_0xe113[194]]% 6== 0){this[_0xe113[884]]()}else {this[_0xe113[681]]()};return}},user_clicked_save:false,handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){var _0xb5aax79=0;if(this[_0xe113[191]][_0xe113[193]]== 3){g_star_rating_obj[_0xe113[443]](mouse[_0xe113[167]],mouse[_0xe113[344]])};if(mouse[_0xe113[167]]> this[_0xe113[875]]- 16&& mouse[_0xe113[167]]< this[_0xe113[875]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[874]]- 16&& mouse[_0xe113[344]]< this[_0xe113[874]]+ 16){if(this[_0xe113[885]]== true){this[_0xe113[885]]= false;use_browser_cookies= false;g_win_save_state[_0xe113[644]](_0xe113[852]);return};use_browser_cookies= true;this[_0xe113[885]]= true;g_win_save_state[_0xe113[644]](_0xe113[886]);return};if(mouse[_0xe113[167]]> this[_0xe113[832]]- 32&& mouse[_0xe113[167]]< this[_0xe113[832]]+ 32&& mouse[_0xe113[344]]> this[_0xe113[833]]- 32&& mouse[_0xe113[344]]< this[_0xe113[833]]+ 32){_0xb5aax79= 1};if(_0xb5aax79== 1){if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new RestartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]));return}else {if(this[_0xe113[191]][_0xe113[193]]== 2){this[_0xe113[20]](this[_0xe113[30]], new LevelEditorStateClass(this[_0xe113[30]],this[_0xe113[191]]));for(var _0xb5aax5=0;_0xb5aax5< this[_0xe113[191]][_0xe113[32]];_0xb5aax5++){for(var _0xb5aax6=0;_0xb5aax6< this[_0xe113[191]][_0xe113[34]];_0xb5aax6++){this[_0xe113[191]][_0xe113[42]][this[_0xe113[191]][_0xe113[33]][_0xb5aax5][_0xb5aax6]][_0xe113[108]]= 1}};return}else {if(this[_0xe113[191]][_0xe113[193]]== 3){for(var _0xb5aaxc=0;_0xb5aaxc< g_community_list_data[_0xe113[63]];_0xb5aaxc++){if(g_current_community_level_id== g_community_list_data[_0xb5aaxc][_0xe113[471]]){g_community_list_data[_0xb5aaxc][_0xe113[470]]= true}};if(this[_0xe113[421]]== true&& g_star_rating_obj[_0xe113[887]]== 1){var _0xb5aax7a= new RateLevel(this[_0xe113[30]],this[_0xe113[191]]);_0xb5aax7a[_0xe113[445]]= g_current_community_level_id;_0xb5aax7a[_0xe113[444]]= g_star_rating_obj[_0xe113[444]];this[_0xe113[20]](this[_0xe113[30]],_0xb5aax7a);return};var _0xb5aax7b=true;this[_0xe113[20]](this[_0xe113[30]], new CommunityOverworldStateClass(this[_0xe113[30]],this[_0xe113[191]],_0xb5aax7b));return}}};this[_0xe113[191]][_0xe113[194]]++;var _0xb5aaxcc=g_total_num_of_levels;if(this[_0xe113[191]][_0xe113[193]]== 0&& using_cocoon_js== false){_0xb5aaxcc= g_levelnum_app_cutoff};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 1){_0xb5aaxcc= g_total_challenge_levels_easy};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 2){_0xb5aaxcc= g_total_challenge_levels_med};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 3){_0xb5aaxcc= g_total_challenge_levels_hard};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 4){_0xb5aaxcc= g_total_challenge_levels_nosmiley};if(this[_0xe113[191]][_0xe113[193]]== 6&& this[_0xe113[191]][_0xe113[161]]== 4&& using_cocoon_js== false){_0xb5aaxcc= g_levelnum_app_cutoff_nosmiley};var _0xb5aaxee=false;if(this[_0xe113[191]][_0xe113[194]]>= _0xb5aaxcc){_0xb5aaxee= true};if(_0xb5aaxee== true){this[_0xe113[20]](this[_0xe113[30]], new ChallengeLevelsSelectHardness(this[_0xe113[30]],this[_0xe113[191]]));return};if(g_tut_content[this[_0xe113[191]][_0xe113[194]]]!= null){this[_0xe113[191]][_0xe113[193]]= 5;this[_0xe113[20]](this[_0xe113[30]], new LoadInstructionStateClass(this[_0xe113[30]],this[_0xe113[191]]));return};this[_0xe113[20]](this[_0xe113[30]], new LoadingLevelStateClass(this[_0xe113[30]],this[_0xe113[191]],this[_0xe113[191]][_0xe113[194]],true))}}});crosspromote_list_loaded= 0;crosspromote_json= null;crosspromote_image= null;crosspromote_sprite= null;crosspromote_text= null;crosspromote_title= null;crosspromote_header= null;this_game_id= _0xe113[888];crosspromote_no_button= null;crosspromote_no_text= null;ShowZblipGame= GameStateClass[_0xe113[23]]({play_state:null,engine:null,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[30]]= _0xb5aax4;this[_0xe113[191]]= _0xb5aax4f},first_tick:0,update:function(){if(this[_0xe113[506]]> 0){return};this[_0xe113[506]]= 1;if(crosspromote_list_loaded== 0){crosspromote_list_loaded= 1;fetch_json(_0xe113[889],crosspromote_json);fetch_image(_0xe113[890],crosspromote_image);this[_0xe113[777]]();return}else {if(crosspromote_json== null|| crosspromote_image== null){this[_0xe113[777]]();return}else {if(crosspromote_json!= null&& crosspromote_image!= null){g_show_crosspromote= false;if(this_game_id== crosspromote_json[_0xe113[891]]){this[_0xe113[777]]();return};background_group[_0xe113[47]]();play_screen_group[_0xe113[47]]();crosspromote_sprite=  new SpriteClass();crosspromote_sprite[_0xe113[222]](_0xe113[892],Types[_0xe113[27]].GAME_MENU);crosspromote_sprite[_0xe113[29]](100,100);crosspromote_sprite[_0xe113[77]]();crosspromote_title=  new TextClass(Types[_0xe113[27]].GAME_MENU);crosspromote_title[_0xe113[224]](Types[_0xe113[223]].MEDIUM);crosspromote_title[_0xe113[226]](crosspromote_json[_0xe113[893]]);crosspromote_title[_0xe113[29]](194,96);crosspromote_title[_0xe113[77]]();crosspromote_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);crosspromote_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);crosspromote_text[_0xe113[226]](crosspromote_json[_0xe113[894]]);crosspromote_text[_0xe113[29]](194,132);crosspromote_text[_0xe113[77]]();crosspromote_header=  new TextClass(Types[_0xe113[27]].GAME_MENU);crosspromote_header[_0xe113[224]](Types[_0xe113[223]].XSMALL);crosspromote_header[_0xe113[226]](crosspromote_json[_0xe113[895]]);crosspromote_header[_0xe113[29]](194,132);crosspromote_header[_0xe113[77]]();crosspromote_no_button=  new ButtonClass();crosspromote_no_button[_0xe113[222]](_0xe113[450],Types[_0xe113[27]].GAME_MENU);crosspromote_no_button[_0xe113[29]](-999,-999);crosspromote_no_button[_0xe113[77]]();crosspromote_no_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);crosspromote_no_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);crosspromote_no_text[_0xe113[226]](_0xe113[896]);crosspromote_no_text[_0xe113[29]](-999,-999);crosspromote_no_text[_0xe113[77]]();this[_0xe113[54]]()}}}},ad_x:0,ad_y:0,clicked_ad:0,mouse_down:false,url:_0xe113[227],handle_mouse_down:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){if(this[_0xe113[218]]== true){return};this[_0xe113[218]]= true;var _0xb5aaxef=crosspromote_json[_0xe113[897]];if(using_cocoon_js== true&& crosspromote_json[_0xe113[898]]!= null){_0xb5aaxef= crosspromote_json[_0xe113[898]]};if(mouse[_0xe113[167]]> this[_0xe113[899]]- 545* 0.5&& mouse[_0xe113[167]]< this[_0xe113[899]]+ 545* 0.5&& mouse[_0xe113[344]]> this[_0xe113[900]]- 199* 0.5&& mouse[_0xe113[344]]< this[_0xe113[900]]+ 199* 0.5){if(this[_0xe113[901]]== 1){return};this[_0xe113[901]]= 1;window[_0xe113[464]](_0xb5aaxef);return}},handle_mouse_up:function(_0xb5aax4,_0xb5aax5,_0xb5aax6){this[_0xe113[218]]= false;if(mouse[_0xe113[167]]> this[_0xe113[899]]- 545* 0.5&& mouse[_0xe113[167]]< this[_0xe113[899]]+ 545* 0.5&& mouse[_0xe113[344]]> this[_0xe113[900]]- 199* 0.5&& mouse[_0xe113[344]]< this[_0xe113[900]]+ 199* 0.5){return};if(mouse[_0xe113[167]]> this[_0xe113[902]]- 16&& mouse[_0xe113[167]]< this[_0xe113[902]]+ 16&& mouse[_0xe113[344]]> this[_0xe113[903]]- 16&& mouse[_0xe113[344]]< this[_0xe113[903]]+ 16){this[_0xe113[777]]()}else {this[_0xe113[777]]()}},nope_x:0,nope_y:0,screen_resized:function(){this[_0xe113[191]][_0xe113[54]]();if(crosspromote_sprite== null){return};this[_0xe113[899]]= screen_width* 0.5;this[_0xe113[900]]= 140;this[_0xe113[902]]= screen_width- 64;this[_0xe113[903]]= screen_height- 64;if(screen_width> screen_height){crosspromote_sprite[_0xe113[29]](this[_0xe113[899]],this[_0xe113[900]]);crosspromote_title[_0xe113[29]](32,252);crosspromote_text[_0xe113[29]](32,292);crosspromote_header[_0xe113[29]](32,16)}else {crosspromote_sprite[_0xe113[29]](this[_0xe113[899]],this[_0xe113[900]]);crosspromote_title[_0xe113[29]](32,262);crosspromote_text[_0xe113[29]](32,302);crosspromote_header[_0xe113[29]](32,16)};crosspromote_no_button[_0xe113[29]](this[_0xe113[902]],this[_0xe113[903]]);crosspromote_no_text[_0xe113[29]](this[_0xe113[902]]- 116,this[_0xe113[903]]- 12);crosspromote_title[_0xe113[324]](this[_0xe113[899]]);crosspromote_header[_0xe113[324]](this[_0xe113[899]]);crosspromote_text[_0xe113[324]](this[_0xe113[899]])},cleanup:function(){if(crosspromote_sprite!= null){crosspromote_sprite[_0xe113[47]]()};if(crosspromote_title!= null){crosspromote_title[_0xe113[47]]()};if(crosspromote_text!= null){crosspromote_text[_0xe113[47]]()};if(crosspromote_header!= null){crosspromote_header[_0xe113[47]]()};if(crosspromote_no_button!= null){crosspromote_no_button[_0xe113[47]]()};if(crosspromote_no_text!= null){crosspromote_no_text[_0xe113[47]]()};background_group[_0xe113[77]]();play_screen_group[_0xe113[77]]()},goto_next_gamestate:function(){if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))}}});ShowRewardedAdStateClass= GameStateClass[_0xe113[23]]({});ShowAdStateClass= GameStateClass[_0xe113[23]]({play_state:null,engine:null,done:0,init:function(_0xb5aax4,_0xb5aax4f){this[_0xe113[191]]= _0xb5aax4f;this[_0xe113[30]]= _0xb5aax4},update:function(){if(g_interstitial_seen== true|| g_interstitial_failed== true|| g_interstitial_loaded== false|| cordova_ready== false){if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))};return};if(app_paused== true){if(this[_0xe113[191]][_0xe113[193]]== 1){this[_0xe113[20]](this[_0xe113[30]], new GenerateRandStateClass(this[_0xe113[30]],this[_0xe113[191]]))}else {this[_0xe113[20]](this[_0xe113[30]], new StartGameStateClass(this[_0xe113[30]],this[_0xe113[191]]))};return};if(this[_0xe113[470]]== 0&& app_paused== false){g_interstitial[_0xe113[904]]();g_interstitial_loaded= false};this[_0xe113[470]]= 1},cleanup:function(){},draw:function(){}});is_sitelocked= false;sitelock_urls= [_0xe113[905],_0xe113[906],_0xe113[907],_0xe113[908],_0xe113[909],_0xe113[910]];var g_interstitial;var g_interstitial_failed=false;var g_interstitial_loaded=false;var g_interstitial_seen=false;var g_show_ads=false;var g_show_crosspromote=true;if(is_sitelocked== true){g_show_crosspromote= false};var total_levels_played=0;var levels_until_ad=100;var app_paused=false;BootStateClass= GameStateClass[_0xe113[23]]({start_level:0,first_time:true,init:function(){g_win_fb_text=  new TextClass(Types[_0xe113[27]].GAME_MENU);g_win_fb_text[_0xe113[224]](Types[_0xe113[223]].XSMALL);g_win_fb_text[_0xe113[226]](_0xe113[911]);g_win_fb_text[_0xe113[47]]();g_win_fb=  new SpriteClass();g_win_fb[_0xe113[222]](_0xe113[785],Types[_0xe113[27]].GAME_MENU);g_win_fb[_0xe113[47]]();if(on_coolmath== true){use_browser_cookies= true};var _0xb5aaxf9=localStorage[_0xe113[300]](_0xe113[859]);var _0xb5aaxfa=localStorage[_0xe113[300]](_0xe113[867]);var _0xb5aaxfb=localStorage[_0xe113[300]](_0xe113[868]);zblip_pixoji_g_all_level_status= JSON[_0xe113[301]](window[_0xe113[912]][_0xe113[300]](_0xe113[872]));if(zblip_pixoji_g_all_level_status!= null){load_all_level_status(zblip_pixoji_g_all_level_status);this[_0xe113[913]]= false;this[_0xe113[914]]= 1;for(_0xb5aax29 in g_all_level_status){if(_0xb5aax29> this[_0xe113[914]]){this[_0xe113[914]]= _0xb5aax29}}};if(_0xb5aaxf9!= null){var _0xb5aaxfc=_0xb5aaxf9[_0xe113[497]](_0xe113[915]);for(lev in _0xb5aaxfc){var _0xb5aax29=Number(_0xb5aaxfc[lev]);if(_0xb5aax29< g_total_num_of_levels&& _0xb5aax29>= 0){g_all_level_status[_0xb5aax29]= 4;use_browser_cookies= true;if(_0xb5aax29> this[_0xe113[914]]){this[_0xe113[914]]= _0xb5aax29+ 2}}}};if(_0xb5aaxfa!= null){var _0xb5aaxfd=_0xb5aaxfa;if(_0xb5aaxfd== null|| _0xb5aaxfd== undefined){return};if(_0xb5aaxfd== _0xe113[472]){g_click_to_dig= false}else {g_click_to_dig= true}};if(_0xb5aaxfb!= null){var _0xb5aaxfd=_0xb5aaxfb;if(_0xb5aaxfd== null|| _0xb5aaxfd== undefined){return};if(_0xb5aaxfd== _0xe113[472]){g_hold_to_flag= false}else {g_hold_to_flag= true}};for(lev in _0xb5aaxfc){var _0xb5aaxcd=Number(_0xb5aaxfc[lev]);if(_0xb5aaxcd< g_total_num_of_levels&& _0xb5aaxcd>= 0){var _0xb5aaxfe=_0xe113[916]+ _0xb5aaxcd.toString();var _0xb5aaxff=localStorage[_0xe113[300]](_0xb5aaxfe);if(_0xb5aaxff!= null){g_all_level_status[_0xb5aaxcd]= 4;use_browser_cookies= true}}};if(using_cocoon_js== true){use_browser_cookies= true;var _0xb5aax100=localStorage[_0xe113[300]](_0xe113[917]);if(_0xb5aax100== null){_0xb5aax100= 0};localStorage[_0xe113[310]](_0xe113[917],_0xb5aax100+ 1);var _0xb5aax101=localStorage[_0xe113[300]](_0xe113[869]);if(_0xb5aax101== null){_0xb5aax101= 0};total_levels_played= _0xb5aax101;Cocoon[_0xe113[920]][_0xe113[919]](_0xe113[918],function(){app_paused= false});Cocoon[_0xe113[920]][_0xe113[919]](_0xe113[921],function(){app_paused= true});Cocoon[_0xe113[920]][_0xe113[919]](_0xe113[922],function(){app_paused= true});var _0xb5aax102=localStorage[_0xe113[300]](_0xe113[870]);if(_0xb5aax102== null){_0xb5aax102= 100};levels_until_ad= _0xb5aax102;var _0xb5aax103=localStorage[_0xe113[300]](_0xe113[871]);if(_0xb5aax103== null){_0xb5aax103= 0};g_seen_beg= _0xb5aax103;g_show_ads= true;var _0xb5aax104=_0xe113[923];g_interstitial= Cocoon[_0xe113[926]][_0xe113[925]][_0xe113[924]](_0xb5aax104);g_interstitial[_0xe113[919]](_0xe113[205],function(){g_interstitial_loaded= true;g_interstitial_failed= false;g_interstitial_seen= false});g_interstitial[_0xe113[919]](_0xe113[927],function(){g_interstitial_failed= true;g_interstitial_loaded= false});g_interstitial[_0xe113[919]](_0xe113[904],function(){g_interstitial_seen= true});g_interstitial[_0xe113[919]](_0xe113[928],function(){g_interstitial_seen= true});return};var _0xb5aax105=document[_0xe113[862]][_0xe113[497]](_0xe113[929]);for(var _0xb5aaxa in _0xb5aax105){var _0xb5aax106=_0xb5aax105[_0xb5aaxa][_0xe113[497]](_0xe113[930])[0];_0xb5aax106= _0xb5aax106[_0xe113[497]](_0xe113[888])[1];var _0xb5aax29=Number(_0xb5aax106);if(_0xb5aax29== null|| _0xb5aax29== undefined){continue};if(_0xb5aax29< g_total_num_of_levels&& _0xb5aax29>= 0){g_all_level_status[_0xb5aax29]= 4;use_browser_cookies= true;if(_0xb5aax29> this[_0xe113[914]]){this[_0xe113[914]]= _0xb5aax29+ 1}}};for(c in _0xb5aax105){var _0xb5aax107=_0xb5aax105[c][_0xe113[497]](_0xe113[930])[0];if(_0xb5aax107== _0xe113[867]){var _0xb5aaxfd=_0xb5aax105[c][_0xe113[497]](_0xe113[930])[1];if(_0xb5aaxfd== null|| _0xb5aaxfd== undefined){continue};if(_0xb5aaxfd== 0){g_click_to_dig= false}else {g_click_to_dig= true}}else {if(_0xb5aax107== _0xe113[868]){var _0xb5aaxfd=_0xb5aax105[c][_0xe113[497]](_0xe113[930])[1];if(_0xb5aaxfd== null|| _0xb5aaxfd== undefined){continue};if(_0xb5aaxfd== 0){g_hold_to_flag= false}else {g_hold_to_flag= true}}else {if(_0xb5aax107== _0xe113[859]){use_browser_cookies= true;var _0xb5aax108=_0xb5aax105[c][_0xe113[497]](_0xe113[930])[1];var _0xb5aaxfc=_0xb5aax108[_0xe113[497]](_0xe113[915]);for(lev in _0xb5aaxfc){var _0xb5aax29=Number(_0xb5aaxfc[lev]);if(_0xb5aax29< g_total_num_of_levels&& _0xb5aax29>= 0){g_all_level_status[_0xb5aax29]= 4;use_browser_cookies= true;if(_0xb5aax29> this[_0xe113[914]]){this[_0xe113[914]]= _0xb5aax29+ 2}}}}}}}},handle_events:function(_0xb5aax4,_0xb5aax5,_0xb5aax6,_0xb5aax7){if(_0xb5aax7== Types[_0xe113[2]][_0xe113[6]]){this[_0xe113[931]](_0xb5aax4)}},check_blacklist:function(){if(using_cocoon_js== true){return 0};var _0xb5aax109=location_hostname;return 0},check_sitelock:function(){if(is_sitelocked== false){return 1};var _0xb5aax109=location[_0xe113[932]];for(var _0xb5aax10a=0;_0xb5aax10a< sitelock_urls[_0xe113[63]];_0xb5aax10a++){if(sitelock_urls[_0xb5aax10a]== _0xb5aax109){return 1}};return 0},start_game:function(_0xb5aax4){if(is_sitelocked== true&& this[_0xe113[933]]()== 0){return};if(this[_0xe113[934]]()== 1){return};remove_splash();gBlipFrogMenu[_0xe113[935]]();gBlipFrogMenu[_0xe113[936]]();gBlipFrogMenu[_0xe113[937]]();var _0xb5aax4f= new PlayStateClass(_0xb5aax4);_0xb5aax4[_0xe113[21]](_0xb5aax4f);_0xb5aax4f[_0xe113[54]]();_0xb5aax4f[_0xe113[194]]= this[_0xe113[914]];g_hold_to_flag= true;g_click_to_dig= true;_0xb5aax4f[_0xe113[193]]= 0;play_screen_container[_0xe113[47]]();background_group[_0xe113[47]]();if(g_autoload_level!= null&& g_autoload_level[_0xe113[63]]> 10){_0xb5aax4[_0xe113[21]]( new CommunityFetchStateClass(_0xb5aax4,_0xb5aax4[_0xe113[938]]()))}else {if(_0xb5aax4f[_0xe113[194]]> 0|| this[_0xe113[913]]== false){_0xb5aax4[_0xe113[21]]( new OverworldStateClass(_0xb5aax4,_0xb5aax4[_0xe113[938]]()));_0xb5aax4f[_0xe113[91]]()}else {_0xb5aax4[_0xe113[21]]( new MenuStateClass(_0xb5aax4,_0xb5aax4[_0xe113[938]]()))}}},screen_resized:function(_0xb5aax4){},update:function(_0xb5aax4){this[_0xe113[931]](_0xb5aax4)},draw:function(){}});pBar[_0xe113[619]]+= 10
+// http://gamedevgeek.com/tutorials/managing-game-states-in-c/
+
+//var backend_url = 'http://localhost:3000/levels';//
+
+var backend_url = 'https://salty-ravine-95905.herokuapp.com/';
+
+
+//var backend_url = 'http://localhost:3000/'f
+
+GameStateClass = Class.extend({
+
+	
+
+	init: function(){
+		
+	},
+
+  	cleanup: function(){},
+
+  	pause: function(){},
+  	resume: function(){},
+
+	screen_resized: function(){},
+
+	
+
+	add_button: function(sprite, callback) {
+
+	},
+
+  	handle_events: function(engine,x,y, event_type){
+
+		if (event_type == Types.Events.WHEEL) {
+				
+			this.handle_wheel(); 
+			
+		}
+
+		if (event_type == Types.Events.MOUSE_CLICK_RIGHT) {
+			
+			this.handle_right_click(engine, x,y);
+			
+			//if (g_hold_to_flag == false && g_click_to_dig == true) this.handle_right_click(engine, x,y);
+			//else this.handle_mouse_up(engine,x,y);
+
+			return;
+		}
+
+		if (event_type == Types.Events.MOUSE_CLICK || event_type == Types.Events.MOUSE_UP) {
+	
+			this.handle_click(engine,x,y,event_type);
+		} else if (event_type == Types.Events.MOUSE_MOVE) {
+			this.handle_mouse_move(engine,x,y);
+		} else if (event_type == Types.Events.KEY_DOWN) {
+			this.handle_key(g_key_pressed);
+		} else {
+			
+		}
+
+		if(event_type == Types.Events.MOUSE_DOWN) {
+			
+			this.handle_mouse_down(engine,x,y);
+		}
+
+		if(event_type == Types.Events.MOUSE_UP) {
+			
+			this.handle_mouse_up(engine,x,y);
+		}
+
+	
+
+		if (event_type == Types.Events.LEFT_MOUSE_DOWN) this.handle_left_mouse(engine,x,y);
+		if (event_type == Types.Events.RIGHT_MOUSE_DOWN) this.handle_right_mouse(engine,x,y);
+	},
+
+	handle_key:function(keynum){},
+	handle_click: function(engine,x,y,event_type){},
+	handle_right_click: function(engine,x,y,event_type){},
+	handle_mouse_down: function(engine,x,y){},
+	handle_mouse_up: function(engine,x,y){},
+	handle_mouse_move: function(engine,x,y){},
+	handle_left_mouse: function(engine,x,y){},
+	handle_right_mouse: function(engine,x,y){},
+
+	handle_wheel: function(){},
+
+  	update: function(engine){},
+  	draw: function(engine){},
+	
+
+	change_state: function(engine, state) {
+		engine.change_state(state);
+		
+	},
+
+	push_state: function(engine, state) {
+		engine.push_state(state);
+	},
+
+	kill: function(engine) {
+		engine.pop_state();
+	}
+
+});
+
+
+
+// Introduced for coolmath API, but will likely be general:
+g_zblip_on_start_level = function (lvl) {
+	if (on_coolmath == false) return;
+
+	// parent.cmgGameEvent is a coolmath API function
+	if (parent.cmgGameEvent == null) return;
+
+	parent.cmgGameEvent("start", lvl.toString());
+};
+
+g_zblip_on_replay_level = function (lvl) {
+	if (on_coolmath == false) return;
+
+	// parent.cmgGameEvent is a coolmath API function
+	if (parent.cmgGameEvent == null) return;
+
+	parent.cmgGameEvent("replay", lvl.toString());
+};
+
+g_zblip_on_play_button = function () {
+	if (on_coolmath == false) return;
+
+	// parent.cmgGameEvent is a coolmath API function
+	if (parent.cmgGameEvent == null) return;
+
+	parent.cmgGameEvent("start");
+};
+
+// specific to coolmath API:
+unlockAllLevels = function () {
+	if (on_coolmath == false) return; // should only be called by coolmath anyway
+	
+	// but i'm starting with all levels unlocked anyway so this isn't needed
+};
+
+
+PlayStateClass = GameStateClass.extend({
+	
+
+	engine: null,
+
+	tiles: [],	// holds indexes to this.blocks
+	grid_w: 15,
+	grid_h: 15,
+	current_grid_w: 12,
+	current_grid_h: 12,
+	tile_size: 48,
+	blocks: [],	// 1D array of BlockClass objects
+
+	selected_tiles: [],	// really belongs in DuringStateClass, but putting it here so I dont have to use a global
+
+	joined_tiles: [],	// which group does this tile belong to
+				// delfault, 0, means NOT in a group
+
+	backup_level: [],	// backup before testing level for level editor
+
+	num_join_groups: 0,
+
+	current_level: 0,
+
+	info_obj: null,
+	gamepad: null,
+
+	game_mode: 0,	// what to do on victory or lose
+			// 0 campaign mode
+			// 1 is 1992 mode
+			// 2 testing level editor
+			// 3 community levels
+			// 5 tutorial screen
+			// 6 challenge level
+	
+	challenge_level_hardness: 0,
+
+
+	top_nono: [],
+	left_nono: [],
+
+	// special hint objects that are used to test for satisfaction
+	// set their position and type to the hint we are testing (.mimic())
+	// set their mode to count player-pixels, not actual input pixels (.pixel_mode = )
+	// then calc_hint
+	// then compare with the preset hint (.compare())
+	tester_edge_nono: null,
+	tester_tile_nono: null,
+
+	won_or_lost: false,	// for checking state on making a new level, did we just finish an old level?
+
+	on_flag_effect: null,
+
+	white_border: [],
+
+	mistakes_this_level: 0,
+
+	init: function(engine){
+
+	
+
+	if (false) {
+		var testbitm = new BitmapClass(Types.Layer.GAME_MENU, 100, 100);
+		
+		testbitm.add_tile(6,5,6); 
+		testbitm.add_tile(6,6,1);
+		//testbitm.add_tile(2,2,6); 
+		//testbitm.update_pos(25,25); 
+		
+		testbitm.add_tile(6,8,6); 
+		//testbitm.update_pos(25,25); 
+		testbitm.add_tile(6,9,6); 
+		
+		testbitm.update_pos(50,25); 
+		testbitm.add_tile(6,2,6); 
+		testbitm.update_pos(10,250); 
+		testbitm.add_tile(1,1,10); 
+		testbitm.update_pos(40,250); 
+		////console.log('play state init');
+	}
+		this.engine = engine;
+
+		if(screen_width < screen_height) {
+			//this.tile_size = screen_width/this.map_w;
+		} else {
+			//this.tile_size = Math.min(screen_height/this.map_h,64*this.map_h);
+		}
+
+		this.on_flag_effect = new OnFlagEffect(this);
+
+		for(var i = 0; i < this.grid_w; i++) {
+			this.tiles[i] = new Array(this.grid_h);
+
+			this.selected_tiles[i] = new Array(this.grid_h);
+
+			this.joined_tiles[i] = new Array(this.grid_h);
+
+			this.backup_level[i] = new Array(this.grid_h);
+
+		}
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.tiles[x][y] = -1; // empty
+
+				
+				this.joined_tiles[x][y] = 0;
+
+				this.selected_tiles[x][y] = 0;	// 1 is selected
+			}
+		}
+
+		for (var c = 0; c < this.grid_w; c++) {
+			this.top_nono.push(new EdgeNono(this, c, -1));
+		}
+
+		for (var r = 0; r < this.grid_h; r++) {
+			this.left_nono.push(new EdgeNono(this, -1, r));
+			//this.right_nono.push(new EdgeNono(this, -1, r, true, false));
+		}
+		
+
+		for(var g = 0; g < this.grid_w*this.grid_h; g++) {
+			var new_gem = new TileNono(this);
+			new_gem.index = g;
+	
+			this.blocks.push(new_gem);
+		}
+
+		this.tester_edge_nono = new EdgeNono(this, -1, -1); 
+		this.tester_edge_nono.pixel_mode = 2;
+
+		this.tester_tile_nono = new TileNono(this);
+		this.tester_tile_nono.pixel_mode = 2;
+		
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.change_tile(x,y,0);
+			}
+		}
+
+		for(var g = 0; g < this.grid_w*this.grid_h; g++) {
+			this.blocks[g].block_sprite.hide();
+		}
+		
+		for (var b = 0; b <= this.grid_w; b++) {
+			this.white_border[b] =  new SquareClass(0,0,this.tile_size*b ,this.tile_size*b,Types.Layer.TILE,0x222222,false);
+			this.white_border[b].hide();
+		}
+
+		
+		this.draw_background();
+
+		this.info_obj = new InfoClass(this);
+
+		this.gamepad = new GamepadClass();
+	
+
+		this.screen_resized();
+
+		
+
+		//var block_sprite = new SpriteClass();
+		//block_sprite.setup_sprite("block0.png",Types.Layer.TILE, 20,60);
+		//block_sprite.hide();
+		///block_sprite.make_vis();
+
+
+		if (g_solver_class) g_solver_class.setup(this);
+		if (g_solver_class) g_generator_class.setup(this, g_solver_class);
+		
+	},
+
+	is_pixel_same_as : function (pixel, x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel(x,y) == pixel) return true;
+	},
+
+	is_pixel_same_colour_as : function (pixel, x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel_colour(x,y) == pixel) return true;
+	},
+
+	is_pixel_lonely : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel(x,y) == 0) return false;	// nothing there
+		if (x > 0 && this.get_pixel(x - 1, y) > 0) return false;
+		if (y > 0 && this.get_pixel(x, y - 1) > 0) return false;
+		if (x < this.level_w - 1 && this.get_pixel(x + 1, y) > 0) return false;
+		if (y < this.level_h - 1 && this.get_pixel(x, y + 1) > 0) return false;
+
+		return true;
+	},
+
+	is_player_pixel_lonely : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+
+		if (this.get_player_pixel(x,y) == 0) return false;	// nothing there
+		if (x > 0 && this.get_player_pixel(x - 1, y) > 0) return false;
+		if (y > 0 && this.get_player_pixel(x, y - 1) > 0) return false;
+		if (x < this.level_w - 1 && this.get_player_pixel(x + 1, y) > 0) return false;
+		if (y < this.level_h - 1 && this.get_player_pixel(x, y + 1) > 0) return false;
+
+		return true;
+	},
+
+	is_pixel_social : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel(x,y) == 0) return false;	// nothing there
+		if (x > 0 && this.get_pixel(x - 1, y) == 0) return false;
+		if (y > 0 && this.get_pixel(x, y - 1) == 0) return false;
+		if (x < this.level_w - 1 && this.get_pixel(x + 1, y) == 0) return false;
+		if (y < this.level_h - 1 && this.get_pixel(x, y + 1) == 0) return false;
+
+		return true;
+	},
+
+	is_player_pixel_social : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+
+		if (this.get_player_pixel(x,y) == 0) return false;	// nothing there
+		if (x > 0 && this.get_player_pixel(x - 1, y) == 0) return false;
+		if (y > 0 && this.get_player_pixel(x, y - 1) == 0) return false;
+		if (x < this.level_w - 1 && this.get_player_pixel(x + 1, y) == 0) return false;
+		if (y < this.level_h - 1 && this.get_player_pixel(x, y + 1) == 0) return false;
+
+		return true;
+	},
+
+	// elbow pixels - 2 neighbours exactly
+	is_pixel_elbow : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel(x,y) == 0) return false;	// nothing there
+		var buddies = 0;
+		if (x > 0 && this.get_pixel(x - 1, y) > 0) buddies++;
+		if (y > 0 && this.get_pixel(x, y - 1) > 0) buddies++;
+		if (x < this.level_w - 1 && this.get_pixel(x + 1, y) > 0) buddies++;
+		if (y < this.level_h - 1 && this.get_pixel(x, y + 1) > 0) buddies++;
+
+		//if (buddies == 4 || buddies == 0) return false;
+		//return true;
+
+		if (buddies == 2) return true;
+
+		return false;
+	},
+
+	is_player_pixel_elbow : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+
+		if (this.get_player_pixel(x,y) == 0) return false;	// nothing there
+		var buddies = 0;
+		if (x > 0 && this.get_player_pixel(x - 1, y) > 0) buddies++;
+		if (y > 0 && this.get_player_pixel(x, y - 1) > 0) buddies++;
+		if (x < this.level_w - 1 && this.get_player_pixel(x + 1, y) > 0) buddies++;
+		if (y < this.level_h - 1 && this.get_player_pixel(x, y + 1) > 0) buddies++;
+
+		if (buddies == 2) return true;
+
+		return false;
+	},
+
+	// elbow pixels - 2 neighbours exactly
+	is_pixel_corner : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_pixel(x,y) == 0) return false;	// nothing there
+		var buddies = 0;
+		if (x > 0 && this.get_pixel(x - 1, y) > 0) buddies++;
+		if (y > 0 && this.get_pixel(x, y - 1) > 0) buddies++;
+		if (x < this.level_w - 1 && this.get_pixel(x + 1, y) > 0) buddies++;
+		if (y < this.level_h - 1 && this.get_pixel(x, y + 1) > 0) buddies++;
+
+		if (buddies != 2) return false;
+		if (x > 0 && this.get_pixel(x - 1, y) > 0 && x < this.level_w - 1 && this.get_pixel(x + 1, y) > 0) return false;
+		if (y > 0 && this.get_pixel(x, y - 1) > 0 && y < this.level_h - 1 && this.get_pixel(x, y + 1) > 0) return false;
+
+		return true;
+	},
+
+	is_player_pixel_corner : function ( x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+
+		if (this.get_player_pixel(x,y) == 0) return false;	// nothing there
+		var buddies = 0;
+		if (x > 0 && this.get_player_pixel(x - 1, y) > 0) buddies++;
+		if (y > 0 && this.get_player_pixel(x, y - 1) > 0) buddies++;
+		if (x < this.level_w - 1 && this.get_player_pixel(x + 1, y) > 0) buddies++;
+		if (y < this.level_h - 1 && this.get_player_pixel(x, y + 1) > 0) buddies++;
+
+		if (buddies != 2) return false;
+		if (x > 0 && this.get_player_pixel(x - 1, y) > 0 && x < this.level_w - 1 && this.get_player_pixel(x + 1, y) > 0) return false;
+		if (y > 0 && this.get_player_pixel(x, y - 1) > 0 && y < this.level_h - 1 && this.get_player_pixel(x, y + 1) > 0) return false;
+		return true;
+	},
+
+	get_pixel : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return 0;
+		return this.blocks[this.tiles[x][y]].get_num_mines();
+	},
+
+	get_pixel_colour : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return 0;
+		if (this.blocks[this.tiles[x][y]].get_num_mines() == 0) return 0;
+		else return 1;
+	},
+
+	is_player_pixel_same_as : function (pixel, x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_player_pixel(x,y) == pixel) return true;
+	},
+
+	is_player_pixel_colour_same_as : function (pixel, x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_player_pixel_colour(x,y) == pixel) return true;
+	},
+
+	
+	is_player_pixel_same_colour_as : function (pixel, x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return false;
+		
+		if (this.get_player_pixel_colour(x,y) == pixel) return true;
+	},
+	
+
+	get_player_pixel_b : function (b) {
+		if (b < 0 || b >= this.blocks.length) return 0;
+		return this.blocks[b].get_player_pixel();	// is_flagged -> this.mine_multi else 0
+	},
+
+	get_player_pixel : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return 0;
+		return this.blocks[this.tiles[x][y]].get_player_pixel();	// is_flagged -> this.mine_multi else 0
+	},
+
+	get_player_pixel_colour : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return 0;
+		if (this.blocks[this.tiles[x][y]].get_player_pixel() == 0) return 0;// is_flagged -> this.mine_multi else 0
+			return 1;
+	},
+
+	test_tile_hint : function (b_index) {
+		this.tester_tile_nono.mimic(this.blocks[b_index]);
+		this.tester_tile_nono.calc_hint(this.tester_tile_nono.symbol_type);
+		var ok = this.tester_tile_nono.compare(this.blocks[b_index]);
+		
+		if (ok == true) this.blocks[b_index].happy = true;
+		else this.blocks[b_index].happy = false;
+	},
+
+	test_edge_nonogram : function () {
+		for (var c = 0; c < this.grid_w; c++) {
+			
+			this.tester_edge_nono.mimic(this.top_nono[c]);
+			this.tester_edge_nono.calc_hint();
+			var ok = this.tester_edge_nono.compare(this.top_nono[c]);
+			if (ok == true) this.top_nono[c].grey();
+			else this.top_nono[c].ungrey();
+		}
+
+		for (var c = 0; c < this.grid_h; c++) {
+			this.tester_edge_nono.mimic(this.left_nono[c]);
+			this.tester_edge_nono.calc_hint();
+			var ok = this.tester_edge_nono.compare(this.left_nono[c]);
+			if (ok == true) this.left_nono[c].grey();
+			else this.left_nono[c].ungrey();
+
+			//this.tester_edge_nono.mimic(this.right_nono[c]);
+			//this.tester_edge_nono.calc_hint();
+			//var ok = this.tester_edge_nono.compare(this.right_nono[c]);
+			//if (ok == true) this.right_nono[c].grey();
+			//else this.right_nono[c].ungrey();
+		}
+	},
+
+	longest_nono: 0,
+
+	calc_edge_nonogram : function () {
+
+		this.longest_nono = 0.5;
+		g_top_nono_size = 0.5;
+		g_left_nono_size = 0.5;
+		
+		for (var c = 0; c < this.grid_w; c++) {
+			this.top_nono[c].calc_hint();
+			this.top_nono[c].show_hint();
+
+			//var matrix_num = this.top_nono[c].dna_hint_sequence;
+			//var rect_y = g_anysize_patterns[matrix_num].p[0].length + 1;
+
+			rect_y = this.top_nono[c].calc_space_needed();
+
+			this.longest_nono = Math.max(this.longest_nono, rect_y);
+			g_top_nono_size = Math.max(g_top_nono_size, rect_y);
+		}
+
+		for (var r = 0; r < this.grid_h; r++) {
+			this.left_nono[r].calc_hint();
+			this.left_nono[r].show_hint();	
+
+			//var matrix_num = this.left_nono[r].dna_hint_sequence;
+			//var rect_x = g_anysize_patterns[matrix_num].p[0].length + 1;
+
+			var rect_x = this.left_nono[r].calc_space_needed();
+
+			this.longest_nono = Math.max(this.longest_nono, rect_x);
+			g_left_nono_size = Math.max(g_left_nono_size, rect_x);
+
+			//this.right_nono[r].calc_hint();
+			//this.right_nono[r].show_hint();
+		}
+	},
+
+	resize: function() {
+		g_pixi_tilegrid_w = this.tile_size*this.level_w + 1;
+		g_pixi_tilegrid_h = this.tile_size*this.level_h + 1;
+		g_tilegrid_changed = true;
+
+		this.show_border();
+		//if (screen_width < screen_height) 
+		g_level_size = Math.max(this.level_w + this.longest_nono, 7);
+		g_level_w = this.level_w + this.longest_nono;
+		do_resize();
+	},
+
+	show_border: function() {
+		this.hide_border();
+		this.white_border[this.level_w].make_vis();
+		return;
+		if (this.level_w == 3) this.white_border3.make_vis();
+		else if (this.level_w == 4) this.white_border4.make_vis();
+		else if (this.level_w == 12) this.white_border12.make_vis();
+		else if (this.level_w == 12) this.white_border12.make_vis();
+		return;
+		//this.white_border.set_scale(1/level_ratio, 1/level_ratio)
+		this.white_border.update_size(0,0, this.level_w*this.tile_size , this.level_h*this.tile_size);
+		this.white_border.update_line_w(8);
+		this.white_border.make_vis();
+	},
+
+	hide_border:function() {
+		
+		for (var b = 0; b <= this.grid_w; b++) {
+			this.white_border[b].hide();
+		}
+	},
+	
+	reset_flowfill : function () {
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.blocks[this.tiles[x][y]].seen_by_flowfill = 0;	
+			}
+		}
+	},
+
+	mark_as_seen_by_flowfill : function (x, y) {
+		this.blocks[this.tiles[x][y]].seen_by_flowfill = 1;
+	},
+
+	is_seen_by_flowfill : function (x, y) {
+		return this.blocks[this.tiles[x][y]].is_seen_by_flowfill();
+	},
+
+	reset: function() {
+
+		this.num_joined_groups = 0;
+		this.level_timer = 0;
+
+		this.timer_x = [];
+		this.timer_y = [];
+		
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+
+
+				this.change_tile(x,y,0);
+				this.selected_tiles[x][y] = 0;
+				this.joined_tiles[x][y] = 0;
+
+				this.blocks[this.tiles[x][y]].preset_hint(0);
+
+				this.blocks[this.tiles[x][y]].join_group = 0;
+
+				//this.blocks[this.tiles[x][y]].cover();
+				//this.blocks[this.tiles[x][y]].uncover(true); // true - show hint (which is nothing)
+				//this.blocks[this.tiles[x][y]].deselect();
+				this.blocks[this.tiles[x][y]].reset();
+
+				
+
+				
+
+			}
+		}
+
+
+	},
+
+	level_timer: 0,
+
+	update_timer : function () {
+		if (this.timer_x.length == 0) return;
+
+		this.level_timer--;
+		
+
+		for (var t = 0; t < this.timer_x.length; t++) {
+			var x = this.timer_x[t];
+			var y = this.timer_y[t];
+			this.blocks[this.tiles[x][y]].set_timer(this.level_timer);
+		}
+	},
+
+	add_timer : function (x, y) {
+		this.timer_x.push(x);
+		this.timer_y.push(y);
+
+		this.level_timer += 30;
+
+		if (this.level_timer > 99) this.level_timer = 99;
+
+		for (var t = 0; t < this.timer_x.length; t++) {
+			var x = this.timer_x[t];
+			var y = this.timer_y[t];
+			this.blocks[this.tiles[x][y]].set_timer(this.level_timer);
+		}
+	},
+
+	calc_sequence_lengths : function () {
+		var current_sequence = 0;
+		var current_value = -1;
+		var current_seq_tiles = 0;
+		for(var x = 0; x < this.grid_w; x++) {
+			current_sequence = 0;
+			current_seq_tiles = 0;
+			current_value = -1;
+			for(var y = 0; y < this.grid_h; y++) {
+
+				
+				tile_ = this.get_block_type(x,y);
+				//if (tile_ == 2)	current_sequence++ += this.get_num_mines(x,y);
+				//else current_sequence = 0;
+
+				if (tile_ == current_value) current_seq_tiles++;
+				else {
+					current_value = tile_;
+					current_seq_tiles = 1;
+				
+				}
+
+				for (var mine_y = y - current_seq_tiles + 1; mine_y <= y; mine_y++) {
+					if (mine_y >= this.grid_h) continue;
+					if (mine_y < 0) continue;
+					this.blocks[this.tiles[x][mine_y]].my_vert_seq_length = current_sequence;
+					
+				}
+
+			}
+		}
+		current_sequence = 0;
+		current_seq_tiles = 0;
+
+		for(var y = 0; y < this.grid_h; y++) {
+			current_sequence = 0;
+			current_seq_tiles = 0;
+			current_value = -1;
+			for(var x = 0; x < this.grid_w; x++) {
+
+				tile_ = this.get_block_type(x,y);
+				//if (tile_ == 2)	current_sequence += this.get_num_mines(x,y);
+				//else current_sequence = 0;
+
+				if (tile_ == current_value) current_seq_tiles++;
+				else {
+					current_value = tile_;
+					current_seq_tiles = 1;
+				
+				}
+
+				for (var mine_x = x - current_seq_tiles + 1; mine_x <= x; mine_x++) {
+					if (mine_x >= this.grid_w) continue;
+					if (mine_x < 0) continue;
+					this.blocks[this.tiles[mine_x][y]].my_horiz_seq_length = current_sequence;
+				}
+			}
+		}
+	},
+
+
+	
+	is_undug_and_unflagged : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return false;
+
+		return this.blocks[this.tiles[x][y]].is_undug_and_unflagged();
+	},
+
+	is_solved : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return false;
+
+		return this.blocks[this.tiles[x][y]].is_solved();
+	},
+
+	is_flagged : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return false;
+
+		if (this.blocks[this.tiles[x][y]].covered_up == false) return false;
+
+		return this.blocks[this.tiles[x][y]].flag_on;
+	},
+
+	is_crossed : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return false;
+
+		if (this.blocks[this.tiles[x][y]].x_on == false) return false;
+
+		return this.blocks[this.tiles[x][y]].x_on;
+	},
+
+	is_covered : function (x, y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return false;
+
+		return this.blocks[this.tiles[x][y]].covered_up;
+	},
+
+	num_flagged: 0,
+	num_mines: 0,
+
+	count_up_flags : function () {
+		this.num_flagged = 0;
+		this.num_mines = 0;
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+
+				if (this.blocks[this.tiles[x][y]].block_type == 2) this.num_mines += this.get_num_mines(x,y);
+				if (this.blocks[this.tiles[x][y]].flag_on == false) continue;
+				this.num_flagged += this.blocks[this.tiles[x][y]].mine_multi;
+			}
+		}
+	},
+
+	
+
+	
+	
+	
+
+	backup_level: function () {
+		// this.backup_level
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.backup_level[x][y] = this.get_tile_code(x,y);
+			}
+		}
+	},
+
+	restore_backup: function () {
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.set_tile_from_code(x,y, this.backup_level[x][y]);
+				
+				if (this.get_block_type(x,y) == 0 && 
+				    this.blocks[this.tiles[x][y]].preset_hint_type != 0 &&
+				    this.blocks[this.tiles[x][y]].covered_up == false) {
+					// how to show hint
+					//this.blocks[this.tiles[x][y]].show_hint(this.blocks[this.tiles[x][y]].preset_hint_type);
+					//this.blocks[this.tiles[x][y]].cover();
+					//this.blocks[this.tiles[x][y]].uncover();
+					
+
+				} else if (this.get_block_type(x,y) == 0 && 
+				    		this.blocks[this.tiles[x][y]].preset_hint_type != 0 &&
+				    		this.blocks[this.tiles[x][y]].covered_up == false &&
+						this.blocks[this.tiles[x][y]].editor_mode == 1) {
+					// how to show hint
+					//this.blocks[this.tiles[x][y]].show_hint(this.blocks[this.tiles[x][y]].preset_hint_type);
+					//this.blocks[this.tiles[x][y]].cover();
+					//this.blocks[this.tiles[x][y]].uncover();
+					//this.blocks[this.tiles[x][y]].cover();
+					
+
+				} else if (this.get_block_type(x,y) == 2) {
+
+					this.blocks[this.tiles[x][y]].put_flag_on();
+				}
+			}
+		}
+
+		// recalculate hints
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				if (this.blocks[this.tiles[x][y]].covered_up == true) {
+					continue;
+				}
+				this.blocks[this.tiles[x][y]].cover();
+				this.blocks[this.tiles[x][y]].uncover();
+			}
+		}
+
+		this.calc_share_groups();
+	},
+
+	set_tile_from_code: function(x, y, code_) {
+
+		var cover_ = 0;
+		if (code_ >= 100) {
+			cover_ = 1;
+			code_ -= 100;
+			//this.blocks[this.tiles[x][y]].cover();
+		}
+
+		if (code_ == 0) {
+			// empty
+			this.change_tile(x,y,0);
+			
+		} else if (code_ == 1) {
+			// wall
+			this.change_tile(x,y,1);
+			
+		} else if (code_ == 2) {
+			// mine
+			this.change_tile(x,y,2);
+			
+
+		}  else if (code_ == 3) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(1);
+		}  else if (code_ == 4) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(2);
+		}  else if (code_ == 5) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(4);
+		} else if (code_ == 10) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(5);	// heart
+		} else if (code_ == 11) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(11);	// compass
+		} else if (code_ == 12) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(12);	// crown
+		} else if (code_ == 13) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(13);	// eyebracket
+		} else if (code_ == 49) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(49);	// zap
+		} else if (code_ == 80) {
+			
+			
+			this.blocks[this.tiles[x][y]].preset_hint(80);	// total mines
+		} else if (code_ == 7) {
+			// joined
+			
+			if (x > 0) this.join_tiles(x,y,x-1,y);
+			
+			
+		} else if (code_ == 8) {
+			// joined
+			if (y > 0) this.join_tiles(x,y,x,y-1);
+			
+			
+		} else if (code_ >= 17 && code_ <= 32) {
+			this.blocks[this.tiles[x][y]].set_sharesquare_code(code_);
+		}
+
+		if (cover_ == 1) {
+			// in editor mode, gotta draw the underlying hint
+			// uncovering forces drawing the hint
+			if (this.blocks[this.tiles[x][y]].editor_mode == 1) this.blocks[this.tiles[x][y]].uncover();
+			this.blocks[this.tiles[x][y]].cover();
+		} else {
+			this.blocks[this.tiles[x][y]].cover();
+			this.blocks[this.tiles[x][y]].uncover();
+
+		}
+	},
+
+	get_tile_code: function(x, y) {
+		var blocktype = this.blocks[this.tiles[x][y]].block_type;
+
+		if (blocktype == 1) return 1;
+
+		var tilecode = 0;
+
+		if (this.blocks[this.tiles[x][y]].covered_up == true) tilecode = 100;
+
+		if (blocktype == 0) {
+			
+
+			tilecode += 0;
+		} else if (blocktype == 1) {
+			tilecode == 1;	// wall
+			return tilecode;
+		} else if (blocktype == 2) {
+			tilecode += 2;	// mine
+			return tilecode;
+		}
+
+		var hint_ = this.blocks[this.tiles[x][y]].preset_hint_type;
+
+		if (hint_ == 0) {
+			// joined?
+			if (this.joined_tiles[x][y] != 0) {
+				if (x > 0 && this.joined_tiles[x - 1][y] == this.joined_tiles[x][y]) tilecode += 7;
+				else if (y > 0 && this.joined_tiles[x][y - 1] == this.joined_tiles[x][y]) tilecode += 8;
+			}
+
+
+		} else if (hint_ == 1) {
+			tilecode += 3;		// 4 touch
+		} else if (hint_ == 2) {
+			tilecode += 4;		// eye
+		} else if (hint_ == 4) {
+			tilecode += 5;		// 8 touch
+		} else if (hint_ == 5) {
+			tilecode += 10;		// heart
+		} else if (hint_ == 11) {
+			tilecode += 11;		// compass
+		} else if (hint_ == 12) {
+			tilecode += 12;		// crown
+		} else if (hint_ == 13) {
+			tilecode += 13;		// eyebracket
+		} else if (hint_ == 49) {
+			tilecode += 49;		// zap
+		} else if (hint_ == 80) {
+			tilecode += 80;		// total mines
+		}
+
+		// share pipes and share bubble
+		if (this.blocks[this.tiles[x][y]].sharesquare == true) {
+			// six diff orientations of bubble
+			tilecode += this.blocks[this.tiles[x][y]].get_sharesquare_code();
+		} else if (this.blocks[this.tiles[x][y]].share_pipe == true) {
+			// six different kinds of pipe
+			tilecode += this.blocks[this.tiles[x][y]].get_sharesquare_code();
+		}
+
+		return tilecode;
+	},
+
+	
+
+	new_game: function (num_rands) {
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.change_tile(x,y,0);	// Empty
+
+				this.blocks[this.tiles[x][y]].cover();
+
+				if (Math.random() < 0.25) this.change_tile(x,y,1);	// WALL
+				else if (Math.random() < 0.33) this.change_tile(x,y,2);	// mine
+
+
+				this.selected_tiles[x][y] = 0;
+			}
+		}
+
+		var uncovered = 0;
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				if (uncovered < 4 && Math.random() < 0.2 && this.get_block_type(x,y) == 0) {
+					uncovered++;
+					this.blocks[this.tiles[x][y]].uncover();
+				}
+			}
+		}
+
+		
+
+		for(var i = 0; i < this.bg_squares.length; i++) this.bg_squares[i].alpha = 1;
+
+		
+	},
+
+	join_tiles: function(x,y,xx,yy, hint_type) {
+
+		var hint_type = this.blocks[this.tiles[xx][yy]].preset_hint_type;
+
+		if (hint_type == 11 || hint_type == 13) return;
+
+		var join_group = -1;
+
+		if (this.joined_tiles[x][y] != 0 ||
+		    this.joined_tiles[xx][yy] != 0) {
+			// must both be unjoined - FOR NOW, only 2 tiles
+			
+			//return;	// to allow multi-joins, just comment this out
+		}
+
+
+		if (this.joined_tiles[x][y] == 0 &&
+		    this.joined_tiles[xx][yy] == 0) {
+			this.num_joined_groups++;
+			this.joined_tiles[x][y] = this.num_joined_groups;
+			this.joined_tiles[xx][yy] = this.num_joined_groups;
+
+			this.blocks[this.tiles[xx][yy]].join_leader = true;
+			this.blocks[this.tiles[x][y]].join_second_leader = true;
+
+			this.blocks[this.tiles[x][y]].my_join_leader_x = xx;
+			this.blocks[this.tiles[x][y]].my_join_leader_y = yy;
+			this.blocks[this.tiles[x][y]].i_know_join_leader_xy = true;
+
+			join_group =  this.num_joined_groups;
+		} else if (this.joined_tiles[x][y] != 0 &&
+		           this.joined_tiles[xx][yy] == 0) {
+			
+			this.joined_tiles[xx][yy] = this.joined_tiles[x][y];
+			join_group =  this.joined_tiles[xx][yy];
+		} else if (this.joined_tiles[x][y] == 0 &&
+		           this.joined_tiles[xx][yy] != 0) {
+			
+			this.joined_tiles[x][y] = this.joined_tiles[xx][yy];
+			join_group =  this.joined_tiles[xx][yy];
+		} else if (this.joined_tiles[x][y] != 0 &&
+		           this.joined_tiles[xx][yy] != 0) {
+			
+			// failed  - maybe already joined
+			join_group =  this.joined_tiles[xx][yy];
+		}
+
+		this.blocks[this.tiles[x][y]].join_group = join_group;
+		this.blocks[this.tiles[xx][yy]].join_group = join_group;
+
+		this.blocks[this.tiles[x][y]].calc_joiner_sprite();
+		this.blocks[this.tiles[xx][yy]].calc_joiner_sprite();
+
+		
+		this.blocks[this.tiles[x][y]].shared_hint = hint_type;
+		this.blocks[this.tiles[xx][yy]].shared_hint = hint_type;
+
+		//this.blocks[this.tiles[x][y]].preset_hint(hint_type);
+		//this.blocks[this.tiles[xx][yy]].preset_hint(hint_type);
+
+		return;
+
+		if (x > xx) {
+			this.blocks[this.tiles[xx][yy]].join_h = true;//set_join_h_sprite();
+		} else if (xx > x) {
+			this.blocks[this.tiles[x][y]].join_h = true;//.set_join_h_sprite();
+		} else if (y > yy) {
+			this.blocks[this.tiles[xx][yy]].join_v = true;//.set_join_v_sprite();
+		} else if (yy > y) {
+			this.blocks[this.tiles[x][y]].join_v = true;//.set_join_v_sprite();
+		} 
+	},
+
+	load_level_JSON : function (JSON, levelnum) {
+		this.reset();
+
+		if (JSON.mapdata_version_mines == 1) {
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				var floortile = JSON.floor[levelnum][y][x];
+				//if (gem == 0) continue;
+				//this.add_gem(x,y,JSON.levels[levelnum][y][x]);
+				//////console.log(JSON.levels[levelnum][y][x]);
+
+				this.blocks[this.tiles[x][y]].preset_hint(0);
+
+				if (floortile == 1) {
+					// wall
+					this.change_tile(x,y,1);
+				} else if (floortile == 2) {
+					// bomb
+					this.change_tile(x,y,2);
+				} else if (floortile == 8) {
+					// joined
+					
+					if (y > 0) this.join_tiles(x,y,x,y-1, this.blocks[this.tiles[x][y-1]].preset_hint_type);
+				} else if (floortile == 7) {
+					// joined
+					if (x > 0) this.join_tiles(x,y,x-1,y, this.blocks[this.tiles[x-1][y]].preset_hint_type);
+				} else if (floortile == 3) {
+					// hint
+					this.blocks[this.tiles[x][y]].preset_hint(2);
+				} else if (floortile == 4) {
+					// hint
+					this.blocks[this.tiles[x][y]].preset_hint(3);
+				} else if (floortile == 5) {
+					// hint
+					this.blocks[this.tiles[x][y]].preset_hint(1);
+				}
+
+			}	// x
+			
+        	}	// y
+
+		// lets go again! gotta calculate surrounding bombs for each tile
+		// so we needed to place the bombs first
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+
+				var floortile = JSON.floor[levelnum][y][x];
+
+				if (JSON.cover[levelnum][y][x] == 6) {
+					this.blocks[this.tiles[x][y]].cover();
+				} else {
+					this.blocks[this.tiles[x][y]].uncover(true);
+				}
+
+				if (floortile == 1) this.blocks[this.tiles[x][y]].uncover(false);
+		} // y
+		} // x
+
+		} // if (JSON.mapdata_version_mines == 1)
+	},
+
+	level_w: 10,
+	level_h: 10,
+
+	
+
+	load_level_internal : function(p_matrix, mapdata_version_mines) {
+		console.log('LOAD LEVEL INTERNAL');
+		this.reset();
+
+
+		if (p_matrix == null) {
+
+			////console.log('no such level ' );
+			return;
+		}
+
+		this.level_w = p_matrix.length - 1;
+		this.level_h = p_matrix[0].length - 1;
+		
+		if (mapdata_version_mines == 1) {
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.blocks[this.tiles[x][y]].reset();
+				this.blocks[this.tiles[x][y]].cover();
+				this.blocks[this.tiles[x][y]].uncover(true);
+			}
+		}
+
+		for(var y = 0; y < this.grid_h; y++) {
+			this.left_nono[y].nono_type = GameTypes.EdgeClues.NO_CLUE;
+		}
+
+		for(var x = 0; x < this.grid_w; x++) {
+			this.top_nono[x].nono_type = GameTypes.EdgeClues.NO_CLUE;
+		}
+
+		for(var y = 0; y < this.level_h; y++) {
+			var left_edge_nono = p_matrix[y + 1][0];
+			if (left_edge_nono == 4) this.left_nono[y].nono_type = GameTypes.EdgeClues.TOTAL;
+			if (left_edge_nono == 3) this.left_nono[y].nono_type = GameTypes.EdgeClues.CROWN;
+			if (left_edge_nono == 5) this.left_nono[y].nono_type = GameTypes.EdgeClues.EYEBRACKET;
+			if (left_edge_nono == 36) this.left_nono[y].nono_type = GameTypes.EdgeClues.HEART;
+			if (left_edge_nono == 37) this.left_nono[y].nono_type = GameTypes.EdgeClues.SMILEY;
+		}
+
+		for(var x = 0; x < this.level_w; x++) {
+			var top_edge_nono = p_matrix[0][x + 1];
+			if (top_edge_nono == 4) this.top_nono[x].nono_type = GameTypes.EdgeClues.TOTAL;
+			if (top_edge_nono == 3) this.top_nono[x].nono_type = GameTypes.EdgeClues.CROWN;
+			if (top_edge_nono == 5) this.top_nono[x].nono_type = GameTypes.EdgeClues.EYEBRACKET;
+			if (top_edge_nono == 36) this.top_nono[x].nono_type = GameTypes.EdgeClues.HEART;
+			if (top_edge_nono == 37) this.top_nono[x].nono_type = GameTypes.EdgeClues.SMILEY;
+		}
+
+		for(var y = 0; y < this.level_h; y++) {
+            		for(var x = 0; x < this.level_w; x++) {
+				var floortile = p_matrix[y + 1][x + 1];
+				//if (gem == 0) continue;
+				//this.add_gem(x,y,JSON.levels[levelnum][y][x]);
+				//////console.log(JSON.levels[levelnum][y][x]);
+
+				var on_pixel = false;
+				if (floortile == 2 ||
+				    floortile == 12 ||
+					floortile == 13 ||
+					floortile == 14 ||
+					floortile == 15 ||
+					floortile == 16 ||
+					floortile == 17 ||
+					floortile == 18 ||
+					floortile == 19 ||
+					floortile == 24 || floortile == 31 || floortile == 33 || floortile == 35 ||
+					floortile == 25 || floortile == 26 || floortile == 27 || floortile == 30) on_pixel = true;
+
+				var hint_type = GameTypes.PixelClues.NO_CLUE;
+
+				if (floortile == 6 || floortile == 12) hint_type = GameTypes.PixelClues.CONNECTIONS;
+				if (floortile == 11 || floortile == 19) hint_type = GameTypes.PixelClues.LOCKED;
+				if (floortile == 9 || floortile == 16) hint_type = GameTypes.PixelClues.EIGHTTOUCH;
+				if (floortile == 10 || floortile == 17) hint_type = GameTypes.PixelClues.HEART;
+				if (floortile == 7 || floortile == 13) hint_type = GameTypes.PixelClues.EQUAL_HORIZ;
+				if (floortile == 30 || floortile == 29) hint_type = GameTypes.PixelClues.SMILE;
+				//if (floortile == 31 || floortile == 28) hint_type = GameTypes.PixelClues.NEUTRAL;
+				if (floortile == 31 || floortile == 28) hint_type = GameTypes.PixelClues.CORNER;
+				if (floortile == 33 || floortile == 32) hint_type = GameTypes.PixelClues.ZAP;
+
+				
+
+				if (floortile == 23 || floortile == 26) this.link_tiles(x, y, x + 1, y);
+				if (floortile == 21 || floortile == 24) this.link_tiles(x, y, x, y + 1);
+				if (floortile == 22 || floortile == 25) this.link_tiles(x, y, x - 1, y);
+				if (floortile == 20 || floortile == 27 || floortile == 14) this.link_tiles(x, y, x, y - 1);
+				// 27 and 14 are both red join_up - i added it 2x to the tileset by mistake
+
+				this.blocks[this.tiles[x][y]].preset_hint(hint_type);
+
+				this.blocks[this.tiles[x][y]].mine_multi = 1;
+
+				var multi = 1;
+				if (floortile == 34 || floortile == 35) multi = 2;
+
+				this.blocks[this.tiles[x][y]].mine_multi = multi;
+
+				if (on_pixel == true) this.change_tile(x,y,2);
+				else this.change_tile(x,y,0);
+
+				// multiplier
+				//if (g_all_level_data_cover_layer[levelnum][y][x] > 0) {
+					//this.blocks[this.tiles[x][y]].mine_multi = g_all_level_data_cover_layer[levelnum][y][x];
+				//}
+
+				
+
+				if (floortile == 1) {
+					// wall
+					//this.change_tile(x,y,1);
+				} else if (floortile == 2) {
+					// bomb
+					
+					//this.change_tile(x,y,2);
+				} 
+				
+
+			}	// x
+			
+        	}	// y
+
+		
+
+		// eaach linked tile will store all of its buddies indexes: 
+		this.find_all_connected_link_tiles();
+
+
+		} // if (JSON.mapdata_version_mines == 1)
+	},
+
+	
+	get_json_level_code: function (x, y) {
+
+		
+
+		if (x == -1 || y == -1) {
+			if (x == -1) var symbol = this.left_nono[y].nono_type;
+			if (y == -1) var symbol = this.top_nono[x].nono_type;
+			if (symbol == 0) return 0;
+			if (symbol == GameTypes.EdgeClues.TOTAL) return 4;
+			if (symbol == GameTypes.EdgeClues.CROWN) return 3;
+			if (symbol == GameTypes.EdgeClues.EYEBRACKET) return 5;
+			if (symbol == GameTypes.EdgeClues.SMILEY) return 37;
+			if (symbol == GameTypes.EdgeClues.HEART) return 36;
+			return 0;
+		}
+
+		var b = this.tiles[x][y];
+		var pixel = this.blocks[b].block_type;
+		var symbol = this.blocks[b].symbol_type;
+		var link_g = this.blocks[b].linked_group;
+		
+		
+		if (pixel == 0) {
+			if (link_g != -1 && this.blocks[b].linked_up == true) return 20;
+			if (link_g != -1 && this.blocks[b].linked_down == true) return 21;
+			if (link_g != -1 && this.blocks[b].linked_left == true) return 22;
+			if (link_g != -1 && this.blocks[b].linked_right == true) return 23;
+			if (symbol == 0 && this.blocks[b].mine_multi == 1) return 1;
+			if (symbol == GameTypes.PixelClues.EIGHTTOUCH) return 9;
+			if (symbol == GameTypes.PixelClues.HEART) return 10;
+			if (symbol == GameTypes.PixelClues.SMILE) return 29;
+			if (symbol == GameTypes.PixelClues.NEUTRAL) return 28;
+			if (symbol == GameTypes.PixelClues.ZAP) return 32;
+			if (this.blocks[b].mine_multi == 2) return 34;
+		} else {
+			if (link_g != -1 && this.blocks[b].linked_up == true) return 27;
+			if (link_g != -1 && this.blocks[b].linked_down == true) return 24;
+			if (link_g != -1 && this.blocks[b].linked_left == true) return 25;
+			if (link_g != -1 && this.blocks[b].linked_right == true) return 26;
+			if (symbol == 0 && this.blocks[b].mine_multi == 1) return 2;
+			if (symbol == GameTypes.PixelClues.EIGHTTOUCH) return 16;
+			if (symbol == GameTypes.PixelClues.HEART) return 17;
+			if (symbol == GameTypes.PixelClues.SMILE) return 30;
+			if (symbol == GameTypes.PixelClues.NEUTRAL) return 31;
+			if (symbol == GameTypes.PixelClues.ZAP) return 33;
+			if (this.blocks[b].mine_multi == 2) return 35;
+		}
+
+		return 0;
+	},
+
+	load_tut_level : function (tutlevel, mapdata_version) {
+		if (g_tut_content[tutlevel] == null) {
+
+			////console.log('no such level ' + levelnum);
+			return;
+		}
+
+		var p_matrix =  g_tut_content[tutlevel].level;
+		this.load_level_internal(p_matrix, mapdata_version);
+	},
+
+	load_challenge_level : function (levelnum, mapdata_version) {
+		var p_folder = g_all_level_data_floor_layer.easy;
+		if (this.challenge_level_hardness == 2) p_folder = g_all_level_data_floor_layer.med;
+		if (this.challenge_level_hardness == 3) p_folder = g_all_level_data_floor_layer.hard;
+		if (this.challenge_level_hardness == 4) p_folder = g_all_level_data_floor_layer.nosmiley;
+
+		if (p_folder[levelnum] == null) {
+
+			////console.log('no such level ' + levelnum);
+			return;
+		}
+		var p_matrix = p_folder[levelnum];
+		this.load_level_internal(p_matrix, mapdata_version);
+	},
+
+	load_level : function (levelnum, mapdata_version) {
+		if (g_all_level_data_floor_layer[levelnum] == null) {
+
+			////console.log('no such level ' + levelnum);
+			return;
+		}
+		var p_matrix = g_all_level_data_floor_layer[levelnum];
+
+		this.load_level_internal(p_matrix, mapdata_version);
+	},
+
+	load_level_old : function (levelnum, mapdata_version_mines) {
+		this.reset();
+
+
+		if (g_all_level_data_floor_layer[levelnum] == null) {
+
+			////console.log('no such level ' + levelnum);
+			return;
+		}
+
+		this.level_w = g_all_level_data_floor_layer[levelnum].length - 1;
+		this.level_h = g_all_level_data_floor_layer[levelnum][0].length - 1;
+		
+		if (mapdata_version_mines == 1) {
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				this.blocks[this.tiles[x][y]].reset();
+				this.blocks[this.tiles[x][y]].cover();
+				this.blocks[this.tiles[x][y]].uncover(true);
+			}
+		}
+
+		for(var y = 0; y < this.grid_h; y++) {
+			this.left_nono[y].nono_type = GameTypes.EdgeClues.NO_CLUE;
+		}
+
+		for(var x = 0; x < this.grid_w; x++) {
+			this.top_nono[x].nono_type = GameTypes.EdgeClues.NO_CLUE;
+		}
+
+		for(var y = 0; y < this.level_h; y++) {
+			var left_edge_nono = g_all_level_data_floor_layer[levelnum][y + 1][0];
+			if (left_edge_nono == 4) this.left_nono[y].nono_type = GameTypes.EdgeClues.TOTAL;
+			if (left_edge_nono == 3) this.left_nono[y].nono_type = GameTypes.EdgeClues.CROWN;
+		}
+
+		for(var x = 0; x < this.level_w; x++) {
+			var top_edge_nono = g_all_level_data_floor_layer[levelnum][0][x + 1];
+			if (top_edge_nono == 4) this.top_nono[x].nono_type = GameTypes.EdgeClues.TOTAL;
+			if (top_edge_nono == 3) this.top_nono[x].nono_type = GameTypes.EdgeClues.CROWN;
+		}
+
+		for(var y = 0; y < this.level_h; y++) {
+            		for(var x = 0; x < this.level_w; x++) {
+				var floortile = g_all_level_data_floor_layer[levelnum][y + 1][x + 1];
+				//if (gem == 0) continue;
+				//this.add_gem(x,y,JSON.levels[levelnum][y][x]);
+				//////console.log(JSON.levels[levelnum][y][x]);
+
+				var on_pixel = false;
+				if (floortile == 2 ||
+				    floortile == 12 ||
+					floortile == 13 ||
+					floortile == 14 ||
+					floortile == 15 ||
+					floortile == 16 ||
+					floortile == 17 ||
+					floortile == 18 ||
+					floortile == 19 ||
+					floortile == 24 || 
+					floortile == 25 || floortile == 26 || floortile == 27 ) on_pixel = true;
+
+				var hint_type = GameTypes.PixelClues.NO_CLUE;
+
+				if (floortile == 6 || floortile == 12) hint_type = GameTypes.PixelClues.CONNECTIONS;
+				if (floortile == 11 || floortile == 19) hint_type = GameTypes.PixelClues.LOCKED;
+				if (floortile == 9 || floortile == 16) hint_type = GameTypes.PixelClues.EIGHTTOUCH;
+				if (floortile == 10 || floortile == 17) hint_type = GameTypes.PixelClues.HEART;
+				if (floortile == 7 || floortile == 13) hint_type = GameTypes.PixelClues.EQUAL_HORIZ;
+
+				
+
+				if (floortile == 23 || floortile == 26) this.link_tiles(x, y, x + 1, y);
+				if (floortile == 21 || floortile == 24) this.link_tiles(x, y, x, y + 1);
+				if (floortile == 22 || floortile == 25) this.link_tiles(x, y, x - 1, y);
+				if (floortile == 20 || floortile == 27 || floortile == 14) this.link_tiles(x, y, x, y - 1);
+				// 27 and 14 are both red join_up - i added it 2x to the tileset by mistake
+
+				this.blocks[this.tiles[x][y]].preset_hint(hint_type);
+
+				this.blocks[this.tiles[x][y]].mine_multi = 1;
+
+				var multi = 1;
+				//if (floortile <= 9) multi = floortile;
+				//else multi = floortile - 9;
+
+				this.blocks[this.tiles[x][y]].mine_multi = multi;
+
+				if (on_pixel == true) this.change_tile(x,y,2);
+				else this.change_tile(x,y,0);
+
+				// multiplier
+				//if (g_all_level_data_cover_layer[levelnum][y][x] > 0) {
+					//this.blocks[this.tiles[x][y]].mine_multi = g_all_level_data_cover_layer[levelnum][y][x];
+				//}
+
+				
+
+				if (floortile == 1) {
+					// wall
+					//this.change_tile(x,y,1);
+				} else if (floortile == 2) {
+					// bomb
+					
+					//this.change_tile(x,y,2);
+				} 
+				
+
+			}	// x
+			
+        	}	// y
+
+		
+
+		// eaach linked tile will store all of its buddies indexes: 
+		this.find_all_connected_link_tiles();
+
+
+		} // if (JSON.mapdata_version_mines == 1)
+	},
+
+
+	linked_groups: 0,
+
+	// this.link_tiles(x, y, x + 1, y)
+	link_tiles: function (x, y, xa, ya) {
+		if (x < 0 || y < 0 || x >= this.level_w || y >= this.level_h) return;
+		if (xa < 0 || ya < 0 || xa >= this.level_w || ya >= this.level_h) return;
+
+		var b = this.tiles[x][y];
+		var ba = this.tiles[xa][ya];
+
+		
+
+		var link_group = Math.max(this.blocks[b].linked_group, this.blocks[ba].linked_group);
+
+		if (link_group == -1) link_group = this.linked_groups++;
+
+		// may need to join 2 already linkedup regions
+		if (this.blocks[b].linked_group != -1 &&
+		    this.blocks[ba].linked_group != -1) {
+			var old_region = Math.min(this.blocks[b].linked_group, this.blocks[ba].linked_group);
+			for (var b_old = 0; b_old < this.blocks.length; b_old++) {
+				if (b_old == b || b_old == ba) continue;
+				if (this.blocks[b_old].linked_group == old_region) {
+					this.blocks[b_old].linked_group = link_group;
+					
+				}
+			}
+		}
+
+		// make both hintless
+		this.blocks[b].preset_hint(0);
+		this.blocks[ba].preset_hint(0);
+
+		
+		this.blocks[b].linked_group = link_group;
+		this.blocks[ba].linked_group = link_group;
+
+		//this.blocks[b].linked_blocks.push(ba);
+		//this.blocks[ba].linked_blocks.push(b);
+	},
+
+	find_all_connected_link_tiles: function() {
+		for(var b = 0; b < this.blocks.length; b++) {
+			if (this.blocks[b].x > this.level_w || this.blocks[b].x > this.level_w) continue;
+			if (this.blocks[b].linked_group == -1) continue;
+			this.blocks[b].linked_blocks = [];
+			for(var bb = 0; bb < this.blocks.length; bb++) {
+				if (this.blocks[bb].x > this.level_w || this.blocks[bb].x > this.level_w) continue;
+				if (this.blocks[bb].linked_group == -1) continue;
+				if (this.blocks[b].linked_group == this.blocks[bb].linked_group) {
+					this.blocks[b].linked_blocks.push(bb);
+				}
+			}
+		}
+	},
+
+	calc_all_hints: function() {
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				if (this.blocks[this.tiles[x][y]].covered_up == true) {
+					//this.blocks[this.tiles[x][y]].uncover(false);
+					//this.blocks[this.tiles[x][y]].cover();
+				} else {
+					this.blocks[this.tiles[x][y]].cover();
+					this.blocks[this.tiles[x][y]].uncover(true);
+				}
+			}
+		}
+	},
+
+	get_num_mines: function(x,y) {
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return -1;
+
+		if (this.tiles[x][y] == -1) return 0;
+
+		else return this.blocks[this.tiles[x][y]].get_num_mines();
+	},
+
+	get_block_type: function(x,y) {
+
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) return -1;
+
+		if (this.tiles[x][y] == -1) return 0;
+
+		else return this.blocks[this.tiles[x][y]].get_type();
+	},
+
+	
+
+	
+	// num is block type
+	// 0 is empty
+	//
+	change_tile : function (x, y, num) {
+
+		if (x < 0 || y < 0 || x >= this.grid_w || y >= this.grid_h) {
+			
+			return;
+		}
+		
+		/*
+		if (num == 0 && this.tiles[x][y] != -1) {
+			var b = this.tiles[x][y];
+
+			this.blocks[b].set_position_grid(-1,-1);
+
+			this.tiles[x][y] = -1;
+
+			return;
+		}
+
+		if (num == 0 && this.tiles[x][y] == -1) return;
+
+		*/
+
+		if (this.tiles[x][y] != -1) {
+			this.blocks[this.tiles[x][y]].set_type(num);
+			return;
+		} 
+
+		for (var b = 0; b < this.blocks.length; b++) {
+			if (this.blocks[b].x != -1) continue;
+			
+			this.blocks[b].set_type(num);
+			this.blocks[b].set_position_grid(x,y);
+			
+			
+			this.tiles[x][y] = b;
+			return;
+		}
+	},
+
+	game_over_x: 0,
+	game_over_y: 0,
+
+	start_game_over: function(x,y) {
+		this.game_over_x = x;
+		this.game_over_y = y;
+	},
+
+	
+	update: function() { 
+		
+		
+
+	},
+
+	
+
+	draw_timer: 0,
+
+	draw: function() {
+
+		if (this.draw_timer <= 0) {
+			this.draw_timer = 300;
+
+			//tile_group.cacheAsBitmap = true;
+			//game_group.cacheAsBitmap = true;
+			
+			
+
+		}
+		this.draw_timer--;
+		
+		this.on_flag_effect.draw();
+
+		
+	},
+
+
+	handle_mouse_down: function(engine,x,y) {
+
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+	},
+
+	handle_mouse_move: function(engine,x,y) {
+
+	},
+
+	increase_score: function(amt) {
+		this.score += amt;
+		this.score_obj.set_num(this.score);
+
+		if (screen_width > screen_height) {
+			this.score_x = screen_width - 32 - 18*this.score.toString().length;
+			this.score_y = 32;
+		} else {
+			this.score_x = screen_width - 32 - 18*this.score.toString().length;
+			this.score_y = screen_height - 64;
+		}
+
+		this.score_obj.update_pos(this.score_x, this.score_y);
+	},
+
+	screen_resized : function () { 
+
+		update_webfonts();
+	
+		if (g_should_redraw_grid == true) {
+			for(var y = 0; y < this.level_h; y++) {
+            		for(var x = 0; x < this.level_w; x++) {
+				var b = this.tiles[x][y];
+				this.blocks[b].calc_sprite();
+			}
+			}
+
+			g_should_redraw_grid = false;
+		}
+		
+	},
+
+	
+	
+
+	old_draw_rect_background: function(x,y,xx,yy,colour, alpha) {
+
+		if (alpha == null) alpha = 1;
+
+		var graphics = new PIXI.Graphics();
+
+		graphics.alpha = alpha;
+
+		graphics.beginFill(colour);
+
+		// set the line style to have a width of 5 and set the color to red
+		graphics.lineStyle(0, colour);
+
+		// draw a rectangle
+		graphics.drawRect(x, y,xx, yy);
+
+		background_group.add(graphics);
+
+		return graphics;
+	},
+
+	draw_rect_background: function(x,y,xx,yy,colour) {
+		
+		return new SquareClass(x,y,xx,yy,Types.Layer.BACKGROUND,colour,true);
+
+		if (using_phaser == true) {
+
+			var graphics_obj = game.add.graphics(0,0);
+			background_group.add(graphics_obj);
+
+
+
+			graphics_obj.beginFill(colour);
+			graphics_obj.lineStyle(0, colour, 0);
+			graphics_obj.moveTo(x,y);
+    			graphics_obj.lineTo(xx, y);
+    			graphics_obj.lineTo(xx,  yy);
+    			graphics_obj.lineTo(x, yy);
+			graphics_obj.lineTo(x, y);
+			graphics_obj.endFill();
+			return graphics_obj;
+
+		} else {
+			var graphics = new PIXI.Graphics();
+			graphics.beginFill(0x546D6F);
+			graphics.drawRect(x, y,xx, yy);
+			background_group.add(graphics);
+			return graphics;
+
+		}
+		
+	},	
+
+	draw_triangle_background: function (x1,y1,x2,y2,x3,y3,colour,alpha) {
+		var graphics = new PIXI.Graphics();
+		// begin a yellow fill..
+		graphics.beginFill(colour);	//366839
+		graphics.alpha = alpha;
+ 
+		// draw a triangle using lines
+		graphics.moveTo(x1,y1);
+		graphics.lineTo(x2,y2);
+		graphics.lineTo(x3,y3);
+ 
+		// end the fill
+		graphics.endFill();
+ 
+		// add it the stage so we see it on our screens..
+		background_group.add(graphics);
+	},
+
+	bg_squares: [],		// linear array
+
+	draw_background : function () {
+		// Palette URL: http://paletton.com/#uid=7010Z0kjpoY9q5FenfFn1vSqcQi
+		// 19241A
+		// 0x0366239
+		//
+
+		// EDE1B7
+		
+		// this.draw_rect_background(-2000, -2000, 4000,4000, 0x1F1129);	// 1F1129  161423
+
+
+		var size = this.tile_size*0.5;
+
+		// 35577A
+		// 2D4764
+		// 2B425D
+
+		for(var y = -1; y < this.grid_h + 4; y++) {
+			continue;
+            		for(var x = -4; x < this.grid_w + 4; x++) {
+				//continue;
+				//if (x >= 0 && x < this.grid_w && y >= 0 && y < this.grid_h) continue;
+				if ((x + y) % 2 == 0) continue;
+				
+				var top_y = (y+0.5)*this.tile_size - size;
+				var bottom_y = (y+0.5)*this.tile_size +size;
+				var left_x = (x+0.5)*this.tile_size - size;
+				var right_x =  (x+0.5)*this.tile_size +size;
+
+				if (x <= -3 || x >= this.grid_w + 2 || y >= this.grid_h + 2) this.draw_rect_background(left_x, top_y, right_x, bottom_y, 0x2B425D, Types.Layer.BACKGROUND);
+				else if (x == -2 || x == this.grid_w + 1 || y == this.grid_h + 1) this.draw_rect_background(left_x, top_y, right_x, bottom_y, 0x2D4764, Types.Layer.BACKGROUND);
+				else this.draw_rect_background(left_x, top_y, right_x, bottom_y, 0x35577A, Types.Layer.BACKGROUND);
+			}
+		}
+
+		for(var y = 0; y < this.grid_h; y++) {
+            		for(var x = 0; x < this.grid_w; x++) {
+				continue;
+				var top_y = Math.max((y+0.5)*this.tile_size - size, 2);
+				var bottom_y = Math.min((y+0.5)*this.tile_size +size, this.tile_size*this.grid_h - 2);
+				var left_x = Math.max((x+0.5)*this.tile_size - size, 2);
+				var right_x =  Math.min((x+0.5)*this.tile_size +size, this.tile_size*this.grid_w - 2);
+				var sq_;
+				if ((x + y) % 2 == 0) sq_ = this.draw_rect_background(left_x, 
+										top_y, right_x, 
+										bottom_y, 0x000000, Types.Layer.BACKGROUND);
+				else sq_ = this.draw_rect_background(left_x, 
+										top_y, right_x, 
+										bottom_y, 0x000000, Types.Layer.BACKGROUND);
+
+				this.bg_squares.push(sq_);
+				//sq_.hide();
+			}
+		}
+
+		
+		
+		
+
+		
+	},
+	
+	hide_bg_squares : function () {
+
+		for (var x = 0; x < this.grid_w; x++) this.top_nono[x].hide();
+
+		for (var y = 0; y < this.grid_h; y++) this.left_nono[y].hide();
+
+		for (var x = 0; x < this.grid_w; x++) {
+			for (var y = 0; y < this.grid_h; y++) {
+				
+				//this.bg_squares[this.tiles[x][y]].hide();
+				this.blocks[this.tiles[x][y]].hide();
+				
+			}
+		}
+
+	}
+});
+
+temp_level_flip_array = new Array(10);
+
+
+RestartGameStateClass = GameStateClass.extend({
+
+	play_state: null,
+	engine: null,
+
+	timer: 30,
+
+	x_pos: 0,
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		//play_screen_container.make_vis();//;
+		play_screen_container.hide();//;
+
+		this.x_pos = 0;
+		
+
+		// look ahead and load a new batch of levels if needed
+		if (this.play_state.game_mode == 0 && 
+		    this.play_state.current_level < g_total_num_of_levels - 1) {
+			// is the this.play_state.current_level + 1 level loaded?
+			if (g_all_level_data_floor_layer[this.play_state.current_level + 1] == null) {
+				var first_in_file = Math.floor((this.play_state.current_level + 1) / 10)*10;
+				var last_in_file = first_in_file + 9;
+				var file_n = 'levels/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
+				load_level_from_file(file_n,function() {});
+
+			}
+		}
+
+		//if (g_cache_as_bitmap == true)	game_group.cache_as_bitmap(true);
+		
+		tile_group.cache_as_bitmap(false);// false;
+		game_group.cache_as_bitmap(false);// false;
+		g_cache_as_bitmap_timer = 10;
+		
+	},
+
+	start_vis: function () {
+		if (this.play_state.game_mode == 0) play_screen_container.make_vis();//;
+	},
+
+	
+
+	handle_mouse_down: function(engine,x,y) {
+
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+	},
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+	},
+
+	handle_mouse_move: function(engine,x,y) {
+
+	},
+
+
+
+	update: function() { 
+		this.play_state.update();
+
+		this.x_pos--;
+		var dist_ = (0 - this.x_pos);
+
+		this.x_pos = this.x_pos - 0.25*dist_;//- 0.075*Math.abs(this.x_pos + 999);
+		play_screen_group.set_x(this.x_pos);
+		this.timer--;;
+	
+		
+		
+		if (this.timer <= 0) {
+			
+			var level_to_load = this.play_state.current_level;	
+			var mapdata_version_mines = 1;
+		
+			//play_screen_container.hide();
+
+			// game_mode 0 - campaign levels
+			if (this.play_state.game_mode == 0) this.play_state.load_level(level_to_load, mapdata_version_mines); // 
+			if (this.play_state.game_mode == 6) this.play_state.load_challenge_level(level_to_load, mapdata_version_mines); // 
+			
+
+			// tutorial levels - load the level that play_state is set to
+			// computer solves it
+			// highlights tiles & shows tutorial text in a number of stages that the player clicks through
+			if (this.play_state.game_mode == 5) {
+				//this.play_state.load_tut_level(level_to_load, mapdata_version_mines);
+				this.change_state(this.engine, new InstructionStateClass(this.engine, this.play_state));
+				return;
+			}
+
+			// beg for rating stuff
+			if (using_cocoon_js == true &&
+			    g_seen_beg < 4 &&
+			    total_levels_played > 100 &&
+			    total_levels_played % 50 == 0) {
+				// beg for rating state
+				// return;
+			}
+
+			// beg
+			// BegForRatingState
+			// possible issues in the app, removed for now
+			if (g_seen_beg == 0 &&
+			    total_levels_played >= 50 &&
+			    total_levels_played % 25 == 0 &&
+			    using_cocoon_js == true) {
+				//this.change_state(this.engine, new BegForRatingState(this.engine, this.play_state));
+				//return;
+			}
+
+			// crosspromote stuff
+			if (g_show_crosspromote == true && 
+			    this.play_state.won_or_lost == true &&
+			    total_levels_played > 20 && on_kong == false && on_armor == false &&
+			    using_cocoon_js == false) {  // && levels_until_ad <= 1
+				// cross promotion
+				this.change_state(this.engine, new ShowZblipGame(this.engine, this.play_state));
+				return;
+			}
+
+			if (false && this.play_state.current_level == 9999 && already_setup_input == false && using_phaser == true && using_cocoon_js == false) {
+				this.change_state(this.engine, new SetupInputStateClass(this.engine, this.play_state));
+			} else if (g_show_ads == true && 
+				   //total_levels_played > 100 &&
+				   this.play_state.won_or_lost == true) {
+
+				if (levels_until_ad == 1) g_interstitial.load(); 
+				else if (levels_until_ad <= 0 && g_interstitial_loaded == false) {
+					g_interstitial.load(); 
+					levels_until_ad = 1;
+				} else if (levels_until_ad <= 0 && g_interstitial_loaded == true) {
+					
+					this.change_state(this.engine, new ShowAdStateClass(this.engine, this.play_state));
+					levels_until_ad = 3;
+					
+					return;
+				}
+
+	
+
+				if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+				
+				
+				
+				
+
+			} else {
+
+				if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+			}
+		}
+		
+	},
+
+	cleanup: function() {
+		// this state could be interrupted by the user, and we can't guarantee that StartGameStateClass will be next
+		// BUT StartGameStateClass init sets play_screen_container.position.x to +999 before draw()
+		
+		//play_screen_group.set_x(0);	
+		game_group.cache_as_bitmap(false);
+	},
+
+	draw: function() {
+		
+		this.play_state.draw();
+	},
+
+
+});
+
+
+
+StartGameStateClass = GameStateClass.extend({
+
+	play_state: null,
+
+	engine: null,
+
+	x_pos: 2999,
+	timer: 55,
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		//this.play_state.new_game(0);
+
+		play_screen_container.set_x(2999);
+		// play_screen_container.set_x(0);
+
+		if (this.play_state.current_level == 0) {
+
+			g_zblip_on_play_button();
+			g_zblip_on_start_level(0);
+
+		} else g_zblip_on_start_level(this.play_state.current_level);
+		
+		// this.play_state.bg_squares
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				
+				if (x < this.play_state.level_w &&
+				    y < this.play_state.level_h) {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].make_vis();
+					this.play_state.blocks[this.play_state.tiles[x][y]].make_vis();
+				} else {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].hide();
+					this.play_state.blocks[this.play_state.tiles[x][y]].hide();
+				}
+			}
+		}
+
+		// rescale
+		
+		level_ratio = 1;
+		level_x_shift = 0;
+
+		if (this.play_state.game_mode == 0) {
+			//level_ratio = g_level_ratio[this.play_state.current_level];
+			//level_x_shift = g_level_x_shift[this.play_state.current_level];
+		}
+
+		//do_resize();	
+		//this.play_state.show_border();
+			
+
+		this.play_state.calc_sequence_lengths();
+		
+		this.play_state.calc_edge_nonogram();
+
+		this.play_state.resize();	// after calc edges - need to know sizes
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y = 0; y < this.play_state.level_h; y++) {
+
+				// debug mode - start with solved puzzle
+				//if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 2) this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_hint(this.play_state.blocks[this.play_state.tiles[x][y]].symbol_type);
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_sprite();
+				
+
+			}
+		}
+
+		
+
+		this.play_state.mistakes_this_level = 0;
+
+	},
+
+	handle_mouse_down: function(engine,x,y) {
+		
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+	},
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+	},
+
+	handle_mouse_move: function(engine,x,y) {
+
+	},
+
+	
+
+	update: function() { 
+
+		this.timer--;
+		if (this.timer > 50) return;
+
+
+		this.x_pos = this.x_pos - 0.15*(this.x_pos);
+		
+		play_screen_container.set_x(this.x_pos);
+
+		play_screen_container.make_vis();
+		background_group.make_vis();
+
+		this.play_state.update();
+		// waiting for player to click to start
+
+		if (this.timer == 0) {
+			
+								// this gets called in GenerateRandStateClass
+								// after loading a campaign level from file
+								// when does it get called during community level loading?
+			this.change_state(this.engine, new DuringGameStateClass(this.engine, this.play_state));
+			play_screen_container.set_x(0);
+		}
+		
+		
+	},
+
+	cleanup: function() {
+		play_screen_group.set_x(0);
+		game_group.cache_as_bitmap(false);
+	},
+
+	draw: function() {
+		this.play_state.draw();
+	},
+});
+
+
+g_undo_button_sprite = null;
+
+gameplay_errors = [
+	"Goal stacks must be of the same suit",
+	"Goal stacks must be built from A to K",
+];
+
+// TextClass objects (see spritesheet.js)
+g_gameplay_error_text_objs = [];
+
+g_mistake_sprite = null;
+
+g_dig_button = null;
+g_flag_button = null;
+g_digflag_select = null;
+g_flag_cursor_sprite = null;
+g_cursor_right = null;
+g_cursor_left = null;
+
+g_selected_tile_sprite = null;
+
+// for tut levels we need some text
+g_level_text_1 = null;
+g_level_text_2 = null;
+
+g_skip_tut_button = null;
+g_skip_tut_text = null;
+
+g_dig_tiles_text = null;
+g_flag_tiles_text = null;
+
+g_freedig_text = null;
+g_freedig_button = null;
+
+g_mistakes_text = null;
+
+g_this_level_num_text = null;
+
+g_tomenu_button = null;
+
+g_reset_button = null;
+
+
+DuringGameStateClass = GameStateClass.extend({
+
+	play_state: null,
+
+	engine: null,
+
+	mouse_down: false,
+
+	e_text: -1,
+	e_text_timer: 0,	
+
+	flag_x: 0,
+	flag_y: 0,
+
+	dig_x: 0,
+	dig_y: 0,
+
+	tomenu_x: 0,
+	tomenu_y: 0,
+
+	reset_x: 0,
+	reset_y: 0,
+
+	freedig_x: 0,
+	freedig_y: 0,
+
+	grey_x: 0,
+	grey_y: 0,
+
+	show_level_text: false,
+
+	auto_dig_timer: 0,
+
+	flag_timer: 0,
+
+	selected_x: 0,
+	selected_y: 0,
+
+	move_history: [],
+	current_move_b: [],	// block
+	current_move_c: [],	// colour
+	current_move_last_colour: 0, 
+
+	digflag_selected: 1,
+	hide_x: false,
+
+	mistake_cooldown: 0,
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		play_screen_container.make_vis();
+
+		this.mouse_down = false;
+
+		this.play_state.won_or_lost = false;
+
+		if (this.play_state.game_mode == 1) this.play_state.allow_free_dig = 1;
+
+		// story levels: punish on mistakes
+		// challenge levels: no
+		if (this.play_state.game_mode == 0) this.punish_on_mistake = true;	
+		else this.punish_on_mistake = false;
+
+		this.punish_on_mistake = false;
+
+
+		if (g_level_text_1 == null) {
+
+			g_skip_tut_button = new ButtonClass();
+			g_skip_tut_button.setup_sprite("home_icon.png",Types.Layer.GAME_MENU);
+			g_skip_tut_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			
+
+			g_skip_tut_text = new TextClass(Types.Layer.GAME_MENU);
+			g_skip_tut_text.set_font(Types.Fonts.SMALL);
+			g_skip_tut_text.set_text("CHANGE LEVEL");
+
+			g_dig_tiles_text = new TextClass(Types.Layer.GAME_MENU);
+			if (using_pixi) g_dig_tiles_text.set_font(Types.Fonts.XSMALL);
+			else g_dig_tiles_text.set_font(Types.Fonts.SMALL);
+			g_dig_tiles_text.set_text("");
+			
+
+			g_flag_tiles_text = new TextClass(Types.Layer.GAME_MENU);
+			if (using_pixi) g_flag_tiles_text.set_font(Types.Fonts.XSMALL);
+			else g_flag_tiles_text.set_font(Types.Fonts.SMALL);
+			g_flag_tiles_text.set_text("");
+			g_freedig_text = new TextClass(Types.Layer.GAME_MENU);
+			g_freedig_text.set_font(Types.Fonts.SMALL);
+			g_freedig_text.set_text("");
+
+			g_freedig_button = new ButtonClass();
+			g_freedig_button.setup_sprite("heart.png",Types.Layer.GAME_MENU);
+			g_freedig_button.update_pos(screen_width + 200, screen_height*0.5);
+			g_freedig_button.hide();
+
+			g_undo_button_sprite = new SpriteClass();
+			g_undo_button_sprite.setup_sprite('new_icon.png',Types.Layer.GAME_MENU);
+
+			g_tomenu_button_sprite = new SpriteClass();
+			g_tomenu_button_sprite.setup_sprite('tomenu.png',Types.Layer.GAME_MENU);
+
+			g_reset_button_sprite = new SpriteClass();
+			g_reset_button_sprite.setup_sprite('restart_icon.png',Types.Layer.GAME_MENU);
+
+			//g_help_table = new TableAreaClass(this.play_state, "");
+			//g_help_table.resize(-999,-999,-999,-999);
+
+			//g_help_sprite = new SpriteClass();
+			//g_help_sprite.setup_sprite('back_button.png',Types.Layer.GAME_MENU);
+			//g_help_sprite.update_pos(-999,-999);
+
+		
+			g_mistake_sprite = new SpriteClass();
+			g_mistake_sprite.setup_sprite('mistake.png',Types.Layer.HUD);
+			g_mistake_sprite.update_pos(-999,-999);
+
+			g_help_text = new TextClass(Types.Layer.TILE);
+			g_help_text.set_font(Types.Fonts.SMALL);
+			g_help_text.set_text("");
+
+			g_level_text_1 = new TextClass(Types.Layer.GAME_MENU);
+			g_level_text_1.set_font(Types.Fonts.MED_SMALL);
+			g_level_text_1.set_text("");
+
+			g_level_text_2 = new TextClass(Types.Layer.GAME_MENU);
+			g_level_text_2.set_font(Types.Fonts.TUTSMALL);
+			g_level_text_2.set_text("");
+
+			g_this_level_num_text = new TextClass(Types.Layer.GAME_MENU);
+			g_this_level_num_text.set_font(Types.Fonts.XSMALL);
+			g_this_level_num_text.set_text("");
+
+			g_mistakes_text = new TextClass(Types.Layer.GAME_MENU);
+			g_mistakes_text.set_font(Types.Fonts.XSMALL);
+			g_mistakes_text.set_text("");
+
+			for (var e = 0; e < gameplay_errors.length; e++) {
+				var e_text = new TextClass(Types.Layer.GAME_MENU);
+				e_text.set_font(Types.Fonts.MEDIUM);
+				e_text.set_text(gameplay_errors[e]);
+				e_text.update_pos(-999, -999);
+
+				g_gameplay_error_text_objs.push(e_text);
+
+			}
+
+			g_flag_button = new SpriteClass();
+			g_flag_button.setup_sprite("grey_button.png",Types.Layer.GAME_MENU);
+			g_flag_button.update_pos(screen_width - 200, screen_height*0.5);
+			//g_flag_button.hide();
+			
+			g_dig_button = new SpriteClass();
+			g_dig_button.setup_sprite("fill_button.png",Types.Layer.GAME_MENU);
+			g_dig_button.update_pos(screen_width - 200, screen_height*0.5);
+			//g_dig_button.hide();
+
+
+			g_flag_cursor_sprite = new SpriteClass();
+			g_flag_cursor_sprite.setup_sprite('redflag.png',Types.Layer.GAME_MENU);
+			g_flag_cursor_sprite.update_pos(-999,-999);
+
+			g_selected_tile_sprite = new SpriteClass();
+			g_selected_tile_sprite.setup_sprite('select.png',Types.Layer.HUD);
+			g_selected_tile_sprite.update_pos(-999,-999);
+			g_selected_tile_sprite.hide();
+
+			g_digflag_select = new SpriteClass();
+			g_digflag_select.setup_sprite('select.png',Types.Layer.GAME_MENU);
+			g_digflag_select.update_pos(-999,-999);
+			g_digflag_select.hide();
+
+			//g_cursor_right = new SpriteClass();
+		}
+		g_flag_button.make_vis();
+		g_dig_button.make_vis();
+		g_tomenu_button_sprite.make_vis();
+		g_reset_button_sprite.make_vis();
+		
+		//if (this.play_state.game_mode == 1) g_freedig_button.make_vis();	// minesweeper++ mode
+
+
+		//g_undo_button_sprite.update_pos(-999, -999);
+	
+		//if (using_cocoon_js) this.hold_time_for_flag = 16;
+
+		this.hold_time_for_flag = 2;
+
+		if (this.play_state.current_level == 0 &&
+			    this.play_state.game_mode == 0) {
+
+		
+			this.play_state.info_obj.set_hint_type(1);	// 4 touch
+			this.play_state.info_obj.hidden = false;
+			this.play_state.info_obj.draw_once();
+
+			// .set_text(g_texts[language]["Tutorial"]);
+			// .set_text(g_texts[language]["tut1"]);
+
+			this.show_level_text = true;
+			// tutorial state
+			//g_level_text_1.change_text(g_get_text("tut0")); //("where are the mines hidden?");//
+			g_level_text_1.change_text("LET'S PLAY PIXOJI");
+
+			//If a white tile is safe then remove it
+			//if (using_phaser == true) g_level_text_2.change_text(g_get_text("tut0a"));
+			//else g_level_text_2.change_text(g_get_text("digflag"));
+
+			g_level_text_2.change_text("THE NUMBER IS THE PIXELS IN THE 3x3 AREA\nFILL 9 PIXELS\nCLICK ON EACH PIXEL\nOR CLICK AND DRAG");
+
+			if (using_cocoon_js == true) {
+
+			}
+			this.hide_x = true;
+
+
+		} else if (this.play_state.current_level == 1&&
+			    this.play_state.game_mode == 0) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("MAKE 8 PIXELS FILLED");
+			g_level_text_2.change_text("WHITE = UNSOLVED\nPURPLE = FILLED\nGREY = OFF");
+			this.hide_x = true;
+
+		} else if (this.play_state.current_level == 2&&
+			    this.play_state.game_mode == 0) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("THE NUMBER REPORTS ITS 3x3 AREA");
+			g_level_text_2.change_text("WHITE = UNSOLVED\nPURPLE = FILLED\nGREY = OFF");
+			this.hide_x = true;
+
+		}  else if (this.play_state.current_level == 3 &&
+			    this.play_state.game_mode == 0) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("NO GUESSES NEEDED");
+			g_level_text_2.change_text("YOU NEVER NEED TO GUESS :)");
+			this.hide_x = true;
+
+		} else if (this.play_state.current_level == 4) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("NO GUESSES NEEDED");
+			g_level_text_2.change_text("YOU NEVER NEED TO GUESS :)");
+
+		} else if (this.play_state.current_level == 7) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("RIGHT CLICK TO GREY");
+			g_level_text_2.change_text("GREY MEANS EMPTY\nYOU DONT NEED TO GUESS");
+
+		} else if (this.play_state.current_level == 999) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("1 RED PIXEL");
+			g_level_text_2.change_text("THAT MEANS 8 GREY PIXELS");
+
+		} else if (this.play_state.current_level == 999) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("EACH NUMBER REPORTS ITS 3x3 AREA");
+			g_level_text_2.change_text("THE CORNER NUMBER ONLY SEES 4 TILES");
+
+		} else if (this.play_state.current_level == 3) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("YOU CAN SOLVE THIS!");
+			g_level_text_2.change_text("EACH NUMBER REPORTS ITS 3x3 AREA");
+
+		} else if (this.play_state.current_level == 9) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("NEW HINT TYPE");
+			g_level_text_2.change_text("HERE IS THE TOTAL PIXELS\nIN SOME ROWS AND COLUMNS");
+
+		} else if (false && this.play_state.current_level == 5) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text(g_texts[language]["tut5"]);
+			g_level_text_2.change_text(g_texts[language]["tut5a"]);
+
+		} else if (false && this.play_state.current_level == 2) {
+
+			this.play_state.info_obj.set_hint_type(2);	// see
+			this.play_state.info_obj.hidden = false;
+			this.play_state.info_obj.draw_once();
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text(g_texts[language]["tut2"]);
+			g_level_text_2.change_text(g_texts[language]["tut2a"]);
+
+
+		} else if (false && this.play_state.current_level == 6) {
+
+			//this.show_level_text = true;
+			// tutorial stat
+			g_level_text_1.change_text(g_get_text("tut6")); // "WALLS BLOCK THE LINE OF SIGHT"
+			g_level_text_2.change_text("");
+			
+
+
+		} else if (this.play_state.current_level == 13) {
+			this.show_level_text = true;
+			// this one is general advice, it can go on any level
+			g_level_text_1.change_text("TWO PIXELS ARE LINKED");
+			g_level_text_2.change_text("THEY MUST BE THE SAME COLOUR");
+			
+			
+
+		} else if (this.play_state.current_level == 20) {
+			this.show_level_text = true;
+			// this one is general advice, it can go on any level
+			g_level_text_1.change_text("SOME PIXELS ARE LONELY");
+			g_level_text_2.change_text("BUT THE HEART CARES\nTHE HEART SEES ONLY ISOLATED PIXELS");
+			
+			
+
+		} else if (this.play_state.current_level == 31) {
+			this.show_level_text = true;
+			// this one is general advice, it can go on any level
+			g_level_text_1.change_text("TWO LONELY PIXELS");
+			g_level_text_2.change_text("THE REST ARE NOT LONELY\nBECAUSE THEY ARE ALL TOUCHING");
+			
+			
+
+		} else if (this.play_state.current_level == 32) {
+			this.show_level_text = true;
+			// this one is general advice, it can go on any level
+			g_level_text_1.change_text("NO LONELY PIXELS");
+			g_level_text_2.change_text("THEY ARE ALL\nTOUCHING ANOTHER PIXEL");
+			
+			
+
+		} else if (this.play_state.current_level == 40) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("NEW HINT TYPE");
+			g_level_text_2.change_text("ONLY THE BEST FOR THE KING!\nTHE CROWN REPORTS THE LONGEST\nSEQUENCE OF PIXELS");
+
+		} else if (this.play_state.current_level == 60 ||
+				this.play_state.current_level == 62) {
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text("NEW HINT TYPE");
+			g_level_text_2.change_text("HAPPY PIXELS\nIN THE 3x3 AREA");
+
+		}else if (false && this.play_state.current_level == 13) {
+
+			this.play_state.info_obj.set_hint_type(4);	// 8 touch
+			this.play_state.info_obj.hidden = false;
+			this.play_state.info_obj.draw_once();
+
+			this.show_level_text = true;
+			// tutorial state
+			g_level_text_1.change_text(g_get_text("tut13"));
+			g_level_text_2.change_text(g_get_text("tut13a"));
+
+
+		} else if (this.play_state.current_level == 50) {
+			this.show_level_text = true;
+			// this one is general advice, it can go on any level
+			g_level_text_1.change_text("NEW HINT TYPE");
+			g_level_text_2.change_text("THE NUMBER OF SEQUENCES OF PIXELS\nSEPARATED BY GAPS");
+			
+			
+
+		}
+
+		var leveltext = "";
+
+		if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 1) leveltext = "EASY ";
+		if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 2) leveltext = "MEDIUM ";
+		if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 3) leveltext = "HARD ";
+		if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 4) leveltext = "NOSMILEY ";
+
+		g_this_level_num_text.change_text(leveltext + "LEVEL " + (this.play_state.current_level + 1).toString());
+		if (this.play_state.game_mode == 0) g_this_level_num_text.update_pos(16,16);
+		else if (this.play_state.game_mode == 3) {
+ 			g_this_level_num_text.update_pos(16,16);
+			g_this_level_num_text.change_text("BY " + g_current_community_level_author + "\nRATING: " 
+							+ g_current_community_level_rating + "\nVOTES:" + 							g_current_community_level_votes);
+		} else g_this_level_num_text.update_pos(-999,-999);
+
+		if (this.play_state.game_mode != 0) {
+
+			this.play_state.info_obj.hidden = true;
+			// g_this_level_num_text could say author name
+
+			g_level_text_1.change_text("");
+			g_level_text_2.change_text("");
+			
+			g_level_text_1.update_pos(-999,-999);
+			g_level_text_2.update_pos(-999,-999);
+
+			g_level_text_1.hide();
+			g_level_text_2.hide();
+
+			this.show_level_text = false;
+		}
+
+		if (this.play_state.level_w > 5) this.play_state.gamepad.make_vis();
+		else this.play_state.gamepad.hide();
+
+		g_digflag_select.make_vis();
+
+
+		
+		this.screen_resized();
+		
+		if (g_solver_class) {
+			//console.log('DuringGameStateClass > g_solver_class.go');
+			g_solver_class.go();
+
+		
+			//console.log('DuringGameStateClass >  > g_generator_class.go ');
+			//g_generator_class.go(this);
+		}
+
+		// try to restore from localstorage, IF cookies are allowed by the player
+		// IF the saved level matches this one
+		this.load_level_state
+		
+
+	},
+
+	reset_level : function () {
+		this.single_move_history = [];
+		this.mistakes = 0;
+		this.hit_points = 6;
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y= 0; y < this.play_state.level_h; y++) {
+				
+				this.play_state.blocks[this.play_state.tiles[x][y]].take_flag_off();
+				this.play_state.blocks[this.play_state.tiles[x][y]].take_x_off();
+			}
+		}
+	},
+
+	cleanup : function () {
+
+	
+
+		game_group.cache_as_bitmap(false);
+
+		play_screen_container.set_x(0);	// due to screenshake
+
+		g_digflag_select.hide();
+		this.play_state.gamepad.hide();
+		g_tomenu_button_sprite.hide();
+		g_reset_button_sprite.hide();
+
+		this.hide_unhappy_hint();
+		
+		g_mistakes_text.update_pos(-999,-999);
+		g_this_level_num_text.update_pos(-999,-999);
+
+		g_dig_button.update_pos(-999,-999);
+		g_flag_button.update_pos(-999,-999);
+
+		g_flag_tiles_text.update_pos(-999,-999);
+		g_dig_tiles_text.update_pos(-999,-999);
+
+		g_level_text_1.update_pos(-999,-999);
+		g_level_text_2.update_pos(-999,-999);
+
+		g_undo_button_sprite.update_pos(-999,-999);
+
+		g_skip_tut_button.update_pos(-999,-999);
+		g_skip_tut_text.update_pos(-999,-999);
+
+		g_freedig_text.update_pos(-999,-999);
+		g_freedig_button.hide();
+
+		g_selected_tile_sprite.hide();
+
+		for (var e = 0; e < g_gameplay_error_text_objs.length; e++) {
+
+			g_gameplay_error_text_objs[e].update_pos(-999, -999);
+
+		}
+
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.play_state.selected_tiles[x][y] = 0;
+				this.play_state.blocks[this.play_state.tiles[x][y]].deselect();
+			}
+		}
+
+		this.play_state.info_obj.hidden = true;
+		this.play_state.info_obj.draw_once();
+		
+	},
+
+	save_last_move: function() {
+
+		if (this.punish_on_mistake == true) {
+			this.save_level_state();	// saves to localstorage if allowed
+			this.current_move_b = [];
+			return;
+		}	
+
+		if (this.current_move_b.length == 0) return;
+
+		var movedata = {
+			blocks: [],
+			colours: [],
+			colour: this.current_move_last_colour,
+			//colours
+		};
+
+		for (var b = 0; b < this.current_move_b.length; b++) {
+			movedata.blocks.push(this.current_move_b[b]);
+			var block = this.current_move_b[b];
+			movedata.colours.push(this.play_state.blocks[block].prev_colour);
+			//this.play_state.blocks[block].prev_colour_history.push(this.play_state.blocks[block].prev_colour);
+			//movedata.blocks.push(this.current_move_c[b]);
+		}
+
+		this.move_history.push(movedata);	
+
+		this.current_move_b = [];
+		//this.current_move_c = [];
+
+		this.save_level_state();	// saves to localstorage if allowed
+	},
+
+	undo: function () {
+		////console.log('undo > this.move_history.length ' + this.move_history.length);
+		if (this.move_history.length <= 0) return;
+		var prev = this.move_history.pop();
+		var blocks = prev.blocks;
+		var colours = prev.colours;
+
+		for (var i = 0; i < blocks.length; i++) {
+			var b = blocks[i];
+			if (this.play_state.blocks[b].prev_colour.length <= 0) continue;
+			//var colour = this.play_state.blocks[b].prev_colour.pop();
+			var colour = colours[i];
+			if (colour == 1) {
+				this.play_state.blocks[b].take_x_off();
+				this.play_state.blocks[b].take_flag_off();
+			} else if (colour == 0) {
+				this.play_state.blocks[b].put_x_on();
+			} else if (colour == 2) {
+				this.play_state.blocks[b].put_flag_on();
+			}
+		}
+
+		this.save_level_state();	// saves to localstorage if allowed
+	},
+
+	load_level_state: function () {
+		// belongs in bootstateclass or StartGame ?
+		// the color setting belongs here
+		// sister function to DuringGameState > save_level_state
+		// also should fetch an interstitial ad here
+
+		if (use_browser_cookies == false) return;
+
+		var play_state = this.play_state;
+
+		var levelstate_string = localStorage.getItem(this_game_id + "duringlevelstate");	// get from localstorage
+
+		if (levelstate_string == null) return;
+
+		var levelstate;
+	
+		try {
+			var levelstate = JSON.parse(levelstate_string);
+		} catch (e) {
+			////console.log('cannot parse localStorage.getItem(this_game_id + duringlevelstate)');
+			return;
+		}
+
+		// saved as JSON -> string:
+		// levelstate = {
+		//	game_mode: this.play_state.game_mode,
+		//	levelnum: this.play_state.current_level,
+		//	w: this.play_state.level_w,
+		//	h: this.play_state.level_h,
+		//	grid: [],
+		// };
+
+		if (levelstate.game_mode == null || 
+		    levelstate.levelnum == null ||
+		    levelstate.grid == null) return;
+
+		if (levelstate.game_mode == -1) return;
+
+		if (levelstate.game_mode != play_state.game_mode ||
+		    levelstate.levelnum != play_state.current_level) return;
+
+		if (levelstate.game_mode == 6 &&
+		    levelstate.challenge_level_hardness != play_state.challenge_level_hardness) return;
+
+		// play_state.set_level_size(levelstate.w); // correct level is already loaded
+
+		this.mistakes = levelstate.mistakes;
+		this.hit_points = levelstate.hit_points;
+		
+		var i = 0;
+		for (var x = 0; x < levelstate.w; x++) {
+			for (var y = 0; y < levelstate.h; y++) {
+				if (i >= levelstate.grid.length) return;
+				var c = levelstate.grid[i];
+				var b = play_state.tiles[x][y];
+				if (c == 1) {
+					// blue, undecided
+					play_state.blocks[b].take_flag_off();
+					play_state.blocks[b].take_x_off();
+				} else if (c == 2) {
+					// red flagged
+					play_state.blocks[b].put_flag_on();
+				} else {
+					// grey x
+					play_state.blocks[b].put_x_on();
+				}	
+				i++;
+			}
+		}
+
+		this.loaded_from_storage = true;
+	},
+
+	// this_game_id
+	// also used by the cross-promotion/ad system to avoid showing ads for the current game
+	// currently set to 'pixoji' as a temporary name for this game
+
+	forget_save_state: function() {
+		if (use_browser_cookies == false) return;
+		var levelstate = {
+			game_mode: -1,				// will be discarded by load_state
+			levelnum: this.play_state.current_level,
+			w: this.play_state.level_w,
+			h: this.play_state.level_h,
+			grid: [],
+			mistakes: 0,
+			hit_points: 0
+		};
+
+		levelstate_string = JSON.stringify(levelstate);
+		
+
+		// local storage save levelstate
+		localStorage.setItem(this_game_id + "duringlevelstate", levelstate_string);	// levelstate.toString() ?
+	},
+
+	save_level_state: function () {
+		if (use_browser_cookies == false) return;
+		var levelstate = {
+			game_mode: this.play_state.game_mode,
+			levelnum: this.play_state.current_level,
+			w: this.play_state.level_w,
+			h: this.play_state.level_h,
+			grid: [],
+			mistakes: this.mistakes,
+			hit_points: this.hit_points,
+			challenge_level_hardness: this.play_state.challenge_level_hardness
+		};
+
+		
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y = 0; y < this.play_state.level_h; y++) {
+				var colour = 1;
+				var b = this.play_state.tiles[x][y];
+				if (this.play_state.blocks[b].x_on == true) colour = 0;
+				else if (this.play_state.blocks[b].flag_on == true) colour = 2;
+				levelstate.grid.push(colour);
+			}
+		}
+
+		levelstate_string = JSON.stringify(levelstate);
+		
+
+		// local storage save levelstate
+		localStorage.setItem(this_game_id + "duringlevelstate", levelstate_string);	// levelstate.toString() ?
+	},
+
+	do_error_text: function (text) {
+		//g_solitaire_error_text.set_text(text);
+		//g_solitaire_error_text.update_pos(screen_width/2,screen_height - 64);
+		//g_solitaire_error_text.center_x(screen_width/2);
+
+
+		for (var e = 0; e < g_gameplay_error_text_objs.length; e++) {
+
+			g_gameplay_error_text_objs[e].update_pos(-999, -999);
+
+		}
+
+
+		this.e_text = text;
+		this.e_text_timer = 1200;
+
+
+	},
+
+	home_x: - 999,	// to overworld
+	home_y: - 999,
+
+	undo_x: 0,
+	undo_y: 0,
+
+	mistakes_x: 0,
+	mistakes_y: 0,
+
+	screen_resized: function () {
+
+		
+		if (this.play_state.level_w > 5) this.play_state.gamepad.screen_resized();
+
+		if (screen_width > screen_height) {
+			this.flag_x = screen_width - 64;
+			this.flag_y = screen_height*0.25;
+			
+			this.dig_x = screen_width - 64;
+			this.dig_y = screen_height*0.5;
+
+			this.freedig_x = -999;// screen_width - 64;
+			this.freedig_y = screen_height*0.75;
+
+			if (this.play_state.current_level < 2 && this.play_state.game_mode == 0) {
+				//this.home_x = 64;
+				//this.home_y = 64;
+			}
+
+			g_dig_tiles_text.change_size(Types.Fonts.XSMALL);
+			g_flag_tiles_text.change_size(Types.Fonts.XSMALL);
+
+			this.undo_x = screen_width - 32;
+			this.undo_y = 32;
+
+		
+
+			this.mistakes_x = 8;
+			this.mistakes_y = 24;
+
+			this.reset_x = screen_width - 32;
+			this.reset_y = screen_height - 32;
+
+			if (this.play_state.game_mode == 0 ||
+	   		    this.play_state.game_mode == 3 ||
+	   		    this.play_state.game_mode == 6) {
+				g_this_level_num_text.update_pos(64,screen_height - 16);
+				//g_this_level_num_text.center_x(screen_width*0.5);
+
+			}
+
+			
+		} else {
+			this.flag_x = screen_width*0.66;//screen_width - 32 - 32 - 32;//screen_width - 128;
+			this.flag_y = screen_height - 96 + 16;
+
+			this.dig_x = screen_width*0.85;//screen_width - 32;//128;
+			this.dig_y = screen_height - 96 + 16;
+
+			this.freedig_x = -999;// screen_width*0.5;
+			this.freedig_y = screen_height - 96;
+
+			if (g_click_to_dig == true) {
+				//this.dig_x = -999;
+				//this.flag_x = -999;
+			}
+
+			g_dig_tiles_text.change_size(Types.Fonts.XSMALL);
+			g_flag_tiles_text.change_size(Types.Fonts.XSMALL);
+
+			if (this.play_state.current_level < 2 && this.play_state.game_mode == 0) {
+				//this.home_x = screen_width - 64;
+				//this.home_y = screen_height - 64;
+			}
+
+			//if (this.play_state.game_mode == 0) g_this_level_num_text.update_pos(-999,-999);
+	
+			this.undo_x = screen_width - 32;
+			this.undo_y = screen_height - 128;
+
+			this.tomenu_x = screen_width - 20;
+			this.tomenu_y = screen_height - 20;
+
+			this.mistakes_x = screen_width - 96;
+			this.mistakes_y = screen_height - 24;
+
+			this.reset_x = -999;	// not enough space
+			this.reset_y = -999;
+
+			if (this.play_state.game_mode == 0 ||
+	   		    this.play_state.game_mode == 3 ||
+	   		    this.play_state.game_mode == 6) {
+				g_this_level_num_text.update_pos(screen_width*0.5,screen_height - 24);
+				g_this_level_num_text.center_x(screen_width*0.5);
+
+			}
+		}
+
+		this.tomenu_x = -99932;
+		this.tomenu_y = -99964;
+
+		if (this.hide_x == true) this.flag_y = -999;
+
+		this.update_digflag_select_pos();
+
+		
+
+		if (this.digflag_select == 1) {
+			g_digflag_select.update_pos(this.flag_x, this.flag_y);
+		} else if (this.digflag_select == 2) {
+			g_digflag_select.update_pos(this.dig_x, this.dig_y);
+		} else g_digflag_select.update_pos(-999, -999);
+
+		if (this.punish_on_mistake == true) this.undo_y = -999;
+		else this.mistakes_y = -999;
+
+		if (this.punish_on_mistake == true) {
+			g_mistakes_text.change_text('MISTAKES:' + this.mistakes.toString());
+			if (this.mistakes == 0) g_mistakes_text.update_pos(-999,-999);
+			else g_mistakes_text.update_pos(this.mistakes_x, this.mistakes_y);
+		}
+
+		
+
+		g_skip_tut_button.update_pos(this.home_x, this.home_y);
+		g_skip_tut_text.update_pos(this.home_x + 42, this.home_y - 8);
+
+		g_undo_button_sprite.update_pos(this.undo_x, this.undo_y);
+
+		g_flag_button.update_pos(this.flag_x,this.flag_y);
+		g_dig_button.update_pos(this.dig_x,this.dig_y);
+		g_flag_button.make_vis();
+		g_dig_button.make_vis();
+		g_freedig_button.update_pos(this.freedig_x,this.freedig_y);
+
+		g_flag_tiles_text.update_pos(this.flag_x - 170, this.flag_y);
+		g_dig_tiles_text.update_pos(this.dig_x - 155, this.dig_y);
+		g_freedig_text.update_pos(this.freedig_x - 155, this.freedig_y);
+		
+		g_flag_tiles_text.update_pos(this.flag_x, this.flag_y + 42);
+		g_dig_tiles_text.update_pos(this.dig_x, this.dig_y + 42);
+		g_flag_tiles_text.center_x(this.flag_x);
+		g_dig_tiles_text.center_x(this.dig_x);
+
+		g_tomenu_button_sprite.update_pos(this.tomenu_x, this.tomenu_y);
+		g_reset_button_sprite.update_pos(this.reset_x, this.reset_y);
+
+		if (this.show_level_text == true) {
+			//g_level_text_1.update_pos(0.25*this.play_state.tile_size - x_shift_screen/menu_ratio, 6.5*this.play_state.tile_size,9999,999);
+			//g_level_text_2.update_pos(0.25*this.play_state.tile_size - x_shift_screen/menu_ratio, 8*this.play_state.tile_size,9999,999);
+
+			g_level_text_1.hide();
+			g_level_text_2.hide();	// trying to avoid that visual jump
+
+			g_level_text_1.update_pos(32, screen_height*0.7);
+			g_level_text_2.update_pos(32, screen_height*0.75);
+			
+			g_level_text_1.center_x(screen_width*0.5);
+			g_level_text_2.center_x(screen_width*0.5);
+
+			g_level_text_1.make_vis();
+			g_level_text_2.make_vis();
+
+			g_level_text_1.center_x(screen_width*0.5);
+			g_level_text_2.center_x(screen_width*0.5);
+			
+
+		}
+
+		if (g_click_to_dig == true) {
+			g_dig_tiles_text.change_text("LEFT CLICK");
+			if (g_hold_to_flag == true) {
+				g_flag_tiles_text.change_text("HOLD");
+				g_dig_tiles_text.change_text("CLICK");
+			} else g_flag_tiles_text.change_text("RIGHT CLICK");
+			// deselect all tiles here
+			for (var x = 0; x < this.play_state.grid_w; x++) {
+				for (var y = 0; y < this.play_state.grid_h; y++) {
+					this.play_state.selected_tiles[x][y] = 0;
+					this.play_state.blocks[this.play_state.tiles[x][y]].deselect();
+					this.num_selected_tiles = 0;
+				} // for y
+			} // for x
+		} else if (g_click_to_dig == false && this.num_selected_tiles > 0) {
+			g_dig_tiles_text.change_text("DIG " + this.num_selected_tiles.toString() + " TILES");
+			g_flag_tiles_text.change_text("FLAG " + this.num_selected_tiles.toString() + " TILES");
+		} else if (g_click_to_dig == false && this.num_selected_tiles == 0) {
+			if (screen_width < screen_height) g_dig_tiles_text.center_x(screen_width*0.5);
+			if (screen_width < screen_height) g_dig_tiles_text.change_text("NO TILES SELECTED");
+			else g_dig_tiles_text.change_text("NO TILES\nSELECTED");
+			g_flag_tiles_text.change_text("");
+		} else {
+			g_dig_tiles_text.change_text("");
+			g_flag_tiles_text.change_text("");
+		}
+
+		g_dig_tiles_text.change_text("");
+			g_flag_tiles_text.change_text("");
+
+		if (g_click_to_dig == false) {
+			g_selected_tile_sprite.make_vis();
+		} else {
+			g_selected_tile_sprite.hide();
+		}
+
+		g_selected_tile_sprite.make_vis();
+
+		this.play_state.screen_resized();
+	},
+
+	update_digflag_select_pos : function () {
+
+		
+
+		if (this.digflag_select == 1) {
+			g_digflag_select.update_pos(this.flag_x, this.flag_y);
+		} else if (this.digflag_select == 2) {
+			g_digflag_select.update_pos(this.dig_x, this.dig_y);
+		} else g_digflag_select.update_pos(-999, -999);
+
+	},
+	
+	highlighted_x: 0,
+	highlighted_y: 0,
+
+	handle_wheel: function () {
+		
+	},
+
+	hold_down_timer: 0,
+
+	hold_time_for_flag: 2, //13
+
+	drag_mode: 0,
+
+	drag_vert: 0,
+	drag_horiz: 0,
+
+	mouse_down_x: 0,		// 
+	mouse_down_y: 0,
+
+	loaded_from_storage: false,
+	
+	// multitouch
+	digflag_hold: false,
+
+	new_action_button_press: true,
+
+	handle_mouse_down: function(engine,x,y) {
+
+		if (g_solver_class || this.loaded_from_storage) {
+			this.check_for_victory();
+			this.loaded_from_storage = false;
+		}
+		
+		if (this.control_mode == 2) {
+			var flag_on = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].x_on;
+			var x_on = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].flag_on;
+		}
+
+		if (mouse.y > this.flag_y - 32 &&
+		    mouse.y < this.flag_y + 32 &&
+		    mouse.x > this.flag_x - 32 &&
+		    mouse.x < this.flag_x + 32) {
+			////console.log('clicked on flag ... this.control_mode == ' + this.control_mode);
+			
+			this.digflag_select = 1;
+			this.update_digflag_select_pos();
+			if (this.control_mode == 2 && this.new_action_button_press == true) {
+				// gamepad
+				//if (this.new_action_button_press == true)				
+
+				if (flag_on == false) this.flag_selected();
+				else this.clear_selected();
+
+				this.digflag_hold = true;
+				this.new_action_button_press = false;	// used in flag_selected to have the opposite effect (flag -> white / grey -> white)
+			} else {
+				// select flag
+			}
+			
+			//this.flag_selected();
+			//this.drag_mode = 1;
+			//if (this.victory == false) this.screen_resized();
+		}
+
+		if (mouse.y > this.dig_y - 32 &&
+		    mouse.y < this.dig_y + 32 &&
+		    mouse.x > this.dig_x - 32 &&
+		    mouse.x < this.dig_x + 32) {
+			////console.log('clicked on dig');
+			this.digflag_select = 2;
+			this.update_digflag_select_pos();
+			if (this.control_mode == 2 && this.new_action_button_press == true) {
+				// gamepad
+				if (x_on == false) this.dig_selected();
+				else this.clear_selected();
+				this.digflag_hold = true;
+				this.new_action_button_press = false;	// used in flag_selected to have the opposite effect (flag -> white / grey -> white)
+			} else {
+				// select flag
+			}
+			//this.dig_selected();
+			//if (this.victory == false && this.game_over == false) this.screen_resized();
+		}
+		
+		
+	},
+
+	
+	right_mouse_down: false,
+
+	//handle_right_
+
+	change_highlighted_tile: function () {
+		if (g_click_to_dig == false) return; // mark first
+
+
+		//if (this.right_mouse_down == true) {
+		//	return;
+		//}
+
+		this.right_mouse_down = false;
+
+		//this.highlighted_x = this.selected_x;
+		//this.highlighted_y = this.selected_y;
+
+		//this.handle_mouse_move(engine,x,y);	// set selected x y
+
+		if (this.clicked_tile_x == this.highlighted_x &&
+		    this.clicked_tile_y == this.highlighted_y) return;
+
+		this.clicked_tile_x = this.highlighted_x;
+		this.clicked_tile_y = this.highlighted_y;
+
+		if (this.flag_timer > 1) return;
+
+		if (this.highlighted_x < 0 || 
+		    this.highlighted_x >= this.play_state.level_w ||
+		    this.highlighted_y < 0 || 
+		    this.highlighted_y >= this.play_state.level_h) return;
+
+		var flag_on_ = this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].flag_on;
+		var x_on_ = this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].x_on;
+
+		var change_ = 0;
+		var prev_colour = 1; // flag_off + x_off
+		if (flag_on_ == true) prev_colour = 2;
+		if (x_on_ == true) prev_colour = 0;
+
+		if (this.punish_on_mistake == true) {
+			if (flag_on_ == true || x_on_ == true) return;
+			var pixel_ = this.play_state.get_pixel(this.highlighted_x,this.highlighted_y);
+			if (pixel_ == 0 && this.drag_type != 1) {
+				// mistake!
+				this.on_mistake();
+				return;
+			} else if (pixel_ > 0 && this.drag_type != 0) {
+				// mistake!
+				this.on_mistake();
+				return;
+			}
+		}
+
+		var x = this.highlighted_x;
+		var y = this.highlighted_y;
+
+		if (this.drag_type == 0) {
+			if (flag_on_ == false) change_ = 1;
+			else return;
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].take_x_off();
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].put_flag_on();
+			this.change_tile_to(x, y, 2);
+		} else if (this.drag_type == 1) {
+			if (x_on_ == false) change_ = 1;
+			else return;
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].take_flag_off();
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].put_x_on();
+			this.change_tile_to(x, y, 0);
+		} else if (this.drag_type == 2) {
+			if (flag_on_ == true || x_on_ == true) change_ = 1;
+			else return;
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].take_flag_off();
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].take_x_off();
+			this.change_tile_to(x, y, 1);
+		}
+
+		// duplicates are fine, the tile gets set to the same colour on undo anyway
+		if (change_ == 1) {
+			this.current_move_b.push(this.play_state.tiles[this.highlighted_x][this.highlighted_y]);
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].prev_colour = prev_colour;
+			if (g_sound_on == true) playSoundInstance('assets/coin0.wav',0.1);
+		}
+		
+		//var prev_colour = this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].prev_colour;
+		//this.current_move_c.push(prev_colour);
+		
+		current_move_last_colour = this.drag_type;
+
+		// https://www.reddit.com/r/WebGames/comments/6usttc/nonogram_multi/dlvbiel/?st=j6ka7wn2&sh=fcb2275b
+		// if this is too large then players cant quickly double click to cycle through pixel/x/clear
+		// this used to be 20 before the above reddit comment
+		this.flag_timer = 6; // 15 // resets when curson is over a different tile
+
+
+		//if (g_sound_on == true) game.jumpSound.play();
+		
+
+		this.check_for_victory();
+	},
+
+	undo_singlemove: function () {
+		if (this.single_move_history.length == 0) return;
+		var move = this.single_move_history.pop();
+		var b = move.b;
+		var old_colour = move.prev_col;
+
+		if (old_colour == 2) {
+			this.play_state.blocks[b].take_x_off();
+			this.play_state.blocks[b].put_flag_on();
+		} else if (old_colour == 0) {
+			this.play_state.blocks[b].take_flag_off();
+			this.play_state.blocks[b].put_x_on();
+		} else if (old_colour == 1) {
+			this.play_state.blocks[b].take_flag_off();
+			this.play_state.blocks[b].take_x_off();
+		}	
+		this.save_level_state();	// saves to localstorage if allowed	
+	},
+
+	single_move_history: [],	
+
+	change_tile_to: function (x, y, new_colour) {
+		// 1 white unsolved
+		// 2 flag on
+		// 0 x on
+
+		//console.log('change tile to ' + x +  ' ' + y);
+
+		var flag_on_ = this.play_state.blocks[this.play_state.tiles[x][y]].flag_on;
+		var x_on_ = this.play_state.blocks[this.play_state.tiles[x][y]].x_on;
+
+		if (new_colour == 2 && flag_on_ == true) return;
+		if (new_colour == 0 && x_on_ == true) return;
+		if (new_colour == 1 && flag_on_ == false && x_on_ == false) return;
+
+		var prev_colour = 1; // flag_off + x_off
+		if (flag_on_ == true) prev_colour = 2;
+		if (x_on_ == true) prev_colour = 0;
+
+		if (new_colour == 2) {
+			this.play_state.blocks[this.play_state.tiles[x][y]].take_x_off();
+			this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+		} else if (new_colour == 0) {
+			this.play_state.blocks[this.play_state.tiles[x][y]].take_flag_off();
+			this.play_state.blocks[this.play_state.tiles[x][y]].put_x_on();
+		} else if (new_colour == 1) {
+			this.play_state.blocks[this.play_state.tiles[x][y]].take_flag_off();
+			this.play_state.blocks[this.play_state.tiles[x][y]].take_x_off();
+		}
+
+		this.current_move_b.push(this.play_state.tiles[x][y]);
+		this.play_state.blocks[this.play_state.tiles[x][y]].prev_colour = prev_colour;
+
+		var singlemove = {
+			b: this.play_state.tiles[x][y],
+			prev_col: prev_colour
+		};
+
+		this.single_move_history.push(singlemove);
+
+		this.save_level_state();	// saves to localstorage if allowed
+	},
+
+	
+	change_selected_tile: function () {
+		
+		console.log('change_selected_tile this.drag_type ' + this.drag_type);
+
+		//if (this.clicked_tile_x == this.highlighted_x &&
+		//    this.clicked_tile_y == this.highlighted_y) return;
+
+		//this.clicked_tile_x = this.highlighted_x;
+		//this.clicked_tile_y = this.highlighted_y;
+
+		if (this.flag_timer > 1) return;
+
+		if (this.selected_x < 0 || 
+		    this.selected_x >= this.play_state.level_w ||
+		    this.selected_y < 0 || 
+		    this.selected_y >= this.play_state.level_h) return;
+
+		var flag_on_ = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].flag_on;
+		var x_on_ = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].x_on;
+
+		var change_ = 0;
+		var prev_colour = 1; // flag_off + x_off
+		if (flag_on_ == true) prev_colour = 2;
+		if (x_on_ == true) prev_colour = 0;
+
+		if (this.punish_on_mistake == true) {
+			if (flag_on_ == true || x_on_ == true) return;
+			var pixel_ = this.play_state.get_pixel(this.selected_x,this.selected_y);
+			if (pixel_ == 0 && this.drag_type != 1) {
+				// mistake!
+				this.on_mistake();
+				return;
+			} else if (pixel_ > 0 && this.drag_type != 0) {
+				// mistake!
+				this.on_mistake();
+				return;
+			}
+		}
+
+		var x = this.selected_x;
+		var y = this.selected_y;
+
+		if (this.drag_type == 0) {
+			if (flag_on_ == false) change_ = 1;
+			else return;
+
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].take_x_off();
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].put_flag_on();
+			this.change_tile_to(x, y, 2);
+		} else if (this.drag_type == 1) {
+			if (x_on_ == false) change_ = 1;
+			else return;
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].take_flag_off();
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].put_x_on();
+			this.change_tile_to(x, y, 0);
+		} else if (this.drag_type == 2) {
+			if (flag_on_ == true || x_on_ == true) change_ = 1;
+			else return;
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].take_flag_off();
+			//this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].take_x_off();
+			this.change_tile_to(x, y, 1);
+		}
+
+		// duplicates are fine, the tile gets set to the same colour on undo anyway
+		if (change_ == 1) {
+			this.current_move_b.push(this.play_state.tiles[this.selected_x][this.selected_y]);
+			this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].prev_colour = prev_colour;
+			if (g_sound_on == true) playSoundInstance('assets/coin0.wav',0.1);
+		}
+		
+		//var prev_colour = this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].prev_colour;
+		//this.current_move_c.push(prev_colour);
+		
+		current_move_last_colour = this.drag_type;
+
+		// https://www.reddit.com/r/WebGames/comments/6usttc/nonogram_multi/dlvbiel/?st=j6ka7wn2&sh=fcb2275b
+		// if this is too large then players cant quickly double click to cycle through pixel/x/clear
+		// this used to be 20 before the above reddit comment
+		this.flag_timer = 6; // 15 // resets when curson is over a different tile
+
+
+		//if (g_sound_on == true) game.jumpSound.play();
+		
+
+		this.check_for_victory();
+	},
+
+
+	on_mistake: function () {
+		this.mouse_down = false;
+		this.mistake_cooldown = 80;
+		this.stop_input_until_mouseup = true; // in case player is dragging
+		this.drag_mode = 0;
+		this.hit_points--;
+		//if (Math.random() < 0.5) this.hit_points--;
+		this.mistakes++;
+		if (this.hit_points <= 0) {
+			this.forget_save_state();
+			this.change_state(this.engine, new GameOverStateClass(this.engine, this.play_state));
+			if (g_sound_on == true) playSoundInstance('assets/Randomize3.wav',0.35);
+			return;
+		}
+		if (g_sound_on == true) playSoundInstance('assets/Randomize3.wav',0.3);
+		this.screen_resized();
+		this.screenshake_y_vel = -5;
+		this.screenshake_timer = 15;
+	},
+
+	screenshake_y_pos: 0,
+	screenshake_y_vel: 0,
+	screenshake_timer: 0,
+	
+	punish_on_mistake: true,
+	hit_points: 6,
+	mistakes: 0,
+
+	clicked_tile_x: -1,
+	clicked_tile_y: -1,
+
+	handle_right_mouse: function(engine,x,y) {
+		if (this.mistake_cooldown > 0) return;
+		//if (this.stop_input_until_mouseup == true) return;
+		this.right_mouse_down = true;
+		
+		this.drag_type = 1;
+		this.change_highlighted_tile();
+		
+	},
+
+	control_mode: 0,
+
+	gamepad_update_cursor: function() {
+			
+		var x_off = this.play_state.gamepad.x_dir;
+		var y_off = this.play_state.gamepad.y_dir;
+		
+		
+		if (x_off == 0 && y_off == 0) return;
+		this.control_mode = 2;
+
+		this.selected_x += x_off;
+		this.selected_y += y_off;
+
+		
+
+		if (this.selected_x >= this.play_state.level_w) this.selected_x = 0;
+		else if (this.selected_x < 0) this.selected_x = this.play_state.level_w - 1;
+
+		if (this.selected_y >= this.play_state.level_h) this.selected_y = 0;
+		else if (this.selected_y < 0) this.selected_y = this.play_state.level_h - 1;
+
+		////console.log('this.selected_x  ' + this.selected_x  + ' this.selected_y ' + this.selected_y);
+
+		g_selected_tile_sprite.make_vis();
+
+		g_selected_tile_sprite.update_pos((this.selected_x + 0.5)*this.play_state.tile_size,
+							(this.selected_y + 0.5)*this.play_state.tile_size);
+
+		if (this.digflag_hold == true) {
+			//if (this.digflag_select == 1) this.flag_selected();
+			//else if (this.digflag_select == 2) this.dig_selected();
+		}
+
+		this.new_action_button_press = true;
+	},
+
+	gamepad_timer: 0,
+
+	handle_left_mouse: function(engine,x,y) {
+		//if (this.stop_input_until_mouseup == true) return;
+		//if (g_click_to_dig == false) return;	// mark first
+
+		// this is called by right and left mouse down	
+
+		if (this.mistake_cooldown > 0) return;	
+
+		this.play_state.gamepad.input_down(mouse.x,mouse.y);
+		this.gamepad_timer--;	
+		if (this.gamepad_timer <= 0) {
+			
+			this.gamepad_update_cursor();
+			this.gamepad_timer = 15;
+		}
+
+		if (g_hold_to_flag == true) this.hold_down_timer++;
+		else {
+			
+		}
+
+		//////console.log('hndle mouse down');
+
+		// hold to flag mode
+		if (this.hold_down_timer == this.hold_time_for_flag && g_hold_to_flag == true && g_click_to_dig == true) {
+			this.handle_mouse_move(engine,x,y);
+
+			
+
+			if (this.drag_mode == 0) { 
+				if (this.play_state.is_flagged(this.highlighted_x, this.highlighted_y) == true) this.drag_type = 1;
+				else if (this.play_state.is_crossed(this.highlighted_x, this.highlighted_y) == true) this.drag_type = 2;
+				else this.drag_type = 0;
+			}
+			
+			if (this.punish_on_mistake == true) this.drag_type = 0;	// fill
+			//this.drag_type = 0;
+
+			if (this.digflag_select == 1) this.drag_type = 1;	// x
+
+			if (this.punish_on_mistake == false) {
+				
+				
+				if (this.digflag_select == 1) this.drag_type = 1;
+				if (this.digflag_select == 1 && this.play_state.is_crossed(this.highlighted_x, this.highlighted_y) == true) this.drag_type = 2;
+
+				if (this.digflag_select == 2) this.drag_type = 0;
+				if (this.digflag_select == 2 && this.play_state.is_flagged(this.highlighted_x, this.highlighted_y) == true) this.drag_type = 2;
+				
+			}
+
+			this.change_highlighted_tile();
+
+			this.drag_mode = 1;
+
+			
+			//this.play_state.on_flag_effect.go(this.highlighted_x, this.highlighted_y);
+			
+		} 
+
+		
+
+		this.handle_mouse_move(engine,x,y);
+
+		
+
+		//if (g_click_to_dig == true && this.right_) this.handle_right_click(engine,x,y);
+
+		if (g_click_to_dig == false && this.mouse_down == true) {
+
+			if (this.drag_horiz > 0) this.drag_horiz--;
+			if (this.drag_vert > 0) this.drag_vert--;
+
+			if (this.drag_vert > 0 && Math.abs(y - this.mouse_down_y) > 120) this.drag_vert = 0;
+			if (this.drag_horiz > 0 && Math.abs(x - this.mouse_down_x) > 120) this.drag_horiz = 0;
+
+			if (Math.abs(x - this.mouse_down_x) > 40 && this.drag_vert == 0) {
+			if (x - this.mouse_down_x > 0) this.selected_x++;
+				else this.selected_x--;
+				this.mouse_down_x = x;
+				this.mouse_down_y = y;
+				if (this.drag_mode == 1) this.flag_selected();
+				//else if (this.drag_mode == 2) this.flag_selected();
+				this.drag_horiz = 30;
+			
+			} else if (Math.abs(y - this.mouse_down_y) > 40 && this.drag_horiz == 0) {
+				if (y - this.mouse_down_y > 0) this.selected_y++;
+				else this.selected_y--;
+				this.mouse_down_x = x;
+				this.mouse_down_y = y;
+				if (this.drag_mode == 1) this.flag_selected();
+				this.drag_vert = 30;
+			}
+
+			if (this.selected_x >= this.play_state.level_w) this.selected_x = this.play_state.level_w - 1;//0;
+			else if (this.selected_x < 0) this.selected_x = 0;//this.play_state.level_w - 1;
+
+			if (this.selected_y >= this.play_state.level_h) this.selected_y = this.play_state.level_h - 1;//0;
+			else if (this.selected_y < 0) this.selected_y = 0;//this.play_state.level_h - 1;
+
+			g_selected_tile_sprite.update_pos((this.selected_x + 0.5)*this.play_state.tile_size,
+							(this.selected_y + 0.5)*this.play_state.tile_size);
+
+		} // if (g_click_to_dig == false)
+	
+		
+
+		this.mouse_down_x = x;
+		this.mouse_down_y = y;
+
+		//this.play_state.on_flag_effect.go(this.highlighted_x, this.highlighted_y, this.hold_time_for_flag);
+
+
+		
+
+		this.mouse_down = true;
+
+		
+
+		//if (mouse.y > screen_height - 100 &&
+		//    mouse.x > screen_width - 100) return;	// undo button
+
+		//if (mouse.y > screen_height - 100 &&
+		//    mouse.x < 100) return;	// menu button
+
+		
+
+		
+		
+
+		
+		if (this.mouse_down == true) {
+			return;
+		}
+		
+		if (mouse.y > this.home_y - 32 &&
+		    mouse.y < this.home_y + 32 &&
+		    mouse.x > this.home_x - 32 &&
+		    mouse.x < this.home_x + 32) {
+			//var level_to_load = 0;	
+			//var mapdata_version_mines = 1;
+			//this.play_state.current_level = level_to_load;
+
+			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+		}
+		
+	},
+
+	handle_key:function(keynum) {
+		console.log(keynum);
+		//if (keynum ==)
+
+		//if (g_click_to_dig == true) return;
+		return;
+		////console.log(keynum);
+		if (keynum == 70) {
+			// F flag
+			//this.flag_selected();
+			//this.undo();
+			return;
+		} else if (keynum == 68) {
+			// D dig
+			//this.dig_selected();
+		}
+
+		this.num_selected_tiles = 0;
+		//if (this.victory == false) this.screen_resized();
+
+		this.screen_resized();
+	},
+
+	num_selected_tiles: 0,
+
+	selected_tool: 0,	// 0 none, 1 dig, 2 flag
+
+	calc_selected_tiles: function() {
+
+	},
+
+	clicked_hint_x: -1,
+	clicked_hint_y: -1,
+
+	stop_input_until_mouseup: false,
+	
+
+	handle_mouse_up: function(engine,x,y) {
+
+		this.mouse_down = false;
+		this.digflag_hold = true;
+		this.new_action_button_press = true;
+
+		if (this.mistake_cooldown > 0) return;
+
+		this.gamepad_timer = 0;
+
+		this.clicked_tile_x = -1;
+		this.clicked_tile_y = -1;
+
+		//this.play_state.on_flag_effect.cancel();
+
+		//if (mouse.x > screen_width - 100 &&
+		//    mouse.y > screen_height - 100) this.undo();
+
+		
+
+		this.stop_input_until_mouseup = false;
+
+		if (mouse.y > this.undo_y - 32 &&
+		    mouse.y < this.undo_y + 32 &&
+		    mouse.x > this.undo_x - 32 &&
+		    mouse.x < this.undo_x + 32 &&
+		    this.punish_on_mistake == false) {
+			//this.undo();
+			this.undo_singlemove();
+			return;
+		}
+
+		if (mouse.y > this.tomenu_y - 32 &&
+		    mouse.y < this.tomenu_y + 32 &&
+		    mouse.x > this.tomenu_x - 32 &&
+		    mouse.x < this.tomenu_x + 32) {
+			
+			this.change_state(this.engine, new MenuStateClass(this.engine, this.play_state));
+			return;
+		}
+
+		if (mouse.y > this.reset_y - 32 &&
+		    mouse.y < this.reset_y + 32 &&
+		    mouse.x > this.reset_x - 32 &&
+		    mouse.x < this.reset_x + 32) {
+			console.log("reset level");
+			this.reset_level();
+			return;
+		}
+
+
+		this.drag_mode = 0;
+		this.drag_horiz = 0;
+		this.save_last_move();
+		this.drag_vert = 0;
+
+		// a quick click
+		if (false && this.hold_down_timer < this.hold_time_for_flag) {
+			this.handle_mouse_move(engine,x,y);
+			this.change_highlighted_tile();
+			this.hold_down_timer = 0;
+			
+			return;
+		}
+
+		if (this.right_mouse_down == true) {
+			this.hold_down_timer = 0;
+
+			this.right_mouse_down = false;
+			return;
+		}	
+
+		this.right_mouse_down = false;
+
+		
+
+		if (this.hold_down_timer >= 16) {
+			this.hold_down_timer = 0;
+			
+			if (g_hold_to_flag == true) return;
+		}
+
+		if (g_hold_to_flag == false) this.handle_mouse_move(engine,x,y);
+
+		this.hold_down_timer = 0;
+
+		
+		
+
+		this.clicked_hint_x = this.highlighted_x;
+		this.clicked_hint_y = this.highlighted_y;
+
+		
+
+		
+		// info panel
+		//if (this.info_panel_locked == false) this.set_info_panel(this.highlighted_x, this.highlighted_y);
+		
+
+		this.hold_down_timer = 0;
+	},
+
+	
+
+	set_info_panel: function(x, y) {
+		var blocktype = this.play_state.get_block_type(x,y);
+
+		if (blocktype == 1) {
+			// wall
+		} else {
+			//if ()
+
+
+		}
+	},
+
+	grey_out : function() {
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_happiness();
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].happy == true &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].share_groups.length > 0) {
+					// all sharesquares pointing to this guy are now satisfied
+				}
+			}
+		}
+
+		
+	},
+
+	flag_selected: function () {
+
+		if (this.mistake_cooldown > 0) return;
+
+		////console.log('flag selected');
+
+		this.drag_type = 1;
+
+		//var flag_on = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].flag_on;
+		//if (flag_on == true && this.new_action_button_press == true) this.drag_type = 2;
+		//console.log('flag_on ' + flag_on + ' this.new_action_button_press ' + this.new_action_button_press);
+
+		this.change_selected_tile();
+		return;
+
+		
+		//if (g_sound_on == true) game.jumpSound.play();
+
+		
+
+		if (this.selected_x < 0 || this.selected_x > this.play_state.level_w - 1 ||
+			this.selected_y < 0 || this.selected_y > this.play_state.level_h - 1) return;
+
+						
+
+				if (this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].flag_on == false) this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].put_flag_on();
+				else this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].take_flag_off();
+
+				
+			
+		this.deselect_all();
+
+		this.check_for_victory();
+	},
+
+	deselect_all : function () {
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.play_state.selected_tiles[x][y] = 0;
+				this.play_state.blocks[this.play_state.tiles[x][y]].deselect();
+				this.num_selected_tiles = 0;
+
+				
+			}
+		}
+	},
+
+	game_over: false,
+
+	clear_selected: function () {
+
+		if (this.mistake_cooldown > 0) return;
+
+		this.drag_type = 2;
+
+		//var x_on = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].x_on;
+		//if (x_on == true && this.new_action_button_press == true) this.drag_type = 2;
+
+		this.change_selected_tile();
+		return;		// same as right_mouse_down
+	},
+
+	dig_selected: function () {
+
+		if (this.mistake_cooldown > 0) return;
+
+		this.drag_type = 0;
+
+		//var x_on = this.play_state.blocks[this.play_state.tiles[this.selected_x][this.selected_y]].x_on;
+		//if (x_on == true && this.new_action_button_press == true) this.drag_type = 2;
+
+		this.change_selected_tile();
+		return;		// same as right_mouse_down
+
+		this.auto_dig_timer = 15;
+
+		var game_over = false;
+
+		//if (g_sound_on == true) game.blipSound.play();
+
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				if (this.play_state.selected_tiles[x][y] == 0) continue;
+				this.play_state.selected_tiles[x][y] = 0;
+
+				this.play_state.blocks[this.play_state.tiles[x][y]].uncover();	
+
+				if (this.play_state.get_block_type(x,y) == 2) {
+
+					this.play_state.won_or_lost = true;
+
+					// Store the x,y where we start the explosion effect
+					//this.play_state.start_game_over(x,y);
+
+					game_over = true;
+					this.game_over = true;
+					
+
+					
+				}
+			}
+		}
+
+		if (game_over == true) this.change_state(this.engine, new GameOverStateClass(this.engine, this.play_state));
+					
+
+		this.deselect_all();
+
+		this.check_for_victory();
+	},
+
+	prev_highlighted_x: 0,
+	prev_highlighted_y: 0,
+
+	drag_type: 0,	// flag , unflag
+	
+	handle_mouse_move: function(engine,x,y) {
+
+		
+
+		this.prev_highlighted_x = this.highlighted_x;
+		this.prev_highlighted_y = this.highlighted_y;
+
+		this.highlighted_x = Math.round((x - 0.5*this.play_state.tile_size)/ this.play_state.tile_size);
+		this.highlighted_y = Math.round((y - 0.5*this.play_state.tile_size)/ this.play_state.tile_size);
+
+		// avoid that issue when the cursor goes off canvas & comes back, it acts like we are dragging
+		if (this.highlighted_x < - 2 || this.highlighted_y < - 2 || 
+		    this.highlighted_x > this.play_state.level_w + 2 || 
+		    this.highlighted_y > this.play_state.level_h + 1) {
+
+			
+			this.mouse_down = false;
+
+			this.drag_mode = 0;
+			this.save_last_move();
+			this.drag_horiz = 0;
+			this.drag_vert = 0;
+		}
+
+		if (this.prev_highlighted_x != this.highlighted_x ||
+		    this.prev_highlighted_y != this.highlighted_y) this.flag_timer = 0;
+
+		
+		// this.drag_mode
+		if ((this.prev_highlighted_x != this.highlighted_x ||
+		     this.prev_highlighted_y != this.highlighted_y) && this.drag_mode == 1 && 
+		    g_click_to_dig == true && this.mouse_down == true) {
+			if (this.drag_type == 1 && this.play_state.is_crossed(this.highlighted_x, this.highlighted_y) == false) {
+				this.change_highlighted_tile();
+				//this.play_state.on_flag_effect.cancel();
+				//this.play_state.on_flag_effect.go(this.highlighted_x, this.highlighted_y, 0);
+			} else if (this.drag_type == 0 && this.play_state.is_flagged(this.highlighted_x, this.highlighted_y) == false) {
+				this.change_highlighted_tile();
+				//this.play_state.on_flag_effect.cancel();
+				//this.play_state.on_flag_effect.go(this.highlighted_x, this.highlighted_y, 0);
+
+			} else if (this.drag_type == 2 && (this.play_state.is_flagged(this.highlighted_x, this.highlighted_y) == true) || this.play_state.is_crossed(this.highlighted_x, this.highlighted_y) == true) {
+				this.change_highlighted_tile();
+				//this.play_state.on_flag_effect.cancel();
+				//this.play_state.on_flag_effect.go(this.highlighted_x, this.highlighted_y, 0);
+			}
+			
+		}	
+		
+		if (this.control_mode == 1) {
+			this.selected_x = this.highlighted_x;
+			this.selected_y = this.highlighted_y;
+		}
+
+		// mouse has gone outside grid:
+		if (this.control_mode == 1) {
+			if (this.highlighted_x >= this.play_state.level_w) this.selected_x = -999;//this.play_state.level_w - 1;//0;
+			else if (this.highlighted_x < 0) this.selected_x = -999;//0;//this.play_state.level_w - 1;
+
+			if (this.highlighted_y >= this.play_state.level_h) this.selected_y = -999;//this.play_state.level_h - 1;//0;
+			else if (this.highlighted_y < 0) this.selected_y = -999;//0;//this.play_state.level_h - 1;
+
+			g_selected_tile_sprite.update_pos((this.selected_x + 0.5)*this.play_state.tile_size,
+						          (this.selected_y + 0.5)*this.play_state.tile_size);
+
+		}
+
+		// if inside grid - we are in mouse mode (as opposed to gamepad)
+		if (this.highlighted_x >= 0 &&
+		    this.highlighted_y >= 0 && 
+		    this.highlighted_x < this.play_state.level_w &&
+		    this.highlighted_y < this.play_state.level_h) {
+			this.control_mode = 1;
+		} else if (this.control_mode != 2) {
+			// 2 == gamepad
+			this.control_mode = 0;	// no mode
+		}
+
+		
+		
+	},
+
+	green_column: function(x) {
+
+	},
+
+	green_row: function(y) {
+
+	},
+
+	grey_nonos_if_range_is_cleared: function() {
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			this.play_state.top_nono[x].grey_if_range_is_clear();
+		}
+		for (var y = 0; y < this.play_state.level_h; y++) {
+			this.play_state.left_nono[y].grey_if_range_is_clear();
+		}
+	},
+
+	victory: false,
+	must_grey: false,
+
+	show_unhappy_hint : function (){
+		g_mistake_sprite.make_vis();
+		var x = this.mistake_x;
+		var y = this.mistake_y;
+		
+		if (this.mistake_region == 0) {
+			y = -1;
+		} else if (this.mistake_region == 1) {
+			x = -1;
+		} if (this.mistake_region == 2) {
+
+		}
+		//console.log('show_unhappy_hint > x ' + x + ' ' + y);
+		var s = this.play_state.tile_size;
+		g_mistake_sprite.update_pos(s*x + 0.5*s, s*y + 0.5*s);
+	},
+
+	hide_unhappy_hint : function (){
+		g_mistake_sprite.hide();
+	},
+
+	mistake_x: 0,	// for pointing out a single hint that is unsatisfied
+	mistake_y: 0,   // when the level is all filled/cleared
+	mistake_region: 0,	// 0 top, 1 left, 2 grid
+
+	find_unhappy_hint : function() {
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].symbol_type == 0) continue;
+				//this.play_state.blocks[this.play_state.tiles[x][y]].calc_happiness();
+				this.play_state.test_tile_hint(this.play_state.tiles[x][y]);
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].happy == false) {
+					this.mistake_x = x;	// for pointing out a single hint that is unsatisfied
+					this.mistake_y = y;   // when the level is all filled/cleared
+					this.mistake_region = 2;
+					return;
+				}
+			}
+		}
+
+		this.play_state.test_edge_nonogram();	// tests all nonos
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			if (this.play_state.top_nono[x].nono_type == 0) continue;
+			//this.play_state.top_nono[x].calc_happiness();
+			if (this.play_state.top_nono[x].happy == false) {
+				this.mistake_x = x;	// for pointing out a single hint that is unsatisfied
+				this.mistake_y = -1;   // when the level is all filled/cleared
+				this.mistake_region = 0;
+				return;
+			}
+		}
+
+		for (var y = 0; y < this.play_state.level_h; y++) {
+			if (this.play_state.left_nono[y].nono_type == 0) continue;
+			//this.play_state.left_nono[y].calc_happiness();
+			if (this.play_state.left_nono[y].happy == false) {
+				this.mistake_x = -1;	// for pointing out a single hint that is unsatisfied
+				this.mistake_y = y;   // when the level is all filled/cleared
+				this.mistake_region = 1;
+				return;
+			}
+		}
+
+		// okay fine the player wins!
+		
+		this.victory = true;
+		this.play_state.won_or_lost = true;
+		this.play_state.mistakes_this_level = this.mistakes;
+		//this.change_state(this.engine, new WinStateClass(this.engine, this.play_state));
+	},
+
+	check_for_victory: function() {
+
+		this.victory = true;
+		
+		this.play_state.info_obj.on_digorflag();
+
+		//this.play_state.test_edge_nonogram();
+
+		//if (this.must_grey == false) this.grey_nonos_if_range_is_cleared();
+
+		var unselected = 0;
+
+		//if (this.punish_on_mistake == false) this.must_grey = true;
+
+		var mistake_tiles = 0;
+	
+		
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			var column_solved = true;
+			var unsolved_tiles = 0;
+			if (this.victory == false && unselected > 0) break;
+			
+			for (var y = 0; y < this.play_state.level_h; y++) {
+				if (this.victory == false && unselected > 0) break;
+				
+				var block_type = this.play_state.get_block_type(x,y);
+				
+				//if (this.must_grey == false) this.play_state.blocks[this.play_state.tiles[x][y]].grey_if_range_is_clear();
+
+				
+
+				if (block_type == 2 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].flag_on == true &&
+				    this.must_grey == true) {
+					//continue;	// good!
+				} else if (block_type != 2 &&
+					   this.play_state.blocks[this.play_state.tiles[x][y]].x_on == true &&
+				    this.must_grey == true) {
+					//continue; 	// good!
+				}
+
+				if (block_type == 0 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].flag_on == true) this.victory = false;
+
+				if (block_type == 2 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].x_on == true) this.victory = false;
+
+				if (block_type == 0 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].flag_on == false &&
+				    this.must_grey == true) {
+					
+					//this.victory = false;
+				}
+
+				if (block_type == 2 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].x_on == false &&
+				    this.must_grey == true) {
+					//this.victory = false;
+					
+				}
+
+				if (block_type == 2 &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].flag_on == false) {
+					////console.log('a');
+					this.victory = false;
+					
+				}
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].flag_on != false &&
+				    this.play_state.blocks[this.play_state.tiles[x][y]].x_on != false &&
+				    this.play_state.get_pixel(x,y) != this.play_state.get_player_pixel(x,y)) {
+					// both these fns return num_mines or zero, but its fine
+					mistake_tiles++;
+				}
+
+				if (this.punish_on_mistake == false &&
+				    (this.play_state.blocks[this.play_state.tiles[x][y]].flag_on == false &&
+				     this.play_state.blocks[this.play_state.tiles[x][y]].x_on == false)) {
+					//this.victory = false;
+					unselected++;
+				}
+				
+				
+			}
+			if (column_solved == true) this.green_column(x);
+		}
+
+		if (using_cocoon_js == true && levels_until_ad == 1 && unselected < 7 && mistake_tiles == 0) {
+			g_interstitial.load(); 
+		}
+
+		this.hide_unhappy_hint();
+
+		//console.log('unselected  ' + unselected );
+		
+		if (this.punish_on_mistake == false &&
+		    unselected == 0 &&
+		    this.victory == false) {
+			console.log('grid is 100% done but no victory... show mistake...');
+			this.find_unhappy_hint();
+			if (this.victory == false) this.show_unhappy_hint();
+			
+		}
+		
+
+		//this.grey_out();
+
+		if (this.victory == true) {
+			this.play_state.won_or_lost = true;
+			this.play_state.mistakes_this_level = this.mistakes;
+			this.change_state(this.engine, new WinStateClass(this.engine, this.play_state));
+		} else {
+			
+			
+		}
+
+		
+	},
+
+	
+	auto_dig_x: 0,
+	auto_dig_y: 0,
+
+	auto_dig: function() {
+
+		
+
+		for (var x = this.auto_dig_x; x < this.play_state.grid_w; x++) {
+			for (var y = this.auto_dig_y; y < this.play_state.grid_h; y++) {
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].covered_up == true ||
+				     this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 1) continue;
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint_type == 0) continue;
+
+				// ignore joint tiles
+				if (this.play_state.joined_tiles[x][y] != 0) continue;
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].calc_hint(this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint_type) != 0) continue;
+
+				// so we have a zero hint
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint_type == 1) {
+					if (x > 0) this.play_state.blocks[this.play_state.tiles[x - 1][y]].uncover();
+					if (y > 0) this.play_state.blocks[this.play_state.tiles[x][y - 1]].uncover();
+					if (x < this.play_state.grid_w - 1) this.play_state.blocks[this.play_state.tiles[x + 1][y]].uncover();
+					if (y < this.play_state.grid_h - 1) this.play_state.blocks[this.play_state.tiles[x][y + 1]].uncover();
+
+					
+
+					this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint(0);
+					this.play_state.blocks[this.play_state.tiles[x][y]].cover();
+					this.play_state.blocks[this.play_state.tiles[x][y]].uncover();
+					//this.play_state.blocks[this.play_state.tiles[x][y]].show_hint();
+					this.auto_dig_timer = 4;
+
+					//if (g_sound_on == true) game.blipSound.play();
+
+					return;
+
+				} else if (this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint_type == 4) {
+					if (x > 0) this.play_state.blocks[this.play_state.tiles[x - 1][y]].uncover();
+					if (y > 0) this.play_state.blocks[this.play_state.tiles[x][y - 1]].uncover();
+					if (x < this.play_state.grid_w - 1) this.play_state.blocks[this.play_state.tiles[x + 1][y]].uncover();
+					if (y < this.play_state.grid_h - 1) this.play_state.blocks[this.play_state.tiles[x][y + 1]].uncover();
+
+					if (x > 0 && y > 0) this.play_state.blocks[this.play_state.tiles[x - 1][y - 1]].uncover();
+					if (y > 0 && x < this.play_state.grid_w - 1) this.play_state.blocks[this.play_state.tiles[x + 1][y - 1]].uncover();
+					if (x < this.play_state.grid_w - 1 && y < this.play_state.grid_h - 1) this.play_state.blocks[this.play_state.tiles[x + 1][y + 1]].uncover();
+					if (y < this.play_state.grid_h - 1 && x > 0) this.play_state.blocks[this.play_state.tiles[x - 1][y + 1]].uncover();
+					
+
+					this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint(0);
+					this.play_state.blocks[this.play_state.tiles[x][y]].cover();
+					this.play_state.blocks[this.play_state.tiles[x][y]].uncover();
+					//this.play_state.blocks[this.play_state.tiles[x][y]].show_hint();
+					this.auto_dig_timer = 4;
+
+					//if (g_sound_on == true) game.blipSound.play();
+
+					return;
+				}
+			}
+		}
+
+		this.auto_dig_x = 0;
+		this.auto_dig_y = 0;
+	},
+
+	time_timer: 60,
+
+	update: function() { 
+
+		if (this.mistake_cooldown > 0) this.mistake_cooldown--;
+
+		if (this.flag_timer > 0) this.flag_timer--;
+
+		if (g_cache_as_bitmap == true && g_cache_as_bitmap_timer > 0) {
+			// I'm using another strategy (STATIC_TILE RenderTexture)
+			// I dont know which is actually better....
+			// cache as bitmap or RenderTexture
+			g_cache_as_bitmap_timer--;
+			if (g_cache_as_bitmap_timer <= 0) {
+				
+				game_group.cache_as_bitmap(true);
+				do_resize();
+				g_cache_as_bitmap_timer = 0; // resize triggers g_cache_as_bitmap_timer = 10
+				// on my iphone the level disappears when using cacheAsBitmap, reappears on orientation	
+			}
+		}
+
+		if (this.auto_dig_timer > 0 && g_allow_negatives == false) {
+			this.auto_dig_timer--;
+			if (this.auto_dig_timer == 0) {
+				this.auto_dig();
+
+				this.check_for_victory();
+
+				// if we're done auto digging - redo the share groups
+				// because a sharesquare may have included a zero touch hint
+				//if (this.auto_dig_timer == 0) this.play_state.calc_share_groups();
+			}
+		}
+
+		this.play_state.update();
+
+		//if (this.play_state.game_over == true) {
+			//this.change_state(this.engine, new GameOverStateClass(this.engine, this.play_state));
+		//}
+	},
+
+	draw_timer: 0,
+
+	draw: function() {
+		this.play_state.draw();
+
+		if (this.screenshake_timer > 0) {
+			this.screenshake_timer--;
+			
+			this.screenshake_y_pos += this.screenshake_y_vel;
+			this.screenshake_y_vel -= this.screenshake_y_pos;
+
+			this.screenshake_y_vel = 0.95*this.screenshake_y_vel;
+
+			play_screen_container.set_y(this.screenshake_y_pos);	
+		} else if (this.screenshake_timer == 0) {
+			play_screen_container.set_y(0);
+		}
+
+		this.time_timer--;
+		if (false && this.time_timer == 0) {
+			this.time_timer = 60;
+			this.play_state.update_timer();
+
+			if (this.play_state.timer_x.length > 0 &&
+			    this.play_state.level_timer <= 0) {
+				// Store the x,y where we start the explosion effect
+				this.play_state.start_game_over(5,5);
+
+				this.change_state(this.engine, new GameOverStateClass(this.engine, this.play_state));
+				return;
+			}	
+		}
+
+		/*
+		if (this.draw_timer <= 0) {
+			this.draw_timer = 200;
+
+			//tile_group.cacheAsBitmap = true;
+			if (g_cache_as_bitmap == true) {
+				game_group.cache_as_bitmap(true);
+				//do_resize();	
+				
+			}
+
+		}
+		this.draw_timer--;
+		*/
+
+		if (this.dragging_flag == true) {
+			g_flag_cursor_sprite.update_pos(mouse.x,mouse.y);
+		} 
+
+		if (this.e_text_timer > 0) {
+			this.e_text_timer--;
+			if (this.e_text_timer <= 0 && this.e_text != -1) {
+				g_gameplay_error_text_objs[this.e_text].update_pos(-999,-999);
+				this.e_text = -1;
+			}
+		}
+
+		if (this.e_text != -1 && this.e_text < g_gameplay_error_text_objs.length) {
+			//g_solitaire_error_text_objs[this.e_text].update_pos();
+
+			//g_solitaire_error_text.set_text(text);
+			g_gameplay_error_text_objs[this.e_text].update_pos(screen_width/2,screen_height - 64,screen_width - 128);
+			g_gameplay_error_text_objs[this.e_text].center_x(screen_width/2);
+		}
+	},
+
+});
+
+g_game_over_text = null;
+g_game_over_text2 = null;
+g_reset_button = null;
+g_tweet_score_sprite = null;
+g_sharethis_text = null;
+g_restart_text = null;
+g_final_score_text = null;
+
+GameOverStateClass = GameStateClass.extend({
+
+	play_state: null,
+	engine: null,
+
+	// prompt button
+	// 0 - none, 1 - tweet score
+	prompt_button: 0,
+
+	timer: 0,
+	pop_dist: 1,	// distance from this.play_state.game_over_x / y
+
+	screenshake_x_pos: 0,
+	screenshake_x_vel: 5,
+
+	
+	allow_rating: false,
+
+	init: function(engine, play_state) {
+
+		play_screen_container.make_vis();
+
+		
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		this.play_state.won_or_lost = true;
+
+		this.play_state.game_over = false;
+
+		total_levels_played++;
+		levels_until_ad--;
+
+		this.timer = 3;
+
+		//this.play_state.calc_solved_tiles();
+
+		//g_all_level_status[this.play_state.current_level] = 2;	// timeout
+
+		// kongregate.services.getUserId() will return 0 if not signed in
+		if (on_kong && kongregate.services.getUserId() > 0 && this.play_state.game_mode == 3) {
+			this.allow_rating = true;
+		}
+
+		if (g_star_rating_obj == null) {
+			g_star_rating_obj = new StarRatingClass();
+			g_star_rating_obj.hide();
+
+		}
+
+		if (this.play_state.game_mode == 3 && this.allow_rating == true) g_star_rating_obj.make_vis();
+
+		if (g_game_over_text == null) {
+			g_game_over_text = new TextClass(Types.Layer.GAME_MENU);
+			g_game_over_text.set_font(Types.Fonts.SMALL);
+			g_game_over_text.set_text("WHOOPS!");
+			g_game_over_text.update_pos(-999, -999);
+
+			g_game_over_text2 = new TextClass(Types.Layer.GAME_MENU);
+			g_game_over_text2.set_font(Types.Fonts.XSMALL);
+			g_game_over_text2.set_text("TOO MANY MISTAKES!");
+			g_game_over_text2.update_pos(-999, -999);
+
+			g_sharethis_text = new TextClass(Types.Layer.GAME_MENU);
+			g_sharethis_text.set_font(Types.Fonts.SMALL);
+			g_sharethis_text.set_text("Share your score: ");
+			g_sharethis_text.update_pos(-999, -999);
+
+			g_restart_text = new TextClass(Types.Layer.GAME_MENU);
+			g_restart_text.set_font(Types.Fonts.XSMALL);
+			g_restart_text.set_text("TRY AGAIN: ");
+			g_restart_text.update_pos(-999, -999);
+
+			g_final_score_text = new TextClass(Types.Layer.GAME_MENU);
+			g_final_score_text.set_font(Types.Fonts.SMALL);
+			g_final_score_text.set_text("Final score: ");
+			g_final_score_text.update_pos(-999, -999);
+
+			g_reset_button = new SpriteClass();
+			g_reset_button.setup_sprite("new_icon.png",Types.Layer.GAME_MENU);
+			g_reset_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			//g_tweet_score_sprite = new ButtonClass();
+			//g_tweet_score_sprite.setup_sprite("twitter-48x48.png",Types.Layer.GAME_MENU);
+			//g_tweet_score_sprite.update_pos(-999, -999);
+
+
+		}
+
+		
+
+		//if (this.play_state.score > 40 &&
+		//    location.hostname != "www.facebook.com") this.prompt_button = 1;		// tweet score
+	
+		//this.screen_resized();	// this would make the new piece instantly snap to position
+		this.arrange_screen();
+
+		
+	},
+
+	
+	game_over_text_x: 0,
+	game_over_text_y: 0,
+
+	game_over_text2_x: 0,
+	game_over_text2_y: 0,
+
+	newgame_x: 0,
+	newgame_y: 0,
+
+	twitter_x: 0,
+	twitter_y: 0,
+
+	score_x: 0,
+	score_y: 0,
+
+	starrate_x: 0,
+	starrate_y: 0,
+
+	fb_x: 0,
+	fb_y: 0,
+
+	arrange_screen: function () {
+		this.fb_x = -999;
+		this.fb_y = -999;
+		if (screen_width > screen_height) {
+			this.game_over_text_x = screen_width - 64;//10*this.play_state.tile_size;//screen_width - 96;
+			this.game_over_text_y = 20;
+
+			this.game_over_text2_x = screen_width - 64 - 24;//10*this.play_state.tile_size;//screen_width - 96;
+			this.game_over_text2_y = 52;
+
+			this.newgame_x = screen_width - 38;
+			this.newgame_y = 128;
+
+			this.score_x = -999;
+			this.score_y = -999;
+
+			this.starrate_x = screen_width - 6*26;
+			this.starrate_y = 140;
+
+			if (this.prompt_button == 1) {
+				this.twitter_x = screen_width - 64;
+				this.twitter_y = screen_height - 128 - 32;
+			} else {
+				this.twitter_y = -999;
+			}
+
+			if (this.play_state.solved_tiles > 75 &&
+			    this.play_state.game_mode == 1) {
+				//this.fb_x = screen_width - 29 - 0.5*29;
+				//this.fb_y = screen_height - 29 - 0.5*29;
+			}
+			
+		} else {
+			this.game_over_text_x = screen_width*0.25;;
+			this.game_over_text_y = screen_height - 128 - 4;
+
+			this.game_over_text2_x =screen_width*0.75;;
+			this.game_over_text2_y = screen_height - 128;
+
+			this.newgame_x = screen_width/2;;
+			this.newgame_y = screen_height - 64;
+
+			this.score_x = -999;
+			this.score_y = -999;
+
+			if (this.prompt_button == 1) {
+				this.twitter_x = 132;
+				this.twitter_y = screen_height - 64;
+			} else {
+				this.twitter_y = -999;
+			}
+		}
+
+		g_win_fb.update_pos(this.fb_x, this.fb_y);
+		g_win_fb_text.update_pos(this.fb_x - 220, this.fb_y - 6);
+		g_win_fb.make_vis();
+
+		//////alert('this.fb_x ' + this.fb_x + ' this.fb_y ' + this.fb_y);
+
+		g_star_rating_obj.update_pos(this.starrate_x, this.starrate_y);
+		if (this.play_state.game_mode != 3 || this.allow_rating == false) g_star_rating_obj.hide();
+
+	},
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+
+		this.arrange_screen();
+
+		//var h = screen_height/ratio;
+
+		
+	},
+
+	wait_timer: 30,
+	handle_mouse_up: function(engine,x,y) {
+
+		if (this.wait_timer > 0) return;
+		x = mouse.x;
+		y = mouse.y;
+
+		var next_ = 0;
+
+		//if (screen_width < screen_height && mouse.y > screen_height*0.5) next_ = 1;
+
+		if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
+
+		if (x > this.newgame_x - 32 &&
+		    x < this.newgame_x + 32 &&
+		    y > this.newgame_y - 32 &&
+		    y < this.newgame_y + 32) next_ = 1;
+
+		if (mouse.x > this.fb_x - 16 &&
+		    mouse.x < this.fb_x + 16 &&
+		    mouse.y > this.fb_y - 16 &&
+		    mouse.y < this.fb_y + 16) {
+			go_to_fb();
+			return;
+		}
+		
+
+		if (next_ == 1) {
+
+			this.play_state.score = 0;
+
+			if (this.play_state.game_mode == 1) {
+				// 1992 mode
+				this.change_state(this.engine, new RestartGameStateClass(this.engine, this.play_state));
+				return;
+			} else if (this.play_state.game_mode == 2) {
+				// testing level editor
+				this.change_state(this.engine, new LevelEditorStateClass(this.engine, this.play_state));
+
+				for (var x = 0; x < this.play_state.grid_w; x++) {
+					for (var y = 0; y < this.play_state.grid_h; y++) {
+						this.play_state.blocks[this.play_state.tiles[x][y]].editor_mode = 1;
+					}
+				}
+
+				//this.play_state.restore_backup();
+				return;
+			} else if (this.play_state.game_mode == 3) {
+				// community levels - copied from winstate
+				
+				// mark as done
+			/*	for (var i = 0; i < g_community_list_data.length; i++) {
+					if (g_current_community_level_id == g_community_list_data[i].hash) {
+						
+						//g_community_list_data[i]['done'] = true;	// um no cos we lost
+					}
+
+				}
+			*/
+
+				// some stuff about rating here - see winstate
+				if (g_star_rating_obj.rating != -1 &&
+				    this.allow_rating == true) {
+					var ratelevel = new RateLevel(this.engine, this.play_state);
+					ratelevel.level_id = g_current_community_level_id;	// is this the hash???? it is now
+					ratelevel.rating = g_star_rating_obj.rating;
+					
+					this.change_state(this.engine, ratelevel);
+					return;
+				}
+
+				
+				var auto_load = false;
+
+				this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
+
+
+				return;
+			}
+
+
+
+			if (this.play_state.current_level < 99 || this.play_state.game_mode == 3) {
+				// gotta repeat tut levels until you win
+				
+				
+
+			} else {
+				// go to overworld - locked out
+				//this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+				//return;
+			}
+
+			g_zblip_on_replay_level(this.play_state.current_level);
+			var restart_state = new RestartGameStateClass(this.engine, this.play_state);
+			restart_state.start_vis();
+			this.change_state(this.engine, restart_state);
+			//this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state));
+				
+		} else if (x > this.twitter_x - 32 &&
+		    	   x < this.twitter_x + 32 &&
+		    	   y > this.twitter_y - 32 &&
+		    	   y < this.twitter_y + 32) {
+			tweetscore(this.play_state.score);
+		}
+	},
+
+	cleanup: function() {
+		g_reset_button.update_pos(-999, -999);
+		g_game_over_text2.update_pos(-999, -999);
+		g_game_over_text.update_pos(-999, -999);
+		//g_tweet_score_sprite.update_pos(-999, -999);
+		g_sharethis_text.update_pos(-999, -999);
+		g_restart_text.update_pos(-999, -999);
+		g_final_score_text.update_pos(-999, -999);
+
+		g_star_rating_obj.hide();
+
+		
+		g_win_fb.update_pos(-999, -999);
+		g_win_fb_text.update_pos(-999, -999);
+
+		//for (var x = 0; x < this.play_state.grid_w; x++) {
+		//	for (var y = 0; y < this.play_state.grid_h; y++) {
+		//		this.play_state.pop_sprites[x][y].stop_anim();
+		//	}
+		//}
+
+
+		play_screen_container.set_x(0);;
+		play_screen_container.set_y(0);;
+	},
+
+	pop_x: [],
+	pop_y: [],
+
+	reveal_b: 0,
+
+	update: function() { 
+
+		//('game over update');
+		this.wait_timer--;
+		this.play_state.update();
+
+		//('game over update   A');
+
+		if (this.timer % 1 == 0 && 
+		    this.play_state.game_mode == 1 && this.reveal_b < this.play_state.blocks.length) {
+			// rand mode, reveal map
+			for (var b = this.reveal_b; b < this.play_state.blocks.length; b++) {
+					this.reveal_b = b;
+					if (this.play_state.blocks[b].covered_up == false) continue;
+					if (this.play_state.blocks[b].flag_on == true &&
+				    	    this.play_state.blocks[b].block_type == 2) continue;	// correct flag
+
+					// uncover
+					this.play_state.blocks[b].preset_hint(0);	// 
+					this.play_state.blocks[b].uncover();	
+					if (b % 5 == 0) break;
+			}
+			
+		} // rand mode, reveal map
+		
+		this.timer--;
+		if (this.timer == 0) {
+
+			
+
+
+		}
+
+
+	},
+
+
+	draw: function() {
+
+		this.screenshake_x_pos += this.screenshake_x_vel;
+
+		this.screenshake_x_vel -= this.screenshake_x_pos;
+
+		this.screenshake_x_vel = 0.95*this.screenshake_x_vel;
+
+		play_screen_container.set_y(this.screenshake_x_pos);	
+
+
+
+		this.play_state.draw();
+
+		//this.play_state.score_obj.update_pos(this.score_x, this.score_y);
+		if (screen_width > screen_height) g_final_score_text.update_pos(this.score_x - 128, this.score_y + 4);
+		else {
+			g_final_score_text.update_pos(this.score_x, this.score_y + 32);
+			g_final_score_text.center_x(this.score_x);
+		}
+		g_game_over_text.update_pos(this.game_over_text_x, this.game_over_text_y);
+		g_game_over_text.center_x(this.game_over_text_x);
+
+		g_game_over_text2.update_pos(this.game_over_text2_x, this.game_over_text2_y);
+		g_game_over_text2.center_x(this.game_over_text2_x);
+
+		g_reset_button.update_pos(this.newgame_x, this.newgame_y);
+		if (screen_width > screen_height)  g_restart_text.update_pos(this.newgame_x - 128, this.newgame_y - 8);
+		else {
+			g_restart_text.update_pos(this.newgame_x, this.newgame_y + 32);
+			g_restart_text.center_x(this.newgame_x);
+		}
+		
+		
+		//g_tweet_score_sprite.update_pos(this.twitter_x, this.twitter_y);
+		if (screen_width > screen_height) g_sharethis_text.update_pos(this.twitter_x - 128, this.twitter_y - 16);
+		else g_sharethis_text.update_pos(this.twitter_x, this.twitter_y + 32);
+
+		
+		
+		
+	}
+});
+
+
+
+g_is_the_current_level_loaded = false;
+
+g_all_level_data_floor_layer = {};
+g_all_level_data_cover_layer = {};
+
+g_all_level_data_floor_layer[0] = [
+ [0,0,0,0],
+[0,2,2,2],
+[0,2,16,2],
+[0,2,2,2]
+		];
+
+g_all_level_data_floor_layer.easy = {};
+g_all_level_data_floor_layer.med = {};
+g_all_level_data_floor_layer.hard = {};
+g_all_level_data_floor_layer.nosmiley = {};
+
+
+
+g_all_level_data_colour_layer = {};
+g_all_level_data_colour_layer[0] = [];
+g_all_level_data_colour_layer.easy = {};
+g_all_level_data_colour_layer.med = {};
+g_all_level_data_colour_layer.hard = {};
+g_all_level_data_colour_layer.nosmiley = {};
+
+g_all_level_data_text = {};
+g_all_level_data_text[0] = "";
+g_all_level_data_text.easy = {};
+g_all_level_data_text.med = {};
+g_all_level_data_text.hard = {};
+g_all_level_data_text.nosmiley = {};
+
+
+
+g_all_level_data_cover_layer[0] = 
+		[
+[0,2,2,0,2,0],
+[2,2,2,0,2,0],
+[0,2,0,2,2,0],
+[2,2,2,2,2,0],
+[2,2,0,2,0,0],
+[0,0,0,0,0,0]
+		];
+
+
+
+
+LoadingLevelStateClass = GameStateClass.extend({
+
+	done_: null,
+	play_state: null,
+	engine: null,
+
+	already_loaded: false,
+
+	post_win: false,
+
+	p_level_folder: null,
+
+	init: function(engine, play_state, level_num, post_win) {
+		//load_script_assets(['level1.json'],this.callback);
+
+		//$.loadJSON(['level1.json'],this.callback);
+
+		this.play_state = play_state;
+		this.engine = engine;
+
+		g_is_the_current_level_loaded = false;
+
+		if (post_win != null) this.post_win = post_win;
+
+		var first_in_file = Math.floor(level_num / 10)*10;
+
+		this.p_level_folder = g_all_level_data_floor_layer;
+		var filepath_needed = 'levels/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
+
+		if (this.play_state.game_mode == 6) {
+
+			console.log('this.play_state.challenge_level_hardness ' + this.play_state.challenge_level_hardness);
+			
+			if (this.play_state.challenge_level_hardness == 1) this.p_level_folder = g_all_level_data_floor_layer.easy;
+			if (this.play_state.challenge_level_hardness == 2) this.p_level_folder = g_all_level_data_floor_layer.med;
+			if (this.play_state.challenge_level_hardness == 3) this.p_level_folder = g_all_level_data_floor_layer.hard;
+			if (this.play_state.challenge_level_hardness == 4) this.p_level_folder = g_all_level_data_floor_layer.nosmiley;
+
+			var subfolder = "";
+			if (this.play_state.challenge_level_hardness == 1) subfolder = "easy";
+			if (this.play_state.challenge_level_hardness == 2) subfolder = "med";
+			if (this.play_state.challenge_level_hardness == 3) subfolder = "hard";
+			if (this.play_state.challenge_level_hardness == 4) subfolder = "nosmiley";
+			filepath_needed = 'levels/' + subfolder + '/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
+		}
+
+		
+
+
+		if (this.p_level_folder[level_num] == null &&
+		    g_current_level_data.levels_starting_from == first_in_file &&
+		    g_current_level_data.filepath == filepath_needed) {
+			// loaded but not processed
+			g_is_the_current_level_loaded = true;
+			
+			
+		} else if (this.p_level_folder[level_num] == null) {
+			// not yet loaded
+			//(level_num.toString() + ' not yet loaded');
+			
+
+			//('first_in_file '+first_in_file.toString());
+			
+			var last_in_file = first_in_file + 9;
+			
+
+			var file_n = 'levels/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
+
+			if (this.play_state.game_mode == 6) {
+				var subfolder = "";
+				if (this.play_state.challenge_level_hardness == 1) subfolder = "easy";
+				if (this.play_state.challenge_level_hardness == 2) subfolder = "med";
+				if (this.play_state.challenge_level_hardness == 3) subfolder = "hard";
+				if (this.play_state.challenge_level_hardness == 4) subfolder = "nosmiley";
+				file_n = 'levels/' + subfolder + '/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
+			}
+
+			console.log(file_n);
+
+			// levels/easy/
+
+			//(file_n);
+
+			//load_level_from_file('levels/level1to10.json',function() {
+			//					g_is_the_current_level_loaded = true;
+			//					});
+
+			load_level_from_file(file_n,function() {
+								g_is_the_current_level_loaded = true;
+								});
+			
+		} else {
+			//(level_num.toString() + ' already loaded');
+			this.already_loaded = true;
+		}
+
+		//('loding level init');
+		
+	},
+
+	screen_resized : function (engine) {
+		this.play_state.screen_resized(engine);
+	},
+
+	
+	update:function(engine) {
+
+		
+
+		if (this.already_loaded == true) {
+			var restart_state = new RestartGameStateClass(this.engine, this.play_state);
+			if (this.post_win == true) restart_state.start_vis();
+			this.change_state(this.engine, restart_state);
+
+			return;
+
+		}
+
+		////('g_is_the_current_level_loaded' + g_is_the_current_level_loaded );
+		if(g_is_the_current_level_loaded == true) {
+			g_is_the_current_level_loaded = false;
+
+			this.extract_tut_data();	// if any is present
+
+			//console.dir(g_current_level_data);
+
+			var num_levels_in_this_file = g_current_level_data.floor.length;
+			var first_level_in_this_file = g_current_level_data.levels_starting_from;
+			var last_level = first_level_in_this_file  + num_levels_in_this_file ;
+
+			this.extract_colour_data(first_level_in_this_file);	// if any
+
+			for (var i = first_level_in_this_file; i < last_level; i++) {
+				// is this a deep copy?
+				//g_all_level_data_floor_layer[i] = g_current_level_data.floor[i - first_level_in_this_file].slice(0);
+				//g_all_level_data_cover_layer[i] = g_current_level_data.cover[i - first_level_in_this_file].slice(0);
+
+				//('storing level ' + i);
+
+				
+				//g_all_level_data_cover_layer[i] = new Array(10);
+
+
+				if (g_all_level_status[i] == null) g_all_level_status[i] = 1;	// available
+
+				if (g_current_level_data.floor[i - first_level_in_this_file].length != 10) {
+					this.load_level_one_d_array(i, i - first_level_in_this_file);
+					continue;
+				} else if (g_current_level_data.floor[i - first_level_in_this_file].length == 0) {
+					continue;
+				}
+
+				g_all_level_data_floor_layer[i] = new Array(10);
+
+				for (var x = 0; x < 10; x++) {
+					this.p_level_folder[i][x] = new Array(10);
+					//g_all_level_data_cover_layer[i][x] = new Array(10);
+
+					for (var y = 0; y < 10; y++) {
+						var floor_ = g_current_level_data.floor[i - first_level_in_this_file][x][y];
+						this.p_level_folder[i][x][y] = floor_;
+
+						//var cover_ = g_current_level_data.cover[i - first_level_in_this_file][x][y];
+						//g_all_level_data_cover_layer[i][x][y] = cover_;
+					}
+				}
+			}
+
+			//var level_to_load = 0;	
+			//var mapdata_version_mines = 1;
+			//this.play_state.current_level = level_to_load;
+
+			// this.play_state.current_level was set when this state was created
+
+			//this.play_state.load_level(level_to_load, mapdata_version_mines); // 
+
+			if (g_tut_content[this.play_state.current_level] != null &&
+			    this.play_state.game_mode != 6) {
+				// putting this here as well as in Overworld and WinState
+				
+				this.play_state.game_mode = 5;
+				this.change_state(this.engine, new LoadInstructionStateClass(this.engine, this.play_state));
+				return;
+			}
+
+			var restart_state = new RestartGameStateClass(this.engine, this.play_state);
+			if (this.post_win == true) restart_state.start_vis();
+			this.change_state(this.engine, restart_state);
+
+			//this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+				
+			
+		}
+	},
+
+	extract_colour_data: function(firstlevel) {
+		if (g_current_level_data.colour == null) return;
+		if (g_current_level_data.text == null) return;
+
+		var colour_folder = g_all_level_data_colour_layer;
+		var text_folder = g_all_level_data_text;
+
+		if (this.play_state.game_mode == 6) {
+			if (this.play_state.challenge_level_hardness == 1) colour_folder = g_all_level_data_colour_layer.easy;
+			if (this.play_state.challenge_level_hardness == 2) colour_folder = g_all_level_data_colour_layer.med;
+			if (this.play_state.challenge_level_hardness == 3) colour_folder = g_all_level_data_colour_layer.hard;
+			if (this.play_state.challenge_level_hardness == 4) colour_folder = g_all_level_data_colour_layer.nosmiley;
+
+			if (this.play_state.challenge_level_hardness == 1) text_folder = g_all_level_data_text.easy;
+			if (this.play_state.challenge_level_hardness == 2) text_folder = g_all_level_data_text.med;
+			if (this.play_state.challenge_level_hardness == 3) text_folder = g_all_level_data_text.hard;
+			if (this.play_state.challenge_level_hardness == 4) text_folder = g_all_level_data_text.nosmiley;
+		}
+
+
+		for (var i = 0; i < g_current_level_data.colour.length; i++) {
+			colour_folder[firstlevel + i] = [];
+			for (var j = 0; j < g_current_level_data.colour[i].length; j++) {
+				colour_folder[firstlevel + i].push(g_current_level_data.colour[i][j]);
+			}
+		}
+
+		for (var i = 0; i < g_current_level_data.text.length; i++) {
+			text_folder[firstlevel + i] = "";
+			text_folder[firstlevel + i] = g_current_level_data.text[i];
+			
+		}		
+	},
+
+	
+	extract_tut_data:function() {
+		if (g_current_level_data.tut == null) return;
+		if (this.play_state.game_mode == 6) return;	// maybe later i'll make tuts compatible with challenge levels
+		////console.log('extract_tut_data');
+		//////console.log('g_current_level_data.tut.length ' + g_current_level_data.tut.length);
+		//for (var i = 0; i < g_current_level_data.tut.length; i++) {
+		for (var i in g_current_level_data.tut) {
+			// -> g_tut_content
+			var level = g_current_level_data.tut[i].levelnum;
+			this.load_tut_level_one_d_array(level);
+
+			////console.log('extract_tut_data > level ' + level);
+			////console.dir(g_current_level_data.tut[i]);
+
+			g_tut_content[level].text = [];
+			g_tut_content[level].tiles = [];
+
+			for (var stages = 0; stages < g_current_level_data.tut[i].text.length; stages++) {
+				var text = g_current_level_data.tut[i].text[stages]; // string
+				g_tut_content[level].text.push(text); 
+
+				var tiles = g_current_level_data.tut[i].tiles[stages]; // array
+				g_tut_content[level].tiles.push(tiles); 
+				
+			}
+
+			g_tut_content[level].startclear = 0;
+			if (g_current_level_data.tut[i].startclear != null) {
+				g_tut_content[level].startclear = 1;
+			}
+			
+			g_tut_content[level].dofill = [];
+			if (g_current_level_data.tut[i].dofill != null) {
+				for (var f = 0; f < g_current_level_data.tut[i].dofill.length; f++) {
+					g_tut_content[level].dofill.push(g_current_level_data.tut[i].dofill[f]);
+				}
+			}
+
+			g_tut_content[level].dodig = [];
+			if (g_current_level_data.tut[i].dodig != null) {
+				for (var f = 0; f < g_current_level_data.tut[i].dodig.length; f++) {
+					g_tut_content[level].dodig.push(g_current_level_data.tut[i].dodig[f]);
+				}
+			}
+		}
+	},
+
+	load_tut_level_one_d_array: function (num) {
+
+		var size_ = g_current_level_data.tut[num].level.length;
+		size_ = Math.sqrt(size_);
+
+		////alert('level size ' + size_);
+
+		g_tut_content[num] = {};
+
+		g_tut_content[num].level = new Array(size_);
+		
+		for (var x = 0; x < size_; x++) {
+			g_tut_content[num].level[x] = new Array(size_);
+			//g_all_level_data_cover_layer[i][x] = new Array(10);
+
+			for (var y = 0; y < size_; y++) {
+				var b = y + size_*x;//x + 10*y;
+
+				var floor_ = g_current_level_data.tut[num].level[b];
+				g_tut_content[num].level[x][y] = floor_;
+
+			}
+		}
+		////console.log('g_tut_content[num]');
+		////console.dir(g_tut_content[num]);
+
+		//////console.dir(g_all_level_data_floor_layer[i]);
+	},
+
+	load_level_one_d_array: function (i, rel_) {
+
+		var size_ = g_current_level_data.floor[rel_].length;
+		size_ = Math.sqrt(size_);
+
+		////alert('level size ' + size_);
+
+		this.p_level_folder[i] = new Array(size_);
+		
+		for (var x = 0; x < size_; x++) {
+			this.p_level_folder[i][x] = new Array(size_);
+			//g_all_level_data_cover_layer[i][x] = new Array(10);
+
+			for (var y = 0; y < size_; y++) {
+				var b = y + size_*x;//x + 10*y;
+
+				var floor_ = g_current_level_data.floor[rel_][b];
+				this.p_level_folder[i][x][y] = floor_;
+
+			}
+		}
+
+		//////console.dir(g_all_level_data_floor_layer[i]);
+	}
+});
+
+StartOverworldStateClass = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	y_pos: 0,
+	x_pos: 0,
+
+	x_vel: 0,
+	y_vel: 0,
+
+	timer: 2,
+
+	// remove old screen and bring in new one
+
+	init: function(engine, play_state, xvel, yvel) {
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		this.play_state.hide_bg_squares();
+
+		this.x_vel = xvel;
+		this.y_vel = yvel;
+
+		play_screen_container.make_vis();
+		play_screen_group.set_y(0);
+		play_screen_group.set_x(0);
+	},
+
+	
+	update: function() { 
+		this.play_state.update();
+
+		this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+
+		return;
+
+		this.x_pos--;
+		var dist_ = (0 - this.x_pos);
+
+		this.x_pos = this.x_pos - 0.25*dist_;//- 0.075*Math.abs(this.x_pos + 999);
+		play_screen_group.set_x(this.x_pos);
+		this.timer--;
+	
+		
+		
+		if (this.timer <= 0) {
+
+			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+
+		}
+		
+	},
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+	},
+
+	draw: function() {
+		
+		this.play_state.draw();
+	},
+
+	cleanup: function() {
+		// this state could be interrupted by the user
+		
+		play_screen_group.set_y(0);
+		play_screen_group.set_x(0);	
+	}
+
+});
+
+g_text_mylevel_name = null;
+g_text_myauthor_name = null;
+
+g_text_levelname_goeshere = null;
+g_text_author_goeshere = null;
+
+g_confirm_upload_button = null;
+
+UploadLevelStateClass =  GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	levelname: "",
+	writing_name: 1,	// or author
+
+	init: function(engine, play_state) {
+
+		this.play_state = play_state;
+		this.engine = engine;
+
+		if (g_text_mylevel_name == null) {
+
+			g_text_levelname_goeshere = new TextClass(Types.Layer.GAME_MENU);
+			g_text_levelname_goeshere.set_font(Types.Fonts.SMALL);
+			g_text_levelname_goeshere.set_text("LEVEL NAME:");
+
+			g_text_author_goeshere = new TextClass(Types.Layer.GAME_MENU);
+			g_text_author_goeshere.set_font(Types.Fonts.SMALL);
+			g_text_author_goeshere.set_text("AUTHOR NAME:");
+
+			g_text_mylevel_name = new TextClass(Types.Layer.GAME_MENU);
+			g_text_mylevel_name.set_font(Types.Fonts.SMALL);
+			g_text_mylevel_name.set_text("MY LEVEL");
+
+			g_text_myauthor_name = new TextClass(Types.Layer.GAME_MENU);
+			g_text_myauthor_name.set_font(Types.Fonts.SMALL);
+			g_text_myauthor_name.set_text("ANON");
+
+			g_confirm_upload_button = new ButtonClass();
+			g_confirm_upload_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
+
+		}
+	},
+
+	author_y: 128,
+	levelname_y: 64,
+
+	upload_x: 0,
+	upload_y: 0,
+
+	screen_resized: function() {
+		g_text_levelname_goeshere.update_pos(64, this.levelname_y);
+		g_text_mylevel_name.update_pos(400, this.levelname_y);
+		g_text_author_goeshere.update_pos(64, this.author_y);
+		g_text_myauthor_name.update_pos(400, this.author_y);
+
+		this.upload_x = screen_width - 64;
+		this.upload_y = screen_height - 64;
+		
+		g_confirm_upload_button.update_pos(this.upload_x, this.upload_y);
+	},
+
+	cleanup: function() {
+		g_text_levelname_goeshere.hide();
+		g_text_mylevel_name.hide();
+		g_text_author_goeshere.hide();
+		g_text_myauthor_name.hide();
+		
+		g_confirm_upload_button.hide();
+	},
+
+	handle_key: function(keynum) {
+		if (this.writing_name == 1) this.write_name(keynum);
+		else this.write_author(keynum);
+	},
+
+	handle_mouse_down: function(engine,x,y) {
+
+		this.handle_mouse_move(engine,x,y);
+
+		if (mouse.x > this.upload_x - 25 &&
+		    mouse.x < this.upload_x + 25 &&
+		    mouse.y > this.upload_y - 25 &&
+		    mouse.y < this.upload_y + 25) {
+			
+			// PostLevel
+			this.change_state(this.engine, new PostLevel(this.engine, this.play_state));
+			return;
+		}
+
+	},
+
+	write_name: function(keynum) {
+
+		if (keynum == 8) {
+			// backspace
+			
+
+			if (this.input_cursor > 0) this.input_cursor--;
+
+			var string_ = "";
+
+			for (var i = 0; i < this.input_cursor; i++) {
+				string.add(this.levelname[i]);
+			}
+
+			this.levelname = string_;
+
+			g_text_mylevel_name.change_text(this.levelname);
+
+			return;
+		}
+		
+		//g_keyboard[]
+		//g_seed_texts[this.input_cursor].update_pos(this.input_cursor*dist_ + dist_,screen_height*0.5);
+
+		this.levelname.add(String.fromCharCode(keynum));
+		g_text_mylevel_name.change_text(this.levelname);
+		this.input_cursor++;
+		return;
+
+		g_seed_texts[this.input_cursor].change_text(String.fromCharCode(keynum));
+		this.seed[this.input_cursor] = keynum;
+		if (this.input_cursor < g_seed_texts.length) this.input_cursor++;
+
+		
+		
+
+		
+		
+	},
+
+	write_author: function(keynum) {
+
+		if (keynum == 8) {
+			// backspace
+			
+
+			if (this.input_cursor > 0) this.input_cursor--;
+
+			var string_ = "";
+
+			for (var i = 0; i < this.input_cursor; i++) {
+				string.add(this.authorname[i]);
+			}
+
+			this.authorname = string_;
+
+			g_text_myauthor_name.change_text(this.authorname);
+
+			return;
+		}
+		
+		//g_keyboard[]
+		//g_seed_texts[this.input_cursor].update_pos(this.input_cursor*dist_ + dist_,screen_height*0.5);
+
+		this.authorname.add(String.fromCharCode(keynum));
+		g_text_myauthor_name.change_text(this.authorname);
+		this.input_cursor++;
+		
+
+		
+		
+	},
+
+});
+
+g_confirm_upload_text = null;
+g_confirm_upload_button = null;
+
+ConfirmUploadStateClass =  GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	init: function(engine, play_state) {
+
+		this.play_state = play_state;
+		this.engine = engine;
+		play_screen_container.make_vis();
+		
+		if (g_confirm_upload_text == null) {
+			//var empty_ =
+
+			//g_editor_sprites.push(empty_);
+
+			g_confirm_upload_button = new ButtonClass();
+			g_confirm_upload_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
+			g_confirm_upload_button.update_pos(-999,-999);
+
+			g_confirm_upload_text = new TextClass(Types.Layer.GAME_MENU);
+			g_confirm_upload_text.set_font(Types.Fonts.XSMALL);
+			g_confirm_upload_text.set_text("CONFIRM UPLOAD");
+			
+		}
+
+		this.screen_resized();
+	},
+
+	cleanup: function () {
+
+
+
+		g_confirm_upload_text.update_pos(-999,-999);
+		g_confirm_upload_button.hide();
+	},
+
+	upload_x: 0,
+	upload_y: 0,
+
+
+	screen_resized: function() {
+		this.upload_x = screen_width - 64;
+		this.upload_y = screen_height - 128;
+
+		g_confirm_upload_button.update_pos(this.upload_x, this.upload_y);
+
+		g_confirm_upload_text.update_pos(this.upload_x, this.upload_y + 32);
+		g_confirm_upload_text.center_x(this.upload_x);
+	},
+
+	handle_mouse_down: function(engine,x,y) {
+
+		this.handle_mouse_move(engine,x,y);
+
+		if (mouse.x > this.upload_x - 25 &&
+		    mouse.x < this.upload_x + 25 &&
+		    mouse.y > this.upload_y - 25 &&
+		    mouse.y < this.upload_y + 25) {
+			
+			// PostFirebaseLevel
+
+			//var post_level = 
+
+			this.change_state(this.engine, new PostLevel(this.engine, this.play_state));
+			//this.change_state(this.engine, new ConfirmUploadStateClass(this.engine, this.play_state));
+			
+
+			return;
+		}
+	}
+});
+
+g_editor_sprites_objs = null;
+
+g_editor_upload_button = null;
+g_editor_upload_text = null;
+
+g_editor_test_button = null;
+g_editor_test_text = null;
+
+g_editor_localsave_button = null;
+g_editor_localsave_text = null;
+
+g_editor_localload_button = null;
+g_editor_localload_text = null;
+
+LevelEditorStateClass =  GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	selected_type: 1,
+
+	highlighted_x: 0,
+	highlighted_y: 0,
+	prev_highlighted_x: 0,
+	prev_highlighted_y: 0,
+
+	upload_x: 0,
+	upload_y: 0,
+
+
+	init: function(engine, play_state) {
+
+		this.play_state = play_state;
+		this.engine = engine;
+		
+		
+		this.play_state.level_w = 10;
+		this.play_state.level_h = 10;
+		play_screen_container.make_vis();
+
+		this.show_level();
+
+		if (g_editor_upload_button == null) {
+			//var empty_ =
+
+			//g_editor_sprites.push(empty_);
+
+			g_editor_upload_button = new ButtonClass();
+			g_editor_upload_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
+			g_editor_upload_button.update_pos(-999,-999);
+
+			g_editor_upload_text = new TextClass(Types.Layer.GAME_MENU);
+			g_editor_upload_text.set_font(Types.Fonts.XSMALL);
+			
+
+			if (on_kong && kongregate.services.getUserId() > 0) {
+				var name_ = kongregate.services.getUsername();
+				g_editor_upload_text.set_text("UPLOAD AS\n" + name_);
+			} else {
+				g_editor_upload_text.set_text("UPLOAD AS\nANON");
+			}
+
+			//////console.log('on_kong == ' + on_kong);
+			//////console.log('kongregate.services.getUserId()  == ' + kongregate.services.getUserId());
+
+			g_editor_localsave_button = new SpriteClass();
+			g_editor_localsave_button.setup_sprite('leftarrow.png',Types.Layer.GAME_MENU);
+			g_editor_localsave_button.update_pos(-999,-999);
+
+			g_editor_localsave_text = new TextClass(Types.Layer.GAME_MENU);
+			g_editor_localsave_text.set_font(Types.Fonts.SMALL);
+			g_editor_localsave_text.set_text("SAVE LOCALLY");
+
+			g_editor_localload_button = new SpriteClass();
+			g_editor_localload_button.setup_sprite('leftarrow.png',Types.Layer.GAME_MENU);
+			g_editor_localload_button.update_pos(-999,-999);
+
+			g_editor_localload_text = new TextClass(Types.Layer.GAME_MENU);
+			g_editor_localload_text.set_font(Types.Fonts.SMALL);
+			g_editor_localload_text.set_text("LOAD LOCALLY");
+
+
+			g_editor_test_button = new ButtonClass();
+			g_editor_test_button.setup_sprite('rightarrow.png',Types.Layer.GAME_MENU);
+			g_editor_test_button.update_pos(-999,-999);
+
+			g_editor_test_text = new TextClass(Types.Layer.GAME_MENU);
+			g_editor_test_text.set_font(Types.Fonts.XSMALL);
+			g_editor_test_text.set_text("PLAYTEST");
+
+			g_editor_sprites_objs = new LevelEditorTileSelectClass();
+			
+			g_editor_sprites_objs.add_new('greytile.png', 0);
+			g_editor_sprites_objs.add_new('colourtile_brown.png', GameTypes.Colours.BROWN);
+			g_editor_sprites_objs.add_new('colourtile_darkblue.png', GameTypes.Colours.DARKBLUE);
+			g_editor_sprites_objs.add_new('colourtile_green.png', GameTypes.Colours.GREEN);
+			g_editor_sprites_objs.add_new('colourtile_lightblue.png', GameTypes.Colours.LIGHTBLUE);
+			g_editor_sprites_objs.add_new('colourtile_orange.png', GameTypes.Colours.ORANGE);
+			g_editor_sprites_objs.add_new('colourtile_pink.png', GameTypes.Colours.PINK);
+			g_editor_sprites_objs.add_new('colourtile_purple.png', GameTypes.Colours.PURPLE);
+			g_editor_sprites_objs.add_new('colourtile_red.png', GameTypes.Colours.RED);
+			g_editor_sprites_objs.add_new('colourtile_yellow.png', GameTypes.Colours.YELLOW);
+			g_editor_sprites_objs.add_new('bluetile.png', GameTypes.Colours.WHITE);
+
+			/*
+			g_editor_sprites_objs.add_new('button.png', 0);
+			g_editor_sprites_objs.add_new('block0.png', 1);
+			g_editor_sprites_objs.add_new('flagblock.png', 2);
+			g_editor_sprites_objs.add_new('g_block2.png', 3);
+			g_editor_sprites_objs.add_new('hand.png', 4);	
+			g_editor_sprites_objs.add_new('eye.png', 5);
+			g_editor_sprites_objs.add_new('8hand.png', 6);	
+			var join_up_index = g_editor_sprites_objs.add_new('joiner_up.png', 8);	
+			g_editor_sprites_objs.rotate_sprite(join_up_index, 2);
+			var join_right_index = g_editor_sprites_objs.add_new('joiner_up.png', 7);	
+			g_editor_sprites_objs.rotate_sprite(join_right_index, 1);
+			g_editor_sprites_objs.add_new('heart.png', 10);	
+			g_editor_sprites_objs.add_new('compass.png', 11);
+			g_editor_sprites_objs.add_new('crown.png', 12);	
+			g_editor_sprites_objs.add_new('eyebracket.png', 13);	
+			g_editor_sprites_objs.add_new('zap.png', 49);	
+			g_editor_sprites_objs.add_new('totalnum.png', 80);	
+			g_editor_sprites_objs.add_new('sharesquareUD.png', 26 , 1);	// bubble L R, rotate 1x90
+			g_editor_sprites_objs.add_new('sharesquareUD.png', 31, 0);	// bubble U D, rotate 0x90
+			g_editor_sprites_objs.add_new('sharesquareRD.png', 27, 2);	// up left
+			g_editor_sprites_objs.add_new('sharesquareRD.png', 24, 1);	// down left
+			g_editor_sprites_objs.add_new('sharesquareRD.png', 29, 0);	// down right
+			g_editor_sprites_objs.add_new('sharesquareRD.png', 32, 3);	// up right
+			g_editor_sprites_objs.add_new('sharejoin_horiz.png', 17, 0);	// horiz
+			g_editor_sprites_objs.add_new('sharejoin_horiz.png', 18, 1);	// vert
+			g_editor_sprites_objs.add_new('sharejoin_UR.png', 19, 2);	// corner	
+			g_editor_sprites_objs.add_new('sharejoin_UR.png', 22, 0);	// corner
+			g_editor_sprites_objs.add_new('sharejoin_UR.png', 21, 1);	// corner
+			g_editor_sprites_objs.add_new('sharejoin_UR.png', 20, 3);	// corner
+			*/
+
+		}
+
+		
+
+		
+		
+		this.play_state.reset();
+
+		
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.highlighted_x = x;
+				this.highlighted_y = y;
+				this.delete_tile(x,y);
+			}
+		}
+	
+
+		g_editor_sprites_objs.make_vis();
+
+		//this.play_state.restore_backup();
+
+		this.screen_resized();
+
+		
+	},
+
+	show_level: function () {
+		
+		// this.play_state.bg_squares
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				
+				if (x < this.play_state.level_w &&
+				    y < this.play_state.level_h) {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].make_vis();
+					this.play_state.blocks[this.play_state.tiles[x][y]].make_vis();
+				} else {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].hide();
+					this.play_state.blocks[this.play_state.tiles[x][y]].hide();
+				}
+			}
+		}
+
+		// rescale
+		
+		level_ratio = 1;
+		level_x_shift = 0;
+
+		if (this.play_state.game_mode == 0) {
+			//level_ratio = g_level_ratio[this.play_state.current_level];
+			//level_x_shift = g_level_x_shift[this.play_state.current_level];
+		}
+
+		//do_resize();	
+		//this.play_state.show_border();
+			
+
+		this.play_state.calc_sequence_lengths();
+		
+		this.play_state.calc_edge_nonogram();
+
+		this.play_state.resize();	// after calc edges - need to know sizes
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y = 0; y < this.play_state.level_h; y++) {
+
+				// debug mode - start with solved puzzle
+				//if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 2) this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_hint(this.play_state.blocks[this.play_state.tiles[x][y]].symbol_type);
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_sprite();
+				
+
+			}
+		}
+	},
+
+	play_level: function () {
+		
+	},
+
+	cleanup: function () {
+
+
+		//this.play_state.backup_level();
+
+		g_editor_sprites_objs.hide();
+
+		g_editor_upload_text.update_pos(-999,-999);
+		g_editor_upload_button.hide();
+
+		g_editor_test_text.update_pos(-999,-999);
+		g_editor_test_button.hide();
+
+		g_editor_localsave_text.update_pos(-999,-999);
+		g_editor_localsave_button.hide();
+
+		g_editor_localload_text.update_pos(-999,-999);
+		g_editor_localload_button.hide();
+
+		
+
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.play_state.blocks[this.play_state.tiles[x][y]].show_grid = false;
+				this.play_state.blocks[this.play_state.tiles[x][y]].editor_mode = 0;
+			}
+		}
+	},
+
+	test_x: 0,
+	test_y: 0,
+
+	localsave_x: 0,
+	localsave_y: 0,
+
+	
+	localload_x: 0,
+	localload_y: 0,
+
+	screen_resized: function() {
+		this.upload_x = screen_width - 64;
+		this.upload_y = 64;
+
+		this.test_x = screen_width - 64;
+		this.test_y = 128 + 64;
+
+		this.localsave_x = -999-screen_width - 64;
+		this.localsave_y = -999-screen_height - 128 - 64;
+
+		this.localload_x = - 999 - screen_width - 64;
+		this.localload_y = - 999 - screen_height - 64;
+	
+		g_editor_upload_button.update_pos(this.upload_x, this.upload_y);
+
+		g_editor_upload_text.update_pos(this.upload_x, this.upload_y + 32);
+		g_editor_upload_text.center_x(this.upload_x);
+
+		g_editor_test_button.update_pos(this.test_x, this.test_y);
+
+		g_editor_test_text.update_pos(this.test_x, this.test_y + 32);
+		g_editor_test_text.center_x(this.test_x);
+
+		g_editor_localsave_button.update_pos(this.localsave_x, this.localsave_y);
+
+		g_editor_localsave_text.update_pos(this.localsave_x, this.localsave_y + 32);
+		g_editor_localsave_text.center_x(this.localsave_x);
+
+		g_editor_localload_button.update_pos(this.localload_x, this.localload_y);
+
+		g_editor_localload_text.update_pos(this.localload_x, this.localload_y + 32);
+		g_editor_localload_text.center_x(this.localload_x);
+
+		
+		g_editor_sprites_objs.make_vis();
+	},
+
+	handle_mouse_move: function(engine,x,y) {
+
+		
+
+		this.prev_highlighted_x = this.highlighted_x;
+		this.prev_highlighted_y = this.highlighted_y;
+
+		this.highlighted_x = Math.round((x - 0.5*this.play_state.tile_size)/ this.play_state.tile_size);
+		this.highlighted_y = Math.round((y - 0.5*this.play_state.tile_size)/ this.play_state.tile_size);
+
+		
+		
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+		//if (x < this.play_state.grid_w*this.play_state.tile_size &&
+		//	y < this.play_state.grid_h*this.play_state.tile_size) return;
+		g_editor_sprites_objs.click(mouse.x, mouse.y);
+
+		
+	},
+
+	delete_tile: function(x,y) {
+		this.play_state.change_tile(this.highlighted_x,this.highlighted_y,0);
+
+		if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 2) this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+		else this.play_state.blocks[this.play_state.tiles[x][y]].put_x_on();
+
+		
+	},
+
+	recalc_hints: function() {
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].covered_up == false) {
+					// recalc hints
+					this.play_state.blocks[this.play_state.tiles[x][y]].cover();
+					this.play_state.blocks[this.play_state.tiles[x][y]].uncover();
+				}
+			}
+		}
+	},
+
+	localload : function () {
+		
+
+
+	},
+
+	localsave : function () {
+		
+
+	},
+
+	// single level per file
+	// ill write another script to combine them or whatever
+	export_to_json_colour: function () {
+		var json_obj = {};
+		json_obj.floor = [];
+
+		// whatever colour is selected -> background
+		var bg_colour = g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected];
+
+		for (var y = 0; y < this.play_state.level_h + 1; y++) {
+			for (var x = 0; x < this.play_state.level_w + 1; x++) {
+			
+				if (x > 0 && y > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(x - 1, y - 1));
+				} else if (x == 0 && y > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(-1, y - 1));
+				} else if (y == 0 && x > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(x - 1, -1));
+				} else json_obj.floor.push(0);
+			}
+		}
+
+		json_obj.colour = [];
+		for (var y = 0; y < this.play_state.level_h; y++) {
+			for (var x = 0; x < this.play_state.level_w; x++) {
+			
+				var col = this.play_state.blocks[this.play_state.tiles[x][y]].secret_colour;
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 0) {
+					col = bg_colour;
+				}
+				json_obj.colour.push(col);
+			}
+		}
+
+		// 
+		var milliseconds = new Date().getTime();
+
+		var txtFile = "/" + milliseconds.toString() + ".txt";
+		var str = JSON.stringify(json_obj);
+
+ 		var file = new File([str],txtFile);
+		
+ 		//file.open("write"); // open file with write access
+ 		//file.write(str);
+ 		//file.close();
+
+		// https://stackoverflow.com/questions/21012580/is-it-possible-to-write-data-to-file-using-only-javascript
+		makeTextFile(str);
+	},
+
+	export_to_console_colour: function () {
+		var json_obj = {};
+		json_obj.floor = [];
+
+		// whatever colour is selected -> background
+		var bg_colour = g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected];
+
+		for (var y = 0; y < this.play_state.level_h + 1; y++) {
+			for (var x = 0; x < this.play_state.level_w + 1; x++) {
+			
+				if (x > 0 && y > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(x - 1, y - 1));
+				} else if (x == 0 && y > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(-1, y - 1));
+				} else if (y == 0 && x > 0) {
+					json_obj.floor.push(this.play_state.get_json_level_code(x - 1, -1));
+				} else json_obj.floor.push(0);
+			}
+		}
+
+		json_obj.colour = [];
+		for (var y = 0; y < this.play_state.level_h; y++) {
+			for (var x = 0; x < this.play_state.level_w; x++) {
+			
+				var col = this.play_state.blocks[this.play_state.tiles[x][y]].secret_colour;
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 0) {
+					col = bg_colour;
+				}
+				json_obj.colour.push(col);
+			}
+		}
+
+		// 
+		var milliseconds = new Date().getTime();
+
+		var txtFile = "/" + milliseconds.toString() + ".txt";
+		var str = JSON.stringify(json_obj);
+
+ 		var file = new File([str],txtFile);
+		
+ 		//file.open("write"); // open file with write access
+ 		//file.write(str);
+ 		//file.close();
+
+		// https://stackoverflow.com/questions/21012580/is-it-possible-to-write-data-to-file-using-only-javascript
+		//makeTextFile(str);
+
+		//console.log(str);
+	},
+
+	export_to_json_monochrome: function () {
+		
+	},
+
+	
+
+	handle_mouse_down: function(engine,x,y) {
+
+		this.handle_mouse_move(engine,x,y);
+
+		if (mouse.x > this.upload_x - 25 &&
+		    mouse.x < this.upload_x + 25 &&
+		    mouse.y > this.upload_y - 25 &&
+		    mouse.y < this.upload_y + 25) {
+
+			//console.log('Level Editor > g_generator_class.go');
+			g_generator_class.bg_colour = g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected];
+			
+			g_generator_class.go(this);
+
+			if (g_generator_class.success == false) return;
+
+			// save to file
+			
+			
+			this.export_to_json_colour();
+
+			return;
+		}
+
+		if (mouse.x > this.test_x - 25 &&
+		    mouse.x < this.test_x + 25 &&
+		    mouse.y > this.test_y - 25 &&
+		    mouse.y < this.test_y + 25) {
+			
+			this.play_level();
+			return;
+		}
+
+		if (this.highlighted_x < 0 || 
+		    this.highlighted_x >= this.play_state.grid_w ||
+		    this.highlighted_y < 0 || 
+		    this.highlighted_y >= this.play_state.grid_h) return;
+
+		var cover_up = 0;
+		
+		var colour_ = g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected];
+
+		
+		if (colour_ == 0) {
+
+			
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].
+			
+		} else {
+			// set colour
+			this.play_state.change_tile(this.highlighted_x,this.highlighted_y,2);
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].secret_colour = colour_;
+		}
+
+		this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].colour_mode = true;
+		if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].block_type == 2) this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].put_flag_on();
+		else this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].put_x_on();
+		
+		return;
+
+		if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 0) {
+
+			
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+			//this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].
+			
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 1) {
+	
+			
+		this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.change_tile(this.highlighted_x,this.highlighted_y,1);
+			//this.play_state.set_clue(this.highlighted_x,this.highlighted_y, 0);
+
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 2) {
+
+			
+		this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.change_tile(this.highlighted_x,this.highlighted_y,2);
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].put_flag_on();
+			//this.play_state.set_clue(this.highlighted_x,this.highlighted_y, 0);
+
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 3) {
+
+			if (this.play_state.get_block_type(this.highlighted_x,this.highlighted_y) == 2) this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 4) {
+
+			
+			//
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(1);
+	
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+			
+			// 4 touch
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 5) {
+
+		
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(2);    // eye
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 49) {
+
+		
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(49);    // zap
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 80) {
+
+		
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(80);    // totalnum
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 6) {
+
+			
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(4);    // 8 touch
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		}  else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 10) {
+
+			// heart
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(5);    // 
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 11) {
+
+			// compass
+			//
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(11);    // 
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 12) {
+
+			// crown
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(12);    // 
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 13) {
+
+			// eyebracket
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].preset_hint(13);    // 
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 7) {
+
+			
+			// join to left
+			if (this.highlighted_x > 0 && this.check_unjoined(this.highlighted_x, this.highlighted_y, this.highlighted_x-1, this.highlighted_y) == true) {
+				this.delete_tile(this.highlighted_x,this.highlighted_y);
+				this.play_state.join_tiles(this.highlighted_x, this.highlighted_y, this.highlighted_x-1, this.highlighted_y);
+
+			}
+			
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 8) {
+			
+			
+			// join to up
+			if (this.highlighted_y > 0 && this.check_unjoined(this.highlighted_x, this.highlighted_y, this.highlighted_x, this.highlighted_y - 1) == true) {
+				this.delete_tile(this.highlighted_x,this.highlighted_y);
+				this.play_state.join_tiles(this.highlighted_x, this.highlighted_y, this.highlighted_x, this.highlighted_y - 1);
+				
+			}
+
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 26) {
+
+		
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].set_sharesquare_code(26);
+
+			this.play_state.calc_share_groups();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] == 31) {
+
+		
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].set_sharesquare_code(31);
+
+			this.play_state.calc_share_groups();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+		} else if (g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] >= 17 && 
+			   g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected] <= 32) {
+
+			if (this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].covered_up == true) cover_up = 1;
+	
+			this.delete_tile(this.highlighted_x,this.highlighted_y);
+
+			var code_ = g_editor_sprites_objs.build_codes[g_editor_sprites_objs.selected];
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].set_sharesquare_code(code_);
+
+			this.play_state.calc_share_groups();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+			this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].uncover();
+
+		}
+
+		if (cover_up == 1) this.play_state.blocks[this.play_state.tiles[this.highlighted_x][this.highlighted_y]].cover();
+
+	},
+
+	// for now, level editor can make only 2-blue rectangles
+	// and only certain hints (eye heart touch 8touch)
+	check_unjoined: function (x, y, xx, yy) {
+		if (this.play_state.joined_tiles[x][y] != 0) return false;
+		if (this.play_state.joined_tiles[xx][yy] != 0) return false;
+		var hint_ = this.play_state.blocks[this.play_state.tiles[xx][yy]].preset_hint_type;
+		if (hint_ != 1 && hint_ != 2 && hint_ != 5 && hint_ != 4) return false;
+		return true;
+	}
+
+});
+
+
+g_overworld_sprites = null;
+g_total_num_of_levels = 99;//122 on kong;
+g_levelnum_app_cutoff = 81;
+g_levelnum_app_cutoff_nosmiley = 30;
+
+g_total_challenge_levels_easy = 53;
+g_total_challenge_levels_med = 72;
+g_total_challenge_levels_hard = 93;
+g_total_challenge_levels_nosmiley = 45;
+g_challenge_levels_easy_progress = 0;
+g_challenge_levels_med_progress = 0;
+g_challenge_levels_hard_progress = 0;
+
+g_all_level_status = {};	// 1 - available,  2  - timeout, 3 - lock,  4 - tick
+g_all_level_status.easy = {};
+g_all_level_status.med = {};
+g_all_level_status.hard = {};
+g_all_level_status.nosmiley = {};
+
+load_all_level_status = function(status) {
+	g_all_level_status = status;
+	if (g_all_level_status.easy == null) g_all_level_status.easy = {};
+	if (g_all_level_status.med == null) g_all_level_status.med = {};
+	if (g_all_level_status.hard == null) g_all_level_status.hard = {};
+	if (g_all_level_status.nosmiley == null) g_all_level_status.nosmiley = {};
+};
+
+g_overworld_corner_sprite = null;
+g_overworld_text = null;
+
+g_overworld_fb_button = null;
+g_overworld_fb_text = null;
+
+g_overworld_left_button = null;
+g_overworld_right_button = null;
+
+g_overworld_left_text = null;
+g_overworld_right_text = null;
+
+g_overworld_to_app_button = null;
+g_overworld_to_app_text = null;
+
+g_overworld_to_show =  0;
+// 0 is levels 1 to 30
+// 1 is levels 31 to 60
+// 4 is levels 61 to 90
+// 3 is challenge levels
+// g_overworld_to_show >= 5 : level = (g_overworld_to_show - 2)*30 + 1
+
+
+g_challenge_levels_page = 0;
+
+OverworldStateClass = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	fb_x: 0,
+	fb_y: 0,
+
+	left_arrow_x: 0,
+	left_arrow_y: 0,
+	right_arrow_x: 0,
+	right_arrow_y: 0,
+
+	init: function(engine, play_state) {
+
+		play_screen_container.hide();
+		background_group.hide();
+	
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		this.play_state.hide_bg_squares();
+
+		g_top_nono_size = 0;
+		g_left_nono_size = 0;
+		g_level_size = 13; g_level_w = 7;
+		//g_level_
+		do_resize();
+
+		if (g_overworld_sprites == null) {
+
+			
+			g_overworld_to_app_button = new SpriteClass();
+			g_overworld_to_app_button.setup_sprite('cherry.png',Types.Layer.HUD);
+
+			g_overworld_corner_sprite = new SpriteClass();
+			g_overworld_corner_sprite.setup_sprite('elephant.png',Types.Layer.GAME_MENU);
+
+			g_overworld_to_app_text = new TextClass(Types.Layer.HUD);
+			g_overworld_to_app_text.set_font(Types.Fonts.XSMALL);
+			g_overworld_to_app_text.set_text("GET THE FREE APP (MORE LEVELS!)");
+
+			g_overworld_sprites = new OverworldSpritesClassReuseable(this.play_state);
+
+			g_overworld_text = new TextClass(Types.Layer.GAME_MENU);
+			g_overworld_text.set_font(Types.Fonts.MED_SMALL);
+			g_overworld_text.set_text("G_OVERWORLD TEXT");
+
+			g_overworld_fb_text = new TextClass(Types.Layer.GAME_MENU);
+			g_overworld_fb_text.set_font(Types.Fonts.SMALL);
+			g_overworld_fb_text.set_text("FIND US ON FACEBOOK:   ");
+
+			g_overworld_fb_button = new SpriteClass();
+			g_overworld_fb_button.setup_sprite('eye.png',Types.Layer.GAME_MENU);
+
+			g_overworld_left_button = new SpriteClass();
+			g_overworld_left_button.setup_sprite('leftarrow.png',Types.Layer.GAME_MENU);
+
+			g_overworld_right_button = new SpriteClass();
+			g_overworld_right_button.setup_sprite('rightarrow.png',Types.Layer.GAME_MENU);
+
+			g_overworld_left_text =  new TextClass(Types.Layer.GAME_MENU);
+			g_overworld_left_text.set_font(Types.Fonts.SMALL);
+			g_overworld_left_text.set_text("CHALLENGE MODES");
+
+			g_overworld_right_text =  new TextClass(Types.Layer.GAME_MENU);
+			g_overworld_right_text.set_font(Types.Fonts.SMALL);
+			g_overworld_right_text.set_text("LEVELS 31 - 60");
+			
+			
+
+			
+		}
+
+		
+		g_overworld_corner_sprite.make_vis();
+
+		g_overworld_to_app_button.make_vis();
+		g_overworld_to_app_text.make_vis();
+		
+		//this.play_state.reset();
+
+		
+		
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				this.play_state.change_tile(x,y,0);
+				
+				this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint(0);
+				//this.play_state.blocks[this.play_state.tiles[x][y]].cover();
+				this.play_state.blocks[this.play_state.tiles[x][y]].uncover();
+				this.play_state.blocks[this.play_state.tiles[x][y]].reset();
+			}
+		}
+		
+
+		// show the levels to select...
+		// on mouse up - check what level was selected
+
+		g_overworld_sprites.reset();
+
+		
+
+		if (this.play_state.game_mode == 6) {
+			// challenge levels
+			this.load_challenge_levels();
+			if (this.play_state.challenge_level_hardness == 1) g_overworld_text.change_text("CHALLENGE LEVELS\n-RELAXING");
+			if (this.play_state.challenge_level_hardness == 2) g_overworld_text.change_text("CHALLENGE LEVELS\n-MEDIUM");
+			if (this.play_state.challenge_level_hardness == 3) g_overworld_text.change_text("CHALLENGE LEVELS\n-ALL CLUES");
+			if (this.play_state.challenge_level_hardness == 4) g_overworld_text.change_text("CHALLENGE LEVELS\n-NO SMILEY");
+
+			g_overworld_sprites.make_vis();
+
+			g_overworld_left_button.make_vis();
+			g_overworld_right_button.make_vis();
+
+			g_overworld_corner_sprite.update_pos(16,16);
+			g_overworld_text.update_pos(32,16);	
+
+			g_overworld_fb_button.make_vis();
+
+			this.screen_resized();
+
+			g_overworld_corner_sprite.set_texture('saturn.png');
+
+			return;
+		}
+
+		if (this.play_state.game_mode == 0) g_overworld_corner_sprite.set_texture('elephant.png');
+		g_overworld_corner_sprite.update_pos(16,16);
+
+		if (g_overworld_to_show == 0) this.load_campaign_1to30();
+		else if (g_overworld_to_show == 1) this.load_campaign_31to60();
+		else if (g_overworld_to_show == 2) this.load_challenge_levels();
+		else if (g_overworld_to_show == 4) this.load_campaign_61to90();
+		else if (g_overworld_to_show >= 5) this.load_campaign_from((g_overworld_to_show - 2)*30 + 1);
+		else  this.load_campaign_1to30();
+
+		if (g_overworld_to_show == 0) g_overworld_text.change_text("LEVELS 1 - 30");
+		else if (g_overworld_to_show == 1) g_overworld_text.change_text("LEVELS 31 - 60");// +g_total_num_of_levels.toString());
+		else if (g_overworld_to_show == 2) g_overworld_text.change_text("CHALLENGE MODES");
+		else if (g_overworld_to_show == 4) g_overworld_text.change_text("LEVELS 61 - 90");
+		else if (g_overworld_to_show >= 5) {
+			var start_ = (g_overworld_to_show - 2)*30 + 1;
+			var end_ = start_ + 30;
+			g_overworld_text.change_text("LEVELS " + start_ + " - " + end_);
+
+		}
+
+		if (g_overworld_to_show == 0) g_overworld_left_text.change_text("CHALLENGE MODES");
+		else if (g_overworld_to_show == 1) g_overworld_left_text.change_text("LEVELS 1 - 30");
+		else if (g_overworld_to_show == 2) g_overworld_left_text.change_text("");
+		else if (g_overworld_to_show == 4) g_overworld_left_text.change_text("LEVELS 31 - 60");
+		else if (g_overworld_to_show >= 5) {
+			var start_ = (g_overworld_to_show - 2)*30 + 1;
+			start_ += 60;
+			var end_ = start_ + 30;
+			start_--; start_--;
+			end_--;
+			g_overworld_left_text.change_text("LEVELS " + start_ + " - " + end_);
+		}
+
+		if (g_overworld_to_show == 0) g_overworld_right_text.change_text("LEVELS 31 - 60" );
+		else if (g_overworld_to_show == 1) g_overworld_right_text.change_text("LEVELS 61 - 90");
+		else if (g_overworld_to_show == 2) g_overworld_right_text.change_text("LEVELS 1 - 30");
+		else if (g_overworld_to_show == 4) g_overworld_right_text.change_text("LEVELS 91 - 120");
+		else if (g_overworld_to_show >= 5) {
+			var start_ = (g_overworld_to_show - 2)*30 + 1;
+			start_ -= 30;
+			if (start_ <= g_total_num_of_levels) {
+
+				var end_ = start_ + 30;
+				g_overworld_left_text.change_text("LEVELS " + start_ + " - " + end_);
+
+			} else {
+
+
+			}
+		}
+		
+		var min_level = 0;
+		
+
+		if (g_overworld_to_show == 1) min_level = 30;
+		else if (g_overworld_to_show == 4) min_level = 60;
+		else if (g_overworld_to_show >= 5) min_level = (g_overworld_to_show - 2)*30;
+
+		var max_level = min_level + 29;
+		max_level = Math.min(max_level, g_total_num_of_levels);
+		
+		//for (var level in g_all_level_status) {
+		for (var l = min_level; l <= max_level; l++) {
+
+			var level = l;
+
+			//("status of level " + level.toString() + " " + g_all_level_status[level]);
+
+			var screen_level = level;
+			if (g_overworld_to_show == 1) screen_level -= 30;
+			else if (g_overworld_to_show == 2) break;
+			else if (g_overworld_to_show == 4) screen_level -= 60;
+			else if (g_overworld_to_show >= 5) screen_level -= (g_overworld_to_show - 2)*30;
+
+			if (screen_level < 0 || screen_level > 29 || screen_level == undefined || screen_level == null) continue;
+
+			if (g_all_level_status[level] == 2) {
+				// timeout
+				g_overworld_sprites.set_status(screen_level, 2);
+
+			} else if (g_all_level_status[level] == 3) {
+				// lock
+				g_overworld_sprites.set_status(screen_level, 3);
+
+			} else if (g_all_level_status[level] == 4) {
+				// tick
+				g_overworld_sprites.set_status(screen_level, 4);
+
+			}  else {
+				
+				g_overworld_sprites.no_status(screen_level);
+			}
+		}
+
+		g_overworld_left_text.hide();
+		g_overworld_right_text.hide();
+		
+		g_overworld_sprites.make_vis();
+
+		g_overworld_left_button.make_vis();
+		g_overworld_right_button.make_vis();
+
+		g_overworld_text.update_pos(32,16);	
+
+		g_overworld_fb_button.make_vis();
+
+		
+
+		this.screen_resized();
+
+	},
+
+	load_campaign_from: function(start_) {
+		// add campaign levels
+		for (var i = start_ - 1; i < start_ + 29; i++) {
+
+			if (g_all_level_status[i] == null) {
+				g_all_level_status[i] = 1;
+			}
+
+			if (i > g_total_num_of_levels) continue;
+
+			
+
+
+			var levelname = (i + 1).toString();
+
+			if (i >= g_levelnum_app_cutoff) levelname = 'APP';
+
+			if (i == 9999) g_overworld_sprites.add_level('hand.png', levelname);
+			else if (i == 1) g_overworld_sprites.add_level('redtile8touch.png', levelname);
+			else if (i == 9) g_overworld_sprites.add_level('eye.png', levelname);
+			else if (false && i == 21) g_overworld_sprites.add_level('plus.png', levelname);
+			else if (i == 20) g_overworld_sprites.add_level('heart.png', levelname);
+			else if (i == 30) g_overworld_sprites.add_level('redtileheart.png', levelname);
+			else if (i == 90) g_overworld_sprites.add_level('red2multi.png', levelname);
+			else if (i == 40) g_overworld_sprites.add_level('crown.png', levelname);
+			else if (i == 60) g_overworld_sprites.add_level('redtilesmile.png', levelname);
+			//else if (i == 120) g_overworld_sprites.add_level('join_tut.png', levelname);
+			//else if (i == 110) g_overworld_sprites.add_level('sharetut.png', levelname);
+			//else if (i == 130) g_overworld_sprites.add_level('zap.png', levelname);
+			//else if (i == 140) g_overworld_sprites.add_level('ghost.png', levelname);
+			//else if (i == 150) g_overworld_sprites.add_level('walker.png', levelname);	
+			else if (i == 160) g_overworld_sprites.add_level('eyerepeat.png', levelname);	
+			else if (i == 170) g_overworld_sprites.add_level('double_tut.png', levelname);		
+			else g_overworld_sprites.add_level(null, levelname);
+
+			
+		
+			
+		}
+	},
+
+	load_campaign_1to30: function() {
+		// add campaign levels
+		for (var i = 0; i < 30; i++) {
+
+			if (g_all_level_status[i] == null) {
+				g_all_level_status[i] = 1;
+			}
+
+			if (i >= 30) continue;
+
+			var levelname = (i + 1).toString();
+
+			if (i == 9999) g_overworld_sprites.add_level('hand.png', levelname);
+			//else if (i == 2) g_overworld_sprites.add_level('eye.png', levelname);
+			//else if (i == 13) g_overworld_sprites.add_level('8hand.png', levelname);
+			else if (false && i == 21) g_overworld_sprites.add_level('plus.png', levelname);
+			//else if (i == 28) g_overworld_sprites.add_level('join_tut.png', levelname);
+			else if (i == 0) g_overworld_sprites.add_level('redtile8touch.png', levelname);
+			else if (i == 9) g_overworld_sprites.add_level('eye.png', levelname);
+			else if (false && i == 21) g_overworld_sprites.add_level('plus.png', levelname);
+			else if (i == 20) g_overworld_sprites.add_level('heart.png', levelname);
+			else if (i == 30) g_overworld_sprites.add_level('redtileheart.png', levelname);
+			//else if (i == 90) g_overworld_sprites.add_level('eyebracket.png', levelname);
+			else g_overworld_sprites.add_level(null, levelname);
+
+			
+		}
+
+	},
+
+	load_campaign_31to60: function() {
+		// add campaign levels
+		for (var i = 0; i < g_total_num_of_levels - 30; i++) {
+
+			if (i >= 30) break;
+
+			var levelname = (i + 1 + 30).toString();
+
+			if (i + 1 + 30 == 9999) g_overworld_sprites.add_level('heart.png', levelname);
+			//else if (i + 1 + 30 == 95) g_overworld_sprites.add_level('walkingdist.png', levelname);
+			
+			else if (false && i == 21) g_overworld_sprites.add_level('plus.png', levelname);
+			//else if (i == 90) g_overworld_sprites.add_level('eyebracket.png', levelname);
+			else if (i == 30 - 30) g_overworld_sprites.add_level('redtileheart.png', levelname);
+			else if (i == 40 - 30) g_overworld_sprites.add_level('crown.png', levelname);
+			else if (i == 60 - 30) g_overworld_sprites.add_level('redtilesmile.png', levelname);
+			else if (i == 50 - 30) g_overworld_sprites.add_level('eyebracket.png', levelname);
+			else g_overworld_sprites.add_level(null, levelname);
+
+		}
+	},
+
+	load_campaign_61to90: function() {
+		// add campaign levels
+		for (var i = 0; i < g_total_num_of_levels - 60; i++) {
+
+			if (i >= 60) break;
+
+			var levelname = (i + 1 + 60).toString();
+
+			if (i + 60 >= g_levelnum_app_cutoff) levelname = 'APP';
+
+			if (i + 1 + 60 == 61) g_overworld_sprites.add_level('smiley.png', levelname);
+			else if (i + 1 + 60 == 71) g_overworld_sprites.add_level('redtilesmile.png', levelname);
+			else if (i + 1 + 60 == 81) g_overworld_sprites.add_level('redtilezap.png', levelname);
+			else if (i + 1 + 60 == 91) g_overworld_sprites.add_level('red2multi.png', levelname);
+			else if (i + 1 + 60 == 991) g_overworld_sprites.add_level('crown.png', levelname);
+			else g_overworld_sprites.add_level(null, levelname);
+
+		}
+	},
+
+	old_load_challenge_levels: function() {
+		//g_overworld_sprites.add_special("MINESWEEPER++\n(RANDOM GENERATOR)" , 1); // GenerateRandStateClass  special type 1
+		//g_overworld_sprites.add_special("DAILY CHALLENGE" , 2); // special type 2
+		//g_overworld_sprites.add_special("UNENDING" , 3); // special type 3
+		//g_overworld_sprites.add_special("MINEDOKU" , 5); // special type 5
+		//g_overworld_sprites.add_special("FIREBASE" , 7); // LoadFirebaseLevel
+		//g_overworld_sprites.add_special("COMMUNITY LEVELS" , 4); // special type 4
+		//g_overworld_sprites.add_special("EDITOR" , 6); // special type 6
+	},
+
+	challenge_levels_start: 0,
+
+	load_challenge_levels: function() {
+
+		var start = g_challenge_levels_page*30;//Math.floor(g_challenge_levels_page / 30);
+		//console.log('g_challenge_levels_page ' + g_challenge_levels_page + ' start ' + start);
+		if (start < 0) start = 0;
+		var end = start + 30;
+		var max = 999;
+
+		this.challenge_levels_start = start;
+
+		if (this.play_state.challenge_level_hardness == 1) max = g_total_challenge_levels_easy;
+		if (this.play_state.challenge_level_hardness == 2) max = g_total_challenge_levels_med;
+		if (this.play_state.challenge_level_hardness == 3) max = g_total_challenge_levels_hard;
+		if (this.play_state.challenge_level_hardness == 4) max = g_total_challenge_levels_nosmiley;
+
+		var p_status = g_all_level_status.easy;
+		if (this.play_state.challenge_level_hardness == 2) p_status = g_all_level_status.med;
+		if (this.play_state.challenge_level_hardness == 3) p_status = g_all_level_status.hard;
+		if (this.play_state.challenge_level_hardness == 4) p_status = g_all_level_status.nosmiley;
+
+		//console.log('g_all_level_status.nosmiley ' + g_all_level_status.nosmiley.dir);
+		//console.log('g_all_level_status.hard ' + g_all_level_status.hard.dir);
+
+		if (end > max) end = max;
+
+		for (var i = start; i < end; i++) {
+
+			var levelname = (i + 1).toString();
+
+			if (using_cocoon_js == false &&
+			    this.play_state.challenge_level_hardness == 3) levelname = 'APP';
+
+			if (using_cocoon_js == false &&
+			    this.play_state.challenge_level_hardness == 4 &&
+			    i > g_levelnum_app_cutoff_nosmiley) levelname = 'APP';
+
+			g_overworld_sprites.add_level(null, levelname);
+
+			//console.log('load_challenge_levels > i: ' + i + ' p_status[i] ' + p_status[i]);
+
+			if (p_status != null &&
+			    p_status[i] != null) {
+				if (p_status[i] == 4) g_overworld_sprites.set_status(i - start, 4);
+			}
+
+		}
+		
+
+		// this.play_state.challenge_level_hardness 1 2 3 4
+		// this.play_state.game_mode == 6 for this be called
+
+		//g_total_challenge_levels_easy = 20;
+		//g_total_challenge_levels_med = 40;
+		//g_total_challenge_levels_hard = 30;
+		//g_challenge_levels_easy_progress = 0;
+		//g_challenge_levels_med_progress = 0;
+		//g_challenge_levels_hard_progress = 0;
+		
+	},
+
+	cleanup: function () {
+
+		
+
+		g_overworld_sprites.hide();
+
+		g_overworld_text.update_pos(-999, -999);
+		g_overworld_corner_sprite.hide();
+
+		g_overworld_fb_button.hide();
+		g_overworld_fb_text.update_pos(-999, -999);
+
+		g_overworld_left_button.hide();
+		g_overworld_right_button.hide();
+
+		g_overworld_left_text.update_pos(-999, -999);
+
+		g_overworld_right_text.update_pos(-999, -999);
+
+		g_overworld_to_app_button.hide();
+		g_overworld_to_app_text.update_pos(-999, -999);
+
+		//play_screen_container.make_vis();//;
+	},
+
+	app_x: 0,
+	app_y: 0,
+	clicked_app: false,
+
+	screen_resized: function () {
+
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		
+		this.fb_x = -999;
+		this.fb_y = -999;
+
+		
+
+		if (using_cocoon_js == true) this.fb_x = -999;
+		this.fb_x = -999;
+		
+
+		this.left_arrow_x = 0.5*screen_width - 64;
+		this.left_arrow_y = screen_height - 32;
+		this.right_arrow_x = 0.5*screen_width + 64;
+		this.right_arrow_y = screen_height - 32;
+
+		if (g_overworld_to_show >= 5) {
+			var start_ = (g_overworld_to_show - 2)*30 + 1;
+			start_ += 30;
+			if (start_ >= g_total_num_of_levels) this.right_arrow_x = -999;
+			
+		}
+
+		if (g_overworld_to_show == 2) this.left_arrow_y = -999;
+		else if (g_total_num_of_levels < (g_overworld_to_show - 2)*30 + 1) {
+			this.right_arrow_y = -999;
+			
+		} else if (g_overworld_to_show == 0) this.left_arrow_y = -999;
+
+		
+
+
+		g_overworld_left_button.update_pos(this.left_arrow_x, this.left_arrow_y);
+		g_overworld_right_button.update_pos(this.right_arrow_x, this.right_arrow_y);
+
+		//g_overworld_left_text.update_pos(this.left_arrow_x, this.left_arrow_y + 32);
+		//g_overworld_left_text.center_x(this.left_arrow_x);
+
+		//g_overworld_right_text.update_pos(this.right_arrow_x, this.right_arrow_y + 32);
+		//g_overworld_right_text.center_x(this.right_arrow_x);
+
+		if (screen_width > screen_height) {
+			this.fb_x = -999;
+			this.fb_y = -999;
+		} else {
+			//g_overworld_left_text.change_size(Types.Fonts.XSMALL);
+			//g_overworld_right_text.change_size(Types.Fonts.XSMALL);
+
+			
+		}
+
+		this.fb_x = -999;
+
+		g_overworld_fb_button.update_pos(this.fb_x, this.fb_y);
+		g_overworld_fb_text.update_pos(this.fb_x - 286, this.fb_y - 10);
+
+		g_overworld_sprites.make_vis();
+
+		g_overworld_left_button.make_vis();
+		g_overworld_right_button.make_vis();
+
+
+		// x = x*this.level_tile_size;
+		// y = y*0.5*120 + 120;
+		this.app_y = 7*0.5*120 + 120;
+		this.app_x = -60;
+
+		if (using_cocoon_js == true) {
+			this.app_x = -999;
+		}
+
+		g_overworld_to_app_button.update_pos(this.app_x, this.app_y);
+		g_overworld_to_app_text.update_pos(this.app_x + 40, this.app_y - 8);
+
+
+		
+		g_overworld_text.update_pos(96 - 16, 16);	
+		g_overworld_corner_sprite.update_pos(32 + 8, 32 - 4);
+		
+	},
+
+	go_to_fb: function() {
+		window.open('https://www.facebook.com/mathsweeper/');
+	},
+
+	handle_mouse_down: function(engine,x,y) {
+		
+		
+
+	},
+
+	
+	handle_mouse_up: function(engine,x,y) {
+		this.mousedown = false;
+		g_overworld_sprites.click(x,y);
+
+		if (g_overworld_sprites.selected_special == 1) {
+			//('1992 MODE');
+			this.play_state.current_level = 7;
+			this.play_state.first_tile_safe = true;
+			this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+			return;
+		} else if (g_overworld_sprites.selected_special == 4) {
+			//SeedLevelStateClass
+			this.play_state.current_level = 7;
+			this.play_state.first_tile_safe = true;
+			this.change_state(this.engine, new SeedLevelStateClass(this.engine, this.play_state));
+			return;
+		} else if (g_overworld_sprites.selected_special == 7) {
+			//SeedLevelStateClass
+			this.play_state.current_level = 7;
+			this.play_state.first_tile_safe = true;
+			this.change_state(this.engine, new LoadFirebaseLevel(this.engine, this.play_state));
+			return;
+		} else if (g_overworld_sprites.selected_special == 6) {
+			//SeedLevelStateClass
+			this.play_state.current_level = 7;
+			this.play_state.first_tile_safe = true;
+			this.change_state(this.engine, new LevelEditorStateClass(this.engine, this.play_state));
+			return;
+		}
+		
+		// 
+
+		var blocking = false;
+
+		if (g_servermode == false &&
+		   using_cocoon_js == false) blocking = true;
+
+		if (g_overworld_sprites.selected != -1 &&
+		    this.play_state.game_mode == 6) {
+
+			if (blocking == true &&
+			   this.play_state.challenge_level_hardness == 3) return;
+
+			g_overworld_sprites.selected += this.challenge_levels_start;
+
+			if (blocking == true &&
+			   this.play_state.challenge_level_hardness == 4 &&
+			   g_overworld_sprites.selected > g_levelnum_app_cutoff_nosmiley) return;
+			
+			
+			this.play_state.current_level = g_overworld_sprites.selected;
+			// in story mode, we would check for a tutorial to load here
+			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, this.play_state.current_level));
+
+			return;
+		}
+
+		if (g_overworld_sprites.selected != -1) {
+
+			if (g_overworld_to_show == 0) {}
+			else if (g_overworld_to_show == 1) g_overworld_sprites.selected += 30;
+			else if (g_overworld_to_show == 4) g_overworld_sprites.selected += 60;
+			else if (g_overworld_to_show >= 5) g_overworld_sprites.selected += (g_overworld_to_show - 2)*30;
+
+			if (using_cocoon_js == false &&
+			    g_overworld_sprites.selected >= g_levelnum_app_cutoff) return;
+
+			//('LEVEL ' + g_overworld_sprites.selected);
+
+			this.play_state.current_level = g_overworld_sprites.selected;
+			//this.play_state.load_level(g_overworld_sprites.selected);
+
+			//this.change_state(this.engine, new RestartGameStateClass(this.engine, this.play_state));
+
+			if (g_tut_content[this.play_state.current_level] != null) {
+				
+				this.play_state.game_mode = 5;
+				this.change_state(this.engine, new LoadInstructionStateClass(this.engine, this.play_state));
+				return;
+			}
+			
+			this.play_state.game_mode = 0;	// campaign mode
+			
+			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, this.play_state.current_level));
+
+			return;
+			
+		}
+
+		if (mouse.x > this.fb_x - 16 &&
+		    mouse.x < this.fb_x + 16 &&
+		    mouse.y > this.fb_y - 16 &&
+		    mouse.y < this.fb_y + 16) {
+			this.go_to_fb();
+		}
+
+		var left_ = 0;
+		var right_ = 0;		
+
+		if (screen_width < screen_height && 
+		    mouse.y > screen_height*0.5 &&
+		    mouse.x > screen_width*0.5) right_ = 1;
+		else if (screen_width < screen_height && 
+		    mouse.y > screen_height*0.5 &&
+		    mouse.x < screen_width*0.5) left_ = 1;
+
+		if ((mouse.x > this.left_arrow_x - 16 &&
+		    mouse.x < this.left_arrow_x + 16 &&
+		    mouse.y > this.left_arrow_y - 16 &&
+		    mouse.y < this.left_arrow_y + 16) || left_ == 1) {
+
+			g_challenge_levels_page--;
+			
+
+			if (g_overworld_to_show == 0) return;//g_overworld_to_show = 2;
+			else if (g_overworld_to_show == 2) return;
+			else if (g_overworld_to_show == 1) g_overworld_to_show = 0;
+			else if (g_overworld_to_show == 4) g_overworld_to_show = 1;
+			else if (g_overworld_to_show >= 5) g_overworld_to_show--;
+			
+			this.change_state(this.engine, new StartOverworldStateClass(this.engine, this.play_state));
+			return;
+		} else if ((mouse.x > this.right_arrow_x - 16 &&
+		   	   mouse.x < this.right_arrow_x + 16 &&
+		    	   mouse.y > this.right_arrow_y - 16 &&
+		    	   mouse.y < this.right_arrow_y + 16) || right_ == 1) {
+
+			g_challenge_levels_page++;
+			
+			if (g_overworld_to_show == 0) g_overworld_to_show = 1;
+			else if (g_overworld_to_show == 1)g_overworld_to_show = 4;
+			else if (g_overworld_to_show == 2) g_overworld_to_show = 0;
+			else if (g_overworld_to_show == 4) g_overworld_to_show = 5;
+			else if (g_overworld_to_show >= 5 && g_total_num_of_levels > (g_overworld_to_show - 2)*30 + 1) g_overworld_to_show++;
+			else if (g_total_num_of_levels < (g_overworld_to_show - 2)*30 + 1) return;
+
+			this.change_state(this.engine, new StartOverworldStateClass(this.engine, this.play_state));
+			return;
+		}
+
+
+	},
+
+	mousedown: false,
+	
+	handle_mouse_down: function(engine,x,y) {
+		if (this.mousedown == true) return;
+		this.mousedown = true;
+		g_overworld_sprites.highlight_on(x,y);
+
+		
+		if (x > this.app_x - 16 &&
+		    x < this.app_x + 16 &&
+		    y > this.app_y - 16 &&
+		    y < this.app_y + 16 && this.clicked_app == false) {
+			this.clicked_app = true;
+			open_url(gettheapp_url); 
+			return;
+		}
+	},
+
+	update: function() { 
+
+	},
+
+	draw: function() {
+
+	}
+
+
+});
+
+gettheapp_url = 'https://www.zblip.com/pixoji';	//	app	appinfo	   gettheapp	... thinking bout SEO
+							// or ' https://www.zblip.com/pixoji '
+							// put the webgame at https://www.zblip.com/pixoji/play
+
+
+go_to_fb = function() {
+		window.open('https://www.facebook.com/mathsweeper/');
+};
+
+g_play_button_sprite= null;
+g_tut_button_sprite= null;
+
+g_play_button_text = null;
+g_tut_button_text = null;
+
+g_game_name_text = null;
+
+g_menu_title_box = null;
+g_menu_fire_sprite = null;
+g_menu_bomb_sprite = null;
+g_menu_fire_sprite_shadow = null;
+g_menu_bomb_sprite_shadow = null;
+g_menu_plus_sprite = null;
+
+Menu2StateClass = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	tut_x: 0,
+	play_x : 0,
+	title_y: 0,
+
+	tut_actual_x: 0,
+	play_actual_x : 0,
+	title_actual_y: 0,
+
+	timer: 30,
+
+	init: function(engine, play_state) {
+
+		play_screen_container.make_vis();
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		if (g_play_button_sprite == null) {
+			g_play_button_sprite = new ButtonClass();
+			g_play_button_sprite.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+			g_play_button_sprite.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_tut_button_sprite = new ButtonClass();
+			g_tut_button_sprite.setup_sprite("tut_icon.png",Types.Layer.GAME_MENU);
+			g_tut_button_sprite.update_pos(- 200, screen_height*0.5);
+
+			g_play_button_text = new TextClass(Types.Layer.GAME_MENU);
+			g_play_button_text.set_font(Types.Fonts.MEDIUM);
+			g_play_button_text.set_text("PLAY");
+			g_play_button_text.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_tut_button_text = new TextClass(Types.Layer.GAME_MENU);
+			g_tut_button_text.set_font(Types.Fonts.MEDIUM);
+			g_tut_button_text.set_text(g_texts[language]["Tutorial"]);
+			g_tut_button_text.update_pos(screen_width - 200, screen_height*0.5);
+
+			g_game_name_text = new TextClass(Types.Layer.GAME_MENU);
+			g_game_name_text.set_font(Types.Fonts.MEDIUM);
+			g_game_name_text.set_text(g_texts[language]["Title"]);
+			g_game_name_text.update_pos(screen_width*0.5, -999, screen_width, 999);
+			g_game_name_text.center_x(screen_width*0.5);
+		
+			g_menu_title_box = new SquareClass();
+			g_menu_title_box.setup(Types.Layer.GAME_MENU);
+			g_menu_title_box.colour = 0xffffff;
+			g_menu_title_box.update_pos(screen_width*0.5 - 200, 120, 400, 64);
+			
+			g_menu_bomb_sprite_shadow = new SpriteClass();
+			g_menu_bomb_sprite_shadow.setup_sprite("bomb_shadow.png",Types.Layer.GAME_MENU);
+
+			g_menu_bomb_sprite = new SpriteClass();
+			g_menu_bomb_sprite.setup_sprite("bomb.png",Types.Layer.GAME_MENU);
+
+			g_menu_fire_sprite_shadow = new SpriteClass();
+			g_menu_fire_sprite_shadow.setup_sprite("fire_shadow.png",Types.Layer.GAME_MENU);
+
+			g_menu_fire_sprite = new SpriteClass();
+			g_menu_fire_sprite.setup_sprite("fire.png",Types.Layer.GAME_MENU);
+
+			g_menu_plus_sprite = new SpriteClass();
+			g_menu_plus_sprite.setup_sprite("plus.png",Types.Layer.GAME_MENU);
+		}
+
+		this.tut_actual_x = -200;
+		this.play_actual_x = screen_width + 200;
+		this.title_actual_y = - 200;
+
+
+		this.screen_resized();
+
+		
+	},
+
+	screen_resized: function () {
+
+		this.tut_x = 0.25*game_screen_width*0.5;
+		this.play_x = 0.75*game_screen_width*0.5;
+
+		//g_game_name_text.update_pos(screen_width*0.5, 42, screen_width, 999);
+		//g_game_name_text.center_x(screen_width*0.5);
+
+		//g_menu_title_box.update_pos(screen_width*0.5 - 150, 160 + 20, 300, 64 + 10);
+
+		g_menu_title_box.update_pos(screen_width*0.5 - 150, 145, 300, 1);
+
+		g_menu_bomb_sprite_shadow.update_pos(screen_width*0.5 + 80 + 6, 215 + 6);
+		g_menu_bomb_sprite.update_pos(screen_width*0.5 + 80, 215);
+
+		g_menu_fire_sprite_shadow.update_pos(screen_width*0.5 - 80 + 6, 215 + 6);
+		g_menu_fire_sprite.update_pos(screen_width*0.5 - 80, 215);
+
+		g_menu_plus_sprite.update_pos(screen_width*0.5, 215);
+
+		this.play_state.screen_resized();
+
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		x = mouse.x;
+		y = mouse.y;
+
+		if (y < screen_height*0.66 -64 ||
+		    y > screen_height*0.66 + 64) return;
+
+		if (x > this.tut_x - 64 &&
+		    x < this.tut_x + 64) {
+			this.change_state(this.engine, new TutStateClass(this.engine, this.play_state));
+			
+		} else if (x > this.play_x - 64 &&
+		    	   x < this.play_x + 64) {
+
+			//this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+			
+			//LoadingLevelStateClass	
+		}
+	},
+
+	update: function() { 
+		this.play_state.update();
+
+		if (this.timer > 0) this.timer--;
+		else {
+			this.tut_actual_x = this.tut_actual_x + (this.tut_x - this.tut_actual_x)*0.1;
+			this.play_actual_x = this.play_actual_x + (this.play_x - this.play_actual_x)*0.1;
+
+			//g_game_name_text.update_pos(screen_width*0.5, 42, screen_width, 999);
+			//g_game_name_text.center_x(screen_width*0.5);
+
+			this.title_actual_y = this.title_actual_y + (42 - this.title_actual_y)*0.1;
+		}
+	},
+
+	draw: function() {
+		this.play_state.draw();
+
+		g_play_button_sprite.update_pos(this.play_actual_x,screen_height*0.66);
+		g_tut_button_sprite.update_pos(this.tut_actual_x,screen_height*0.66);
+
+		g_play_button_text.update_pos(this.play_actual_x,screen_height*0.66 + 32);
+		g_play_button_text.center_x(this.play_actual_x);
+		g_tut_button_text.update_pos(this.tut_actual_x,screen_height*0.66 + 32);
+		g_tut_button_text.center_x(this.tut_actual_x);
+
+		g_game_name_text.update_pos(screen_width*0.5, this.title_actual_y, screen_width, 999);
+		g_game_name_text.center_x(screen_width*0.5);
+	},
+
+	cleanup: function() {
+		g_play_button_sprite.update_pos(-999,-999);
+		g_tut_button_sprite.update_pos(-999,-999);
+		g_play_button_text.update_pos(-999,-999);
+		g_tut_button_text.update_pos(-999,-999);
+		g_game_name_text.update_pos(-999,-999);
+
+		g_menu_fire_sprite.update_pos(-999,-999);
+		g_menu_fire_sprite_shadow.update_pos(-999,-999);
+
+		g_menu_bomb_sprite.update_pos(-999,-999);
+		g_menu_bomb_sprite_shadow.update_pos(-999,-999);
+
+		g_menu_plus_sprite.update_pos(-999,-999);
+
+		g_menu_title_box.hide();
+	}
+});
+
+g_toggle_right_to_flag = null;
+g_toggle_hold_to_flag = null;
+g_toggle_mark_first = null;
+
+g_text_right_to_flag = null;
+g_text_hold_to_flag = null;
+g_text_mark_first = null;
+
+g_setup_input_text = null;
+
+g_setup_input_play = null;
+
+already_setup_input = false;
+
+SetupInputStateClass = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		already_setup_input = true;
+
+		if (g_toggle_right_to_flag == null) {
+
+			g_setup_input_text = new TextClass(Types.Layer.GAME_MENU);
+			g_setup_input_text.set_font(Types.Fonts.SMALL);
+			g_setup_input_text.set_text("CHANGE CONTROL SCHEME?\n(YOU CAN CHANGE THIS LATER FROM THE BOTTOM MENU)");
+
+			g_toggle_right_to_flag = new ToggleClass();
+			g_toggle_right_to_flag.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
+
+			g_text_right_to_flag = new TextClass(Types.Layer.GAME_MENU);
+			g_text_right_to_flag.set_font(Types.Fonts.XSMALL);
+			g_text_right_to_flag.set_text(g_get_text("right_long"));
+
+			g_toggle_hold_to_flag = new ToggleClass();
+			g_toggle_hold_to_flag.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
+
+			g_text_hold_to_flag = new TextClass(Types.Layer.GAME_MENU);
+			g_text_hold_to_flag.set_font(Types.Fonts.XSMALL);
+			g_text_hold_to_flag.set_text(g_get_text("hold_long"));
+
+			g_toggle_mark_first = new ToggleClass();
+			g_toggle_mark_first.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
+
+			
+
+			g_text_mark_first = new TextClass(Types.Layer.GAME_MENU);
+			g_text_mark_first.set_font(Types.Fonts.XSMALL);
+			g_text_mark_first.set_text(g_get_text("mark_long"));
+
+
+
+			g_setup_input_play = new ButtonClass();
+			g_setup_input_play.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+
+		}
+
+		if (g_click_to_dig == false ) {
+			g_toggle_right_to_flag.toggle();
+			g_toggle_hold_to_flag.toggle();
+		} else if (g_hold_to_flag == true) {
+			g_toggle_right_to_flag.toggle();
+ 			g_toggle_mark_first.toggle();
+		} else {
+			g_toggle_hold_to_flag.toggle();	
+			g_toggle_mark_first.toggle();
+		}
+	
+		this.screen_resized();
+
+	},
+
+	mark_x: 0,
+	mark_y: 0,
+
+	hold_x: 0,
+	hold_y: 0,
+
+	right_x: 0,
+	right_y: 0,
+
+	play_x: 0,
+	play_y: 0,
+
+	screen_resized: function () {
+
+		g_setup_input_text.update_pos(32,32);
+
+		this.mark_x = 32;
+		this.mark_y = 3*64;
+
+		this.hold_x =  32;
+		this.hold_y =  4*64;
+
+		this.right_x =  32;
+		this.right_y =  5*64;
+
+	
+
+		this.play_x = screen_width - 64;
+		this.play_y = screen_height - 64;
+
+		g_toggle_mark_first.update_pos(this.mark_x, this.mark_y);
+		g_toggle_hold_to_flag.update_pos(this.hold_x, this.hold_y);
+		g_toggle_right_to_flag.update_pos(this.right_x, this.right_y);
+
+		g_text_right_to_flag.update_pos(this.right_x + 64, this.right_y);
+		g_text_hold_to_flag.update_pos(this.hold_x + 64, this.hold_y);
+		g_text_mark_first.update_pos(this.mark_x + 64, this.mark_y);
+
+		g_setup_input_play.update_pos(this.play_x, this.play_y);
+
+	},
+
+	cleanup: function() {
+		g_toggle_right_to_flag.hide();
+		g_toggle_hold_to_flag.hide();
+		g_toggle_mark_first.hide();
+
+		g_setup_input_text.update_pos(-999,-999);
+
+		g_text_right_to_flag.update_pos(-999,-999);
+		g_text_hold_to_flag.update_pos(-999,-999);
+		g_text_mark_first.update_pos(-999,-999);
+
+		g_setup_input_play.hide();
+		
+
+		if (g_toggle_right_to_flag.toggled == true) {
+			g_hold_to_flag = false;
+			g_click_to_dig = true;
+		} else if (g_toggle_hold_to_flag.toggled == true) {
+			g_hold_to_flag = true;
+			g_click_to_dig = true;		
+		} else if (g_toggle_mark_first.toggled == true) {
+			g_click_to_dig = false;
+		}
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		
+	
+		if (mouse.x > this.hold_x - 19 &&
+		    mouse.x < this.hold_x + 19 &&
+		    mouse.y > this.hold_y - 19 &&
+		    mouse.y < this.hold_y + 19) {
+			g_toggle_hold_to_flag.toggle();
+
+			if (g_toggle_mark_first.toggled == 1) g_toggle_mark_first.toggle();
+			if (g_toggle_right_to_flag.toggled== 1) g_toggle_right_to_flag.toggle();
+			
+		} else if (mouse.x > this.mark_x - 19 &&
+		    	mouse.x < this.mark_x + 19 &&
+		    	mouse.y > this.mark_y - 19 &&
+		    	mouse.y < this.mark_y + 19) {
+
+			g_toggle_mark_first.toggle();
+
+			if (g_toggle_right_to_flag.toggled== 1) g_toggle_right_to_flag.toggle();
+			if (g_toggle_hold_to_flag.toggled== 1) g_toggle_hold_to_flag.toggle();
+			
+		} else if (mouse.x > this.right_x - 19 &&
+		    	mouse.x < this.right_x + 19 &&
+		    	mouse.y > this.right_y - 19 &&
+		    	mouse.y < this.right_y + 19) {
+
+			g_toggle_right_to_flag.toggle();
+
+			if (g_toggle_mark_first.toggled== 1) g_toggle_mark_first.toggle();
+			if (g_toggle_hold_to_flag.toggled== 1) g_toggle_hold_to_flag.toggle();
+			
+		} else if (mouse.x > this.play_x - 19 &&
+		    	mouse.x < this.play_x + 19 &&
+		    	mouse.y > this.play_y - 19 &&
+		    	mouse.y < this.play_y + 19) {
+				//this.play_state.current_level = 7;
+				//this.play_state.first_tile_safe = true;
+				this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+			
+		}
+
+	}
+});
+
+challenge_select_header = null;
+challenge_select_subheader = null;
+
+challenge_select_easy_button = null;
+challenge_select_med_button = null;
+challenge_select_hard_button = null;
+challenge_select_nosmiley_button = null;
+
+challenge_select_easy_text = null;
+challenge_select_med_text = null;
+challenge_select_hard_text = null;
+challenge_select_nosmiley_text = null;
+
+ChallengeLevelsSelectHardness = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	init: function(engine, play_state) {
+		this.play_state = play_state;
+		this.engine = engine;
+	
+		play_screen_container.hide();//;
+		background_container.hide();//;		
+
+		if (challenge_select_header == null) {
+			challenge_select_header = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_header.set_font(Types.Fonts.SMALL);
+			challenge_select_header.set_text("CHALLENGE LEVELS\n");
+
+			challenge_select_subheader = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_subheader.set_font(Types.Fonts.XSMALL);
+			challenge_select_subheader.set_text("NO FEEDFACK ON MISTAKES\nMORE COLOURED PICTURES");
+
+			challenge_select_easy_text = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_easy_text.set_font(Types.Fonts.SMALL);
+			challenge_select_easy_text.set_text("RELAXING");
+			
+			challenge_select_med_text = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_med_text.set_font(Types.Fonts.SMALL);
+			challenge_select_med_text.set_text("MEDIUM");
+
+			challenge_select_nosmiley_text = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_nosmiley_text.set_font(Types.Fonts.SMALL);
+			challenge_select_nosmiley_text.set_text("NO SMILEY");
+
+			challenge_select_hard_text = new TextClass(Types.Layer.GAME_MENU);
+			challenge_select_hard_text.set_font(Types.Fonts.SMALL);
+
+			if (using_cocoon_js == true) challenge_select_hard_text.set_text("HARD");
+			else challenge_select_hard_text.set_text("ALL CLUES\n(APP ONLY)");
+
+			challenge_select_easy_button = new SpriteClass();
+			challenge_select_easy_button.setup_sprite("heart_pix.png",Types.Layer.GAME_MENU);
+
+			challenge_select_med_button = new SpriteClass();
+			challenge_select_med_button.setup_sprite("rainbowstartrim.png",Types.Layer.GAME_MENU);
+
+			challenge_select_hard_button = new SpriteClass();
+			challenge_select_hard_button.setup_sprite("cherry.png",Types.Layer.GAME_MENU);
+
+			challenge_select_nosmiley_button = new SpriteClass();
+			challenge_select_nosmiley_button.setup_sprite("heart_pix.png",Types.Layer.GAME_MENU);
+		}
+
+		//challenge_select_header.make_vis();
+		//challenge_select_easy_text.make_vis();
+		//challenge_select_med_text.make_vis();
+		//challenge_select_hard_text.make_vis();
+		challenge_select_easy_button.make_vis();
+		challenge_select_med_button.make_vis();
+		challenge_select_hard_button.make_vis();
+		challenge_select_nosmiley_button.make_vis();
+
+		this.screen_resized();
+	},
+
+	cleanup : function () {
+		challenge_select_subheader.update_pos(-999,-999);
+		challenge_select_header.update_pos(-999,-999);
+		challenge_select_easy_text.update_pos(-999,-999);
+		challenge_select_med_text.update_pos(-999,-999);
+		challenge_select_hard_text.update_pos(-999,-999);
+		challenge_select_nosmiley_text.update_pos(-999,-999);
+		challenge_select_easy_button.hide();
+		challenge_select_med_button.hide();
+		challenge_select_hard_button.hide();
+		challenge_select_nosmiley_button.hide();
+	},
+
+	easy_x: 0,
+	easy_y: 0,
+	med_x: 0,
+	med_y: 0,
+	hard_x: 0,
+	hard_y: 0,
+	nosmiley_x: 0,
+	nosmiley_y: 0,
+
+	screen_resized: function() {
+		challenge_select_header.update_pos(16,16);
+		challenge_select_subheader.update_pos(16,16 + 32);
+		if (screen_width > screen_height) {
+			this.easy_x = screen_width*0.25;
+			this.med_x = screen_width*0.5;
+			this.hard_x = screen_width*0.75;
+			this.easy_y = screen_height*0.5;
+			this.med_y = screen_height*0.5;
+			this.hard_y = screen_height*0.5;
+
+			this.nosmiley_x =  screen_width*0.5;
+			this.nosmiley_y = screen_height*0.75;
+		} else {
+			this.easy_x = screen_width*0.25;
+			this.med_x = screen_width*0.25;
+
+			this.hard_x = screen_width*0.25;
+			this.easy_y = screen_height*0.25;
+
+			this.med_y = screen_height*0.5;
+			this.hard_y = screen_height*0.75;
+
+			this.nosmiley_x =  screen_width*0.75;
+			this.nosmiley_y = screen_height*0.25;
+		}
+
+		challenge_select_easy_text.update_pos(this.easy_x, this.easy_y + 32);
+		challenge_select_med_text.update_pos(this.med_x, this.med_y + 32);
+		challenge_select_hard_text.update_pos(this.hard_x, this.hard_y + 32);
+		challenge_select_nosmiley_text.update_pos(this.nosmiley_x, this.nosmiley_y + 32);
+
+		challenge_select_easy_text.center_x(this.easy_x);
+		challenge_select_med_text.center_x(this.med_x);
+		challenge_select_hard_text.center_x(this.hard_x);
+		challenge_select_hard_text.center_x(this.hard_x);
+		challenge_select_nosmiley_text.center_x(this.nosmiley_x);
+
+		challenge_select_easy_button.update_pos(this.easy_x, this.easy_y);
+		challenge_select_med_button.update_pos(this.med_x, this.med_y);
+		challenge_select_hard_button.update_pos(this.hard_x, this.hard_y);
+		challenge_select_nosmiley_button.update_pos(this.nosmiley_x, this.nosmiley_y);
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		
+	
+		if (mouse.x > this.easy_x - 19 &&
+		    mouse.x < this.easy_x + 19 &&
+		    mouse.y > this.easy_y - 19 &&
+		    mouse.y < this.easy_y + 19) {
+			this.play_state.challenge_level_hardness = 1;
+			this.play_state.game_mode = 6;
+			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+			
+		} else if (mouse.x > this.med_x - 19 &&
+		    mouse.x < this.med_x + 19 &&
+		    mouse.y > this.med_y - 19 &&
+		    mouse.y < this.med_y + 19) {
+			this.play_state.challenge_level_hardness = 2;
+			this.play_state.game_mode = 6;
+			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+			
+		} else if (mouse.x > this.hard_x - 19 &&
+		    	mouse.x < this.hard_x + 19 &&
+		    	mouse.y > this.hard_y - 19 &&
+		    	mouse.y < this.hard_y + 19) { // && using_cocoon_js == true) {
+				this.play_state.challenge_level_hardness = 3;
+				this.play_state.game_mode = 6;
+				this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+			
+		} else if (mouse.x > this.nosmiley_x - 19 &&
+		    	mouse.x < this.nosmiley_x + 19 &&
+		    	mouse.y > this.nosmiley_y - 19 &&
+		    	mouse.y < this.nosmiley_y + 19) { // && using_cocoon_js == true) {
+				this.play_state.challenge_level_hardness = 4;
+				this.play_state.game_mode = 6;
+				this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+			
+		} 
+
+
+	}
+
+	
+});
+
+ChallengeLevelsOverworld = GameStateClass.extend({
+	play_state: null,
+	engine: null,
+
+	init: function(engine, play_state) {
+		this.play_state = play_state;
+		this.engine = engine;
+
+	}
+});
+
+
+g_toggle_hand= null;
+g_toggle_heart= null;
+g_toggle_eye= null;
+g_toggle_8hand= null;
+g_toggle_plus= null;
+g_toggle_join= null;
+g_toggle_compass= null;
+g_toggle_crown= null;
+g_toggle_eyebracket= null;
+g_toggle_share= null;
+g_toggle_zap= null;
+g_toggle_timer= null;
+g_toggle_wall= null;
+
+g_setuprand_play = null;
+
+g_setuprand_title = null;
+g_setuprand_subtitle = null;
+g_setuprand_subtitle2 = null;
+
+g_setuprand_text_levelshape = null;
+g_setuprand_levelshape = 0;
+
+SetupRandStateClass = GameStateClass.extend({
+
+	play_state: null,
+	engine: null,
+
+	
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		play_screen_container.hide();//;
+
+
+		if (g_toggle_eye == null) {
+			g_toggle_eye = new MultiToggleClass();
+			g_toggle_eye.setup_sprite("eye.png",Types.Layer.GAME_MENU);
+
+			g_toggle_share = new MultiToggleClass();
+			g_toggle_share.setup_sprite("sharetut.png",Types.Layer.GAME_MENU);
+
+			g_toggle_hand = new MultiToggleClass();
+			g_toggle_hand.setup_sprite("hand.png",Types.Layer.GAME_MENU);
+
+			g_toggle_8hand = new MultiToggleClass();
+			g_toggle_8hand.setup_sprite("8hand.png",Types.Layer.GAME_MENU);
+
+			g_toggle_plus = new MultiToggleClass();
+			g_toggle_plus.setup_sprite("eyeplustouch.png",Types.Layer.GAME_MENU);
+
+			g_toggle_join = new MultiToggleClass();
+			g_toggle_join.setup_sprite("join_tut.png",Types.Layer.GAME_MENU);
+
+			g_toggle_heart = new MultiToggleClass();
+			g_toggle_heart.setup_sprite("heart.png",Types.Layer.GAME_MENU);
+
+			g_toggle_compass = new MultiToggleClass();
+			g_toggle_compass.setup_sprite("compass.png",Types.Layer.GAME_MENU);
+
+			g_toggle_crown = new MultiToggleClass();
+			g_toggle_crown.setup_sprite("crown.png",Types.Layer.GAME_MENU);
+
+			g_toggle_eyebracket = new MultiToggleClass();
+			g_toggle_eyebracket.setup_sprite("eyebracket.png",Types.Layer.GAME_MENU);
+
+			g_toggle_zap = new MultiToggleClass();
+			g_toggle_zap.setup_sprite("zap.png",Types.Layer.GAME_MENU);
+
+			g_toggle_wall = new MultiToggleClass();
+			g_toggle_wall.setup_sprite("block0.png",Types.Layer.GAME_MENU);
+
+			g_toggle_timer = new MultiToggleClass();
+			g_toggle_timer.setup_sprite("timer.png",Types.Layer.GAME_MENU);
+			g_toggle_timer.toggle();
+			g_toggle_timer.toggle();
+
+			g_setuprand_play = new ButtonClass();
+			g_setuprand_play.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+
+			g_setuprand_title = new TextClass(Types.Layer.GAME_MENU);
+			g_setuprand_title.set_font(Types.Fonts.MEDIUM);
+			g_setuprand_title.set_text("MINES++");
+
+			g_setuprand_subtitle = new TextClass(Types.Layer.GAME_MENU);
+			g_setuprand_subtitle.set_font(Types.Fonts.XSMALL);
+			g_setuprand_subtitle.set_text("CHOOSE YOUR CLUES\n(THIS MODE IS AUTO-GENERATED \nAND MAY REQUIRE GUESSING)");
+
+			g_setuprand_text_levelshape = new TextClass(Types.Layer.GAME_MENU);
+			g_setuprand_text_levelshape.set_font(Types.Fonts.SMALL);
+			g_setuprand_text_levelshape.set_text("TYPE: SCATTERED");	
+
+		}
+	
+		g_setuprand_play.make_vis();
+		this.screen_resized();
+
+	},
+
+	cleanup: function() {
+		g_toggle_eye.hide();
+		g_toggle_hand.hide();
+		g_toggle_8hand.hide();
+		g_toggle_plus.hide();
+		g_toggle_join.hide();
+		g_toggle_heart.hide();
+		g_toggle_share.hide();
+		g_toggle_compass.hide();
+		g_toggle_crown.hide();
+		g_setuprand_play.hide();
+		g_toggle_eyebracket.hide();
+		g_toggle_zap.hide();
+		g_toggle_timer.hide();
+		g_toggle_wall.hide();
+
+		g_setuprand_title.update_pos(-999,-999);
+		g_setuprand_subtitle.update_pos(-999,-999);
+
+		g_setuprand_text_levelshape.update_pos(-999,-999);
+
+		play_screen_container.make_vis();//;
+		
+	},
+
+	eye_x: 0,
+	eye_y: 0,
+
+	eyebracket_x: 0,
+	eyebracket_y: 0,
+
+	hand_x: 0,
+	hand_y: 0,
+
+	share_x: 0,
+	share_y: 0,
+
+	eighthand_x: 0,
+	eighthand_y: 0,
+
+	plus_x: 0,
+	plus_y: 0,
+
+	join_x: 0,
+	join_y: 0,
+	
+	heart_x: 0,
+	heart_y: 0,
+
+	compass_x: 0,
+	compass_y: 0,
+
+	crown_x: 0,
+	crown_y: 0,
+
+	zap_x: 0,
+	zap_y: 0,
+
+	timer_x: 0,
+	timer_y: 0,
+
+	wall_x: 0,
+	wall_y: 0,
+
+
+	play_x: 0,
+	play_y: 0,
+	
+	leveltype_x: 0,
+	leveltype_y: 0,
+
+	screen_resized: function () {
+
+		g_setuprand_title.update_pos(32,32);
+		g_setuprand_subtitle.update_pos(32,64);
+
+		this.eye_x = screen_width*0.25;
+		this.eye_y = 3*52;
+
+		this.hand_x =  screen_width*0.25;
+		this.hand_y =  4*52;
+
+		this.eighthand_x =  screen_width*0.5;
+		this.eighthand_y = 4*52;
+
+		this.plus_x =  -999;//screen_width*0.5;
+		this.plus_y =  -999;//5*64;
+
+		this.join_x =  screen_width*0.25;
+		this.join_y = 5*52;
+
+		this.heart_x =  screen_width*0.25;
+		this.heart_y =  6*52;
+
+		this.compass_x =  screen_width*0.75;
+		this.compass_y =  3*52;
+
+		this.crown_x =  screen_width*0.75;
+		this.crown_y =  4*52;
+
+		this.eyebracket_x =  screen_width*0.75;
+		this.eyebracket_y =  5*52;
+
+		this.share_x = screen_width*0.75;
+		this.share_y = 6*52;
+
+		this.zap_x = screen_width*0.5;
+		this.zap_y = 3*52;
+
+		this.timer_x = screen_width*0.5;
+		this.timer_y = 5*52;
+
+		this.wall_x = screen_width*0.5;
+		this.wall_y = 6*52;
+
+
+		this.play_x = screen_width - 64;
+		this.play_y = screen_height - 64;
+
+		this.leveltype_x = screen_width*0.25;
+		this.leveltype_y = 7*52;
+
+		g_toggle_eye.update_pos(this.eye_x, this.eye_y);
+		g_toggle_hand.update_pos(this.hand_x, this.hand_y);
+		g_toggle_8hand.update_pos(this.eighthand_x, this.eighthand_y);
+		g_toggle_plus.update_pos(this.plus_x, this.plus_y);
+		g_toggle_join.update_pos(this.join_x, this.join_y);
+		g_toggle_heart.update_pos(this.heart_x, this.heart_y);
+		g_toggle_crown.update_pos(this.crown_x, this.crown_y);
+		g_toggle_compass.update_pos(this.compass_x, this.compass_y);
+		g_toggle_eyebracket.update_pos(this.eyebracket_x, this.eyebracket_y);
+		g_toggle_share.update_pos(this.share_x, this.share_y);
+		g_toggle_zap.update_pos(this.zap_x, this.zap_y);
+		g_toggle_timer.update_pos(this.timer_x, this.timer_y);
+		g_toggle_wall.update_pos(this.wall_x, this.wall_y);
+
+		g_setuprand_text_levelshape.update_pos(this.leveltype_x, this.leveltype_y);
+
+		g_setuprand_play.update_pos(this.play_x, this.play_y);
+
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		
+	
+		if (mouse.x > this.eye_x - 19 &&
+		    mouse.x < this.eye_x + 19 &&
+		    mouse.y > this.eye_y - 19 &&
+		    mouse.y < this.eye_y + 19) {
+			g_toggle_eye.toggle();
+			
+		} else if (mouse.x > this.hand_x - 19 &&
+		    	mouse.x < this.hand_x + 19 &&
+		    	mouse.y > this.hand_y - 19 &&
+		    	mouse.y < this.hand_y + 19) {
+				g_toggle_hand.toggle();
+			
+		} else if (mouse.x > this.eighthand_x - 19 &&
+		    	mouse.x < this.eighthand_x + 19 &&
+		    	mouse.y > this.eighthand_y - 19 &&
+		    	mouse.y < this.eighthand_y + 19) {
+				g_toggle_8hand.toggle();
+			
+		} else if (mouse.x > this.plus_x - 19 &&
+		    	mouse.x < this.plus_x + 19 &&
+		    	mouse.y > this.plus_y - 19 &&
+		    	mouse.y < this.plus_y + 19) {
+				g_toggle_plus.toggle();
+			
+		} else if (mouse.x > this.join_x - 19 &&
+		    	mouse.x < this.join_x + 19 &&
+		    	mouse.y > this.join_y - 19 &&
+		    	mouse.y < this.join_y + 19) {
+				g_toggle_join.toggle();
+			
+		} else if (mouse.x > this.crown_x - 19 &&
+		    	mouse.x < this.crown_x + 19 &&
+		    	mouse.y > this.crown_y - 19 &&
+		    	mouse.y < this.crown_y + 19) {
+				g_toggle_crown.toggle();
+			
+		} else if (mouse.x > this.compass_x - 19 &&
+		    	mouse.x < this.compass_x + 19 &&
+		    	mouse.y > this.compass_y - 19 &&
+		    	mouse.y < this.compass_y + 19) {
+				g_toggle_compass.toggle();
+			
+		} else if (mouse.x > this.heart_x - 19 &&
+		    	mouse.x < this.heart_x + 19 &&
+		    	mouse.y > this.heart_y - 19 &&
+		    	mouse.y < this.heart_y + 19) {
+				g_toggle_heart.toggle();
+			
+		} else if (mouse.x > this.eyebracket_x - 19 &&
+		    	mouse.x < this.eyebracket_x + 19 &&
+		    	mouse.y > this.eyebracket_y - 19 &&
+		    	mouse.y < this.eyebracket_y + 19) {
+				g_toggle_eyebracket.toggle();
+			
+		} else if (mouse.x > this.share_x - 19 &&
+		    	mouse.x < this.share_x + 19 &&
+		    	mouse.y > this.share_y - 19 &&
+		    	mouse.y < this.share_y + 19) {
+				g_toggle_share.toggle();
+			
+		} else if (mouse.x > this.wall_x - 19 &&
+		    	mouse.x < this.wall_x + 19 &&
+		    	mouse.y > this.wall_y - 19 &&
+		    	mouse.y < this.wall_y + 19) {
+				g_toggle_wall.toggle();
+			
+		} else if (mouse.x > this.zap_x - 19 &&
+		    	mouse.x < this.zap_x + 19 &&
+		    	mouse.y > this.zap_y - 19 &&
+		    	mouse.y < this.zap_y + 19) {
+				g_toggle_zap.toggle();
+			
+		} else if (mouse.x > this.timer_x - 19 &&
+		    	mouse.x < this.timer_x + 19 &&
+		    	mouse.y > this.timer_y - 19 &&
+		    	mouse.y < this.timer_y + 19) {
+				g_toggle_timer.toggle();
+			
+		} else if (mouse.x > this.play_x - 19 &&
+		    	mouse.x < this.play_x + 19 &&
+		    	mouse.y > this.play_y - 19 &&
+		    	mouse.y < this.play_y + 19) {
+				this.play_state.current_level = 7;
+				this.play_state.first_tile_safe = true;
+				this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+			
+		} else if (mouse.x > this.leveltype_x - 19 &&
+		    	mouse.x < this.leveltype_x + 164 &&
+		    	mouse.y > this.leveltype_y - 19 &&
+		    	mouse.y < this.leveltype_y + 19) {
+				g_setuprand_levelshape++;
+				if (g_setuprand_levelshape == 2) g_setuprand_levelshape = 0;
+			
+		}
+
+		if (g_setuprand_levelshape == 0) {
+			g_setuprand_text_levelshape.change_text("TYPE: SCATTERED");
+		} else if (g_setuprand_levelshape == 1) {
+			g_setuprand_text_levelshape.change_text("TYPE: CROSS-GRID");
+		} else if (g_setuprand_levelshape == 2) {
+			g_setuprand_text_levelshape.change_text("TYPE: CAMPAIGN LEVEL BUT REARRANGED");
+		} else if (g_setuprand_levelshape == 3) {
+			g_setuprand_text_levelshape.change_text("TYPE: CHECKERBOARD");
+		} 
+
+	}
+
+});
+
+g_credits_title = null;
+g_credits_subtitle = null;
+
+g_credits = "We have used the following open source projects / code: \nphaser.js \nCopyright © 2017 Richard Davey, Photon Storm Ltd. \nPhaser is distributed under the MIT License.\nhttps://phaser.io/download/license\n\nClass object based on John Resig's code;inspired by base2 and Prototype\nhttp://ejohn.org/blog/simple-javascript-inheritance/ \nFont used is Montserrat. SIL Open Font License \nSocial media icons (Facebook, Twitter) are from \nhttps://paulrobertlloyd.com/2009/06/social_media_icons \n UI icons are from http://google.github.io/material-design-icons/ under the Apache License Version 2.0. \n ";
+
+CreditsStateClass = GameStateClass.extend({
+
+	play_state: null,
+	engine: null,
+
+	init: function(engine, play_state){
+		this.play_state = play_state;
+		this.engine = engine;
+
+		play_screen_container.hide();//;
+
+
+		if (g_credits_title == null) {
+
+			g_credits_title = new TextClass(Types.Layer.GAME_MENU);
+			g_credits_title.set_font(Types.Fonts.MEDIUM);
+			g_credits_title.set_text("CREDITS");
+
+			g_credits_subtitle = new TextClass(Types.Layer.GAME_MENU);
+			g_credits_subtitle.set_font(Types.Fonts.XSMALL);
+			g_credits_subtitle.set_text(g_credits);
+
+		}
+	
+
+		this.screen_resized();
+
+	},
+
+	cleanup: function() {
+
+		g_credits_title.update_pos(-999,-999);
+		g_credits_subtitle.update_pos(-999,-999);
+
+		play_screen_container.make_vis();//;
+		
+	},
+
+
+	screen_resized: function () {
+
+		g_credits_title.update_pos(32,32);
+		g_credits_subtitle.update_pos(32,64);
+
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		
+
+	}
+
+});
+
+g_reusable_text = null;
+beg_yes_button = null;
+beg_yes_text = null;
+beg_no_button = null;
+beg_no_text = null;
+beg_text = null;
+g_seen_beg = 0;
+
+p_beg_smiley_level = [[0,4,4,3,5,4,4,4],
+[4,9,9,17,17,35,29,1],
+[4,29,30,16,30,2,16,9],
+[4,17,17,9,2,1,2,33],
+[3,30,30,17,33,16,16,17],
+[4,30,10,17,30,17,29,2],
+[5,9,16,10,9,9,16,34],
+[3,10,29,17,35,17,32,34]];
+p_beg_smiley_colour = [3,3,3,3,3,3,3,3,3,
+3,3,3,3,3,3,3
+,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,3,3,2,3,3,3,2,2,2,3,3];
+
+BegForRatingState = GameStateClass.extend({
+	play_state: null,
+   	engine: null,
+
+	init: function(engine, play_state) {
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		play_screen_container.make_vis();
+		play_screen_container.set_x(0);
+
+		if (g_reusable_text == null) {
+
+		}
+
+		if (beg_yes_button == null) {
+			beg_yes_button = new SpriteClass();
+			beg_yes_button.setup_sprite('heart.png',Types.Layer.GAME_MENU);
+
+			beg_no_button = new SpriteClass();
+			beg_no_button.setup_sprite('rightarrow.png',Types.Layer.GAME_MENU);
+
+			
+			beg_yes_text = new TextClass(Types.Layer.GAME_MENU);
+			beg_yes_text.set_font(Types.Fonts.XSMALL);
+			beg_yes_text.set_text("GO TO STORE PAGE:");
+
+			beg_no_text = new TextClass(Types.Layer.GAME_MENU);
+			beg_no_text.set_font(Types.Fonts.XSMALL);
+			beg_no_text.set_text("CONTINUE:");
+
+			beg_text = new TextClass(Types.Layer.GAME_MENU);
+			beg_text.set_font(Types.Fonts.XSMALL);
+			beg_text.set_text("Thanks for playing my game!!\nIf you could rate and/or review\nthat would help me to keep making games like this");
+		}
+
+		//g_reusable_text
+
+		//console.log('BegForRating');
+
+		beg_yes_button.make_vis();
+		beg_no_button.make_vis();
+		
+		beg_yes_text.make_vis();
+		beg_no_text.make_vis();
+
+		beg_text.make_vis();
+
+		background_group.make_vis();
+		play_screen_group.make_vis();
+
+		// load our beg picture - smiley - from somewhere...
+		// maybe a certain level with dual use as a picture here
+		var mapdata_version_mines = 1;
+		this.play_state.load_level_internal(p_beg_smiley_level, mapdata_version_mines);
+
+		var colour_i = 0;
+
+		// make it all 'solved' and coloured in:
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y = 0; y < this.play_state.level_h; y++) {
+				// start with solved puzzle
+				this.play_state.blocks[this.play_state.tiles[x][y]].symbol_type = 0;
+				this.play_state.blocks[this.play_state.tiles[x][y]].mine_multi = 1;
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 2) {
+					var c = p_beg_smiley_colour[colour_i];
+					this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+					this.play_state.blocks[this.play_state.tiles[x][y]].colour_mode = true;
+					this.play_state.blocks[this.play_state.tiles[x][y]].secret_colour = c;	// from somewhere
+				} else {
+					this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+				}
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_sprite();
+				colour_i++;
+			} // for y
+		} // for x
+
+		this.play_state.calc_sequence_lengths();
+		this.play_state.calc_edge_nonogram();
+		this.play_state.resize();	// after calc edges - need to know sizes
+
+		// hacky - zoom out a little bit more
+		g_level_size += 5;		// controls zoom
+		//g_level_w++;		// controls centering
+		do_resize();
+
+		// is this needed??
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				
+				if (x < this.play_state.level_w &&
+				    y < this.play_state.level_h) {
+					this.play_state.blocks[this.play_state.tiles[x][y]].make_vis();
+				} else {
+					this.play_state.blocks[this.play_state.tiles[x][y]].hide();
+				}
+			}
+		}
+
+		g_seen_beg++;
+
+		//console.log('BegForRating set up > this.play_state.level_w ' + this.play_state.level_w);
+
+		this.screen_resized();
+
+	},
+
+	yes_x: 0,
+	yes_y: 0,
+	no_x: 0,
+	no_y: 0,
+	clicked_yes: false,
+	mouse_down: false,
+
+	handle_mouse_up: function(engine,x,y) {
+		this.mouse_down = false;
+
+		if (mouse.x > this.yes_x - 16 &&
+		    mouse.x < this.yes_x + 16 &&
+		    mouse.y > this.yes_y - 16 &&
+		    mouse.y < this.yes_y + 16) {
+			if (this.clicked_yes == true) return;
+			this.clicked_yes = true;
+			open_url("https://play.google.com/store/apps/details?id=com.zblip.pixoji");
+			g_seen_beg += 99;
+			return;
+		} 
+
+		if (mouse.x > this.no_x - 16 &&
+		    mouse.x < this.no_x + 16 &&
+		    mouse.y > this.no_y - 16 &&
+		    mouse.y < this.no_y + 16) {
+			this.goto_next_gamestate();
+		}
+	},
+
+	handle_mouse_down: function(engine,x,y) {
+
+		//console.log(x + ' ' + y);
+
+		if (this.mouse_down == true) return;
+		this.mouse_down = true;
+
+		if (mouse.x > this.yes_x - 16 &&
+		    mouse.x < this.yes_x + 16 &&
+		    mouse.y > this.yes_y - 16 &&
+		    mouse.y < this.yes_y + 16) {
+			if (this.clicked_yes == true) return;
+			this.clicked_yes = true;
+			open_url("https://play.google.com/store/apps/details?id=com.zblip.pixoji");
+			g_seen_beg += 99;
+			return;
+		} 
+
+		
+		if (mouse.x > this.no_x - 16 &&
+		    mouse.x < this.no_x + 16 &&
+		    mouse.y > this.no_y - 16 &&
+		    mouse.y < this.no_y + 16) {
+			this.goto_next_gamestate();
+		}
+
+	},
+
+	goto_next_gamestate: function() {
+
+		// to avoid repetition
+		// this.play_state.goto_next_gamestate
+
+		//this.play_state.reset();
+
+		if (this.play_state.game_mode == 1) {
+			////console.log("goto_next_gamestate new GenerateRandStateClass");
+			this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+		} else if (this.play_state.game_mode == 5) {
+			////console.log("goto_next_gamestate new GenerateRandStateClass");
+			this.change_state(this.engine, new InstructionStateClass(this.engine, this.play_state));
+		} else {
+			////console.log("goto_next_gamestate new StartGameStateClass");
+			this.change_state(this.engine, new RestartGameStateClass(this.engine, this.play_state));
+		}
+	},
+
+	cleanup: function () {
+
+		
+		
+		// g_reusable_text.hide();
+		beg_yes_button.hide();
+		beg_no_button.hide();
+
+		beg_yes_text.hide();
+		beg_no_text.hide();
+
+		beg_text.hide();
+
+		background_group.make_vis();
+		play_screen_group.make_vis();
+
+	},
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+		if (screen_width < screen_height) {
+			
+			
+		} else {
+
+		}
+		this.yes_x = screen_width - 32;
+		this.yes_y = screen_height - 64  - 16;
+
+		this.no_x = screen_width - 32;
+		this.no_y = screen_height - 32;
+
+		beg_yes_button.update_pos(this.yes_x, this.yes_y);
+		beg_yes_text.update_pos(this.yes_x - 128  - 64, this.yes_y - 8);
+
+		beg_no_button.update_pos(this.no_x, this.no_y);
+		beg_no_text.update_pos(this.no_x - 128, this.no_y - 8);
+
+		beg_text.update_pos(32, screen_height - 200);
+		beg_text.center_x(screen_width*0.5)
+	}
+});
+
+g_pixoji_title = null;
+g_pixoji_title_img = null;
+
+g_first_time_button = null;
+g_first_time_text = null;
+
+g_menu_to_overworld_button = null;
+g_menu_to_overworld_text = null;
+
+g_menu_to_randgen_button = null;
+g_menu_to_randgen_text = null;
+
+
+g_menu_to_app_button = null;
+g_menu_to_app_text = null;
+
+g_menu_to_comm_lvl_button = null;
+g_menu_to_comm_lvl_text = null;
+
+g_menu_zblipdotcom_text = null;
+
+//g_spash_image = null;
+
+
+g_bitmap_menu_bg = null;
+
+g_menu_fb_button = null;
+g_menu_twitter_button = null;
+menu_fb_rect = null;
+
+MenuStateClass = GameStateClass.extend({
+	
+	play_state: null,
+	engine: null,
+
+	attn_randommode: false,
+
+	init: function(engine, play_state){
+
+		
+
+		play_screen_container.hide();//;
+		
+		this.play_state = play_state;
+		this.engine = engine;
+
+		this.play_state.hide_bg_squares();
+
+		
+		
+		if (g_first_time_button == null) {
+
+			
+			this.play_state.hide_border();
+
+
+			g_first_time_text = new TextClass(Types.Layer.GAME_MENU);
+			g_first_time_text.set_font(Types.Fonts.XSMALL);
+			g_first_time_text.set_text("FIRST TIME\n");
+
+			
+
+			g_pixoji_title_img = new SpriteClass();
+			g_pixoji_title_img.setup_sprite('cherry.png',Types.Layer.HUD);
+		
+
+			
+			g_first_time_button = new SpriteClass();
+			g_first_time_button.setup_sprite('sunflower.png',Types.Layer.GAME_MENU);
+
+			g_menu_to_overworld_text = new TextClass(Types.Layer.GAME_MENU);
+			g_menu_to_overworld_text.set_font(Types.Fonts.XSMALL);
+			g_menu_to_overworld_text.set_text("MAIN LEVELS\n");
+
+			g_menu_to_overworld_button = new SpriteClass();
+			g_menu_to_overworld_button.setup_sprite('elephant.png',Types.Layer.GAME_MENU);
+
+			g_menu_to_randgen_text = new TextClass(Types.Layer.GAME_MENU);
+			g_menu_to_randgen_text.set_font(Types.Fonts.XSMALL);
+			g_menu_to_randgen_text.set_text("CHALLENGE LEVELS\n");//MAKE A RANDOM LEVEL");
+
+			g_menu_to_randgen_button = new SpriteClass();
+			g_menu_to_randgen_button.setup_sprite('saturn.png',Types.Layer.GAME_MENU);
+
+			g_menu_to_app_button = new SpriteClass();
+			g_menu_to_app_button.setup_sprite('cherry.png',Types.Layer.GAME_MENU);
+
+			g_menu_to_app_text = new TextClass(Types.Layer.GAME_MENU);
+			g_menu_to_app_text.set_font(Types.Fonts.XSMALL);
+			g_menu_to_app_text.set_text("GET THE FREE APP\n(MORE LEVELS!)");
+			//g_menu_to_app_text.set_colour('00ff00');
+			//g_menu_to_app_text.change_text("GET THE FREE APP\n(MORE LEVELS!)");
+
+			g_pixoji_title = new TextClass(Types.Layer.GAME_MENU);
+			g_pixoji_title.shadow = true;
+			g_pixoji_title.set_font(Types.Fonts.LARGE);
+			g_pixoji_title.set_text("PIXOJI"); // MINE OF SIGHT
+
+			g_menu_zblipdotcom_text = new TextClass(Types.Layer.GAME_MENU);
+			g_menu_zblipdotcom_text.set_font(Types.Fonts.XSMALL);
+			g_menu_zblipdotcom_text.set_text("> www.zblip.com <");
+
+			g_spash_image = new SplashClass();
+			
+
+			//g_bitmap_menu_bg = new BitmapClass(Types.Layer.BACKGROUND, 2000, 2000);
+			//g_bitmap_menu_bg.update_pos(-2.5*128, 0);
+
+			menu_fb_rect = new SquareClass(0,0,29*6,29*4,Types.Layer.GAME_MENU,0x4B4965,true);
+
+			g_menu_fb_button = new SpriteClass();
+			g_menu_fb_button.setup_sprite('fblogo.png',Types.Layer.GAME_MENU);
+
+			g_menu_twitter_button = new SpriteClass();
+			g_menu_twitter_button.setup_sprite('twitterlogo.png',Types.Layer.GAME_MENU);
+
+			
+		}
+
+		g_spash_image.make_vis();
+
+		//g_bitmap_menu_bg.make_vis();
+
+		//g_spash_image.make_vis();
+
+		//g_bitmap_menu_bg.make_vis();
+
+		g_pixoji_title_img.hide();
+
+		g_pixoji_title.hide();//make_vis();
+
+		g_first_time_button.make_vis();
+		g_menu_to_overworld_button.make_vis();
+		g_menu_to_randgen_button.make_vis();
+		g_menu_to_app_button.make_vis();
+		
+		
+
+		this.screen_resized();
+
+		
+
+		if (g_all_level_status[g_total_num_of_levels - 1] == 4) { // tick, done
+			this.attn_randommode = true;
+		}
+
+	},
+
+	redo_background: function () { return;
+	
+	},
+
+	cleanup: function() {
+
+		g_spash_image.hide();
+
+		g_first_time_button.hide();
+		g_menu_to_overworld_button.hide();
+		g_menu_to_randgen_button.hide();
+		g_menu_to_app_button.hide();
+
+		g_first_time_text.update_pos(-999,-999);
+		g_menu_to_overworld_text.update_pos(-999,-999);
+		g_menu_to_randgen_text.update_pos(-999,-999);
+		g_menu_to_app_text.update_pos(-999,-999);
+
+		//play_screen_container.make_vis();//;
+		//background_container.make_vis();//;
+
+		//g_bitmap_menu_bg.clear();
+		//g_bitmap_menu_bg.resize(4,4);
+		//g_bitmap_menu_bg.update_pos(-99999,-99999);
+		//g_bitmap_menu_bg.hide();
+
+		g_pixoji_title_img.hide();
+
+
+		//g_spash_image.hide();
+		
+		
+		//g_first_time_button.hide();
+		//g_first_time_text.update_pos(-999, -999);
+
+		//g_menu_to_overworld_button.hide();
+		//g_menu_to_overworld_text.update_pos(-999, -999);
+
+		//g_menu_to_randgen_button.hide();
+		//g_menu_to_randgen_text.update_pos(-999, -999);
+
+		g_pixoji_title.update_pos(-999, -999);
+
+		g_menu_zblipdotcom_text.update_pos(-999, -999);
+
+		g_menu_fb_button.hide();
+		g_menu_twitter_button.hide();
+		//g_spash_image.hide();
+
+		menu_fb_rect.hide();
+
+			
+	},
+
+	first_x: 0,
+	first_y: 0,
+
+	overworld_x: 0,
+	overworld_y: 0,
+
+	randgen_x: 0,
+	randgen_y: 0,
+
+	fblogo_x: -999,
+	fblogo_y: -999,
+
+	twitterlogo_x: -999,
+	twitterlogo_y: -999,
+
+	zblip_x: -999,
+	zblip_y: -999,
+
+	app_x: -999,
+	app_y: -999,
+
+	
+
+	screen_resized: function () {
+
+		g_spash_image.update_pos(screen_width*0.5,64);
+		
+
+		//g_spash_image.update_pos(screen_width*0.5,120)
+
+		this.redo_background();
+
+		var text_x_off = 0;
+		var text_y_off = 40;
+		var text_center_x = true;
+
+		if (screen_width < screen_height) {
+
+			g_pixoji_title.update_pos(32, 16);
+			g_pixoji_title.center_x(screen_width*0.5);
+
+			text_x_off = 40;
+			text_y_off = -8;
+			text_center_x = false;
+
+			this.first_x = 0.25*screen_width;
+			this.first_y = 0.25*screen_height;
+
+			this.overworld_x = 0.25*screen_width;// - 60;
+			this.overworld_y = 0.45*screen_height;
+
+			this.randgen_x = 0.25*screen_width;// - 60;
+			this.randgen_y = 0.65*screen_height;
+
+			this.app_x = 0.25*screen_width;// - 60;
+			this.app_y = 0.85*screen_height;
+
+			this.zblip_x = -999;
+			this.zblip_y = -999;
+
+			this.fblogo_x = -999;
+			this.fblogo_y = -999;
+
+			this.twitterlogo_x = -999;
+			this.twitterlogo_y = -999;
+
+			menu_fb_rect.hide();
+		} else {
+
+			g_pixoji_title.update_pos(32, 32);
+			g_pixoji_title.center_x(screen_width*0.5);
+
+			this.first_x = 0.25*screen_width;
+			this.first_y = 0.5*screen_height;
+
+			this.overworld_x = 0.5*screen_width;// - 60;
+			this.overworld_y = 0.5*screen_height;
+
+			this.randgen_x = 0.75*screen_width;// - 60;
+			this.randgen_y = 0.5*screen_height;
+
+			this.app_x = 0.5*screen_width;// - 60;
+			this.app_y = 0.75*screen_height;
+
+			this.fblogo_x =  screen_width - 29 - 0.5*29;
+			this.fblogo_y =  screen_height - 29 - 0.5*29;
+
+			menu_fb_rect.make_vis();
+			menu_fb_rect.update_pos(this.fblogo_x - 29 - 3*29, this.fblogo_y - 29 - 0.5*29);
+
+			this.zblip_x = screen_width*0.5;
+			this.zblip_y = screen_height - 16;
+
+			this.twitterlogo_x = screen_width - 29 - 0.5*29;//this.fblogo_x - 29 - 1*29;
+			this.twitterlogo_y = screen_height - 29 - 0.5*29;//this.fblogo_y;
+
+		}
+
+		if (using_cocoon_js == true) {
+			this.fblogo_x = -999;
+			this.fblogo_y = -999;
+			this.twitterlogo_x = -999;
+			this.twitterlogo_y = -999;
+			this.app_x = -999;
+			this.app_y = -999;
+			menu_fb_rect.hide();
+		}
+
+		this.fblogo_x = -999;
+		this.fblogo_y = -999;
+
+		
+		
+		g_menu_fb_button.update_pos(this.fblogo_x, this.fblogo_y);
+		g_menu_fb_button.make_vis();
+
+		g_menu_twitter_button.update_pos(this.twitterlogo_x, this.twitterlogo_y);
+		g_menu_twitter_button.make_vis();
+
+		g_menu_zblipdotcom_text.update_pos(this.zblip_x, this.zblip_y);
+		g_menu_zblipdotcom_text.center_x(this.zblip_x);
+
+		////console.log('text_x_off' + text_x_off);
+		////console.log('text_y_off' + text_y_off);
+
+		g_first_time_button.update_pos(this.first_x, this.first_y);
+		g_first_time_text.update_pos(this.first_x + text_x_off, this.first_y + text_y_off);
+		if (text_center_x) g_first_time_text.center_x(this.first_x);
+
+		g_menu_to_overworld_button.update_pos(this.overworld_x, this.overworld_y);
+		g_menu_to_overworld_text.update_pos(this.overworld_x  + text_x_off, this.overworld_y + text_y_off);
+		if (text_center_x) g_menu_to_overworld_text.center_x(this.overworld_x);
+
+		g_menu_to_randgen_button.update_pos(this.randgen_x, this.randgen_y);
+		g_menu_to_randgen_text.update_pos(this.randgen_x + text_x_off, this.randgen_y + text_y_off);
+		if (text_center_x) g_menu_to_randgen_text.center_x(this.randgen_x);
+
+		
+		g_menu_to_app_button.update_pos(this.app_x, this.app_y);
+		g_menu_to_app_text.update_pos(this.app_x + text_x_off, this.app_y + text_y_off);
+		if (text_center_x)g_menu_to_app_text.center_x(this.app_x);
+	},
+	
+	clicked_fb: false,
+	clicked_zblip: false,
+	clicked_app: false,
+
+	handle_mouse_down: function(engine,x,y) {
+		// this.fblogo_x
+		if (mouse.x > this.fblogo_x - 16 &&
+		    mouse.x < this.fblogo_x + 16 &&
+		    mouse.y > this.fblogo_y - 16 &&
+		    mouse.y < this.fblogo_y + 16 && this.clicked_fb == false) {
+			this.clicked_fb = true;
+			open_url('https://www.facebook.com/Mine-of-Sight-1037635096381976/'); 
+			return;
+		} else if (mouse.x > this.twitterlogo_x - 16 &&
+		    mouse.x < this.twitterlogo_x + 16 &&
+		    mouse.y > this.twitterlogo_y - 16 &&
+		    mouse.y < this.twitterlogo_y + 16 && this.clicked_fb == false) {
+			this.clicked_fb = true;
+			open_url('https://twitter.com/ZBlipGames'); 
+			return;
+		} else if (mouse.x > this.zblip_x - 24 &&
+		    mouse.x < this.zblip_x + 24 &&
+		    mouse.y > this.zblip_y - 16 &&
+		    mouse.y < this.zblip_y + 16 && this.clicked_zblip== false) {
+			this.clicked_zblip = true;
+			open_url('https://www.zblip.com'); 
+			return;
+		} else if (mouse.x > this.app_x - 24 &&
+		    mouse.x < this.app_x + 24 &&
+		    mouse.y > this.app_y - 16 &&
+		    mouse.y < this.app_y + 16 && this.clicked_app == false) {
+			this.clicked_app = true;
+			open_url(gettheapp_url); 
+			return;
+		} 
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+	
+		if (mouse.x > this.first_x - 100 &&
+		    mouse.x < this.first_x + 100 &&
+		    mouse.y > this.first_y - 28 &&
+		    mouse.y < this.first_y + 28) {
+
+			this.play_state.current_level = 0;
+			this.play_state.game_mode = 5;
+		
+			//this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, 0));
+			// InstructionStateClass
+			// LoadInstructionStateClass 
+			
+			this.change_state(this.engine, new LoadInstructionStateClass(this.engine, this.play_state));
+			return;
+
+			
+			
+		}
+
+		if (mouse.x > this.overworld_x - 40 &&
+		    mouse.x < this.overworld_x + 40 &&
+		    mouse.y > this.overworld_y - 28 &&
+		    mouse.y < this.overworld_y + 28) {
+			g_overworld_to_show = 0;
+			this.play_state.game_mode = 0;
+			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
+			
+			return;
+		}
+
+		if (mouse.x > this.randgen_x - 40 &&
+		    mouse.x < this.randgen_x + 40 &&
+		    mouse.y > this.randgen_y - 28 &&
+		    mouse.y < this.randgen_y + 28) {
+			this.play_state.current_level = 7;
+			this.play_state.first_tile_safe = true;
+			this.change_state(this.engine, new ChallengeLevelsSelectHardness(this.engine, this.play_state));
+			return;
+		}
+
+	},
+
+	attn_timer: 0,
+
+	draw: function () {
+		if (this.attn_randommode == true ) {
+			this.attn_timer--;
+			if (this.attn_timer <= 0) this.attn_timer = 60;
+			var scale = this.attn_timer/60;
+			g_menu_to_randgen_button.scale(1 + 0.25*scale, 1 + 0.25*scale);
+		}
+
+		return;
+
+		//g_pixoji_title.update_pos(32, 32);
+
+		g_first_time_button.update_pos(this.first_x, this.first_y);
+		g_first_time_text.update_pos(this.first_x, this.first_y + 40);
+		g_first_time_text.center_x(this.first_x);
+
+		g_menu_to_overworld_button.update_pos(this.overworld_x, this.overworld_y);
+		g_menu_to_overworld_text.update_pos(this.overworld_x, this.overworld_y + 40);
+		g_menu_to_overworld_text.center_x(this.overworld_x);
+
+		g_menu_to_randgen_button.update_pos(this.randgen_x, this.randgen_y);
+		g_menu_to_randgen_text.update_pos(this.randgen_x, this.randgen_y + 40);
+		g_menu_to_randgen_text.center_x(this.randgen_x);
+
+	}
+
+	
+
+});
+
+g_tut_reset_button = null;
+g_tut_skip_button = null;
+g_tut_next_button = null;
+g_tut_text = null;
+g_tut_highlight = null;
+
+g_tut_content = {
+	0 : {
+		startclear: 0,
+		dofill: [], dodig: [],
+	     text : [
+		     "WELCOME TO PIXOJI",
+	             "THE GOAL IS TO\nFIND THE HIDDEN PICTURE",
+		     "THIS LEVEL IS ALREADY DRAWN\nTO SHOW YOU HOW TO PLAY",
+			"ON SOME TILES THERE IS A NUMBER\nFROM 0 TO 9",
+	             "EACH NUMBER TELLS\nTHE AMOUNT OF DARK PIXELS\nIN ITS 3x3 AREA",
+		     "THIS 9 MEANS...",
+		     "THIS 9 MEANS 9 TILES AROUND IT\nARE FILLED",
+		     "THIS 8 MEANS...",
+		     "THIS 8 MEANS 8 TILES AROUND IT\nARE FILLED",
+		     "THIS 7 MEANS...",
+		     "THIS 7 MEANS 7 TILES AROUND IT\nARE FILLED",
+		      "THIS 5 MEANS...",
+		     "THIS 5 MEANS 5 TILES AROUND IT\nARE FILLED",
+		     "THIS 4 MEANS...",
+		     "THIS 4 MEANS 4 TILES AROUND IT\nARE FILLED",
+		     "OKAY NOW ITS TIME FOR\nYOU TO DRAW PICTURES"
+	            ],
+	     tiles : [
+		 	[],
+		      	[], 
+		     	[],
+			[53],
+		     	[53],
+		      	[53],
+		      	[42, 43, 44, 52, 53, 54, 62, 63, 64],
+			[22],
+			[11, 12, 13, 21, 22, 23, 31, 32 ,33],
+			[42],
+			[31, 32, 33, 41, 42, 43, 51, 52, 53],
+			[20],
+			[10, 11, 20, 21, 30, 31],
+			[2],
+			[1, 2, 3, 11, 12, 13],
+			[]
+		     ],
+	     level: [[0,0,0,0,0,0,0,0,0],
+[0,16,1,9,2,9,1,9,1],
+[0,2,2,2,2,1,1,1,1],
+[0,9,2,9,2,9,1,9,1],
+[0,2,2,2,2,1,1,2,1],
+[0,9,1,16,2,16,1,9,2],
+[0,1,9,2,16,2,16,1,2],
+[0,9,1,16,2,16,2,9,2],
+[0,1,2,2,2,2,2,2,1]]
+	    },
+/*
+5 : {
+	     text : [
+		     "NOW YOU GOTTA BE CAREFUL",
+	             "REMEMBER THE RULE",
+		     "NOT EVERY SQUARE WILL BE FILLED IN",
+		     "LIKE THIS 4",
+		     "YOU CAN GREY OUT TILES THAT YOU'RE SURE ARE EMPTY"
+	            ],
+	     tiles : [
+			[],
+			[],
+			[],
+			[2],
+			[]
+		     ],
+	     level: [[0,0,0,0,0],
+[0,16,1,9,2],
+[0,2,2,2,2],
+[0,9,2,9,2],
+[0,2,2,2,2]]
+	    },
+
+	6 : {
+	     text : [
+		     "WOW YOURE REALLY GOOD",
+	             "LETS TRY ANOTHER TUTORIAL",
+	            ],
+	     tiles : [
+			[42],
+			[31,36],
+		     ],
+	     level: [[0,0,0,0,0,0,0,0,0],
+[0,16,1,9,2,9,1,9,1],
+[0,2,2,2,2,1,1,1,1],
+[0,9,2,9,2,9,1,9,1],
+[0,2,2,2,2,1,1,2,1],
+[0,9,1,16,2,16,1,9,2],
+[0,1,9,2,16,2,16,1,2],
+[0,9,1,16,2,16,2,9,2],
+[0,1,2,2,2,2,2,2,1]]
+	    },
+*/
+};
+
+LoadInstructionStateClass = GameStateClass.extend({
+	
+	play_state: null,
+	engine: null,
+
+	x_pos: 0,
+
+	no_such_tut: false,
+	
+	init: function(engine, play_state) {
+
+		this.play_state = play_state;
+		this.engine = engine;
+
+		
+
+		if (g_tut_content[this.play_state.current_level] == null) {
+			////console.log('LoadInstructionStateClass > no such tut');
+			this.no_such_tut = true;
+		} else {
+			////console.log('LoadInstructionStateClass > load tut');
+			this.play_state.game_mode = 5;
+			this.load_tut();
+		}
+	},
+
+	load_tut : function () {
+		var tut_level_to_load = this.play_state.current_level;
+		var mapdata_version_mines = 1;
+		this.play_state.load_tut_level(tut_level_to_load, mapdata_version_mines);
+
+		for (var x = 0; x < this.play_state.level_w; x++) {
+			for (var y = 0; y < this.play_state.level_h; y++) {
+				// start with solved puzzle
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].block_type == 2 &&
+				    g_tut_content[tut_level_to_load].startclear == 0) {
+					this.play_state.blocks[this.play_state.tiles[x][y]].put_flag_on();
+				} 
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_hint(this.play_state.blocks[this.play_state.tiles[x][y]].symbol_type);
+				this.play_state.blocks[this.play_state.tiles[x][y]].calc_sprite();
+			} // for y
+		} // for x
+
+		// a lot of stuff in StartGame State
+		this.play_state.calc_sequence_lengths();
+		this.play_state.calc_edge_nonogram();
+		this.play_state.resize();	// after calc edges - need to know sizes
+
+		// hacky - zoom out a little bit more
+		g_level_size++;		// controls zoom
+		//g_level_w++;		// controls centering
+		do_resize();
+
+		//if (g_tut_content[tut_level_to_load].startclear == null)
+		for (var x = 0; x < this.play_state.grid_w; x++) {
+			for (var y = 0; y < this.play_state.grid_h; y++) {
+				
+				if (x < this.play_state.level_w &&
+				    y < this.play_state.level_h) {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].make_vis();
+					this.play_state.blocks[this.play_state.tiles[x][y]].make_vis();
+				} else {
+					//this.play_state.bg_squares[this.play_state.tiles[x][y]].hide();
+					this.play_state.blocks[this.play_state.tiles[x][y]].hide();
+				}
+			}
+		}
+	},
+
+	timer: 0,
+
+	update : function (engine) {
+		if (this.no_such_tut == true) {
+			this.goto_level();
+			return;
+		} 
+
+		this.timer--;
+
+		if (this.timer <= 0) {
+			this.goto_tut();
+		}
+
+		
+	},
+
+	goto_level : function () {
+		
+		this.play_state.game_mode = 0;
+		//this.play_state.current_level = 0;
+		var do_outslide = true;
+		this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, 								  this.play_state.current_level, do_outslide));
+			
+			
+	},
+
+	goto_tut : function () {
+		this.play_state.game_mode = 5;
+		this.change_state(this.engine, new InstructionStateClass(this.engine, this.play_state));
+	},
+
+	cleanup : function() {
+		play_screen_container.make_vis();//;
+		play_screen_container.set_x(0);
+	},
+});
+
+InstructionStateClass = GameStateClass.extend({
+	
+	play_state: null,
+	engine: null,
+
+	next_x: 0,
+	next_y: 0,
+
+	skip_x: 0,
+	skip_y: 0,
+
+	reset_x: 0,
+	reset_y: 0,
+
+	tut_level: 0,
+	tut_substage: 0,
+
+	init: function(engine, play_state) {
+
+		//play_screen_container.set_x(2999);
+		play_screen_container.make_vis();//;
+		this.play_state = play_state;
+		this.engine = engine;
+
+		this.tut_level = this.play_state.current_level;
+
+		if (g_tut_text == null) {
+			g_tut_next_button = new SpriteClass();
+			g_tut_next_button.setup_sprite("rightarrow.png",Types.Layer.GAME_MENU);
+			g_tut_next_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_tut_reset_button = new SpriteClass();
+			g_tut_reset_button.setup_sprite("leftarrow.png",Types.Layer.GAME_MENU);
+			g_tut_reset_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_tut_skip_button = new SpriteClass();
+			g_tut_skip_button.setup_sprite("skip_icon.png",Types.Layer.GAME_MENU);
+			g_tut_skip_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_tut_text = new TextClass(Types.Layer.GAME_MENU);
+			g_tut_text.set_font(Types.Fonts.TUTSMALL);
+			//if (screen_width < screen_height) g_tut_text.set_font(Types.Fonts.XSMALL);
+			g_tut_text.set_text("");
+
+			g_tut_highlight = new TutHighlightClass(this.play_state);
+		}
+
+		g_tut_reset_button.make_vis();
+		g_tut_skip_button.make_vis();
+		g_tut_next_button.make_vis();
+		g_tut_text.make_vis();
+
+		this.set_tut_substage(0);
+
+		
+
+		this.screen_resized();
+
+	},
+
+	screen_resized : function () {
+
+		if (screen_width > screen_height) {
+			this.next_x = screen_width - 32;
+			this.next_y = screen_height - 32;
+
+			this.reset_x = screen_width - 32;
+			this.reset_y = screen_height - 96;
+
+			this.skip_x = screen_width - 32;
+			this.skip_y = screen_height - 96 - 64;
+
+			
+			g_tut_text.update_pos(96, screen_height - 64);
+		} else {
+			this.next_x = screen_width - 32;
+			this.next_y = screen_height - 32;
+
+			this.reset_x = screen_width - 32;
+			this.reset_y = screen_height - 96;
+
+			this.skip_x = screen_width - 32;
+			this.skip_y = screen_height - 96 - 64;
+
+			g_tut_text.update_pos(96, screen_height - 64 - 24);
+			g_tut_text.set_font(Types.Fonts.XSMALL);
+		}
+
+		if (this.play_state.current_level == 0) this.skip_y = - 999;
+		if (this.tut_substage == 0) this.reset_y = - 999;
+
+		
+		g_tut_text.center_x(screen_width*0.5)
+
+		g_tut_next_button.update_pos(this.next_x, this.next_y);	
+		g_tut_reset_button.update_pos(this.reset_x, this.reset_y);	
+		g_tut_skip_button.update_pos(this.skip_x, this.skip_y);	
+
+		////console.log('this.next_x ' + this.next_x + ' this.next_y ' + this.next_y);
+		
+	},
+
+	update : function () {
+
+	},
+
+	skip : function () {
+		this.tut_substage = 99999;
+		this.next_substage();
+	},
+
+	reset : function () {
+		this.tut_substage = -1;
+		this.next_substage();
+	},
+
+	next_substage : function () {
+		g_tut_highlight.reset();
+		this.tut_substage++;
+		if (this.tut_substage >= g_tut_content[this.tut_level].text.length) {
+			// too high
+			// change state to ... campaign level 0?
+			this.play_state.game_mode = 0;
+			//this.play_state.current_level = 0;
+			var do_outslide = true;
+			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, 									this.play_state.current_level, do_outslide));
+			
+			return;
+			
+		}
+		this.set_tut_substage(this.tut_substage);
+		this.screen_resized();
+	},
+
+	
+
+	set_tut_substage : function(substage) {
+		
+		g_tut_next_button.scale(1, 1);
+
+		if (substage >= g_tut_content[this.tut_level].text.length) {
+			// too high
+			return;
+		}
+
+		g_tut_text.change_text(g_tut_content[this.tut_level].text[substage]);
+
+		for (var t = 0; t < g_tut_content[this.tut_level].tiles[substage].length; t++) {
+			////console.log(' t < g_tut_content[this.tut_level].tiles[substage] ' + t);
+			var b_ten = g_tut_content[this.tut_level].tiles[substage][t];
+			var y = Math.floor(b_ten/10);
+			var x = b_ten % 10;
+			g_tut_highlight.add_tile_xy(x, y);
+		} 
+
+		g_tut_highlight.done();
+
+		var dofill = false;
+		for (var f = 0; f < g_tut_content[this.tut_level].dofill.length; f++) {
+			if (substage == g_tut_content[this.tut_level].dofill[f]) {
+				// fill all highlighted
+				g_tut_highlight.fill();
+			}
+		}
+
+		var dodig = false;
+		for (var f = 0; f < g_tut_content[this.tut_level].dodig.length; f++) {
+			if (substage == g_tut_content[this.tut_level].dodig[f]) {
+				// dig all highlighted
+				g_tut_highlight.dig();
+			}
+		}
+	},
+
+	cleanup : function() {
+		g_tut_next_button.hide();
+		g_tut_skip_button.hide();
+		g_tut_reset_button.hide();
+		g_tut_text.hide();
+		g_tut_highlight.reset();
+		g_tut_highlight.hide();
+	},
+
+	
+
+	handle_mouse_up : function (engine, x, y) {
+		if (mouse.x > this.next_x - 32 && mouse.x < this.next_x + 32 &&
+		    mouse.y > this.next_y - 32 && mouse.y < this.next_y + 32) {
+			this.next_substage();
+		} else if (mouse.x > this.reset_x - 32 && mouse.x < this.reset_x + 32 &&
+		    	   mouse.y > this.reset_y - 32 && mouse.y < this.reset_y + 32) {
+			this.reset();
+		} else if (mouse.x > this.skip_x - 32 && mouse.x < this.skip_x + 32 &&
+		    	   mouse.y > this.skip_y - 32 && mouse.y < this.skip_y + 32) {
+			this.skip();
+		}
+	},
+
+	attn_timer: 0,
+
+	draw: function() {
+		if (this.tut_substage == 0) {
+			this.attn_timer--;
+			if (this.attn_timer <= -30 && this.tut_substage == 0) this.attn_timer = 30;
+			var scale = this.attn_timer/30;
+			g_tut_next_button.scale(1 + 0.33*scale, 1 + 0.33*scale);
+		}
+	}
+
+});
+
+g_next_level_button = null;
+g_next_level_text = null;
+g_win_message = null;
+
+use_browser_cookies = false;
+
+g_win_fb = null;
+g_win_fb_text = null;
+
+g_win_twit = null;
+g_win_twit_text = null;
+
+g_win_save_state = null;
+g_win_save_state_text = null;
+
+g_star_rating_obj = null;
+
+g_win_picturename = null;
+
+g_win_poptilesprite = null;
+
+WinStateClass = GameStateClass.extend({
+
+	play_state: null,
+	engine: null,
+
+	next_x: 0,
+	next_y: 0,
+
+	fb_y: -999,
+	fb_x: -999,
+
+	save_y: -999,
+	save_x: - 999,
+
+	show_save_option: true,
+
+	allow_rating: false,
+
+
+	init: function(engine, play_state){
+
+		
+
+		play_screen_container.make_vis();//;
+		this.play_state = play_state;
+		this.engine = engine;
+
+		var p_level_status = g_all_level_status;
+		if (this.play_state.game_mode == 6) {
+			if (this.play_state.challenge_level_hardness == 1) p_level_status = g_all_level_status.easy;
+			if (this.play_state.challenge_level_hardness == 2) p_level_status = g_all_level_status.med;
+			if (this.play_state.challenge_level_hardness == 3) p_level_status = g_all_level_status.hard;
+			if (this.play_state.challenge_level_hardness == 4) p_level_status = g_all_level_status.nosmiley;
+		}
+
+
+		if (true || this.play_state.mistakes_this_level == 0) {
+			p_level_status[this.play_state.current_level] = 4;
+		}
+
+
+		
+		//console.log('winstate > this.play_state.game_mode ' + this.play_state.game_mode + ' >  this.play_state.challenge_level_hardness ' + this.play_state.challenge_level_hardness + ' p_level_status ' + p_level_status.toString() + ' this.play_state.mistakes_this_level ' + this.play_state.mistakes_this_level + ' p_level_status[this.play_state.current_level] ' + p_level_status[this.play_state.current_level]);
+
+		total_levels_played++;
+		levels_until_ad--;
+
+		// kongregate.services.getUserId() will return 0 if not signed in
+		if (on_kong && kongregate.services.getUserId() > 0 && this.play_state.game_mode == 3) {
+			this.allow_rating = true;
+		}
+
+		
+
+		
+
+		if (use_browser_cookies) {
+			
+			this.save_state();
+			this.show_save_option = false;
+			//if (on_kong && kongregate.services.getUserId() > 0) this.submit_kong_stats();
+		}
+
+		if (on_kong && kongregate.services.getUserId() > 0) this.submit_kong_stats();
+
+		// g_ui.clear
+		// var next_code = 0;
+		// var fb_code = 1;
+		// g_ui.add_button('next', 'play_icon.png', next_code);
+		// g_ui.add_button('like on FB', 'fb.png', fb_code);
+		// var text_x = 1;	// 1 or -1
+		// var text_y = -1;	// 1 or -1  which corner
+		// g_ui.add_text('SOLVED!', text_x, text_y);
+
+		if (g_star_rating_obj == null) {
+			g_star_rating_obj = new StarRatingClass();
+			g_star_rating_obj.hide();
+
+		}
+
+		if (g_next_level_button == null) {
+
+
+			g_win_poptilesprite = new SpriteClass();
+			g_win_poptilesprite.setup_sprite("redtile.png",Types.Layer.GAME_MENU);
+			g_win_poptilesprite.update_pos(screen_width + 200, screen_height*0.5);
+	
+
+			g_next_level_button = new SpriteClass();
+			g_next_level_button.setup_sprite("rightarrow.png",Types.Layer.GAME_MENU);
+			g_next_level_button.update_pos(screen_width + 200, screen_height*0.5);
+
+			g_next_level_text = new TextClass(Types.Layer.GAME_MENU);
+			g_next_level_text.set_font(Types.Fonts.SMALL);
+			g_next_level_text.set_text("NEXT LEVEL:");
+
+			g_win_message = new TextClass(Types.Layer.GAME_MENU);
+			g_win_message.set_font(Types.Fonts.SMALL);
+			g_win_message.set_text("SOLVED!");
+
+			g_win_picturename = new TextClass(Types.Layer.GAME_MENU);
+			g_win_picturename.set_font(Types.Fonts.XSMALL);
+			g_win_picturename.set_text("PICTURENAME");
+
+			g_win_twit_text = new TextClass(Types.Layer.GAME_MENU);
+			g_win_twit_text.set_font(Types.Fonts.XSMALL);
+			g_win_twit_text.set_text("FOLLOW @ZBlipGames:");
+
+			g_win_twit = new SpriteClass();
+			g_win_twit.setup_sprite('eye.png',Types.Layer.GAME_MENU);
+
+			g_win_save_state_text = new TextClass(Types.Layer.GAME_MENU);
+			g_win_save_state_text.set_font(Types.Fonts.XSMALL);
+			g_win_save_state_text.set_text("REMEMBER PROGRESS?: NO");
+
+			g_win_save_state = new SpriteClass();
+			g_win_save_state.setup_sprite('button_small.png',Types.Layer.GAME_MENU);
+
+
+
+			
+		}
+
+		if (this.play_state.game_mode == 3 && this.allow_rating == true) g_star_rating_obj.make_vis();
+
+		g_win_poptilesprite.hide();
+
+		g_win_fb.update_pos(-999, -999);
+		g_win_fb_text.update_pos(-999, -999);
+		g_win_twit.update_pos(-999, -999);
+
+
+		p_colour_folder = g_all_level_data_colour_layer;
+		p_picturetext_folder = g_all_level_data_text;
+
+		if (this.play_state.game_mode == 6) {
+			this.play_state.mistakes_this_level = 0;
+			if (this.play_state.challenge_level_hardness == 1) p_colour_folder = g_all_level_data_colour_layer.easy;
+			if (this.play_state.challenge_level_hardness == 2) p_colour_folder = g_all_level_data_colour_layer.med;
+			if (this.play_state.challenge_level_hardness == 3) p_colour_folder = g_all_level_data_colour_layer.hard;
+			if (this.play_state.challenge_level_hardness == 4) p_colour_folder = g_all_level_data_colour_layer.nosmiley;
+
+			if (this.play_state.challenge_level_hardness == 1) p_picturetext_folder = g_all_level_data_text.easy;
+			if (this.play_state.challenge_level_hardness == 2) p_picturetext_folder = g_all_level_data_text.med;
+			if (this.play_state.challenge_level_hardness == 3) p_picturetext_folder = g_all_level_data_text.hard;
+			if (this.play_state.challenge_level_hardness == 4) p_picturetext_folder = g_all_level_data_text.nosmiley;
+		}
+
+		////console.dir(g_all_level_data_colour_layer.med);
+		////console.log(' this.play_state.game_mode ' + this.play_state.game_mode);
+		////console.log(' this.play_state.challenge_level_hardness ' + this.play_state.challenge_level_hardness);
+
+		//alert('bbb');
+		
+		if (p_colour_folder[this.play_state.current_level] != null &&
+		    p_colour_folder[this.play_state.current_level].length > 0) {
+			this.do_colour = true;
+			//console.log('WinState > do_colur');
+			var colour_i = 0;
+			for (var y = 0; y < this.play_state.level_h; y++) {
+				for (var x = 0; x < this.play_state.level_w; x++) {
+				
+					if (colour_i >= p_colour_folder[this.play_state.current_level].length) continue;
+					var c = p_colour_folder[this.play_state.current_level][colour_i];
+					this.play_state.blocks[this.play_state.tiles[x][y]].secret_colour = c;
+					colour_i++;
+				}
+			}
+		} //else //console.log('WinState > no colur ... p_colour_folder[this.play_state.current_level] ' + p_colour_folder[this.play_state.current_level].toString());
+
+		//console.log('this.play_state.current_level ' + this.play_state.current_level);
+		//alert('aaa');
+
+		var levelnum = this.play_state.current_level + 1;
+
+		if (p_picturetext_folder[this.play_state.current_level] != null &&
+		    p_colour_folder[this.play_state.current_level].length > 0) {
+			g_win_picturename.change_text("LEVEL " + levelnum + "\n" + p_picturetext_folder[this.play_state.current_level]);
+		} else {
+			g_win_picturename.change_text("LEVEL " + levelnum + "\n" + this.play_state.mistakes_this_level + " MISTAKES");
+		}	
+
+		g_win_picturename.make_vis();
+
+		this.screen_resized();
+
+		//console.log('do_colour ' + this.do_colour);
+		////console.dir(g_all_level_data_colour_layer);
+		////console.dir(g_all_level_data_text);
+	},
+
+	do_colour: false,
+	bg_colour: 0,
+	do_background: false,
+
+	submit_kong_stats : function() {
+
+		/*
+		g_total_num_of_levels = 89;//122 on kong;
+		g_levelnum_app_cutoff = 70;
+		g_levelnum_app_cutoff_nosmiley = 30;
+
+		g_total_challenge_levels_easy = 53;
+		g_total_challenge_levels_med = 72;
+		g_total_challenge_levels_hard = 93;
+		g_total_challenge_levels_nosmiley = 45;
+		g_challenge_levels_easy_progress = 0;
+		g_challenge_levels_med_progress = 0;
+		g_challenge_levels_hard_progress = 0;
+		*/
+	
+		var levels_done = 0;
+
+		for (lvl in g_all_level_status) {
+			if (g_all_level_status[lvl] == 4) levels_done++;
+			
+		}
+		if (levels_done == 70) kongregate.stats.submit("All main levels completed", 1);
+		kongregate.stats.submit("Number of main levels completed", levels_done);
+
+		for (lvl in g_all_level_status.easy) {
+			var easy_levels_done = 0;
+			if (g_all_level_status.easy[lvl] == 4) easy_levels_done++;
+			levels_done += easy_levels_done;
+			
+		}
+		if (easy_levels_done == g_total_challenge_levels_easy) kongregate.stats.submit("All relaxing levels completed", 1);
+
+		for (lvl in g_all_level_status.med) {
+			var med_levels_done = 0;
+			if (g_all_level_status.med[lvl] == 4) med_levels_done++;
+			levels_done += med_levels_done;
+			
+		}
+		if (med_levels_done == g_total_challenge_levels_med) kongregate.stats.submit("All medium levels completed", 1);
+
+
+		for (lvl in g_all_level_status.nosmiley) {
+			var nosmiley_levels_done = 0;
+			if (g_all_level_status.nosmiley[lvl]== 4) nosmiley_levels_done++;
+			levels_done += nosmiley_levels_done;
+			
+		
+		}
+		if (nosmiley_levels_done == g_levelnum_app_cutoff_nosmiley) kongregate.stats.submit("All NoSmiley levels completed", 1);
+
+		kongregate.stats.submit("Levels completed", levels_done);
+	},
+
+	save_state_localstorage: function () {
+		localStorage.setItem("pixojilevels", cookie_string);
+
+		// Store
+		//localStorage.setItem("lastname", "Smith");
+		// Retrieve
+		//document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+	},
+
+	save_state_community_levels: function () {
+		for (var i = 0; i < g_community_list_data.length; i++) {
+			if (g_community_list_data[i]['done'] != null &&
+			    g_community_list_data[i]['done'] == true) {
+				
+				localStorage.setItem("MoShash" + g_community_list_data[i].hash, "1");
+			}
+
+		}
+	},
+
+	// cookies and local storage
+	save_state: function() {
+		
+		var now = new Date();
+  		var time = now.getTime();
+		
+  		var expireTime = time + 6*20000*36000;	// 3 months
+		now.setTime(expireTime);
+
+
+		// g_all_level_status[levelnum] = 4;	// tick, done
+
+		var cookie_string = "pixojilevels=";
+
+		var local_storage_content = "";
+		var local_storage_content_challenge = "";
+
+		for (levelnum in g_all_level_status) {
+			//if (g_all_level_status[levelnum] != 4) continue;
+			//cookie_string += levelnum.toString() + "a";
+			//local_storage_content += levelnum.toString() + "a";
+
+			//var level_done = "pixojilevel" + levelnum.toString();
+			//localStorage.setItem(level_done, "1");
+		}
+
+		
+
+		if (using_cocoon_js == false) {
+			//document.cookie= cookie_string + ";expires=" +now.toGMTString();
+			document.cookie= cookie_string + ";expires=Fri, 31 Dec 2020 23:59:59 GMT";
+			//document.cookie= cookie_string + ";"//expires=" +now.toGMTString();
+		}
+
+		//localStorage.setItem("pixojilevels", local_storage_content);
+
+		if (this.play_state.game_mode == 3) this.save_state_community_levels();
+
+		//("cookie expires " + now.toGMTString());
+
+		//if(localStorage.getItem('mine of sight level 3'))
+		//localStorage.getItem('mine of sight level 3');
+
+		// save controls
+		// g_click_to_dig = true;
+		// g_hold_to_flag = true;
+
+		var clicktodig = 0;
+		if (g_click_to_dig == true) clicktodig = 1;
+
+		var holdtoflag = 0;
+		if (g_hold_to_flag == true) holdtoflag = 1;
+
+		if (using_cocoon_js == false) {
+			//document.cookie="pixojiclicktodig=" + clicktodig.toString() + ";expires=" +now.toGMTString();
+			//document.cookie="pixojiholdtoflag=" + holdtoflag.toString() + ";expires=" +now.toGMTString();
+
+			document.cookie="pixojiclicktodig=" + clicktodig.toString() + ";expires=Fri, 31 Dec 2020 23:59:59 GMT";
+			document.cookie="pixojiholdtoflag=" + holdtoflag.toString() + ";expires=Fri, 31 Dec 2020 23:59:59 GMT";
+		}
+
+		localStorage.setItem("pixojiclicktodig", clicktodig.toString());
+		localStorage.setItem("pixojiholdtoflag", holdtoflag.toString());
+
+		if (using_cocoon_js == true) {
+			// for ads
+			localStorage.setItem("total_levels_played", total_levels_played.toString());
+			localStorage.setItem("levels_until_ad", levels_until_ad.toString());
+
+			// for begging
+			localStorage.setItem("g_seen_beg", g_seen_beg.toString());
+		}
+		// // pixojilevels=1a2a3a6
+
+
+		// oct 2017 - serialize entire g_all_level_status, incl easy med hard
+		localStorage.setItem("zblip_pixoji_g_all_level_status", JSON.stringify(g_all_level_status));
+
+		// to read:
+		//var meta1 = JSON.parse(window.localStorage.getItem("zblip_pixoji_g_all_level_status"));
+		////alert(meta1['22']);
+	},
+
+	go_to_fb: function() {
+		window.open('https://www.facebook.com/Mine-of-Sight-1037635096381976');
+	},
+
+	go_to_twit: function() {
+		window.open('https://twitter.com/ZBlipGames');
+	},
+
+	starrate_x: 0,
+	starrate_y: 0,
+
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+
+		this.fb_x = -999;
+		this.fb_y = -999;
+
+		if (screen_width > screen_height) {
+			this.next_x = screen_width -32; //- 38;
+			this.next_y = screen_height - 32; //- 64 - 16 - 8;
+
+			if (this.play_state.game_mode == 1) {
+				//this.fb_x = screen_width - 29 - 0.5*29;
+				//this.fb_y = screen_height - 29 - 0.5*29;
+			}
+
+			this.starrate_x = screen_width - 6*26;
+			this.starrate_y = 140;
+
+			g_win_picturename.update_pos(16,16);
+
+			
+		} else {
+			this.next_x = screen_width - 32;
+			this.next_y = screen_height - 32;
+
+			this.fb_x = -999;
+			this.fb_y = -999;
+
+			g_win_picturename.update_pos(screen_width*0.5,screen_height - 96);
+			g_win_picturename.center_x(screen_width*0.5);
+		}
+
+		
+
+		if (using_cocoon_js == true) this.fb_x = -999;
+		
+		
+		g_star_rating_obj.update_pos(this.starrate_x, this.starrate_y);
+		if (this.play_state.game_mode != 3 || this.allow_rating == false) g_star_rating_obj.hide();
+
+		//this.save_x = -999;
+		this.save_y = 250;
+
+		if (this.show_save_option == true) {
+			this.fb_x = -999;
+
+			
+
+			if (screen_width > screen_height) {
+				this.save_x = screen_width - 32;
+				this.save_y = screen_height - 64 - 16 - 8;//- 32;
+
+				
+			} else {
+
+				this.save_x = screen_width - 32;
+				this.save_y = screen_height - 64 - 64 - 16;
+			}
+		}
+
+		
+		//this.save_x = -999;
+		//this.save_y = -999;
+
+		
+		if (this.play_state.current_level%6 == 0) {
+			//g_win_twit.update_pos(this.fb_x, this.fb_y);
+			//g_win_twit_text.update_pos(this.fb_x - 180, this.fb_y - 8);
+		} else {
+			
+		}
+
+		g_win_fb.update_pos(this.fb_x, this.fb_y);
+		g_win_fb_text.update_pos(this.fb_x - 220, this.fb_y - 6);
+		g_win_fb.make_vis();
+
+		g_win_save_state.make_vis();
+		g_win_save_state.update_pos(this.save_x, this.save_y);
+		g_win_save_state_text.update_pos(this.save_x - 230, this.save_y - 8);
+
+		if (screen_width > screen_height) g_win_message.update_pos(screen_width - 124,20);		
+		else {
+			g_win_message.update_pos(screen_width*0.5,screen_height - 128);
+			g_win_message.center_x(screen_width*0.5);// 
+		}
+
+		g_next_level_button.update_pos(this.next_x, this.next_y);	// offscreen
+		g_next_level_text.update_pos(this.next_x - 175, this.next_y - 8);
+
+
+	},
+
+	colourtimer: 45,
+	colour_x: 0,
+	colour_y: 0,
+
+	bg_timer: 45,
+
+	update: function() { 
+		this.play_state.update();
+
+		this.colourtimer--;
+		if (this.colourtimer <= 0 && this.do_colour == true) {
+			this.colourtimer = 4;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].linked_up = false;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].linked_left = false;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].linked_right = false;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].linked_down = false;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].linked_group = -1;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].mine_multi = 1;
+			if (this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].block_type == 0) 			{
+				this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].put_x_on();
+				if (this.bg_colour == 0) this.bg_colour = this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].secret_colour;
+			} else {
+				if (g_sound_on == true) playSoundInstance('assets/coin1.wav',0.05);
+			}
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].colour_mode = true;
+			this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].calc_sprite();
+			this.colour_x++;
+			if (this.colour_x >= this.play_state.level_w) {
+				this.colour_x = 0;
+				this.colour_y++;
+				if (this.colour_y >= this.play_state.level_h) {
+					this.do_colour = false;
+					this.do_background = false;//true;
+					this.colour_x = 0;
+					this.colour_y = 0;
+					this.bg_timer = 15;
+				}
+			}
+			
+		}
+
+		this.bg_timer--;
+		if (this.bg_timer <= 0 && this.do_background == true) {
+			this.bg_timer = 2;
+			if (this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].block_type == 0) 			{
+				this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].secret_colour = this.bg_colour
+				this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].colour_mode = true;
+				this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].set_type(2);
+				this.play_state.blocks[this.play_state.tiles[this.colour_x][this.colour_y]].calc_sprite();
+			}
+			
+			this.colour_x++;
+			if (this.colour_x >= this.play_state.level_w) {
+				this.colour_x = 0;
+				this.colour_y++;
+				if (this.colour_y >= this.play_state.level_h) {
+					this.do_background = false;
+					this.colour_x = 0;
+					this.colour_y = 0;
+				}
+			}
+			
+		}
+
+	},
+
+	cleanup: function() {
+		g_win_poptilesprite.hide();
+		g_win_message.update_pos(-999, -999);	// offscreen	
+		g_next_level_button.update_pos(-999, -999);	// offscreen
+		g_next_level_text.update_pos(-999, -999);
+		g_win_fb_text.update_pos(-999, -999);
+		g_win_picturename.hide();
+		g_win_fb.hide();
+		g_win_save_state_text.update_pos(-999, -999);
+		g_win_save_state.hide();
+
+		g_win_twit_text.update_pos(-999, -999);
+		g_win_twit.hide();
+
+		g_star_rating_obj.hide();
+
+		if (use_browser_cookies == true) {
+			this.save_state();
+			if (on_kong && kongregate.services.getUserId() > 0) this.submit_kong_stats();
+		}
+
+		
+			
+	},
+
+	draw: function() {
+		this.play_state.draw();
+
+
+	},
+
+	clicked_social: 0,
+
+	handle_mouse_down: function(engine,x,y) {
+
+		if (this.clicked_social == 1) return;
+
+		if (mouse.x > this.fb_x - 16 &&
+		    mouse.x < this.fb_x + 16 &&
+		    mouse.y > this.fb_y - 16 &&
+		    mouse.y < this.fb_y + 16) {
+			this.clicked_social = 1;
+			if (this.play_state.current_level%6 == 0) this.go_to_twit();
+			else this.go_to_fb();
+			return;
+		}
+	},
+
+	user_clicked_save: false,
+
+	handle_mouse_up: function(engine,x,y) {
+
+		var next_ = 0;
+
+		if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
+
+		if (mouse.x > this.save_x - 16 &&
+		    mouse.x < this.save_x + 16 &&
+		    mouse.y > this.save_y - 16 &&
+		    mouse.y < this.save_y + 16) {
+
+			if (this.user_clicked_save == true) {
+				this.user_clicked_save = false;
+				use_browser_cookies = false;
+				g_win_save_state.set_texture("button_small.png");
+				g_win_save_state_text.change_text("REMEMBER PROGRESS?: NO");
+				return;
+			}
+
+			use_browser_cookies = true;
+			this.user_clicked_save = true;
+			//this.save_state();
+			g_win_save_state.set_texture("button_small_on.png");
+			g_win_save_state_text.change_text("REMEMBER PROGRESS?: YES");
+			return;
+		}
+		
+		//if (screen_width < screen_height && mouse.y > screen_height*0.5) next_ = 1;
+
+		if (mouse.x > this.next_x - 32 && mouse.x < this.next_x + 32 &&
+		    mouse.y > this.next_y - 32 && mouse.y < this.next_y + 32) next_ = 1;
+
+		if (next_ == 1) {
+
+			if (this.play_state.game_mode == 1) {
+				// 1992 mode
+				this.change_state(this.engine, new RestartGameStateClass(this.engine, this.play_state));
+				return;
+			} else if (this.play_state.game_mode == 2) {
+				// testing level editor
+				this.change_state(this.engine, new LevelEditorStateClass(this.engine, this.play_state));
+
+
+				for (var x = 0; x < this.play_state.grid_w; x++) {
+					for (var y = 0; y < this.play_state.grid_h; y++) {
+						this.play_state.blocks[this.play_state.tiles[x][y]].editor_mode = 1;
+					}
+				}
+
+				//this.play_state.restore_backup();
+				return;
+			} else if (this.play_state.game_mode == 3) {
+				// community levels
+				
+				// mark as done
+				for (var i = 0; i < g_community_list_data.length; i++) {
+					if (g_current_community_level_id == g_community_list_data[i].hash) {
+						
+						g_community_list_data[i]['done'] = true;
+					}
+
+				}
+
+				// if (this.play_state.game_mode != 3) g_star_rating_obj.hide();
+				if (this.allow_rating == true &&
+				    g_star_rating_obj.voted == 1) {
+					var ratelevel = new RateLevel(this.engine, this.play_state);
+					ratelevel.level_id = g_current_community_level_id;	// is this the hash???? it is now
+					ratelevel.rating = g_star_rating_obj.rating;
+					
+					this.change_state(this.engine, ratelevel);
+					return;
+				}
+
+				
+				var auto_load = true;
+
+				this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
+
+
+				return;
+			}
+
+			// game mode 0 - campaign levels
+			// or 6 - challenge levels
+			
+			this.play_state.current_level++;
+
+			var max_level = g_total_num_of_levels;
+			if (this.play_state.game_mode == 0 && using_cocoon_js == false) max_level = g_levelnum_app_cutoff;
+			if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 1) max_level = g_total_challenge_levels_easy;
+			if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 2) max_level = g_total_challenge_levels_med;
+			if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 3) max_level = g_total_challenge_levels_hard;
+			if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 4) max_level = g_total_challenge_levels_nosmiley;
+			if (this.play_state.game_mode == 6 && this.play_state.challenge_level_hardness == 4 && using_cocoon_js == false) max_level = g_levelnum_app_cutoff_nosmiley;
+			
+			var endgame = false;
+			if (this.play_state.current_level >= max_level) endgame = true;
+			
+			if (endgame == true) {
+				//this.play_state.current_level = 5;
+				//this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+				this.change_state(this.engine, new ChallengeLevelsSelectHardness(this.engine, this.play_state));
+				return;
+			}
+
+			if (g_tut_content[this.play_state.current_level] != null) {
+				
+				this.play_state.game_mode = 5;
+				this.change_state(this.engine, new LoadInstructionStateClass(this.engine, this.play_state));
+				return;
+			}
+
+			// After a win, we always load the next level by LoadingLevelStateClass
+			// LoadingLevelStateClass will trigger a Tutorial if one exists IF the level is the first in its file
+			// and the file is not loaded in
+			// Tutorial will make another LoadingLevelStateClass 
+			// BUT LoadingLevelStateClass WILL NOT load that tutorial again (as the level file is now loaded in)
+			// LoadingLevelStateClass -> RestartGameClass -> Ads/crosspromote/begforratings
+			//this.change_state(this.engine, new RestartGameStateClass(this.engine, this.play_state));
+			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, this.play_state.current_level, true));
+		}
+	}
+});
+
+// cross promotion
+// 1st call - load zblip.com/crosspromote/currentgame.json
+// 2nd call - load image file for whichever game to link to
+//		or just zblip.com/crosspromote/currentgame.png
+// 3rd call - display to player
+crosspromote_list_loaded = 0;	// 1 == request sent,  2 == OK
+crosspromote_json = null;
+crosspromote_image = null;	// PIXI.texture
+crosspromote_sprite = null;
+crosspromote_text = null;
+crosspromote_title = null;
+crosspromote_header = null;
+this_game_id = "pixoji";
+crosspromote_no_button = null;
+crosspromote_no_text = null;
+
+ShowZblipGame = GameStateClass.extend({
+	play_state: null,
+   	engine: null,
+
+	init: function(engine, play_state) {
+
+		this.engine = engine;
+		this.play_state = play_state;
+
+		
+
+	},
+
+	first_tick: 0,
+
+	update : function () {
+
+		if (this.first_tick > 0) return;
+		this.first_tick = 1;
+
+		if (crosspromote_list_loaded == 0) {
+			crosspromote_list_loaded = 1;
+
+			////console.log("load crosspromote stuff");
+
+			// send request
+			fetch_json('https://www.zblip.com/crosspromote/currentgame.json', crosspromote_json);
+			fetch_image('https://www.zblip.com/crosspromote/currentgame.png', crosspromote_image);
+
+			this.goto_next_gamestate();
+			
+			return;
+		} else if (crosspromote_json == null || crosspromote_image == null) {
+			// waiting ...
+			this.goto_next_gamestate();
+			////console.log("waiting for crosspromote stuff to load");
+			return;
+		} else if (crosspromote_json != null && 
+			   crosspromote_image != null) {
+			// display
+
+			g_show_crosspromote = false;	// only once is needed
+
+			if (this_game_id == crosspromote_json.game_id) {
+				this.goto_next_gamestate();
+				return;
+			}	// same - dont show
+
+			
+
+			
+			background_group.hide();
+			play_screen_group.hide();
+
+			////console.log(crosspromote_image.toString());
+			crosspromote_sprite = new SpriteClass();
+			crosspromote_sprite.setup_sprite('crosspromote.png',Types.Layer.GAME_MENU);
+			crosspromote_sprite.update_pos(100,100);
+			crosspromote_sprite.make_vis();
+
+			crosspromote_title = new TextClass(Types.Layer.GAME_MENU);
+			crosspromote_title.set_font(Types.Fonts.MEDIUM);
+			crosspromote_title.set_text(crosspromote_json.gamename);
+			crosspromote_title.update_pos(194, 96);
+			crosspromote_title.make_vis();
+
+			crosspromote_text = new TextClass(Types.Layer.GAME_MENU);
+			crosspromote_text.set_font(Types.Fonts.XSMALL);
+			crosspromote_text.set_text(crosspromote_json.words);
+			crosspromote_text.update_pos(194, 132);
+			crosspromote_text.make_vis();
+
+			crosspromote_header = new TextClass(Types.Layer.GAME_MENU);
+			crosspromote_header.set_font(Types.Fonts.XSMALL);
+			crosspromote_header.set_text(crosspromote_json.header);
+			crosspromote_header.update_pos(194, 132);
+			crosspromote_header.make_vis();
+
+			crosspromote_no_button = new ButtonClass();
+			crosspromote_no_button.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+			crosspromote_no_button.update_pos(-999, -999);
+			crosspromote_no_button.make_vis();
+
+			crosspromote_no_text = new TextClass(Types.Layer.GAME_MENU);
+			crosspromote_no_text.set_font(Types.Fonts.XSMALL);
+			crosspromote_no_text.set_text("CONTINUE");
+			crosspromote_no_text.update_pos(-999, -999);
+			crosspromote_no_text.make_vis();
+
+			// var new_menu = [1, Types.Events.WEB_LINK, crosspromote_json.gamename, "games_icon.png",crosspromote_json.url];
+			// after MenuItems.push([0, "MORE GAMES"]);
+
+			this.screen_resized();
+		}
+	},
+
+	ad_x: 0,
+	ad_y: 0,
+
+	clicked_ad: 0,
+	mouse_down: false,
+
+	url: "",
+
+	handle_mouse_down: function(engine,x,y) {
+
+		if (this.mouse_down == true) return;
+		this.mouse_down = true;
+
+		var url = crosspromote_json.url;
+		if (using_cocoon_js == true &&
+		    crosspromote_json.gp_app_url != null) url = crosspromote_json.gp_app_url;
+
+
+		if (mouse.x > this.ad_x - 545*0.5 &&
+		    mouse.x < this.ad_x + 545*0.5 &&
+		    mouse.y > this.ad_y - 199*0.5 &&
+		    mouse.y < this.ad_y + 199*0.5) {
+			if (this.clicked_ad == 1) return;
+			this.clicked_ad = 1;
+			
+			window.open(url);
+			return;
+		} 
+	},
+
+	handle_mouse_up: function(engine,x,y) {
+
+		this.mouse_down = false;
+
+		if (mouse.x > this.ad_x - 545*0.5 &&
+		    mouse.x < this.ad_x + 545*0.5 &&
+		    mouse.y > this.ad_y - 199*0.5 &&
+		    mouse.y < this.ad_y + 199*0.5) return;
+
+		if (mouse.x > this.nope_x - 16 &&
+		    	   mouse.x < this.nope_x + 16 &&
+		    	   mouse.y > this.nope_y - 16 &&
+		    	   mouse.y < this.nope_y + 16) {
+			this.goto_next_gamestate();
+		} else this.goto_next_gamestate();
+	},
+
+	nope_x: 0,
+	nope_y: 0,
+
+	screen_resized: function () {
+		this.play_state.screen_resized();
+
+		if (crosspromote_sprite == null) return;
+
+		this.ad_x = screen_width*0.5;
+		this.ad_y = 140;
+
+		this.nope_x = screen_width - 64;
+		this.nope_y = screen_height - 64;
+
+		if (screen_width > screen_height) {
+			
+			crosspromote_sprite.update_pos(this.ad_x, this.ad_y);
+			//crosspromote_title.update_pos(194, 96);
+			//crosspromote_text.update_pos(194, 132);
+			crosspromote_title.update_pos(32, 252);
+			crosspromote_text.update_pos(32, 292);
+			crosspromote_header.update_pos(32, 16);
+			
+		} else {
+			crosspromote_sprite.update_pos(this.ad_x, this.ad_y);
+			crosspromote_title.update_pos(32, 262);
+			crosspromote_text.update_pos(32, 302);
+			crosspromote_header.update_pos(32, 16);
+		}
+
+		crosspromote_no_button.update_pos(this.nope_x, this.nope_y);
+		crosspromote_no_text.update_pos(this.nope_x - 116, this.nope_y - 12);
+
+		crosspromote_title.center_x(this.ad_x);
+		crosspromote_header.center_x(this.ad_x);
+		crosspromote_text.center_x(this.ad_x);
+
+	},
+
+	cleanup: function () {
+		
+		if (crosspromote_sprite != null) crosspromote_sprite.hide();
+		if (crosspromote_title != null) crosspromote_title.hide();
+		if (crosspromote_text != null) crosspromote_text.hide();
+		if (crosspromote_header != null) crosspromote_header.hide();
+		if (crosspromote_no_button != null) crosspromote_no_button.hide();
+		if (crosspromote_no_text != null) crosspromote_no_text.hide();
+
+		background_group.make_vis();
+		play_screen_group.make_vis();
+
+	},
+
+	goto_next_gamestate: function() {
+		if (this.play_state.game_mode == 1) {
+			////console.log("goto_next_gamestate new GenerateRandStateClass");
+			this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+		} else {
+			////console.log("goto_next_gamestate new StartGameStateClass");
+			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+		}
+	}
+});
+
+// is this even needed?
+ShowRewardedAdStateClass = GameStateClass.extend({
+
+});
+
+// Google Adsense for games
+// adtest=on
+// They require: Have a high volume of games content, i.e., greater than 70% games content with over 1 million games impressions monthly.
+// So it's really just one program. Adwords is the advertisers side of it. Adsense the publishers side.
+
+
+ShowAdStateClass = GameStateClass.extend({
+    
+    play_state: null,
+    engine: null,
+    done: 0,
+    
+    	init: function(engine, play_state) {
+        	this.play_state = play_state;
+		this.engine = engine;
+
+		//g_show_ads = false;
+   	},
+    
+    	update: function() { 
+	
+	
+		if (g_interstitial_seen == true || 
+		    g_interstitial_failed == true || 
+		    g_interstitial_loaded == false || 
+		    cordova_ready == false) {
+
+			if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+			return;
+		}
+
+		if (app_paused == true) {
+			if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
+				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
+			return;
+		}
+
+		if (this.done == 0 && 
+		    app_paused == false) {
+			g_interstitial.show();
+			//g_interstitial.load();
+			g_interstitial_loaded = false;
+		}
+		this.done = 1;
+	},
+
+	cleanup: function() {
+		//g_interstitial.load();  // i think this loads up the next one? i do i need to spawn a whole new object?
+			
+	},
+
+	draw: function() {
+	
+
+	},
+    
+});
+
+is_sitelocked = false;
+
+sitelock_urls = [
+	// coolmath
+	"https://www.coolmath-games.com",
+	"www.coolmath-games.com",
+	"edit.coolmath-games.com",
+	"www.stage.coolmath-games.com",
+	"edit-stage.coolmath-games.com",
+	"dev.coolmath-games.com"
+];
+
+var g_interstitial;
+var g_interstitial_failed = false;
+var g_interstitial_loaded = false;
+var g_interstitial_seen = false;
+
+var g_show_ads = false;
+var g_show_crosspromote = true;
+
+if (is_sitelocked == true) g_show_crosspromote = false;
+
+var total_levels_played = 0;
+var levels_until_ad = 50;
+
+var app_paused = false;
+
+
+BootStateClass = GameStateClass.extend({
+
+	start_level: 0,		// change this based on cookies
+
+	first_time: true,
+
+	init: function(){
+
+		
+		g_win_fb_text = new TextClass(Types.Layer.GAME_MENU);
+		g_win_fb_text.set_font(Types.Fonts.XSMALL);
+		g_win_fb_text.set_text("FIND US ON FACEBOOK");
+		g_win_fb_text.hide();
+
+		g_win_fb = new SpriteClass();
+		g_win_fb.setup_sprite('fblogo.png',Types.Layer.GAME_MENU);
+		g_win_fb.hide();
+
+
+		
+		//('boot state init');
+
+		//if (use_browser_cookies == false) return;
+
+		if (on_coolmath == true) use_browser_cookies = true;	// coolmath wants to save user's progress by default
+
+		
+		// // Retrieve document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+
+		
+
+		var pixojilevels = localStorage.getItem("pixojilevels");
+		var pixojiclicktodig = localStorage.getItem("pixojiclicktodig");
+		var pixojiholdtoflag = localStorage.getItem("pixojiholdtoflag");
+
+		
+
+		// to read:
+		zblip_pixoji_g_all_level_status = JSON.parse(window.localStorage.getItem("zblip_pixoji_g_all_level_status"));
+		////alert(meta1['22']);
+		if (zblip_pixoji_g_all_level_status != null) {
+			//g_all_level_status = zblip_pixoji_g_all_level_status;
+
+			load_all_level_status(zblip_pixoji_g_all_level_status);
+
+			// bug - if zblip_pixoji_g_all_level_status lacks .nosmiley
+			//	 it overwrites the .nosmiley in g_all_level_status
+
+			this.first_time = false;
+			this.start_level = 1;
+
+			for (levelnum in g_all_level_status) {
+				if (levelnum > this.start_level) this.start_level = levelnum;
+			}
+		}
+		
+
+		if (pixojilevels != null) {
+			
+			//var levels_ = pixojilevels.split("=")[1]; // array of levels
+			var levels_array = pixojilevels.split("a");	// '1a2a3a6' ... ['1','2','3','6']
+
+			for (lev in levels_array) {
+				var levelnum = Number(levels_array[lev]);
+					
+				if(levelnum < g_total_num_of_levels &&
+			  	   levelnum >= 0) {
+					g_all_level_status[levelnum] = 4;	// tick, done
+
+					use_browser_cookies = true;	
+					// if we found a cookie, then this user previously opted to save
+
+					if (levelnum > this.start_level) this.start_level = levelnum + 2;
+
+				} 
+
+				
+
+			}
+
+		} // if (pixojilevels != null)
+
+		if (pixojiclicktodig != null) {
+			var bool_ = pixojiclicktodig;	// 1 or 0
+			if (bool_ == null || bool_ == undefined) return;
+			if (bool_ == '0') g_click_to_dig = false;
+			else g_click_to_dig = true;
+		}
+
+		if (pixojiholdtoflag != null) {
+			var bool_ = pixojiholdtoflag;	// 1 or 0
+			if (bool_ == null || bool_ == undefined) return;
+			if (bool_ == '0') g_hold_to_flag = false;
+			else g_hold_to_flag = true;
+		}
+
+		
+
+		for (lev in levels_array) {
+			var l = Number(levels_array[lev]);
+
+			if(l < g_total_num_of_levels &&
+			   l >= 0) {
+
+				var string_key = "pixojilevel" + l.toString();
+			
+				var level_done = localStorage.getItem(string_key);
+				if (level_done != null) {
+					g_all_level_status[l] = 4;	// tick, done
+
+					use_browser_cookies = true;
+
+				}	
+
+			}
+
+			
+		}
+
+
+		if (using_cocoon_js == true) {
+			use_browser_cookies = true;	// able to store state, so user won't be prompted
+
+			var numsessions = localStorage.getItem("numsessions");
+			if (numsessions == null) numsessions = 0;
+			localStorage.setItem("numsessions", numsessions + 1);
+
+			var tot_lev_played = localStorage.getItem("total_levels_played");
+			if (tot_lev_played == null) tot_lev_played = 0;
+			total_levels_played = tot_lev_played;
+
+			Cocoon.App.on("activated", function() {
+				app_paused = false;
+			});
+
+			Cocoon.App.on("suspended", function() {
+				app_paused = true;
+			});
+
+			Cocoon.App.on("suspending", function() {
+				app_paused = true;
+			});
+
+			
+			var lev_till_ad = localStorage.getItem("levels_until_ad");
+			if (lev_till_ad == null) lev_till_ad = 50;
+			levels_until_ad = lev_till_ad;
+
+			// g_seen_beg
+			var seen_beg = localStorage.getItem("g_seen_beg");
+			if (seen_beg == null) seen_beg = 0;
+			g_seen_beg = seen_beg;
+
+			//if (numsessions > 4 && numsessions % 2 == 0) g_show_ads = true;
+			g_show_ads = true;
+
+			///*
+
+			var test_ad_id = "ca-app-pub-3940256099942544/1033173712";
+			//var mos_ad_id = "ca-app-pub-5530418852392779/2948904041";
+			//var pixoji_ad_id = "ca-app-pub-5530418852392779/5477925418";
+
+			g_interstitial = Cocoon.Ad.AdMob.createInterstitial(test_ad_id);
+			g_interstitial.on("load", function() {
+    				////console.log("Interstitial loaded");
+				g_interstitial_loaded = true;
+				g_interstitial_failed = false;
+				g_interstitial_seen = false;
+			});
+
+			g_interstitial.on("fail", function() {
+    				////console.log("Interstitial failed");
+				g_interstitial_failed = true;
+				g_interstitial_loaded = false;
+			});
+ 
+			g_interstitial.on("show", function() {
+    				////console.log("Interstitial shown");
+				g_interstitial_seen = true;
+			});
+ 
+			g_interstitial.on("dismiss", function() {
+    				////console.log("Interstitial dismissed");
+				g_interstitial_seen = true;
+			});
+
+			//g_interstitial.load(); // do I call this?
+
+			// g_interstitial.show();
+
+			//*/
+
+			return;
+		}
+
+		// cookies
+		var cookies = document.cookie.split("; ");
+		//(cookies);
+
+		
+		for (var lvl in cookies) {
+
+			var levelnum_str = cookies[lvl].split("=")[0];	// "pixoji1"
+
+			levelnum_str = levelnum_str.split("pixoji")[1];
+
+			var levelnum = Number(levelnum_str);
+	
+			if (levelnum == null || levelnum == undefined) continue;
+
+			
+				
+			if(levelnum < g_total_num_of_levels &&
+			   levelnum >= 0) {
+				g_all_level_status[levelnum] = 4;	// tick, done
+
+				use_browser_cookies = true;	// if we found a cookie, then this user previously opted to save
+
+				if (levelnum > this.start_level) this.start_level = levelnum + 1;
+
+			} 
+
+				
+
+		}
+
+		//document.cookie="pixojiclicktodig=" + clicktodig.toString() + ";expires=" +now.toGMTString();
+		//document.cookie="pixojiholdtoflag=" + holdtoflag.toString() + ";expires=" +now.toGMTString();
+
+
+
+		for (c in cookies) {
+
+			var cookiename_str = cookies[c].split("=")[0];	// "pixojiclicktodig"
+
+			if (cookiename_str == "pixojiclicktodig") {
+				var bool_ = cookies[c].split("=")[1];	// 1 or 0
+				if (bool_ == null || bool_ == undefined) continue;
+				if (bool_ == 0) g_click_to_dig = false;
+				else g_click_to_dig = true;
+			
+			} else if (cookiename_str == "pixojiholdtoflag") {
+				var bool_ = cookies[c].split("=")[1];	// 1 or 0
+				if (bool_ == null || bool_ == undefined) continue;
+				if (bool_ == 0) g_hold_to_flag = false;
+				else g_hold_to_flag = true;
+
+			} else if (cookiename_str == "pixojilevels") {
+
+				
+
+				use_browser_cookies = true;	// if we found a cookie, then this user previously opted to save
+
+				var levels_ = cookies[c].split("=")[1]; // array of levels
+				var levels_array = levels_.split("a");	// '1a2a3a6' ... ['1','2','3','6']
+				
+				for (lev in levels_array) {
+					var levelnum = Number(levels_array[lev]);
+					
+					if(levelnum < g_total_num_of_levels &&
+			  		   levelnum >= 0) {
+						g_all_level_status[levelnum] = 4;	// tick, done
+
+						use_browser_cookies = true;	
+						// if we found a cookie, then this user previously opted to save
+
+						if (levelnum > this.start_level) this.start_level = levelnum + 2;
+
+					} 
+
+				}
+				
+			}
+
+		} // for c in cookies
+ 
+	},
+
+	handle_events: function(engine,x,y,event_type){
+		
+		//if(this.wait_timer > 0) {return;}
+
+
+		if(event_type == Types.Events.MOUSE_CLICK) {
+			// User clicked at (x,y)
+			
+			this.start_game (engine);
+
+
+		}
+		
+	},
+
+	check_blacklist : function () {
+		if (using_cocoon_js == true) return 0;
+		var current_url = location_hostname;
+
+		//if (current_url == "www.example.com") return 1;
+
+
+		return 0;
+	},
+
+	check_sitelock : function() {
+		if (is_sitelocked == false) return 1;
+
+		var current_url = location.hostname;
+		
+		for (var u = 0; u < sitelock_urls.length; u++) {
+			if (sitelock_urls[u] == current_url) return 1;
+		}
+
+		return 0;
+
+	},
+
+	start_game: function (engine) {
+
+		//////alert('on_kong ' + on_kong);
+
+		if (is_sitelocked == true && this.check_sitelock() == 0) return;
+
+		if (this.check_blacklist() == 1) return;
+
+
+		remove_splash();
+
+		
+		gBlipFrogMenu.pop_up(); 
+		gBlipFrogMenu.pop_down();
+		gBlipFrogMenu.hurry_menu();
+
+		var play_state = new PlayStateClass(engine);
+
+		engine.push_state(play_state);
+
+		play_state.screen_resized();
+
+		play_state.current_level = this.start_level;
+
+		g_hold_to_flag = true;
+		g_click_to_dig = true;
+
+
+		// this.play_state.current_level >= g_total_num_of_levels
+
+		// For now - Mathsweeper will launch right into GenerateRandStateClass 
+		//engine.push_state(new GenerateRandStateClass(engine, engine.get_state()));
+		//return;
+
+		// tutorial:
+		play_state.game_mode = 0;
+		//play_state.current_level = 0;
+		play_screen_container.hide();
+		background_group.hide();
+		//play_state.reset();	// new LoadingLevelStateClass(this, this.state_stack[1], 0)
+		//engine.push_state(new LoadingLevelStateClass(engine, engine.get_state(), 0));
+		//return;
+
+		if (g_autoload_level != null && g_autoload_level.length > 10) {
+			// load a community level from url parameter
+
+			engine.push_state(new CommunityFetchStateClass(engine, engine.get_state()));
+
+		} else if (play_state.current_level > 0 || this.first_time == false) {
+
+			// Loading Level 0
+
+			//engine.push_state(new LoadingLevelStateClass(engine, engine.get_state(), this.start_level));
+
+			engine.push_state(new OverworldStateClass(engine, engine.get_state()));
+
+			//var ratelevel = new RateLevel(engine, engine.get_state());
+			//ratelevel.level_id = '456a295abcb37874d0f50de82a9654ad';
+			//ratelevel.rating = 240;
+			//engine.push_state(ratelevel);
+
+			play_state.reset();
+
+		} else {
+		
+			// MenuStateClass
+			engine.push_state(new MenuStateClass(engine, engine.get_state()));
+
+			// InstructionStateClass
+			//play_state.current_level = 0;
+			//play_state.game_mode = 5;
+			//engine.push_state(new LoadInstructionStateClass(engine, engine.get_state()));
+			
+			
+			//engine.push_state(new LoadingLevelStateClass(engine, engine.get_state(), 0));
+
+			//play_state.current_level = 0;
+			//this.start_level = 0;			
+			//engine.push_state(new LoadingLevelStateClass(engine, engine.get_state(), this.start_level));
+
+			//play_state.reset();
+
+		}
+		
+	
+	},
+
+	screen_resized : function (engine) {
+		//this.play_state.screen_resized(engine);
+	},
+
+	update: function(engine) {
+		this.start_game(engine);
+	},
+
+	draw: function() {
+	}
+
+});
+
+
+// ff9400
+
+pBar.value += 10;
