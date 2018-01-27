@@ -536,7 +536,7 @@ MenuItems = [
 ];
 
 if (using_cocoon_js == false) {
-	MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
+	//MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
 
 	MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
