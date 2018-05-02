@@ -191,8 +191,12 @@ onPIXIdown = function (event) {
 		update_mouse_pos(pos.x, pos.y);
 		mousedown = true;
 	}
-};
 
+	
+	gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio , 
+					   (mouse_abs['y'] - y_shift_screen)/ratio,Types.Events.MOUSE_DOWN);
+};
+// on mousedown needs to happen in the same frame for opening web links (for crosspromotion)
 
 
 onPIXIup = function (event) {
@@ -222,6 +226,16 @@ onPIXImove = function (event) {
 	mousemove = true;
 };
 
+setup_input_cocoon_canvas_plus = function () {
+	renderer.view.addEventListener('mousemove',onMouseMove, false);
+	renderer.view.addEventListener('mousedown', onMouseClick, false);
+	renderer.view.addEventListener('mouseup', onMouseUp, false);	
+	renderer.view.addEventListener('touchstart', onTouchDown, false);
+	renderer.view.addEventListener('touchmove', onTouchMove, false);
+	renderer.view.addEventListener('touchend', onTouchUp, false);	
+
+};
+
 setup_input = function () {
 	// Listener, NOT Handler
 
@@ -229,6 +243,8 @@ setup_input = function () {
 		//addListener(renderer.view,'mouseup',onMouseUp);
 		//addListener(renderer.view,'pointerdown',onMouseClick);
 		//addListener(renderer.view,'pointerup',onMouseUp);
+
+		if (using_cocoon_js == true) setup_input_cocoon_canvas_plus();
 
 		
 		// https://pixijs.github.io/examples/#/demos/dragging.js

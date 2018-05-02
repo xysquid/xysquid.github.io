@@ -542,7 +542,7 @@ if (using_cocoon_js == false) {
 	//MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
 
-var app_exists = true;
+var app_exists = false;
 if (app_exists) {
 MenuItems.push([0, "APP VERSION"]);
 
@@ -550,7 +550,7 @@ MenuItems.push([0, "APP VERSION"]);
 //country_code = country_code.slice(-2);  // 
 //if (country_code == null) country_code = 'a';
  
-if (using_cocoon_js == false && on_coolmath == false) {
+if (false && using_cocoon_js == false && on_coolmath == false) {
 	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mathsweeper"]);
 
 
@@ -583,6 +583,13 @@ if(location.hostname != "www.facebook.com"){
 	MenuItems.push([1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"]);
 }
 
+
+if (using_cocoon_js == false) {
+	MenuItems.push([0, "FOLLOW"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","fblogo.png","https://www.facebook.com/mathsweeper"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+}
 	
 MenuItems.push([0, "LINKS"]);
 
@@ -616,11 +623,7 @@ if(location.hostname == "www.zblip.com"){
 
 //MenuItems.push([2, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 
-if (using_cocoon_js == false) {
-	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","fblogo.png","https://www.facebook.com/mathsweeper"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
-}
+
 //
 
 
@@ -1157,6 +1160,9 @@ BlipFrogMenuClass = Class.extend({
 			this.fb_x = -999;
 			this.fb_y = -999;
 		} 
+
+		this.fb_x = -999;
+			this.fb_y = -999;
 		this.engine_fb.update_pos(this.fb_x + this.menu_width, this.fb_y);
 		this.engine_fb_rect.update_pos(this.fb_x - 29 - 0.5*29 + this.menu_width, this.fb_y - 29 - 0.5*29);
 
@@ -1692,7 +1698,7 @@ GameEngineClass = Class.extend({
 
 
 gBlipFrogMenu = new BlipFrogMenuClass();
-gGameEngine = new GameEngineClass();
+//gGameEngine = new GameEngineClass();
 
 
 

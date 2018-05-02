@@ -141,3 +141,54 @@ load_level_from_file = function (name, callback) {
 
 	xmlhttp.send(null);
 }
+
+// for crosspromotion stuff
+fetch_json = function (url, store) {
+	var request = new XMLHttpRequest();
+	request.open("GET", url , true);
+	request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			crosspromote_json = JSON.parse(request.responseText);
+		}
+	}
+	// request.setRequestHeader('Content-Type', 'text/plain');
+	request.send(null);
+}
+
+fetch_image = function (url, store) {
+	
+	var request = new XMLHttpRequest();
+	request.open("GET", url , true);
+	request.responseType = 'blob';
+	request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			//crosspromote_image 
+			var blob = this.response;
+			var urlCreator = window.URL || window.webkitURL; 
+
+			var binaryData = [];
+			binaryData.push(blob);
+			//window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}))
+
+			//var BLOBurl = urlCreator.createObjectURL(blob); 
+			var BLOBurl = urlCreator.createObjectURL(new Blob(binaryData, {type: "application/zip"}));
+			var img = new Image();
+			img.addEventListener("load", function(event){URL.revokeObjectURL(BLOBurl);});
+			img.src = BLOBurl;
+			crosspromote_image = new PIXI.Texture(new PIXI.BaseTexture(img));
+			g_textures['crosspromote.png'] = crosspromote_image;
+		}
+	}
+	request.send(null);
+
+	return;
+
+	var img = new Image();
+	img.addEventListener("load", function(event){URL.revokeObjectURL(BLOBurl);});
+	img.src = BLOBurl;
+	var texture = new PIXI.Texture(new PIXI.BaseTexture(img));
+
+	return;
+
+	
+}

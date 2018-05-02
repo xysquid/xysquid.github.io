@@ -2990,12 +2990,12 @@ RestartGameStateClass = GameStateClass.extend({
 			if (this.play_state.game_mode == 0) this.play_state.load_level(level_to_load, mapdata_version_mines); // 
 
 			// crosspromote stuff
-			if (g_show_crosspromote == true && 
+			if (false && g_show_crosspromote == true && 
 			    this.play_state.won_or_lost == true &&
 			    total_levels_played > 7) {  // && levels_until_ad <= 1
 				// cross promotion
-				this.change_state(this.engine, new ShowZblipGame(this.engine, this.play_state));
-				return;
+				//this.change_state(this.engine, new ShowZblipGame(this.engine, this.play_state));
+				//return;
 			}
 
 			if (this.play_state.current_level == 9999 && already_setup_input == false && using_phaser == true && using_cocoon_js == false) {
@@ -9761,6 +9761,7 @@ WinStateClass = GameStateClass.extend({
 	},
 
 	save_state_localstorage: function () {
+		return;
 		localStorage.setItem("mineofsightlevels", cookie_string);
 
 		// Store
@@ -9770,6 +9771,7 @@ WinStateClass = GameStateClass.extend({
 	},
 
 	save_state_community_levels: function () {
+		return;
 		for (var i = 0; i < g_community_list_data.length; i++) {
 			if (g_community_list_data[i]['done'] != null &&
 			    g_community_list_data[i]['done'] == true) {
@@ -9782,6 +9784,7 @@ WinStateClass = GameStateClass.extend({
 
 	// cookies and local storage
 	save_state: function() {
+		return;
 		
 		var now = new Date();
   		var time = now.getTime();
@@ -10108,219 +10111,7 @@ WinStateClass = GameStateClass.extend({
 	}
 });
 
-// cross promotion
-// 1st call - load zblip.com/crosspromote/currentgame.json
-// 2nd call - load image file for whichever game to link to
-//		or just zblip.com/crosspromote/currentgame.png
-// 3rd call - display to player
-crosspromote_list_loaded = 0;	// 1 == request sent,  2 == OK
-crosspromote_json = null;
-crosspromote_image = null;	// PIXI.texture
-crosspromote_sprite = null;
-crosspromote_text = null;
-crosspromote_title = null;
-crosspromote_header = null;
-this_game_id = "mathsweeper";
-crosspromote_no_button = null;
-crosspromote_no_text = null;
-
-ShowZblipGame = GameStateClass.extend({
-	play_state: null,
-   	engine: null,
-
-	init: function(engine, play_state) {
-
-		this.engine = engine;
-		this.play_state = play_state;
-
-		
-
-	},
-
-	first_tick: 0,
-
-	update : function () {
-
-		if (this.first_tick > 0) return;
-		this.first_tick = 1;
-
-		if (crosspromote_list_loaded == 0) {
-			crosspromote_list_loaded = 1;
-
-			console.log("load crosspromote stuff");
-
-			// send request
-			fetch_json('https://www.zblip.com/crosspromote/currentgame.json', crosspromote_json);
-			fetch_image('https://www.zblip.com/crosspromote/currentgame.png', crosspromote_image);
-
-			this.goto_next_gamestate();
-			
-			return;
-		} else if (crosspromote_json == null || crosspromote_image == null) {
-			// waiting ...
-			this.goto_next_gamestate();
-			console.log("waiting for crosspromote stuff to load");
-			return;
-		} else if (crosspromote_json != null && 
-			   crosspromote_image != null) {
-			// display
-
-			g_show_crosspromote = false;	// only once is needed
-
-			if (this_game_id == crosspromote_json.game_id) {
-				this.goto_next_gamestate();
-				return;
-			}	// same - dont show
-
-			
-			background_group.hide();
-			play_screen_group.hide();
-
-			console.log(crosspromote_image.toString());
-			crosspromote_sprite = new SpriteClass();
-			crosspromote_sprite.setup_sprite('crosspromote.png',Types.Layer.GAME_MENU);
-			crosspromote_sprite.update_pos(100,100);
-			crosspromote_sprite.make_vis();
-
-			crosspromote_title = new TextClass(Types.Layer.GAME_MENU);
-			crosspromote_title.set_font(Types.Fonts.MEDIUM);
-			crosspromote_title.set_text(crosspromote_json.gamename);
-			crosspromote_title.update_pos(194, 96);
-			crosspromote_title.make_vis();
-
-			crosspromote_text = new TextClass(Types.Layer.GAME_MENU);
-			crosspromote_text.set_font(Types.Fonts.XSMALL);
-			crosspromote_text.set_text(crosspromote_json.words);
-			crosspromote_text.update_pos(194, 132);
-			crosspromote_text.make_vis();
-
-			crosspromote_header = new TextClass(Types.Layer.GAME_MENU);
-			crosspromote_header.set_font(Types.Fonts.XSMALL);
-			crosspromote_header.set_text(crosspromote_json.header);
-			crosspromote_header.update_pos(194, 132);
-			crosspromote_header.make_vis();
-
-			crosspromote_no_button = new ButtonClass();
-			crosspromote_no_button.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
-			crosspromote_no_button.update_pos(-999, -999);
-			crosspromote_no_button.make_vis();
-
-			crosspromote_no_text = new TextClass(Types.Layer.GAME_MENU);
-			crosspromote_no_text.set_font(Types.Fonts.XSMALL);
-			crosspromote_no_text.set_text("CONTINUE");
-			crosspromote_no_text.update_pos(-999, -999);
-			crosspromote_no_text.make_vis();
-
-			// var new_menu = [1, Types.Events.WEB_LINK, crosspromote_json.gamename, "games_icon.png",crosspromote_json.url];
-			// after MenuItems.push([0, "MORE GAMES"]);
-
-			this.screen_resized();
-		}
-	},
-
-	ad_x: 0,
-	ad_y: 0,
-
-	clicked_ad: 0,
-	mouse_down: false,
-
-	handle_mouse_down: function(engine,x,y) {
-
-		if (this.mouse_down == true) return;
-		this.mouse_down = true;
-
-
-		if (mouse.x > this.ad_x - 545*0.5 &&
-		    mouse.x < this.ad_x + 545*0.5 &&
-		    mouse.y > this.ad_y - 199*0.5 &&
-		    mouse.y < this.ad_y + 199*0.5) {
-			if (this.clicked_ad == 1) return;
-			this.clicked_ad = 1;
-			window.open(crosspromote_json.url);
-			return;
-		} 
-	},
-
-	handle_mouse_up: function(engine,x,y) {
-
-		this.mouse_down = false;
-
-		if (mouse.x > this.ad_x - 545*0.5 &&
-		    mouse.x < this.ad_x + 545*0.5 &&
-		    mouse.y > this.ad_y - 199*0.5 &&
-		    mouse.y < this.ad_y + 199*0.5) return;
-
-		if (mouse.x > this.nope_x - 16 &&
-		    	   mouse.x < this.nope_x + 16 &&
-		    	   mouse.y > this.nope_y - 16 &&
-		    	   mouse.y < this.nope_y + 16) {
-			this.goto_next_gamestate();
-		} else this.goto_next_gamestate();
-	},
-
-	nope_x: 0,
-	nope_y: 0,
-
-	screen_resized: function () {
-		this.play_state.screen_resized();
-
-		if (crosspromote_sprite == null) return;
-
-		this.ad_x = screen_width*0.5;
-		this.ad_y = 140;
-
-		this.nope_x = screen_width - 64;
-		this.nope_y = screen_height - 64;
-
-		if (screen_width > screen_height) {
-			
-			crosspromote_sprite.update_pos(this.ad_x, this.ad_y);
-			//crosspromote_title.update_pos(194, 96);
-			//crosspromote_text.update_pos(194, 132);
-			crosspromote_title.update_pos(32, 252);
-			crosspromote_text.update_pos(32, 292);
-			crosspromote_header.update_pos(32, 16);
-			
-		} else {
-			crosspromote_sprite.update_pos(this.ad_x, this.ad_y);
-			crosspromote_title.update_pos(32, 262);
-			crosspromote_text.update_pos(32, 302);
-			crosspromote_header.update_pos(32, 16);
-		}
-
-		crosspromote_no_button.update_pos(this.nope_x, this.nope_y);
-		crosspromote_no_text.update_pos(this.nope_x - 116, this.nope_y - 12);
-
-		crosspromote_title.center_x(this.ad_x);
-		crosspromote_header.center_x(this.ad_x);
-		crosspromote_text.center_x(this.ad_x);
-
-	},
-
-	cleanup: function () {
-		
-		if (crosspromote_sprite != null) crosspromote_sprite.hide();
-		if (crosspromote_title != null) crosspromote_title.hide();
-		if (crosspromote_text != null) crosspromote_text.hide();
-		if (crosspromote_header != null) crosspromote_header.hide();
-		if (crosspromote_no_button != null) crosspromote_no_button.hide();
-		if (crosspromote_no_text != null) crosspromote_no_text.hide();
-
-		background_group.make_vis();
-		play_screen_group.make_vis();
-
-	},
-
-	goto_next_gamestate: function() {
-		if (this.play_state.game_mode == 1) {
-			console.log("goto_next_gamestate new GenerateRandStateClass");
-			this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
-		} else {
-			console.log("goto_next_gamestate new StartGameStateClass");
-			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-		}
-	}
-});
+// cross promotion was here
 
 
 // Google Adsense for games
@@ -10437,7 +10228,7 @@ BootStateClass = GameStateClass.extend({
 		
 		// // Retrieve document.getElementById("result").innerHTML = localStorage.getItem("lastname");
 
-		
+		return;
 
 		var mineofsightlevels = localStorage.getItem("mineofsightlevels");
 		var mineofsightclicktodig = localStorage.getItem("mineofsightclicktodig");
