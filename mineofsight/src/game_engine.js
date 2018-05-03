@@ -36,6 +36,7 @@ Types = {
 			GOTO_COMMUNITY_LEVELS: 43,
 			GOTO_CREDITS: 44,
 			GOTO_SEED_LEVEL: 45,
+			GOTO_HEART_SNAKE: 46,
 
 			NO_EVENT: 0,
 
@@ -514,8 +515,8 @@ open_url = function(url) {
 
 g_sound_on = true;
 
+g_hold_to_flag = false;
 g_click_to_dig = true;
-g_hold_to_flag = true;
 
 MenuItems = [
 
@@ -532,13 +533,14 @@ MenuItems = [
 	[1, Types.Events.GOTO_LEVELS, g_get_text("LEVELS"),"home_icon.png",],
 	[1, Types.Events.GOTO_AUTOGEN, "MINES++","home_icon.png",],
 	//[1, Types.Events.GOTO_SEED_LEVEL, "DAILY CHALLENGE","home_icon.png",],
+	//[1, Types.Events.GOTO_HEART_SNAKE, "DAILY SNAKE","home_icon.png",],
 
 ];
 
 if (using_cocoon_js == false) {
 	//MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
 
-	MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
+	//MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
 
 
@@ -548,8 +550,8 @@ country_code = country_code.slice(-2);  //
 if (country_code == null) country_code = 'a';
  
 if (using_cocoon_js == false && on_coolmath == false) {
-	MenuItems.push([0, "GET THE APP"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
+	//MenuItems.push([0, "GET THE APP"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "Get Android App","ic_list_white_24dp_2x.png","https://play.google.com/store/apps/details?id=com.zblip.mineofsight&hl=en"]);
 
 
 }
@@ -1334,6 +1336,12 @@ BlipFrogMenuClass = Class.extend({
 
 			this.pop_down();
 			
+		}  else if (MenuItems[menu_i][1] == Types.Events.GOTO_HEART_SNAKE) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_HEART_SNAKE);
+
+			this.pop_down();
+			
 		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_EDITOR) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GOTO_EDITOR);
@@ -1601,6 +1609,14 @@ GameEngineClass = Class.extend({
 				state_.cleanup();
 			}
 			this.push_state(new GenerateFromSeedStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GOTO_HEART_SNAKE) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new GenerateHeartSnakeLevelClass(this, this.state_stack[1]));
 
 		} else if (event_type == Types.Events.GOTO_EDITOR) {
 
