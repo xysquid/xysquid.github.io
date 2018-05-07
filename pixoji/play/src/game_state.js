@@ -2009,17 +2009,19 @@ RestartGameStateClass = GameStateClass.extend({
 			}
 
 			// crosspromote stuff
-			if (g_show_crosspromote == true && 
+			if (false && g_show_crosspromote == true && 
 			    this.play_state.won_or_lost == true &&
 			    total_levels_played > 20 && on_kong == false && on_armor == false &&
 			    using_cocoon_js == false) {  // && levels_until_ad <= 1
 				// cross promotion
-				this.change_state(this.engine, new ShowZblipGame(this.engine, this.play_state));
-				return;
+				//this.change_state(this.engine, new ShowZblipGame(this.engine, this.play_state));
+				//return;
 			}
 
-			if (false && this.play_state.current_level == 9999 && already_setup_input == false && using_phaser == true && using_cocoon_js == false) {
-				this.change_state(this.engine, new SetupInputStateClass(this.engine, this.play_state));
+			if (this.play_state.current_level == 4 && use_browser_cookies == false && seen_SetupSaveStateClass == false) {
+				seen_SetupSaveStateClass = true;
+				this.change_state(this.engine, new SetupSaveStateClass(this.engine, this.play_state));
+				return;
 			} else if (g_show_ads == true && 
 				   //total_levels_played > 100 &&
 				   this.play_state.won_or_lost == true) {
@@ -2686,7 +2688,7 @@ DuringGameStateClass = GameStateClass.extend({
 
 		// try to restore from localstorage, IF cookies are allowed by the player
 		// IF the saved level matches this one
-		this.load_level_state
+		//this.load_level_state
 		
 
 	},
@@ -5015,6 +5017,7 @@ LoadingLevelStateClass = GameStateClass.extend({
 		if (post_win != null) this.post_win = post_win;
 
 		var first_in_file = Math.floor(level_num / 10)*10;
+		var last_in_file = first_in_file + 9;
 
 		this.p_level_folder = g_all_level_data_floor_layer;
 		var filepath_needed = 'levels/level' + first_in_file.toString() + 'to' + last_in_file + '.json';
@@ -6369,11 +6372,13 @@ g_overworld_sprites = null;
 g_total_num_of_levels = 99;//122 on kong;
 g_levelnum_app_cutoff = 81;
 g_levelnum_app_cutoff_nosmiley = 30;
+if (g_servermode == true) g_levelnum_app_cutoff = 999;
+if (g_servermode == true) g_levelnum_app_cutoff_nosmiley = 999;
 
 g_total_challenge_levels_easy = 53;
-g_total_challenge_levels_med = 72;
-g_total_challenge_levels_hard = 93;
-g_total_challenge_levels_nosmiley = 45;
+g_total_challenge_levels_med = 73;
+g_total_challenge_levels_hard = 94;
+g_total_challenge_levels_nosmiley = 46;
 g_challenge_levels_easy_progress = 0;
 g_challenge_levels_med_progress = 0;
 g_challenge_levels_hard_progress = 0;
@@ -6813,11 +6818,13 @@ OverworldStateClass = GameStateClass.extend({
 			var levelname = (i + 1).toString();
 
 			if (using_cocoon_js == false &&
-			    this.play_state.challenge_level_hardness == 3) levelname = 'APP';
+			    this.play_state.challenge_level_hardness == 3 &&
+				g_servermode == false) levelname = 'APP';
 
 			if (using_cocoon_js == false &&
 			    this.play_state.challenge_level_hardness == 4 &&
-			    i > g_levelnum_app_cutoff_nosmiley) levelname = 'APP';
+			    i > g_levelnum_app_cutoff_nosmiley &&
+				g_servermode == false) levelname = 'APP';
 
 			g_overworld_sprites.add_level(null, levelname);
 
@@ -7337,21 +7344,21 @@ Menu2StateClass = GameStateClass.extend({
 	}
 });
 
-g_toggle_right_to_flag = null;
-g_toggle_hold_to_flag = null;
-g_toggle_mark_first = null;
 
-g_text_right_to_flag = null;
-g_text_hold_to_flag = null;
-g_text_mark_first = null;
+
+
+
+g_button_doyouwantsave_yes = null;
+g_button_doyouwantsave_no = null;
+
+g_text_doyouwantsave_yes = null;
+g_text_doyouwantsave_no = null;
 
 g_setup_input_text = null;
+seen_SetupSaveStateClass = false;
 
-g_setup_input_play = null;
 
-already_setup_input = false;
-
-SetupInputStateClass = GameStateClass.extend({
+SetupSaveStateClass = GameStateClass.extend({
 	play_state: null,
 	engine: null,
 
@@ -7361,166 +7368,94 @@ SetupInputStateClass = GameStateClass.extend({
 
 		already_setup_input = true;
 
-		if (g_toggle_right_to_flag == null) {
+		if (g_setup_input_text == null) {
 
 			g_setup_input_text = new TextClass(Types.Layer.GAME_MENU);
 			g_setup_input_text.set_font(Types.Fonts.SMALL);
-			g_setup_input_text.set_text("CHANGE CONTROL SCHEME?\n(YOU CAN CHANGE THIS LATER FROM THE BOTTOM MENU)");
+			g_setup_input_text.set_text("DO YOU WANT THE GAME\nTO SAVE YOUR PROGRESS?");
 
-			g_toggle_right_to_flag = new ToggleClass();
-			g_toggle_right_to_flag.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
+			g_button_doyouwantsave_yes = new SpriteClass();
+			g_button_doyouwantsave_yes.setup_sprite("rightarrow.png",Types.Layer.GAME_MENU);
 
-			g_text_right_to_flag = new TextClass(Types.Layer.GAME_MENU);
-			g_text_right_to_flag.set_font(Types.Fonts.XSMALL);
-			g_text_right_to_flag.set_text(g_get_text("right_long"));
+			g_text_doyouwantsave_yes = new TextClass(Types.Layer.GAME_MENU);
+			g_text_doyouwantsave_yes.set_font(Types.Fonts.XSMALL);
+			g_text_doyouwantsave_yes.set_text("YES");
 
-			g_toggle_hold_to_flag = new ToggleClass();
-			g_toggle_hold_to_flag.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
+			g_button_doyouwantsave_no = new SpriteClass();
+			g_button_doyouwantsave_no.setup_sprite("rightarrow.png",Types.Layer.GAME_MENU);
 
-			g_text_hold_to_flag = new TextClass(Types.Layer.GAME_MENU);
-			g_text_hold_to_flag.set_font(Types.Fonts.XSMALL);
-			g_text_hold_to_flag.set_text(g_get_text("hold_long"));
-
-			g_toggle_mark_first = new ToggleClass();
-			g_toggle_mark_first.setup_sprite("redflag.png",Types.Layer.GAME_MENU);
-
-			
-
-			g_text_mark_first = new TextClass(Types.Layer.GAME_MENU);
-			g_text_mark_first.set_font(Types.Fonts.XSMALL);
-			g_text_mark_first.set_text(g_get_text("mark_long"));
-
-
-
-			g_setup_input_play = new ButtonClass();
-			g_setup_input_play.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
+			g_text_doyouwantsave_no = new TextClass(Types.Layer.GAME_MENU);
+			g_text_doyouwantsave_no.set_font(Types.Fonts.XSMALL);
+			g_text_doyouwantsave_no.set_text("NO");
 
 		}
 
-		if (g_click_to_dig == false ) {
-			g_toggle_right_to_flag.toggle();
-			g_toggle_hold_to_flag.toggle();
-		} else if (g_hold_to_flag == true) {
-			g_toggle_right_to_flag.toggle();
- 			g_toggle_mark_first.toggle();
-		} else {
-			g_toggle_hold_to_flag.toggle();	
-			g_toggle_mark_first.toggle();
-		}
+		
 	
 		this.screen_resized();
 
 	},
 
-	mark_x: 0,
-	mark_y: 0,
+	yes_x: 0,
+	yes_y: 0,
 
-	hold_x: 0,
-	hold_y: 0,
-
-	right_x: 0,
-	right_y: 0,
-
-	play_x: 0,
-	play_y: 0,
+	no_x: 0,
+	no_y: 0,
 
 	screen_resized: function () {
 
 		g_setup_input_text.update_pos(32,32);
 
-		this.mark_x = 32;
-		this.mark_y = 3*64;
+		this.yes_x = 32;
+		this.yes_y = 3*64;
 
-		this.hold_x =  32;
-		this.hold_y =  4*64;
+		this.no_x =  32;
+		this.no_y =  4*64;
 
-		this.right_x =  32;
-		this.right_y =  5*64;
 
-	
+		g_button_doyouwantsave_yes.update_pos(this.yes_x, this.yes_y);
+		g_text_doyouwantsave_yes.update_pos(this.yes_x + 64, this.yes_y);
 
-		this.play_x = screen_width - 64;
-		this.play_y = screen_height - 64;
-
-		g_toggle_mark_first.update_pos(this.mark_x, this.mark_y);
-		g_toggle_hold_to_flag.update_pos(this.hold_x, this.hold_y);
-		g_toggle_right_to_flag.update_pos(this.right_x, this.right_y);
-
-		g_text_right_to_flag.update_pos(this.right_x + 64, this.right_y);
-		g_text_hold_to_flag.update_pos(this.hold_x + 64, this.hold_y);
-		g_text_mark_first.update_pos(this.mark_x + 64, this.mark_y);
-
-		g_setup_input_play.update_pos(this.play_x, this.play_y);
+		g_button_doyouwantsave_no.update_pos(this.no_x, this.no_y);
+		g_text_doyouwantsave_no.update_pos(this.no_x + 64, this.no_y);
+		
 
 	},
 
 	cleanup: function() {
-		g_toggle_right_to_flag.hide();
-		g_toggle_hold_to_flag.hide();
-		g_toggle_mark_first.hide();
+		g_button_doyouwantsave_yes.hide();
+		g_text_doyouwantsave_yes.hide();
 
-		g_setup_input_text.update_pos(-999,-999);
+		g_button_doyouwantsave_no.hide();
+		g_text_doyouwantsave_no.hide();
 
-		g_text_right_to_flag.update_pos(-999,-999);
-		g_text_hold_to_flag.update_pos(-999,-999);
-		g_text_mark_first.update_pos(-999,-999);
-
-		g_setup_input_play.hide();
+		g_setup_input_text.hide();
 		
 
-		if (g_toggle_right_to_flag.toggled == true) {
-			g_hold_to_flag = false;
-			g_click_to_dig = true;
-		} else if (g_toggle_hold_to_flag.toggled == true) {
-			g_hold_to_flag = true;
-			g_click_to_dig = true;		
-		} else if (g_toggle_mark_first.toggled == true) {
-			g_click_to_dig = false;
-		}
 	},
 
 	handle_mouse_up: function(engine,x,y) {
 
 		
 	
-		if (mouse.x > this.hold_x - 19 &&
-		    mouse.x < this.hold_x + 19 &&
-		    mouse.y > this.hold_y - 19 &&
-		    mouse.y < this.hold_y + 19) {
-			g_toggle_hold_to_flag.toggle();
+		if (mouse.x > this.yes_x - 19 &&
+		    mouse.x < this.yes_x + 19 &&
+		    mouse.y > this.yes_y - 19 &&
+		    mouse.y < this.yes_y + 19) {
+			use_browser_cookies = true;
 
-			if (g_toggle_mark_first.toggled == 1) g_toggle_mark_first.toggle();
-			if (g_toggle_right_to_flag.toggled== 1) g_toggle_right_to_flag.toggle();
+			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
 			
-		} else if (mouse.x > this.mark_x - 19 &&
-		    	mouse.x < this.mark_x + 19 &&
-		    	mouse.y > this.mark_y - 19 &&
-		    	mouse.y < this.mark_y + 19) {
+		} else if (mouse.x > this.no_x - 19 &&
+		    	mouse.x < this.no_x + 19 &&
+		    	mouse.y > this.no_y - 19 &&
+		    	mouse.y < this.no_y + 19) {
 
-			g_toggle_mark_first.toggle();
+			use_browser_cookies = false;
 
-			if (g_toggle_right_to_flag.toggled== 1) g_toggle_right_to_flag.toggle();
-			if (g_toggle_hold_to_flag.toggled== 1) g_toggle_hold_to_flag.toggle();
+			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
 			
-		} else if (mouse.x > this.right_x - 19 &&
-		    	mouse.x < this.right_x + 19 &&
-		    	mouse.y > this.right_y - 19 &&
-		    	mouse.y < this.right_y + 19) {
-
-			g_toggle_right_to_flag.toggle();
-
-			if (g_toggle_mark_first.toggled== 1) g_toggle_mark_first.toggle();
-			if (g_toggle_hold_to_flag.toggled== 1) g_toggle_hold_to_flag.toggle();
-			
-		} else if (mouse.x > this.play_x - 19 &&
-		    	mouse.x < this.play_x + 19 &&
-		    	mouse.y > this.play_y - 19 &&
-		    	mouse.y < this.play_y + 19) {
-				//this.play_state.current_level = 7;
-				//this.play_state.first_tile_safe = true;
-				this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-			
-		}
+		} 
 
 	}
 });
@@ -7556,7 +7491,7 @@ ChallengeLevelsSelectHardness = GameStateClass.extend({
 
 			challenge_select_subheader = new TextClass(Types.Layer.GAME_MENU);
 			challenge_select_subheader.set_font(Types.Fonts.XSMALL);
-			challenge_select_subheader.set_text("NO FEEDFACK ON MISTAKES\nMORE COLOURED PICTURES");
+			challenge_select_subheader.set_text("NO FEEDBACK ON MISTAKES\nMORE COLOURED PICTURES");
 
 			challenge_select_easy_text = new TextClass(Types.Layer.GAME_MENU);
 			challenge_select_easy_text.set_font(Types.Fonts.SMALL);
@@ -9555,6 +9490,9 @@ WinStateClass = GameStateClass.extend({
 
 	// cookies and local storage
 	save_state: function() {
+
+		var dosave_string = "DOSAVE=1";
+		document.cookie= dosave_string + ";expires=Fri, 31 Dec 2020 23:59:59 GMT";
 		
 		var now = new Date();
   		var time = now.getTime();
@@ -10325,7 +10263,40 @@ BootStateClass = GameStateClass.extend({
 		
 		// // Retrieve document.getElementById("result").innerHTML = localStorage.getItem("lastname");
 
+
 		
+
+
+		try {
+			this.load_everything();
+		} catch (e) {
+
+		}
+
+		
+ 
+	},
+
+	load_everything: function () {
+
+		var dosave = document.cookie.indexOf('DOSAVE=');
+
+		if ( dosave  == -1) {
+			
+			use_browser_cookies = false
+		} else use_browser_cookies = true;
+
+
+		console.log('dosave  ' + dosave  );
+
+		if (use_browser_cookies == false) return;
+
+		
+
+		//var cookies = document.cookie.split("; ");
+
+		//if (cookies.length == 0) return;
+
 
 		var pixojilevels = localStorage.getItem("pixojilevels");
 		var pixojiclicktodig = localStorage.getItem("pixojiclicktodig");
@@ -10335,6 +10306,10 @@ BootStateClass = GameStateClass.extend({
 
 		// to read:
 		zblip_pixoji_g_all_level_status = JSON.parse(window.localStorage.getItem("zblip_pixoji_g_all_level_status"));
+
+		//console.dir('pixojilevels  ' + pixojilevels);
+		//console.dir('zblip_pixoji_g_all_level_status  ' + zblip_pixoji_g_all_level_status);
+
 		////alert(meta1['22']);
 		if (zblip_pixoji_g_all_level_status != null) {
 			//g_all_level_status = zblip_pixoji_g_all_level_status;
@@ -10571,7 +10546,6 @@ BootStateClass = GameStateClass.extend({
 			}
 
 		} // for c in cookies
- 
 	},
 
 	handle_events: function(engine,x,y,event_type){
