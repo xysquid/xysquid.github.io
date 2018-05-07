@@ -356,7 +356,7 @@ ExplosionClass = Class.extend({
 	},
 
 	start_anim: function () {
-		//////console.log('ecplode start anim');
+		////console.log('ecplode start anim');
 		this.curr_frame = 0;
 	},
 
@@ -369,7 +369,7 @@ ExplosionClass = Class.extend({
 
 	draw: function() {
 
-		//////console.log('ecplode draw');
+		////console.log('ecplode draw');
 		if (this.curr_frame < this.frames.length &&
 		    this.curr_frame >= 0) {
 			for (var i = 0; i < this.frames.length; i++) {
@@ -801,9 +801,6 @@ CommunityLevelBrowser = Class.extend({
 		this.h_text.set_font(Types.Fonts.MEDIUM);
 		this.h_text.set_text('COMMUNITY LEVELS');
 
-		this.down_button.rotate_ninety();
-		this.down_button.rotate_ninety();
-
 	},
 
 	get_hint_status: function (hintcode) {
@@ -903,7 +900,8 @@ CommunityLevelBrowser = Class.extend({
 		//this.toggle_rating.make_vis();
 		//this.toggle_random.make_vis();
 
-		
+		this.down_button.rotate_ninety();
+		this.down_button.rotate_ninety();
 
 	},
 
@@ -972,7 +970,7 @@ CommunityLevelBrowser = Class.extend({
 		if (this.levels_added - 1 >= this.level_name.length) return -1;
 		if (this.levels_added - 1 <= 0) return -1;
 
-		//////console.log('entity add_to_minimap x ' + x + ' y ' + y);
+		////console.log('entity add_to_minimap x ' + x + ' y ' + y);
 		
 		this.level_minimap[this.levels_added - 1].fill_map(data_, this.game_state.grid_w, this.game_state.grid_h);
 	},
@@ -986,7 +984,7 @@ CommunityLevelBrowser = Class.extend({
 		
 		if (this.levels_added - 1>= this.level_name.length) return -1;
 
-		//////console.log('entity add_to_minimap x ' + x + ' y ' + y);
+		////console.log('entity add_to_minimap x ' + x + ' y ' + y);
 		
 		this.level_minimap[this.levels_added - 1].add_tile(x,y,blocktype);
 	},
@@ -1147,7 +1145,7 @@ OverworldSpritesClassReuseable = Class.extend({
 			box_.setup_sprite('level_button_on.png',Types.Layer.HUD);	// default sprite, may need to change
 
 			var text_ = new TextClass(Types.Layer.HUD);			// dunno if BACKGROUND works yet
-			text_.set_font(Types.Fonts.SMALL);
+			text_.set_font(Types.Fonts.MEDIUM);
 			text_.set_text(i.toString());
 			text_.update_pos(-999,-999);
 
@@ -1242,7 +1240,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 	set_status: function(level, status_) {
 
-		//////alert('overworld level ' + level + ' status ' + status_);
+		////alert('overworld level ' + level + ' status ' + status_);
 
 		if (level >= this.status_sprite.length) return;
 
@@ -1268,7 +1266,7 @@ OverworldSpritesClassReuseable = Class.extend({
 		this.level_status[level] = 0;
 
 		if (this.status_sprite[level] == null){
-			////console.log('this.status_sprite[level] == null ' + level);
+			//console.log('this.status_sprite[level] == null ' + level);
 		}
 
 		this.status_sprite[level].hide();
@@ -1334,7 +1332,7 @@ OverworldSpritesClassReuseable = Class.extend({
 
 			
 			if (this.special_code[i] == 0) {
-				this.level_text[i].update_pos(x - 35, y - 14,96,999);
+				this.level_text[i].update_pos(x - 35, y - 20,96,999);
 
 				//this.level_text[i].center_x(x + 20);
 			} else {
@@ -1485,7 +1483,7 @@ InfoClass = Class.extend({
 
 		
 
-		if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type == 0 &&
+		if (this.game_state.get_block_type(x,y) == 0 &&
 		    this.game_state.blocks[this.game_state.tiles[x][y]].covered_up == false && 
 		    this.game_state.blocks[this.game_state.tiles[x][y]].preset_hint_type != 0) {
 
@@ -1622,8 +1620,6 @@ BlockClass = Class.extend({
 
 	covered_up: true,
 	flag_on :false,
-
-	hint_num: 0,
 
 	hint_sprite: null,
 	hint_num_text: null,
@@ -1948,11 +1944,9 @@ BlockClass = Class.extend({
 		this.deselect();
 	},
 
-	b_in_range: [],
-
 	include_range_of_joined_tile: function (otherx, othery) {
 
-		////console.log('include_range_of_joined_tile this.x' + this.x + 'this.y' + this.y);
+		//console.log('include_range_of_joined_tile this.x' + this.x + 'this.y' + this.y);
 
 		// check that other tile is in the same join group as me..
 		if (this.join_group == 0) return;
@@ -1986,7 +1980,6 @@ BlockClass = Class.extend({
 			if (already_got == 0) {
 				this.x_in_range.push(x);
 				this.y_in_range.push(y);
-				this.b_in_range.push(this.game_state.tiles[x][y]);
 			}
 		}
 		
@@ -1997,7 +1990,6 @@ BlockClass = Class.extend({
 
 		this.x_in_range.push(x);
 		this.y_in_range.push(y);
-		this.b_in_range.push(this.game_state.tiles[x][y]);
 	},
 
 	
@@ -2026,16 +2018,16 @@ BlockClass = Class.extend({
 
 				// look up
 				for (var yy = this.y; yy >= 0; yy--) {
-					var tile_ = this.get_block_type_of(this.x,yy);
-					////////console.log('eye raange ' + x + ' ' + yy);
+					var tile_ = this.game_state.get_block_type(this.x,yy);
+					//////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
 
 				// look down
 				for (var yy = this.y; yy < this.game_state.grid_h; yy++) {
-					var tile_ = this.get_block_type_of(this.x,yy);
-					////////console.log('eye raange ' + x + ' ' + yy);
+					var tile_ = this.game_state.get_block_type(this.x,yy);
+					//////console.log('eye raange ' + x + ' ' + yy);
 					if (tile_ == 1) return 0;
 					else if (yy == y) return 1;
 				}
@@ -2044,16 +2036,16 @@ BlockClass = Class.extend({
 				// look right
 				
 				for (var xx = this.x; xx < this.game_state.grid_w; xx++) {
-					var tile_ = this.get_block_type_of(xx, this.y);
-					////////console.log('eye raange ' + xx + ' ' + y);
+					var tile_ = this.game_state.get_block_type(xx, this.y);
+					//////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
 
 				// look left
 				for (var xx = this.x; xx >= 0; xx--) {
-					var tile_ = this.get_block_type_of(xx, this.y);
-					////////console.log('eye raange ' + xx + ' ' + y);
+					var tile_ = this.game_state.get_block_type(xx, this.y);
+					//////console.log('eye raange ' + xx + ' ' + y);
 					if (tile_ == 1) return 0;
 					else if (xx == x) return 1;
 				}
@@ -2086,7 +2078,6 @@ BlockClass = Class.extend({
 		this.share_groups.push(s_group);
 
 		if (this.join_group != 0 && this.i_know_join_leader_xy == true) {
-
 			this.game_state.blocks[this.game_state.tiles[this.my_join_leader_x][this.my_join_leader_y]].link_hint_to_sharegroup(s_group);
 			return;
 		}
@@ -2098,20 +2089,16 @@ BlockClass = Class.extend({
 	shared_heart: false,
 	shared_eyebracket: false,
 
-	hints_in_this_sharesquare: [],
-
 	calc_sharesquare: function() {
 
 		var all_the_mines = [];
 		var num_hints_in_group = 0;
 
-		this.hints_in_this_sharesquare = [];
-
 		this.shared_crown = false;
 		this.shared_heart = false;
 		this.shared_eyebracket = false;
 
-		//////console.log('calc sharesquare at : this.x ' + this.x + ' this.y ' + this.y);
+		////console.log('calc sharesquare at : this.x ' + this.x + ' this.y ' + this.y);
 
 		for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
 
@@ -2125,8 +2112,6 @@ BlockClass = Class.extend({
 
 			if (not_in_my_group == 1) continue;
 
-			this.hints_in_this_sharesquare.push(b);
-
 			if (this.game_state.blocks[b].preset_hint_type == 12) this.shared_crown = true;
 			else if (this.game_state.blocks[b].preset_hint_type == 5) this.shared_heart = true;
 			else if (this.game_state.blocks[b].preset_hint_type == 13) {
@@ -2136,11 +2121,11 @@ BlockClass = Class.extend({
 			}
 			num_hints_in_group++;
 
-			//////console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
-			////console.dir(this.game_state.blocks[b].x_in_range);
-			////console.dir(this.game_state.blocks[b].y_in_range);
+			////console.log('hint ' + num_hints_in_group + ' is at x: ' + this.game_state.blocks[b].x + ' y: ' + this.game_state.blocks[b].y + ' hintype: ' + this.game_state.blocks[b].preset_hint_type + ' mines_seen_xy.length ' + this.game_state.blocks[b].mines_seen_xy.length + ' this hint has ' +this.game_state.blocks[b].x_in_range.length + ' tiles in its range: ');
+			//console.dir(this.game_state.blocks[b].x_in_range);
+			//console.dir(this.game_state.blocks[b].y_in_range);
 
-			//////console.log('hint in MY group at x: ' +this.game_state.blocks[b].x + '  y: ' + this.game_state.blocks[b].y);
+			////console.log('hint in MY group at x: ' +this.game_state.blocks[b].x + '  y: ' + this.game_state.blocks[b].y);
 
 			for (var m = 0; m < this.game_state.blocks[b].mines_seen_xy.length; m++) {
 				all_the_mines.push(this.game_state.blocks[b].mines_seen_xy[m]);
@@ -2149,16 +2134,16 @@ BlockClass = Class.extend({
 			
 		}
 
-		//////console.log('this.share_groups.length ' + this.share_groups.length);
-		//////console.log('this.share_groups[0] ' + this.share_groups[0]);
-		//////console.log('num_hints_in_group ' + num_hints_in_group);
-		//////console.log('all_the_mines.length ' + all_the_mines.length);
-		////console.dir(all_the_mines);
+		////console.log('this.share_groups.length ' + this.share_groups.length);
+		////console.log('this.share_groups[0] ' + this.share_groups[0]);
+		////console.log('num_hints_in_group ' + num_hints_in_group);
+		////console.log('all_the_mines.length ' + all_the_mines.length);
+		//console.dir(all_the_mines);
 
-		//////console.log('this.share_connect_up ' + this.share_connect_up);
-		//////console.log('this.share_connect_left ' + this.share_connect_left);
-		//////console.log('this.share_connect_down ' + this.share_connect_down);
-		//////console.log('this.share_connect_right ' + this.share_connect_right);
+		////console.log('this.share_connect_up ' + this.share_connect_up);
+		////console.log('this.share_connect_left ' + this.share_connect_left);
+		////console.log('this.share_connect_down ' + this.share_connect_down);
+		////console.log('this.share_connect_right ' + this.share_connect_right);
 
 		if (num_hints_in_group <= 1) {
 			// error !!!
@@ -2175,7 +2160,7 @@ BlockClass = Class.extend({
 
 		// look for mines in all_the_mines that are counted 2x
 		for (var m = 0; m < all_the_mines.length; m++) {
-			var num_of_m = 1;	// 1? yes, every mine is counted at least once
+			var num_of_m = 1;
 			
 			
 			for (var n = m + 1; n < all_the_mines.length; n++) {
@@ -2183,10 +2168,10 @@ BlockClass = Class.extend({
 				    all_the_mines[m].y == all_the_mines[n].y) num_of_m++;
 			}
 
-			//////console.log('num_of_m ' + num_of_m);
+			////console.log('num_of_m ' + num_of_m);
 
 			// how many mines in this tiile? is it a double? usually just 1
-			var multi_ = this.get_pixel(all_the_mines[m].x, all_the_mines[m].y);
+			var multi_ = this.game_state.get_num_mines(all_the_mines[m].x, all_the_mines[m].y);
 
 			if (num_of_m == num_hints_in_group && 
 			    this.shared_eyebracket == true) {
@@ -2209,7 +2194,7 @@ BlockClass = Class.extend({
 				
 				// this is working, but i'm not 100% clear if its correct
 				if (counted_h_group == 0 && counted_v_group == 0) {
-					//////alert('counting horiz group ' + this.game_state.blocks[b].my_horiz_seq_id + ' and vert group ' + this.game_state.blocks[b].my_vert_seq_id);
+					////alert('counting horiz group ' + this.game_state.blocks[b].my_horiz_seq_id + ' and vert group ' + this.game_state.blocks[b].my_vert_seq_id);
 					horiz_eyebracket_groups_counted.push(this.game_state.blocks[b].my_horiz_seq_id);
 					vert_eyebracket_groups_counted.push(this.game_state.blocks[b].my_vert_seq_id);
 					multi_ = 1;
@@ -2234,7 +2219,7 @@ BlockClass = Class.extend({
 
 		this.sharesquare_num = shared;
 
-		////console.log('this.sharesquare_num ' + this.sharesquare_num);
+		//console.log('this.sharesquare_num ' + this.sharesquare_num);
 	},
 
 	horiz_eyebracket_groups_seen: [],
@@ -2296,7 +2281,7 @@ BlockClass = Class.extend({
 
 		if (this.sharesquare) {
 
-			////console.log('show_sharesquare on x ' +this.x+ ' y ' + this.y);
+			//console.log('show_sharesquare on x ' +this.x+ ' y ' + this.y);
 
 			if (this.x > 0 && !this.game_state.blocks[this.game_state.tiles[this.x - 1][this.y]].is_in_share_group(this.share_groups[0])) left = false;
 
@@ -2423,12 +2408,12 @@ BlockClass = Class.extend({
 
 			if (this.can_i_actually_see(x,y) == false) continue;	// hearts only see lonely, kings only see biggest
 
-			if (this.get_block_type_of(this.x_in_range[i], this.y_in_range[i]) == 2) {
+			if (this.game_state.get_block_type(this.x_in_range[i], this.y_in_range[i]) == 2) {
 				this.mines_seen_xy.push({x: x, y: y});
 			}
 		}
  
-		////console.log('this.mines_seen_xy ' + this.mines_seen_xy.length + ' from hint at x ' +this.x + ' y ' + this.y + ' which has in range ' + this.x_in_range.length);
+		//console.log('this.mines_seen_xy ' + this.mines_seen_xy.length + ' from hint at x ' +this.x + ' y ' + this.y + ' which has in range ' + this.x_in_range.length);
 	},
 
 	show_math_stuff : function () {
@@ -2863,7 +2848,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 12) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_crown_num_text.change_text(hint_.toString());
 			this.hint_crown_num_text.update_pos(text_x, 
@@ -2877,7 +2862,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 13) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_eyebracket_num_text.change_text(hint_.toString());
 			this.hint_eyebracket_num_text.update_pos(text_x, 
@@ -2891,7 +2876,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 47) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_ghost_num_text.change_text(hint_.toString());
 			this.hint_ghost_num_text.update_pos(text_x, 
@@ -2905,7 +2890,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 48) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_gem_num_text.change_text(hint_.toString());
 			this.hint_gem_num_text.update_pos(text_x, 
@@ -2919,7 +2904,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 49) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2933,7 +2918,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 50) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2947,7 +2932,7 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 51) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 			
 			this.hint_zap_num_text.change_text(hint_.toString());
 			this.hint_zap_num_text.update_pos(text_x, 
@@ -2959,23 +2944,9 @@ BlockClass = Class.extend({
 			this.hint_eyerepeat_sprite.update_pos(icon_x, 
 							  icon_y);
 			
-		} else if (hinttype == 53) {
-
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
-			
-			this.hint_zap_num_text.change_text(hint_.toString());
-			this.hint_zap_num_text.update_pos(text_x, 
-							  text_y);
-			this.hint_zap_num_text.center_x(text_x);
-
-			this.hint_sprite.set_texture("bang2.png");
-			this.hint_eyerepeat_sprite.make_vis();
-			this.hint_eyerepeat_sprite.update_pos(icon_x, 
-							  icon_y);
-			
 		} else if (hinttype == 52) {
 
-			//////alert('this.hint_compass_num_text ' + hint_.toString());
+			////alert('this.hint_compass_num_text ' + hint_.toString());
 
 			
 			
@@ -3051,16 +3022,13 @@ BlockClass = Class.extend({
 		this.my_gen_parent = -1;
 		this.my_gen_parents = [];
 		this.wiped_gen_stage = 0;
-		this.gen_solved_by = -1;
 
 		this.final_lock = false;
 		this.final_solve = false;
-		this.solve_me = false;
 	},
 
 	final_lock: false,
 	final_solve: false,
-	solve_me: false,
 
 	hint_safe_gen: false,
 	safe_gen: false,
@@ -3069,14 +3037,12 @@ BlockClass = Class.extend({
 	mark_safe_gen : function () {
 		this.hint_safe_gen = true;
 		this.safe_gen = true;
-		for (var i = 0; i < this.x_in_range.length; i++) { //////alert('wjj');
+		for (var i = 0; i < this.x_in_range.length; i++) { ////alert('wjj');
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
-			if (this.game_state.blocks[b].gen_solved_by != this.index) continue;
 			this.game_state.blocks[b].safe_gen = true;
 			//if (this.game_state.blocks[b].gen_stage < this.gen_stage) this.game_state.blocks[b].mark_safe_gen();
 		}
-		//console.log('block b: ' + this.index + ' gen_stage ' + this.gen_stage + 'my parents: ');
-		//console.dir(this.my_gen_parents);
+		console.log('this.my_gen_parent ' + this.my_gen_parent);
 		if (this.my_gen_parents.length > 0 && this.parent_marked_safe_gen == false) {
 			this.parent_marked_safe_gen = true;
 			for (var p = 0; p < this.my_gen_parents.length; p++) {
@@ -3084,20 +3050,7 @@ BlockClass = Class.extend({
 			}
 		}
 	},
-
-	pixel_mode: 1,
-
-	get_pixel : function (x, y) {
-		if (this.pixel_mode == 1) {
-			// calc actual mines
-			return this.game_state.get_num_mines(x,y);
-		} else {
-			// calc players pixels - check for satisfaction
-			return this.game_state.get_num_flags(x,y);
-		}
-	},
 	
-	gen_solved_by: -1,
 	gen_stage: 0,
 	wiped_gen_stage: 0,
 	locked_to_child_gen_stage: false,
@@ -3105,11 +3058,11 @@ BlockClass = Class.extend({
 	my_gen_parent: -1,
 	my_gen_parents: [],
 
-	project_range_generator : function (min_gen_stage) {
+	project_range_generator : function () {
 		this.calc_hint(this.preset_hint_type);
 
-		//////alert(this.preset_hint_type);
-		//////alert(this.x_in_range.length);
+		////alert(this.preset_hint_type);
+		////alert(this.x_in_range.length);
 
 		var parent_gen_stage = 0;
 		var covers_in_range = 0;
@@ -3118,35 +3071,21 @@ BlockClass = Class.extend({
 		var final_tiles = 0;
 		var non_final_tiles = 0;
 
-		for (var i = 0; i < this.x_in_range.length; i++) { //////alert('wjj');
+		for (var i = 0; i < this.x_in_range.length; i++) { ////alert('wjj');
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 
 			if (this.game_state.blocks[b].covered_up == true) { 
-				var solved_by = this.game_state.blocks[b].gen_solved_by;
-				//console.log('solved_by ' + solved_by);
-				this.my_gen_parents.push(solved_by);
-
 				parent_gen_stage = Math.max(parent_gen_stage, this.game_state.blocks[b].gen_stage);
-				if (this.game_state.blocks[b].gen_stage == 0) //console.log('FOUND LOOPED TILE b: ' + b);
+				if (this.game_state.blocks[b].gen_stage == 0) console.log('FOUND LOOPED TILE b: ' + b);
 				if (this.game_state.blocks[b].gen_stage == 0) found_looped_tile = true;
-				//console.log('this.game_state.blocks[b].gen_stage ' + this.game_state.blocks[b].gen_stage + ' b= ' + b);
+				console.log('this.game_state.blocks[b].gen_stage ' + this.game_state.blocks[b].gen_stage + ' b= ' + b);
 				covers_in_range++;
-
-				
-				
 				
 			}
 
-			if (parent_gen_stage < min_gen_stage) {
-				return false;
-			}
-
-			// dont short circuit!
 			if (this.game_state.blocks[b].final_solve == true) final_tiles++;
 			if (this.game_state.blocks[b].final_solve == false && 
 			    this.game_state.blocks[b].covered_up == true) non_final_tiles++;
-
-			//if (final_tiles > 0) 
 
 			// deprecating:
 			//if (this.game_state.blocks[b].seed_gen_stage < this.seed_gen_stage) continue;
@@ -3154,44 +3093,41 @@ BlockClass = Class.extend({
 			
 		}
 
-		
+		if (this.index == 13) console.log('this.index == 13 is a hint now');
 		this.wiped_gen_stage = this.gen_stage;	// store old gen stage, before this became a hint
 		this.gen_stage = parent_gen_stage + 1;
 
 		//if (final_tiles > 0)
 
 
-		if (this.gen_stage == 1 && covers_in_range > 0) //console.log('100% LOOPED TILE');
+		if (this.gen_stage == 1 && covers_in_range > 0) console.log('100% LOOPED TILE');
 		if (found_looped_tile == true && covers_in_range > 0) {
 			
-			//console.log('LOOPED TILE IN RANGE, this.gen_stage == ' + this.gen_stage);
+			console.log('LOOPED TILE IN RANGE, this.gen_stage == ' + this.gen_stage);
 		}
 
 		for (var i = 0; i < this.x_in_range.length; i++) { 
 			var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
 
-			
+			if (b == 13) console.log('projecting into b == 13  this.game_state.blocks[b].locked_to_child_gen_stage ' + this.game_state.blocks[b].locked_to_child_gen_stage + ' this.game_state.blocks[b].gen_stage ' + this.game_state.blocks[b].gen_stage + ' this.gen_stage ' + this.gen_stage);
 			
 			if (this.game_state.blocks[b].locked_to_child_gen_stage == true &&
-			    this.game_state.blocks[b].gen_stage < this.gen_stage) {
-				//if (this.game_state.blocks[b].covered_up == true) this.my_gen_parents.push(b);
-				continue;
-			}
-			if (b != this.index) {
-				//this.game_state.blocks[b].my_gen_parents.push(this.index);
-			}
+			    this.game_state.blocks[b].gen_stage < this.gen_stage) continue;
+
+			if (b == 13) console.log('sucess');
 
 			this.game_state.blocks[b].locked_to_child_gen_stage = true;
 			if (b != this.index) this.game_state.blocks[b].gen_stage = this.gen_stage;
-			this.game_state.blocks[b].gen_solved_by = this.index;
+			if (b != this.index) {
+				//if (this.my_gen_parent != -1) //alert('multiple parents');
+				this.game_state.blocks[b].my_gen_parents.push(this.index);
+			}
 			
 		}
-
-		return true;
 	},
 
 	pick_tile_in_range : function (rand_seed) {
-		//////alert('pick_tile_in_range this.preset_hint_type ' + this.preset_hint_type + ' this.x_in_range.length ' + this.x_in_range.length);
+		////alert('pick_tile_in_range this.preset_hint_type ' + this.preset_hint_type + ' this.x_in_range.length ' + this.x_in_range.length);
 		var i = rand_seed % this.x_in_range.length;
 
 		var b = this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]];
@@ -3205,15 +3141,12 @@ BlockClass = Class.extend({
 		var nummines = 0;
 		for (var i = 0; i < this.x_in_range.length; i++) {
 			
-			var multi = this.get_pixel(this.x_in_range[i], this.y_in_range[i]);
+			var multi = this.game_state.get_num_mines(this.x_in_range[i], this.y_in_range[i]);
 			nummines += multi;
 		}
 
 		return nummines;
 	},
-
-	generator_knowns: [],
-	
 
 	must_be_safe: false,
 	must_be_uncovered: false,
@@ -3360,28 +3293,6 @@ BlockClass = Class.extend({
 	count_flags: 0,	// not using ...
 
 	
-	calc_hint_tester : function(hinttype) {
-		// counts flags
-		if (this.sharesquare == true) {
-			// find all my hints
-			// save their hintnums
-			// set them to count flags
-			// calc their hints
-			// calc my sharesquare hint
-
-			// set my child hints back to count mines
-			// restore their hintnums back to normal
-			// for ZAP and EYEREPEAT - recalc hints because their range will change
-		} else if (this.join_group != 0) {
-			
-			// combine all ranges into mine
-			this.get_range_for_joined();
-			this.calc_hint_from_range(hinttype);
-			console.log("calc_hint_tester > join > " + this.hint_num + " flags. Range: " + this.b_in_range.length );
-		} else {
-			this.calc_hint(hinttype);
-		}
-	},
 
 	calc_hint: function(hinttype, remember) {
 
@@ -3397,9 +3308,6 @@ BlockClass = Class.extend({
 
 		this.x_in_range = [];
 		this.y_in_range = [];
-		this.b_in_range = [];
-
-		//console.log('hinttype ' + hinttype);
 
 		if (hinttype == 2) {
 			num = this.calc_hint_eye_num();
@@ -3422,8 +3330,6 @@ BlockClass = Class.extend({
 		} else if (hinttype == 5) {
 			var only_count_lonely_mines = true;
 			num = this.calc_hint_eye_num(only_count_lonely_mines);
-
-			// if there is a 2x cover in range, this needs to change to an eye
 			
 			
 		} else if (hinttype == 6) {
@@ -3485,13 +3391,8 @@ BlockClass = Class.extend({
 			
 		} else if (hinttype == 49) {
 			// zap
-			//num = this.game_state.flowfill_mines(this.game_state.tiles[this.x][this.y]);
+			num = this.game_state.flowfill_mines(this.game_state.tiles[this.x][this.y]);
 			// this function also fills out my range
-
-			// from Pixoji
-			// to calc the range - flowfill out num + 1 steps
-			num = this.calc_zap_num();
-			
 		} else if (hinttype == 52) {
 			// walker
 			num = this.calc_hint_eye_num(); // get range
@@ -3508,13 +3409,7 @@ BlockClass = Class.extend({
 			// this function also fills out my range
 		} else if (hinttype == 51) {
 			// eyerepeat
-			//console.log('calc eyerepeart');
 			num = this.calc_eyerepeat(2);
-		} else if (hinttype == 53) {
-			// mine-mine touches in 8touch
-			//num = this.calc_mine_contacts_eight_touch_num();
-			//num = this.calc_solip_heart();
-			num = this.calc_eighttouch_squared();
 		} else if (hinttype == 80) {
 			num = this.count_total_mines();
 		} else if (hinttype == 81) {
@@ -3523,215 +3418,9 @@ BlockClass = Class.extend({
 			num = 0;
 		}
 
-
-		this.hint_num = num;
 		if (remember == true) this.wanted_num = num;
 
 		return num;
-	},
-
-	is_pixel_same_as: function (value, x, y) {
-		
-		// calc actual mines
-		var mines_ = this.game_state.get_num_mines(x,y);
-		if (mines_ > 0) return true;
-		return false;
-		
-	},
-
-	
-	calc_eighttouch_squared : function () {
-		var eightnum_ = this.calc_hint_eight_touch_num();	// calc range
-
-		var init_range = this.b_in_range.length;
-
-		for (var b = 0; b < init_range; b++) {
-			if (this.get_pixel(this.x_in_range[b], this.y_in_range[b]) == 0) continue;
-
-			// if the mine-tile has a hint then this is a bad idea:
-			this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].x_in_range = [];
-			this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].y_in_range = [];
-			this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].b_in_range = [];
-
-			this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].calc_hint_eight_touch_num();
-
-			var other_len = this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].x_in_range.length;
-
-			for (var bb = 0; bb < other_len; bb++) {
-				var already = 0;
-				for (var bbb = 0; bbb < this.b_in_range.length; bbb++) {
-					if (this.b_in_range[bbb] == this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].b_in_range[bb]) already = 1;
-				}
-				if (already == 1) continue;
-				this.add_to_range(this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].x_in_range[bb],
-						this.game_state.blocks[this.game_state.tiles[this.x_in_range[b]][this.y_in_range[b]]].y_in_range[bb]);
-				
-			}
-						
-		}
-
-		var mines_ = 0;
-
-		for(var r = 0; r < this.b_in_range.length; r++) {
-			mines_ += this.get_pixel(this.x_in_range[r], this.y_in_range[r]);
-		}
-
-		return mines_ - eightnum_;
-	},
-
-	calc_solip_heart : function () {
-		hint_number = 0;
-		var x = this.x;
-		var y = this.y;
-		var on_pixel = 2;
-			// need to count doubles too!! currently only single
-			var five = this.is_pixel_same_as(on_pixel, this.x, this.y);
-
-			var four = this.is_pixel_same_as(on_pixel, this.x - 1, this.y);
-			var six = this.is_pixel_same_as(on_pixel, this.x + 1, this.y);
-			var eight = this.is_pixel_same_as(on_pixel, this.x, this.y + 1);
-			var two = this.is_pixel_same_as(on_pixel, this.x, this.y - 1);
-
-			var one = this.is_pixel_same_as(on_pixel, this.x - 1, this.y - 1);
-			var nine = this.is_pixel_same_as(on_pixel, this.x + 1, this.y + 1);
-			var seven = this.is_pixel_same_as(on_pixel, this.x - 1, this.y + 1);
-			var three = this.is_pixel_same_as(on_pixel, this.x + 1, this.y - 1);
-
-			if (one == true) {
-				if (two == false && four == false) hint_number++;
-			}
-			if (two == true) {
-				if (one == false && three == false) hint_number++;
-			}
-			if (three == true) {
-				if (two == false && six == false) hint_number++;
-			}
-			if (four == true) {
-				if (one == false && seven == false) hint_number++;
-			}
-			if (five == true) {
-			}
-			if (six == true) {
-				if (three == false && nine == false) hint_number++;
-			}
-			if (seven == true) {
-				if (four == false && eight == false) hint_number++;
-			}
-			if (eight == true) {
-				if (seven == false && nine == false) hint_number++;
-			}
-			if (nine == true) {
-				if (eight == false && six == false) hint_number++;
-			}
-
-			return hint_number;
-		
-	},
-
-	calc_mine_contacts_eight_touch_num : function () {
-		hint_number = 0;
-		var x = this.x;
-		var y = this.y;
-		var on_pixel = 2;
-			// need to count doubles too!! currently only single
-			var five = this.is_pixel_same_as(on_pixel, this.x, this.y);
-
-			var four = this.is_pixel_same_as(on_pixel, this.x - 1, this.y);
-			var six = this.is_pixel_same_as(on_pixel, this.x + 1, this.y);
-			var eight = this.is_pixel_same_as(on_pixel, this.x, this.y + 1);
-			var two = this.is_pixel_same_as(on_pixel, this.x, this.y - 1);
-
-			var one = this.is_pixel_same_as(on_pixel, this.x - 1, this.y - 1);
-			var nine = this.is_pixel_same_as(on_pixel, this.x + 1, this.y + 1);
-			var seven = this.is_pixel_same_as(on_pixel, this.x - 1, this.y + 1);
-			var three = this.is_pixel_same_as(on_pixel, this.x + 1, this.y - 1);
-
-			if (one == true) {
-				if (two == true) hint_number++;
-				if (four == true) hint_number++;
-			}
-			if (two == true) {
-				if (three == true) hint_number++;
-				if (five == true) hint_number++;
-			}
-			if (three == true && six == true) hint_number++;
-			if (four == true) {
-				if (five == true) hint_number++;
-				if (seven == true) hint_number++;
-			}
-			if (five == true) {
-				if (six == true) hint_number++;
-				if (eight == true) hint_number++;
-			}
-			if (six == true && nine == true) hint_number++;
-			if (seven == true && eight == true) hint_number++;
-			if (eight == true && nine == true) hint_number++;
-
-			return hint_number;
-		
-	},
-
-	calc_zap_num: function() {
-		var fringe_x = [];
-		var fringe_y = [];
-
-		this.game_state.reset_flowfill();
-
-		fringe_x.push(this.x);
-		fringe_y.push(this.y);
-		this.game_state.mark_as_seen_by_flowfill(this.x, this.y);
-		
-		var zap_num = 0;
-			
-
-		var loops = this.game_state.level_h*this.game_state.level_w + 1;
-		while (loops > 0 && fringe_x.length > 0) {
-			loops--;
-			var x = fringe_x.pop();
-			var y = fringe_y.pop();
-
-			//var multi = this.game_state.blocks[this.game_state.tiles[x][y]].mine_multi;
-
-			zap_num += this.get_pixel(x, y);
-
-			//zap_num += multi;
-
-			//if (x == 0 || x == this.game_state.level_w - 1) return true;
-			//if (y == 0 || y == this.game_state.level_h - 1) return true;
-
-			if (x < this.game_state.level_w - 1 &&
-			    this.get_pixel(x + 1, y) > 0 &&
-			    this.game_state.is_seen_by_flowfill(x + 1, y) == 0) {
-				fringe_x.push(x + 1);
-				fringe_y.push(y);
-				this.game_state.mark_as_seen_by_flowfill(x + 1, y);
-			}
-
-			if (x > 0 && 
-			     this.get_pixel(x - 1, y) > 0 == true &&
-			    this.game_state.is_seen_by_flowfill(x - 1, y) == 0) {
-				fringe_x.push(x - 1);
-				fringe_y.push(y);
-				this.game_state.mark_as_seen_by_flowfill(x - 1, y);
-			}
-
-			if (y < this.game_state.level_h - 1 &&
-			     this.get_pixel(x, y + 1) > 0 &&
-			    this.game_state.is_seen_by_flowfill(x, y + 1) == 0) {
-				fringe_x.push(x);
-				fringe_y.push(y + 1);
-				this.game_state.mark_as_seen_by_flowfill(x, y + 1);
-			}
-
-			if (y > 0 &&
-			     this.get_pixel(x, y - 1) > 0 &&
-			    this.game_state.is_seen_by_flowfill(x, y - 1) == 0) {
-				fringe_x.push(x);
-				fringe_y.push(y - 1);
-				this.game_state.mark_as_seen_by_flowfill(x, y - 1);
-			}
-		}
-		return zap_num;
 	},
 
 
@@ -3836,7 +3525,7 @@ BlockClass = Class.extend({
 
 		var num = this.calc_hint_eye_num();	// fills out range
 
-		//////alert('eye at ' + this.x + ' ' + this.y + ' this.x_in_range.length ' + this.x_in_range.length);
+		////alert('eye at ' + this.x + ' ' + this.y + ' this.x_in_range.length ' + this.x_in_range.length);
 
 		var fringe_ = [];
 
@@ -3846,11 +3535,10 @@ BlockClass = Class.extend({
 			fringe_.push(b);
 		}
 
-		//////alert('eye at ' + this.x + ' ' + this.y + ' initial fringe ' + fringe_);
+		////alert('eye at ' + this.x + ' ' + this.y + ' initial fringe ' + fringe_);
 
 		this.x_in_range = [];	// clear
 		this.y_in_range = [];	// add a tile back ONLY if its flowfill_seen = false
-		this.b_in_range = [];
 
 		var loops = 0;
 
@@ -3863,8 +3551,8 @@ BlockClass = Class.extend({
 			var x = this.game_state.blocks[b].x;
 			var y = this.game_state.blocks[b].y;
 
-			//////alert('pushing ' + x + ' ' + y);
-			//////alert('b ' + b);
+			////alert('pushing ' + x + ' ' + y);
+			////alert('b ' + b);
 
 			if (this.game_state.blocks[b].flowfill_seen == true) continue; 
 			this.game_state.blocks[b].flowfill_seen = true;
@@ -3873,36 +3561,21 @@ BlockClass = Class.extend({
 
 			this.x_in_range.push(x);
 			this.y_in_range.push(y);
-			this.b_in_range.push(this.game_state.tiles[x][y]);
 
-			
-
-			if (this.get_pixel(x,y) > 0 &&
+			if (this.game_state.blocks[b].block_type == 2 &&
 			    this.game_state.blocks[b].eyerepeat_steps < max_steps) {
 
 				var steps_ = this.game_state.blocks[b].eyerepeat_steps;
 				//this.game_state.blocks[b].eyerepeat_steps = steps_ + 1;
 
-				this.game_state.range_calc_tile.x = x;
-				this.game_state.range_calc_tile.y = y;
+				this.game_state.blocks[b].x_in_range = [];	// clear the mine's range
+				this.game_state.blocks[b].y_in_range = [];	// 
+				var num_mine_sees = this.game_state.blocks[b].calc_hint_eye_num(); // calc range
 
-				this.game_state.range_calc_tile.x_in_range = [];	// clear the mine's range
-				this.game_state.range_calc_tile.y_in_range = [];	// 
-				this.game_state.range_calc_tile.b_in_range = [];
-				var num_mine_sees = this.game_state.range_calc_tile.calc_hint_eye_num(); // calc range
-
-				
-
-				if (x == this.x) {
+				for (var i = 0; i < this.game_state.blocks[b].x_in_range.length; i++) {
 					
-				} else if (y == this.y) {
-
-				}
-
-				for (var i = 0; i < this.game_state.range_calc_tile.x_in_range.length; i++) {
-					
-					var xx = this.game_state.range_calc_tile.x_in_range[i];
-					var yy = this.game_state.range_calc_tile.y_in_range[i];
+					var xx = this.game_state.blocks[b].x_in_range[i];
+					var yy = this.game_state.blocks[b].y_in_range[i];
 					var bb = this.game_state.tiles[xx][yy];
 
 					if (this.game_state.blocks[bb].flowfill_seen == true) continue;
@@ -3911,8 +3584,6 @@ BlockClass = Class.extend({
 					
 
 					fringe_.push(bb);
-
-					//this.add_to_range(xx,yy);
 				} 
 				
 			} // if mine
@@ -3931,8 +3602,7 @@ BlockClass = Class.extend({
 	count_total_mines: function () {
 		var total_mines = 0;
 		for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
-			
-			if (this.game_state.blocks[b].block_type == 2) total_mines+= this.get_pixel(this.game_state.blocks[b].x,this.game_state.blocks[b].y);
+			if (this.game_state.blocks[b].block_type == 2) total_mines+= this.game_state.blocks[b].get_num_mines();
 		}
 		return total_mines;
 		
@@ -4032,7 +3702,7 @@ BlockClass = Class.extend({
 			this.identify_mines_in_range();	// tally up the individual mines
 
 		} else if (this.sharesquare == true) {
-			////console.log('uncover_shared...');
+			//console.log('uncover_shared...');
 			//this.calc_sharesquare();
 			
 		}
@@ -4078,7 +3748,7 @@ BlockClass = Class.extend({
 			
 			this.game_state.calc_sequence_lengths();	// will only execute one per level after a reset
 
-			//////alert('crown at x: ' + x + ', y: ' + y + ',this.stored_hint_num: ' + this.stored_hint_num);
+			////alert('crown at x: ' + x + ', y: ' + y + ',this.stored_hint_num: ' + this.stored_hint_num);
 
 			if (this.x != x && this.y == y &&
 			    this.game_state.blocks[this.game_state.tiles[x][y]].my_horiz_seq_length == this.stored_hint_num) return true;
@@ -4182,24 +3852,7 @@ BlockClass = Class.extend({
 
 			var hint_ = 0;
 			
-			// hearts cant see x2 mines
-			if (hint_type == 5) {
-				
-				var doubles = 0;
-				for (var r = 0; r < this.game_state.blocks[leader_b].b_in_range.length; r++) {
-					var b = this.game_state.blocks[leader_b].b_in_range[r];
-					
-					if (this.game_state.blocks[b].mine_multi > 1) doubles++;
-				}
-				
-				if (doubles != 0) {
-					hint_type = 2;
-					this.game_state.blocks[leader_b].preset_hint(2);
-					
-					this.game_state.blocks[leader_b].uncover();
-				}
-		
-			}
+			
 			
 			// for certain hint types we need a different approach - get the max of the individual tiles
 			if (hint_type == 12) {
@@ -4219,8 +3872,6 @@ BlockClass = Class.extend({
 
 				
 			}
-			
-			
 
 			this.game_state.blocks[leader_b].show_hint(hint_type, hint_);
 			this.game_state.blocks[leader_b].shared_wanted_num = hint_; // for calculating happines
@@ -4243,7 +3894,7 @@ BlockClass = Class.extend({
 			// its possible for a hint that belongs to a share clue to be uncovered while the share clue is covered
 			// but not vice versa
 
-			//////alert('uncovered a share group tile ' + this.share_groups[0]);
+			////alert('uncovered a share group tile ' + this.share_groups[0]);
 
 			var share_group = this.share_groups[0];
 
@@ -4284,15 +3935,34 @@ BlockClass = Class.extend({
 			 
 		}
 
-		
+		if (this.math_group != -1) {
+			//var hint_ = this.calc_hint(this.preset_hint_type);
+
+			//this.stored_hint_num = hint_;
+
+			this.uncover_math();
+			
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+
+				if (this.game_state.blocks[b].covered_up == false) continue; // excludes this entity, so gotta call uncover_math as above 
+
+				
+
+				if (this.game_state.blocks[b].math_group != this.math_group) continue;
+
+				this.game_state.blocks[b].uncover_math();	
+				
+			}
+			
+			return;
+
+		} // math_group
 
 		if (this.block_type == 2 || show_hint == false) {
 			return;		// dont show the hint
 		}
 
 		var hint_ = this.calc_hint(this.preset_hint_type);
-
-		this.hint_num = hint_; 
 		
 		this.show_hint(this.preset_hint_type, hint_);
 
@@ -4312,7 +3982,7 @@ BlockClass = Class.extend({
 	get_range_for_joined : function () {
 		if (this.join_leader == false) return;
 
-		////console.log('get_range_for_joined ' + this.x + ' ' + this.y);
+		//console.log('get_range_for_joined ' + this.x + ' ' + this.y);
 
 		this.calc_hint(this.preset_hint_type);  // wipes and recalcs range
 
@@ -4336,44 +4006,6 @@ BlockClass = Class.extend({
 			} // blocks
 	},
 
-	is_pixel_social: function (x,y) {
-		if (this.pixel_mode == 1) {
-			// calc actual mines
-			return this.game_state.is_pixel_social(x,y);
-		} else {
-			// calc players pixels - check for satisfaction
-			var lonely_ = this.game_state.is_player_pixel_social(x,y);
-			////console.log('is_player_pixel_lonely ' + lonely_);
-			return lonely_
-		}
-	},
-
-	get_block_type_of: function (x, y) {
-
-		// wall?
-		if (this.game_state.get_block_type(x,y) == 1) return 1;
-
-		if (this.pixel_mode == 1) {
-			return this.game_state.get_block_type(x,y);
-		} else {
-			multi_ = this.game_state.get_num_flags(x,y);
-			if (multi_ > 0) return 2;	// 'mine' (flag)
-			return 0;
-		}
-	},
-
-	is_pixel_lonely: function (x,y) {
-		if (this.pixel_mode == 1) {
-			// calc actual mines
-			return this.game_state.is_mine_lonely(x,y);
-		} else {
-			// calc players pixels - check for satisfaction
-			var lonely_ = this.game_state.is_player_flag_lonely(x,y);
-			////console.log('is_player_pixel_lonely ' + lonely_);
-			return lonely_
-		}
-	},
-
 	calc_hint_from_range: function (hint_type) {
 		var num = 0;
 
@@ -4382,15 +4014,14 @@ BlockClass = Class.extend({
 
 			if (hint_type == 5) {
 				// hearts - only count lonely mines
-				if (this.get_pixel(this.x_in_range[i], this.y_in_range[i]) > 0 &&
-				    this.is_pixel_lonely(this.x_in_range[i], this.y_in_range[i]) == true) num++;
+				if (this.game_state.get_block_type(this.x_in_range[i], this.y_in_range[i]) == 2 &&
+				    this.game_state.blocks[this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]]].is_lonely() == true) num++;
 
 				
 			} else {
 				// all other hints
-				if (this.get_pixel(this.x_in_range[i], this.y_in_range[i]) > 0) {
-					num += this.get_pixel(this.x_in_range[i], this.y_in_range[i]);
-					//num += this.game_state.blocks[this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]]].get_num_mines();
+				if (this.game_state.get_block_type(this.x_in_range[i], this.y_in_range[i]) == 2) {
+					num += this.game_state.blocks[this.game_state.tiles[this.x_in_range[i]][this.y_in_range[i]]].get_num_mines();
 				}
 			}
 				
@@ -4400,14 +4031,89 @@ BlockClass = Class.extend({
 
 		}
 
-		this.hint_num = num;
-
-		//////alert('calc_hint_from_range this.present_hint_type' + this.preset_hint_type + ' num ' + num + ' this.x ' + this.x + ' this.y ' + this.y );
+		////alert('calc_hint_from_range this.present_hint_type' + this.preset_hint_type + ' num ' + num + ' this.x ' + this.x + ' this.y ' + this.y );
 		return num;
 
 	},
 
-	
+	olduncover: function (show_hint) {
+
+		this.take_flag_off();
+
+		if (this.block_type == 1) return;	// wall
+
+		this.deselect();
+
+		
+
+		this.covered_up = false;
+		this.flag_on = false;
+		this.set_type(this.block_type);
+
+		var join_add = 0;
+
+		if (this.join_group != 0) {
+
+			// 
+		
+			
+
+			for (var b = 0; b < this.game_state.grid_w*this.game_state.grid_h; b++) {
+				if (this.game_state.blocks[b].join_group == this.join_group) {
+					if (this.game_state.blocks[b].covered_up == true) this.game_state.blocks[b].uncover();
+
+					if (this.preset_hint_type != 0) join_add  = this.game_state.blocks[b].calc_hint(this.preset_hint_type);
+
+				}
+			}
+
+			if (this.preset_hint_type == 2) {
+				// for the case of EYE hint, we need to avoid counting the same mine 2x
+				// therefore, find out how many mines are in our 'axis', then subtract from join_add
+				// calc_hint_eye_num: function (only_count_lonely_mines, only_horiz, only_vert)
+				var only_horiz = false;
+				var only_vert = false;
+				if (this.join_h == true) {
+					var only_horiz = true;
+				} else if (this.join_v == true) {
+					var only_vert = true;
+				}
+
+				join_add -= this.calc_hint_eye_num(false, only_horiz, only_vert);
+
+			}
+		}
+
+		if (this.block_type == 2 || show_hint == false) {
+			return;		// dont show the hint
+		}
+
+		var hint_ = this.calc_hint(this.preset_hint_type);
+		hint_ += join_add;
+		
+		this.show_hint(this.preset_hint_type, hint_);
+
+		// graphically - need to rearrage things for joint tiles
+		if (this.join_group != 0) {
+
+			//this.hint_eye_sprite.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 
+			//				        this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+
+			//this.hint_touch_sprite.update_pos(this.x*this.game_state.tile_size + 0.5*this.game_state.tile_size, 
+			//				        this.y*this.game_state.tile_size + 0.5*this.game_state.tile_size);
+
+			// leader? is this how i distinguish
+			if (this.join_h) {
+				
+			} else if (this.join_v) {
+
+			}
+		}
+		
+		return;
+
+		
+	},
 
 	preset_hint_type: 0,
 
@@ -4434,8 +4140,6 @@ BlockClass = Class.extend({
 		
 	},
 
-	
-
 	calc_hint_eight_touch_num: function() {
 
 		// double using this variable, hope thats okay
@@ -4443,10 +4147,10 @@ BlockClass = Class.extend({
 
 		var mines_touching = 0;
 
-		if (this.get_block_type_of(this.x - 1, this.y - 1) == 2) mines_touching += this.get_pixel(this.x - 1, this.y - 1);
-		if (this.get_block_type_of(this.x + 1, this.y - 1) == 2) mines_touching += this.get_pixel(this.x + 1, this.y - 1);
-		if (this.get_block_type_of(this.x + 1, this.y + 1) == 2) mines_touching += this.get_pixel(this.x + 1, this.y + 1);
-		if (this.get_block_type_of(this.x - 1, this.y + 1) == 2) mines_touching += this.get_pixel(this.x - 1, this.y + 1);
+		if (this.game_state.get_block_type(this.x - 1, this.y - 1) == 2) mines_touching += this.game_state.get_num_mines(this.x - 1, this.y - 1);
+		if (this.game_state.get_block_type(this.x + 1, this.y - 1) == 2) mines_touching += this.game_state.get_num_mines(this.x + 1, this.y - 1);
+		if (this.game_state.get_block_type(this.x + 1, this.y + 1) == 2) mines_touching += this.game_state.get_num_mines(this.x + 1, this.y + 1);
+		if (this.game_state.get_block_type(this.x - 1, this.y + 1) == 2) mines_touching += this.game_state.get_num_mines(this.x - 1, this.y + 1);
 
 		if (this.count_flags == 1) {
 
@@ -4463,25 +4167,21 @@ BlockClass = Class.extend({
 		if (this.x - 1 >= 0 && this.y - 1 >= 0) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y - 1);
-			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y - 1]);
 		}
 
 		if (this.x < this.game_state.grid_w - 1 && this.y - 1 >= 0) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y - 1);
-			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y - 1]);
 		}		
 
 		if (this.x < this.game_state.grid_w - 1 && this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y + 1);
-			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y + 1]);
 		}
 
 		if (this.x - 1 >= 0 && this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y + 1);
-			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y + 1]);
 		}
 
 		// PLUS equals
@@ -4493,15 +4193,15 @@ BlockClass = Class.extend({
 	calc_hint_touch_num: function () {
 		var mines_touching = 0;
 
-		if (this.x > 0 && this.get_block_type_of(this.x - 1, this.y) == 2) mines_touching += this.get_pixel(this.x - 1, this.y);
-		if (this.y > 0 && this.get_block_type_of(this.x, this.y - 1) == 2) mines_touching += this.get_pixel(this.x, this.y - 1);
-		if (this.x < this.game_state.grid_w - 1 && this.get_block_type_of(this.x + 1, this.y) == 2) mines_touching += this.get_pixel(this.x + 1, this.y);
+		if (this.x > 0 && this.game_state.get_block_type(this.x - 1, this.y) == 2) mines_touching += this.game_state.get_num_mines(this.x - 1, this.y);
+		if (this.y > 0 && this.game_state.get_block_type(this.x, this.y - 1) == 2) mines_touching += this.game_state.get_num_mines(this.x, this.y - 1);
+		if (this.x < this.game_state.grid_w - 1 && this.game_state.get_block_type(this.x + 1, this.y) == 2) mines_touching += this.game_state.get_num_mines(this.x + 1, this.y);
 
-		if (this.y < this.game_state.grid_h - 1 && this.get_block_type_of(this.x, this.y + 1) == 2) mines_touching += this.get_pixel(this.x, this.y + 1);
+		if (this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x, this.y + 1) == 2) mines_touching += this.game_state.get_num_mines(this.x, this.y + 1);
 
 
 		if (this.count_flags == 1) {
-			//////alert('this.count_flags == 1');
+			//alert('this.count_flags == 1');
 			mines_touching = 0;
 
 			if (this.x > 0 && this.game_state.blocks[this.game_state.tiles[this.x - 1][this.y]].flag_on == true) mines_touching++;
@@ -4514,33 +4214,29 @@ BlockClass = Class.extend({
 
 		
 
-		//if (this.get_block_type_of(this.x - 1, this.y - 1) == 2) mines_touching++;
-		//if (this.get_block_type_of(this.x + 1, this.y - 1) == 2) mines_touching++;
-		//if (this.get_block_type_of(this.x + 1, this.y + 1) == 2) mines_touching++;
-		//if (this.get_block_type_of(this.x - 1, this.y + 1) == 2) mines_touching++;
+		//if (this.game_state.get_block_type(this.x - 1, this.y - 1) == 2) mines_touching++;
+		//if (this.game_state.get_block_type(this.x + 1, this.y - 1) == 2) mines_touching++;
+		//if (this.game_state.get_block_type(this.x + 1, this.y + 1) == 2) mines_touching++;
+		//if (this.game_state.get_block_type(this.x - 1, this.y + 1) == 2) mines_touching++;
 
 		if (this.x > 0) {
 			this.x_in_range.push(this.x - 1);
 			this.y_in_range.push(this.y);
-			this.b_in_range.push(this.game_state.tiles[this.x - 1][this.y]);
 		}
 
 		if (this.x < this.game_state.grid_w - 1) {
 			this.x_in_range.push(this.x + 1);
 			this.y_in_range.push(this.y);
-			this.b_in_range.push(this.game_state.tiles[this.x + 1][this.y]);
 		}
 
 		if (this.y < this.game_state.grid_h - 1) {
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(this.y + 1);
-			this.b_in_range.push(this.game_state.tiles[this.x][this.y + 1]);
 		}
 
 		if (this.y > 0) {
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(this.y - 1);
-			this.b_in_range.push(this.game_state.tiles[this.x][this.y - 1]);
 		}
 
 		this.hint_touch_num = mines_touching;
@@ -4622,27 +4318,21 @@ BlockClass = Class.extend({
 
 	is_lonely: function() {
 
-		console.log("is_pixel_lonely");
-
-		//return this.is_pixel_lonely(this.x, this.y);
-
 		
 
-		if (this.x > 0 && this.get_block_type_of(this.x - 1,this.y) == 2) return false;
+		if (this.x > 0 && this.game_state.get_block_type(this.x - 1,this.y) == 2) return false;
 
-		if (this.x < this.game_state.grid_w - 1 && this.get_block_type_of(this.x + 1,this.y) == 2) return false;
+		if (this.x < this.game_state.grid_w - 1 && this.game_state.get_block_type(this.x + 1,this.y) == 2) return false;
 
-		if (this.y > 0 && this.get_block_type_of(this.x,this.y - 1) == 2) return false;
+		if (this.y > 0 && this.game_state.get_block_type(this.x,this.y - 1) == 2) return false;
 
-		if (this.y < this.game_state.grid_h - 1 && this.get_block_type_of(this.x,this.y + 1) == 2) return false;
+		if (this.y < this.game_state.grid_h - 1 && this.game_state.get_block_type(this.x,this.y + 1) == 2) return false;
 
 		return true; // so lonely
 
 		
 
 	},
-
-	
 
 	calc_hint_eye_num: function (only_count_lonely_mines, only_count_directions, count_highest_sequence, only_count_groups,
 					only_count_empties, mines_are_wall, only_count_gems) {
@@ -4682,9 +4372,9 @@ BlockClass = Class.extend({
 		for (var y = this.y; y >= 0; y--) {
 			if (only_horiz == true) break;
 
-			var tile_ = this.get_block_type_of(this.x,y);
+			var tile_ = this.game_state.get_block_type(this.x,y);
 
-			var multi_ = this.get_pixel(this.x,y);
+			var multi_ = this.game_state.get_num_mines(this.x,y);
 
 			if (this.count_flags == 1) {
 				var flagged_ = this.game_state.blocks[this.game_state.tiles[this.x][y]].flag_on;
@@ -4696,7 +4386,7 @@ BlockClass = Class.extend({
 			}
 
 			if (only_count_lonely_mines == true && tile_ == 2 &&
-				this.is_pixel_lonely(this.x, y) == true) lonely_mines++;
+			    this.game_state.blocks[this.game_state.tiles[this.x][y]].is_lonely() == true) lonely_mines++;
 
 			
 
@@ -4731,18 +4421,17 @@ BlockClass = Class.extend({
 			if (only_count_gems == true &&
 			    this.game_state.blocks[this.game_state.tiles[this.x][y]].preset_hint_type == 48) num_gems++;
 
-			// oh dear... eyes are counting their own tile 4x
+			
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
-			this.b_in_range.push(this.game_state.tiles[this.x][y]);
 			
 		}
 
 		// look left
 		for (var x = this.x; x >= 0; x--) {
 			if (only_vert == true) break;
-			var tile_ = this.get_block_type_of(x,this.y);
-			var multi_ = this.get_pixel(x,this.y);
+			var tile_ = this.game_state.get_block_type(x,this.y);
+			var multi_ = this.game_state.get_num_mines(x,this.y);
 
 			if (this.count_flags == 1) {
 				var flagged_ = this.game_state.blocks[this.game_state.tiles[x][this.y]].flag_on;
@@ -4755,7 +4444,7 @@ BlockClass = Class.extend({
 
 
 			if (only_count_lonely_mines == true && tile_ == 2 &&
-				this.is_pixel_lonely(x, this.y) == true) lonely_mines++;
+			    this.game_state.blocks[this.game_state.tiles[x][this.y]].is_lonely() == true) lonely_mines++;
 
 			if (tile_ != 2) {
 				best_sequence = Math.max(best_sequence, current_sequence);
@@ -4781,15 +4470,14 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
-			this.b_in_range.push(this.game_state.tiles[x][this.y]);
 			
 		}
 
 		// look right
 		for (var x = this.x; x < this.game_state.grid_w; x++) {
 			if (only_vert == true) break;
-			var tile_ = this.get_block_type_of(x, this.y);
-			var multi_ = this.get_pixel(x, this.y);
+			var tile_ = this.game_state.get_block_type(x, this.y);
+			var multi_ = this.game_state.get_num_mines(x, this.y);
 
 			if (this.count_flags == 1) {
 				var flagged_ = this.game_state.blocks[this.game_state.tiles[x][this.y]].flag_on;
@@ -4802,7 +4490,7 @@ BlockClass = Class.extend({
 
 
 			if (only_count_lonely_mines == true && tile_ == 2 &&
-				this.is_pixel_lonely(x, this.y) == true) lonely_mines++;
+			    this.game_state.blocks[this.game_state.tiles[x][this.y]].is_lonely() == true) lonely_mines++;
 
 			if (tile_ != 2) {
 				best_sequence = Math.max(best_sequence, current_sequence);
@@ -4828,14 +4516,14 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(x);
 			this.y_in_range.push(this.y);
-			this.b_in_range.push(this.game_state.tiles[x][this.y]);
+			
 		}
 
 		// look down
 		for (var y = this.y; y < this.game_state.grid_h; y++) {
 			if (only_horiz == true) break;
-			var tile_ = this.get_block_type_of(this.x,y);
-			var multi_ = this.get_pixel(this.x,y);
+			var tile_ = this.game_state.get_block_type(this.x,y);
+			var multi_ = this.game_state.get_num_mines(this.x,y);
 
 			if (this.count_flags == 1) {
 				var flagged_ = this.game_state.blocks[this.game_state.tiles[this.x][y]].flag_on;
@@ -4848,7 +4536,7 @@ BlockClass = Class.extend({
 
 
 			if (only_count_lonely_mines == true && tile_ == 2 &&
-				this.is_pixel_lonely(this.x, y) == true) lonely_mines++;
+			    this.game_state.blocks[this.game_state.tiles[this.x][y]].is_lonely() == true) lonely_mines++;
 
 			if (tile_ != 2) {
 				best_sequence = Math.max(best_sequence, current_sequence);
@@ -4882,7 +4570,7 @@ BlockClass = Class.extend({
 			
 			this.x_in_range.push(this.x);
 			this.y_in_range.push(y);
-			this.b_in_range.push(this.game_state.tiles[this.x][y]);
+			
 		}
 
 		if (only_count_lonely_mines == true) mines_seen = lonely_mines;
@@ -4899,7 +4587,7 @@ BlockClass = Class.extend({
 
 		if (only_count_directions == true) {
 			var dirs_ = up_ + down_ + left_ + right_;
-			//////alert('only directions ' + dirs_);
+			////alert('only directions ' + dirs_);
 			return dirs_;
 		}
 
@@ -5057,7 +4745,7 @@ BlockClass = Class.extend({
 			var y = this.y_in_range[i];
 
 			if (this.game_state.blocks[this.game_state.tiles[x][y]].block_type != 2) {
-				//////alert('error here: x ' + x + ' y ' + y + ' is falsely in the range of zap at ' + this.x + ' ' + this.y);
+				//alert('error here: x ' + x + ' y ' + y + ' is falsely in the range of zap at ' + this.x + ' ' + this.y);
 
 			}
 
@@ -5078,7 +4766,7 @@ BlockClass = Class.extend({
 		var lonely_ = 0;
 		var unknown_ = 0;
 
-		//////alert('calc_happiness_heart');
+		////alert('calc_happiness_heart');
 
 		for (var i = 0; i < this.x_in_range.length; i++) {
 
@@ -5086,7 +4774,7 @@ BlockClass = Class.extend({
 			var y = this.y_in_range[i];
 			if (x < 0 || y < 0 || x >= this.game_state.grid_w || y >= this.game_state.grid_h ) return;
 			if (x == null || x == undefined || y == null || y == undefined) return
-			if (this.get_block_type_of(x,y) == 1) continue; // wall
+			if (this.game_state.get_block_type(x,y) == 1) continue; // wall
 			if (this.game_state.is_covered(x,y) == false) continue;
 			if (this.game_state.is_flagged(x,y) == false) unknown_++;	
 			
@@ -5109,18 +4797,11 @@ BlockClass = Class.extend({
 
 		if (unknown_ > 0) this.happy = false;
 
-		//////alert('x ' + this.x + ' y ' + this.y +'\nlonely_ ' +lonely_ + '\nthis.wanted_num ' + this.wanted_num + '\nunknown_'+unknown_);
+		////alert('x ' + this.x + ' y ' + this.y +'\nlonely_ ' +lonely_ + '\nthis.wanted_num ' + this.wanted_num + '\nunknown_'+unknown_);
 
 		if (this.happy) this.grey_out();
 		else this.ungrey();		
 
-	},
-
-	new_calc_happiness: function () {
-		this.game_state.test_tile_hint(this.index);
-
-		if (this.happy == true) this.grey_out();
-		else this.ungrey();
 	},
 
 	calc_happiness: function () {
@@ -5182,7 +4863,7 @@ BlockClass = Class.extend({
 			if (x == null || x == undefined || y == null || y == undefined) return
 
 
-			if (this.get_block_type_of(x,y) == 1) continue; // wall
+			if (this.game_state.get_block_type(x,y) == 1) continue; // wall
 
 			var flagged_ = this.game_state.blocks[this.game_state.tiles[x][y]].flag_on;
 
@@ -5207,7 +4888,7 @@ BlockClass = Class.extend({
 			} 
 		}
 
-		//////console.log('still_undug ' + still_undug + ' this.preset_hint_type ' + this.preset_hint_type + ' hintnum ' + hint_ + ' this.x_in_range ' + this.x_in_range.length );
+		////console.log('still_undug ' + still_undug + ' this.preset_hint_type ' + this.preset_hint_type + ' hintnum ' + hint_ + ' this.x_in_range ' + this.x_in_range.length );
 
 
 
@@ -5348,62 +5029,13 @@ BlockClass = Class.extend({
 		
 	},
 
-	mimic : function (other_guy) {
-		// used only in the test clue
-		this.preset_hint_type = other_guy.preset_hint_type;
-		this.block_type = other_guy.block_type;
-		this.x = other_guy.x;
-		this.y = other_guy.y;
-		this.flag_on = other_guy.flag_on;	
-
-		
-		this.join_leader = other_guy.join_leader;	
-		this.join_group = other_guy.join_group;
-			
-		
-
-		//this.my_vert_seq_length = other_guy.my_vert_seq_length;
-		//this.my_horiz_seq_length = other_guy.my_horiz_seq_length;
-	},
-
-	compare : function (other_guy) {
-		var hinttype = this.preset_hint_type;
-			  //if (hinttype == GameTypes.PixelClues.EIGHTTOUCH ||
-			  // hinttype == GameTypes.PixelClues.LIGHTBULB ||
-			  // hinttype == GameTypes.PixelClues.ZAP ||
-			  // hinttype == GameTypes.PixelClues.HEART ||
-			  // hinttype == GameTypes.PixelClues.SMILE ||
-			  // hinttype == GameTypes.PixelClues.NEUTRAL ||
-			  // hinttype == GameTypes.PixelClues.CORNER ||
-			  // hinttype == GameTypes.PixelClues.CONNECTIONS ||
-			  // hinttype == GameTypes.PixelClues.FOUR_SQUARES) 
-
-		//console.log("compare > this.hint_num " + this.hint_num + " other_guy.hint_num " + other_guy.hint_num);
-
-		if (other_guy.join_group != 0) {
-			
-			other_guy.get_range_for_joined();
-			other_guy.calc_hint_from_range(other_guy.preset_hint_type);
-		}
-			
-		if (this.hint_num == other_guy.hint_num) return true;
-		else return false;
-		
-
-		
-	},
-
 	
 
 	// only called when effects are being done
 	draw: function() {
 		
 
-	},
-
-	try_solve: function () {
-		
-	},
+	}
 
 });
 
