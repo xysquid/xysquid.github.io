@@ -2,7 +2,7 @@
 
 //var backend_url = 'http://localhost:3000/levels';//
 
-var backend_url = 'https://salty-ravine-95905.herokuapp.com/';
+//var backend_url = 'https://salty-ravine-95905.herokuapp.com/';
 
 
 //var backend_url = 'http://localhost:3000/'f
@@ -2770,2034 +2770,6 @@ StartGameStateClass = GameStateClass.extend({
 
 
 
-GenerateHeartSnakeLevelClass = GameStateClass.extend({
-	
-	play_state: null,
-	engine: null,
-	seed: 9,
-	
-	x_pos_corners: [0,0,0,0,0],
-
-	init: function(engine, play_state) {
-		this.play_state = play_state;
-		this.engine = engine;
-		// this.play_state.game_mode = 
-
-		this.play_state.reset();
-		//this.seed = Math.round(9999999*Math.random());
-		console.log('HeartSnake seed: ' + this.seed);
- 
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			this.play_state.blocks[b].reset();
-			this.play_state.blocks[b].generator_knowns = [];
-		} 
-
-		this.play_state.game_mode = 11;
-
-		for (var x = 0; x < this.x_pos_corners.length; x++) {
-			this.seed = this.seed*this.seed*this.seed;
-			this.seed = this.seed % 222;
-			this.x_pos_corners[x] = this.seed % 5;
-			if (x % 2 == 0 && this.seed % 4 != 0) this.x_pos_corners[x] += 5;
-			this.x_pos_corners[x] = Math.min(this.x_pos_corners[x], 9);
-
-			if (x > 0 && this.x_pos_corners[x] == this.x_pos_corners[x - 1]) {
-				this.x_pos_corners[x] += 5;
-				this.x_pos_corners[x] = this.x_pos_corners[x] % 10;
-			}
-		}
-
-		var i = 1;
-		var x_snake = this.x_pos_corners[0];
-		var y_snake = 1;
-		var loops = 100;
-		while (loops > 0 && y_snake < 8 && i < 5) {
-			this.seed = this.seed*this.seed*this.seed + 3 + x_snake;
-			this.seed = this.seed % 222;
-
-			loops--;
-			var b = this.play_state.tiles[x_snake][y_snake];
-			if (this.seed % 2 == 0) this.play_state.blocks[b].set_type(2);
-			this.play_state.blocks[b].cover();
-
-			
-
-			if (x_snake == this.x_pos_corners[i]) {
-				var b_one = this.play_state.tiles[x_snake][y_snake + 1];
-				if (this.seed % 2 == 1) this.play_state.blocks[b_one].set_type(2);
-				this.play_state.blocks[b_one].cover();
-
-				y_snake +=2;
-				i++;
-			} else {
-				if (x_snake < this.x_pos_corners[i]) x_snake++;
-				else x_snake--;
-			}
-		}
-	},
-
-	
-
-	update: function (engine) {
-
-		// add hints until its solvable
-		// need - every cover in range of at least 1 hint ... what else?
-		// each added hint will chip away at the unknown
-
-		// maybe - each tile knows if its 100% solved, or coupled with other tile(s)
-		// or part of a solver-zone
-
-		// hints have a try_solve() function ... mainly for crowns etc
-
-		// blocks have dependency / information
-		// list of conditionals
-		// block.generator_knowns = []
-		// initially generator_knowns.length = 0
-		// if solved, generator_knowns.length = 1	flag or safe
-		// info applies to this block only, based on other blocks
-		// generator_knowns = [{opposite of block #}, {safe if # is lonely}, 
-		//			{safe if #,#,# are flags}, {flag if # is safe (not oppisite of #)}]
-
-		// add an eye - it reports 3, 
-		// 4 covers in range
-		// each cover gets {flag if # is safe} for each other #
-		//		   {safe if #,#, and # are flags} for all other #
-
-		// add zap - it reports n
-		// m covers in 'range'
-		// flowfill out - 1st step: how many covers in 1st step?
-		//			   IF less than n - entire 1st step is solved
-		//			   ELSE - ...?
-		//		  		next step branches
-		//		  2nd step: 
-		//
-		//	 we can say a 1st step tile is safe if it is connected to a larger group of flags
-
-		// add heart - it reports n
-		// m covers in range
-		// {n lonelies in m covers}
-		// once down to 0 lonelies - > {this tile is not a lonely mine}
-		//				-> {if 2, one of its neighbours must be 2}
-
-		// shares
-		// process both hints first?
-		// then the share	somehow
-
-		// format
-		// 100% solved:	[{'rule': 'k', 'num': 2}]	// known - 2 (or 0)
-		// opposite:	[{'rule': 'o': 'other': #}]	// # is the block num we depend on
-		// IF THEN:	[{'rule': 'if_and', 
-		//		  'cond': {'b': 2, 'b': 3, 'b' : 4}, 'then': 0 }] 	// if 2,3 AND 4 are bombs, we are 0 (safe)
-		// n choose k - if there are k flags in certian n other tiles, I must be safe
-		//		[{'rule': 'any_of', 
-		//		  'totalmines': 3,
-		//		  'range': [2,3,4,12,13,14 ... ],	'then': 0}] 
-		// 		[{'if_or': {'b': 2, 'b': 3, 'b' : 4}, 'then': 0 }]	// if 2,3 OR 4 are bombs, we are 0 (safe)
-
-		// in_an_overlap: [{'rule': 'in_overlap',
-		//		    'maxmines': 4, 'minmines': 4, ... }]
-
-		// if a tile has 2 of the 'any_of' 'n choose k' rules on it
-		//	it is in an overlap
-		//	work out the overlap in range (if any)
-		//	? 3 new rules - overlap, exlude1, exclude2
-		//	I think this might affect other tiles in the exclude regions
-
-		// for a tile in the exclude region, it has just one rule on it (coupled to overlap)
-
-		// maybe an external scan for non-trivial flag/digs in excluded regions
-
-		// 3 pronged approach
-		// (1) store dependency-info on the cover tiles & compare
-		// (2) global external scan for overlap/exclude, as in generator
-		// (3) loop over hints (crown) and partially flag/dig (nonogram logic)
-		//		if eye-bracket sees more groups than it should -> join up
-		// (4?) total mines known in a region (similar to 2), or max/min mines in a region
-		//		eyebracket range -> min mines is the num of groups
-		//		crown range -> min mines is crown hintnum, max is range - 
-		//				can I use the added info that the mines must be in a row?
-		//		heart range -> n lonely mines in this range
-		//				possible range shrinks as lonely mines become impossible in certain tiles
-		//		compass range -> 4 ranges, coupled to each other ... n have min 1 mine, rest have exactly 0
-
-		// (5?) some kind of trial and error - place a flag ... check for contradictions?
-
-		// define a 'zone' class - group of tiles, with a known exact or min and/or max mines
-		//	vert_highest, horiz_highest
-		//	fully_solved = false
-		// can compare zones to make more zones - overlaps, excluded 
-
-		// vert or horiz zones could know info about sequences (crown & eyebracket) ?
-
-		// each tile knows which of these zones it is in
-		// if its in > 1 then its in an overlap
-
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			this.play_state.blocks[b].solver_mark_safe = false;
-			this.play_state.blocks[b].solver_mark_flag = false;
-
-			if (this.play_state.blocks[b].covered_up == true) this.unsolved_covers.push(b);
-			else this.play_state.blocks[b].solver_mark_safe = true;
-		}
-
-		var loops = 196;
-		
-		
-		while (this.unsolved_covers.length > 0 && loops > 0) {
-			loops--;
-			this.add_hint();
-
-			//this.compare_knowns();
-			
-			//this.per_hint_dig_flag();
-
-			this.process_zones();
-
-		}
-
-		for (var s = 0; s < this.unsolved_covers.length; s++) {
-			var b = this.unsolved_covers[s];
-			if (this.play_state.blocks[b].solver_mark_safe == false && 
-			    this.play_state.blocks[b].solver_mark_flag == false) {
-				
-				this.play_state.blocks[b].set_type(0);
-				this.play_state.blocks[b].uncover();
-			}
-		}
-		
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			if (this.play_state.blocks[b].covered_up == true) continue;
-			this.play_state.blocks[b].cover();
-			this.play_state.blocks[b].uncover();
-		}
-
-		this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-	},
-
-	unsolved_covers: [],
-	unhappy_hints: [],
-
-	per_hint_dig_flag : function () {
-		var to_splice = [];
-		for (var i = 0; i < this.unhappy_hints.length; i++) {
-
-		}
-	}, 
-
-	// .solver_mark_flag
-	// .solver_mark_safe
-
-	// single hints
-	basic_single_dig_flag : function (hinttile) {
-		var flags_remaining = this.play_state.blocks[hinttile].calc_hint(this.play_state.blocks[hinttile].preset_hint_type);
-		// should probably calc once and store...
-		for (var r = 0; r < this.play_state.blocks[hinttile].b_in_range.length; r++) {
-			var b = this.play_state.blocks[hinttile].b_in_range[r];
-			if (this.play_state.blocks[b].solver_mark_flag == true) flags_remaining -= this.play_state.blocks[b].mine_multi;
-		}
-
-		this.new_zone(flags_remaining, flags_remaining, flags_remaining);
-		this.zones[this.zones.length - 1].original_hint_b = hinttile;
-		
-
-		for (var r = 0; r < this.play_state.blocks[hinttile].b_in_range.length; r++) {
-			var b = this.play_state.blocks[hinttile].b_in_range[r];
-			this.add_to_range_of_new_zone(b);	// rejects solved
-
-			// maybe add 2x if its .mine_multi ?
-
-			//if (this.play_state.blocks[b].covered_up == false) continue;
-
-			//if (this.play_state.blocks[b].solver_mark_flag == true) flags_in_range += this.play_state.blocks[b].mine_multi;
-			//else unsolved_in_range += this.play_state.blocks[b].mine_multi;
-		}
-		
-
-		
-	},
-
-	basic_single_dig_flag_old : function (hinttile) {
-		// single basic hint (touch, eye, joined) - look for trivial dig/flags
-		var unsolved_in_range = 0;
-		var flags_in_range = 0;
-		var flags_remaining = this.play_state.blocks[hinttile].calc_hint(this.play_state.blocks[hinttile].preset_hint_type);
-		// should probably calc once and store...
-
-		
-
-		for (var r = 0; r < this.play_state.blocks[hinttile].b_in_range.length; r++) {
-			var b = this.play_state.blocks[hinttile].b_in_range[r];
-
-
-			if (this.play_state.blocks[b].covered_up == false) continue;
-
-			if (this.play_state.blocks[b].solver_mark_flag == true) flags_in_range += this.play_state.blocks[b].mine_multi;
-			else unsolved_in_range += this.play_state.blocks[b].mine_multi;
-		}
-		flags_remaining -= flags_in_range;
-			
-		if (flags_remaining == 0) {
-			// mark safe all unsolved in range
-		} else if (flags_remaining == unsolved_in_range) {
-			// mark_flag all unsolved in range
-		} else {
-			// hint is still unsatisfied
-			
-		}
-
-		
-	},
-
-	crown_dig_flag : function (hinttile) {
-		// 
-		var crown_num = this.play_state.blocks[hinttile].calc_hint(this.play_state.blocks[hinttile].preset_hint_type);
-
-		var crown_y = this.play_state.blocks[hinttile].y;
-		var crown_x = this.play_state.blocks[hinttile].x;
-
-		var top_y = 9;
-		var bottom_y = 0;
-		var left_x = 9;
-		var right_x = 0;
-		for (var r = 0; r < this.play_state.blocks[hinttile].x_in_range.length; r++) {
-			var x = this.play_state.blocks[hinttile].x_in_range[r];
-			var y = this.play_state.blocks[hinttile].y_in_range[r];
-			top_y = Math.min(top_y, y);
-			left_x = Math.min(left_x, x);
-			bottom_y = Math.max(bottom_y, y);
-			right_x = Math.max(right_x, x);
-		}
-
-		// (1) identify possible places that the minesequence could live (most useful in double ?? levels)
-		//     we must have at least one minesequence - so if we currently have 0, and there is only 1 possible place for it...
-		//     store as:
-
-		var possible_vert_seq_start = [];
-		var possible_horiz_seq_start = [];
-		var sequences_seen = 0;
-
-		// (1-A) some of the possible_mine_seq can be eliminated by comparing with zone info (n choose k)
-
-		// (2) some tiles may be flagged in ALL possible placements of the minesequence
-		//     if sequences_seen == 0;
-		//     && (possible_vert_seq_start.length == 0 || possible_horiz_seq_start.length == 0)
-		//     		look at the nonempty []
-
-		// (3) look for existing minesequences & dig their ends
-
-		// (4) if sequences_seen == 0
-		//     declare a new zone with minimum of minesequence
-		//     could exclude parts where minesequence would not fit - zone is whatever is in poss_vert/horiz ...
-		//     using the info in possible_vert/horiz_seq_start
-		//     only do this once per level-solve (this function could get called many times)
-		//     nope do it repeatedly - the covers will be eroded down by other hints which narrows the areas that minesequence could live
-
-		
-
-		// horiz scan
-		for (var x = left_x; x < right_x; x++) {
-			var flags_counted = 0;
-			var covers_counted = 0;	// flagged or unflagged
-			
-			for (var xx = x; xx < Math.min(x + crown_num + 1,10); xx++) {
-				var b = this.game_state.tiles[xx][crown_y];
-
-				if (this.game_state.blocks[b].solver_mark_safe == false) {
-					covers_counted += this.game_state.blocks[b].mine_multi;
-
-				} else covers_counted = 0;
-
-				if (covers_counted == crown_num &&
-				    this.check_possible_horiz_crown(x, xx, crown_y) == true) {
-					
-					possible_horiz_seq_start.push(x);	
-				}
-				
-				if (this.game_state.blocks[b].solver_mark_flag == true) {
-					flags_counted += this.game_state.blocks[b].mine_multi;
-					
-				} else {
-					flags_counted = 0;
-					//break;
-				}
-
-				if (flags_counted == crown_num) {
-					sequences_seen++;
-					// dig both ends
-					this.crown_end_snip_horiz(xx, x, crown_y);
-				}
-			}
-		} // horiz scan
-
-		// vert scan
-
-		
-	},
-
-	check_possible_horiz_crown : function (start_x, end_x, y_pos) {
-		// need to check if prev & after tile is NOT flagged!
-		var start_b = this.game_state.tiles[start_x - 1][y_pos];
-		var end_b = this.game_state.tiles[end_x + 1][y_pos];
-		if (start_x > 0 && this.game_state.blocks[start_b].solver_mark_flag == true) return false;
-		if (end_x < this.play_state.grid_w - 1 && this.game_state.blocks[end_b].solver_mark_flag == true) return false;
-
-
-		// compare with zone info
-		// this seems excessive - make a temporary Zone object:
-		var mine_num = 0;
-		for (var x = start_x; x < end_x; x++) mine_num += this.play_state.blocks[this.play_state.tiles[x][y_pos]].mine_multi;
-
-		var temp_zone = new SolverZoneClass(this.play_state);
-		temp_zone.exact_mines = mine_num;
-		temp_zone.max_mines = mine_num;
-		temp_zone.min_mines = mine_num;
-
-		// if .mine_multi == 2 should I add it twice????? 
-		for (var x = start_x; x < end_x; x++) temp_zone.add_to_range(this.play_state.tiles[x][y_pos]);
-
-		for (var z = 0; z < this.zones.length; z++) {
-			var contradict = this.zones[z].scan_for_contradiction(temp_zone);
-			if (contradict == true) return false;
-		}
-
-		
-
-		return true;
-	},
-
-	crown_end_snip_horiz : function (start_x, end_x, y_pos) {
-		if (start_x > 0) {
-			var start_b = this.game_state.tiles[start_x - 1][y_pos];
-			this.game_state.blocks[start_b].solver_mark_safe = true;
-		}
-		if (end_x < this.play_state.grid_w - 1) {
-			var end_b = this.game_state.tiles[end_x + 1][y_pos];
-			this.game_state.blocks[end_b].solver_mark_safe = true;
-		}
-	},
-
-	eyebracket_dig_flag : function (hinttile) {
-
-		// want to see n groups in their own islands 
-		// 2 consequtive flags connected by unflagged covers will eventually either be split or joined
-
-		// (1) if eye-bracket sees more groups than it should -> join up (under certain conditions ... must be on same island)
-		//					'these 2 must be in the same group'
-		//	I think we are stuck in this case...?
-		// ? (1) if there are no empty islands AND the num of islands == eyebracket_num AND we see an excess of flag_groups
-		//	 -> join them up
-
-		// (2) if eye-bracket sees exact amount of groups, each on a unique island -> dig any unflagged islands
-		//	no way to lower the num of flag_groups by joining (in order to add a new flag_group on the deserted island)	
-
-		// (3) ??? in the same cover-island -> dig a single cover between 2 flags
-		//					b/c in all possible solutions, it must be a safe
-		//					'these 2 must be in seperate groups'
-		//					add a zone info: at least 1 safe tile in the n inbetween
-
-		// (3) if there are no empty islands AND we see the correct amount of flag_groups (even if some share an island)
-		// then they must be actual separate groups
-		// not necessarily - maybe we havent added some flags yet & the existing groups should be joined
-		//		we could join 2 flag_groups (-1 group) then add a new flag IF there is space (+1 group)
-		//     extra rule: AND there is NO space for an extra flag_group
-		// can add zone info for the interstitial covers (at least 1 safe tile in the n inbetween)
-
-		// (4) if eyebracket_num == num of islands with any flags on them -> can delete any deserted island
-		// more general rule than (2)
-
-		// ? (5) maybe - based on if there is only 1 space available - add an extra group if needed
-
-		// when calculating flags, maybe also consider zone info (ie n mines in certain k tiles)
-
-		var eyebracket_num = this.play_state.blocks[hinttile].calc_hint(this.play_state.blocks[hinttile].preset_hint_type);
-
-		var eyebracket_y = this.play_state.blocks[hinttile].y;
-		var eyebracket_x = this.play_state.blocks[hinttile].x;
-
-		var top_y = 9;
-		var bottom_y = 0;
-		var left_x = 9;
-		var right_x = 0;
-		for (var r = 0; r < this.play_state.blocks[hinttile].x_in_range.length; r++) {
-			var x = this.play_state.blocks[hinttile].x_in_range[r];
-			var y = this.play_state.blocks[hinttile].y_in_range[r];
-			top_y = Math.min(top_y, y);
-			left_x = Math.min(left_x, x);
-			bottom_y = Math.max(bottom_y, y);
-			right_x = Math.max(right_x, x);
-		}
-
-		
-		
-
-		var cover_islands_seen = 0;
-		var horiz_cover_island_start = [];
-		var vert_cover_island_start = [];
-		var horiz_cover_island_length = [];
-		var vert_cover_island_length = [];
-		var horiz_flag_groups_on_island = [];
-		var vert_flag_groups_on_island = [];
-
-		var flag_groups_seen = 0;
-		var horiz_flag_group_start = [];
-		var vert_flag_group_start = [];
-		var horiz_flag_group_on_cover_island = [];
-		var vert_flag_group_on_cover_island = [];
-
-		// needs at least 2 terminal or 3 internal empty spaces to fit in an extra group
-		// or any blank cover flanked by tiles that are not flags and not possible groups	0110 
-		var horiz_island_nomorespace = [];
-		var vert_island_nomorespace = [];
-
-		var possible_spaces_available = 0;
-
-		var horiz_compressed = [];	// safe group -> 0	flag group -> 2     unsolved -> 111...
-						// possible flag group(surrounded by possible empty) -> 333... 332302020
-						// known group 020 (0 or edge or wall) -> 4	4444...	334434	... eyebracket sees 4
-						// we can scan to see if there is space for more groups
-
-		// horiz scan - fill out info
-		for (var x = left_x; x < right_x; x++) {
-			
-		}
-
-		// vert scan - fill out info
-
-		// are any flag_groups sharing an island?
-
-		// rule (2)
-		if (flag_groups_seen == eyebracket_num && 
-		    shared_cover_islands == 0) {
-			// can dig up all the empty islands!
-		}
-
-		// rule (4) if eyebracket_num == num of islands with any flags on them -> can delete any deserted island
-		// more general rule (2)
-		if (flagged_cover_islands_seen == eyebracket_num) {
-			// can dig up all the empty islands!
-		}
-
-		// rule (3) if there are no empty islands 
-		// 	    AND we see correct amount of flag groups (even if sharing an island)
-		//	    AND there is NO space for an extra flag_group
-		//	    -> add zone info for the interstitial covers (at least 1 safe tile in the n inbetween)
-		if (unflagged_cover_islands_seen == 0 && 
-		    flag_groups_seen == eyebracket_num && 
-		    possible_extra_flag_groups == 0) {
-
-			// scan thru horiz & vert, add zone info
-			var flag_group_this_island = 0;
-			var flag_group_start = false;
-			for (var x = left_x; x < right_x; x++) {
-				var b = this.play_state.tiles[x][y];
-				 
-				if (this.play_state.blocks[b].solver_mark_safe == true) {
-					flag_group_this_island = 0;
-					flag_group_start = false;
-				}
-				if (this.play_state.blocks[b].solver_mark_flag == true &&
-					flag_group_start == false) {
-					flag_group_start = true;
-					flag_group_this_island++;
-					if (flag_group_this_island > 1) {
-						// backfill with zone info until we hit the prev flag group
-						// (at least 1 safe tile in the n inbetween)
-						// this.add_zone_info();
-					} 
-				}
-				if (this.play_state.blocks[b].solver_mark_flag == false &&
-				    this.play_state.blocks[b].solver_mark_safe == false) {
-					flag_group_start = false;
-				}
-				
-			} // horiz scan
-
-			// vert scan
-			
-		}
-
-		// ? (5) maybe - based on if there is only 1 space available - add an extra group if needed
-		if (possible_spaces_available == eyebracket_num - flag_groups_seen) {}
-
-		// rule (1) if there are no empty islands 
-		//	    AND the num of islands == eyebracket_num 
-		//	    AND we see an excess of flag_groups
-		//	 -> join them up
-		if (unflagged_cover_islands_seen == 0 &&
-		    flagged_cover_islands_seen == eyebracket_num &&
-		    flag_groups_seen > eyebracket_num) {
-			// join up any that can be joined
-		}
-
-		// sees more groups than it should -> join up or split an island
-		// if it sees 1 more group than it should &
-		if (flag_groups_seen > eyebracket_num) {
-
-		}
-	},
-
-	// heart - more than one heuristic to use
-	heart_dig_flag : function(hinttile) {
-
-		// 1st - scan range and set .known_not_to_be_lonely based on grid
-		// if the hint is 0 (or satisfied) then whole range is .known_not_to_be_lonely
-
-	},
-
-	// compass
-	compass_dig_flag : function (hinttile) {
-		// two rules
-		// either dig remaining sides
-		// or we know at least 1 mine is in a side(s)
-	},
-
-	// zap
-	zap_dig_flag : function (hinttile) {
-		// simple rules in extreme cases
-
-		// calc the total num of covers connected to our zap
-		// var m = this.get_zap_range();
-		// var f = this.get_zap_flags();
-
-		// (A) single possible next step out from the zap
-		//     rule: if the zap sees less flags than it should
-		//	     AND on BFS flowfill-ing out from the zap (stopping after unsolved) we find a fringe with length 1, unsolved
-		//	     -> flag
-		//	     if fringe length > 1, search the zone info? no... come back later after processing the zone info
-
-		// (B) cut off border
-		//     special case - zero zap
-		//     rule: if the zap is connected to the right number of flags
-		//	     then go +1 step from all connected flags (AND the hint itself), AND if that tile is unsolved -> dig
-
-		// (C) if above are exhausted
-		//     C-1 if m == zap num	->	fill m with flags
-		//     C-1 if m > zap num	->	add zone info...
-
-		// (D) if adding a flag would join us to a bigger group & make zapnum too large -> dig that spot
-		//     scan entire board, calc each flag_island size, each tile knows its flag_island size
-	},
-
-	// share bubble
-	process_share_bubble : function (hinttile) {
-		// basically just add a new zone with exact mines info
-		// range == overlap of the 2 hints
-		// unless its a crown-share: then its min mines in the new zone
-
-		// only call once in this level
-
-		// this.play_state.blocks[hinttile].calc_sharesquare();
-
-		if (this.play_state.blocks[hinttile].hints_in_this_sharesquare.length < 2) return;
-
-		var hint_a = this.play_state.blocks[hinttile].hints_in_this_sharesquare[0];
-		var hint_b = this.play_state.blocks[hinttile].hints_in_this_sharesquare[1];
-		var shared_range = [];
-
-		
-	},
-
-	// pairs of like hints
-	basic_and_basic_dig_flag : function (hinttile_a, hinttile_b) {
-		// double basic hint - look for overlap / exclude / max / min
-	},
-
-	compass_and_compass_dig_flag : function (compass_a, compass_b) {
-		// see campaign levels, this is possible
-	},
-
-	heart_and_heart_dig_flag : function (heart_a, heart_b) {
-		// playing 'where is the lonely?'
-		// if only one hint sees 0
-		// maybe lets tag tiles as .known_not_to_be_lonely 
-	},
-
-	// pairs of unlike hints
-	basic_and_crown_dig_flag : function (basic_hint, crown_hint) {
-		// do these work together?
-	},
-	
-	crown_and_eyebracket_dig_flag : function (crown_hint, eyebracket_hint) {
-		// only if they have same x or same y
-	},
-
-	basic_and_compass : function (basic_hint, compass_hint) {
-		// overlap - 
-	},
-
-	// partially solved zones (n choose k) and a hint
-	basic_and_zone_dig_flag : function (basic_hint, zone_a) {
-
-	},
-
-	zone_and_zone_dig_flag : function (zone_a, zone_b) {
-
-	},
-
-	compare_knowns : function() {
-		var to_splice = [];
-		for (var i = 0; i < this.unsolved_covers.length; i++) {
-			var b = this.unsolved_covers[i];
-			for (var d = 0; d < this.play_state.blocks[b].generator_knowns.length; d++) {
-				var type_of_rule = this.play_state.blocks[b].generator_knowns[d].rule;
-				if (type_of_rule == 'o') {
-					// opposite of .other
-					var other = this.play_state.blocks[b].generator_knowns[d].other;
-					if (this.play_state.blocks[other].generator_knowns.length == 1 &&
-					    this.play_state.blocks[other].generator_knowns[0].rule == 'k') {
-						// solved
-						var opp = this.play_state.blocks[other].generator_knowns[0].num;
-						var solve = 0;
-						if (opp == 0) solve = 2;
-						this.play_state.blocks[b].generator_knowns = [];
-						this.play_state.blocks[b].generator_knowns.push({'rule': 'k', 'num' : solve});
-						to_splice.push(b);	// i or b ?
-					}
-				} else if (type_of_rule == 'if_and') {
-
-				}
-			}
-		}
-	},
-
-	add_hint : function() {
-		this.seed = this.seed*this.seed + 3;
-		this.seed = this.seed % 1001001;
-		//console.log(this.seed);
-
-		// add a counting hint to an empty tile
-		// this.play_state.blocks[b].seed_gen_stage
-
-		var rand_hint = this.seed % 4 + 1;	// eye
-		if (rand_hint == 3) rand_hint = 4;
-
-		// pick a random tile
-		
-		//this.seed = Math.round(1001*Math.random());
-		var rand_tile = this.seed % 100;	// 10x10 grid
-
-		// excluding covered - later I'll set this to put hints under covered tiles if they are solved
-		if (this.play_state.blocks[rand_tile].preset_hint_type != 0 ||
-		    this.play_state.blocks[rand_tile].solver_mark_safe != true ||
-		    this.play_state.blocks[rand_tile].block_type != 0) return;
-		
-		this.play_state.blocks[rand_tile].preset_hint(rand_hint);
-		var hint_num = this.play_state.blocks[rand_tile].calc_hint(rand_hint);
-
-		if (hint_num == 0 && rand_hint != 5) {
-			this.play_state.blocks[rand_tile].preset_hint(0);
-			return;	// only hearts can be 0
-		}
-
-		//if (rand_hint == 2) //alert('hint_num ' + hint_num + ' rand_tile ' + rand_tile);
-
-		var unsolved = 0;
-		for (var r = 0; r < this.play_state.blocks[rand_tile].b_in_range.length; r++) {
-			var b = this.play_state.blocks[rand_tile].b_in_range[r];
-			if (this.play_state.blocks[b].solver_mark_flag == false && 
-			    this.play_state.blocks[b].solver_mark_safe == false) unsolved++;
-		}
-
-		//console.log('unsolved ' + unsolved);
-		if (unsolved == 0 && rand_hint != 5) {
-			// hearts can see neighbours of unsolved
-			this.play_state.blocks[rand_tile].preset_hint(0);
-			return;
-		}
-		if (rand_hint == 1 || 
-		    rand_hint == 2 || 
-		    rand_hint == 4) {
-			// basic n mines in m covers
-			// this.inform_tiles_basic(hint_num, rand_tile);
-			this.basic_single_dig_flag(rand_tile);
-		}
-		
-	},
-
-	inform_tiles_basic : function (num_mines, hinttile) {
-		var num_unsolved_covers = 0;
-		for (var i = 0; i < this.play_state.blocks[hinttile].x_in_range.length; i++) {
-			var x = this.play_state.blocks[hinttile].x_in_range[i];
-			var y = this.play_state.blocks[hinttile].y_in_range[i];
-			var b = this.play_state.tiles[x][y];
-			//if (this.play_state.blocks[b].generator_knowns.length == 1 &&
-			//    (this.play_state.blocks[b].generator_knowns[0] == ))
-		}
-	},
-
-	new_zone : function (exact_mines, max_mines, min_mines) {
-		var n_zone = new SolverZoneClass(this.play_state);
-		n_zone.exact_mines = exact_mines;
-		n_zone.max_mines = max_mines;
-		n_zone.min_mines = min_mines;
-		this.zones.push(n_zone);
-	},
-
-	add_to_range_of_new_zone : function (b) {
-
-		
-		// maybe reject if solved
-		if (this.play_state.blocks[b].solver_mark_safe == true ||
-		    this.play_state.blocks[b].solver_mark_flag == true) return;
-
-		this.zones[this.zones.length - 1].add_to_range(b);
-
-		// maybe add 2x if .mine_multi == 2
-	},
-
-	zones: [],
-	zones_to_delete: [],
-
-	process_zones : function () {
-		for (var z = 0; z < this.zones.length; z++) {
-			this.zones[z].self_assess();
-			if (this.zones[z].delete_me == true) continue;
-			for (var other_z = 0; other_z < z - 1; other_z++) {
-				this.zones[z].compare(this.zones[other_z]);
-			}
-		}
-
-		// remove solved zone objects
-		this.zones_to_delete = [];
-		for (var z = 0; z < this.zones.length; z++) {
-			if (this.zones[z].delete_me == true) this.zones_to_delete.push(this.zones[z]);
-		}
-
-		
-
-		var marked_zones = this.zones_to_delete.length;
-		var loops = 999;
-		while(marked_zones > 0 && loops > 0 && this.zones_to_delete.length > 0) {
-			loops--;
-			marked_zones--;
-			var r_zone = this.zones_to_delete.pop();
-			var z = this.zones.indexOf(r_zone);
-			this.zones.splice(z, 1);
-			
-		}
-	}
-});
-
-var g_solver_zone_index = 0;
-
-SolverZoneClass = Class.extend({
-
-	game_state: null,
-
-	blocks: [],
-
-	exact_mines: -1,
-	// if we know the exact # of mines then max_mines == min_mines
-	max_mines: -1,
-	min_mines: -1,
-
-	vert_highest: -1, 
-	horiz_highest: -1,
-	fully_solved: false,	// marked for removal - all blocks solved
-
-	index: -1,
-	delete_me: false,
-
-	original_hint_b: -1,
-
-	init: function (game_state) {
-		this.game_state = game_state;
-		g_solver_zone_index++
-		this.index = g_solver_zone_index;
-	},
-
-	add_to_range : function (b) {
-
-		//if (this.original_hint_b == 75) console.log('add_to_range > hint 75 blocks.length ' + this.blocks.length);
-		
-		for (var i = 0; i < this.blocks.length; i++) {
-			if (this.blocks[i] == b) console.log('add_to_range > repeat ' + b);
-		}
-		this.blocks.push(b);
-	},
-
-	self_assess : function () {
-		if (this.max_mines == this.min_mines) this.exact_mines = this.min_mines;
-
-		if (false && this.original_hint_b == 43) {
-			console.log('hint 43 blocks.length ' + this.blocks.length + ' this.exact_mines ' + this.exact_mines);
-			if (this.blocks.length == 3) {
-				console.log(this.blocks[0] + ' ' +this.blocks[1] + ' ' +this.blocks[2] + ' ');
-			}
-		}
-
-		var num_solved = 0;
-		var num_unsolved = 0;
-		var solved_blocks = [];
-		for (var i = 0; i < this.blocks.length; i++) {
-			var b = this.blocks[i];
-			if (this.game_state.blocks[b].solver_mark_flag == true ||
-			    this.game_state.blocks[b].solver_mark_safe == true) {
-				solved_blocks.push(b);
-				
-				if (this.game_state.blocks[b].solver_mark_flag == true) {
-					this.exact_mines--;
-					this.min_mines--;
-					this.max_mines--;
-
-					
-				} 
-
-				
-				
-			} else num_unsolved++;
-		}
-
-		// console.log('zone > self assess > solved_blocks.length ' + solved_blocks.length);
-
-		for (var b = 0; b < solved_blocks.length; b++) {
-			var solved = solved_blocks[b];
-			if (this.game_state.blocks[solved].solver_mark_flag == false &&
-				this.game_state.blocks[solved].solver_mark_safe == false) console.log('error - cut unsolved tile!');
-			var i = this.blocks.indexOf(solved);
-			this.blocks.splice(i, 1);
-
-			
-		}
-
-		if (num_unsolved == 0) this.delete_me = true;
-
-		if (this.min_mines == this.blocks.length) {
-			for (var i = 0; i < this.blocks.length; i++) {
-				var b = this.blocks[i];
-				this.game_state.blocks[b].solver_mark_flag = true;
-				if (this.game_state.blocks[b].block_type == 0) console.log('selfassess > error - flagged a safe!' + b + 'this.min_mines ' + this.min_mines + 'this.original_hint_b ' + this.original_hint_b );
-			}
-			this.delete_me = true;
-		} else if (this.max_mines == 0) {
-			for (var i = 0; i < this.blocks.length; i++) {
-				var b = this.blocks[i];
-				this.game_state.blocks[b].solver_mark_safe = true;
-				if (this.game_state.blocks[b].block_type == 2) console.log('selfassess > error - dug a mine!' + b);
-			}
-			this.delete_me = true;
-		}
-	},
-
-	overlap: [],
-	only_a: [],
-	only_b: [],
-
-	compare: function (other) {
-		// do we overlap?
-		// maybe solved tiles are already excluded before this function is called?
-		// how does this handle multi-tiles? maybe they appear 2x in .blocks
-		this.overlap = [];
-		this.only_a = [];	// a == this
-		this.only_b = [];	// b == other
-
-		var overlap = this.overlap;
-		var only_b = this.only_b;
-		var only_a = this.only_a;
-
-		
-		this.self_assess();
-		other.self_assess();
-
-		if (other.delete_me == true || this.delete_me == true) return;
-		
-
-		for (var i = 0; i < this.blocks.length; i++) {
-			var is_a_in_b = false;
-			for (var j = 0; j < other.blocks.length; j++) {
-				if (this.blocks[i] == other.blocks[j]) {
-					overlap.push(this.blocks[i]);
-					is_a_in_b =  true;
-				}
-			}
-			if (is_a_in_b == false) only_a.push(this.blocks[i]);
-		}
-
-		if (overlap.length == 0) return;
-
-		// if (this.exact_mines == -1 || other.exact_mines == -1) return;
-		if (this.min_mines == -1 || other.min_mines == -1 || 
-		    this.max_mines == -1 || other.max_mines == -1) return;
-
-		for (var j = 0; j < other.blocks.length; j++) {
-			var is_in_overlap = false;
-			for (var o = 0; o < overlap.length; o++) {
-				if (other.blocks[j] == overlap[o]) is_in_overlap = true;
-			}
-			if (is_in_overlap == false) only_b.push(other.blocks[j]);
-		}
-
-		var mines_in_overlap = -1;	// -1 == unknown
-		var mines_in_only_a = -1;
-		var mines_in_only_b = -1;
-
-		var max_mines_in_overlap = overlap.length;
-		var min_mines_in_overlap = 0;
-
-		var max_mines_in_only_a = only_a.length;
-		var max_mines_in_only_b = only_b.length;
-
-		// max_mines_in_overlap = Math.min(this.exact_mines, other.exact_mines);
-		// mines in overlap are seen by both zones, so it cant be more than a zone sees
-		max_mines_in_overlap = Math.min(this.max_mines, other.max_mines);	// what if this is bigger than overlap.length?
-		max_mines_in_overlap = Math.min(overlap.length, max_mines_in_overlap);	// if it was > overlap.length, could I use that info?
-		var min_mines_in_only_a = this.min_mines - max_mines_in_overlap;	// could end up -ve
-		var min_mines_in_only_b = other.min_mines - max_mines_in_overlap;	// could end up -ve
-
-		min_mines_in_only_a = Math.max(0, min_mines_in_only_a);		// if it was -ve, could I use that info?
-		min_mines_in_only_b = Math.max(0, min_mines_in_only_b);
-
-		//if (this.original_hint_b == 43) console.log('min_mines_in_only_a ' + min_mines_in_only_a);
-		//if (this.original_hint_b == 43) console.log('mines_in_only_a ' + mines_in_only_a);
-
-		// min_mines_in_overlap = 0 ?	// is one of the exclude regions overflowing
-		if (this.min_mines >= only_a.length) { 
-			
-			// var overflowing_mines = this.min_mines - only_a.length;
-			//min_mines_in_overlap = overflowing_mines;
-			//min_mines_in_overlap = Math.max(overflowing_mines, min_mines_in_overlap);
-		}
-		// what if both are overflowing??
-
-		// now I have to consider: exact num, min, max, ... num lonely ... exact groups, max groups, ???
-
-		// first some simple configurations
-		if (only_a.length == 0) {
-			max_mines_in_overlap = this.max_mines;
-			min_mines_in_overlap = this.min_mines;
-			if (this.exact_mines != -1) mines_in_overlap = this.exact_mines;	// if exact is known
-			if (other.exact_mines != -1 && this.exact_mines != -1) mines_in_only_b = other.exact_mines - mines_in_overlap;
-			mines_in_only_a = 0; 
-		} 
-		if (only_b.length == 0) {
-			max_mines_in_overlap = other.max_mines;
-			min_mines_in_overlap = other.min_mines;
-			if (other.exact_mines != -1) mines_in_overlap = other.exact_mines;
-			if (other.exact_mines != -1 && this.exact_mines != -1) mines_in_only_a = this.exact_mines - mines_in_overlap;
-			mines_in_only_b = 0;
-		}
-	
-		//if (this.original_hint_b == 43) console.log('mines_in_only_a ' + mines_in_only_a);
-
-		// can we get exact mines for the subregions?
-		if (min_mines_in_only_a == only_a.length) {
-			mines_in_only_a = only_a.length;	// got it - exact
-			//mines_in_overlap = this.exaxt - mines_in_only_a;
-			min_mines_in_overlap = this.min_mines - mines_in_only_a;
-			min_mines_in_overlap = Math.max(0, min_mines_in_overlap);
-
-			// calc again? gives the same answer as above?
-			max_mines_in_overlap = Math.min(max_mines_in_overlap, this.max_mines - mines_in_only_a);
-
-			//mines_in_only_b = other.exact - mines_in_overlap
-			//max_mines_in_only_b = other.max_mines - min_mines_in_overlap;
-
-			
-		}	
-		if (min_mines_in_only_b == only_b.length) {
-			mines_in_only_b = only_b.length;	// got it - exact
-
-			
-		}
-		if (mines_in_only_a != -1) {
-
-		}
-
-		if (min_mines_in_overlap == overlap.length) {
-			mines_in_overlap = overlap.length;	// got it - exact
-		}	
-	
-		if (min_mines_in_overlap == max_mines_in_overlap) {
-			mines_in_overlap = min_mines_in_overlap;
-		}
-		if (min_mines_in_only_a == max_mines_in_only_a) {
-			mines_in_only_a = min_mines_in_only_a;
-		}
-		if (min_mines_in_only_b == max_mines_in_only_b) {
-			mines_in_only_b = min_mines_in_only_b;
-		}
-
-		// can we get exact positions (is a subregion filled or empty - there are 3 subregions)?
-		// this is the output/effector stage
-		
-		if (mines_in_only_b == only_b.length) {
-			// only_b.length might be 0
-			// loop through only_b -> flag all
-			for (var i = 0; i < only_b.length; i++) {
-				var b = only_b[i];
-				this.game_state.blocks[b].solver_mark_flag = true;
-				if (this.game_state.blocks[b].block_type == 0) console.log('compare > only_b > error - flagged a safe! ' + b);
-			}
-		} else if (mines_in_only_b == 0) {
-			// loop through only_b -> dig (safe) all
-			for (var i = 0; i < only_b.length; i++) {
-				var b = only_b[i];
-				this.game_state.blocks[b].solver_mark_safe = true;
-				if (this.game_state.blocks[b].block_type == 2) console.log('compare > error - dug a mine!' + b);
-			}
-		}
-
-		if (mines_in_only_a == only_a.length) {
-			// only_a.length might be 0
-			// loop through only_a -> flag all
-			for (var i = 0; i < only_a.length; i++) {
-				var b = only_a[i];
-				this.game_state.blocks[b].solver_mark_flag = true;
-				if (this.game_state.blocks[b].block_type == 0) {console.log('compare > only_a > error - flagged a safe!' + b + ' mines_in_only_a ' + mines_in_only_a + ' this.original_hint_b ' + this.original_hint_b + ' this.exact_mines ' + this.exact_mines + ' other.original_hint_b ' + other.original_hint_b);
-				//console.dir(only_a);
-				}
-			}
-		} else if (mines_in_only_a == 0) {
-			// loop through only_a -> dig (safe) all
-			for (var i = 0; i < only_a.length; i++) {
-				var b = only_a[i];
-				this.game_state.blocks[b].solver_mark_safe = true;
-				if (this.game_state.blocks[b].block_type == 2) console.log('compare > error - dug a mine!'+ b);
-			}
-		}
-
-		if (mines_in_overlap == overlap.length) {
-			//
-			// loop through overlap -> flag all
-			for (var i = 0; i < overlap.length; i++) {
-				var b = overlap[i];
-				this.game_state.blocks[b].solver_mark_flag = true;
-				if (this.game_state.blocks[b].block_type == 0) console.log('compare > overlap > error - flagged a safe!'+ b);
-			}
-		} else if (mines_in_overlap == 0) {
-			// loop through overlap -> dig (safe) all
-			for (var i = 0; i < overlap.length; i++) {
-				var b = overlap[i];
-				this.game_state.blocks[b].solver_mark_safe = true;
-				if (this.game_state.blocks[b].block_type == 2) console.log('compare > overlap > error - dug a mine!'+ b);
-			}
-		}
-
-		if (false && (this.game_state.blocks[52].solver_mark_safe == true ||
-		    this.game_state.blocks[52].solver_mark_flag == true)) {
-			console.log('overlap:');
-			console.dir(overlap);
-			console.log('mines_in_overlap == ' + mines_in_overlap);
-			console.log('this.exact_mines ' + this.exact_mines);
-			console.log('other.exact_mines ' + other.exact_mines);
-			console.log('only_a:');
-			console.dir(only_a);
-			console.log('only_b:');
-			console.dir(only_b);
-		} //else console.log('a');
-
-	},	// compare
-
-	scan_for_contradiction: function (other) {
-
-		// other is hypothetical & I'm trying to rule it out
-
-		if (this.min_mines == -1 || other.min_mines == -1 || 
-		    this.max_mines == -1 || other.max_mines == -1) return false;  // this shouldnt happen
-
-		var overlap = [];
-		var only_a = [];
-		var only_b = [];
-
-		for (var i = 0; i < this.blocks.length; i++) {
-			var is_a_in_b = false;
-			for (var j = 0; j < other.blocks.length; j++) {
-				if (this.blocks[i] == other.blocks[j]) {
-					overlap.push(this.blocks[i]);
-					is_a_in_b =  true;
-				}
-			}
-			if (is_a_in_b == false) only_a.push(this.blocks[i]);
-		}
-
-		if (overlap.length == 0) return false;	// no contradiction b/c no overlap
-
-		for (var j = 0; j < other.blocks.length; j++) {
-			var is_in_overlap = false;
-			for (var o = 0; o < overlap.length; o++) {
-				if (other.blocks[j] == overlap[o]) is_in_overlap = true;
-			}
-			if (is_in_overlap == false) only_b.push(other.blocks[j]);
-		}
-
-		
-	} // contradiction
-
-});
-		
-// Daily challenge level
-// Uses a seed (days since 1970)
-GenerateFromSeedStateClass = GameStateClass.extend({
-	
-
-	play_state: null,
-	engine: null,
-	
-
-	init: function(engine, play_state) {
-		this.play_state = play_state;
-		this.engine = engine;
-		// this.play_state.game_mode = 
-
-		this.play_state.reset();
-		//this.seed = Math.round(9999999*Math.random());
-		console.log('seed: ' + this.seed);
- 
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			this.play_state.blocks[b].seed_gen_stage = 999;
-			this.play_state.blocks[b].reset();
-		} 
-
-		this.play_state.game_mode = 10;
-	},
-
-	// every tile keeps track of which hint's it is in the range of
-
-	// every cover knows it's order, when it gets dug/flagged
-	// every hint knows it's order, when it gets 100% used, no longer confused
-
-	// a hint can have a # of solutions that work for it, at a given time in the solution
-
-	// trivial steps in solution (dig or flag) use 1 hint
-	// some steps in the solution (dig or flag) need to use 2+ hints
-
-	// start with the end: only mines + just enough hints
-	// pick a hint, add an empty cover to its range ... OR on the hint
-
-		
-
-	// something like a recursive json for the solution process
-	// {}
-	// tree structure
-	// but i need
-
-	// Alternate method: start with full board, proceed to try to solve, alter if needed
-	// one hint at a time, then pairs of hints
-	// keep track of 'regions' that have n mines in k covers
-	//	trivial case: n == k or n == 0	-> solved... dig/flag
-	//	cross-compare 'regions'
-	//	when stuck, introduce hints to isolate mines
-	// slow process... but a human could do it quickly...
-	// get as far as possible
-	// when it gets stuck, just delete all remaining cover tiles
-	// for easy mode, only use single hints
-
-	
-
-	// -------------
-	// crazy idea: start with full board with 100% mines, no safes
-	//	...?
-	//	place hints until all mines are in range ... ?
-
-	// -------------
-	// each hint calculates + stores each solution for it, for it's range
-	// pick a hint that has 1 solution (solved hint) + add a cover to its range
-	// this tile may be in range of multiple hints
-	// then recalc solutions for this hint(s) whose range we are in (all tiles know which hints see them)
-	// does this double the number of solutions (safe/flag the new cover)? nope
-	//	m == mine	e == empty
-	//	m m m m	4-eye		1 solution	[F,F,F,F]
-	//	m m m m 4-eye	e	5 solutions
-
-	// these solutions can include a 'dont care' flag
-	// for compass hint
-	//	1-compass	? ? ? ?		4 solutions: [F,d,d,d] [d,F,d,d] ..
-	// 	the heart will also need 'dont care' flags
-	//	the zap will need 'dont care' for tiles in it's possible range but not connected to its solution
-
-	// solution is an array in order of the block index, for the tiles in range
-	
-
-	// if we cant get a trivial 1-hint solution, consider pairs of hints - compare their solutions
-	//
-	// still not solvable? find a ?-tile that is unsure (both flag and safe in different solutions)
-	// not necessarily the newly added empty
-	// add a new hint that sees it
-	//
-	// to calc a solution per hint-range, need to use info to make it fast
-	// ie: for a 4-eye (4 mines) don't try every combo of 1, 2 ,3, 5+ mines 
-	// for hearts? maybe start at minimum mines (# lonely mines), no maximum (until # in range)
-	//				even though range includes adjacents
-	//				do final check for loneliness of mines in direct LOS
-	// for 
-	//
-	// most ranges only need to be calc once (eye, crown, touch...)
-	// heart's range: eye range + adjacent tiles	
-	// zap range: all connected
-
-	// --
-	// need to add hints or pairs of hints in ways that target a single tile
-	// blocks[b].solved_by		.seen_by
-
-	// ----
-	// yet another method: keep the level always solved/solvable/oversolved 
-	// 	& add stuff according to production rules
-	//	possibly focusing on 1 hint at a time in backwards sequence
-	//	can tag a tile as must_be_safe, must_be_uncovered, must_not_be_empty_cover etc
-	// non-terminal production symbols: must_prove_safe, must_prove_flag
-	//				    2 coupled covers: we know that 1 is a mine & 1 is safe
-	//				    1 mine in 2 tiles
-	// add hint to empty (or solved) level
-	// ... its like the hint then decides what kind it will be (max or 0)
-	// 	then this decision affects all tiles in its range & determines what those tiles can be (0 or mine)
-	// if its an eye: whole range becomes must_not_be_empty_cover
-	//		  whole range becomes n mines in n tiles
-	//				      0 mines in n tiles
-	// add mines / empties according to rules (so that the hint only ever has 1 solution)
-	// then add another hint that intersects the first (overlapping range)
-
-	// when two counting-hints x-overlap-x and have the same # of mines, all those # of mines must be in
-	//	the overlap, all excluded tiles are provably safe & can be covered up
-	// not just overlap - I think one hints range of covers must be completely inside another's
-
-	// can add an empty BUT needs to also have a hint touching/seeing it as 0
-	// then production rules could act on the hint
-	// production rules will care if the hint is maxed or 0 ??
-
-	// special rule - the zap hint can be replaced with a mine - zap
-	//			z 	  ---->		m z	---> m m z	it grows
-
-	// if we add a new hint that overlaps a solved mine tile, it gets a free empty to place down (?)
-	// 4 touch - can add an empty to its range IF
-	
-	// first challenge - generate boring but solvable levels
-	// for this, the hints will need to be either maxed or 0
-	// MoS level 8
-	// the tiles will need to be tagged as 'cant_be_mine' or 'cant_be_empty_cover' 
-	// or maybe just locked out to hints that come after - need to store sequence number for hint AND range (?)
-	// it gets solved by the player in the same order as the generator generates it
-	// short-circuiting is possible unless I do something about that (tagging covers?, sequence numbers ?)
-
-	// possible to loop back around & break the 'cant_be_empty_cover' tag, and as long as you stay between 'oversolved'-solved you can end up with all the hints between 0 - max
-	// it changes the solving sequence: in the trivial generation case, the hints are added by the gen in the same order they are solved, but sometimes we are able to add empties to the first hint's range (which was a max'd-range) ... so its like the first hint got bumped up from 1 to 2 in the sequence, and a combo of 2nd-hints are now 1st
-
-	// idea: individual mines (or covers) are either 'solved' or 'oversolved'
-	// what is oversolved? maybe both hints are 0 or both are max ?
-	// then I can 'confuse' a hint & make it inbetween... (or just make it the next 0 or max)
-	// when a hint becomes inbetween (neither 0 nor max) - all the covers in its range lose 1 'solve-point'
-	
-	// if we add a hint that starts out pre-confused/inbetween ... then what
-	// that hint isnt doing anything yet, but it tells us we have n mines in k covers
-
-	// each hint tells us there is k mines in n (range) tiles
-	// simple case when n == k ... or n == 0
-
-	// maybe could generate something with cyclic symmetry, then elaborate it with trivial steps
-
-	hint_blocks: [],
-	seed: 50,
-
-	looped_blocks: [],
-
-	must_solve: -1,
-	must_solve_list: [],
-
-	update: function () {
-
-		for (var i = 0; i < 1800; i++) {
-			//this.production_step();
-			this.seed += 9;
-			this.add_hint_and_covers(0);	// hint is 0 or max - add covers to range - trivial generation
-			var non_trivial_hint = this.scan_for_nontrivial();	// alters the lock-out rules
-			// non_trivial_hint (if not -1) and the most recent hint_blocks.push make up a
-			// 2-hint system
-			// maybe: traverse up their ancestry, save all their anscestor hints, wipe everything else?
-			// hopefully then - any new hints/covers will obfuscate the original trivial hint, and require the player to first solve the 2-hint system
-			if (non_trivial_hint >= 0) {
-				
-				console.log('wipe');
-				this.wipe_all_but(non_trivial_hint, this.hint_blocks[this.hint_blocks.length - 1]);
-				this.final_lock(non_trivial_hint);
-				this.final_lock(this.hint_blocks[this.hint_blocks.length - 1]);
-				break;
-			}
-
-			
-		}
-
-		
-
-		for (var i = 0; i < 0; i++) {
-			this.seed += 1;
-			this.add_hint_and_covers(1);
-		}
-
-		// add hearts, compass, crowns, eyebrackets & use final_lock on their ranges...
-		// maybe - cover trivial grandparent & add hints that solve it, which depend on the non-trivial flag/dig
-		// cover + mark as .must_solve = true
-		// now I'm working backwards
-		// tiles marked as final_solved now - starting with the non-trivial flag/dig
-		/// on adding a new hint - does it see final_solved tiles? if no - skip
-		//			 - does it see non final_solved tiles? if yes - can this hint solve them?
-		//							       if no - add our own next tiles to final_solve
-
-		// this.must_solve = grandparent_block
-		// grandparent_block.cover
-
-		// just aiming to hit those must_solve covers
-		// maybe dont need to add more mines/empties (after obscuring the trivial hints with empties)
-
-		for (var m = 0; m < this.must_solve_list.length; m++) {
-			this.must_solve = this.must_solve_list[m];
-			this.play_state.blocks[this.must_solve].solve_me = true;
-			if (this.play_state.blocks[this.must_solve].final_lock == true) {
-	
-				var new_tile = this.must_solve;
-				for (var r = 0; r < this.play_state.blocks[this.must_solve].x_in_range.length; r++) {
-					var x = this.play_state.blocks[this.must_solve].x_in_range[r];
-					var y = this.play_state.blocks[this.must_solve].y_in_range[r];
-					var b = this.play_state.tiles[x][y];
-					console.log('b ' + b + ' this.play_state.blocks[b].final_lock ' + this.play_state.blocks[b].final_lock);
-					if (this.play_state.blocks[b].final_lock == true) continue;
-					if (this.play_state.blocks[b].final_lock == false &&
-					    this.play_state.blocks[b].covered_up == false) {
-						new_tile = b;
-					}
-				}
-				console.log('instead cover ' + new_tile);
-				this.must_solve = new_tile;
-			} 
-			
-			if (this.play_state.blocks[this.must_solve].final_lock == true) continue;
-
-			if (this.must_solve != -1) this.play_state.blocks[this.must_solve].cover();
-		}
-		for (var i = 0; i < 9000; i++) {
-			this.solve_cover_backwards();
-		}
-
-		
-
-		// final pass
-		
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			if (this.play_state.blocks[b].solve_me == true && 
-			    this.play_state.blocks[b].covered_up == true) this.play_state.blocks[b].uncover();
-
-			if (this.play_state.blocks[b].covered_up == true) continue;
-			
-
-			// avoid literal '0' hints:
-			if (this.play_state.blocks[b].preset_hint_type != 0 &&
-			    this.play_state.blocks[b].preset_hint_type != 5 &&
-			    this.play_state.blocks[b].num_mines_counted() == 0 &&
-			    this.play_state.blocks[b].covered_up == false) {
-				// the hint tried to place mines but was locked out - just hide it
-				this.play_state.blocks[b].preset_hint(0);
-			}
-
-			this.play_state.blocks[b].cover();
-			this.play_state.blocks[b].uncover();
-		}
-		
-		this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-	},
-
-	final_lock: function(hint_i) {
-		for (var r = 0; r < this.play_state.blocks[hint_i].x_in_range.length; r++) {
-			var b = this.play_state.tiles[this.play_state.blocks[hint_i].x_in_range[r]][this.play_state.blocks[hint_i].y_in_range[r]];
-			this.play_state.blocks[b].final_lock = true;
-			// if its uncovered then we know its safe:
-			if (this.play_state.blocks[b].covered_up == false) this.play_state.blocks[b].final_solve = true;
-		}
-		// whole range of the 2-hint system is locked in
-		// the solved exclusion areas were set to final_solve = true
-	},
-
-	add_crown: function (block) {
-		// are there final_locks in range?
-	},
-
-	solve_cover_backwards: function() {
-		// working backwards - anything not on the grid now is already solved
-		// anything labelled final_solve is also already solved
-		// as long as we dont get cover tiles (unknowns) in our range we are solved (unless they are final_solve covers, they are fine)
-		// just aiming to hit those must_solve covers
-		// maybe just add hearts etc until I get the solve_me
-		// but we want to also hit those final_solve in order to make a loop
-
-		this.seed = this.seed*this.seed;
-		this.seed = this.seed % 12345678;
-
-		// add a counting hint to an empty tile
-		// this.play_state.blocks[b].seed_gen_stage
-
-		var rand_hint = this.seed % 4 + 1;	// eye
-		if (rand_hint == 3) rand_hint = 4;
-
-		// pick a random tile
-		var rand_tile = this.seed % 100;	// 10x10 grid
-
-		
-
-		// (1) is the solve_me in range ?
-		// (2) are any unknowns in range ? (unknowns == covers that are not final_solve)
-		// (3) any final_solve in range ... great! no need to pass the must_solve tag
-
-		
-		if (this.play_state.blocks[rand_tile].preset_hint_type != 0 ||
-		    this.play_state.blocks[rand_tile].covered_up != false ||
-		    this.play_state.blocks[rand_tile].block_type != 0) {
-			//console.log('solve cover backwards rand_tile cant place ' + rand_tile);
-			//this.must_solve_list.push(solve_me);
-			return;
-		}
-		console.log('solve_cover_backwards ' + rand_tile);
-		
-		this.play_state.blocks[rand_tile].preset_hint(rand_hint);
-		this.play_state.blocks[rand_tile].calc_hint(rand_hint);
-
-		// check range
-		var solve_me_seen = [];
-		var unknowns_seen = 0;
-		var final_solve_seen = 0;
-
-		for (var r = 0; r < this.play_state.blocks[rand_tile].x_in_range.length; r++) {
-			var x = this.play_state.blocks[rand_tile].x_in_range[r];
-			var y = this.play_state.blocks[rand_tile].y_in_range[r];
-			var b = this.play_state.tiles[x][y];
-			if (this.play_state.blocks[b].solve_me == true) solve_me_seen.push(b);
-			//if (b == solve_me) solve_me_seen++
-			if (this.play_state.blocks[b].covered_up == true && 
-			    this.play_state.blocks[b].final_solve == false) unknowns_seen++;
-			if (this.play_state.blocks[b].final_solve == true) final_solve_seen++;
-		}
-
-		///console.log('this.play_state.blocks[rand_tile].x_in_range.length ' + this.play_state.blocks[rand_tile].x_in_range.length);
-
-		console.log('solve_me_seen.length ' + solve_me_seen.length + ' unknowns ' + unknowns_seen);
-		
-		if (solve_me_seen.length > 0 &&
-		    unknowns_seen == 0)	{
-			for (var s = 0; s < solve_me_seen.length; s++) this.play_state.blocks[solve_me_seen[s]].solve_me = false;
-			////alert('must solve was solved ' + solve_me_seen[s]);
-			if (final_solve_seen > 0) return; // great!
-			this.play_state.blocks[rand_tile].cover();
-			this.play_state.blocks[rand_tile].solve_me = true;
-			//this.must_solve_list.push(rand_tile);
-
-		} else {
-			this.play_state.blocks[rand_tile].preset_hint(0);
-			//this.must_solve_list.push(solve_me);
-		}
-
-	},
-
-	wipe_all_but: function (hint_a, hint_b) {
-		console.log('wipe_all_but ' + hint_a + ' ' + hint_b);
-		
-		this.play_state.blocks[hint_a].mark_safe_gen();
-		this.play_state.blocks[hint_b].mark_safe_gen();
-		for (var b = 0; b < this.play_state.blocks.length; b++) {
-			if (this.play_state.blocks[b].hint_safe_gen == false) {
-				if (this.play_state.blocks[b].preset_hint_type != 0) this.play_state.blocks[b].gen_stage = this.play_state.blocks[b].wiped_gen_stage;
-				this.play_state.blocks[b].preset_hint(0);
-				
-			}
-			if (this.play_state.blocks[b].safe_gen == true &&
-			this.play_state.blocks[b].my_gen_parents.length == 0 &&
-			this.play_state.blocks[b].preset_hint_type != 0) {
-				this.must_solve = b;
-				console.log('this.must_solve ' + this.must_solve);
-				this.must_solve_list.push(b);
-			}
-			if (this.play_state.blocks[b].safe_gen == true) continue;
-
-			if (b == hint_b) console.log('error: wiping hint_b ' + b);
-			this.play_state.blocks[b].set_type(0);
-			this.play_state.blocks[b].uncover();
-			this.play_state.blocks[b].reset();
-		}
-		
-	},
-
-	mines_in_area: [],//	[1, 	  2, 	     0,   7,    ... ]
-	area: [],	//	[[b,b,b],[b,b,b,b], [b], [b,b], ... ]	// block indices
-	area_hints: [],	//	[b,b,b,b]
-	last_nontrivial_scan: 0,
-
-	scan_for_nontrivial: function () {
-		// this looks for opportunities to add non-trivial steps to the level
-		// put the non-trivally solved tiles at seed_gen_stage = 0, all other tiles get their seed_gen_stage++
-		////alert('this.hint_blocks.length' + this.hint_blocks.length);
-		if (this.hint_blocks.length < 2) return -1;
-
-		if (this.last_nontrivial_scan == this.hint_blocks.length ) return -1;
-		this.last_nontrivial_scan = this.hint_blocks.length;
-
-		var newest_hint = this.hint_blocks[this.hint_blocks.length - 1];
-
-		
-
-		// wipe clean the ranges?	this.area = [] ?				
-
-		// fill out all single-hint ranges
-		new_area = [];
-		for (var r = 0; r < this.play_state.blocks[newest_hint].x_in_range.length; r++) {
-			// only care about covered
-			
-			var x = this.play_state.blocks[newest_hint].x_in_range[r];
-			var y = this.play_state.blocks[newest_hint].y_in_range[r];
-			var b = this.play_state.tiles[x][y];
-			if (this.play_state.blocks[b].covered_up == false) continue;
-			new_area.push(b);
-		}
-
-		// do we test trivial hints or not?
-		// I think it depends on what the effect of this code is
-		// are we looking for opportunities to add covered tiles to their range?
-		// or are we looking to mark existing tiles(s) as solvable at stage 1?
-		// what is the difference between these two things?
-
-		var num_mines = this.play_state.blocks[newest_hint].num_mines_counted();
-
-		if (new_area.length == num_mines) return -1; // exlude trivial
-
-		this.area.push(new_area);
-
-		this.area_hints.push(newest_hint);
-
-		this.mines_in_area.push(num_mines);
-
-		// compare set of areas (single-hint ranges) to define new ranges (intersections, exclusions, unions)
-		
-		var non_trivial = false;
-		for (var a = 0; a < this.area.length - 1; a++) {
-
-			if (this.area[a].length == this.mines_in_area[a]) continue; // exclude trivial
-
-			non_trivial = this.compare_areas(a, this.area.length - 1, this.area_hints[a], this.area_hints[this.area.length - 1]);
-			if (non_trivial == true) console.log('found non trivial hint');
-			if (non_trivial == true) return this.area_hints[a];
-		}
-		// x - if any of these have area size == mines_in_area || mines_in_area == 0 ... boom
-
-		return -1;
-		
-	},
-
-	compare_areas : function (area_a, area_b, hint_a, hint_b) {
-		var overlap = [];
-		var only_a = [];
-		var only_b = [];
-
-		//var hint_a = this.hint_blocks[area_a];
-		//var hint_b = this.hint_blocks[area_b];
-
-		var bump_stages_up = 0;
-
-		// for loop ... fill out overlap, only_a, only_b
-		// we only care about covered tiles (do we?)
-		for (var a = 0; a < this.area[area_a].length; a++) {
-			var is_a_in_b = false;
-			for (var b = 0; b < this.area[area_b].length; b++) {
-				if (this.area[area_a][a] == this.area[area_b][b]) {
-					overlap.push(this.area[area_a][a]);
-					is_a_in_b =  true;
-				}
-			}
-			if (is_a_in_b == false) only_a.push(this.area[area_a][a]);
-		}
-		
-		for (var b = 0; b < this.area[area_b].length; b++) {
-			var is_in_overlap = false;
-			for (var o = 0; o < overlap.length; o++) {
-				if (this.area[area_b][b] == overlap[o]) is_in_overlap = true;
-			}
-			if (is_in_overlap == false) only_b.push(this.area[area_b][b]);
-		}
-
-		////alert('overlap.length ' + overlap.length);
-
-		if (overlap.length == 0) return false;
-
-		var mines_in_overlap = -1;	// -1 == unknown
-		var mines_in_only_a = -1;
-		var mines_in_only_b = -1;
-
-		if (overlap.length == this.area[area_a].length) {
-			// only_b.length == 0 ... nope: only_a.length == 0
-			mines_in_overlap = this.mines_in_area[area_a];
-			mines_in_only_b = this.mines_in_area[area_b] - mines_in_overlap;
-			
-		} else if (overlap.length == this.area[area_b].length) {
-			mines_in_overlap = this.mines_in_area[area_b];
-			mines_in_only_a = this.mines_in_area[area_a] - mines_in_overlap;
-		}
-		// there are other configurations ...
-		// 
-		//console.log('mines_in_a ' + this.mines_in_area[area_a] + 'mines_in_b ' + this.mines_in_area[area_b]);
-		var max_mines_in_overlap = Math.min(this.mines_in_area[area_a], this.mines_in_area[area_b]);
-		var min_mines_in_only_a = this.mines_in_area[area_a] - max_mines_in_overlap;
-		var min_mines_in_only_b = this.mines_in_area[area_b] - max_mines_in_overlap;
-
-		//console.log('min_mines_in_only_a ' + min_mines_in_only_a + 'min_mines_in_only_b ' + min_mines_in_only_b);
-
-		if (min_mines_in_only_a == only_a.length) {
-			mines_in_only_a = only_a.length;
-			mines_in_overlap = this.mines_in_area[area_a] - mines_in_only_a;
-			mines_in_only_b = this.mines_in_area[area_b] - mines_in_overlap;
-			//console.log('mines_in_only_a ' + mines_in_only_a);
-		}
-		if (min_mines_in_only_b == only_b.length) {
-			mines_in_only_b = only_b.length;
-			mines_in_overlap = this.mines_in_area[area_b] - mines_in_only_b;
-			mines_in_only_a = this.mines_in_area[area_a] - mines_in_overlap;
-		}
-
-		//console.log('mines_in_only_a ' + mines_in_only_a + 'mines_in_only_b ' + mines_in_only_b);
-
-		if (this.mines_in_area[area_a] > max_mines_in_overlap) {
-			//mines_in_only_a = this.mines_in_area[area_a] -
-		}
-
-		if (mines_in_overlap == overlap.length) {
-			// is this possible ?
-		}
-		if (mines_in_only_b == only_b.length) {
-			// only_b.length might be 0
-			//console.log();
-			for (var i = 0; i < only_b.length; i++) {
-				var block = only_b[i];
-				this.play_state.blocks[block].gen_stage = -200;
-				this.play_state.blocks[block].final_solve = true;
-				this.add_to_looped_blocks(block);
-				bump_stages_up = 1;
-			}
-			
-		}
-		if (mines_in_only_a == only_a.length) {
-			for (var i = 0; i < only_a.length; i++) {
-				var block = only_a[i];
-				this.play_state.blocks[block].gen_stage = -200;
-				this.play_state.blocks[block].final_solve = true;
-				this.add_to_looped_blocks(block);
-				bump_stages_up = 1;
-			}
-			
-		}
-		if (mines_in_overlap == 0) {
-			// is this possible ?
-		}
-		if (false && mines_in_only_b == 0) {
-			// could freely add empty covers to the range of only_b ? 
-			for (var r = 0; r < this.play_state.blocks[hint_b].x_in_range.length; r++) {
-				//if (mines_in_only_a > 0) continue;
-				var x = this.play_state.blocks[hint_b].x_in_range[r];
-				var y = this.play_state.blocks[hint_b].y_in_range[r];
-				var b = this.play_state.tiles[x][y];
-				if (b == this.play_state.blocks[hint_b].index) continue;
-				if (b == this.play_state.blocks[hint_a].index) continue;
-				if (this.play_state.blocks[b].covered_up == true) continue;
-				var yes_in_overlap = this.play_state.blocks[hint_a].is_in_range(x,y);
-				 
-				if (yes_in_overlap == false) {
-					console.log('mines_in_only_b == 0: added free empty ' + b);
-					this.play_state.blocks[b].cover();
-					only_b.push(b);
-				}	
-			}
-		}
-		if (false && mines_in_only_a == 0) {
-			// could freely add empty covers to the range of a ?
-			// AND these covers (and any existing covers in only_a) are now stage 1 solved
-			for (var r = 0; r < this.play_state.blocks[hint_a].x_in_range.length; r++) {
-				//if (mines_in_only_b > 0) continue;
-				var x = this.play_state.blocks[hint_a].x_in_range[r];
-				var y = this.play_state.blocks[hint_a].y_in_range[r];
-				var b = this.play_state.tiles[x][y];
-				if (b == this.play_state.blocks[hint_b].index) continue;
-				if (b == this.play_state.blocks[hint_a].index) continue;
-				if (this.play_state.blocks[b].covered_up == true) continue;
-				var yes_in_overlap = this.play_state.blocks[hint_b].is_in_range(x,y);
-				 
-				if (yes_in_overlap == false) {
-					console.log('mines_in_only_a == 0: added free empty ' + b);
-					this.play_state.blocks[b].cover();
-					only_a.push(b);
-				}	
-			}
-		}
-		if (mines_in_only_b == 0) {
-			// stage 1 solved
-			for (var i = 0; i < only_b.length; i++) {
-				var block = only_b[i];
-				this.play_state.blocks[block].gen_stage = -200;
-				this.play_state.blocks[block].final_solve = true;
-				this.add_to_looped_blocks(block);
-				bump_stages_up = 1;
-			}
-			
-		}
-		if (mines_in_only_a == 0) {
-			// stage 1 solved
-
-			for (var i = 0; i < only_a.length; i++) {
-				var block = only_a[i];
-				this.play_state.blocks[block].gen_stage = -200;
-				this.play_state.blocks[block].final_solve = true;
-				this.add_to_looped_blocks(block);
-				bump_stages_up = 1;
-			}
-			
-		}
-
-		//if (this.play_state.blocks[hint_b].covered_up == true) 
-
-		//var difference_in_mines = this.mines_in_area[area_a] - this.mines_in_area[area_b];
-		//var difference_in_exclude_sizes = only_a.length - only_b.length;
-
-		if (bump_stages_up == true) {
-			console.log('bump_stages_up');
-			console.log('hint_a ' + hint_a);
-			console.log('hint_b ' + hint_b);
-			console.log('hint type ' + this.play_state.blocks[hint_a].preset_hint_type);
-			for (var b = 0; b < this.play_state.blocks.length; b++) {
-				if (this.play_state.blocks[b].gen_stage == -1) console.log(b);
-				if (this.play_state.blocks[b].gen_stage == 0) continue;
-				this.play_state.blocks[b].gen_stage+=201;
-				this.play_state.blocks[b].wiped_gen_stage+=201;
-			}
-			return true;
-		}
-		return false;
-	},
-
-	seed_gen_stage: 0,
-
-	pick_good_position : function (hinttype) {
-		if (hinttype == 4) {
-			
-		}
-	},
-
-	good_eye_positions: [],
-	good_fourtouch_positions: [],
-	good_eighttouch_positions: [],
-
-	add_to_looped_blocks: function (block) {
-		//this.looped_blocks.push(block);
-		if (block % 10 > 0) this.good_fourtouch_positions.push(block - 1);
-		if (block % 10 < 9) this.good_fourtouch_positions.push(block + 1);
-		if (Math.floor(block / 10) > 0) this.good_fourtouch_positions.push(block - 10);
-		if (Math.floor(block / 10) < 9) this.good_fourtouch_positions.push(block + 10);
-	},
-
-	add_hint_and_covers: function (min_gen_stage) {
-		this.seed = this.seed*this.seed;
-		this.seed = this.seed % 12345678;
-
-		// add a counting hint to an empty tile
-		// this.play_state.blocks[b].seed_gen_stage
-
-		var rand_hint = this.seed % 4 + 1;	// eye
-		if (rand_hint == 3) rand_hint = 4;
-
-		
-
-		// pick a random tile
-		var rand_tile = this.seed % 100;	// 10x10 grid
-
-		if (rand_hint == 2 && this.seed % 4 == 1) {
-			// join
-		}
-
-		// generally, try to get a tile inside the range of another hint
-		var loopss = 100;
-
-		if (this.good_fourtouch_positions.length > 0) {
-			rand_tile = this.good_fourtouch_positions.pop();
-			loopss = -1;
-			//console.log('this.good_fourtouch_positions.pop');
-		}
-
-		while (loopss > 0 &&
-		       this.play_state.blocks[rand_tile].locked_to_child_gen_stage == false) {
-		       //this.play_state.blocks[rand_tile].seed_gen_stage > 100) {
-			loopss--;
-			rand_tile += 2;
-			rand_tile = rand_tile % 100;
-		}
-
-		if (this.play_state.blocks[rand_tile].preset_hint_type != 0 ||
-		    this.play_state.blocks[rand_tile].covered_up != false ||
-		    this.play_state.blocks[rand_tile].block_type != 0) return;
-
-		this.seed_gen_stage++;
-
-		
-		this.play_state.blocks[rand_tile].preset_hint(rand_hint);
-		// lock out - the generator cant place covers AFTER this step
-		this.play_state.blocks[rand_tile].seed_gen_stage = this.seed_gen_stage;
-		var success = this.play_state.blocks[rand_tile].project_range_generator(min_gen_stage);
-
-		if (success == false) {
-			this.play_state.blocks[rand_tile].preset_hint(0);
-			return;
-		}
-
-		//if (this.play_state.blocks[rand_tile].gen_stage == -1) //alert('woo');
-
-		// decide if we are max or 0
-		// if our range intersects a previous hint's range (does it need to be covered?) then maybe take the opposite ?
-		var max_or_zero = 0;//this.seed_gen_stage % 2 + 1;//this.seed % 2;	// 1 == 0 , 2 == max
-		
-		// avoid literal '0' hints:
-		if (this.play_state.blocks[rand_tile].num_mines_counted() == 0) max_or_zero = 2;
-		else max_or_zero = 1;
-
-		var num_covers = this.seed % Math.round(0.33*this.play_state.blocks[rand_tile].x_in_range.length) + 1;
-		if (num_covers > this.play_state.blocks[rand_tile].x_in_range.length/2) num_covers = Math.floor(num_covers/2);
-
-		var covers_added = 0;
-		var loops = 40;
-		while (num_covers > 0 && loops > 0) {
-			loops--;
-			this.seed = Math.round(this.seed*1.3 + 7);
-			var b = this.play_state.blocks[rand_tile].pick_tile_in_range(this.seed);
-			if (b == -1) continue;
-
-			//if (this.play_state.blocks[b].seed_gen_stage < this.play_state.blocks[rand_tile].seed_gen_stage) continue;
-
-			if (this.play_state.blocks[b].gen_stage < this.play_state.blocks[rand_tile].gen_stage &&
-				this.play_state.blocks[b].locked_to_child_gen_stage == true) continue;
-
-
-			//console.log('genstage ' + this.play_state.blocks[rand_tile].gen_stage +
-			//	'this.play_state.blocks[b].gen_stage ' + this.play_state.blocks[b].gen_stage +
-			//	'b: ' + b);
-
-			if (this.play_state.blocks[b].block_type == 1) continue;
-			if (this.play_state.blocks[b].preset_hint_type != 0 && max_or_zero == 2) continue;
-
-			if (this.play_state.blocks[b].final_lock == true) continue;
-
-			//if (this.play_state.blocks[b].preset_hint_type != 0) continue;
-
-			if (this.play_state.blocks[b].preset_hint_type != 0 &&
-			this.play_state.blocks[b].gen_stage <= this.play_state.blocks[rand_tile].gen_stage &&
-			this.play_state.blocks[b].locked_to_child_gen_stage == true) {
-				console.log('tried to cover hint this.play_state.blocks[b].gen_stage ' + this.play_state.blocks[b].gen_stage + ' this.play_state.blocks[rand_tile].gen_stage ' + this.play_state.blocks[rand_tile].gen_stage );
-				continue;
-			}
-			
-
-			if (this.play_state.blocks[b].preset_hint_type != 0) console.log('covered hint ' + b);
-
-			if (max_or_zero == 1) this.play_state.blocks[b].set_type(0);
-			else this.play_state.blocks[b].set_type(2);
-
-
-
-			this.play_state.blocks[b].cover();
-			num_covers--;
-			covers_added++;
-		}
-
-		for (var c = 999; c < num_covers; c++) {
-			this.seed = Math.round(this.seed*1.3 + 7);
-			var b = this.play_state.blocks[rand_tile].pick_tile_in_range(this.seed);
-			if (b == -1) continue;
-			if (this.play_state.blocks[b].seed_gen_stage < this.play_state.blocks[rand_tile].seed_gen_stage) continue;
-
-			if (this.play_state.blocks[b].block_type == 1) continue;
-
-			if (max_or_zero == 1) this.play_state.blocks[b].set_type(0);
-			else this.play_state.blocks[b].set_type(2);
-
-			this.play_state.blocks[b].cover();
-		}
-
-		if (covers_added == 0) {
-			this.play_state.blocks[rand_tile].preset_hint(0);
-			return;
-		}
-
-		if (this.play_state.blocks[rand_tile].num_mines_counted() != 0) this.hint_blocks.push(rand_tile);
-		
-
-		// place covers (0 or mine) if lockout rules allow	
-
-		
-	},
-
-	check_for_subset: function (hint_a, hint_b) {
-		// is all of the covers in A also in B ?
-		for (var a = 0; a < this.play_state.blocks[hint_a].covers_in_range.length; a++) {
-			var t = this.play_state.blocks[hint_a].covers_in_range[a];
-			if (this.play_state.blocks[t].is_in_range_of(hint_b) == false) return false;
-		}
-		return true;
-	},
-
-	production_step: function () {
-		// assuming we have a solvable level
-		// pick an existing hint or make a new one
-
-		//var rand_ = this.seed % this.hint_blocks.length;
-		//var hint_tile = this.hint_blocks[rand_];
-
-		this.seed = this.seed*this.seed;
-		this.seed = this.seed % 12345678;
-
-		// pick a random tile
-		var rand_tile = this.seed % 100;	// 10x10 grid
-
-		this.seed+= this.seed % 3;
-
-		// search for a matching rule
-		// pick a random rule - does it match?
-		var rand_rule = this.seed % mos_prod_rules.length;
-
-		// try to apply this production rule
-		var success = this.play_state.blocks[rand_tile].do_production_rule(rand_rule);
-
-		////alert('used rule ' + rand_rule + ' sucess: ' + success);
-		
-	},
-
-	pick_tile_to_cover : function () {
-		var rand_ = this.seed % this.hint_blocks.length;
-		var hint_tile = this.hint_blocks[rand_];
-
-		// get an uncovered tile from this hint's range
-		// should I consider this.play_state.blocks[b].seed_gen_stage ?
-		var block = this.game_state.blocks[hint_block].get_empty_tile_in_range();
-
-		
-	},
-
-	gen_step: function () {
-
-		// assuming we have a solvable level (at seed_gen_stage)
-		// seed_gen_stage++
-
-		// pick a tile to cover
-		var new_cover_b = this.pick_tile_to_cover();
-		if (new_cover_b == -1) return -1;
-
-		// cover it		
-
-		// get the hints that see this tile - recalc their solutions
-		for (var h = 0; h < this.game_state.blocks[new_cover_b].hints_that_see_me_seed; h++) {
-			var x = this.game_state.blocks[new_cover_b].hints_that_see_me_seed[h].x;
-			var y = this.game_state.blocks[new_cover_b].hints_that_see_me_seed[h].y;
-			var hint_b = this.game_state.tiles[x][y];
-			this.game_state.blocks[hint_b].calc_possible_solutions();
-		} 
-
-		// easy mode - only need 1-hint solutions
-
-		// if 1 hint has 1 solution - level is solved, and this hint must be visible first (?)
-		// if all hints have 1 solution - level is solved
-		// if all hints have >1 solutuin - compare them for contradictions to exclude, cull solutions
-		//			if still >1 solution for both/all 
-		//				find the tile(s) that they disagree on - add hints
-	}
-
-});
-
-
 g_rand_gen_sprite = null;
 
 GenerateRandStateClass = GameStateClass.extend({
@@ -4821,7 +2793,7 @@ GenerateRandStateClass = GameStateClass.extend({
 		this.play_state = play_state;
 		this.engine = engine;
 
-		this.play_state.game_mode = 1;	
+		this.play_state.game_mode = 3;	
 
 		play_screen_container.hide();
 
@@ -5259,7 +3231,12 @@ GenerateRandStateClass = GameStateClass.extend({
 		else if (g_toggle_crown.toggled != 0) base_hint = 12;
 		
 
-		if (g_toggle_eyerepeat.toggled == 1) base_hint = 51;
+		if (g_toggle_eyerepeat.toggled == 1) {
+
+			base_hint = 51;
+			//base_hint = 53;	// testing my contacts idea, DELETE THIS
+			//if (Math.random() < 0.5) base_hint = 53; base_hint = 4;
+		}
 
 		for (var x = 0; x < this.play_state.grid_w; x++) {
 			if (this.threebythree_mode == true) continue;
@@ -5681,6 +3658,7 @@ GenerateRandStateClass = GameStateClass.extend({
 					} else if (rand_hint < 0.625 && num_eyebrackets > 0 && must_not_be != 13 && touch_only == false) {
 						if (eye_only == false) num_eyebrackets--;
 						this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint(13);
+						//this.play_state.blocks[this.play_state.tiles[x][y]].preset_hint(53);
 						was_covered = this.play_state.blocks[this.play_state.tiles[x][y]].covered_up;
 						this.play_state.blocks[this.play_state.tiles[x][y]].cover();
 						done_ = true;
@@ -6692,9 +4670,11 @@ DuringGameStateClass = GameStateClass.extend({
 		g_this_level_num_text.change_text("LEVEL " + (this.play_state.current_level + 1).toString());
 		if (this.play_state.game_mode == 0) g_this_level_num_text.update_pos(16,16);
 		else if (this.play_state.game_mode == 3) {
- 			g_this_level_num_text.update_pos(16,16);
-			g_this_level_num_text.change_text("BY " + g_current_community_level_author + "\nRATING: " 
-							+ g_current_community_level_rating + "\nVOTES:" + 							g_current_community_level_votes);
+			
+		g_this_level_num_text.change_text("CUSTOM LEVEL " );
+ 		//	g_this_level_num_text.update_pos(16,16);
+		//	g_this_level_num_text.change_text("BY " + g_current_community_level_author + "\nRATING: " 
+		//					+ g_current_community_level_rating + "\nVOTES:" + 							g_current_community_level_votes);
 		} else g_this_level_num_text.update_pos(-999,-999);
 
 		if (this.play_state.game_mode != 0) {
@@ -7676,7 +5656,7 @@ GameOverStateClass = GameStateClass.extend({
 
 		// kongregate.services.getUserId() will return 0 if not signed in
 		if (on_kong && kongregate.services.getUserId() > 0 && this.play_state.game_mode == 3) {
-			this.allow_rating = true;
+			//this.allow_rating = true;
 		}
 
 		if (g_star_rating_obj == null) {
@@ -7825,7 +5805,7 @@ GameOverStateClass = GameStateClass.extend({
 
 		if (screen_width < screen_height && mouse.y > screen_height*0.5) next_ = 1;
 
-		if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
+		//if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
 
 		if (x > this.newgame_x - 32 &&
 		    x < this.newgame_x + 32 &&
@@ -7855,36 +5835,10 @@ GameOverStateClass = GameStateClass.extend({
 				this.play_state.restore_backup();
 				return;
 			} else if (this.play_state.game_mode == 3) {
-				// community levels - copied from winstate
 				
-				// mark as done
-			/*	for (var i = 0; i < g_community_list_data.length; i++) {
-					if (g_current_community_level_id == g_community_list_data[i].hash) {
-						
-						//g_community_list_data[i]['done'] = true;	// um no cos we lost
-					}
-
-				}
-			*/
-
-				// some stuff about rating here - see winstate
-				if (g_star_rating_obj.rating != -1 &&
-				    this.allow_rating == true) {
-					var ratelevel = new RateLevel(this.engine, this.play_state);
-					ratelevel.level_id = g_current_community_level_id;	// is this the hash???? it is now
-					ratelevel.rating = g_star_rating_obj.rating;
-					
-					this.change_state(this.engine, ratelevel);
-					return;
-				}
-
 				
-				var auto_load = false;
-
-				this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
-				//var restart_state = new RestartGameStateClass(this.engine, this.play_state);
-				//restart_state.no_ad = true;
-				//this.change_state(this.engine, restart_state);
+				this.change_state(this.engine, new MenuStateClass(this.engine, this.play_state));
+				return;
 
 				return;
 			}
@@ -8100,756 +6054,6 @@ GameOverStateClass = GameStateClass.extend({
 		
 		
 	}
-});
-
-g_community_level_info_play = null;
-g_community_level_info_url = null;
-g_community_level_info_text = null;	// name + author
-g_community_level_info_clipboard = null;
-
-CommunityLevelInfoStateClass = GameStateClass.extend({
-
-	play_state: null,
-	engine: null,
-
-	level_id: 0,
-
-	rating: false,
-
-	init: function(engine, play_state){
-		this.play_state = play_state;
-		this.engine = engine;
-
-		// this.add_button("play_icon.png",0,this.on_play)   .... bang, done - 0 is a code, on_play() starts the next whatever
-		// this.add_title	
-		// 
-
-		this.play_state.reset();
-
-		if (g_community_level_info_play == null) {
-
-			g_community_level_info_play = new ButtonClass();
-			g_community_level_info_play.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
-			
-			g_community_level_info_url = new TextClass(Types.Layer.GAME_MENU);
-			g_community_level_info_url.set_font(Types.Fonts.XSMALL);
-			g_community_level_info_url.set_text("www.zblip.com/mineofsight/?level=" + this.level_id);
-			
-			g_community_level_info_text = new TextClass(Types.Layer.GAME_MENU);
-			g_community_level_info_text.set_font(Types.Fonts.SMALL);
-			//g_community_level_info_text.set_text("NAME AND AUTHOR GO HERE\nBY AUTHOR");
-			g_community_level_info_text.set_text("UPLOADED!");
-
-			g_community_level_info_clipboard = new ButtonClass();
-			g_community_level_info_clipboard.setup_sprite("play_icon.png",Types.Layer.GAME_MENU);
-		}
-
-		g_community_level_info_play.make_vis();
-		g_community_level_info_url.make_vis();
-		g_community_level_info_text.make_vis();	// name + author
-		g_community_level_info_clipboard.make_vis();
-
-		
-
-		this.screen_resized();
-
-	},
-
-	cleanup: function() {
-		g_community_level_info_play.hide();
-		g_community_level_info_url.hide();
-		g_community_level_info_text.hide();	// name + author
-		g_community_level_info_clipboard.hide();
-	},
-
-	play_x: 0,
-	play_y: 0,
-
-	clipboard_x: 0,
-	clipboard_y: 0,
-
-	screen_resized: function() {
-
-		this.play_x = -999-screen_width - 64;
-		this.play_y = -999-screen_height - 64;
-
-		this.clipboard_x = 64;
-		this.clipboard_y = 128;
-
-
-		if (on_facebook) {
-			this.clipboard_y = - 999;
-
-		}
-
-		g_community_level_info_text.update_pos(32,32);
-
-		g_community_level_info_clipboard.update_pos(this.clipboard_x, this.clipboard_y);
-		g_community_level_info_url.update_pos(this.clipboard_x + 64, this.clipboard_y);
-
-		g_community_level_info_play.update_pos(this.play_x, this.play_y);
-	},
-
-	copy_to_clipboard: function () {
-		document.execCommand('copy', function(e){
-			
-    			e.clipboardData.setData('text/plain', 'http://www.zblip.com/mineofsight/?level=' + this.level_id);
-    			e.preventDefault(); // We want our data, not data from any selection, to be written to the clipboard
-		});
-	},
-
-	go_to_site: function() {
-		window.open("http://www.zblip.com/mineofsight/?level=" + this.level_id);
-	},
-
-	clicked_site: false,
-
-	handle_mouse_down: function(engine,x,y) {
-		if (mouse.x > this.clipboard_x - 16 &&
-		    mouse.x < this.clipboard_x + 16 &&
-		    mouse.y > this.clipboard_y - 16 &&
-		    mouse.y < this.clipboard_y + 16 && this.clicked_site == false) {
-			this.go_to_site();
-			this.clicked_site = true;
-		} else if (mouse.x > this.play_x - 16 &&
-		    	  mouse.x < this.play_x + 16 &&
-		    	  mouse.y > this.play_y - 16 &&
-		    	  mouse.y < this.play_y + 16 && this.clicked_site == false) {
-			//this.go_to_site();
-			//this.clicked_site = true;
-		}
-	},
-
-	load_info: function(id) {
-		this.level_id = id;
-
-		g_community_level_info_url.change_text("www.zblip.com/mineofsight/?level=" + this.level_id);
-
-
-		if (this.rating == true) {
-
-		}
-
-		
-
-	}
-	
-
-});
-
-
-g_error_message_state_text_obj = null;
-ErrorMessageStateClass = GameStateClass.extend({
-	play_state: null,
-	engine: null,
-
-	init: function(engine, play_state){
-		this.play_state = play_state;
-		this.engine = engine;
-
-		this.play_state.reset();
-
-		if (g_error_message_state_text_obj == null) {
-			g_error_message_state_text_obj = new TextClass(Types.Layer.GAME_MENU);
-			g_error_message_state_text_obj.set_font(Types.Fonts.SMALL);
-			g_error_message_state_text_obj.set_text("ERROR");
-		}
-
-		g_error_message_state_text_obj.make_vis();
-		g_error_message_state_text_obj.update_pos(screen_width/2,screen_height/2);
-		g_error_message_state_text_obj.center_x(screen_width/2);
-
-	},
-
-	cleanup: function () {
-		g_error_message_state_text_obj.hide();
-	},
-
-	set_text: function (new_text) {
-		g_error_message_state_text_obj.change_text(new_text);
-		g_error_message_state_text_obj.center_x(screen_width/2);
-
-	}
-});
-
-
-g_community_list_data = {};
-g_community_list_fetched = false;
-g_community_list_fetch_error = false;
-g_text_please_wait = null;
-
-CommunityFetchStateClass = GameStateClass.extend({
-
-	// fetching a list or a level -  or use this for both?
-
-	play_state: null,
-	engine: null,
-
-	init: function(engine, play_state){
-		this.play_state = play_state;
-		this.engine = engine;
-
-		this.play_state.reset();
-
-		g_community_list_fetched = false;
-
-		g_community_list_fetch_error = false;
-
-		
-
-		//g_community_list_fetched = true;
-
-		if (g_text_please_wait == null) {
-			g_text_please_wait = new TextClass(Types.Layer.GAME_MENU);
-			g_text_please_wait.set_font(Types.Fonts.SMALL);
-			g_text_please_wait.set_text("LOADING...");
-		}
-
-		g_text_please_wait.make_vis();
-		g_text_please_wait.update_pos(screen_width/2,screen_height/2);
-		g_text_please_wait.center_x(screen_width/2);
-
-		if (g_community_level_browser == null) {
-			g_community_level_browser = new CommunityLevelBrowser(this.play_state);
-	
-		}
-
-		this.fetch();
-
-		//if (g_autoload_level != null && g_autoload_level.length > 5) return;	// dont show browser
-		//g_community_level_browser.make_vis();
-
-		g_community_level_browser.hide();	// for now, we don't show the browser, just auto-jump-in to the levels
-	},
-
-	fetch: function() {
-
-		
-		var done_levels = [];
-		for (var i = 0; i < g_community_list_data.length; i++) {
-			if (g_community_list_data[i].done != null &&
-	    		    g_community_list_data[i].done == true) {
-
-				done_levels.push(g_community_list_data[i].hash);
-			}
-		}
-		
-
-		var prefs = {
-			//publickey: "aaa",
-    			//levelname: "My level",
-   			//leveldata: this.levelstring,
-    			//playername: "anonyminer",
-			//playerid: "0",
-
-			hand: "0",
-			eighthand: "0",
-			eye: "0",
-			heart: "0",	// 0  1   -1
-			compass: "0",
-			crown: "0",
-			eyebracket: "0",
-
-			newest: "1",	// send back all new of within last week, ordered by rating, chopped down to 10
-			rating: "0",
-			random: "0",
-
-			exclude_levels: done_levels,	// array of hashes to exclude
-			
-  		};
-
-
-		// For now I will just auto-fetch the most popuar levels & start playing
-
-		//prefs.heart = g_community_level_browser.get_hint_status(10).toString();
-		//prefs.compass = g_community_level_browser.get_hint_status(11).toString();
-		//prefs.crown = g_community_level_browser.get_hint_status(12).toString();
-		//prefs.hand = g_community_level_browser.get_hint_status(3).toString();
-		//prefs.eighthand = g_community_level_browser.get_hint_status(5).toString();
-		//prefs.eye = g_community_level_browser.get_hint_status(4).toString();
-		//prefs.eyebracket = g_community_level_browser.get_hint_status(13).toString();
-
-		
-		if (g_autoload_level != null && g_autoload_level.length > 5) {
-			prefs = {
-				hash: 	g_autoload_level,
-			};
-
-			
-
-			//g_autoload_level = "";
-		} 
-
-		var json = JSON.stringify(prefs);
-
-
-		//console.dir(prefs);
-
-
-		// send GET request
-		var request = new XMLHttpRequest();
-
-		request.onerror = function() {
-			//console.log('FETCH ERROR');
-			g_community_list_fetch_error = true;
-		};
-
-		request.onload = function() {
-			//console.log('fetch request.onload');
-			g_community_list_data = JSON.parse(request.responseText);
-			//console.log('g_community_list_data ' + g_community_list_data);
-			console.dir('request.responseText ' + request.responseText);
-
-			// g_community_list_data.length returns zero? and throws error
-			////console.log('g_community_list_data.length ' + g_community_list_data.length);
-			////console.log('g_community_list_data[0].data.toString() ' + g_community_list_data[0].data.toString());
-
-			g_community_list_fetched = true;
-
-			for (var i = 0; i < g_community_list_data.length; i++) {
-				
-				if (g_community_list_data[i].num_ratings < 4) g_community_list_data[i].rating = 3;
-			}
-
-			// sort by rand
-			
-			g_community_list_data.sort(function (a, b) {
-				// g_community_list_data[i].num_ratings
-
-				return Math.random() - Math.random();
-
-				var b_ratings = 1;
-				if (b.num_ratings != null && b.num_ratings > 0) b_ratings = b.num_ratings;
-
-				var a_ratings = 1;
-				if (a.num_ratings != null && a.num_ratings > 0) a_ratings = a.num_ratings;
-
-				
-				return b.rating/b_ratings - a.rating/a_ratings;
-			});
-			
-
-			// which levels are marked as done by this player? 
-			for (var i = 0; i < g_community_list_data.length; i++) {
-				var won_cm_lvl = localStorage.getItem("MoShash" + g_community_list_data[i].hash);
-
-				if (won_cm_lvl != null && won_cm_lvl == "1") g_community_list_data[i]['done'] = true;
-			}
-		};
-
-		//var get_request = backend_url + '?';
-		//get_request + 'var1=' + var1 + '&';
-
-
-		if(window.XDomainRequest) {
-			request.open("POST", backend_url+'levelsget');
-		}
-		else {
-			request.open("POST", backend_url+'levelsget', true);
-		}
-
-		//request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-		
-		request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		
-		request.send(json);	// i can put some json in there
-					// like the search params, which types of clues
-					// OR if i'm after a specific level (such as when it's in the URL), include the ID
-	},
-
-	
-
-	on_fail: function () {
-		var error_message = new ErrorMessageStateClass(this.engine, this.play_state);
-		error_message.set_text("COULDN'T CONNECT");		
-
-		this.change_state(this.engine, error_message); // ErrorMessageStateClass
-	},
-
-	cleanup: function () {
-		g_community_level_browser.hide();
-		g_text_please_wait.hide();
-	},
-
-	sort_community_levels: function () {
-		// g_community_list_data
-		//g_community_list_data.sort
-	},
-
-	populate_browser: function() {
-
-
-		g_community_level_browser.reset();
-
-		for (var i = 0; i < 6; i++) {
-
-			if (i >= g_community_list_data.length ) break
-
-			var author = g_community_list_data[i].playername || 'ANON';
-			var levelname = g_community_list_data[i].levelname || 'UNNAMED LEVEL';
-			var rating = g_community_list_data[i].rating || 0;
-
-			if (g_community_list_data[i].num_ratings > 0) {
-				rating = rating / g_community_list_data[i].num_ratings;
-			} 
-
-			
-
-			var attempts = g_community_list_data[i].num_downloaded || 0;
-			var wins =  g_community_list_data[i].num_ratings || 0; // g_community_list_data[i].num_winners || 0;
-			var id = g_community_list_data[i]._id || 0;
-
-			g_community_level_browser.add_level(name, author, rating, attempts, wins, id);
-
-			//console.log('make minimap');
-
-			var data_ = g_community_list_data[i].data.split(',').map(Number);
-
-			//g_community_level_browser.add_to_minimap_data(data_);
-
-			//continue;
-
-			for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-
-				
-
-				var code = 0;
-				var n = 1 + 10*x + y;
-
-
-				if (data_[n] > 100 ) code = 6;
-				else if (data_[n] == 1 ) code = 1;
-
-				g_community_level_browser.add_to_minimap(x,y,code);
-
-			} } // for x for y
-		}
-
-	},
-
-	sort_by_rating : function () {
-		
-	},
-
-	update:function(engine) {
-
-
-		if (g_community_list_fetch_error == true) {
-
-			g_autoload_level = "";
-			this.on_fail();
-
-			//this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state));
-			return;
-		}
-
-		if (g_community_list_fetched == false) return;
-
-		this.sort_by_rating();
-
-		if (g_autoload_level != null && g_autoload_level.length > 5) {
-			// go straight into the level that was in the URL
-
-			g_autoload_level = "";
-
-			var auto_load = true;
-
-			this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
-
-			return;
-		} else {
-			// just jump into the first level!
-			//var auto_load = true;
-
-			//this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
-
-			//return;
-
-		}
-
-		
-
-		// populate
-		//this.populate_browser();
-		// lets not fill the browser here, as the scrolling code is just a repeat
-		
-		// change state CommunityOverworldStateClass
-		this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state));
-	}
-
-	
-});
-
-
-g_community_level_browser = null;
-g_current_community_level_author = "";
-g_current_community_level_rating = "";
-g_current_community_level_votes = "";
-
-g_current_community_level_id = 0;
-
-CommunityOverworldStateClass = GameStateClass.extend({
-// functions like level-loader AND browser/overworld?????????
-
-// no - functions as toggles AND browser
-//      after making toggle-choices you click 'search' and it changes to CommunityFetchStateClass
-
-// make a singleton like OverworldSpritesClassReuseable that lists levels and
-//   contains the toggles, re-use this singleton across game states (community browser, list fetcher)
-
-// maybe community levels start at g_all_level_data_floor_layer[1000] 
-// OR maybe retain only 1 community level at a time,
-
-	play_state: null,
-	engine: null,
-
-	auto_load: false,
-
-	init: function(engine, play_state, auto_load){
-		this.play_state = play_state;
-		this.engine = engine;
-
-		this.play_state.reset();
-
-		//console.log('CommunityOverworldStateClass auto_load ' + auto_load);
-
-		if (g_community_level_browser == null) {
-			g_community_level_browser = new CommunityLevelBrowser(this.play_state);
-	
-		}
-
-		this.auto_load = auto_load;
-
-		//this.scroll_browser(g_community_level_browser.scroll_offset);
-
-		//g_community_level_browser.reset();
-		//g_community_level_browser.make_vis();
-
-		
-
-	},
-
-	cleanup: function () {
-		g_community_level_browser.hide();
-	},
-
-	browser_p: 0,
-
-	scroll_browser: function(offset) {
-
-		this.browser_p += offset;
-
-		if (this.browser_p < 0) this.browser_p = 0;
-
-		//console.log('this.browser_p' + this.browser_p);	
-
-		g_community_level_browser.reset();
-
-		g_community_level_browser.scroll_offset = offset;
-
-		for (var i = 0; i < 6; i++) {
-
-			var j = i + this.browser_p;
-
-			if (j >= g_community_list_data.length ) break;
-
-			var author = g_community_list_data[j].playername || 'ANON';
-			var levelname = g_community_list_data[j].levelname || 'UNNAMED LEVEL';
-			var rating = g_community_list_data[j].rating || 0;
-
-			if (g_community_list_data[j].num_ratings > 0) {
-				rating = rating / g_community_list_data[j].num_ratings;
-			} 
-
-			var attempts = g_community_list_data[j].num_downloaded || 0;
-			var wins = g_community_list_data[j].num_winners || 0;
-			var id = g_community_list_data[j]._id || 0;
-			var ticked = g_community_list_data[j].done || false;
-			//console.log('g_community_list_data[j].done ' + g_community_list_data[j].done);
-			//console.log('ticked ' + ticked);
-			g_community_level_browser.add_level(name, author, rating, attempts, wins, id, ticked);
-
-			//console.log('added level by ' + author);
-
-			//console.log('make minimap');
-
-			var data_ = g_community_list_data[j].data.split(',').map(Number);
-
-			for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-
-				
-
-				var code = 0;
-				var n = 1 + 10*x + y;
-
-
-				if (data_[n] >= 100 ) code = 6;
-				else if (data_[n] == 1 ) code = 1;
-				else code = data_[n];
-
-				g_community_level_browser.add_to_minimap(x,y,code);
-
-			} } // for x for y
-		}
-
-		g_community_level_browser.make_vis();
-
-	},
-
-	
-
-	first_tick: false,
-
-	update:function(engine) {
-
-		
-
-		if (this.auto_load == true) {
-			// for when the id is in the URL
-			// though now i'm using this to load the next level after win or lose
-
-			var level_index = 0;
-			
-			for (var i = 0; i < g_community_list_data.length; i++) {
-				if (g_community_list_data[i].done != null &&
-				    g_community_list_data[i].done == true) {
-					level_index = i + 1;
-				} else break;
-			}
-
-			if (level_index > g_community_list_data.length - 1) {
-				// lets grab some more levels
-				this.change_state(this.engine, new CommunityFetchStateClass(this.engine, this.play_state));
-
-
-				return;
-			} //-+
-
-			this.load_level(level_index);
-			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-			return;
-		} else { 
-
-			// We won't show the browser + options for now, just load + jump in
-			
-			//this.load_level(0);
-			//this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-
-		}
-
-		//return;
-
-		if (this.first_tick == false) {
-			g_community_level_browser.make_vis();
-			this.scroll_browser(0);
-		}
-		this.first_tick = true;
-
-	},
-
-
-
-	load_level: function (level) {
-
-		
-
-		if (g_community_list_data[level] == null ||
-		    g_community_list_data[level].hash == null) {
-
-			var error_message = new ErrorMessageStateClass(this.engine, this.play_state);
-			error_message.set_text("COULDN'T CONNECT");		
-
-			this.change_state(this.engine, error_message); // ErrorMessageStateClass
-			return;			
-		}
-
-		this.play_state.game_mode = 3;
-
-		// g_community_list_data[level]
-
-		g_current_community_level_id = g_community_list_data[level].hash;
-
-		g_current_community_level_author = g_community_list_data[level].playername;
-
-		var rate = g_community_list_data[level].rating;
-
-		if (g_community_list_data[level].num_ratings != null && g_community_list_data[level].num_ratings > 0) {
-			rate = rate / g_community_list_data[level].num_ratings;
-			rate = Math.round(rate*10)/10;
-		}
-
-		g_current_community_level_rating = rate.toString();
-		if (g_community_list_data[level].num_ratings != null) g_current_community_level_votes = g_community_list_data[level].num_ratings.toString();
-		else g_current_community_level_votes = "0";
-
-		// the data is in the form of a string "0,1,0,0,1,2, 104,  ...
-	 	var data_ = g_community_list_data[level].data.split(',').map(Number);
-		
-
-		for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-			
-
-				//var i = 1 + x + 10*y;
-				var i = 1 + 10*x + y;
-
-				
-			
-				this.play_state.set_tile_from_code(x,y,data_[i]);
-			}
-		}
-
-		// to trigger calc of hints
-		for (var y = 0; y < this.play_state.grid_h; y++) {
-			for (var x = 0; x < this.play_state.grid_w; x++) {
-				if (this.play_state.blocks[this.play_state.tiles[x][y]].covered_up == true) continue;
-				this.play_state.blocks[this.play_state.tiles[x][y]].cover();
-				this.play_state.blocks[this.play_state.tiles[x][y]].uncover();	
-				 
-			}
-		}
-
-		// calc share groups here?
-		this.play_state.calc_share_groups();	// do this here?
-
-	},
-
-	handle_mouse_up: function(engine,x,y) {
-		g_community_level_browser.click(mouse.x, mouse.y);
-
-		if (g_community_level_browser.clicked_fetch == true) {
-			// change state CommunityOverworldStateClass
-			this.change_state(this.engine, new CommunityFetchStateClass(this.engine, this.play_state));
-			return;
-		} 
-
-		if (g_community_level_browser.clicked_scrollup == true) {
-			// change state CommunityOverworldStateClass
-			this.scroll_browser(-1);
-			return;
-		} else if (g_community_level_browser.clicked_scrolldown == true) {
-			// change state CommunityOverworldStateClass
-			this.scroll_browser(1);
-			return;
-		} 
-
-
-		for (var level = 0; level < g_community_list_data.length; level++) {
-			if (g_community_list_data[level]._id == g_community_level_browser.selected_level_id) {
-				
-				this.load_level(level);
-				this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-
-			}
-
-		}
-
-		
-	},
-
 });
 
 
@@ -9117,247 +6321,181 @@ StartOverworldStateClass = GameStateClass.extend({
 
 });
 
-g_text_mylevel_name = null;
-g_text_myauthor_name = null;
 
-g_text_levelname_goeshere = null;
-g_text_author_goeshere = null;
-
-g_confirm_upload_button = null;
-
-UploadLevelStateClass =  GameStateClass.extend({
+LoadFromStringStateClass = GameStateClass.extend({
+	
 	play_state: null,
 	engine: null,
-
-	levelname: "",
-	writing_name: 1,	// or author
-
-	init: function(engine, play_state) {
-
+	
+	init : function (engine, play_state) {
 		this.play_state = play_state;
 		this.engine = engine;
-
-		if (g_text_mylevel_name == null) {
-
-			g_text_levelname_goeshere = new TextClass(Types.Layer.GAME_MENU);
-			g_text_levelname_goeshere.set_font(Types.Fonts.SMALL);
-			g_text_levelname_goeshere.set_text("LEVEL NAME:");
-
-			g_text_author_goeshere = new TextClass(Types.Layer.GAME_MENU);
-			g_text_author_goeshere.set_font(Types.Fonts.SMALL);
-			g_text_author_goeshere.set_text("AUTHOR NAME:");
-
-			g_text_mylevel_name = new TextClass(Types.Layer.GAME_MENU);
-			g_text_mylevel_name.set_font(Types.Fonts.SMALL);
-			g_text_mylevel_name.set_text("MY LEVEL");
-
-			g_text_myauthor_name = new TextClass(Types.Layer.GAME_MENU);
-			g_text_myauthor_name.set_font(Types.Fonts.SMALL);
-			g_text_myauthor_name.set_text("ANON");
-
-			g_confirm_upload_button = new ButtonClass();
-			g_confirm_upload_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
-
-		}
 	},
-
-	author_y: 128,
-	levelname_y: 64,
-
-	upload_x: 0,
-	upload_y: 0,
-
-	screen_resized: function() {
-		g_text_levelname_goeshere.update_pos(64, this.levelname_y);
-		g_text_mylevel_name.update_pos(400, this.levelname_y);
-		g_text_author_goeshere.update_pos(64, this.author_y);
-		g_text_myauthor_name.update_pos(400, this.author_y);
-
-		this.upload_x = screen_width - 64;
-		this.upload_y = screen_height - 64;
+	
+	read_failed : false,
+	
+	do_prompt : function () {
 		
-		g_confirm_upload_button.update_pos(this.upload_x, this.upload_y);
-	},
-
-	cleanup: function() {
-		g_text_levelname_goeshere.hide();
-		g_text_mylevel_name.hide();
-		g_text_author_goeshere.hide();
-		g_text_myauthor_name.hide();
+		var leveldata_ = prompt("Enter the level code:" , "");
 		
-		g_confirm_upload_button.hide();
-	},
-
-	handle_key: function(keynum) {
-		if (this.writing_name == 1) this.write_name(keynum);
-		else this.write_author(keynum);
-	},
-
-	handle_mouse_down: function(engine,x,y) {
-
-		this.handle_mouse_move(engine,x,y);
-
-		if (mouse.x > this.upload_x - 25 &&
-		    mouse.x < this.upload_x + 25 &&
-		    mouse.y > this.upload_y - 25 &&
-		    mouse.y < this.upload_y + 25) {
+		if (leveldata_ == null) return false;
+		
+		var success_ = this.puzzlesweeper_string_to_leveldata(leveldata_);
+		
+		if (success_ == 1) {
+			this.play_state.game_mode = 3;
+			this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));				
+		} else {
+			// error message
+			console.log(success_);
 			
-			// PostLevel
-			this.change_state(this.engine, new PostLevel(this.engine, this.play_state));
-			return;
+		}
+		
+		if (success_ == 1) return true;
+		return false;
+	},
+	
+	puzzlesweeper_string_to_leveldata : function (string_) {		
+	
+		this.play_state.reset();
+		
+		// string of numbers separated by'.' --> single array
+		var array_ = string_.split(",");
+		
+		// array of strings,
+		// parseInt : "12" --> 12	
+
+		if (array_.length < 20) return -1;
+
+		var version_num = parseInt(array_[0]);
+
+		if (version_num > 0) {
+			// unknown version
+			return -2;
 		}
 
-	},
+		// var width_ = parseInt(array_[1]);
+		
+		// if ((array_.length - 2) % 2 != 0) return -3;
+		
+		var width_ = 10;
+		
+		// var height_ = ((array_.length - 2)/2) / width_;
+		
+		var height_ = 10;
+		
+		if (height_ < 8 || height_ > 10) {
+			console.dir(array_);
+			console.log("height_ " + height_);
+			return -4;
+		}
+	
+		if (width_ < 8 || width_ > 10) return -5;
+		
+		// format (version 0):
+		// version.width.<--floor-->.<--cover-->
 
-	write_name: function(keynum) {
+		var data_ = [];
 
-		if (keynum == 8) {
-			// backspace
+		// floortiles
+		for (var b = 0; b < width_*height_; b++) {
+			var i = 1 + b;
+			if (i >= array_.length) return -6;
+			var tilecode_ = parseInt(array_[i]);
+			
+			data_.push(tilecode_);
+			
+		}
+		
+		
+				
+		for (var y = 0; y < this.play_state.grid_h; y++) {
+
+			for (var x = 0; x < this.play_state.grid_w; x++) {
 			
 
-			if (this.input_cursor > 0) this.input_cursor--;
+				//var i = 1 + x + 10*y;
+				var i = 0 + 10*y + x;
 
-			var string_ = "";
-
-			for (var i = 0; i < this.input_cursor; i++) {
-				string.add(this.levelname[i]);
+				
+			
+				this.play_state.set_tile_from_code(x,y,data_[i]);
 			}
-
-			this.levelname = string_;
-
-			g_text_mylevel_name.change_text(this.levelname);
-
-			return;
 		}
-		
-		//g_keyboard[]
-		//g_seed_texts[this.input_cursor].update_pos(this.input_cursor*dist_ + dist_,screen_height*0.5);
 
-		this.levelname.add(String.fromCharCode(keynum));
-		g_text_mylevel_name.change_text(this.levelname);
-		this.input_cursor++;
-		return;
-
-		g_seed_texts[this.input_cursor].change_text(String.fromCharCode(keynum));
-		this.seed[this.input_cursor] = keynum;
-		if (this.input_cursor < g_seed_texts.length) this.input_cursor++;
-
-		
-		
-
-		
-		
-	},
-
-	write_author: function(keynum) {
-
-		if (keynum == 8) {
-			// backspace
-			
-
-			if (this.input_cursor > 0) this.input_cursor--;
-
-			var string_ = "";
-
-			for (var i = 0; i < this.input_cursor; i++) {
-				string.add(this.authorname[i]);
+		// to trigger calc of hints
+		for (var y = 0; y < this.play_state.grid_h; y++) {
+			for (var x = 0; x < this.play_state.grid_w; x++) {
+				if (this.play_state.blocks[this.play_state.tiles[x][y]].covered_up == true) continue;
+				this.play_state.blocks[this.play_state.tiles[x][y]].cover();
+				this.play_state.blocks[this.play_state.tiles[x][y]].uncover();	
+				 
 			}
-
-			this.authorname = string_;
-
-			g_text_myauthor_name.change_text(this.authorname);
-
-			return;
 		}
-		
-		//g_keyboard[]
-		//g_seed_texts[this.input_cursor].update_pos(this.input_cursor*dist_ + dist_,screen_height*0.5);
 
-		this.authorname.add(String.fromCharCode(keynum));
-		g_text_myauthor_name.change_text(this.authorname);
-		this.input_cursor++;
+		// calc share groups here?
+		this.play_state.calc_share_groups();	// do this here?
 		
+		//this.load_level_internal(p_matrix, mapdata_version, p_cover_matrix);
+		//this.play_state.load_level_internal(g_leveldata_from_string.floor, 1, g_leveldata_from_string.cover);
+		
+		return 1;
+	},
+	
+	// lets not allow users to paste in random JSON...
+	// using puzzlesweeper_string_to_leveldata, which is more rigid and under control
+	do_prompt_get_json : function () {
+		
+		var leveldata_ = prompt("Enter the level code:" , "");
+		//if (leveldata_ != null) {
+		//	alert("you entered: " + leveldata_);
+		//} 
+		
+		
+		// string -> JSON
+		g_leveldata_from_string = JSON.parse(leveldata_);
+		
+		if (g_leveldata_from_string == null) return false;
+		
+		var w_ = g_leveldata_from_string.w;
+		
+		if (w_ == null || w_ == 0) return false;		
+		if (g_leveldata_from_string.floor == null) return false;
+		
+		var h_ = Math.floor(g_leveldata_from_string.floor.length / w_);
+		
+		w_ = Math.min(w_, this.play_state.grid_w);
+		h_ = Math.min(h_, this.play_state.grid_h);
 
-		
 		
 	},
-
+	
+	start_level : function () {
+		
+		var mapdata_version = 1;
+		var p_matrix = g_leveldata_from_string.floor;
+		var p_cover_matrix = g_leveldata_from_string.cover;
+		this.play_state.load_level_internal(p_matrix, mapdata_version, p_cover_matrix);
+	},
+	
+	timer : 0,
+	
+	update : function () {
+		
+		this.timer++;
+		
+		if (this.timer == 15) {
+			var ok_ = this.do_prompt();
+			//if (ok_ == true) this.start_level();
+			//else this.show_error();				
+		}
+	},
+	
+	
+	
+	
 });
 
-g_confirm_upload_text = null;
-g_confirm_upload_button = null;
-
-ConfirmUploadStateClass =  GameStateClass.extend({
-	play_state: null,
-	engine: null,
-
-	init: function(engine, play_state) {
-
-		this.play_state = play_state;
-		this.engine = engine;
-		play_screen_container.make_vis();
-		
-		if (g_confirm_upload_text == null) {
-			//var empty_ =
-
-			//g_editor_sprites.push(empty_);
-
-			g_confirm_upload_button = new ButtonClass();
-			g_confirm_upload_button.setup_sprite('uparrow.png',Types.Layer.GAME_MENU);
-			g_confirm_upload_button.update_pos(-999,-999);
-
-			g_confirm_upload_text = new TextClass(Types.Layer.GAME_MENU);
-			g_confirm_upload_text.set_font(Types.Fonts.XSMALL);
-			g_confirm_upload_text.set_text("CONFIRM UPLOAD");
-			
-		}
-
-		this.screen_resized();
-	},
-
-	cleanup: function () {
-
-
-
-		g_confirm_upload_text.update_pos(-999,-999);
-		g_confirm_upload_button.hide();
-	},
-
-	upload_x: 0,
-	upload_y: 0,
-
-
-	screen_resized: function() {
-		this.upload_x = screen_width - 64;
-		this.upload_y = screen_height - 128;
-
-		g_confirm_upload_button.update_pos(this.upload_x, this.upload_y);
-
-		g_confirm_upload_text.update_pos(this.upload_x, this.upload_y + 32);
-		g_confirm_upload_text.center_x(this.upload_x);
-	},
-
-	handle_mouse_down: function(engine,x,y) {
-
-		this.handle_mouse_move(engine,x,y);
-
-		if (mouse.x > this.upload_x - 25 &&
-		    mouse.x < this.upload_x + 25 &&
-		    mouse.y > this.upload_y - 25 &&
-		    mouse.y < this.upload_y + 25) {
-			
-			// PostFirebaseLevel
-
-			//var post_level = 
-
-			this.change_state(this.engine, new PostLevel(this.engine, this.play_state));
-			//this.change_state(this.engine, new ConfirmUploadStateClass(this.engine, this.play_state));
-			
-
-			return;
-		}
-	}
-});
 
 g_editor_sprites_objs = null;
 
@@ -9409,12 +6547,8 @@ LevelEditorStateClass =  GameStateClass.extend({
 			g_editor_upload_text.set_font(Types.Fonts.XSMALL);
 			
 
-			if (on_kong && kongregate.services.getUserId() > 0) {
-				var name_ = kongregate.services.getUsername();
-				g_editor_upload_text.set_text("UPLOAD AS\n" + name_);
-			} else {
-				g_editor_upload_text.set_text("UPLOAD AS\nANON");
-			}
+			g_editor_upload_text.set_text("EXPORT");
+			
 
 			////console.log('on_kong == ' + on_kong);
 			////console.log('kongregate.services.getUserId()  == ' + kongregate.services.getUserId());
@@ -9461,11 +6595,11 @@ LevelEditorStateClass =  GameStateClass.extend({
 			//g_editor_sprites_objs.add_new('join_tut.png', 7);
 
 			
-			var join_up_index = g_editor_sprites_objs.add_new('joiner_up.png', 8);	
-			g_editor_sprites_objs.rotate_sprite(join_up_index, 2);
+			//var join_up_index = g_editor_sprites_objs.add_new('joiner_up.png', 8);	
+			//g_editor_sprites_objs.rotate_sprite(join_up_index, 2);
 
-			var join_right_index = g_editor_sprites_objs.add_new('joiner_up.png', 7);	
-			g_editor_sprites_objs.rotate_sprite(join_right_index, 1);
+			//var join_right_index = g_editor_sprites_objs.add_new('joiner_up.png', 7);	
+			//g_editor_sprites_objs.rotate_sprite(join_right_index, 1);
 
 			g_editor_sprites_objs.add_new('heart.png', 10);	
 			g_editor_sprites_objs.add_new('compass.png', 11);
@@ -9642,13 +6776,6 @@ LevelEditorStateClass =  GameStateClass.extend({
 		
 	},
 
-	handle_mouse_up: function(engine,x,y) {
-		//if (x < this.play_state.grid_w*this.play_state.tile_size &&
-		//	y < this.play_state.grid_h*this.play_state.tile_size) return;
-		g_editor_sprites_objs.click(mouse.x, mouse.y);
-
-		
-	},
 
 	delete_tile: function(x,y) {
 		this.play_state.change_tile(this.highlighted_x,this.highlighted_y,0);
@@ -9712,9 +6839,38 @@ LevelEditorStateClass =  GameStateClass.extend({
 		document.cookie= cookie_string + ";expires=" +now.toGMTString();
 
 	},
+	
+	export_to_prompt : function () {
+		
+		var level_string_ = "";
+		level_string_ = level_string_.concat("0");	// version 0
+		//level_string_ = level_string_.concat("10");	// width
+		
+
+		for (var y = 0; y < this.play_state.level_h; y++) {
+			for (var x = 0; x < this.play_state.level_w; x++) {				
+				level_string_ = level_string_.concat(",");
+				level_string_ = level_string_.concat(this.play_state.get_tile_code(x,y).toString());
+			}
+		}
+		
+		
+		
+		var prompt_ = prompt("Level code:" , level_string_);
+		//if (prompt_ != null) {
+		//	alert("you entered: " + prompt_);
+		//} 
+	},
 
 
-	handle_mouse_down: function(engine,x,y) {
+
+	handle_mouse_up: function(engine,x,y) {
+		
+		
+		//if (x < this.play_state.grid_w*this.play_state.tile_size &&
+		//	y < this.play_state.grid_h*this.play_state.tile_size) return;
+		g_editor_sprites_objs.click(mouse.x, mouse.y);
+
 
 		this.handle_mouse_move(engine,x,y);
 
@@ -9728,8 +6884,8 @@ LevelEditorStateClass =  GameStateClass.extend({
 			//var post_level = 
 
 			//this.change_state(this.engine, new PostLevel(this.engine, this.play_state));
-			this.change_state(this.engine, new ConfirmUploadStateClass(this.engine, this.play_state));
-			
+			//this.change_state(this.engine, new ConfirmUploadStateClass(this.engine, this.play_state));
+			this.export_to_prompt();
 
 			return;
 		}
@@ -9964,556 +7120,6 @@ LevelEditorStateClass =  GameStateClass.extend({
 
 });
 
-
-
-// post to my node.js at backend_url
-RateLevel = GameStateClass.extend({
-
-	play_state: null,
-	engine: null,
-	
-	init: function(engine, play_state) {
-		this.engine = engine;
-		this.play_state = play_state;
-
-	},
-
-	// not using anymore
-	log_in: function () {
-		// http://docs.kongregate.com/v1.0/docs/concepts-authentication
-
-		var kong_token = kongregate.services.getGameAuthToken();
-		var user_id = kongregate.services.getUserId();
-		var username = kongregate.services.getUsername();
-
-		// POST request to backend_url to login/register - only for rating community levels, maybe for submitting levels
-		
-		var login_info = {
-			//publickey: "aaa",
-    			//levelname: "My level",
-   			//leveldata: this.levelstring,
-    			//playername: "anonyminer",
-			//playerid: "0",
-			
-			user_id: user_id,
-			username: username,
-			game_auth_token: kong_token,
-  		};
-		
-		var json = JSON.stringify(login_info);
-
-		var request = new XMLHttpRequest();
-
-		request.onerror = function() {
-			 
-		};
-
-		request.onload = function() {
-			g_logged_in = true;
-		};
-
-		if(window.XDomainRequest) {
-			request.open("POST", backend_url + 'loginkongregate');
-		}
-		else {
-			request.open("POST", backend_url + 'loginkongregate', true);
-		}
-
-		request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		
-		request.send(json);
-
-		this.requested_log_in = true;
-
-	},
-
-	submit_rating : function (stars, level) {
-
-		var kong_token = kongregate.services.getGameAuthToken();
-		var user_id = kongregate.services.getUserId();
-		var username = kongregate.services.getUsername();
-
-		var rating_info = {
-			rating: stars,
-			level: level,
-			kong_user_id: user_id,	// Kongregate user ID
-
-			user_id: user_id,
-			username: username,
-			game_auth_token: kong_token,
-		};
-
-
-		var json = JSON.stringify(rating_info);
-
-		this.submitted_rating = true;
-
-		var request = new XMLHttpRequest();
-
-		request.onerror = function() {
-			 
-		};
-
-		request.onload = function() {
-			// do nothing, after we fire off this request we forget about it
-		};
-
-		if(window.XDomainRequest) {
-			request.open("POST", backend_url + 'levelrate');
-		}
-		else {
-			request.open("POST", backend_url + 'levelrate', true);
-		}
-
-		request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		
-		request.send(json);
-	}, 
-
-	level_id: 0,
-	rating: 0,
-	
-	submitted_rating: false,	// sent the rating
-	
-
-	update: function() {
-
-		if (this.submitted_rating == true) {
-			// change_state, dont wait for error
-			var auto_load = false;
-
-			this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
-			return;
-		}
-
-
-		if (this.submitted_rating == false) {
-			this.submit_rating(this.rating, this.level_id);
-		
-			return;
-		}
-
-		
-
-
-	}
-
-});
-
-
-g_level_posted = 0;
-g_levelposted_as_text = null;
-
-g_text_uploading_now = null;
-
-
-// post to my node.js at backend_url
-PostLevel = GameStateClass.extend({
-	play_state: null,
-	engine: null,
-
-	posted: false,
-
-	levelstring: "0,",
-
-	
-
-	init: function(engine, play_state) {
-		this.engine = engine;
-		this.play_state = play_state;
-
-		if (g_levelposted_as_text == null) {
-
-			g_levelposted_as_text = new TextClass(Types.Layer.GAME_MENU);
-			g_levelposted_as_text.set_font(Types.Fonts.MEDIUM);
-			g_levelposted_as_text.set_text("UPLOAD SUCCESSFUL");
-			g_levelposted_as_text.update_pos(-999,-999);
-
-			g_text_uploading_now = new TextClass(Types.Layer.GAME_MENU);
-			g_text_uploading_now.set_font(Types.Fonts.SMALL);
-			g_text_uploading_now.set_text("UPLOADING...");
-			g_text_uploading_now.update_pos(-999,-999);
-
-		}
-
-		
-		// convert level to
-		//var levelstring = "0,";		// version 0
-		for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-				var tile_ = this.play_state.get_tile_code(x,y).toString() + ",";
-				this.levelstring += tile_;
-
-			}
-
-		}
-		
-		g_text_uploading_now.update_pos(32,32);
-
-	},
-
-	cleanup: function() {
-		g_levelposted_as_text.hide();
-
-		g_text_uploading_now.update_pos(32,-32);
-		
-	},
-
-	use_kong_name: true,
-
-	post: function () {
-
-		if (this.posted == true) return;
-
-		g_level_posted = 0;
-
-		var name_ = "ANON";
-
-		if (on_kong && kongregate.services.getUserId() > 0 && this.use_kong_name == true) {
-
-			name_ = kongregate.services.getUsername();
-		}
-
-		var level = {
-			publickey: "aaa",
-    			levelname: "My level",
-   			leveldata: this.levelstring,
-    			playername: name_,
-			playerid: "0",
-			
-  		};
-
-    		//Playtomic.PlayerLevels.save(level, PlaytomicSaveComplete);
-
-		
-
-		//g_playtomiclevel = level;
-
-		var json = JSON.stringify(level);
-
-		//console.log('json ready to go: ' + json.toString());
-
-		var request = window.XDomainRequest ? new XDomainRequest() : new XMLHttpRequest(); 
-
-		var pda = "data=" + json;//Encode.base64(json);// + "&hash=" + Encode.md5(json + PRIVATEKEY);
-		var request = new XMLHttpRequest();//window.XDomainRequest ? new XDomainRequest() : new XMLHttpRequest(); 
-
-		
-		
-		request.onerror = function() {
-			//complete(callback, postdata, {}, Response(false, 1));
-			//console.log('ERROR');
-
-			g_level_posted = -1;
-		};
-
-		request.onload = function() {
-			//console.log('request.onload');
-			var result = JSON.parse(request.responseText);
-			////console.log(result.toString());
-			////console.log(request.responseText.toString());
-			//complete(callback, postdata, result, Response(result.success, result.errorcode));
-
-			console.dir(result);
-
-			g_level_posted = 1;
-			//g_level_posted_id = result[0]['_id'];
-			g_level_posted_id = result[0]['hash'];
-
-
-		};
-		
-		if(window.XDomainRequest) {
-			request.open("POST", backend_url + 'levels');
-		}
-		else {
-			request.open("POST", backend_url + 'levels', true);
-		}
-
-		//request.contenttype = 'application/json; charset=utf-8';
-		request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		
-		request.send(json);
-
-		this.posted = true;
-	},
-
-	
-
-	update: function () {
-
-		
-		this.post();
-
-		if (this.posted == true && g_level_posted == 1) {
-			//g_levelposted_as_text.make_vis();
-			//g_levelposted_as_text.update_pos(32,32);
-
-			var next_state = new CommunityLevelInfoStateClass(this.engine, this.play_state);
-			next_state.level_id = g_level_posted_id;
-			next_state.load_info(g_level_posted_id);
-
-			this.change_state(this.engine, next_state);
-			
-		}
-		
-
-		
-	}
-});
-
-PostPlaytomicLevel =  GameStateClass.extend({
-	play_state: null,
-	engine: null,
-
-	posted: false,
-
-	levelstring: "0,",
-	
-	init: function(engine, play_state) {
-		this.engine = engine;
-		this.play_state = play_state;
-
-		
-
-
-		// convert level to
-		//var levelstring = "0,";		// version 0
-		for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-				var tile_ = this.play_state.get_tile_code(x,y).toString() + ",";
-				this.levelstring += tile_;
-
-			}
-
-		}
-
-
-
-
-		// test playtomic listing levels
-		var list = { 
-					publickey: "aaa",
-					page: 1,
-					perpage: 10,
-					data: false,
-					filters: {
-						rnd: 0
-					}
-				};
-
-		
-		Playtomic.PlayerLevels.list(list, function(levels, numlevels, r) {
-			//console.log('list levels playtomic : ' + levels + ' ' + numlevels + ' ' + r);
-			//console.log('numlevels: ' + numlevels.toString());
-			//console.log('levels: ' + levels.toString());
-
-
-			//if (!r.success) //console.log('   errorcode ' + r.errorcode);
-		});
-		
-
-		
-
-	},
-
-	cleanup: function() {
-		
-	},
-
-
-	post: function () {
-
-		if (this.posted == true) return;
-
-		var level = {
-			publickey: "aaa",
-    			name: "My level",
-   			data: this.levelstring,
-    			playername: "Ben",
-			playerid: "0",
-			source: "0",
-			fields:  {
-						rnd: 0
-					}
-  		}
-
-    		Playtomic.PlayerLevels.save(level, PlaytomicSaveComplete);
-
-		//g_playtomiclevel = level;
-
-		this.posted = true;
-	},
-
-	
-
-	update: function () {
-
-		
-		this.post();
-		
-
-		
-	}
-});
-
-//g_playtomiclevel = "";
-
-function PlaytomicSaveComplete(level, response) {
-    if(response.success) {
-       
-	 //console.log("Level saved successfully, the level id is " + level.levelid);
-    } else {
-        // failed because of response.errormessage with response.errorcode
-	 //console.log("failed to post playtomic level " + response.errorcode);	
-
-	//Playtomic.PlayerLevels.save(g_playtomiclevel, PlaytomicSaveComplete);	
-    }
-}
-
-
-g_firebase_keycode_check=2;
-
-g_posted_as_text= null;
-
-//http://stackoverflow.com/questions/38541098/how-to-retrieve-data-from-firebase-database
-PostFirebaseLevel =  GameStateClass.extend({
-	play_state: null,
-	engine: null,
-
-	posted: false,
-
-	levelstring: "0,",
-	
-	init: function(engine, play_state) {
-		this.engine = engine;
-		this.play_state = play_state;
-
-		if (g_posted_as_text == null) {
-			g_posted_as_text = new TextClass(Types.Layer.GAME_MENU);
-			g_posted_as_text.set_font(Types.Fonts.MEDIUM);
-			g_posted_as_text.set_text("");
-			g_posted_as_text.update_pos(-999,-999);
-		}
-
-
-		var lev = 23;
-		var levstr = "JACOB"
-
-		g_firebase_keycode_check = 2;  // 0 - unknown, 1 - okay, 2 - nope
-
-		//var ref = firebase.database().ref('/userlevels/' + lev.toString());
-
-		
-
-		// convert level to
-		//var levelstring = "0,";		// version 0
-		for (var x = 0; x < this.play_state.grid_w; x++) {
-			for (var y = 0; y < this.play_state.grid_h; y++) {
-				var tile_ = this.play_state.get_tile_code(x,y).toString() + ",";
-				this.levelstring += tile_;
-
-			}
-
-		}
-
-		if (g_firebase_connected == 0) {
-			connect_to_firebase();
-		} else if (g_firebase_connected == 2) {
-			//firebase.goOnline();
-		}
-
-		
-
-	},
-
-	cleanup: function() {
-		//firebase.goOffline();
-
-		
-		g_posted_as_text.update_pos(-999,-999);
-		
-	},
-
-	keycode: "",
-	//keycode_check: 2,	// 0 - unknown, 1 - okay, 2 - nope
-
-	check_key: function() {
-
-		var levelsRef = firebase.database().ref('/userlevels/');
-
-		
-
-		levelsRef.child(this.keycode).once('value', function(snapshot) {
-    			var exists = (snapshot.val() !== null);
-			
-    			if (exists == true) g_firebase_keycode_check = 2;	// taken
-			else g_firebase_keycode_check = 1;	
-  		});
-
-		return;
-
-		// http://stackoverflow.com/questions/24824732/test-if-a-data-exist-in-firebase
-		levelsRef.once("value", function(snapshot) {
-  			if (snapshot.hasChild(this.keycode)) {
-    				this.keycode_check = 2;	// taken
- 			} else this.keycode_check = 1;
-
-			
-		});
-		
-	},
-
-	post: function () {
-
-		if (this.posted == true) return;
-
-		var ref = firebase.database().ref('/userlevels/' + this.keycode);
-
-		ref.set( this.levelstring );
-
-		this.posted = true;
-	},
-
-	told_user_i_posted: false,
-
-	update: function () {
-
-		if (g_firebase_connected == 2) {}
-		else return;
-
-		if (g_firebase_keycode_check == 2) {
-	
-			this.keycode = "";
-
-			for (var i = 0; i < 5; i++) {
-				// see ascii table
-				var rand_ =  Math.floor(20*Math.random());
-				rand_ += 48;
-				if (rand_ >= 58) rand_ += 7;
-			
-				this.keycode += String.fromCharCode(rand_);
-				
-			}
-			g_firebase_keycode_check = 0;
-
-			
-			
-			// String.fromCharCode(keynum)
-			this.check_key();
-		} else if (g_firebase_keycode_check == 1) {
-			this.post();
-		}
-
-		if (this.posted == true && this.told_user_i_posted == false)  {
-			this.told_user_i_posted = true;
-			
-			g_posted_as_text.set_text("LEVEL POSTED AS " + this.keycode);
-			g_posted_as_text.update_pos(64, screen_height - 32);
-			//this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
-		}
-	}
-});
 
 
 
@@ -10876,18 +7482,8 @@ OverworldStateClass = GameStateClass.extend({
 		var mm = today.getMonth()+1; //January is 0!
 		var yyyy = today.getFullYear();
 
-		if (yyyy >= 2016 && mm >= 2) {
-
-
-			this.fb_x = screen_width - 32;
-			this.fb_y = 32;
-		
-
-		} else {
-			this.fb_x = -999;
-			this.fb_y = -999;
-
-		}
+		this.fb_x = -9999;
+		this.fb_y = -9999;
 
 		if (using_cocoon_js == true) this.fb_x = -999;
 		this.fb_x = -999;
@@ -10923,20 +7519,8 @@ OverworldStateClass = GameStateClass.extend({
 		//g_overworld_right_text.update_pos(this.right_arrow_x, this.right_arrow_y + 32);
 		//g_overworld_right_text.center_x(this.right_arrow_x);
 
-		if (screen_width > screen_height) {
-			//g_overworld_left_text.change_size(Types.Fonts.SMALL);
-			//g_overworld_right_text.change_size(Types.Fonts.SMALL);
-			this.fb_x = screen_width - 32;
-			this.fb_y = 32;
-		} else {
-			//g_overworld_left_text.change_size(Types.Fonts.XSMALL);
-			//g_overworld_right_text.change_size(Types.Fonts.XSMALL);
-
-			this.fb_x = -999;
-			this.fb_y = -999;
-		}
-
 		this.fb_x = -999;
+		this.fb_y = -999;
 
 		g_overworld_fb_button.update_pos(this.fb_x, this.fb_y);
 		g_overworld_fb_text.update_pos(this.fb_x - 286, this.fb_y - 10);
@@ -10953,7 +7537,7 @@ OverworldStateClass = GameStateClass.extend({
 	},
 
 	go_to_fb: function() {
-		window.open('https://www.facebook.com/Mine-of-Sight-1037635096381976');
+		//window.open('https://www.facebook.com/Mine-of-Sight-1037635096381976');
 	},
 
 	handle_mouse_down: function(engine,x,y) {
@@ -11720,8 +8304,9 @@ SetupRandStateClass = GameStateClass.extend({
 		this.eyebracket_x =  screen_width*0.75;
 		this.eyebracket_y =  5*52;
 
-		this.share_x = screen_width*0.75;
-		this.share_y = 6*52;
+		// removed because it crashes
+		this.share_x = -999;//screen_width*0.75;
+		this.share_y = -999;// 6*52;
 
 		this.zap_x = screen_width*0.5;
 		this.zap_y = 3*52;
@@ -12108,6 +8693,11 @@ MenuStateClass = GameStateClass.extend({
 			g_first_time_text = new TextClass(Types.Layer.GAME_MENU);
 			g_first_time_text.set_font(Types.Fonts.XSMALL);
 			g_first_time_text.set_text("FIRST TIME");
+			
+			
+			g_menu_to_editor_text = new TextClass(Types.Layer.GAME_MENU);
+			g_menu_to_editor_text.set_font(Types.Fonts.XSMALL);
+			g_menu_to_editor_text.set_text("LEVEL EDITOR");
 
 			
 
@@ -12411,8 +9001,8 @@ MenuStateClass = GameStateClass.extend({
 
 			
 			
-			this.fblogo_x =  screen_width - 29 - 0.5*29;
-			this.fblogo_y =  screen_height - 29 - 0.5*29;
+			this.fblogo_x = -999;
+			this.fblogo_y = -999;
 
 			menu_fb_rect.make_vis();
 			menu_fb_rect.update_pos(this.fblogo_x - 29 - 3*29, this.fblogo_y - 29 - 0.5*29);
@@ -12484,14 +9074,14 @@ MenuStateClass = GameStateClass.extend({
 		    mouse.y > this.fblogo_y - 16 &&
 		    mouse.y < this.fblogo_y + 16 && this.clicked_fb == false) {
 			this.clicked_fb = true;
-			open_url('https://www.facebook.com/Mine-of-Sight-1037635096381976/'); 
+			//open_url('https://www.facebook.com/Mine-of-Sight-1037635096381976/'); 
 			return;
 		} else if (mouse.x > this.twitterlogo_x - 16 &&
 		    mouse.x < this.twitterlogo_x + 16 &&
 		    mouse.y > this.twitterlogo_y - 16 &&
 		    mouse.y < this.twitterlogo_y + 16 && this.clicked_fb == false) {
 			this.clicked_fb = true;
-			open_url('https://twitter.com/ZBlipGames'); 
+			//open_url('https://twitter.com/ZBlipGames'); 
 			return;
 		} 
 	},
@@ -12505,6 +9095,7 @@ MenuStateClass = GameStateClass.extend({
 		    mouse.y < this.first_y + 28) {
 
 			this.play_state.current_level = 0;
+			this.play_state.game_mode = 0;
 		
 			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, 0));
 			return;
@@ -12517,7 +9108,7 @@ MenuStateClass = GameStateClass.extend({
 		    mouse.y > this.overworld_y - 28 &&
 		    mouse.y < this.overworld_y + 28 ) {
 			g_overworld_to_show = 0;
-
+			this.play_state.game_mode = 0;
 
 			this.change_state(this.engine, new OverworldStateClass(this.engine, this.play_state));
 			
@@ -12619,7 +9210,7 @@ WinStateClass = GameStateClass.extend({
 
 		// kongregate.services.getUserId() will return 0 if not signed in
 		if (on_kong && kongregate.services.getUserId() > 0 && this.play_state.game_mode == 3) {
-			this.allow_rating = true;
+			//this.allow_rating = true;
 		}
 
 		
@@ -12771,7 +9362,7 @@ WinStateClass = GameStateClass.extend({
 
 		localStorage.setItem("mineofsightlevels", local_storage_content);
 
-		if (this.play_state.game_mode == 3) this.save_state_community_levels();
+		//if (this.play_state.game_mode == 3) this.save_state_community_levels();
 
 		//("cookie expires " + now.toGMTString());
 
@@ -12956,7 +9547,7 @@ WinStateClass = GameStateClass.extend({
 
 		var next_ = 0;
 
-		if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
+	//	if (this.play_state.game_mode == 3) g_star_rating_obj.click(mouse.x, mouse.y);
 
 		if (mouse.x > this.save_x - 16 &&
 		    mouse.x < this.save_x + 16 &&
@@ -13004,32 +9595,8 @@ WinStateClass = GameStateClass.extend({
 			} else if (this.play_state.game_mode == 3) {
 				// community levels
 				
-				// mark as done
-				for (var i = 0; i < g_community_list_data.length; i++) {
-					if (g_current_community_level_id == g_community_list_data[i].hash) {
-						
-						g_community_list_data[i]['done'] = true;
-					}
-
-				}
-
-				// if (this.play_state.game_mode != 3) g_star_rating_obj.hide();
-				if (this.allow_rating == true &&
-				    g_star_rating_obj.voted == 1) {
-					var ratelevel = new RateLevel(this.engine, this.play_state);
-					ratelevel.level_id = g_current_community_level_id;	// is this the hash???? it is now
-					ratelevel.rating = g_star_rating_obj.rating;
-					
-					this.change_state(this.engine, ratelevel);
-					return;
-				}
-
-				
-				var auto_load = true;
-
-				this.change_state(this.engine, new CommunityOverworldStateClass(this.engine, this.play_state, auto_load));
-
-
+				// 1992 mode
+				this.change_state(this.engine, new MenuStateClass(this.engine, this.play_state));
 				return;
 			}
 
@@ -13057,66 +9624,6 @@ WinStateClass = GameStateClass.extend({
 			this.change_state(this.engine, new LoadingLevelStateClass(this.engine, this.play_state, this.play_state.current_level, true));
 		}
 	}
-});
-
-
-// Google Adsense for games
-// adtest=on
-// They require: Have a high volume of games content, i.e., greater than 70% games content with over 1 million games impressions monthly.
-// So it's really just one program. Adwords is the advertisers side of it. Adsense the publishers side.
-
-
-ShowAdStateClass = GameStateClass.extend({
-    
-    play_state: null,
-    engine: null,
-    done: 0,
-    
-    	init: function(engine, play_state) {
-        	this.play_state = play_state;
-		this.engine = engine;
-
-		//g_show_ads = false;
-   	},
-    
-    	update: function() { 
-	
-	
-		if (g_interstitial_seen == true || 
-		    g_interstitial_failed == true || 
-		    g_interstitial_loaded == false || 
-		    cordova_ready == false) {
-
-			if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
-				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-			return;
-		}
-
-		if (app_paused == true) {
-			if (this.play_state.game_mode == 1) this.change_state(this.engine, new GenerateRandStateClass(this.engine, this.play_state));
-				else this.change_state(this.engine, new StartGameStateClass(this.engine, this.play_state));
-			return;
-		}
-
-		if (this.done == 0 && 
-		    app_paused == false) {
-			g_interstitial.show();
-			//g_interstitial.load();
-			g_interstitial_loaded = false;
-		}
-		this.done = 1;
-	},
-
-	cleanup: function() {
-		//g_interstitial.load();  // i think this loads up the next one? i do i need to spawn a whole new object?
-			
-	},
-
-	draw: function() {
-	
-
-	},
-    
 });
 
 is_sitelocked = false;
@@ -13155,12 +9662,15 @@ BootStateClass = GameStateClass.extend({
 		//('boot state init');
 
 		var dosave = document.cookie.indexOf('DOSAVE=');
+		
+		
 
 		if ( dosave  == -1) {
 			
 			use_browser_cookies = false
 		} else use_browser_cookies = true;
 
+		use_browser_cookies = true;
 
 		console.log('dosave  ' + dosave  );
 

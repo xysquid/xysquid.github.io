@@ -1,26 +1,4 @@
-﻿/*Copyright 2012 Google Inc. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-#limitations under the License.*/
-
-// Changes were made to this file -  2016
-
-// Our image loading code USED to be:
-//
-// var img = new Image();
-// img.onLoad = function(){...}
-// img.src = “asdf.png”
-
-// Now we will cache
+﻿// Now we will cache
 // We first check the cache to see if the image has already been loaded
 // If it has not been loaded yet, load it and add it to the cache
 // {assetName: assetObject}
@@ -41,68 +19,49 @@ var gIsAssetLoaded = {};
 //	Scripts get added to the DOM
 //	Both are indexed in gCachedAssets 
 
-function load_script_assets(script_list, callbackFcn) {
+function load_script_assets(script_list, callback_function) {
 
-	var loaded = 0;
+	number_of_script_assets_to_be_loaded = script_list.length;
+
 	for (var i = 0; i < script_list.length ; i++) {
-		// Should we check the cache? I'm only calling this function once, so I don't see the point.
-
-		var assetName = script_list[i];
-
-		// our asset is a Javascript file, and we
-		// need to:
-		//
-		// 1) Use document.createElement to create
-		//    a new script tag.
-
-        	var script_elem = document.createElement('script');
-
-		// 2) Set the type attribute on this element
-		//    to 'text/javascript'.
-
-        	script_elem.type = 'text/javascript';
-
-		// 3) We'll need to set an event listener to
-		//    call onLoadedCallback just like we do
-		//    for images. Luckily, the same '.onload'
-                // we use for images will also work here.
-
-		script_elem.name = assetName;
-
-                script_elem.onload = function () {
-
-			
-			
-			loaded++;
-			//console.log(this.name + " loaded");
-			if(loaded >=script_list.length) {
-				callbackFcn(script_elem); // why pass script_elem?
-			}
-                    	//onLoadedCallback(script_elem, loadBatch);	//what?
-                };
-
-		// 4) Set the src attribute on this element
-			//    to the filename.
-
-                script_elem.src = script_list[i]; // Does this trigger the loading like for images?
-
-		// 5) Use document.getElementsByTagName to
-			//    grab a LIST of the elements in the
-			//    document named 'head'.
-
-                var list_of_elems = document.getElementsByTagName('head');
-
-			// 6) Use the appendChild method of the first
-			//    element of that list to append the
-			//    script element you created.
-
-                list_of_elems[0].appendChild(script_elem);
+	
+		load_single_script(script_list[i], callback_function);
 
 	}
 
-	
-
 }
+
+number_of_script_assets_loaded = 0;
+number_of_script_assets_to_be_loaded = 0;
+
+function load_single_script(assetName, callback_function) {
+
+	var script_elem = document.createElement('script');
+
+	script_elem.type = 'text/javascript';
+
+	script_elem.name = assetName;
+
+	script_elem.onload = function () {
+
+			
+			
+		number_of_script_assets_loaded++;
+		if(number_of_script_assets_loaded >= number_of_script_assets_to_be_loaded) {
+			callback_function(script_elem); // why pass script_elem?
+		}
+                    	
+        };
+
+	
+      	script_elem.src = assetName; // Does this trigger the loading like for images?
+
+      	var list_of_elems = document.getElementsByTagName('head');
+
+      	list_of_elems[0].appendChild(script_elem);
+}
+
+
 
 // LEVEL LOADER:
 // http://stackoverflow.com/questions/15002093/loading-game-levels-in-javascript-w-o-back-end
@@ -132,6 +91,7 @@ load_level_from_file = function (name, callback) {
 			if(xmlhttp.status == 200){
 				g_current_level_data = JSON.parse(xmlhttp.responseText);
 				g_level_loaded = true;
+				g_current_level_data.filepath = name;
 				callback();
 			}
 		} 
@@ -140,4 +100,56 @@ load_level_from_file = function (name, callback) {
 	}
 
 	xmlhttp.send(null);
+}
+
+
+// for crosspromotion stuff
+fetch_json = function (url, store) {
+	var request = new XMLHttpRequest();
+	request.open("GET", url , true);
+	request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			crosspromote_json = JSON.parse(request.responseText);
+		}
+	}
+	// request.setRequestHeader('Content-Type', 'text/plain');
+	request.send(null);
+}
+
+fetch_image = function (url, store) {
+	
+	var request = new XMLHttpRequest();
+	request.open("GET", url , true);
+	request.responseType = 'blob';
+	request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			//crosspromote_image 
+			var blob = this.response;
+			var urlCreator = window.URL || window.webkitURL; 
+
+			var binaryData = [];
+			binaryData.push(blob);
+			//window.URL.createObjectURL(new Blob(binaryData, {type: "application/zip"}))
+
+			//var BLOBurl = urlCreator.createObjectURL(blob); 
+			var BLOBurl = urlCreator.createObjectURL(new Blob(binaryData, {type: "application/zip"}));
+			var img = new Image();
+			img.addEventListener("load", function(event){URL.revokeObjectURL(BLOBurl);});
+			img.src = BLOBurl;
+			crosspromote_image = new PIXI.Texture(new PIXI.BaseTexture(img));
+			g_textures['crosspromote.png'] = crosspromote_image;
+		}
+	}
+	request.send(null);
+
+	return;
+
+	var img = new Image();
+	img.addEventListener("load", function(event){URL.revokeObjectURL(BLOBurl);});
+	img.src = BLOBurl;
+	var texture = new PIXI.Texture(new PIXI.BaseTexture(img));
+
+	return;
+
+	
 }

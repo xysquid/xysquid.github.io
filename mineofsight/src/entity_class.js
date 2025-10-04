@@ -502,13 +502,19 @@ LevelEditorTileSelectClass = Class.extend({
 		
 	},
 
-	
+	rotated : false,
 	rotate_sprite : function (index, times) {
 
+		//if (this.rotated == true) return;
+		//this.rotated = true;
+
+		
 		this.build_sprite_rotate[index] = times;
 		
+		
+			this.build_sprites[index].reset_angle();
+		
 		for (var i = 0; i < times; i++) {
-			
 			this.build_sprites[index].rotate_ninety();
 
 		}
@@ -528,6 +534,7 @@ LevelEditorTileSelectClass = Class.extend({
 			this.build_x[i] = i*this.size_ + 3*this.size_ - this.scrolled*this.size_;
 			this.build_y[i] = screen_height - 0.5*this.size_;
 			this.build_sprites[i].update_pos(this.build_x[i], this.build_y[i]);
+			
 			
 			this.rotate_sprite(i, this.build_sprite_rotate[i]);
 		}
@@ -1431,8 +1438,8 @@ InfoClass = Class.extend({
 				}
 
 				if (this.game_state.blocks[this.game_state.tiles[x][y]].shared_eyebracket == true) {
-					this.block_obj.set_texture('sharetutbracket.png');
-					this.text.change_text("	    Number of GROUPS, seen by the bracket-eye, SHARED with the other hint. The other hint only needs to see part of a group.");
+					//this.block_obj.set_texture('sharetutbracket.png');
+					//this.text.change_text("	    Number of GROUPS, seen by the bracket-eye, SHARED with the other hint. The other hint only needs to see part of a group.");
 				}
 
 			} else if (hint_ == 49) {
@@ -2338,7 +2345,7 @@ BlockClass = Class.extend({
 			}
 
 			if (this.shared_crown == true) this.hint_num_text.change_text(this.sharesquare_num.toString() + 'K');
-			else if (this.shared_eyebracket == true) this.hint_num_text.change_text(this.sharesquare_num.toString() + 'B');
+			//else if (this.shared_eyebracket == true) this.hint_num_text.change_text(this.sharesquare_num.toString() + 'B');
 			else if (this.shared_heart == true) this.hint_num_text.change_text(this.sharesquare_num.toString() + 'L');
 			else this.hint_num_text.change_text(this.sharesquare_num.toString());
 

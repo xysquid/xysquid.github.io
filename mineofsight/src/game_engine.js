@@ -37,6 +37,7 @@ Types = {
 			GOTO_CREDITS: 44,
 			GOTO_SEED_LEVEL: 45,
 			GOTO_HEART_SNAKE: 46,
+			GOTO_INPUT_LEVEL : 47,
 
 			NO_EVENT: 0,
 
@@ -97,7 +98,7 @@ g_texts = {
 		"ON"	   : " ON",
 		"OFF"	   : " OFF",
 
-		"digflag" : "TAP TO DIG the safe tile\nPRESS TO FLAG the unsafe tile",
+		"digflag" : "LEFT CLICK the safe tile\nRIGHT CLICK to FLAG the unsafe tile\nYou can change to touchscreen controls in the menu",
 
 		"hold": "HOLD TO FLAG",	
 		"mark": "MARK FIRST",
@@ -537,8 +538,12 @@ MenuItems = [
 
 ];
 
+
 if (using_cocoon_js == false) {
+	//MenuItems.push([0, "CUSTOM LEVELS"]);
 	//MenuItems.push([1, Types.Events.GOTO_EDITOR, g_get_text("LEVEL EDITOR"),"home_icon.png"]);
+	//MenuItems.push([1, Types.Events.GOTO_INPUT_LEVEL, "INPUT CODE","home_icon.png"]);
+	
 
 	//MenuItems.push([1, Types.Events.GOTO_COMMUNITY_LEVELS, g_get_text("COMMUNITY LEVELS"),"home_icon.png"]);
 }
@@ -580,18 +585,18 @@ MenuItems.push([1, Types.Events.SHOW_GRID, "SHOW GRID","redflag.png",]);
 
 if(location.hostname != "www.facebook.com"){
 	// gotta check for mobile as well
-	MenuItems.push([0, "MORE GAMES"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"]);
+	//MenuItems.push([0, "MORE GAMES"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "www.zblip.com","games_icon.png","http://www.zblip.com"]);
 }
 
 
 
 
 if (using_cocoon_js == false) {
-	MenuItems.push([0, "FOLLOW"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
+	//MenuItems.push([0, "FOLLOW"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "Facebook","facebook-24x24.png","https://www.facebook.com/Mine-of-Sight-1037635096381976/"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "Twitter","twitter-24x24.png","https://twitter.com/ZBlipGames"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "Tumblr","tumblr-24x24.png","https://zblip.tumblr.com/"]);
 }
 	
 MenuItems.push([0, "LINKS"]);
@@ -600,21 +605,15 @@ MenuItems.push([0, "LINKS"]);
 
 
 if(true || location.hostname == "www.zblip.com") {
-	MenuItems.push([1, Types.Events.WEB_LINK, "LEGAL","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "TERMS OF USE","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/tos"]);
-	MenuItems.push([1, Types.Events.WEB_LINK, "PRIVACY POLICY","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/pp"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "LEGAL","ic_list_white_24dp_2x.png","http://www.zblip.com/legal"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "TERMS OF USE","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/tos"]);
+	//MenuItems.push([1, Types.Events.WEB_LINK, "PRIVACY POLICY","ic_list_white_24dp_2x.png","http://www.zblip.com/legal/pp"]);
 }
 
 
-var credits_via_web = true;
-
-if (credits_via_web == false) {
-MenuItems.push([1, Types.Events.GOTO_CREDITS, "CREDITS","ic_list_white_24dp_2x.png"]);
-
-} else {
 MenuItems.push([1, Types.Events.WEB_LINK, "CREDITS","ic_list_white_24dp_2x.png","http://www.zblip.com/mineofsight/credits"]);
 
-}
+
 
 
 
@@ -1348,6 +1347,12 @@ BlipFrogMenuClass = Class.extend({
 
 			this.pop_down();
 			
+		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_INPUT_LEVEL) {
+
+			this.game_engine.handle_events(0, 0, Types.Events.GOTO_INPUT_LEVEL);
+
+			this.pop_down();
+			
 		} else if (MenuItems[menu_i][1] == Types.Events.GOTO_COMMUNITY_LEVELS) {
 
 			this.game_engine.handle_events(0, 0, Types.Events.GOTO_COMMUNITY_LEVELS);
@@ -1625,6 +1630,14 @@ GameEngineClass = Class.extend({
 				state_.cleanup();
 			}
 			this.push_state(new LevelEditorStateClass(this, this.state_stack[1]));
+
+		} else if (event_type == Types.Events.GOTO_INPUT_LEVEL) {
+
+			while(this.state_stack.length > 2) {
+				var state_ = this.state_stack.pop();
+				state_.cleanup();
+			}
+			this.push_state(new LoadFromStringStateClass(this, this.state_stack[1]));
 
 		} else if (event_type == Types.Events.GOTO_COMMUNITY_LEVELS) {
 

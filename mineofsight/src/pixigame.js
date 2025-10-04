@@ -149,6 +149,7 @@ animate = function (timestamp) {
 	}
 
 	if(mouseclickright) {
+		
 		mouseclickright = false;
 		gBlipFrogMenu.handle_events((mouse_abs['x']- x_shift_screen)/ratio ,
 					    (mouse_abs['y'] - y_shift_screen)/ratio, Types.Events.MOUSE_CLICK_RIGHT);
